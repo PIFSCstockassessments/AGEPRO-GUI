@@ -19,7 +19,15 @@ namespace AGEPRO_GUI
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Terminate
+            this.Close();
+        }
 
+        private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutAgepro aboutDialog = new AboutAgepro();
+
+            aboutDialog.ShowDialog();
         }
     }
 }
