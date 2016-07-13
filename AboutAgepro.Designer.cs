@@ -1,4 +1,4 @@
-﻿namespace AGEPRO_GUI
+﻿namespace AGEPRO.GUI
 {
     partial class AboutAgepro
     {

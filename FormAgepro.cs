@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO_GUI
+namespace AGEPRO.GUI
 {
     public partial class FormAgepro : Form
     {

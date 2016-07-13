@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO_GUI
+namespace AGEPRO.GUI
 {
     static class Program
     {

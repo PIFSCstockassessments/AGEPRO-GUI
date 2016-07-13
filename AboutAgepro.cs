@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO_GUI
+namespace AGEPRO.GUI
 {
     partial class AboutAgepro : Form
     {
