@@ -25,8 +25,8 @@ namespace AGEPRO.GUI
 
         private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //About Box Dialog
             AboutAgepro aboutDialog = new AboutAgepro();
-
             aboutDialog.ShowDialog();
         }
     }

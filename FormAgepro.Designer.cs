@@ -28,6 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("JAN-1");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("SSB");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Mid-Year (Mean)");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Catch");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Discard");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Weights At Age", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Recruitment");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Biological");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Discard Fraction");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Harvest Scenario");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Bootstrapping");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Misc. Options");
             this.menuStripAgeproForm = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +68,7 @@
             this.referenceManualpdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutAGEPROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeViewNavigation = new System.Windows.Forms.TreeView();
             this.menuStripAgeproForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,27 +142,27 @@
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // runToolStripMenuItem
@@ -210,11 +230,57 @@
             this.aboutAGEPROToolStripMenuItem.Text = "About AGEPRO";
             this.aboutAGEPROToolStripMenuItem.Click += new System.EventHandler(this.aboutAGEPROToolStripMenuItem_Click);
             // 
+            // treeViewNavigation
+            // 
+            this.treeViewNavigation.Location = new System.Drawing.Point(0, 27);
+            this.treeViewNavigation.Name = "treeViewNavigation";
+            treeNode1.Name = "treeNodeGeneral";
+            treeNode1.Text = "General";
+            treeNode2.Name = "treeNodeJan1";
+            treeNode2.Text = "JAN-1";
+            treeNode3.Name = "treeNodeSSB";
+            treeNode3.Text = "SSB";
+            treeNode4.Name = "treeNodeMidYear";
+            treeNode4.Text = "Mid-Year (Mean)";
+            treeNode5.Name = "treeNodeCatchWeight";
+            treeNode5.Text = "Catch";
+            treeNode6.Name = "treeNodeDiscardWeight";
+            treeNode6.Text = "Discard";
+            treeNode7.Name = "treeNodeWeightAge";
+            treeNode7.Text = "Weights At Age";
+            treeNode8.Name = "treeNodeRecruitment";
+            treeNode8.Text = "Recruitment";
+            treeNode9.Name = "treeNodeBiological";
+            treeNode9.Text = "Biological";
+            treeNode10.Name = "treeNodeFisherySelectivity";
+            treeNode10.Text = "Fishery Selectivity";
+            treeNode11.Name = "treeNodeDiscardFraction";
+            treeNode11.Text = "Discard Fraction";
+            treeNode12.Name = "treeNodeHarvestScenario";
+            treeNode12.Text = "Harvest Scenario";
+            treeNode13.Name = "treeNodeBootstrapping";
+            treeNode13.Text = "Bootstrapping";
+            treeNode14.Name = "treeNodeMiscOptions";
+            treeNode14.Text = "Misc. Options";
+            this.treeViewNavigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode7,
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14});
+            this.treeViewNavigation.Size = new System.Drawing.Size(200, 546);
+            this.treeViewNavigation.TabIndex = 1;
+            // 
             // FormAgepro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 585);
+            this.Controls.Add(this.treeViewNavigation);
             this.Controls.Add(this.menuStripAgeproForm);
             this.MainMenuStrip = this.menuStripAgeproForm;
             this.Name = "FormAgepro";
@@ -249,6 +315,7 @@
         private System.Windows.Forms.ToolStripMenuItem referenceManualpdfToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem aboutAGEPROToolStripMenuItem;
+        private System.Windows.Forms.TreeView treeViewNavigation;
     }
 }
 
