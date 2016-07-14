@@ -66,6 +66,12 @@
     <Compile Include="AboutAgepro.Designer.cs">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlGeneral.Designer.cs">
+      <DependentUpon>ControlGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlGeneral.resx">
+      <DependentUpon>ControlGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>
