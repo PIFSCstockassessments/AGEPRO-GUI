@@ -15,7 +15,6 @@ namespace AGEPRO.GUI
         [STAThread]
         static void Main()
         {
-            AgeproInputFile inputData = new AgeproInputFile();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormAgepro());

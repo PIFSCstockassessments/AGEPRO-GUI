@@ -7,35 +7,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AGEPRO.CoreLib;
 
 namespace AGEPRO.GUI
 {
 
     public partial class FormAgepro : Form
     {
+        private AgeproInputFile inputData;
+        private ControlGeneral generalOptions;
+        private ControlMiscOptions miscOptions;
+
         public FormAgepro()
         {
             InitializeComponent();
-            
-        }
-        
-           
-        
-        private void FormAgepro_Load(object sender, EventArgs e)
-        {
+            //AGEPRO Input Data, If any
+            inputData = new AgeproInputFile();
+
             //Load User Controls
-            ControlGeneral generalOptions = new ControlGeneral();
+            generalOptions = new ControlGeneral();
+            miscOptions = new ControlMiscOptions();
 
             generalOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
             //Load General Options Controls to AGEPRO Parameter panel
             this.panelAgeproParameter.Controls.Clear();
             this.panelAgeproParameter.Controls.Add(generalOptions);
-            
+         
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
             this.panelNavigation.Enabled = false;
         }
+          
 
         public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
         {
@@ -63,9 +66,23 @@ namespace AGEPRO.GUI
 
         private void treeViewNavigation_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            string selected = treeViewNavigation.SelectedNode.Name.ToString();
+            string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
+            
 
             //TODO
+            switch (selectedTreeNode)
+            {
+                case "treeNodeGeneral":
+                    panelAgeproParameter.Controls.Clear();
+                    panelAgeproParameter.Controls.Add(generalOptions);
+                    break;
+                case "treeNodeMiscOptions":
+                    panelAgeproParameter.Controls.Clear();
+                    panelAgeproParameter.Controls.Add(miscOptions);
+                    break;
+                default:
+                    break;
+            }
         }
 
         
