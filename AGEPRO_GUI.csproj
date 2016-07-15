@@ -75,6 +75,12 @@
     <Compile Include="ControlGeneral.Designer.cs">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlMiscOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlMiscOptions.Designer.cs">
+      <DependentUpon>ControlMiscOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlGeneral.resx">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlMiscOptions.resx">
+      <DependentUpon>ControlMiscOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>
