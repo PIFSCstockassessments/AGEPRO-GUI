@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupGeneralOptions = new System.Windows.Forms.GroupBox();
+            this.spinBoxFirstAge = new System.Windows.Forms.NumericUpDown();
             this.buttonSetGeneral = new System.Windows.Forms.Button();
             this.checkBoxDiscards = new System.Windows.Forms.CheckBox();
             this.textBoxRandomSeed = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.labelNumFleets = new System.Windows.Forms.Label();
             this.textBoxFirstYearProjection = new System.Windows.Forms.TextBox();
             this.labelFirstYearProjection = new System.Windows.Forms.Label();
-            this.spinBoxFirstAge = new System.Windows.Forms.NumericUpDown();
             this.labelModelID = new System.Windows.Forms.Label();
             this.labelInputFile = new System.Windows.Forms.Label();
             this.textBoxModelID = new System.Windows.Forms.TextBox();
@@ -76,12 +76,29 @@
             this.groupGeneralOptions.Controls.Add(this.labelNumFleets);
             this.groupGeneralOptions.Controls.Add(this.textBoxFirstYearProjection);
             this.groupGeneralOptions.Controls.Add(this.labelFirstYearProjection);
-            this.groupGeneralOptions.Location = new System.Drawing.Point(47, 160);
+            this.groupGeneralOptions.Location = new System.Drawing.Point(58, 262);
             this.groupGeneralOptions.Name = "groupGeneralOptions";
             this.groupGeneralOptions.Size = new System.Drawing.Size(786, 221);
             this.groupGeneralOptions.TabIndex = 6;
             this.groupGeneralOptions.TabStop = false;
             this.groupGeneralOptions.Text = "Options";
+            // 
+            // spinBoxFirstAge
+            // 
+            this.spinBoxFirstAge.Location = new System.Drawing.Point(210, 99);
+            this.spinBoxFirstAge.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinBoxFirstAge.Name = "spinBoxFirstAge";
+            this.spinBoxFirstAge.Size = new System.Drawing.Size(120, 20);
+            this.spinBoxFirstAge.TabIndex = 18;
+            this.spinBoxFirstAge.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // buttonSetGeneral
             // 
@@ -91,6 +108,7 @@
             this.buttonSetGeneral.TabIndex = 17;
             this.buttonSetGeneral.Text = "SET";
             this.buttonSetGeneral.UseVisualStyleBackColor = true;
+            this.buttonSetGeneral.Click += new System.EventHandler(this.buttonSetGeneral_Click);
             // 
             // checkBoxDiscards
             // 
@@ -224,27 +242,10 @@
             this.labelFirstYearProjection.TabIndex = 0;
             this.labelFirstYearProjection.Text = "First Year In Projection";
             // 
-            // spinBoxFirstAge
-            // 
-            this.spinBoxFirstAge.Location = new System.Drawing.Point(210, 99);
-            this.spinBoxFirstAge.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.spinBoxFirstAge.Name = "spinBoxFirstAge";
-            this.spinBoxFirstAge.Size = new System.Drawing.Size(120, 20);
-            this.spinBoxFirstAge.TabIndex = 18;
-            this.spinBoxFirstAge.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // labelModelID
             // 
             this.labelModelID.AutoSize = true;
-            this.labelModelID.Location = new System.Drawing.Point(71, 71);
+            this.labelModelID.Location = new System.Drawing.Point(82, 173);
             this.labelModelID.Name = "labelModelID";
             this.labelModelID.Size = new System.Drawing.Size(50, 13);
             this.labelModelID.TabIndex = 7;
@@ -253,7 +254,7 @@
             // labelInputFile
             // 
             this.labelInputFile.AutoSize = true;
-            this.labelInputFile.Location = new System.Drawing.Point(71, 113);
+            this.labelInputFile.Location = new System.Drawing.Point(82, 215);
             this.labelInputFile.Name = "labelInputFile";
             this.labelInputFile.Size = new System.Drawing.Size(50, 13);
             this.labelInputFile.TabIndex = 8;
@@ -261,21 +262,21 @@
             // 
             // textBoxModelID
             // 
-            this.textBoxModelID.Location = new System.Drawing.Point(143, 68);
+            this.textBoxModelID.Location = new System.Drawing.Point(154, 170);
             this.textBoxModelID.Name = "textBoxModelID";
             this.textBoxModelID.Size = new System.Drawing.Size(586, 20);
             this.textBoxModelID.TabIndex = 9;
             // 
             // textBoxInputFile
             // 
-            this.textBoxInputFile.Location = new System.Drawing.Point(143, 110);
+            this.textBoxInputFile.Location = new System.Drawing.Point(154, 212);
             this.textBoxInputFile.Name = "textBoxInputFile";
             this.textBoxInputFile.Size = new System.Drawing.Size(586, 20);
             this.textBoxInputFile.TabIndex = 10;
             // 
             // buttonLoadFile
             // 
-            this.buttonLoadFile.Location = new System.Drawing.Point(746, 108);
+            this.buttonLoadFile.Location = new System.Drawing.Point(757, 210);
             this.buttonLoadFile.Name = "buttonLoadFile";
             this.buttonLoadFile.Size = new System.Drawing.Size(75, 23);
             this.buttonLoadFile.TabIndex = 11;

@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("JAN-1");
-            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("SSB");
-            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("Mid-Year (Mean)");
-            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("Catch");
-            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("Discard");
-            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("Weights At Age", new System.Windows.Forms.TreeNode[] {
-            treeNode72,
-            treeNode73,
-            treeNode74,
-            treeNode75,
-            treeNode76});
-            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("Recruitment");
-            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("Biological");
-            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
-            System.Windows.Forms.TreeNode treeNode81 = new System.Windows.Forms.TreeNode("Discard Fraction");
-            System.Windows.Forms.TreeNode treeNode82 = new System.Windows.Forms.TreeNode("Harvest Scenario");
-            System.Windows.Forms.TreeNode treeNode83 = new System.Windows.Forms.TreeNode("Bootstrapping");
-            System.Windows.Forms.TreeNode treeNode84 = new System.Windows.Forms.TreeNode("Misc. Options");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("JAN-1");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("SSB");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Mid-Year (Mean)");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Catch");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Discard");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Weights At Age", new System.Windows.Forms.TreeNode[] {
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20});
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Recruitment");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Biological");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Discard Fraction");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Harvest Scenario");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Bootstrapping");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Misc. Options");
             this.menuStripAgeproForm = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +71,9 @@
             this.treeViewNavigation = new System.Windows.Forms.TreeView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelAgeproParameter = new System.Windows.Forms.Panel();
+            this.panelNavigation = new System.Windows.Forms.Panel();
             this.menuStripAgeproForm.SuspendLayout();
+            this.panelNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripAgeproForm
@@ -234,50 +236,50 @@
             // 
             // treeViewNavigation
             // 
-            this.treeViewNavigation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeViewNavigation.Location = new System.Drawing.Point(0, 27);
+            this.treeViewNavigation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewNavigation.Location = new System.Drawing.Point(0, 0);
             this.treeViewNavigation.Name = "treeViewNavigation";
-            treeNode71.Name = "treeNodeGeneral";
-            treeNode71.Text = "General";
-            treeNode72.Name = "treeNodeJan1";
-            treeNode72.Text = "JAN-1";
-            treeNode73.Name = "treeNodeSSB";
-            treeNode73.Text = "SSB";
-            treeNode74.Name = "treeNodeMidYear";
-            treeNode74.Text = "Mid-Year (Mean)";
-            treeNode75.Name = "treeNodeCatchWeight";
-            treeNode75.Text = "Catch";
-            treeNode76.Name = "treeNodeDiscardWeight";
-            treeNode76.Text = "Discard";
-            treeNode77.Name = "treeNodeWeightAge";
-            treeNode77.Text = "Weights At Age";
-            treeNode78.Name = "treeNodeRecruitment";
-            treeNode78.Text = "Recruitment";
-            treeNode79.Name = "treeNodeBiological";
-            treeNode79.Text = "Biological";
-            treeNode80.Name = "treeNodeFisherySelectivity";
-            treeNode80.Text = "Fishery Selectivity";
-            treeNode81.Name = "treeNodeDiscardFraction";
-            treeNode81.Text = "Discard Fraction";
-            treeNode82.Name = "treeNodeHarvestScenario";
-            treeNode82.Text = "Harvest Scenario";
-            treeNode83.Name = "treeNodeBootstrapping";
-            treeNode83.Text = "Bootstrapping";
-            treeNode84.Name = "treeNodeMiscOptions";
-            treeNode84.Text = "Misc. Options";
+            treeNode15.Name = "treeNodeGeneral";
+            treeNode15.Text = "General";
+            treeNode16.Name = "treeNodeJan1";
+            treeNode16.Text = "JAN-1";
+            treeNode17.Name = "treeNodeSSB";
+            treeNode17.Text = "SSB";
+            treeNode18.Name = "treeNodeMidYear";
+            treeNode18.Text = "Mid-Year (Mean)";
+            treeNode19.Name = "treeNodeCatchWeight";
+            treeNode19.Text = "Catch";
+            treeNode20.Name = "treeNodeDiscardWeight";
+            treeNode20.Text = "Discard";
+            treeNode21.Name = "treeNodeWeightAge";
+            treeNode21.Text = "Weights At Age";
+            treeNode22.Name = "treeNodeRecruitment";
+            treeNode22.Text = "Recruitment";
+            treeNode23.Name = "treeNodeBiological";
+            treeNode23.Text = "Biological";
+            treeNode24.Name = "treeNodeFisherySelectivity";
+            treeNode24.Text = "Fishery Selectivity";
+            treeNode25.Name = "treeNodeDiscardFraction";
+            treeNode25.Text = "Discard Fraction";
+            treeNode26.Name = "treeNodeHarvestScenario";
+            treeNode26.Text = "Harvest Scenario";
+            treeNode27.Name = "treeNodeBootstrapping";
+            treeNode27.Text = "Bootstrapping";
+            treeNode28.Name = "treeNodeMiscOptions";
+            treeNode28.Text = "Misc. Options";
             this.treeViewNavigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode71,
-            treeNode77,
-            treeNode78,
-            treeNode79,
-            treeNode80,
-            treeNode81,
-            treeNode82,
-            treeNode83,
-            treeNode84});
-            this.treeViewNavigation.Size = new System.Drawing.Size(200, 533);
+            treeNode15,
+            treeNode21,
+            treeNode22,
+            treeNode23,
+            treeNode24,
+            treeNode25,
+            treeNode26,
+            treeNode27,
+            treeNode28});
+            this.treeViewNavigation.Size = new System.Drawing.Size(200, 536);
             this.treeViewNavigation.TabIndex = 1;
+            this.treeViewNavigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewNavigation_AfterSelect);
             // 
             // statusStrip1
             // 
@@ -290,28 +292,38 @@
             // panelAgeproParameter
             // 
             this.panelAgeproParameter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelAgeproParameter.AutoSize = true;
-            this.panelAgeproParameter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelAgeproParameter.Location = new System.Drawing.Point(1132, 24);
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelAgeproParameter.Location = new System.Drawing.Point(206, 24);
             this.panelAgeproParameter.Name = "panelAgeproParameter";
-            this.panelAgeproParameter.Size = new System.Drawing.Size(0, 0);
+            this.panelAgeproParameter.Size = new System.Drawing.Size(926, 539);
             this.panelAgeproParameter.TabIndex = 3;
+            // 
+            // panelNavigation
+            // 
+            this.panelNavigation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelNavigation.Controls.Add(this.treeViewNavigation);
+            this.panelNavigation.Location = new System.Drawing.Point(0, 24);
+            this.panelNavigation.Name = "panelNavigation";
+            this.panelNavigation.Size = new System.Drawing.Size(200, 536);
+            this.panelNavigation.TabIndex = 4;
             // 
             // FormAgepro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 585);
+            this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.panelAgeproParameter);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.treeViewNavigation);
             this.Controls.Add(this.menuStripAgeproForm);
             this.MainMenuStrip = this.menuStripAgeproForm;
             this.Name = "FormAgepro";
             this.Text = "AGEPRO";
+            this.Load += new System.EventHandler(this.FormAgepro_Load);
             this.menuStripAgeproForm.ResumeLayout(false);
             this.menuStripAgeproForm.PerformLayout();
+            this.panelNavigation.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +355,7 @@
         private System.Windows.Forms.TreeView treeViewNavigation;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel panelAgeproParameter;
+        private System.Windows.Forms.Panel panelNavigation;
     }
 }
 
