@@ -85,6 +85,20 @@ namespace AGEPRO.GUI
             }
         }
 
+        private void openExistingAGEPROInputDataFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Console.WriteLine("FOO");
+            //Use AGEPRO.CoreLib.AgeproInputFile.ReadInputFile
+            OpenFileDialog openAgeproInputFile = new OpenFileDialog();
+
+            openAgeproInputFile.InitialDirectory = "~";
+            openAgeproInputFile.Filter = "AGEPRO input files (*.inp)|*.inp|All Files (*.*)|*.*";
+            openAgeproInputFile.FilterIndex = 1;
+            openAgeproInputFile.RestoreDirectory = true;
+            openAgeproInputFile.ShowDialog();
+        }
+
         
    
 

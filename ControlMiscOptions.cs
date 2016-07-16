@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace AGEPRO.GUI
 {
+    /// <summary>
+    /// Settings for AGEPRO output and optional parameters.
+    /// </summary>
     public partial class ControlMiscOptions : UserControl
     {
         public ControlMiscOptions()
