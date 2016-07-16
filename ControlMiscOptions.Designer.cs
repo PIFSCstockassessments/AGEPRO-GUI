@@ -89,6 +89,7 @@
             // labelReportPercentile
             // 
             this.labelReportPercentile.AutoSize = true;
+            this.labelReportPercentile.Enabled = false;
             this.labelReportPercentile.Location = new System.Drawing.Point(70, 116);
             this.labelReportPercentile.Name = "labelReportPercentile";
             this.labelReportPercentile.Size = new System.Drawing.Size(89, 13);
@@ -104,6 +105,7 @@
             this.checkBoxPercentileReport.TabIndex = 0;
             this.checkBoxPercentileReport.Text = "Request Percentile Report";
             this.checkBoxPercentileReport.UseVisualStyleBackColor = true;
+            this.checkBoxPercentileReport.CheckedChanged += new System.EventHandler(this.checkBoxPercentileReport_CheckedChanged);
             // 
             // checkBoxExportR
             // 
@@ -120,9 +122,9 @@
             this.checkBoxAuxStochasticFiles.AutoSize = true;
             this.checkBoxAuxStochasticFiles.Location = new System.Drawing.Point(23, 46);
             this.checkBoxAuxStochasticFiles.Name = "checkBoxAuxStochasticFiles";
-            this.checkBoxAuxStochasticFiles.Size = new System.Drawing.Size(173, 17);
+            this.checkBoxAuxStochasticFiles.Size = new System.Drawing.Size(214, 17);
             this.checkBoxAuxStochasticFiles.TabIndex = 0;
-            this.checkBoxAuxStochasticFiles.Text = "Generate Stochastic Data Files";
+            this.checkBoxAuxStochasticFiles.Text = "Generate Auxiliary Stochastic Data Files";
             this.checkBoxAuxStochasticFiles.UseVisualStyleBackColor = true;
             // 
             // checkBoxSummayReport
@@ -130,9 +132,9 @@
             this.checkBoxSummayReport.AutoSize = true;
             this.checkBoxSummayReport.Location = new System.Drawing.Point(23, 23);
             this.checkBoxSummayReport.Name = "checkBoxSummayReport";
-            this.checkBoxSummayReport.Size = new System.Drawing.Size(221, 17);
+            this.checkBoxSummayReport.Size = new System.Drawing.Size(262, 17);
             this.checkBoxSummayReport.TabIndex = 0;
-            this.checkBoxSummayReport.Text = "Summary Report - Stock Numbers At Age";
+            this.checkBoxSummayReport.Text = "Output Summary Report of Stock Numbers At Age";
             this.checkBoxSummayReport.UseVisualStyleBackColor = true;
             // 
             // groupRefpoints
@@ -184,10 +186,11 @@
             this.checkBoxRefpoints.AutoSize = true;
             this.checkBoxRefpoints.Location = new System.Drawing.Point(22, 19);
             this.checkBoxRefpoints.Name = "checkBoxRefpoints";
-            this.checkBoxRefpoints.Size = new System.Drawing.Size(201, 17);
+            this.checkBoxRefpoints.Size = new System.Drawing.Size(223, 17);
             this.checkBoxRefpoints.TabIndex = 0;
-            this.checkBoxRefpoints.Text = "Reference Points - Percent Likilihood";
+            this.checkBoxRefpoints.Text = "Output Reference Point Threshold Report";
             this.checkBoxRefpoints.UseVisualStyleBackColor = true;
+            this.checkBoxRefpoints.CheckedChanged += new System.EventHandler(this.checkBoxRefpoints_CheckedChanged);
             // 
             // labelMeanBiomass
             // 
@@ -256,6 +259,7 @@
             this.textBoxBoundsNatMortality.Name = "textBoxBoundsNatMortality";
             this.textBoxBoundsNatMortality.Size = new System.Drawing.Size(100, 20);
             this.textBoxBoundsNatMortality.TabIndex = 4;
+            this.textBoxBoundsNatMortality.Text = "1.0";
             // 
             // labelBoundsNatMortality
             // 
@@ -274,6 +278,7 @@
             this.textBoxBoundsMaxWeight.Name = "textBoxBoundsMaxWeight";
             this.textBoxBoundsMaxWeight.Size = new System.Drawing.Size(100, 20);
             this.textBoxBoundsMaxWeight.TabIndex = 2;
+            this.textBoxBoundsMaxWeight.Text = "10.0";
             // 
             // labelBoundsMaxWeight
             // 
@@ -294,6 +299,7 @@
             this.checkBoxBounds.TabIndex = 0;
             this.checkBoxBounds.Text = "Specify Bounds";
             this.checkBoxBounds.UseVisualStyleBackColor = true;
+            this.checkBoxBounds.CheckedChanged += new System.EventHandler(this.checkBoxBounds_CheckedChanged);
             // 
             // groupScaleFactors
             // 
@@ -309,7 +315,7 @@
             this.groupScaleFactors.Size = new System.Drawing.Size(353, 136);
             this.groupScaleFactors.TabIndex = 5;
             this.groupScaleFactors.TabStop = false;
-            this.groupScaleFactors.Text = "Output Report Scale Factors";
+            this.groupScaleFactors.Text = "Scale Factors for Output Report";
             // 
             // textBoxScaleFactorRecruits
             // 
@@ -374,6 +380,7 @@
             this.checkBoxScaleFactors.TabIndex = 0;
             this.checkBoxScaleFactors.Text = "Specify Scale Factors for Output Report";
             this.checkBoxScaleFactors.UseVisualStyleBackColor = true;
+            this.checkBoxScaleFactors.CheckedChanged += new System.EventHandler(this.checkBoxScaleFactors_CheckedChanged);
             // 
             // groupRetroAdjustment
             // 
@@ -381,7 +388,7 @@
             this.groupRetroAdjustment.Controls.Add(this.dataGridRetroAdjustment);
             this.groupRetroAdjustment.Location = new System.Drawing.Point(403, 120);
             this.groupRetroAdjustment.Name = "groupRetroAdjustment";
-            this.groupRetroAdjustment.Size = new System.Drawing.Size(352, 196);
+            this.groupRetroAdjustment.Size = new System.Drawing.Size(352, 266);
             this.groupRetroAdjustment.TabIndex = 6;
             this.groupRetroAdjustment.TabStop = false;
             this.groupRetroAdjustment.Text = "Retrospective Adjustment Factors";
@@ -395,17 +402,20 @@
             this.checkBoxRetroAdjustment.TabIndex = 1;
             this.checkBoxRetroAdjustment.Text = "Specify Retrospective Adjustment Factors";
             this.checkBoxRetroAdjustment.UseVisualStyleBackColor = true;
+            this.checkBoxRetroAdjustment.CheckedChanged += new System.EventHandler(this.checkBoxRetroAdjustment_CheckedChanged);
             // 
             // dataGridRetroAdjustment
             // 
             this.dataGridRetroAdjustment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRetroAdjustment.Location = new System.Drawing.Point(17, 40);
             this.dataGridRetroAdjustment.Name = "dataGridRetroAdjustment";
-            this.dataGridRetroAdjustment.Size = new System.Drawing.Size(329, 148);
+            this.dataGridRetroAdjustment.Size = new System.Drawing.Size(329, 220);
             this.dataGridRetroAdjustment.TabIndex = 0;
             // 
             // spinBoxReportPercentile
             // 
+            this.spinBoxReportPercentile.DecimalPlaces = 1;
+            this.spinBoxReportPercentile.Enabled = false;
             this.spinBoxReportPercentile.Location = new System.Drawing.Point(165, 114);
             this.spinBoxReportPercentile.Name = "spinBoxReportPercentile";
             this.spinBoxReportPercentile.Size = new System.Drawing.Size(107, 20);
