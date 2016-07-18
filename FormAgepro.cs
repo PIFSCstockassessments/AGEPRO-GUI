@@ -42,13 +42,8 @@ namespace AGEPRO.GUI
 
         public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
         {
-
             //Activate Naivagation Panel if in first-run/startup state.
-            if (this.panelNavigation.Enabled == false)
-            {
-                this.panelNavigation.Enabled = true;
-            }
-            
+            enableNavigationPanel();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,18 +83,42 @@ namespace AGEPRO.GUI
         private void openExistingAGEPROInputDataFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            Console.WriteLine("FOO");
-            //Use AGEPRO.CoreLib.AgeproInputFile.ReadInputFile
+
             OpenFileDialog openAgeproInputFile = new OpenFileDialog();
 
             openAgeproInputFile.InitialDirectory = "~";
             openAgeproInputFile.Filter = "AGEPRO input files (*.inp)|*.inp|All Files (*.*)|*.*";
             openAgeproInputFile.FilterIndex = 1;
             openAgeproInputFile.RestoreDirectory = true;
-            openAgeproInputFile.ShowDialog();
+            
+
+            if (openAgeproInputFile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //Use AGEPRO.CoreLib.AgeproInputFile.ReadInputFile
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Can not load AGEPRO input file. " + ex.Message);
+                }
+
+                //Activate Naivagation Panel if in first-run/startup state.
+                enableNavigationPanel();
+            }
+            
+            
+            Console.WriteLine("FOO");            
         }
 
-        
+        private void enableNavigationPanel()
+        {
+            //Activate Naivagation Panel if in first-run/startup state.
+            if (this.panelNavigation.Enabled == false)
+            {
+                this.panelNavigation.Enabled = true;
+            }
+        }
    
 
     }
