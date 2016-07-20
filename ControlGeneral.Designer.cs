@@ -79,7 +79,7 @@
             this.groupGeneralOptions.Location = new System.Drawing.Point(58, 262);
             this.groupGeneralOptions.Name = "groupGeneralOptions";
             this.groupGeneralOptions.Size = new System.Drawing.Size(786, 221);
-            this.groupGeneralOptions.TabIndex = 6;
+            this.groupGeneralOptions.TabIndex = 5;
             this.groupGeneralOptions.TabStop = false;
             this.groupGeneralOptions.Text = "Options";
             // 
@@ -93,7 +93,7 @@
             0});
             this.spinBoxFirstAge.Name = "spinBoxFirstAge";
             this.spinBoxFirstAge.Size = new System.Drawing.Size(120, 20);
-            this.spinBoxFirstAge.TabIndex = 18;
+            this.spinBoxFirstAge.TabIndex = 5;
             this.spinBoxFirstAge.Value = new decimal(new int[] {
             1,
             0,
@@ -117,7 +117,7 @@
             this.checkBoxDiscards.Location = new System.Drawing.Point(67, 165);
             this.checkBoxDiscards.Name = "checkBoxDiscards";
             this.checkBoxDiscards.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxDiscards.TabIndex = 16;
+            this.checkBoxDiscards.TabIndex = 8;
             this.checkBoxDiscards.Text = "Discards are Present";
             this.checkBoxDiscards.UseVisualStyleBackColor = true;
             // 
@@ -126,7 +126,7 @@
             this.textBoxRandomSeed.Location = new System.Drawing.Point(575, 131);
             this.textBoxRandomSeed.Name = "textBoxRandomSeed";
             this.textBoxRandomSeed.Size = new System.Drawing.Size(120, 20);
-            this.textBoxRandomSeed.TabIndex = 15;
+            this.textBoxRandomSeed.TabIndex = 16;
             // 
             // textBoxLastAge
             // 
@@ -141,7 +141,7 @@
             this.labelRandomSeed.Location = new System.Drawing.Point(385, 134);
             this.labelRandomSeed.Name = "labelRandomSeed";
             this.labelRandomSeed.Size = new System.Drawing.Size(115, 13);
-            this.labelRandomSeed.TabIndex = 14;
+            this.labelRandomSeed.TabIndex = 15;
             this.labelRandomSeed.Text = "Random Number Seed";
             // 
             // labelLastAge
@@ -158,7 +158,7 @@
             this.textBoxNumPopSim.Location = new System.Drawing.Point(575, 98);
             this.textBoxNumPopSim.Name = "textBoxNumPopSim";
             this.textBoxNumPopSim.Size = new System.Drawing.Size(120, 20);
-            this.textBoxNumPopSim.TabIndex = 13;
+            this.textBoxNumPopSim.TabIndex = 14;
             // 
             // labelNumPopSim
             // 
@@ -166,7 +166,7 @@
             this.labelNumPopSim.Location = new System.Drawing.Point(385, 101);
             this.labelNumPopSim.Name = "labelNumPopSim";
             this.labelNumPopSim.Size = new System.Drawing.Size(165, 13);
-            this.labelNumPopSim.TabIndex = 12;
+            this.labelNumPopSim.TabIndex = 13;
             this.labelNumPopSim.Text = "Number of Population Simulations";
             // 
             // labelFirstAge
@@ -183,7 +183,7 @@
             this.textBoxNumRecruitModels.Location = new System.Drawing.Point(575, 65);
             this.textBoxNumRecruitModels.Name = "textBoxNumRecruitModels";
             this.textBoxNumRecruitModels.Size = new System.Drawing.Size(120, 20);
-            this.textBoxNumRecruitModels.TabIndex = 11;
+            this.textBoxNumRecruitModels.TabIndex = 12;
             // 
             // textBoxLastYearProjection
             // 
@@ -198,7 +198,7 @@
             this.labelNumRecruitModels.Location = new System.Drawing.Point(385, 68);
             this.labelNumRecruitModels.Name = "labelNumRecruitModels";
             this.labelNumRecruitModels.Size = new System.Drawing.Size(155, 13);
-            this.labelNumRecruitModels.TabIndex = 10;
+            this.labelNumRecruitModels.TabIndex = 11;
             this.labelNumRecruitModels.Text = "Number Of Recruitment Models";
             // 
             // labelLastYearProjection
@@ -215,7 +215,7 @@
             this.textBoxNumFleets.Location = new System.Drawing.Point(575, 32);
             this.textBoxNumFleets.Name = "textBoxNumFleets";
             this.textBoxNumFleets.Size = new System.Drawing.Size(120, 20);
-            this.textBoxNumFleets.TabIndex = 9;
+            this.textBoxNumFleets.TabIndex = 10;
             // 
             // labelNumFleets
             // 
@@ -223,7 +223,7 @@
             this.labelNumFleets.Location = new System.Drawing.Point(385, 35);
             this.labelNumFleets.Name = "labelNumFleets";
             this.labelNumFleets.Size = new System.Drawing.Size(89, 13);
-            this.labelNumFleets.TabIndex = 8;
+            this.labelNumFleets.TabIndex = 9;
             this.labelNumFleets.Text = "Number Of Fleets";
             // 
             // textBoxFirstYearProjection
@@ -248,7 +248,7 @@
             this.labelModelID.Location = new System.Drawing.Point(82, 173);
             this.labelModelID.Name = "labelModelID";
             this.labelModelID.Size = new System.Drawing.Size(50, 13);
-            this.labelModelID.TabIndex = 7;
+            this.labelModelID.TabIndex = 0;
             this.labelModelID.Text = "Model ID";
             // 
             // labelInputFile
@@ -257,7 +257,7 @@
             this.labelInputFile.Location = new System.Drawing.Point(82, 215);
             this.labelInputFile.Name = "labelInputFile";
             this.labelInputFile.Size = new System.Drawing.Size(50, 13);
-            this.labelInputFile.TabIndex = 8;
+            this.labelInputFile.TabIndex = 2;
             this.labelInputFile.Text = "Input File";
             // 
             // textBoxModelID
@@ -265,21 +265,21 @@
             this.textBoxModelID.Location = new System.Drawing.Point(154, 170);
             this.textBoxModelID.Name = "textBoxModelID";
             this.textBoxModelID.Size = new System.Drawing.Size(586, 20);
-            this.textBoxModelID.TabIndex = 9;
+            this.textBoxModelID.TabIndex = 1;
             // 
             // textBoxInputFile
             // 
             this.textBoxInputFile.Location = new System.Drawing.Point(154, 212);
             this.textBoxInputFile.Name = "textBoxInputFile";
             this.textBoxInputFile.Size = new System.Drawing.Size(586, 20);
-            this.textBoxInputFile.TabIndex = 10;
+            this.textBoxInputFile.TabIndex = 3;
             // 
             // buttonLoadFile
             // 
             this.buttonLoadFile.Location = new System.Drawing.Point(757, 210);
             this.buttonLoadFile.Name = "buttonLoadFile";
             this.buttonLoadFile.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoadFile.TabIndex = 11;
+            this.buttonLoadFile.TabIndex = 4;
             this.buttonLoadFile.Text = "Load File";
             this.buttonLoadFile.UseVisualStyleBackColor = true;
             // 

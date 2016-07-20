@@ -15,8 +15,8 @@ namespace AGEPRO.GUI
     public partial class FormAgepro : Form
     {
         private AgeproInputFile inputData;
-        private ControlGeneral generalOptions;
-        private ControlMiscOptions miscOptions;
+        private ControlGeneral controlGeneralOptions;
+        private ControlMiscOptions controlMiscOptions;
 
         public FormAgepro()
         {
@@ -25,14 +25,15 @@ namespace AGEPRO.GUI
             inputData = new AgeproInputFile();
 
             //Load User Controls
-            generalOptions = new ControlGeneral();
-            miscOptions = new ControlMiscOptions();
+            controlGeneralOptions = new ControlGeneral();
+            controlMiscOptions = new ControlMiscOptions();
 
-            generalOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
+            controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
+            
 
             //Load General Options Controls to AGEPRO Parameter panel
             this.panelAgeproParameter.Controls.Clear();
-            this.panelAgeproParameter.Controls.Add(generalOptions);
+            this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
@@ -42,6 +43,9 @@ namespace AGEPRO.GUI
 
         public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
         {
+            //Use general options parameters to set inputFile parameters 
+            
+
             //Activate Naivagation Panel if in first-run/startup state.
             enableNavigationPanel();
         }
@@ -63,26 +67,29 @@ namespace AGEPRO.GUI
         {
             string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
             
-
             //TODO
             switch (selectedTreeNode)
             {
                 case "treeNodeGeneral":
                     panelAgeproParameter.Controls.Clear();
-                    panelAgeproParameter.Controls.Add(generalOptions);
+                    panelAgeproParameter.Controls.Add(controlGeneralOptions);
                     break;
                 case "treeNodeMiscOptions":
                     panelAgeproParameter.Controls.Clear();
-                    panelAgeproParameter.Controls.Add(miscOptions);
+                    panelAgeproParameter.Controls.Add(controlMiscOptions);
                     break;
                 default:
                     break;
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openExistingAGEPROInputDataFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
 
             OpenFileDialog openAgeproInputFile = new OpenFileDialog();
 
@@ -91,24 +98,25 @@ namespace AGEPRO.GUI
             openAgeproInputFile.FilterIndex = 1;
             openAgeproInputFile.RestoreDirectory = true;
             
-
             if (openAgeproInputFile.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     //Use AGEPRO.CoreLib.AgeproInputFile.ReadInputFile
+                    inputData.ReadInputFile(openAgeproInputFile.FileName);
+                    Console.WriteLine("DEBUG");
+                    controlGeneralOptions.generalInputFile = openAgeproInputFile.FileName;
+                    
+                    loadAgeproInputParameters(this.inputData);
+
+                    //Activate Naivagation Panel if in first-run/startup state.
+                    enableNavigationPanel();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Can not load AGEPRO input file. " + ex.Message);
+                    MessageBox.Show("Can not load AGEPRO input file."+ Environment.NewLine + ex);
                 }
-
-                //Activate Naivagation Panel if in first-run/startup state.
-                enableNavigationPanel();
             }
-            
-            
-            Console.WriteLine("FOO");            
         }
 
         private void enableNavigationPanel()
@@ -119,7 +127,20 @@ namespace AGEPRO.GUI
                 this.panelNavigation.Enabled = true;
             }
         }
-   
+
+        private void loadAgeproInputParameters(AgeproInputFile inpFile)
+        {
+            controlGeneralOptions.generalModelId = inpFile.caseID;
+            controlGeneralOptions.generalFirstYearProjection = inpFile.general.projYearStart.ToString();
+            controlGeneralOptions.generalLastYearProjection = inpFile.general.projYearEnd.ToString();
+            controlGeneralOptions.generalFirstAgeClass = inpFile.general.ageBegin;
+            controlGeneralOptions.generalLastAgeClass = inpFile.general.ageEnd;
+            controlGeneralOptions.generalNumberFleets = inpFile.general.numFleets.ToString();
+            controlGeneralOptions.generalNumberRecruitModels = inpFile.general.numRecModels.ToString();
+            controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.numPopSims.ToString();
+            controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
+            controlGeneralOptions.generalDiscards = inpFile.general.hasDiscards;
+        }
 
     }
 }
