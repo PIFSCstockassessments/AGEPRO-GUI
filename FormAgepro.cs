@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Reflection;
 using AGEPRO.CoreLib;
 
 namespace AGEPRO.GUI
@@ -18,6 +17,7 @@ namespace AGEPRO.GUI
         private AgeproInputFile inputData;
         private ControlGeneral controlGeneralOptions;
         private ControlMiscOptions controlMiscOptions;
+        private ControlBootstrap controlBootstrap;
 
         public FormAgepro()
         {
@@ -28,6 +28,7 @@ namespace AGEPRO.GUI
             //Load User Controls
             controlGeneralOptions = new ControlGeneral();
             controlMiscOptions = new ControlMiscOptions();
+            controlBootstrap = new ControlBootstrap();
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -37,7 +38,6 @@ namespace AGEPRO.GUI
 
             //initially set Number of Ages
             int initalNumAges = controlGeneralOptions.generalFirstAgeClass;
-            controlMiscOptions.miscOptionsNAges = initalNumAges; 
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
@@ -47,8 +47,16 @@ namespace AGEPRO.GUI
 
         public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
         {
+            //TODO: Validate GeneralOption Parameters
+
             //Use general options parameters to set inputFile parameters 
-            
+            int generalSetNumAges = controlGeneralOptions.generalLastAgeClass - 
+                controlGeneralOptions.generalFirstAgeClass;
+            int generalSetNumYears = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection) -
+                Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+
+            controlMiscOptions.miscOptionsNAges = generalSetNumAges;
+            controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
 
             //Activate Naivagation Panel if in first-run/startup state.
             EnableNavigationPanel();
@@ -82,6 +90,10 @@ namespace AGEPRO.GUI
                     panelAgeproParameter.Controls.Clear();
                     panelAgeproParameter.Controls.Add(controlMiscOptions);
                     break;
+                case "treeNodeBootstrapping":
+                    panelAgeproParameter.Controls.Clear();
+                    panelAgeproParameter.Controls.Add(controlBootstrap);
+                    break;
                 default:
                     break;
             }
@@ -107,6 +119,7 @@ namespace AGEPRO.GUI
                 try
                 {
                     //Use AGEPRO.CoreLib.AgeproInputFile.ReadInputFile
+                    inputData = new AgeproInputFile();
                     inputData.ReadInputFile(openAgeproInputFile.FileName);
                     
                     controlGeneralOptions.generalInputFile = openAgeproInputFile.FileName;
@@ -172,8 +185,15 @@ namespace AGEPRO.GUI
             {
                 controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
             }
+
             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = inpFile.retroAdjustOption.retroAdjust;
             controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
+            controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;
+            if (controlMiscOptions.miscOptionsRetroAdjustmentFactors == true)
+            {
+                controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
+            }
+
 
             Console.WriteLine("DEBUG");
         }

@@ -69,6 +69,12 @@
     <Compile Include="AboutAgepro.Designer.cs">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlBootstrap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlBootstrap.Designer.cs">
+      <DependentUpon>ControlBootstrap.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlBootstrap.resx">
+      <DependentUpon>ControlBootstrap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlGeneral.resx">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
