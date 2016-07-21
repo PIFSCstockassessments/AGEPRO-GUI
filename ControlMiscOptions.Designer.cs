@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupOuputOptions = new System.Windows.Forms.GroupBox();
+            this.spinBoxReportPercentile = new System.Windows.Forms.NumericUpDown();
             this.labelReportPercentile = new System.Windows.Forms.Label();
             this.checkBoxPercentileReport = new System.Windows.Forms.CheckBox();
             this.checkBoxExportR = new System.Windows.Forms.CheckBox();
@@ -61,14 +62,13 @@
             this.groupRetroAdjustment = new System.Windows.Forms.GroupBox();
             this.checkBoxRetroAdjustment = new System.Windows.Forms.CheckBox();
             this.dataGridRetroAdjustment = new System.Windows.Forms.DataGridView();
-            this.spinBoxReportPercentile = new System.Windows.Forms.NumericUpDown();
             this.groupOuputOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinBoxReportPercentile)).BeginInit();
             this.groupRefpoints.SuspendLayout();
             this.groupBounds.SuspendLayout();
             this.groupScaleFactors.SuspendLayout();
             this.groupRetroAdjustment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinBoxReportPercentile)).BeginInit();
             this.SuspendLayout();
             // 
             // groupOuputOptions
@@ -82,9 +82,18 @@
             this.groupOuputOptions.Location = new System.Drawing.Point(29, 15);
             this.groupOuputOptions.Name = "groupOuputOptions";
             this.groupOuputOptions.Size = new System.Drawing.Size(353, 143);
-            this.groupOuputOptions.TabIndex = 2;
+            this.groupOuputOptions.TabIndex = 0;
             this.groupOuputOptions.TabStop = false;
             this.groupOuputOptions.Text = "Output Options";
+            // 
+            // spinBoxReportPercentile
+            // 
+            this.spinBoxReportPercentile.DecimalPlaces = 1;
+            this.spinBoxReportPercentile.Enabled = false;
+            this.spinBoxReportPercentile.Location = new System.Drawing.Point(165, 114);
+            this.spinBoxReportPercentile.Name = "spinBoxReportPercentile";
+            this.spinBoxReportPercentile.Size = new System.Drawing.Size(107, 20);
+            this.spinBoxReportPercentile.TabIndex = 5;
             // 
             // labelReportPercentile
             // 
@@ -93,7 +102,7 @@
             this.labelReportPercentile.Location = new System.Drawing.Point(70, 116);
             this.labelReportPercentile.Name = "labelReportPercentile";
             this.labelReportPercentile.Size = new System.Drawing.Size(89, 13);
-            this.labelReportPercentile.TabIndex = 2;
+            this.labelReportPercentile.TabIndex = 4;
             this.labelReportPercentile.Text = "Report Percentile";
             // 
             // checkBoxPercentileReport
@@ -102,7 +111,7 @@
             this.checkBoxPercentileReport.Location = new System.Drawing.Point(23, 92);
             this.checkBoxPercentileReport.Name = "checkBoxPercentileReport";
             this.checkBoxPercentileReport.Size = new System.Drawing.Size(151, 17);
-            this.checkBoxPercentileReport.TabIndex = 0;
+            this.checkBoxPercentileReport.TabIndex = 3;
             this.checkBoxPercentileReport.Text = "Request Percentile Report";
             this.checkBoxPercentileReport.UseVisualStyleBackColor = true;
             this.checkBoxPercentileReport.CheckedChanged += new System.EventHandler(this.checkBoxPercentileReport_CheckedChanged);
@@ -113,7 +122,7 @@
             this.checkBoxExportR.Location = new System.Drawing.Point(23, 69);
             this.checkBoxExportR.Name = "checkBoxExportR";
             this.checkBoxExportR.Size = new System.Drawing.Size(117, 17);
-            this.checkBoxExportR.TabIndex = 0;
+            this.checkBoxExportR.TabIndex = 2;
             this.checkBoxExportR.Text = "Export Results to R";
             this.checkBoxExportR.UseVisualStyleBackColor = true;
             // 
@@ -123,7 +132,7 @@
             this.checkBoxAuxStochasticFiles.Location = new System.Drawing.Point(23, 46);
             this.checkBoxAuxStochasticFiles.Name = "checkBoxAuxStochasticFiles";
             this.checkBoxAuxStochasticFiles.Size = new System.Drawing.Size(214, 17);
-            this.checkBoxAuxStochasticFiles.TabIndex = 0;
+            this.checkBoxAuxStochasticFiles.TabIndex = 1;
             this.checkBoxAuxStochasticFiles.Text = "Generate Auxiliary Stochastic Data Files";
             this.checkBoxAuxStochasticFiles.UseVisualStyleBackColor = true;
             // 
@@ -151,7 +160,7 @@
             this.groupRefpoints.Location = new System.Drawing.Point(29, 164);
             this.groupRefpoints.Name = "groupRefpoints";
             this.groupRefpoints.Size = new System.Drawing.Size(353, 152);
-            this.groupRefpoints.TabIndex = 3;
+            this.groupRefpoints.TabIndex = 1;
             this.groupRefpoints.TabStop = false;
             this.groupRefpoints.Text = "Reference Points";
             // 
@@ -161,7 +170,7 @@
             this.textBoxFishMortality.Location = new System.Drawing.Point(189, 120);
             this.textBoxFishMortality.Name = "textBoxFishMortality";
             this.textBoxFishMortality.Size = new System.Drawing.Size(117, 20);
-            this.textBoxFishMortality.TabIndex = 1;
+            this.textBoxFishMortality.TabIndex = 8;
             // 
             // labelFishMortality
             // 
@@ -170,7 +179,7 @@
             this.labelFishMortality.Location = new System.Drawing.Point(19, 123);
             this.labelFishMortality.Name = "labelFishMortality";
             this.labelFishMortality.Size = new System.Drawing.Size(82, 13);
-            this.labelFishMortality.TabIndex = 0;
+            this.labelFishMortality.TabIndex = 7;
             this.labelFishMortality.Text = "Fishing Mortality";
             // 
             // textBoxMeanBiomass
@@ -179,7 +188,7 @@
             this.textBoxMeanBiomass.Location = new System.Drawing.Point(189, 94);
             this.textBoxMeanBiomass.Name = "textBoxMeanBiomass";
             this.textBoxMeanBiomass.Size = new System.Drawing.Size(117, 20);
-            this.textBoxMeanBiomass.TabIndex = 1;
+            this.textBoxMeanBiomass.TabIndex = 6;
             // 
             // checkBoxRefpoints
             // 
@@ -199,7 +208,7 @@
             this.labelMeanBiomass.Location = new System.Drawing.Point(19, 97);
             this.labelMeanBiomass.Name = "labelMeanBiomass";
             this.labelMeanBiomass.Size = new System.Drawing.Size(101, 13);
-            this.labelMeanBiomass.TabIndex = 0;
+            this.labelMeanBiomass.TabIndex = 5;
             this.labelMeanBiomass.Text = "Mean Biomass (MT)";
             // 
             // textBoxJan1Biomass
@@ -208,7 +217,7 @@
             this.textBoxJan1Biomass.Location = new System.Drawing.Point(189, 68);
             this.textBoxJan1Biomass.Name = "textBoxJan1Biomass";
             this.textBoxJan1Biomass.Size = new System.Drawing.Size(117, 20);
-            this.textBoxJan1Biomass.TabIndex = 1;
+            this.textBoxJan1Biomass.TabIndex = 4;
             // 
             // labelJan1Biomass
             // 
@@ -217,7 +226,7 @@
             this.labelJan1Biomass.Location = new System.Drawing.Point(19, 71);
             this.labelJan1Biomass.Name = "labelJan1Biomass";
             this.labelJan1Biomass.Size = new System.Drawing.Size(131, 13);
-            this.labelJan1Biomass.TabIndex = 0;
+            this.labelJan1Biomass.TabIndex = 3;
             this.labelJan1Biomass.Text = "Jan-1 Stock Biomass (MT)";
             // 
             // textBoxSpawnBiomass
@@ -226,7 +235,7 @@
             this.textBoxSpawnBiomass.Location = new System.Drawing.Point(189, 42);
             this.textBoxSpawnBiomass.Name = "textBoxSpawnBiomass";
             this.textBoxSpawnBiomass.Size = new System.Drawing.Size(117, 20);
-            this.textBoxSpawnBiomass.TabIndex = 1;
+            this.textBoxSpawnBiomass.TabIndex = 2;
             // 
             // labelSpawnBiomass
             // 
@@ -235,7 +244,7 @@
             this.labelSpawnBiomass.Location = new System.Drawing.Point(19, 45);
             this.labelSpawnBiomass.Name = "labelSpawnBiomass";
             this.labelSpawnBiomass.Size = new System.Drawing.Size(152, 13);
-            this.labelSpawnBiomass.TabIndex = 0;
+            this.labelSpawnBiomass.TabIndex = 1;
             this.labelSpawnBiomass.Text = "Spawning Stock Biomass (MT)";
             // 
             // groupBounds
@@ -248,7 +257,7 @@
             this.groupBounds.Location = new System.Drawing.Point(402, 15);
             this.groupBounds.Name = "groupBounds";
             this.groupBounds.Size = new System.Drawing.Size(353, 99);
-            this.groupBounds.TabIndex = 4;
+            this.groupBounds.TabIndex = 3;
             this.groupBounds.TabStop = false;
             this.groupBounds.Text = "Bounds";
             // 
@@ -313,7 +322,7 @@
             this.groupScaleFactors.Location = new System.Drawing.Point(29, 322);
             this.groupScaleFactors.Name = "groupScaleFactors";
             this.groupScaleFactors.Size = new System.Drawing.Size(353, 136);
-            this.groupScaleFactors.TabIndex = 5;
+            this.groupScaleFactors.TabIndex = 2;
             this.groupScaleFactors.TabStop = false;
             this.groupScaleFactors.Text = "Scale Factors for Output Report";
             // 
@@ -323,7 +332,7 @@
             this.textBoxScaleFactorRecruits.Location = new System.Drawing.Point(144, 74);
             this.textBoxScaleFactorRecruits.Name = "textBoxScaleFactorRecruits";
             this.textBoxScaleFactorRecruits.Size = new System.Drawing.Size(100, 20);
-            this.textBoxScaleFactorRecruits.TabIndex = 2;
+            this.textBoxScaleFactorRecruits.TabIndex = 4;
             // 
             // labelScaleFactorRecruits
             // 
@@ -332,7 +341,7 @@
             this.labelScaleFactorRecruits.Location = new System.Drawing.Point(20, 77);
             this.labelScaleFactorRecruits.Name = "labelScaleFactorRecruits";
             this.labelScaleFactorRecruits.Size = new System.Drawing.Size(46, 13);
-            this.labelScaleFactorRecruits.TabIndex = 1;
+            this.labelScaleFactorRecruits.TabIndex = 3;
             this.labelScaleFactorRecruits.Text = "Recruits";
             // 
             // textBoxScaleFactorsStockNum
@@ -341,7 +350,7 @@
             this.textBoxScaleFactorsStockNum.Location = new System.Drawing.Point(144, 100);
             this.textBoxScaleFactorsStockNum.Name = "textBoxScaleFactorsStockNum";
             this.textBoxScaleFactorsStockNum.Size = new System.Drawing.Size(100, 20);
-            this.textBoxScaleFactorsStockNum.TabIndex = 2;
+            this.textBoxScaleFactorsStockNum.TabIndex = 6;
             // 
             // labelScaleFactorStockNum
             // 
@@ -350,7 +359,7 @@
             this.labelScaleFactorStockNum.Location = new System.Drawing.Point(19, 103);
             this.labelScaleFactorStockNum.Name = "labelScaleFactorStockNum";
             this.labelScaleFactorStockNum.Size = new System.Drawing.Size(80, 13);
-            this.labelScaleFactorStockNum.TabIndex = 1;
+            this.labelScaleFactorStockNum.TabIndex = 5;
             this.labelScaleFactorStockNum.Text = "Stock Numbers";
             // 
             // textBoxScaleFactorBiomass
@@ -389,7 +398,7 @@
             this.groupRetroAdjustment.Location = new System.Drawing.Point(403, 120);
             this.groupRetroAdjustment.Name = "groupRetroAdjustment";
             this.groupRetroAdjustment.Size = new System.Drawing.Size(352, 266);
-            this.groupRetroAdjustment.TabIndex = 6;
+            this.groupRetroAdjustment.TabIndex = 4;
             this.groupRetroAdjustment.TabStop = false;
             this.groupRetroAdjustment.Text = "Retrospective Adjustment Factors";
             // 
@@ -406,20 +415,13 @@
             // 
             // dataGridRetroAdjustment
             // 
+            this.dataGridRetroAdjustment.AllowUserToAddRows = false;
+            this.dataGridRetroAdjustment.AllowUserToDeleteRows = false;
             this.dataGridRetroAdjustment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRetroAdjustment.Location = new System.Drawing.Point(17, 40);
             this.dataGridRetroAdjustment.Name = "dataGridRetroAdjustment";
             this.dataGridRetroAdjustment.Size = new System.Drawing.Size(329, 220);
             this.dataGridRetroAdjustment.TabIndex = 0;
-            // 
-            // spinBoxReportPercentile
-            // 
-            this.spinBoxReportPercentile.DecimalPlaces = 1;
-            this.spinBoxReportPercentile.Enabled = false;
-            this.spinBoxReportPercentile.Location = new System.Drawing.Point(165, 114);
-            this.spinBoxReportPercentile.Name = "spinBoxReportPercentile";
-            this.spinBoxReportPercentile.Size = new System.Drawing.Size(107, 20);
-            this.spinBoxReportPercentile.TabIndex = 3;
             // 
             // ControlMiscOptions
             // 
@@ -434,6 +436,7 @@
             this.Size = new System.Drawing.Size(900, 520);
             this.groupOuputOptions.ResumeLayout(false);
             this.groupOuputOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinBoxReportPercentile)).EndInit();
             this.groupRefpoints.ResumeLayout(false);
             this.groupRefpoints.PerformLayout();
             this.groupBounds.ResumeLayout(false);
@@ -443,7 +446,6 @@
             this.groupRetroAdjustment.ResumeLayout(false);
             this.groupRetroAdjustment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinBoxReportPercentile)).EndInit();
             this.ResumeLayout(false);
 
         }

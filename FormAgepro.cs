@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 using AGEPRO.CoreLib;
 
 namespace AGEPRO.GUI
@@ -29,11 +30,14 @@ namespace AGEPRO.GUI
             controlMiscOptions = new ControlMiscOptions();
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
-            
 
             //Load General Options Controls to AGEPRO Parameter panel
             this.panelAgeproParameter.Controls.Clear();
             this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
+
+            //initially set Number of Ages
+            int initalNumAges = controlGeneralOptions.generalFirstAgeClass;
+            controlMiscOptions.miscOptionsNAges = initalNumAges; 
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
@@ -47,7 +51,7 @@ namespace AGEPRO.GUI
             
 
             //Activate Naivagation Panel if in first-run/startup state.
-            enableNavigationPanel();
+            EnableNavigationPanel();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,13 +108,13 @@ namespace AGEPRO.GUI
                 {
                     //Use AGEPRO.CoreLib.AgeproInputFile.ReadInputFile
                     inputData.ReadInputFile(openAgeproInputFile.FileName);
-                    Console.WriteLine("DEBUG");
+                    
                     controlGeneralOptions.generalInputFile = openAgeproInputFile.FileName;
                     
-                    loadAgeproInputParameters(this.inputData);
+                    LoadAgeproInputParameters(this.inputData);
 
                     //Activate Naivagation Panel if in first-run/startup state.
-                    enableNavigationPanel();
+                    EnableNavigationPanel();
                 }
                 catch (Exception ex)
                 {
@@ -119,7 +123,7 @@ namespace AGEPRO.GUI
             }
         }
 
-        private void enableNavigationPanel()
+        private void EnableNavigationPanel()
         {
             //Activate Naivagation Panel if in first-run/startup state.
             if (this.panelNavigation.Enabled == false)
@@ -128,7 +132,7 @@ namespace AGEPRO.GUI
             }
         }
 
-        private void loadAgeproInputParameters(AgeproInputFile inpFile)
+        private void LoadAgeproInputParameters(AgeproInputFile inpFile)
         {
             controlGeneralOptions.generalModelId = inpFile.caseID;
             controlGeneralOptions.generalFirstYearProjection = inpFile.general.projYearStart.ToString();
@@ -140,6 +144,38 @@ namespace AGEPRO.GUI
             controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.numPopSims.ToString();
             controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
             controlGeneralOptions.generalDiscards = inpFile.general.hasDiscards;
+
+
+            controlMiscOptions.miscOptionsSummaryReport = inpFile.options.enableSummaryReport;
+            controlMiscOptions.miscOptionsAuxStochasticFiles = inpFile.options.enableDataFiles;
+            controlMiscOptions.miscOptionsExportR = inpFile.options.enableExportR;
+            controlMiscOptions.miscOptionsPercentileReport = inpFile.options.enablePercentileReport;
+            controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.percentile);
+            
+            controlMiscOptions.miscOptionsRefpointsReport = inpFile.options.enableRefpoint;
+            controlMiscOptions.miscOptionsSpawnBiomass = inpFile.refpoint.refSpawnBio.ToString();
+            controlMiscOptions.miscOptionsJan1Biomass = inpFile.refpoint.refJan1Bio.ToString();
+            controlMiscOptions.miscOptionsMeanBiomass = inpFile.refpoint.refMeanBio.ToString();
+            controlMiscOptions.miscOptionsFishingMortality = inpFile.refpoint.refFMort.ToString();
+            
+            controlMiscOptions.miscOptionsScaleFactors = inpFile.options.enableScaleFactors;
+            controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.scaleBio.ToString();
+            controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.scaleRec.ToString();
+            controlMiscOptions.miscoptionsScaleFactorStockNumbers = inpFile.scale.scaleStockNum.ToString();
+
+            controlMiscOptions.miscOptionsBounds = inpFile.options.enableBounds;
+            controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.maxWeight.ToString();
+            controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.maxNatMort.ToString();
+
+            controlMiscOptions.miscOptionsRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
+            if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
+            {
+                controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
+            }
+            controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = inpFile.retroAdjustOption.retroAdjust;
+            controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
+
+            Console.WriteLine("DEBUG");
         }
 
     }
