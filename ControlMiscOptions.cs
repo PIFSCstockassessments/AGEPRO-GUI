@@ -16,6 +16,7 @@ namespace AGEPRO.GUI
     public partial class ControlMiscOptions : UserControl
     {
         public int miscOptionsNAges { get; set; }
+        public int miscOptionsFirstAge { get; set; }
 
         public ControlMiscOptions()
         {
@@ -118,6 +119,16 @@ namespace AGEPRO.GUI
             get { return (DataTable)dataGridRetroAdjustment.DataSource; }
             set { dataGridRetroAdjustment.DataSource = value; }
         }
+        public void SetRetroAdjustmentFactorRowHeaders()
+        {
+            this.dataGridRetroAdjustment.RowHeadersVisible = true;
+            for (int iage = 0; iage < this.miscOptionsNAges; iage++)
+            {
+                //Accomidate 0-based or 1-based First Age Models
+                int iageForHeader = iage + this.miscOptionsFirstAge;
+                this.dataGridRetroAdjustment.Rows[iage].HeaderCell.Value = ("Age " + iageForHeader);
+            }
+        }
 
         
         private void checkBoxPercentileReport_CheckStateChanged(object sender, EventArgs e)
@@ -180,9 +191,11 @@ namespace AGEPRO.GUI
                 retroAdjustmentFallbackTable.Columns.Add("factor", typeof(double));
                 for (int i = 0; i < this.miscOptionsNAges ; i++)
                 {
-                    retroAdjustmentFallbackTable.Rows.Add(); 
+                    retroAdjustmentFallbackTable.Rows.Add();
                 }
                 this.dataGridRetroAdjustment.DataSource = retroAdjustmentFallbackTable;
+
+                SetRetroAdjustmentFactorRowHeaders();
                
             }
         }

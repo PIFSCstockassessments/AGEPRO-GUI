@@ -418,8 +418,10 @@
             this.dataGridRetroAdjustment.AllowUserToAddRows = false;
             this.dataGridRetroAdjustment.AllowUserToDeleteRows = false;
             this.dataGridRetroAdjustment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridRetroAdjustment.ColumnHeadersVisible = false;
             this.dataGridRetroAdjustment.Location = new System.Drawing.Point(17, 40);
             this.dataGridRetroAdjustment.Name = "dataGridRetroAdjustment";
+            this.dataGridRetroAdjustment.RowHeadersWidth = 75;
             this.dataGridRetroAdjustment.Size = new System.Drawing.Size(329, 220);
             this.dataGridRetroAdjustment.TabIndex = 0;
             // 
