@@ -200,6 +200,22 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// Use this event handler to load Row Headers if the MiscOptions control wasn't active (another 
+        /// AGEPRO parameter control was visible instead) when RetroAdjustmentFactor DataGridView was 
+        /// instantiated.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridRetroAdjustment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //header value is null
+            if(e.ColumnIndex == 0)
+            {  
+                SetRetroAdjustmentFactorRowHeaders();
+            }
+        }
+
 
     }
 }
