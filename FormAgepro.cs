@@ -47,19 +47,28 @@ namespace AGEPRO.GUI
 
         public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
         {
-            //TODO: Validate GeneralOption Parameters
+            try
+            {
+                //TODO: Validate GeneralOption Parameters
 
-            //Use general options parameters to set inputFile parameters 
-            int generalSetNumAges = controlGeneralOptions.generalLastAgeClass - 
-                controlGeneralOptions.generalFirstAgeClass;
-            int generalSetNumYears = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection) -
-                Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+                //Use general options parameters to set inputFile parameters 
+                int generalSetNumAges = controlGeneralOptions.generalLastAgeClass -
+                    controlGeneralOptions.generalFirstAgeClass;
+                int generalSetNumYears = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection) -
+                    Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
 
-            controlMiscOptions.miscOptionsNAges = generalSetNumAges;
-            controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
+                controlMiscOptions.miscOptionsNAges = generalSetNumAges;
+                controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
 
-            //Activate Naivagation Panel if in first-run/startup state.
-            EnableNavigationPanel();
+                //Activate Naivagation Panel if in first-run/startup state.
+                EnableNavigationPanel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not set AGEPRO general paraneters." + Environment.NewLine + ex.Message, 
+                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
