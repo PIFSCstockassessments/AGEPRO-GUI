@@ -16,5 +16,22 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
         }
+        public string bootstrapFilename
+        {
+            get { return textBoxBootstrapFile.Text; }
+            set { textBoxBootstrapFile.Text = value; }
+        }
+        public string bootstrapIterations
+        {
+            get { return textBoxNumBootstrapIterations.Text; }
+            set { textBoxNumBootstrapIterations.Text = value; }
+        }
+        public string bootstrapScaleFactors
+        {
+            get { return textBoxPopScaleFactors.Text; }
+            set { textBoxPopScaleFactors.Text = value; }
+        }
+
+        //TODO:buttonLoadFile action
     }
 }

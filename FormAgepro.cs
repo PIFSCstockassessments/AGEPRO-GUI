@@ -194,7 +194,9 @@ namespace AGEPRO.GUI
                 controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
             }
 
-
+            controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
+            controlBootstrap.bootstrapIterations = inpFile.bootstrap.numBootstraps.ToString();
+            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.popScaleFactor.ToString();
             Console.WriteLine("DEBUG");
         }
 
