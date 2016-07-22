@@ -152,6 +152,10 @@ namespace AGEPRO.GUI
             {
                 this.panelNavigation.Enabled = true;
             }
+            if(this.launchAGEPROModelToolStripMenuItem.Enabled == false)
+            {
+                this.launchAGEPROModelToolStripMenuItem.Enabled = true;
+            }
         }
 
         private void LoadAgeproInputParameters(AgeproInputFile inpFile)
