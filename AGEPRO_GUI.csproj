@@ -87,6 +87,24 @@
     <Compile Include="ControlMiscOptions.Designer.cs">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlStochasticAge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlStochasticAge.Designer.cs">
+      <DependentUpon>ControlStochasticAge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlStochasticAgeFromFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlStochasticAgeFromFile.Designer.cs">
+      <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlStochasticAgeTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlStochasticAgeTable.Designer.cs">
+      <DependentUpon>ControlStochasticAgeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +124,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlMiscOptions.resx">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlStochasticAge.resx">
+      <DependentUpon>ControlStochasticAge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlStochasticAgeFromFile.resx">
+      <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlStochasticAgeTable.resx">
+      <DependentUpon>ControlStochasticAgeTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>
