@@ -1,6 +1,6 @@
 ﻿namespace AGEPRO.GUI
 {
-    partial class ControlStochasticAgeTable
+    partial class ControlStochasticAgeDataGridTable
     {
         /// <summary> 
         /// Required designer variable.
@@ -85,7 +85,7 @@
             this.checkBoxTimeVarying.Text = "Time Varying";
             this.checkBoxTimeVarying.UseVisualStyleBackColor = true;
             // 
-            // ControlStochasticAgeTable
+            // ControlStochasticAgeDataGridTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

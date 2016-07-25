@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AGEPRO.GUI
 {
-    public partial class ControlStochasticAgeTable : UserControl
+    public partial class ControlStochasticAgeDataGridTable : UserControl
     {
-        public ControlStochasticAgeTable()
+        public ControlStochasticAgeDataGridTable()
         {
             InitializeComponent();
         }

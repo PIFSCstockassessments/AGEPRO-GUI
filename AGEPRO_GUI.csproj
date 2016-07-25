@@ -99,11 +99,11 @@
     <Compile Include="ControlStochasticAgeFromFile.Designer.cs">
       <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlStochasticAgeTable.cs">
+    <Compile Include="ControlStochasticAgeDataGridTable.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlStochasticAgeTable.Designer.cs">
-      <DependentUpon>ControlStochasticAgeTable.cs</DependentUpon>
+    <Compile Include="ControlStochasticAgeDataGridTable.Designer.cs">
+      <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAgepro.cs">
       <SubType>Form</SubType>
@@ -131,8 +131,8 @@
     <EmbeddedResource Include="ControlStochasticAgeFromFile.resx">
       <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlStochasticAgeTable.resx">
-      <DependentUpon>ControlStochasticAgeTable.cs</DependentUpon>
+    <EmbeddedResource Include="ControlStochasticAgeDataGridTable.resx">
+      <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>
