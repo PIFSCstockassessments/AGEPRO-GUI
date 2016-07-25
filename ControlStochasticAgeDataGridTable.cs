@@ -16,5 +16,10 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
         }
+        public string stochasticParamAgeDataGridLabel
+        {
+            get { return labelStochasticAgeTable.Text; }
+            set { labelStochasticAgeTable.Text = value; }
+        }
     }
 }

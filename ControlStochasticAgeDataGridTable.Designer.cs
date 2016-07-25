@@ -40,7 +40,7 @@
             // labelStochasticAgeTable
             // 
             this.labelStochasticAgeTable.AutoSize = true;
-            this.labelStochasticAgeTable.Location = new System.Drawing.Point(20, 10);
+            this.labelStochasticAgeTable.Location = new System.Drawing.Point(0, 9);
             this.labelStochasticAgeTable.Name = "labelStochasticAgeTable";
             this.labelStochasticAgeTable.Size = new System.Drawing.Size(160, 13);
             this.labelStochasticAgeTable.TabIndex = 0;
@@ -51,15 +51,15 @@
             this.dataGridStochasticAgeTable.AllowUserToAddRows = false;
             this.dataGridStochasticAgeTable.AllowUserToDeleteRows = false;
             this.dataGridStochasticAgeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStochasticAgeTable.Location = new System.Drawing.Point(20, 26);
+            this.dataGridStochasticAgeTable.Location = new System.Drawing.Point(3, 26);
             this.dataGridStochasticAgeTable.Name = "dataGridStochasticAgeTable";
-            this.dataGridStochasticAgeTable.Size = new System.Drawing.Size(847, 213);
+            this.dataGridStochasticAgeTable.Size = new System.Drawing.Size(864, 213);
             this.dataGridStochasticAgeTable.TabIndex = 1;
             // 
             // labelCVTable
             // 
             this.labelCVTable.AutoSize = true;
-            this.labelCVTable.Location = new System.Drawing.Point(20, 252);
+            this.labelCVTable.Location = new System.Drawing.Point(0, 252);
             this.labelCVTable.Name = "labelCVTable";
             this.labelCVTable.Size = new System.Drawing.Size(115, 13);
             this.labelCVTable.TabIndex = 2;
@@ -70,9 +70,9 @@
             this.dataGridCVTable.AllowUserToAddRows = false;
             this.dataGridCVTable.AllowUserToDeleteRows = false;
             this.dataGridCVTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCVTable.Location = new System.Drawing.Point(20, 268);
+            this.dataGridCVTable.Location = new System.Drawing.Point(3, 268);
             this.dataGridCVTable.Name = "dataGridCVTable";
-            this.dataGridCVTable.Size = new System.Drawing.Size(847, 79);
+            this.dataGridCVTable.Size = new System.Drawing.Size(864, 79);
             this.dataGridCVTable.TabIndex = 3;
             // 
             // checkBoxTimeVarying
@@ -94,7 +94,7 @@
             this.Controls.Add(this.labelCVTable);
             this.Controls.Add(this.dataGridStochasticAgeTable);
             this.Controls.Add(this.labelStochasticAgeTable);
-            this.Name = "ControlStochasticAgeTable";
+            this.Name = "ControlStochasticAgeDataGridTable";
             this.Size = new System.Drawing.Size(870, 350);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStochasticAgeTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCVTable)).EndInit();

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupOptions = new System.Windows.Forms.GroupBox();
-            this.radioParameterFromUser = new System.Windows.Forms.RadioButton();
             this.radioParameterFromFile = new System.Windows.Forms.RadioButton();
+            this.radioParameterFromUser = new System.Windows.Forms.RadioButton();
             this.panelStochasticParameterAge = new System.Windows.Forms.Panel();
             this.groupOptions.SuspendLayout();
             this.SuspendLayout();
@@ -39,23 +39,12 @@
             // 
             this.groupOptions.Controls.Add(this.radioParameterFromFile);
             this.groupOptions.Controls.Add(this.radioParameterFromUser);
-            this.groupOptions.Location = new System.Drawing.Point(24, 13);
+            this.groupOptions.Location = new System.Drawing.Point(24, 24);
             this.groupOptions.Name = "groupOptions";
             this.groupOptions.Size = new System.Drawing.Size(789, 52);
             this.groupOptions.TabIndex = 0;
             this.groupOptions.TabStop = false;
             this.groupOptions.Text = "Options";
-            // 
-            // radioParameterFromUser
-            // 
-            this.radioParameterFromUser.AutoSize = true;
-            this.radioParameterFromUser.Location = new System.Drawing.Point(26, 20);
-            this.radioParameterFromUser.Name = "radioParameterFromUser";
-            this.radioParameterFromUser.Size = new System.Drawing.Size(232, 17);
-            this.radioParameterFromUser.TabIndex = 0;
-            this.radioParameterFromUser.TabStop = true;
-            this.radioParameterFromUser.Text = "User Specified Stochastic Parameter at Age";
-            this.radioParameterFromUser.UseVisualStyleBackColor = true;
             // 
             // radioParameterFromFile
             // 
@@ -67,6 +56,19 @@
             this.radioParameterFromFile.TabStop = true;
             this.radioParameterFromFile.Text = "Read Stochtastic Parameter From File";
             this.radioParameterFromFile.UseVisualStyleBackColor = true;
+            this.radioParameterFromFile.CheckedChanged += new System.EventHandler(this.radioParameterFromFile_CheckedChanged);
+            // 
+            // radioParameterFromUser
+            // 
+            this.radioParameterFromUser.AutoSize = true;
+            this.radioParameterFromUser.Location = new System.Drawing.Point(26, 20);
+            this.radioParameterFromUser.Name = "radioParameterFromUser";
+            this.radioParameterFromUser.Size = new System.Drawing.Size(232, 17);
+            this.radioParameterFromUser.TabIndex = 0;
+            this.radioParameterFromUser.TabStop = true;
+            this.radioParameterFromUser.Text = "User Specified Stochastic Parameter at Age";
+            this.radioParameterFromUser.UseVisualStyleBackColor = true;
+            this.radioParameterFromUser.CheckedChanged += new System.EventHandler(this.radioParameterFromUser_CheckedChanged);
             // 
             // panelStochasticParameterAge
             // 

@@ -18,6 +18,7 @@ namespace AGEPRO.GUI
         private ControlGeneral controlGeneralOptions;
         private ControlMiscOptions controlMiscOptions;
         private ControlBootstrap controlBootstrap;
+        private ControlStochasticAge controlFisherySelectivity;
 
         public FormAgepro()
         {
@@ -29,6 +30,8 @@ namespace AGEPRO.GUI
             controlGeneralOptions = new ControlGeneral();
             controlMiscOptions = new ControlMiscOptions();
             controlBootstrap = new ControlBootstrap();
+            controlFisherySelectivity = new ControlStochasticAge("Fishery Selectivity");
+            
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -102,6 +105,10 @@ namespace AGEPRO.GUI
                 case "treeNodeBootstrapping":
                     panelAgeproParameter.Controls.Clear();
                     panelAgeproParameter.Controls.Add(controlBootstrap);
+                    break;
+                case "treeNodeFisherySelectivity":
+                    panelAgeproParameter.Controls.Clear();
+                    panelAgeproParameter.Controls.Add(controlFisherySelectivity);
                     break;
                 default:
                     break;
