@@ -31,7 +31,7 @@ namespace AGEPRO.GUI
             controlMiscOptions = new ControlMiscOptions();
             controlBootstrap = new ControlBootstrap();
             controlFisherySelectivity = new ControlStochasticAge("Fishery Selectivity");
-            
+            controlFisherySelectivity.isMultiFleet = true;
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -167,6 +167,7 @@ namespace AGEPRO.GUI
 
         private void LoadAgeproInputParameters(AgeproInputFile inpFile)
         {
+            //General Options
             controlGeneralOptions.generalModelId = inpFile.caseID;
             controlGeneralOptions.generalFirstYearProjection = inpFile.general.projYearStart.ToString();
             controlGeneralOptions.generalLastYearProjection = inpFile.general.projYearEnd.ToString();
@@ -178,7 +179,21 @@ namespace AGEPRO.GUI
             controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
             controlGeneralOptions.generalDiscards = inpFile.general.hasDiscards;
 
+            //Fishery Selectivity
+            controlFisherySelectivity.seqYears = Array.ConvertAll(inpFile.general.SeqYears(), element => element.ToString());
+            controlFisherySelectivity.numFleets = inpFile.general.numFleets;
+            controlFisherySelectivity.stochasticAgeTable = inpFile.fishery.byAgeData;
+            controlFisherySelectivity.timeVarying = inpFile.fishery.timeVarying;
+            controlFisherySelectivity.stochasticCV = inpFile.fishery.byAgeCV;
+            controlFisherySelectivity.stochasticDataFile = inpFile.fishery.dataFile;
 
+
+            //Bootstrapping
+            controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
+            controlBootstrap.bootstrapIterations = inpFile.bootstrap.numBootstraps.ToString();
+            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.popScaleFactor.ToString();
+            
+            //Misc Options
             controlMiscOptions.miscOptionsSummaryReport = inpFile.options.enableSummaryReport;
             controlMiscOptions.miscOptionsAuxStochasticFiles = inpFile.options.enableDataFiles;
             controlMiscOptions.miscOptionsExportR = inpFile.options.enableExportR;
@@ -214,9 +229,9 @@ namespace AGEPRO.GUI
                 controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
             }
 
-            controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
-            controlBootstrap.bootstrapIterations = inpFile.bootstrap.numBootstraps.ToString();
-            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.popScaleFactor.ToString();
+            
+            
+            
             Console.WriteLine("DEBUG");
         }
 

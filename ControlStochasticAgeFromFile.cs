@@ -16,5 +16,10 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
         }
+        public string stochasticDataFile
+        {
+            get { return textBoxDataFile.Text; }
+            set { textBoxDataFile.Text = value; }
+        }
     }
 }

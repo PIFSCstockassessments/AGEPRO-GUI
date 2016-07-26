@@ -14,7 +14,7 @@ namespace AGEPRO.GUI
     {
         private ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
         private ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
-
+        
         public ControlStochasticAge(string paramName="Stochastic Parameter")
         {
             InitializeComponent();
@@ -27,9 +27,43 @@ namespace AGEPRO.GUI
             radioParameterFromFile.Text = "Read "+ stochasticParameter + " From File";
             controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = stochasticParameter + " Of Age";
         }
-
+        public bool timeVarying
+        {
+            get { return controlStochasticParamAgeFromUser.timeVarying; }
+            set { controlStochasticParamAgeFromUser.timeVarying = value; }
+        }
+        public DataTable stochasticAgeTable
+        {
+            get { return controlStochasticParamAgeFromUser.stochasticAgeTable; }
+            set { controlStochasticParamAgeFromUser.stochasticAgeTable = value; }
+        }
+        public DataTable stochasticCV
+        {
+            get { return controlStochasticParamAgeFromUser.stochasticCV; }
+            set { controlStochasticParamAgeFromUser.stochasticCV = value; }
+        }
+        public string[] seqYears
+        {
+            get { return controlStochasticParamAgeFromUser.seqYears; }
+            set { controlStochasticParamAgeFromUser.seqYears = value; }
+        }
+        public int numFleets
+        {
+            get { return controlStochasticParamAgeFromUser.numFleets; }
+            set { controlStochasticParamAgeFromUser.numFleets = value; }
+        }
+        public string stochasticDataFile
+        {
+            get { return controlStochasticParamAgeFromFile.stochasticDataFile; }
+            set { controlStochasticParamAgeFromFile.stochasticDataFile = value; }
+        }
+        public bool isMultiFleet
+        {
+            get { return controlStochasticParamAgeFromUser.multiFleetTable; }
+            set { controlStochasticParamAgeFromUser.multiFleetTable = value; }
+        }
         
-
+        
         private void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
         {
             panelStochasticParameterAge.Controls.Clear();
