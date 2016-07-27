@@ -51,8 +51,6 @@
             this.dataGridStochasticAgeTable.AllowUserToAddRows = false;
             this.dataGridStochasticAgeTable.AllowUserToDeleteRows = false;
             this.dataGridStochasticAgeTable.AllowUserToResizeRows = false;
-            this.dataGridStochasticAgeTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridStochasticAgeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStochasticAgeTable.Location = new System.Drawing.Point(3, 26);
             this.dataGridStochasticAgeTable.Name = "dataGridStochasticAgeTable";
@@ -75,8 +73,6 @@
             this.dataGridCVTable.AllowUserToAddRows = false;
             this.dataGridCVTable.AllowUserToDeleteRows = false;
             this.dataGridCVTable.AllowUserToResizeRows = false;
-            this.dataGridCVTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridCVTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCVTable.Location = new System.Drawing.Point(3, 268);
             this.dataGridCVTable.Name = "dataGridCVTable";
