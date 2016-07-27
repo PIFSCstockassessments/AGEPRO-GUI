@@ -67,6 +67,7 @@ namespace AGEPRO.GUI
         private void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
         {
             panelStochasticParameterAge.Controls.Clear();
+            controlStochasticParamAgeFromUser.Dock = DockStyle.Fill;
             panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromUser);
         }
 
@@ -75,5 +76,6 @@ namespace AGEPRO.GUI
             panelStochasticParameterAge.Controls.Clear();
             panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
         }
+
     }
 }

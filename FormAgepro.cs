@@ -108,6 +108,7 @@ namespace AGEPRO.GUI
                     break;
                 case "treeNodeFisherySelectivity":
                     panelAgeproParameter.Controls.Clear();
+                    controlFisherySelectivity.Dock = DockStyle.Fill;
                     panelAgeproParameter.Controls.Add(controlFisherySelectivity);
                     break;
                 default:

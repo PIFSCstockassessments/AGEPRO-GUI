@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("JAN-1");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("SSB");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Mid-Year (Mean)");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Catch");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Discard");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Weights At Age", new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Recruitment");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Biological");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Discard Fraction");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Harvest Scenario");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Bootstrapping");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Misc. Options");
+            System.Windows.Forms.TreeNode treeNode449 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode450 = new System.Windows.Forms.TreeNode("JAN-1");
+            System.Windows.Forms.TreeNode treeNode451 = new System.Windows.Forms.TreeNode("SSB");
+            System.Windows.Forms.TreeNode treeNode452 = new System.Windows.Forms.TreeNode("Mid-Year (Mean)");
+            System.Windows.Forms.TreeNode treeNode453 = new System.Windows.Forms.TreeNode("Catch");
+            System.Windows.Forms.TreeNode treeNode454 = new System.Windows.Forms.TreeNode("Discard");
+            System.Windows.Forms.TreeNode treeNode455 = new System.Windows.Forms.TreeNode("Weights At Age", new System.Windows.Forms.TreeNode[] {
+            treeNode450,
+            treeNode451,
+            treeNode452,
+            treeNode453,
+            treeNode454});
+            System.Windows.Forms.TreeNode treeNode456 = new System.Windows.Forms.TreeNode("Recruitment");
+            System.Windows.Forms.TreeNode treeNode457 = new System.Windows.Forms.TreeNode("Biological");
+            System.Windows.Forms.TreeNode treeNode458 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
+            System.Windows.Forms.TreeNode treeNode459 = new System.Windows.Forms.TreeNode("Discard Fraction");
+            System.Windows.Forms.TreeNode treeNode460 = new System.Windows.Forms.TreeNode("Harvest Scenario");
+            System.Windows.Forms.TreeNode treeNode461 = new System.Windows.Forms.TreeNode("Bootstrapping");
+            System.Windows.Forms.TreeNode treeNode462 = new System.Windows.Forms.TreeNode("Misc. Options");
             this.menuStripAgeproForm = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -240,44 +240,44 @@
             this.treeViewNavigation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewNavigation.Location = new System.Drawing.Point(0, 0);
             this.treeViewNavigation.Name = "treeViewNavigation";
-            treeNode15.Name = "treeNodeGeneral";
-            treeNode15.Text = "General";
-            treeNode16.Name = "treeNodeJan1";
-            treeNode16.Text = "JAN-1";
-            treeNode17.Name = "treeNodeSSB";
-            treeNode17.Text = "SSB";
-            treeNode18.Name = "treeNodeMidYear";
-            treeNode18.Text = "Mid-Year (Mean)";
-            treeNode19.Name = "treeNodeCatchWeight";
-            treeNode19.Text = "Catch";
-            treeNode20.Name = "treeNodeDiscardWeight";
-            treeNode20.Text = "Discard";
-            treeNode21.Name = "treeNodeWeightAge";
-            treeNode21.Text = "Weights At Age";
-            treeNode22.Name = "treeNodeRecruitment";
-            treeNode22.Text = "Recruitment";
-            treeNode23.Name = "treeNodeBiological";
-            treeNode23.Text = "Biological";
-            treeNode24.Name = "treeNodeFisherySelectivity";
-            treeNode24.Text = "Fishery Selectivity";
-            treeNode25.Name = "treeNodeDiscardFraction";
-            treeNode25.Text = "Discard Fraction";
-            treeNode26.Name = "treeNodeHarvestScenario";
-            treeNode26.Text = "Harvest Scenario";
-            treeNode27.Name = "treeNodeBootstrapping";
-            treeNode27.Text = "Bootstrapping";
-            treeNode28.Name = "treeNodeMiscOptions";
-            treeNode28.Text = "Misc. Options";
+            treeNode449.Name = "treeNodeGeneral";
+            treeNode449.Text = "General";
+            treeNode450.Name = "treeNodeJan1";
+            treeNode450.Text = "JAN-1";
+            treeNode451.Name = "treeNodeSSB";
+            treeNode451.Text = "SSB";
+            treeNode452.Name = "treeNodeMidYear";
+            treeNode452.Text = "Mid-Year (Mean)";
+            treeNode453.Name = "treeNodeCatchWeight";
+            treeNode453.Text = "Catch";
+            treeNode454.Name = "treeNodeDiscardWeight";
+            treeNode454.Text = "Discard";
+            treeNode455.Name = "treeNodeWeightAge";
+            treeNode455.Text = "Weights At Age";
+            treeNode456.Name = "treeNodeRecruitment";
+            treeNode456.Text = "Recruitment";
+            treeNode457.Name = "treeNodeBiological";
+            treeNode457.Text = "Biological";
+            treeNode458.Name = "treeNodeFisherySelectivity";
+            treeNode458.Text = "Fishery Selectivity";
+            treeNode459.Name = "treeNodeDiscardFraction";
+            treeNode459.Text = "Discard Fraction";
+            treeNode460.Name = "treeNodeHarvestScenario";
+            treeNode460.Text = "Harvest Scenario";
+            treeNode461.Name = "treeNodeBootstrapping";
+            treeNode461.Text = "Bootstrapping";
+            treeNode462.Name = "treeNodeMiscOptions";
+            treeNode462.Text = "Misc. Options";
             this.treeViewNavigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode21,
-            treeNode22,
-            treeNode23,
-            treeNode24,
-            treeNode25,
-            treeNode26,
-            treeNode27,
-            treeNode28});
+            treeNode449,
+            treeNode455,
+            treeNode456,
+            treeNode457,
+            treeNode458,
+            treeNode459,
+            treeNode460,
+            treeNode461,
+            treeNode462});
             this.treeViewNavigation.Size = new System.Drawing.Size(200, 536);
             this.treeViewNavigation.TabIndex = 1;
             this.treeViewNavigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewNavigation_AfterSelect);
@@ -292,8 +292,11 @@
             // 
             // panelAgeproParameter
             // 
-            this.panelAgeproParameter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelAgeproParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelAgeproParameter.AutoScroll = true;
+            this.panelAgeproParameter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAgeproParameter.Location = new System.Drawing.Point(206, 24);
             this.panelAgeproParameter.Name = "panelAgeproParameter";
             this.panelAgeproParameter.Size = new System.Drawing.Size(926, 539);
