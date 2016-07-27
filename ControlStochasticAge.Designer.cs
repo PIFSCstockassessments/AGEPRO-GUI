@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutStochasticAgePanel = new System.Windows.Forms.TableLayoutPanel();
             this.panelStochasticParameterAge = new System.Windows.Forms.Panel();
             this.groupOptions = new System.Windows.Forms.GroupBox();
             this.radioParameterFromFile = new System.Windows.Forms.RadioButton();
             this.radioParameterFromUser = new System.Windows.Forms.RadioButton();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutStochasticAgePanel.SuspendLayout();
             this.groupOptions.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tableLayoutStochasticAgePanel
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panelStochasticParameterAge, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.groupOptions, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(900, 520);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(900, 520);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.tableLayoutStochasticAgePanel.AutoSize = true;
+            this.tableLayoutStochasticAgePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutStochasticAgePanel.ColumnCount = 2;
+            this.tableLayoutStochasticAgePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutStochasticAgePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutStochasticAgePanel.Controls.Add(this.panelStochasticParameterAge, 1, 2);
+            this.tableLayoutStochasticAgePanel.Controls.Add(this.groupOptions, 1, 1);
+            this.tableLayoutStochasticAgePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutStochasticAgePanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutStochasticAgePanel.MinimumSize = new System.Drawing.Size(900, 520);
+            this.tableLayoutStochasticAgePanel.Name = "tableLayoutStochasticAgePanel";
+            this.tableLayoutStochasticAgePanel.RowCount = 3;
+            this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutStochasticAgePanel.Size = new System.Drawing.Size(900, 520);
+            this.tableLayoutStochasticAgePanel.TabIndex = 2;
             // 
             // panelStochasticParameterAge
             // 
@@ -111,12 +111,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tableLayoutStochasticAgePanel);
             this.MinimumSize = new System.Drawing.Size(900, 520);
             this.Name = "ControlStochasticAge";
             this.Size = new System.Drawing.Size(900, 520);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutStochasticAgePanel.ResumeLayout(false);
+            this.tableLayoutStochasticAgePanel.PerformLayout();
             this.groupOptions.ResumeLayout(false);
             this.groupOptions.PerformLayout();
             this.ResumeLayout(false);
@@ -126,7 +126,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutStochasticAgePanel;
         private System.Windows.Forms.GroupBox groupOptions;
         private System.Windows.Forms.RadioButton radioParameterFromFile;
         private System.Windows.Forms.RadioButton radioParameterFromUser;
