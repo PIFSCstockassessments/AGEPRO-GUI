@@ -51,8 +51,12 @@
             this.dataGridStochasticAgeTable.AllowUserToAddRows = false;
             this.dataGridStochasticAgeTable.AllowUserToDeleteRows = false;
             this.dataGridStochasticAgeTable.AllowUserToResizeRows = false;
+            this.dataGridStochasticAgeTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridStochasticAgeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStochasticAgeTable.Location = new System.Drawing.Point(3, 26);
+            this.dataGridStochasticAgeTable.MinimumSize = new System.Drawing.Size(864, 213);
             this.dataGridStochasticAgeTable.Name = "dataGridStochasticAgeTable";
             this.dataGridStochasticAgeTable.RowHeadersWidth = 100;
             this.dataGridStochasticAgeTable.Size = new System.Drawing.Size(864, 213);
@@ -61,6 +65,7 @@
             // 
             // labelCVTable
             // 
+            this.labelCVTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelCVTable.AutoSize = true;
             this.labelCVTable.Location = new System.Drawing.Point(0, 252);
             this.labelCVTable.Name = "labelCVTable";
@@ -73,6 +78,8 @@
             this.dataGridCVTable.AllowUserToAddRows = false;
             this.dataGridCVTable.AllowUserToDeleteRows = false;
             this.dataGridCVTable.AllowUserToResizeRows = false;
+            this.dataGridCVTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridCVTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCVTable.Location = new System.Drawing.Point(3, 268);
             this.dataGridCVTable.Name = "dataGridCVTable";
