@@ -183,7 +183,6 @@ namespace AGEPRO.GUI
             //Fishery Selectivity
             controlFisherySelectivity.seqYears = Array.ConvertAll(inpFile.general.SeqYears(), element => element.ToString());
             controlFisherySelectivity.numFleets = inpFile.general.numFleets;
-            //controlFisherySelectivity.stochasticAgeTable = inpFile.fishery.byAgeData;
             controlFisherySelectivity.timeVarying = inpFile.fishery.timeVarying;
             controlFisherySelectivity.stochasticCV = inpFile.fishery.byAgeCV;
             controlFisherySelectivity.stochasticDataFile = inpFile.fishery.dataFile;
@@ -220,11 +219,7 @@ namespace AGEPRO.GUI
             controlMiscOptions.miscOptionsRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
             controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
             controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;  
-            //if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
-            //{
-            //    controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
-            //}
-            //controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = inpFile.retroAdjustOption.retroAdjust;
+
             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = 
                 setAgeproDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, inpFile.retroAdjustOption.retroAdjust);
                       
