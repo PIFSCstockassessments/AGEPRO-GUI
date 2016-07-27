@@ -183,11 +183,12 @@ namespace AGEPRO.GUI
             //Fishery Selectivity
             controlFisherySelectivity.seqYears = Array.ConvertAll(inpFile.general.SeqYears(), element => element.ToString());
             controlFisherySelectivity.numFleets = inpFile.general.numFleets;
-            controlFisherySelectivity.stochasticAgeTable = inpFile.fishery.byAgeData;
+            //controlFisherySelectivity.stochasticAgeTable = inpFile.fishery.byAgeData;
             controlFisherySelectivity.timeVarying = inpFile.fishery.timeVarying;
             controlFisherySelectivity.stochasticCV = inpFile.fishery.byAgeCV;
             controlFisherySelectivity.stochasticDataFile = inpFile.fishery.dataFile;
-
+            controlFisherySelectivity.stochasticAgeTable =
+                setAgeproDataTable(controlFisherySelectivity.stochasticAgeTable, inpFile.fishery.byAgeData);
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
@@ -217,14 +218,16 @@ namespace AGEPRO.GUI
             controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.maxNatMort.ToString();
 
             controlMiscOptions.miscOptionsRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
-            if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
-            {
-                controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
-            }
-
-            controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = inpFile.retroAdjustOption.retroAdjust;
             controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
-            controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;
+            controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;  
+            //if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
+            //{
+            //    controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
+            //}
+            //controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = inpFile.retroAdjustOption.retroAdjust;
+            controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = 
+                setAgeproDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, inpFile.retroAdjustOption.retroAdjust);
+                      
             if (controlMiscOptions.miscOptionsRetroAdjustmentFactors == true)
             {
                 controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
@@ -234,6 +237,16 @@ namespace AGEPRO.GUI
             
             
             Console.WriteLine("DEBUG");
+        }
+
+        private DataTable setAgeproDataTable (DataTable dgvTable, DataTable inpFileTable)
+        {
+            if (dgvTable != null)
+            {
+                dgvTable.Reset();
+            }
+            dgvTable = inpFileTable;
+            return dgvTable;
         }
 
     }
