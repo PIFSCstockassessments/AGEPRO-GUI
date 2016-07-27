@@ -50,11 +50,14 @@
             // 
             this.dataGridStochasticAgeTable.AllowUserToAddRows = false;
             this.dataGridStochasticAgeTable.AllowUserToDeleteRows = false;
+            this.dataGridStochasticAgeTable.AllowUserToResizeRows = false;
             this.dataGridStochasticAgeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStochasticAgeTable.Location = new System.Drawing.Point(3, 26);
             this.dataGridStochasticAgeTable.Name = "dataGridStochasticAgeTable";
+            this.dataGridStochasticAgeTable.RowHeadersWidth = 100;
             this.dataGridStochasticAgeTable.Size = new System.Drawing.Size(864, 213);
             this.dataGridStochasticAgeTable.TabIndex = 1;
+            this.dataGridStochasticAgeTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridStochasticAgeTable_CellFormatting);
             // 
             // labelCVTable
             // 
@@ -69,11 +72,14 @@
             // 
             this.dataGridCVTable.AllowUserToAddRows = false;
             this.dataGridCVTable.AllowUserToDeleteRows = false;
+            this.dataGridCVTable.AllowUserToResizeRows = false;
             this.dataGridCVTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCVTable.Location = new System.Drawing.Point(3, 268);
             this.dataGridCVTable.Name = "dataGridCVTable";
+            this.dataGridCVTable.RowHeadersWidth = 100;
             this.dataGridCVTable.Size = new System.Drawing.Size(864, 79);
             this.dataGridCVTable.TabIndex = 3;
+            this.dataGridCVTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridCVTable_CellFormatting);
             // 
             // checkBoxTimeVarying
             // 

@@ -88,7 +88,7 @@ namespace AGEPRO.GUI
             int ifleet = 1;
             foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
             {
-                if (multiFleetTable)
+                if (multiFleetTable == true)
                 {
                     CVTableRow.HeaderCell.Value = "Fleet-" + ifleet;
                 }
