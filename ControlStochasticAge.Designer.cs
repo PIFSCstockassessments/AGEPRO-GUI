@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutStochasticAgePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.panelStochasticParameterAge = new System.Windows.Forms.Panel();
             this.groupOptions = new System.Windows.Forms.GroupBox();
             this.radioParameterFromFile = new System.Windows.Forms.RadioButton();
             this.radioParameterFromUser = new System.Windows.Forms.RadioButton();
+            this.panelStochasticParameterAge = new System.Windows.Forms.Panel();
             this.tableLayoutStochasticAgePanel.SuspendLayout();
             this.groupOptions.SuspendLayout();
             this.SuspendLayout();
@@ -56,19 +56,6 @@
             this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutStochasticAgePanel.Size = new System.Drawing.Size(900, 520);
             this.tableLayoutStochasticAgePanel.TabIndex = 2;
-            // 
-            // panelStochasticParameterAge
-            // 
-            this.panelStochasticParameterAge.AutoSize = true;
-            this.panelStochasticParameterAge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelStochasticParameterAge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelStochasticParameterAge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelStochasticParameterAge.Location = new System.Drawing.Point(23, 98);
-            this.panelStochasticParameterAge.MinimumSize = new System.Drawing.Size(873, 350);
-            this.panelStochasticParameterAge.Name = "panelStochasticParameterAge";
-            this.panelStochasticParameterAge.Padding = new System.Windows.Forms.Padding(20, 0, 0, 10);
-            this.panelStochasticParameterAge.Size = new System.Drawing.Size(874, 419);
-            this.panelStochasticParameterAge.TabIndex = 3;
             // 
             // groupOptions
             // 
@@ -104,6 +91,18 @@
             this.radioParameterFromUser.Text = "User Specified Stochastic Parameter at Age";
             this.radioParameterFromUser.UseVisualStyleBackColor = true;
             this.radioParameterFromUser.CheckedChanged += new System.EventHandler(this.radioParameterFromUser_CheckedChanged);
+            // 
+            // panelStochasticParameterAge
+            // 
+            this.panelStochasticParameterAge.AutoSize = true;
+            this.panelStochasticParameterAge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelStochasticParameterAge.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelStochasticParameterAge.Location = new System.Drawing.Point(23, 98);
+            this.panelStochasticParameterAge.MinimumSize = new System.Drawing.Size(873, 350);
+            this.panelStochasticParameterAge.Name = "panelStochasticParameterAge";
+            this.panelStochasticParameterAge.Padding = new System.Windows.Forms.Padding(0, 0, 5, 10);
+            this.panelStochasticParameterAge.Size = new System.Drawing.Size(874, 419);
+            this.panelStochasticParameterAge.TabIndex = 3;
             // 
             // ControlStochasticAge
             // 

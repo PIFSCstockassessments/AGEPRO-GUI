@@ -297,7 +297,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelAgeproParameter.AutoScroll = true;
             this.panelAgeproParameter.AutoScrollMinSize = new System.Drawing.Size(900, 500);
-            this.panelAgeproParameter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAgeproParameter.Location = new System.Drawing.Point(206, 24);
             this.panelAgeproParameter.Name = "panelAgeproParameter";
             this.panelAgeproParameter.Size = new System.Drawing.Size(926, 539);
