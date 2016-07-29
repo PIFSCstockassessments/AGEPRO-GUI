@@ -44,8 +44,8 @@
             this.tableLayoutStochasticAgePanel.ColumnCount = 2;
             this.tableLayoutStochasticAgePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutStochasticAgePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutStochasticAgePanel.Controls.Add(this.panelStochasticParameterAge, 1, 2);
             this.tableLayoutStochasticAgePanel.Controls.Add(this.groupOptions, 1, 1);
+            this.tableLayoutStochasticAgePanel.Controls.Add(this.panelStochasticParameterAge, 1, 2);
             this.tableLayoutStochasticAgePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutStochasticAgePanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutStochasticAgePanel.MinimumSize = new System.Drawing.Size(900, 520);
@@ -77,7 +77,7 @@
             this.groupOptions.Location = new System.Drawing.Point(23, 23);
             this.groupOptions.Name = "groupOptions";
             this.groupOptions.Size = new System.Drawing.Size(789, 52);
-            this.groupOptions.TabIndex = 1;
+            this.groupOptions.TabIndex = 3;
             this.groupOptions.TabStop = false;
             this.groupOptions.Text = "Options";
             // 
@@ -109,10 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.tableLayoutStochasticAgePanel);
-            this.MinimumSize = new System.Drawing.Size(900, 520);
             this.Name = "ControlStochasticAge";
             this.Size = new System.Drawing.Size(900, 520);
             this.tableLayoutStochasticAgePanel.ResumeLayout(false);
@@ -127,9 +124,9 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutStochasticAgePanel;
+        private System.Windows.Forms.Panel panelStochasticParameterAge;
         private System.Windows.Forms.GroupBox groupOptions;
         private System.Windows.Forms.RadioButton radioParameterFromFile;
         private System.Windows.Forms.RadioButton radioParameterFromUser;
-        private System.Windows.Forms.Panel panelStochasticParameterAge;
     }
 }
