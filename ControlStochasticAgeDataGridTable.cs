@@ -107,26 +107,65 @@ namespace AGEPRO.GUI
         {
             if (checkBoxTimeVarying.Checked)
             {
-                
+                if (multiFleetTable == true)
+                {
+
+                }
+                else
+                {
+
+                }
             }
+            else
+            {
+
+                //
+                stochasticAgeTable.Clear(); //Clear All Rows
+                //dataGridStochasticAgeTable.DataSource = null; //Clear All Rows
+
+                for (int i = 0; i < numFleets; i++)
+                {
+                    stochasticAgeTable.Rows.Add();
+                }
+                //dataGridStochasticAgeTable.Rows.Add(numFleets);
+                //DataTable fallbackDataTable = new DataTable();
+
+                //Set RowHeaders
+                //setStochasticAgeTableRowHeaders(new string[] {"All Years"},this.numFleets);
+            }
+            //dataGridStochasticAgeTable.Refresh();
         }
 
         private void dataGridStochasticAgeTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //header value is null
-            if (e.ColumnIndex == 0)
+            DataGridViewRowHeaderCell header = dataGridStochasticAgeTable.Rows[e.RowIndex].HeaderCell;
+            
+            //TODO: Limit multiple Cell_Formatting event.
+            //3-4x Row Headers function is called. Figure out which event triggers cell_formatting
+            //1. code 259?? 2. ... 3. changes in CellSytleFormatting
+
+            if (header.Value == null)
             {
-                setStochasticAgeTableRowHeaders(seqYears,numFleets);
+                Console.WriteLine("Cell Formatting Event at {0}", e.RowIndex + 1);
+                setStochasticAgeTableRowHeaders(seqYears, numFleets);
+
+   
             }
+            
+            
         }
 
         private void dataGridCVTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            DataGridViewRowHeaderCell header = dataGridCVTable.Rows[e.RowIndex].HeaderCell;
             //header value is null
-            if (e.ColumnIndex == 0)
+            if (header.Value == null)
             {
+                Console.WriteLine("Cell Formatting CV Table at {0}", e.RowIndex);
                 setCVTableRowHeaders();
             }
-        }   
+        }
+
+
     }
 }

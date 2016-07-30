@@ -184,10 +184,11 @@ namespace AGEPRO.GUI
             controlFisherySelectivity.seqYears = Array.ConvertAll(inpFile.general.SeqYears(), element => element.ToString());
             controlFisherySelectivity.numFleets = inpFile.general.numFleets;
             controlFisherySelectivity.timeVarying = inpFile.fishery.timeVarying;
-            controlFisherySelectivity.stochasticCV = inpFile.fishery.byAgeCV;
             controlFisherySelectivity.stochasticDataFile = inpFile.fishery.dataFile;
             controlFisherySelectivity.stochasticAgeTable =
                 setAgeproDataTable(controlFisherySelectivity.stochasticAgeTable, inpFile.fishery.byAgeData);
+            controlFisherySelectivity.stochasticCV =
+                setAgeproDataTable(controlFisherySelectivity.stochasticCV, inpFile.fishery.byAgeCV);
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
@@ -231,7 +232,7 @@ namespace AGEPRO.GUI
             
             
             
-            Console.WriteLine("DEBUG");
+            Console.WriteLine("DEBUG: End Load AGEPRO Parameters");
         }
 
         private DataTable setAgeproDataTable (DataTable dgvTable, DataTable inpFileTable)
