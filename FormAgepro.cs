@@ -52,7 +52,7 @@ namespace AGEPRO.GUI
         {
             try
             {
-                //TODO: Validate GeneralOption Parameters
+                //TODO TODO TODO: Validate GeneralOption Parameters
 
                 //Use general options parameters to set inputFile parameters 
                 int generalSetNumAges = controlGeneralOptions.generalLastAgeClass -
@@ -189,7 +189,6 @@ namespace AGEPRO.GUI
             controlFisherySelectivity.stochasticDataFile = inpFile.fishery.dataFile;
             controlFisherySelectivity.stochasticAgeTable =
                 setAgeproDataTable(controlFisherySelectivity.stochasticAgeTable, inpFile.fishery.byAgeData);
-            Console.WriteLine("DEBUG: End Load AGEPRO Stochaastic Age Parameters");
             controlFisherySelectivity.stochasticCV =
                 setAgeproDataTable(controlFisherySelectivity.stochasticCV, inpFile.fishery.byAgeCV);
             controlFisherySelectivity.readInputFileState = false;
