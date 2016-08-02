@@ -184,6 +184,7 @@ namespace AGEPRO.GUI
             controlFisherySelectivity.readInputFileState = true;
             controlFisherySelectivity.seqYears = Array.ConvertAll(inpFile.general.SeqYears(), element => element.ToString());
             controlFisherySelectivity.numFleets = inpFile.general.numFleets;
+            controlFisherySelectivity.isMultiFleet = true;
             controlFisherySelectivity.timeVarying = inpFile.fishery.timeVarying;
             controlFisherySelectivity.stochasticDataFile = inpFile.fishery.dataFile;
             controlFisherySelectivity.stochasticAgeTable =

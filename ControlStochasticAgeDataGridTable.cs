@@ -107,28 +107,30 @@ namespace AGEPRO.GUI
             
             if (this.readInputFileState == false)
             {
-                Console.WriteLine("CheckChenged");
+                stochasticAgeTable.Clear(); //Clear All Rows
                 if (checkBoxTimeVarying.Checked)
                 {
-                    stochasticAgeTable.Clear();
-
                     int countFleetYears = seqYears.Count() * this.numFleets;
                     for (int i = 0; i < countFleetYears; i++)
                     {
                        stochasticAgeTable.Rows.Add();
                     }
 
-
                 }
                 else
-                {
-                    stochasticAgeTable.Clear(); //Clear All Rows
-                    //dataGridStochasticAgeTable.DataSource = null; //Clear All Rows
-
+                {   
                     for (int i = 0; i < numFleets; i++)
                     {
                         stochasticAgeTable.Rows.Add();
-                        dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "Fleet-" + (i + 1);
+                        
+                        if (multiFleetTable)
+                        {
+                            dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "Fleet-" + (i + 1);
+                        }
+                        else
+                        {
+                            dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "All Years";
+                        }
                     }
                 }
             }
