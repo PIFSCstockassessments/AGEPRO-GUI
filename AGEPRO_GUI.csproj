@@ -69,6 +69,12 @@
     <Compile Include="AboutAgepro.Designer.cs">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlBioStochasticAge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlBioStochasticAge.Designer.cs">
+      <DependentUpon>ControlBioStochasticAge.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlBootstrap.cs">
       <SubType>UserControl</SubType>
     </Compile>
