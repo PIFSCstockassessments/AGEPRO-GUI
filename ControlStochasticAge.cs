@@ -32,6 +32,11 @@ namespace AGEPRO.GUI
             get { return controlStochasticParamAgeFromUser.timeVarying; }
             set { controlStochasticParamAgeFromUser.timeVarying = value; }
         }
+        public bool readInputFileState
+        {
+            get { return controlStochasticParamAgeFromUser.readInputFileState; }
+            set { controlStochasticParamAgeFromUser.readInputFileState = value; }
+        }
         public DataTable stochasticAgeTable
         {
             get { return controlStochasticParamAgeFromUser.stochasticAgeTable; }

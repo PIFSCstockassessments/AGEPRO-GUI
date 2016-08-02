@@ -15,12 +15,12 @@ namespace AGEPRO.GUI
         public bool multiFleetTable { get; set; }
         public string[] seqYears { get; set; }
         public int numFleets { get; set; }
+        public bool readInputFileState { get; set; }
 
         public ControlStochasticAgeDataGridTable()
         {
             InitializeComponent();
-
-            
+            readInputFileState = false;
         }
         public string stochasticParamAgeDataGridLabel
         {
@@ -102,38 +102,37 @@ namespace AGEPRO.GUI
             
         }
 
-
         private void checkBoxTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxTimeVarying.Checked)
+            
+            if (this.readInputFileState == false)
             {
-                if (multiFleetTable == true)
+                Console.WriteLine("CheckChenged");
+                if (checkBoxTimeVarying.Checked)
                 {
+                    stochasticAgeTable.Clear();
+
+                    int countFleetYears = seqYears.Count() * this.numFleets;
+                    for (int i = 0; i < countFleetYears; i++)
+                    {
+                       stochasticAgeTable.Rows.Add();
+                    }
+
 
                 }
                 else
                 {
+                    stochasticAgeTable.Clear(); //Clear All Rows
+                    //dataGridStochasticAgeTable.DataSource = null; //Clear All Rows
 
+                    for (int i = 0; i < numFleets; i++)
+                    {
+                        stochasticAgeTable.Rows.Add();
+                        dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "Fleet-" + (i + 1);
+                    }
                 }
             }
-            else
-            {
-
-                //
-                stochasticAgeTable.Clear(); //Clear All Rows
-                //dataGridStochasticAgeTable.DataSource = null; //Clear All Rows
-
-                for (int i = 0; i < numFleets; i++)
-                {
-                    stochasticAgeTable.Rows.Add();
-                }
-                //dataGridStochasticAgeTable.Rows.Add(numFleets);
-                //DataTable fallbackDataTable = new DataTable();
-
-                //Set RowHeaders
-                //setStochasticAgeTableRowHeaders(new string[] {"All Years"},this.numFleets);
-            }
-            //dataGridStochasticAgeTable.Refresh();
+            
         }
 
         private void dataGridStochasticAgeTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -143,12 +142,21 @@ namespace AGEPRO.GUI
             //TODO: Limit multiple Cell_Formatting event.
             //3-4x Row Headers function is called. Figure out which event triggers cell_formatting
             //1. code 259?? 2. ... 3. changes in CellSytleFormatting
-
+            
             if (header.Value == null)
             {
                 Console.WriteLine("Cell Formatting Event at {0}", e.RowIndex + 1);
-                setStochasticAgeTableRowHeaders(seqYears, numFleets);
-
+                if(timeVarying == true)
+                {
+                    string[] stochasticAgeTableRowHeaders = seqYears;
+                    setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
+                }
+                else
+                {
+                    string[] stochasticAgeTableRowHeaders = new string[numFleets];
+                    setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
+                }
+                //setStochasticAgeTableRowHeaders(seqYears, numFleets);
    
             }
             
@@ -161,10 +169,12 @@ namespace AGEPRO.GUI
             //header value is null
             if (header.Value == null)
             {
-                Console.WriteLine("Cell Formatting CV Table at {0}", e.RowIndex);
+                //Console.WriteLine("Cell Formatting CV Table at {0}", e.RowIndex);
                 setCVTableRowHeaders();
             }
         }
+
+
 
 
     }

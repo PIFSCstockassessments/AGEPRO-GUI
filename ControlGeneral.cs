@@ -80,7 +80,7 @@ namespace AGEPRO.GUI
         private void buttonSetGeneral_Click(object sender, EventArgs e)
         {
             //Transfer general option values to input file class
-
+            //Null check to make sure main page attached to event.
             if (this.SetGeneral != null)
             {
                 this.SetGeneral(sender, e);
