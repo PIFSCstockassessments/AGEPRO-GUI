@@ -30,7 +30,7 @@ namespace AGEPRO.GUI
             controlGeneralOptions = new ControlGeneral();
             controlMiscOptions = new ControlMiscOptions();
             controlBootstrap = new ControlBootstrap();
-            controlFisherySelectivity = new ControlStochasticAge("Fishery Selectivity");
+            controlFisherySelectivity = new ControlStochasticAge();
             controlFisherySelectivity.isMultiFleet = true;
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);

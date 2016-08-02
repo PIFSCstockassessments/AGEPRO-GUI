@@ -15,22 +15,19 @@ namespace AGEPRO.GUI
         private ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
         private ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
         
-        public ControlStochasticAge(string paramName="Stochastic Parameter")
+        public ControlStochasticAge()
         {
             InitializeComponent();
             controlStochasticParamAgeFromUser = new ControlStochasticAgeDataGridTable();
             controlStochasticParamAgeFromFile = new ControlStochasticAgeFromFile();
             //radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
 
-            string stochasticParameter = paramName;
+            //string stochasticParameter = paramName;
             //radioParameterFromUser.Text = "User Specified " + stochasticParameter + " At Age";
             //radioParameterFromFile.Text = "Read "+ stochasticParameter + " From File";
-            controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = stochasticParameter + " Of Age";
+            //controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = stochasticParameter + " Of Age";
         }
-        public ControlStochasticAge()
-        {
-
-        }
+        
         public bool timeVarying
         {
             get { return controlStochasticParamAgeFromUser.timeVarying; }
