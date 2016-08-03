@@ -21,6 +21,7 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
             readInputFileState = false;
+
         }
         public string stochasticParamAgeDataGridLabel
         {
@@ -104,6 +105,7 @@ namespace AGEPRO.GUI
 
         private void checkBoxTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
+            //TODO: Disable Time Varying Checkbox if there is no data
             
             if (this.readInputFileState == false)
             {
