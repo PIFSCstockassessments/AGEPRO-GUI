@@ -14,23 +14,17 @@ namespace AGEPRO.GUI
     {
         private ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
         private ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
+        public string stochasticParameter { get; set; }
 
         public ControlStochasticAge()
-        {
-
-        }
-        public ControlStochasticAge(string paramName="Stochastic Parameter")
         {
             InitializeComponent();
             controlStochasticParamAgeFromUser = new ControlStochasticAgeDataGridTable();
             controlStochasticParamAgeFromFile = new ControlStochasticAgeFromFile();
             radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
-
-            string stochasticParameter = paramName;
-            radioParameterFromUser.Text = "User Specified " + stochasticParameter + " At Age";
-            radioParameterFromFile.Text = "Read "+ stochasticParameter + " From File";
-            controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = stochasticParameter + " Of Age";
+            stochasticParameter = "Stochastic Parameters"; //Default Fallback Text
         }
+
         public bool timeVarying
         {
             get { return controlStochasticParamAgeFromUser.timeVarying; }
@@ -71,8 +65,16 @@ namespace AGEPRO.GUI
             get { return controlStochasticParamAgeFromUser.multiFleetTable; }
             set { controlStochasticParamAgeFromUser.multiFleetTable = value; }
         }
-        
-        
+
+        protected override void OnLoad(EventArgs e)
+        {
+            //(Re)Set Stochastic Parameter Label/Options text 
+            radioParameterFromUser.Text = "User Specified " + this.stochasticParameter + " At Age";
+            radioParameterFromFile.Text = "Read " + this.stochasticParameter + " From File";
+            controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = this.stochasticParameter + " Of Age";
+
+            base.OnLoad(e);
+        }
         private void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
         {
             panelStochasticParameterAge.Controls.Clear();

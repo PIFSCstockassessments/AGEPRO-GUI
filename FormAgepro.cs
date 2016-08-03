@@ -30,9 +30,8 @@ namespace AGEPRO.GUI
             controlGeneralOptions = new ControlGeneral();
             controlMiscOptions = new ControlMiscOptions();
             controlBootstrap = new ControlBootstrap();
-            controlFisherySelectivity = new ControlStochasticAge("Fishery Selectivity");
-            controlFisherySelectivity.isMultiFleet = true;
-
+            controlFisherySelectivity = new ControlStochasticAge();
+            
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
             //Load General Options Controls to AGEPRO Parameter panel
@@ -41,6 +40,10 @@ namespace AGEPRO.GUI
 
             //initially set Number of Ages
             int initalNumAges = controlGeneralOptions.generalFirstAgeClass;
+
+            //Biological Stochastic Options
+            controlFisherySelectivity.stochasticParameter = "Fishery Selectivity";
+            controlFisherySelectivity.isMultiFleet = true;
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
