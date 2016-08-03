@@ -14,7 +14,11 @@ namespace AGEPRO.GUI
     {
         private ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
         private ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
-        
+
+        public ControlStochasticAge()
+        {
+
+        }
         public ControlStochasticAge(string paramName="Stochastic Parameter")
         {
             InitializeComponent();
