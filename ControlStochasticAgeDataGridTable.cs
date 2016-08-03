@@ -43,6 +43,15 @@ namespace AGEPRO.GUI
             get { return (DataTable)dataGridCVTable.DataSource; }
             set { dataGridCVTable.DataSource = value; }
         }
+        protected override void OnLoad(EventArgs e)
+        {
+            if (stochasticAgeTable == null)
+            {
+                checkBoxTimeVarying.Enabled = false;
+            }
+
+ 	        base.OnLoad(e);
+        }
 
         private void setStochasticAgeTableRowHeaders(string[] yearArray, int nfleets)
         {
@@ -177,6 +186,8 @@ namespace AGEPRO.GUI
                 setCVTableRowHeaders();
             }
         }
+
+
 
 
 
