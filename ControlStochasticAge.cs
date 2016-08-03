@@ -14,7 +14,7 @@ namespace AGEPRO.GUI
     {
         private ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
         private ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
-        public string stochasticParameter { get; set; }
+        public string stochasticParameterLabel { get; set; }
 
         public ControlStochasticAge()
         {
@@ -22,7 +22,7 @@ namespace AGEPRO.GUI
             controlStochasticParamAgeFromUser = new ControlStochasticAgeDataGridTable();
             controlStochasticParamAgeFromFile = new ControlStochasticAgeFromFile();
             radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
-            stochasticParameter = "Stochastic Parameters"; //Default Fallback Text
+            stochasticParameterLabel = "Stochastic Parameters"; //Default Fallback Text
         }
 
         public bool timeVarying
@@ -69,9 +69,9 @@ namespace AGEPRO.GUI
         protected override void OnLoad(EventArgs e)
         {
             //(Re)Set Stochastic Parameter Label/Options text 
-            radioParameterFromUser.Text = "User Specified " + this.stochasticParameter + " At Age";
-            radioParameterFromFile.Text = "Read " + this.stochasticParameter + " From File";
-            controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = this.stochasticParameter + " Of Age";
+            radioParameterFromUser.Text = "User Specified " + this.stochasticParameterLabel + " At Age";
+            radioParameterFromFile.Text = "Read " + this.stochasticParameterLabel + " From File";
+            controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = this.stochasticParameterLabel + " Of Age";
 
             base.OnLoad(e);
         }
