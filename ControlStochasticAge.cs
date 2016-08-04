@@ -65,6 +65,11 @@ namespace AGEPRO.GUI
             get { return controlStochasticParamAgeFromUser.multiFleetTable; }
             set { controlStochasticParamAgeFromUser.multiFleetTable = value; }
         }
+        public bool enableTimeVaryingCheckBox
+        {
+            get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckbox; }
+            set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckbox = value; }
+        }
 
         protected override void OnLoad(EventArgs e)
         {

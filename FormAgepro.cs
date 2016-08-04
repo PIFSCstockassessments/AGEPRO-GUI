@@ -207,7 +207,6 @@ namespace AGEPRO.GUI
 
             //Discard Fraction
             loadStochasticAgeInputData(controlDiscardFraction, inpFile.discardFraction, inpFile.general);
-            
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
@@ -264,6 +263,14 @@ namespace AGEPRO.GUI
             ctl.stochasticDataFile = inp.dataFile;
             ctl.stochasticAgeTable = setAgeproDataTable(ctl.stochasticAgeTable, inp.byAgeData);
             ctl.stochasticCV = setAgeproDataTable(ctl.stochasticCV, inp.byAgeCV);
+            if (!(ctl.stochasticAgeTable != null))
+            {
+                ctl.enableTimeVaryingCheckBox = false;
+            }
+            else
+            {
+                ctl.enableTimeVaryingCheckBox = true;
+            }
             ctl.readInputFileState = false;
         }
 
