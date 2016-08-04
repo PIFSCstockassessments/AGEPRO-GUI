@@ -136,6 +136,7 @@ namespace AGEPRO.GUI
                     break;
                 case "treeNodeBiological":
                     panelAgeproParameter.Controls.Clear();
+                    controlBiological.Dock = DockStyle.Fill;
                     panelAgeproParameter.Controls.Add(controlBiological);
                     break;
                 default:
