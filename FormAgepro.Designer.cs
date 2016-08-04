@@ -44,9 +44,10 @@
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Biological");
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Discard Fraction");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Harvest Scenario");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Bootstrapping");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Misc. Options");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Natural Mortality");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Harvest Scenario");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Bootstrapping");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Misc. Options");
             this.menuStripAgeproForm = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -262,12 +263,14 @@
             treeNode10.Text = "Fishery Selectivity";
             treeNode11.Name = "treeNodeDiscardFraction";
             treeNode11.Text = "Discard Fraction";
-            treeNode12.Name = "treeNodeHarvestScenario";
-            treeNode12.Text = "Harvest Scenario";
-            treeNode13.Name = "treeNodeBootstrapping";
-            treeNode13.Text = "Bootstrapping";
-            treeNode14.Name = "treeNodeMiscOptions";
-            treeNode14.Text = "Misc. Options";
+            treeNode12.Name = "treeNodeNaturalMortality";
+            treeNode12.Text = "Natural Mortality";
+            treeNode13.Name = "treeNodeHarvestScenario";
+            treeNode13.Text = "Harvest Scenario";
+            treeNode14.Name = "treeNodeBootstrapping";
+            treeNode14.Text = "Bootstrapping";
+            treeNode15.Name = "treeNodeMiscOptions";
+            treeNode15.Text = "Misc. Options";
             this.treeViewNavigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode7,
@@ -277,7 +280,8 @@
             treeNode11,
             treeNode12,
             treeNode13,
-            treeNode14});
+            treeNode14,
+            treeNode15});
             this.treeViewNavigation.Size = new System.Drawing.Size(200, 536);
             this.treeViewNavigation.TabIndex = 1;
             this.treeViewNavigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewNavigation_AfterSelect);

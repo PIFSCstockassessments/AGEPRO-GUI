@@ -12,9 +12,17 @@ namespace AGEPRO.GUI
 {
     public partial class ControlBiological : UserControl
     {
+        //
+        private ControlStochasticAge maturityAge;
+
         public ControlBiological()
         {
             InitializeComponent();
+
+            maturityAge = new ControlStochasticAge();
+
+            tabMaturity.Controls.Add(maturityAge);
+            //maturityAge.Size();
         }
     }
 }

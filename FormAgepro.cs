@@ -20,6 +20,8 @@ namespace AGEPRO.GUI
         private ControlBootstrap controlBootstrap;
         private ControlStochasticAge controlFisherySelectivity;
         private ControlStochasticAge controlDiscardFraction;
+        private ControlStochasticAge controlNaturalMortality;
+        private ControlBiological controlBiological;
 
         public FormAgepro()
         {
@@ -33,6 +35,8 @@ namespace AGEPRO.GUI
             controlBootstrap = new ControlBootstrap();
             controlFisherySelectivity = new ControlStochasticAge();
             controlDiscardFraction = new ControlStochasticAge();
+            controlNaturalMortality = new ControlStochasticAge();
+            controlBiological = new ControlBiological();
             
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -48,6 +52,8 @@ namespace AGEPRO.GUI
             controlFisherySelectivity.isMultiFleet = true;
             controlDiscardFraction.stochasticParameterLabel = "Discard Fraction";
             controlDiscardFraction.isMultiFleet = true;
+            controlNaturalMortality.stochasticParameterLabel = "Natural Mortality";
+            controlNaturalMortality.isMultiFleet = false;
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
@@ -123,6 +129,15 @@ namespace AGEPRO.GUI
                     controlDiscardFraction.Dock = DockStyle.Fill;
                     panelAgeproParameter.Controls.Add(controlDiscardFraction);
                     break;
+                case "treeNodeNaturalMortality":
+                    panelAgeproParameter.Controls.Clear();
+                    controlNaturalMortality.Dock = DockStyle.Fill;
+                    panelAgeproParameter.Controls.Add(controlNaturalMortality);
+                    break;
+                case "treeNodeBiological":
+                    panelAgeproParameter.Controls.Clear();
+                    panelAgeproParameter.Controls.Add(controlBiological);
+                    break;
                 default:
                     break;
             }
@@ -193,20 +208,13 @@ namespace AGEPRO.GUI
             controlGeneralOptions.generalDiscards = inpFile.general.hasDiscards;
 
             //Fishery Selectivity
-            //controlFisherySelectivity.readInputFileState = true;
-            //controlFisherySelectivity.seqYears = Array.ConvertAll(inpFile.general.SeqYears(), element => element.ToString());
-            //controlFisherySelectivity.numFleets = inpFile.general.numFleets;
-            //controlFisherySelectivity.timeVarying = inpFile.fishery.timeVarying;
-            //controlFisherySelectivity.stochasticDataFile = inpFile.fishery.dataFile;
-            //controlFisherySelectivity.stochasticAgeTable =
-            //    setAgeproDataTable(controlFisherySelectivity.stochasticAgeTable, inpFile.fishery.byAgeData);
-            //controlFisherySelectivity.stochasticCV =
-            //    setAgeproDataTable(controlFisherySelectivity.stochasticCV, inpFile.fishery.byAgeCV);
-            //controlFisherySelectivity.readInputFileState = false;
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
 
             //Discard Fraction
             loadStochasticAgeInputData(controlDiscardFraction, inpFile.discardFraction, inpFile.general);
+
+            //Natural Mortality
+            loadStochasticAgeInputData(controlNaturalMortality, inpFile.naturalMortality, inpFile.general);
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
