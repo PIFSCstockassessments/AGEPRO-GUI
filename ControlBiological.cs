@@ -20,9 +20,42 @@ namespace AGEPRO.GUI
             InitializeComponent();
 
             maturityAge = new ControlStochasticAge();
-
+            maturityAge.stochasticParameterLabel = "Maturity";
+            maturityAge.isMultiFleet = false;
+            maturityAge.Dock = DockStyle.Fill;
+            
             tabMaturity.Controls.Add(maturityAge);
-            //maturityAge.Size();
+            
+        }
+        public bool timeVarying
+        {
+            get { return maturityAge.timeVarying; }
+            set { maturityAge.timeVarying = value; }
+        }
+        public bool readInputFileState
+        {
+            get { return maturityAge.readInputFileState; }
+            set { maturityAge.readInputFileState = value; }
+        }
+        public DataTable maturityAgeTable
+        {
+            get { return maturityAge.stochasticAgeTable; }
+            set { maturityAge.stochasticAgeTable = value; }
+        }
+        public DataTable maturityCVTable
+        {
+            get { return maturityAge.stochasticCV; }
+            set { maturityAge.stochasticCV = value; }
+        }
+        public string[] seqYears
+        {
+            get { return maturityAge.seqYears; }
+            set { maturityAge.seqYears = value; }
+        }
+        public bool enableTimeVaryingCheckBox
+        {
+            get { return maturityAge.enableTimeVaryingCheckBox; }
+            set { maturityAge.enableTimeVaryingCheckBox = value; }
         }
     }
 }
