@@ -12,9 +12,9 @@ namespace AGEPRO.GUI
 {
     public partial class ControlBiological : UserControl
     {
-        //
-        private ControlStochasticAge maturityAge;
-
+        
+        public ControlStochasticAge maturityAge;
+        
         public ControlBiological()
         {
             InitializeComponent();
@@ -25,37 +25,38 @@ namespace AGEPRO.GUI
             maturityAge.Dock = DockStyle.Fill;
             
             tabMaturity.Controls.Add(maturityAge);
+
+            
             
         }
-        public bool timeVarying
+        public DataTable fractionMortality
         {
-            get { return maturityAge.timeVarying; }
-            set { maturityAge.timeVarying = value; }
+            get { return (DataTable)dataGridFractionMortality.DataSource; }
+            set { dataGridFractionMortality.DataSource = value; }
         }
-        public bool readInputFileState
+        public bool fractionMortalityTimeVarying
         {
-            get { return maturityAge.readInputFileState; }
-            set { maturityAge.readInputFileState = value; }
+            get { return checkBoxFractionMortalityTimeVarying.Checked; }
+            set { checkBoxFractionMortalityTimeVarying.Checked = value; }
         }
-        public DataTable maturityAgeTable
+        
+
+        private void dataGridFractionMortality_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            get { return maturityAge.stochasticAgeTable; }
-            set { maturityAge.stochasticAgeTable = value; }
+            DataGridViewRowHeaderCell header = dataGridFractionMortality.Rows[e.RowIndex].HeaderCell;
+
+            if (header.Value == null)
+            {
+                dataGridFractionMortality.Rows[0].HeaderCell.Value = "Fraction F Prior to Spawn";
+                dataGridFractionMortality.Rows[1].HeaderCell.Value = "Fraction M Prior to Spawn";
+            }
         }
-        public DataTable maturityCVTable
+
+        private void checkBoxFractionMortalityTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
-            get { return maturityAge.stochasticCV; }
-            set { maturityAge.stochasticCV = value; }
+
+
         }
-        public string[] seqYears
-        {
-            get { return maturityAge.seqYears; }
-            set { maturityAge.seqYears = value; }
-        }
-        public bool enableTimeVaryingCheckBox
-        {
-            get { return maturityAge.enableTimeVaryingCheckBox; }
-            set { maturityAge.enableTimeVaryingCheckBox = value; }
-        }
+        
     }
 }

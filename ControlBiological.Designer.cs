@@ -31,12 +31,12 @@
             this.tabControlBiological = new System.Windows.Forms.TabControl();
             this.tabMaturity = new System.Windows.Forms.TabPage();
             this.tabFractionMortality = new System.Windows.Forms.TabPage();
+            this.checkBoxFractionMortalityTimeVarying = new System.Windows.Forms.CheckBox();
+            this.dataGridFractionMortality = new System.Windows.Forms.DataGridView();
             this.labelFractionMortality = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.checkBoxTimeVarying = new System.Windows.Forms.CheckBox();
             this.tabControlBiological.SuspendLayout();
             this.tabFractionMortality.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFractionMortality)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlBiological
@@ -64,8 +64,8 @@
             // 
             // tabFractionMortality
             // 
-            this.tabFractionMortality.Controls.Add(this.checkBoxTimeVarying);
-            this.tabFractionMortality.Controls.Add(this.dataGridView1);
+            this.tabFractionMortality.Controls.Add(this.checkBoxFractionMortalityTimeVarying);
+            this.tabFractionMortality.Controls.Add(this.dataGridFractionMortality);
             this.tabFractionMortality.Controls.Add(this.labelFractionMortality);
             this.tabFractionMortality.Location = new System.Drawing.Point(4, 22);
             this.tabFractionMortality.Name = "tabFractionMortality";
@@ -74,6 +74,33 @@
             this.tabFractionMortality.TabIndex = 1;
             this.tabFractionMortality.Text = "Fraction Mortality";
             this.tabFractionMortality.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFractionMortalityTimeVarying
+            // 
+            this.checkBoxFractionMortalityTimeVarying.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxFractionMortalityTimeVarying.AutoSize = true;
+            this.checkBoxFractionMortalityTimeVarying.Location = new System.Drawing.Point(756, 30);
+            this.checkBoxFractionMortalityTimeVarying.Name = "checkBoxFractionMortalityTimeVarying";
+            this.checkBoxFractionMortalityTimeVarying.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxFractionMortalityTimeVarying.TabIndex = 2;
+            this.checkBoxFractionMortalityTimeVarying.Text = "Time Varying";
+            this.checkBoxFractionMortalityTimeVarying.UseVisualStyleBackColor = true;
+            this.checkBoxFractionMortalityTimeVarying.CheckedChanged += new System.EventHandler(this.checkBoxFractionMortalityTimeVarying_CheckedChanged);
+            // 
+            // dataGridFractionMortality
+            // 
+            this.dataGridFractionMortality.AllowUserToAddRows = false;
+            this.dataGridFractionMortality.AllowUserToDeleteRows = false;
+            this.dataGridFractionMortality.AllowUserToResizeRows = false;
+            this.dataGridFractionMortality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridFractionMortality.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFractionMortality.Location = new System.Drawing.Point(22, 50);
+            this.dataGridFractionMortality.Name = "dataGridFractionMortality";
+            this.dataGridFractionMortality.RowHeadersWidth = 180;
+            this.dataGridFractionMortality.Size = new System.Drawing.Size(832, 75);
+            this.dataGridFractionMortality.TabIndex = 1;
+            this.dataGridFractionMortality.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridFractionMortality_CellFormatting);
             // 
             // labelFractionMortality
             // 
@@ -85,29 +112,6 @@
             this.labelFractionMortality.TabIndex = 0;
             this.labelFractionMortality.Text = "Fraction Mortality Prior to Spawning";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 50);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(832, 75);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // checkBoxTimeVarying
-            // 
-            this.checkBoxTimeVarying.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxTimeVarying.AutoSize = true;
-            this.checkBoxTimeVarying.Location = new System.Drawing.Point(756, 30);
-            this.checkBoxTimeVarying.Name = "checkBoxTimeVarying";
-            this.checkBoxTimeVarying.Size = new System.Drawing.Size(87, 17);
-            this.checkBoxTimeVarying.TabIndex = 2;
-            this.checkBoxTimeVarying.Text = "Time Varying";
-            this.checkBoxTimeVarying.UseVisualStyleBackColor = true;
-            // 
             // ControlBiological
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,7 +122,7 @@
             this.tabControlBiological.ResumeLayout(false);
             this.tabFractionMortality.ResumeLayout(false);
             this.tabFractionMortality.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFractionMortality)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,8 +132,8 @@
         private System.Windows.Forms.TabControl tabControlBiological;
         private System.Windows.Forms.TabPage tabMaturity;
         private System.Windows.Forms.TabPage tabFractionMortality;
-        private System.Windows.Forms.CheckBox checkBoxTimeVarying;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox checkBoxFractionMortalityTimeVarying;
+        private System.Windows.Forms.DataGridView dataGridFractionMortality;
         private System.Windows.Forms.Label labelFractionMortality;
 
 
