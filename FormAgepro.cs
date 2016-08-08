@@ -221,9 +221,11 @@ namespace AGEPRO.GUI
             loadStochasticAgeInputData(controlBiological.maturityAge, inpFile.maturity, inpFile.general);
 
             //Fraction Mortality Prior To Spawning (Biological)
+            controlBiological.readFractionMortalityState = true;
             controlBiological.fractionMortality = 
                 setAgeproDataTable (controlBiological.fractionMortality, inpFile.biological.TSpawn);
             controlBiological.fractionMortalityTimeVarying = inpFile.biological.timeVarying;
+            controlBiological.readFractionMortalityState = false;
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;

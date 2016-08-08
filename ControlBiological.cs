@@ -12,7 +12,7 @@ namespace AGEPRO.GUI
 {
     public partial class ControlBiological : UserControl
     {
-        
+        public bool readFractionMortalityState;
         public ControlStochasticAge maturityAge;
         
         public ControlBiological()
@@ -54,8 +54,26 @@ namespace AGEPRO.GUI
 
         private void checkBoxFractionMortalityTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
+            if (this.readFractionMortalityState == false)
+            {
+                fractionMortality.Columns.Clear(); //Clear all Columns
 
-
+                if (checkBoxFractionMortalityTimeVarying.Checked)
+                {
+                    //Time Varying Fraction Mortality Data Table share the same time horizion as the
+                    //Maturity Data Table (since it is coming from the General Options parameters)
+                    for (int iyear = 0; iyear < maturityAge.seqYears.Count(); iyear++)
+                    {
+                        string colNameYear = maturityAge.seqYears[iyear]; 
+                        fractionMortality.Columns.Add(colNameYear);
+                    }
+                }
+                else
+                {
+                    string colNameYear = "All Years";
+                    fractionMortality.Columns.Add(colNameYear);
+                }
+            }
         }
         
     }
