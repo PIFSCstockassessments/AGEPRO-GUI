@@ -111,6 +111,12 @@
     <Compile Include="ControlStochasticAgeDataGridTable.Designer.cs">
       <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlWeightAge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlWeightAge.Designer.cs">
+      <DependentUpon>ControlWeightAge.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlStochasticAgeDataGridTable.resx">
       <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlWeightAge.resx">
+      <DependentUpon>ControlWeightAge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>

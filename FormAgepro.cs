@@ -22,6 +22,11 @@ namespace AGEPRO.GUI
         private ControlStochasticAge controlDiscardFraction;
         private ControlStochasticAge controlNaturalMortality;
         private ControlBiological controlBiological;
+        private ControlWeightAge controlJan1Weight;
+        private ControlWeightAge controlSSBWeight;
+        private ControlWeightAge controlMidYearWeight;
+        private ControlWeightAge controlCatchWeight;
+        private ControlWeightAge controlDiscardWeight;
 
         public FormAgepro()
         {
@@ -37,6 +42,11 @@ namespace AGEPRO.GUI
             controlDiscardFraction = new ControlStochasticAge();
             controlNaturalMortality = new ControlStochasticAge();
             controlBiological = new ControlBiological();
+            controlJan1Weight = new ControlWeightAge();
+            controlSSBWeight = new ControlWeightAge();
+            controlMidYearWeight = new ControlWeightAge();
+            controlCatchWeight = new ControlWeightAge();
+            controlDiscardWeight = new ControlWeightAge();
             
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -66,6 +76,9 @@ namespace AGEPRO.GUI
             try
             {   
                 //TODO TODO TODO: Validate GeneralOption Parameters
+
+                //TODO Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
+                //Discards are Present is not checked
 
                 //Use general options parameters to set inputFile parameters 
                 int generalSetNumAges = controlGeneralOptions.generalLastAgeClass -
@@ -103,21 +116,38 @@ namespace AGEPRO.GUI
         private void treeViewNavigation_AfterSelect(object sender, TreeViewEventArgs e)
         {
             string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
-            
-            //TODO
+
+            //TODO REFACTOR THIS SWITCH STATEMEMT
             switch (selectedTreeNode)
             {
                 case "treeNodeGeneral":
                     panelAgeproParameter.Controls.Clear();
                     panelAgeproParameter.Controls.Add(controlGeneralOptions);
                     break;
-                case "treeNodeMiscOptions":
+                case "treeNodeJan1":
                     panelAgeproParameter.Controls.Clear();
-                    panelAgeproParameter.Controls.Add(controlMiscOptions);
+                    controlJan1Weight.Dock = DockStyle.Fill;
+                    panelAgeproParameter.Controls.Add(controlJan1Weight);
                     break;
-                case "treeNodeBootstrapping":
+                case "treeNodeSSB":
                     panelAgeproParameter.Controls.Clear();
-                    panelAgeproParameter.Controls.Add(controlBootstrap);
+                    controlSSBWeight.Dock = DockStyle.Fill;
+                    panelAgeproParameter.Controls.Add(controlSSBWeight);
+                    break;
+                case "treeNodeMidYear":
+                    panelAgeproParameter.Controls.Clear();
+                    controlMidYearWeight.Dock = DockStyle.Fill;
+                    panelAgeproParameter.Controls.Add(controlMidYearWeight);
+                    break;
+                case "treeNodeCatchWeight":
+                    panelAgeproParameter.Controls.Clear();
+                    controlCatchWeight.Dock = DockStyle.Fill;
+                    panelAgeproParameter.Controls.Add(controlCatchWeight);
+                    break;
+                case "treeNodeDiscardWeight":
+                    panelAgeproParameter.Controls.Clear();
+                    controlSSBWeight.Dock = DockStyle.Fill;
+                    panelAgeproParameter.Controls.Add(controlDiscardWeight);
                     break;
                 case "treeNodeFisherySelectivity":
                     panelAgeproParameter.Controls.Clear();
@@ -138,6 +168,14 @@ namespace AGEPRO.GUI
                     panelAgeproParameter.Controls.Clear();
                     controlBiological.Dock = DockStyle.Fill;
                     panelAgeproParameter.Controls.Add(controlBiological);
+                    break;
+                case "treeNodeBootstrapping":
+                    panelAgeproParameter.Controls.Clear();
+                    panelAgeproParameter.Controls.Add(controlBootstrap);
+                    break;
+                case "treeNodeMiscOptions":
+                    panelAgeproParameter.Controls.Clear();
+                    panelAgeproParameter.Controls.Add(controlMiscOptions);
                     break;
                 default:
                     break;
@@ -208,6 +246,21 @@ namespace AGEPRO.GUI
             controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
             controlGeneralOptions.generalDiscards = inpFile.general.hasDiscards;
 
+            //JAN-1
+            loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general);
+
+            //SSB
+            loadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general);
+
+            //Mid-Year (Mean)
+            loadWeightAgeInputData(controlMidYearWeight, inpFile.meanWeight, inpFile.general);
+
+            //Catch Weight
+            loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general);
+
+            //Discard Weight
+            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
+
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
 
@@ -269,8 +322,9 @@ namespace AGEPRO.GUI
             
             
             
-            Console.WriteLine("DEBUG: End Load AGEPRO Parameters");
+            Console.WriteLine("Loaded AGEPRO Parameters ..");
         }
+
 
         private void loadStochasticAgeInputData(ControlStochasticAge ctl, AGEPRO.CoreLib.AgeproStochasticAgeTable inp, 
             AGEPRO.CoreLib.AgeproGeneral generalOpt)
@@ -279,6 +333,26 @@ namespace AGEPRO.GUI
             ctl.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
             ctl.numFleets = generalOpt.numFleets;
             ctl.timeVarying = inp.timeVarying;
+            ctl.stochasticDataFile = inp.dataFile;
+            ctl.stochasticAgeTable = setAgeproDataTable(ctl.stochasticAgeTable, inp.byAgeData);
+            ctl.stochasticCV = setAgeproDataTable(ctl.stochasticCV, inp.byAgeCV);
+            if (!(ctl.stochasticAgeTable != null))
+            {
+                ctl.enableTimeVaryingCheckBox = false;
+            }
+            else
+            {
+                ctl.enableTimeVaryingCheckBox = true;
+            }
+            ctl.readInputFileState = false;
+        }
+        private void loadWeightAgeInputData(ControlWeightAge ctl, AGEPRO.CoreLib.AgeproWeightAgeTable inp,
+            AGEPRO.CoreLib.AgeproGeneral generalOpt)
+        {
+            ctl.readInputFileState = true;
+            ctl.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
+            ctl.timeVarying = inp.timeVarying;
+            ctl.indexWeightOption = inp.weightOpt;
             ctl.stochasticDataFile = inp.dataFile;
             ctl.stochasticAgeTable = setAgeproDataTable(ctl.stochasticAgeTable, inp.byAgeData);
             ctl.stochasticCV = setAgeproDataTable(ctl.stochasticCV, inp.byAgeCV);
