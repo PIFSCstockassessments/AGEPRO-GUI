@@ -31,6 +31,7 @@
             this.labelDataFile = new System.Windows.Forms.Label();
             this.textBoxDataFile = new System.Windows.Forms.TextBox();
             this.buttonLoadDataFile = new System.Windows.Forms.Button();
+            this.checkBoxTimeVaryingFile = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelDataFile
@@ -44,6 +45,8 @@
             // 
             // textBoxDataFile
             // 
+            this.textBoxDataFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDataFile.Location = new System.Drawing.Point(22, 64);
             this.textBoxDataFile.Name = "textBoxDataFile";
             this.textBoxDataFile.Size = new System.Drawing.Size(721, 20);
@@ -51,6 +54,7 @@
             // 
             // buttonLoadDataFile
             // 
+            this.buttonLoadDataFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLoadDataFile.Location = new System.Drawing.Point(759, 61);
             this.buttonLoadDataFile.Name = "buttonLoadDataFile";
             this.buttonLoadDataFile.Size = new System.Drawing.Size(75, 23);
@@ -58,10 +62,21 @@
             this.buttonLoadDataFile.Text = "Browse";
             this.buttonLoadDataFile.UseVisualStyleBackColor = true;
             // 
+            // checkBoxTimeVaryingFile
+            // 
+            this.checkBoxTimeVaryingFile.AutoSize = true;
+            this.checkBoxTimeVaryingFile.Location = new System.Drawing.Point(22, 100);
+            this.checkBoxTimeVaryingFile.Name = "checkBoxTimeVaryingFile";
+            this.checkBoxTimeVaryingFile.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxTimeVaryingFile.TabIndex = 3;
+            this.checkBoxTimeVaryingFile.Text = "Data File is Time Varying";
+            this.checkBoxTimeVaryingFile.UseVisualStyleBackColor = true;
+            // 
             // ControlStochasticAgeFromFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxTimeVaryingFile);
             this.Controls.Add(this.buttonLoadDataFile);
             this.Controls.Add(this.textBoxDataFile);
             this.Controls.Add(this.labelDataFile);
@@ -77,5 +92,6 @@
         private System.Windows.Forms.Label labelDataFile;
         private System.Windows.Forms.TextBox textBoxDataFile;
         private System.Windows.Forms.Button buttonLoadDataFile;
+        private System.Windows.Forms.CheckBox checkBoxTimeVaryingFile;
     }
 }
