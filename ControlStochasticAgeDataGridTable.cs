@@ -43,7 +43,7 @@ namespace AGEPRO.GUI
             get { return (DataTable)dataGridCVTable.DataSource; }
             set { dataGridCVTable.DataSource = value; }
         }
-        public bool enableTimeVaryingCheckbox
+        public bool enableTimeVaryingCheckBox
         {
             get { return checkBoxTimeVarying.Enabled; }
             set { checkBoxTimeVarying.Enabled = value; }

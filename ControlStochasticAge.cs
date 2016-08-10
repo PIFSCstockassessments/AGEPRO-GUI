@@ -67,8 +67,8 @@ namespace AGEPRO.GUI
         }
         public bool enableTimeVaryingCheckBox
         {
-            get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckbox; }
-            set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckbox = value; }
+            get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox; }
+            set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value; }
         }
 
         protected override void OnLoad(EventArgs e)
