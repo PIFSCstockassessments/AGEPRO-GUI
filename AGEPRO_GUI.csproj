@@ -69,11 +69,11 @@
     <Compile Include="AboutAgepro.Designer.cs">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlBioStochasticAge.cs">
+    <Compile Include="ControlBiological.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlBioStochasticAge.Designer.cs">
-      <DependentUpon>ControlBioStochasticAge.cs</DependentUpon>
+    <Compile Include="ControlBiological.Designer.cs">
+      <DependentUpon>ControlBiological.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlBootstrap.cs">
       <SubType>UserControl</SubType>
@@ -111,6 +111,12 @@
     <Compile Include="ControlStochasticAgeDataGridTable.Designer.cs">
       <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlWeightAge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlWeightAge.Designer.cs">
+      <DependentUpon>ControlWeightAge.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlBiological.resx">
+      <DependentUpon>ControlBiological.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlBootstrap.resx">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
@@ -139,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlStochasticAgeDataGridTable.resx">
       <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlWeightAge.resx">
+      <DependentUpon>ControlWeightAge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>

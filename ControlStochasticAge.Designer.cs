@@ -43,13 +43,13 @@
             this.tableLayoutStochasticAgePanel.Controls.Add(this.panelStochasticParameterAge, 1, 2);
             this.tableLayoutStochasticAgePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutStochasticAgePanel.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutStochasticAgePanel.MinimumSize = new System.Drawing.Size(900, 520);
+            this.tableLayoutStochasticAgePanel.MinimumSize = new System.Drawing.Size(900, 480);
             this.tableLayoutStochasticAgePanel.Name = "tableLayoutStochasticAgePanel";
             this.tableLayoutStochasticAgePanel.RowCount = 3;
             this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutStochasticAgePanel.Size = new System.Drawing.Size(900, 520);
+            this.tableLayoutStochasticAgePanel.Size = new System.Drawing.Size(900, 480);
             this.tableLayoutStochasticAgePanel.TabIndex = 2;
             // 
             // panelStochasticParameterAge
@@ -57,11 +57,11 @@
             this.panelStochasticParameterAge.AutoSize = true;
             this.panelStochasticParameterAge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelStochasticParameterAge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelStochasticParameterAge.Location = new System.Drawing.Point(23, 98);
+            this.panelStochasticParameterAge.Location = new System.Drawing.Point(23, 92);
             this.panelStochasticParameterAge.MinimumSize = new System.Drawing.Size(873, 350);
             this.panelStochasticParameterAge.Name = "panelStochasticParameterAge";
             this.panelStochasticParameterAge.Padding = new System.Windows.Forms.Padding(0, 0, 5, 10);
-            this.panelStochasticParameterAge.Size = new System.Drawing.Size(874, 419);
+            this.panelStochasticParameterAge.Size = new System.Drawing.Size(874, 385);
             this.panelStochasticParameterAge.TabIndex = 3;
             // 
             // ControlStochasticAge
@@ -70,7 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutStochasticAgePanel);
             this.Name = "ControlStochasticAge";
-            this.Size = new System.Drawing.Size(900, 520);
+            this.Size = new System.Drawing.Size(900, 480);
             this.tableLayoutStochasticAgePanel.ResumeLayout(false);
             this.tableLayoutStochasticAgePanel.PerformLayout();
             this.ResumeLayout(false);

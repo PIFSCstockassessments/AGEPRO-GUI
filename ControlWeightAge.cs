@@ -10,21 +10,24 @@ using System.Windows.Forms;
 
 namespace AGEPRO.GUI
 {
-    public partial class ControlStochasticAge : UserControl
+    public partial class ControlWeightAge : UserControl
     {
         private ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
         private ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
-        public string stochasticParameterLabel { get; set; }
-        
-        public ControlStochasticAge()
+
+        public int indexWeightOption { get; set; }
+        public Dictionary<int, RadioButton> weightOptionDictionary;
+
+        public ControlWeightAge()
         {
             InitializeComponent();
             controlStochasticParamAgeFromUser = new ControlStochasticAgeDataGridTable();
             controlStochasticParamAgeFromFile = new ControlStochasticAgeFromFile();
-            radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
-            stochasticParameterLabel = "Stochastic Parameters"; //Default Fallback Text
-        }
+            radioWeightsFromUser.Checked = true; //User Specfied Option Selected by Default
+            controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = "Weights of Age";
 
+            setWeightOptionDictionary();
+        }
         public bool timeVarying
         {
             get { return controlStochasticParamAgeFromUser.timeVarying; }
@@ -34,6 +37,11 @@ namespace AGEPRO.GUI
         {
             get { return controlStochasticParamAgeFromUser.readInputFileState; }
             set { controlStochasticParamAgeFromUser.readInputFileState = value; }
+        }
+        public bool enableTimeVaryingCheckBox
+        {
+            get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox; }
+            set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value; }
         }
         public DataTable stochasticAgeTable
         {
@@ -50,49 +58,77 @@ namespace AGEPRO.GUI
             get { return controlStochasticParamAgeFromUser.seqYears; }
             set { controlStochasticParamAgeFromUser.seqYears = value; }
         }
-        public int numFleets
-        {
-            get { return controlStochasticParamAgeFromUser.numFleets; }
-            set { controlStochasticParamAgeFromUser.numFleets = value; }
-        }
         public string stochasticDataFile
         {
             get { return controlStochasticParamAgeFromFile.stochasticDataFile; }
             set { controlStochasticParamAgeFromFile.stochasticDataFile = value; }
+        }
+        public int numFleets
+        {
+            get { return controlStochasticParamAgeFromUser.numFleets; }
+            set { controlStochasticParamAgeFromUser.numFleets = value; }
         }
         public bool isMultiFleet
         {
             get { return controlStochasticParamAgeFromUser.multiFleetTable; }
             set { controlStochasticParamAgeFromUser.multiFleetTable = value; }
         }
-        public bool enableTimeVaryingCheckBox
-        {
-            get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox; }
-            set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value; }
-        }
-        
         protected override void OnLoad(EventArgs e)
         {
-            //(Re)Set Stochastic Parameter Label/Options text 
-            radioParameterFromUser.Text = "User Specified " + this.stochasticParameterLabel + " At Age";
-            radioParameterFromFile.Text = "Read " + this.stochasticParameterLabel + " From File";
-            controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = this.stochasticParameterLabel + " Of Age";
-        
+            //
+
+            if(weightOptionDictionary.ContainsKey(indexWeightOption))
+            {
+                weightOptionDictionary[indexWeightOption].Checked = true;
+            }
+
             base.OnLoad(e);
         }
-        private void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
+
+        private void radioWeightsFromUser_CheckedChanged(object sender, EventArgs e)
         {
             panelStochasticParameterAge.Controls.Clear();
             controlStochasticParamAgeFromUser.Dock = DockStyle.Fill;
             panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromUser);
         }
 
-        private void radioParameterFromFile_CheckedChanged(object sender, EventArgs e)
+        private void radioWeightsFromFile_CheckedChanged(object sender, EventArgs e)
         {
             panelStochasticParameterAge.Controls.Clear();
-            controlStochasticParamAgeFromFile.Dock = DockStyle.Fill;
             panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
         }
 
+        private void radioWeightsFromJan1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioWeightsFromSSB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioWeightsFromMidYear_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioWeightsFromCatch_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void setWeightOptionDictionary()
+        {
+            weightOptionDictionary = new Dictionary<int, RadioButton>();
+
+            weightOptionDictionary.Add(0, radioWeightsFromUser);
+            weightOptionDictionary.Add(1, radioWeightsFromFile);
+            weightOptionDictionary.Add(-1, radioWeightsFromJan1);
+            weightOptionDictionary.Add(-2, radioWeightsFromSSB);
+            weightOptionDictionary.Add(-3, radioWeightsFromMidYear);
+            weightOptionDictionary.Add(-4, radioWeightsFromCatch);
+            
+        }
     }
 }

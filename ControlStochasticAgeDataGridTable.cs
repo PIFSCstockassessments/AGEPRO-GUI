@@ -21,6 +21,7 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
             readInputFileState = false;
+
         }
         public string stochasticParamAgeDataGridLabel
         {
@@ -42,7 +43,13 @@ namespace AGEPRO.GUI
             get { return (DataTable)dataGridCVTable.DataSource; }
             set { dataGridCVTable.DataSource = value; }
         }
-
+        public bool enableTimeVaryingCheckBox
+        {
+            get { return checkBoxTimeVarying.Enabled; }
+            set { checkBoxTimeVarying.Enabled = value; }
+        }
+        
+        
         private void setStochasticAgeTableRowHeaders(string[] yearArray, int nfleets)
         {
             
@@ -60,7 +67,14 @@ namespace AGEPRO.GUI
                 {
                     for (int kyear = 0; kyear < yearArray.Count(); kyear++)
                     {
-                        stochasticRowHeaders[irowHeader] = "Fleet-" + (jfleet + 1) + "-" + yearArray[kyear];
+                        if (timeVarying)
+                        {
+                            stochasticRowHeaders[irowHeader] = "Fleet-" + (jfleet + 1) + "-" + yearArray[kyear];
+                        }
+                        else
+                        {
+                            stochasticRowHeaders[irowHeader] = "Fleet-" + (jfleet + 1);
+                        }
                         irowHeader = irowHeader + 1;
                     }
                 }
@@ -104,6 +118,7 @@ namespace AGEPRO.GUI
 
         private void checkBoxTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
+            //TODO: Disable Time Varying Checkbox if there is no data
             
             if (this.readInputFileState == false)
             {
@@ -156,6 +171,17 @@ namespace AGEPRO.GUI
                 else
                 {
                     string[] stochasticAgeTableRowHeaders = new string[numFleets];
+                    if (multiFleetTable == true)
+                    {
+                        for (int ifleet = 0; ifleet < numFleets; ifleet++)
+                        {
+                            stochasticAgeTableRowHeaders[ifleet] = "Fleet-" + (ifleet+1);
+                        }
+                    }
+                    else
+                    {
+                        stochasticAgeTableRowHeaders[0] = "All Years";
+                    }
                     setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
                 }
                 //setStochasticAgeTableRowHeaders(seqYears, numFleets);
@@ -175,6 +201,8 @@ namespace AGEPRO.GUI
                 setCVTableRowHeaders();
             }
         }
+
+
 
 
 
