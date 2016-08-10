@@ -171,6 +171,17 @@ namespace AGEPRO.GUI
                 else
                 {
                     string[] stochasticAgeTableRowHeaders = new string[numFleets];
+                    if (multiFleetTable == true)
+                    {
+                        for (int ifleet = 0; ifleet < numFleets; ifleet++)
+                        {
+                            stochasticAgeTableRowHeaders[ifleet] = "Fleet-" + (ifleet+1);
+                        }
+                    }
+                    else
+                    {
+                        stochasticAgeTableRowHeaders[0] = "All Years";
+                    }
                     setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
                 }
                 //setStochasticAgeTableRowHeaders(seqYears, numFleets);

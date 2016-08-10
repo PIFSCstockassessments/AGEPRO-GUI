@@ -64,6 +64,13 @@ namespace AGEPRO.GUI
             controlDiscardFraction.isMultiFleet = true;
             controlNaturalMortality.stochasticParameterLabel = "Natural Mortality";
             controlNaturalMortality.isMultiFleet = false;
+
+            //Weight Age Options
+            controlJan1Weight.isMultiFleet = false;
+            controlSSBWeight.isMultiFleet = false;
+            controlMidYearWeight.isMultiFleet = false;
+            controlCatchWeight.isMultiFleet = true;
+            controlDiscardWeight.isMultiFleet = true;
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
@@ -146,7 +153,7 @@ namespace AGEPRO.GUI
                     break;
                 case "treeNodeDiscardWeight":
                     panelAgeproParameter.Controls.Clear();
-                    controlSSBWeight.Dock = DockStyle.Fill;
+                    controlDiscardWeight.Dock = DockStyle.Fill;
                     panelAgeproParameter.Controls.Add(controlDiscardWeight);
                     break;
                 case "treeNodeFisherySelectivity":
@@ -352,6 +359,7 @@ namespace AGEPRO.GUI
             ctl.readInputFileState = true;
             ctl.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
             ctl.timeVarying = inp.timeVarying;
+            ctl.numFleets = generalOpt.numFleets;
             ctl.indexWeightOption = inp.weightOpt;
             ctl.stochasticDataFile = inp.dataFile;
             ctl.stochasticAgeTable = setAgeproDataTable(ctl.stochasticAgeTable, inp.byAgeData);

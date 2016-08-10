@@ -25,7 +25,6 @@ namespace AGEPRO.GUI
             controlStochasticParamAgeFromFile = new ControlStochasticAgeFromFile();
             radioWeightsFromUser.Checked = true; //User Specfied Option Selected by Default
             controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = "Weights of Age";
-            controlStochasticParamAgeFromUser.numFleets = 1;
 
             setWeightOptionDictionary();
         }
@@ -63,6 +62,16 @@ namespace AGEPRO.GUI
         {
             get { return controlStochasticParamAgeFromFile.stochasticDataFile; }
             set { controlStochasticParamAgeFromFile.stochasticDataFile = value; }
+        }
+        public int numFleets
+        {
+            get { return controlStochasticParamAgeFromUser.numFleets; }
+            set { controlStochasticParamAgeFromUser.numFleets = value; }
+        }
+        public bool isMultiFleet
+        {
+            get { return controlStochasticParamAgeFromUser.multiFleetTable; }
+            set { controlStochasticParamAgeFromUser.multiFleetTable = value; }
         }
         protected override void OnLoad(EventArgs e)
         {
