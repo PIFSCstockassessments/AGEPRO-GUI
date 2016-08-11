@@ -22,10 +22,10 @@ namespace AGEPRO.GUI
         private ControlStochasticAge controlDiscardFraction;
         private ControlStochasticAge controlNaturalMortality;
         private ControlBiological controlBiological;
-        private ControlWeightAge controlJan1Weight;
-        private ControlWeightAge controlSSBWeight;
-        private ControlWeightAge controlMidYearWeight;
-        private ControlWeightAge controlCatchWeight;
+        private ControlStochasticWeightAge controlJan1Weight;
+        private ControlStochasticWeightAge controlSSBWeight;
+        private ControlStochasticWeightAge controlMidYearWeight;
+        private ControlStochasticWeightAge controlCatchWeight;
         private ControlStochasticWeightAge controlDiscardWeight;
 
         public FormAgepro()
@@ -42,10 +42,10 @@ namespace AGEPRO.GUI
             controlDiscardFraction = new ControlStochasticAge();
             controlNaturalMortality = new ControlStochasticAge();
             controlBiological = new ControlBiological();
-            controlJan1Weight = new ControlWeightAge();
-            controlSSBWeight = new ControlWeightAge();
-            controlMidYearWeight = new ControlWeightAge();
-            controlCatchWeight = new ControlWeightAge();
+            controlJan1Weight = new ControlStochasticWeightAge();
+            controlSSBWeight = new ControlStochasticWeightAge();
+            controlMidYearWeight = new ControlStochasticWeightAge();
+            controlCatchWeight = new ControlStochasticWeightAge();
             controlDiscardWeight = new ControlStochasticWeightAge();
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
@@ -266,7 +266,7 @@ namespace AGEPRO.GUI
             loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general);
 
             //Discard Weight
-            //loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
+            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
 
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
@@ -353,26 +353,11 @@ namespace AGEPRO.GUI
             }
             ctl.readInputFileState = false;
         }
-        private void loadWeightAgeInputData(ControlWeightAge ctl, AGEPRO.CoreLib.AgeproWeightAgeTable inp,
+        private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, AGEPRO.CoreLib.AgeproWeightAgeTable inp,
             AGEPRO.CoreLib.AgeproGeneral generalOpt)
         {
-            ctl.readInputFileState = true;
-            ctl.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
-            ctl.timeVarying = inp.timeVarying;
-            ctl.numFleets = generalOpt.numFleets;
             ctl.indexWeightOption = inp.weightOpt;
-            ctl.stochasticDataFile = inp.dataFile;
-            ctl.stochasticAgeTable = setAgeproDataTable(ctl.stochasticAgeTable, inp.byAgeData);
-            ctl.stochasticCV = setAgeproDataTable(ctl.stochasticCV, inp.byAgeCV);
-            if (!(ctl.stochasticAgeTable != null))
-            {
-                ctl.enableTimeVaryingCheckBox = false;
-            }
-            else
-            {
-                ctl.enableTimeVaryingCheckBox = true;
-            }
-            ctl.readInputFileState = false;
+            loadStochasticAgeInputData((ControlStochasticAge)ctl, (AGEPRO.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
         }
 
         private DataTable setAgeproDataTable (DataTable dgvTable, DataTable inpFileTable)
