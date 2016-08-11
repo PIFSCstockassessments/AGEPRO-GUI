@@ -31,12 +31,12 @@
             this.tableLayoutWeightAgePanel = new System.Windows.Forms.TableLayoutPanel();
             this.panelStochasticParameterAge = new System.Windows.Forms.Panel();
             this.groupOptions = new System.Windows.Forms.GroupBox();
-            this.radioWeightsFromUser = new System.Windows.Forms.RadioButton();
-            this.radioWeightsFromFile = new System.Windows.Forms.RadioButton();
-            this.radioWeightsFromJan1 = new System.Windows.Forms.RadioButton();
-            this.radioWeightsFromSSB = new System.Windows.Forms.RadioButton();
-            this.radioWeightsFromMidYear = new System.Windows.Forms.RadioButton();
             this.radioWeightsFromCatch = new System.Windows.Forms.RadioButton();
+            this.radioWeightsFromMidYear = new System.Windows.Forms.RadioButton();
+            this.radioWeightsFromSSB = new System.Windows.Forms.RadioButton();
+            this.radioWeightsFromJan1 = new System.Windows.Forms.RadioButton();
+            this.radioWeightsFromFile = new System.Windows.Forms.RadioButton();
+            this.radioWeightsFromUser = new System.Windows.Forms.RadioButton();
             this.tableLayoutWeightAgePanel.SuspendLayout();
             this.groupOptions.SuspendLayout();
             this.SuspendLayout();
@@ -88,53 +88,17 @@
             this.groupOptions.TabStop = false;
             this.groupOptions.Text = "Options";
             // 
-            // radioWeightsFromUser
+            // radioWeightsFromCatch
             // 
-            this.radioWeightsFromUser.AutoSize = true;
-            this.radioWeightsFromUser.Location = new System.Drawing.Point(25, 20);
-            this.radioWeightsFromUser.Name = "radioWeightsFromUser";
-            this.radioWeightsFromUser.Size = new System.Drawing.Size(172, 17);
-            this.radioWeightsFromUser.TabIndex = 0;
-            this.radioWeightsFromUser.TabStop = true;
-            this.radioWeightsFromUser.Text = "User Specified Weights Of Age";
-            this.radioWeightsFromUser.UseVisualStyleBackColor = true;
-            this.radioWeightsFromUser.CheckedChanged += new System.EventHandler(this.radioWeightsFromUser_CheckedChanged);
-            // 
-            // radioWeightsFromFile
-            // 
-            this.radioWeightsFromFile.AutoSize = true;
-            this.radioWeightsFromFile.Location = new System.Drawing.Point(298, 20);
-            this.radioWeightsFromFile.Name = "radioWeightsFromFile";
-            this.radioWeightsFromFile.Size = new System.Drawing.Size(138, 17);
-            this.radioWeightsFromFile.TabIndex = 1;
-            this.radioWeightsFromFile.TabStop = true;
-            this.radioWeightsFromFile.Text = "Read Weights From File";
-            this.radioWeightsFromFile.UseVisualStyleBackColor = true;
-            this.radioWeightsFromFile.CheckedChanged += new System.EventHandler(this.radioWeightsFromFile_CheckedChanged);
-            // 
-            // radioWeightsFromJan1
-            // 
-            this.radioWeightsFromJan1.AutoSize = true;
-            this.radioWeightsFromJan1.Location = new System.Drawing.Point(25, 44);
-            this.radioWeightsFromJan1.Name = "radioWeightsFromJan1";
-            this.radioWeightsFromJan1.Size = new System.Drawing.Size(154, 17);
-            this.radioWeightsFromJan1.TabIndex = 2;
-            this.radioWeightsFromJan1.TabStop = true;
-            this.radioWeightsFromJan1.Text = "Use JAN-1 Weights Of Age";
-            this.radioWeightsFromJan1.UseVisualStyleBackColor = true;
-            this.radioWeightsFromJan1.CheckedChanged += new System.EventHandler(this.radioWeightsFromJan1_CheckedChanged);
-            // 
-            // radioWeightsFromSSB
-            // 
-            this.radioWeightsFromSSB.AutoSize = true;
-            this.radioWeightsFromSSB.Location = new System.Drawing.Point(298, 44);
-            this.radioWeightsFromSSB.Name = "radioWeightsFromSSB";
-            this.radioWeightsFromSSB.Size = new System.Drawing.Size(146, 17);
-            this.radioWeightsFromSSB.TabIndex = 3;
-            this.radioWeightsFromSSB.TabStop = true;
-            this.radioWeightsFromSSB.Text = "Use SSB Weights Of Age";
-            this.radioWeightsFromSSB.UseVisualStyleBackColor = true;
-            this.radioWeightsFromSSB.CheckedChanged += new System.EventHandler(this.radioWeightsFromSSB_CheckedChanged);
+            this.radioWeightsFromCatch.AutoSize = true;
+            this.radioWeightsFromCatch.Location = new System.Drawing.Point(298, 68);
+            this.radioWeightsFromCatch.Name = "radioWeightsFromCatch";
+            this.radioWeightsFromCatch.Size = new System.Drawing.Size(152, 17);
+            this.radioWeightsFromCatch.TabIndex = 5;
+            this.radioWeightsFromCatch.TabStop = true;
+            this.radioWeightsFromCatch.Text = "Use Catch Weights At Age";
+            this.radioWeightsFromCatch.UseVisualStyleBackColor = true;
+            this.radioWeightsFromCatch.CheckedChanged += new System.EventHandler(this.radioWeightsFromCatch_CheckedChanged);
             // 
             // radioWeightsFromMidYear
             // 
@@ -148,17 +112,53 @@
             this.radioWeightsFromMidYear.UseVisualStyleBackColor = true;
             this.radioWeightsFromMidYear.CheckedChanged += new System.EventHandler(this.radioWeightsFromMidYear_CheckedChanged);
             // 
-            // radioWeightsFromCatch
+            // radioWeightsFromSSB
             // 
-            this.radioWeightsFromCatch.AutoSize = true;
-            this.radioWeightsFromCatch.Location = new System.Drawing.Point(298, 68);
-            this.radioWeightsFromCatch.Name = "radioWeightsFromCatch";
-            this.radioWeightsFromCatch.Size = new System.Drawing.Size(152, 17);
-            this.radioWeightsFromCatch.TabIndex = 5;
-            this.radioWeightsFromCatch.TabStop = true;
-            this.radioWeightsFromCatch.Text = "Use Catch Weights At Age";
-            this.radioWeightsFromCatch.UseVisualStyleBackColor = true;
-            this.radioWeightsFromCatch.CheckedChanged += new System.EventHandler(this.radioWeightsFromCatch_CheckedChanged);
+            this.radioWeightsFromSSB.AutoSize = true;
+            this.radioWeightsFromSSB.Location = new System.Drawing.Point(298, 44);
+            this.radioWeightsFromSSB.Name = "radioWeightsFromSSB";
+            this.radioWeightsFromSSB.Size = new System.Drawing.Size(146, 17);
+            this.radioWeightsFromSSB.TabIndex = 3;
+            this.radioWeightsFromSSB.TabStop = true;
+            this.radioWeightsFromSSB.Text = "Use SSB Weights Of Age";
+            this.radioWeightsFromSSB.UseVisualStyleBackColor = true;
+            this.radioWeightsFromSSB.CheckedChanged += new System.EventHandler(this.radioWeightsFromSSB_CheckedChanged);
+            // 
+            // radioWeightsFromJan1
+            // 
+            this.radioWeightsFromJan1.AutoSize = true;
+            this.radioWeightsFromJan1.Location = new System.Drawing.Point(25, 44);
+            this.radioWeightsFromJan1.Name = "radioWeightsFromJan1";
+            this.radioWeightsFromJan1.Size = new System.Drawing.Size(154, 17);
+            this.radioWeightsFromJan1.TabIndex = 2;
+            this.radioWeightsFromJan1.TabStop = true;
+            this.radioWeightsFromJan1.Text = "Use JAN-1 Weights Of Age";
+            this.radioWeightsFromJan1.UseVisualStyleBackColor = true;
+            this.radioWeightsFromJan1.CheckedChanged += new System.EventHandler(this.radioWeightsFromJan1_CheckedChanged);
+            // 
+            // radioWeightsFromFile
+            // 
+            this.radioWeightsFromFile.AutoSize = true;
+            this.radioWeightsFromFile.Location = new System.Drawing.Point(298, 20);
+            this.radioWeightsFromFile.Name = "radioWeightsFromFile";
+            this.radioWeightsFromFile.Size = new System.Drawing.Size(138, 17);
+            this.radioWeightsFromFile.TabIndex = 1;
+            this.radioWeightsFromFile.TabStop = true;
+            this.radioWeightsFromFile.Text = "Read Weights From File";
+            this.radioWeightsFromFile.UseVisualStyleBackColor = true;
+            this.radioWeightsFromFile.CheckedChanged += new System.EventHandler(this.radioWeightsFromFile_CheckedChanged);
+            // 
+            // radioWeightsFromUser
+            // 
+            this.radioWeightsFromUser.AutoSize = true;
+            this.radioWeightsFromUser.Location = new System.Drawing.Point(25, 20);
+            this.radioWeightsFromUser.Name = "radioWeightsFromUser";
+            this.radioWeightsFromUser.Size = new System.Drawing.Size(172, 17);
+            this.radioWeightsFromUser.TabIndex = 0;
+            this.radioWeightsFromUser.TabStop = true;
+            this.radioWeightsFromUser.Text = "User Specified Weights Of Age";
+            this.radioWeightsFromUser.UseVisualStyleBackColor = true;
+            this.radioWeightsFromUser.CheckedChanged += new System.EventHandler(this.radioWeightsFromUser_CheckedChanged);
             // 
             // ControlWeightAge
             // 

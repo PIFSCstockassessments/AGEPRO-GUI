@@ -12,8 +12,8 @@ namespace AGEPRO.GUI
 {
     public partial class ControlStochasticAge : UserControl
     {
-        private ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
-        private ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
+        protected ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
+        protected ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
         public string stochasticParameterLabel { get; set; }
         
         public ControlStochasticAge()
@@ -93,6 +93,8 @@ namespace AGEPRO.GUI
             controlStochasticParamAgeFromFile.Dock = DockStyle.Fill;
             panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
         }
+
+
 
     }
 }

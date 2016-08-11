@@ -26,7 +26,7 @@ namespace AGEPRO.GUI
         private ControlWeightAge controlSSBWeight;
         private ControlWeightAge controlMidYearWeight;
         private ControlWeightAge controlCatchWeight;
-        private ControlWeightAge controlDiscardWeight;
+        private ControlStochasticWeightAge controlDiscardWeight;
 
         public FormAgepro()
         {
@@ -46,7 +46,7 @@ namespace AGEPRO.GUI
             controlSSBWeight = new ControlWeightAge();
             controlMidYearWeight = new ControlWeightAge();
             controlCatchWeight = new ControlWeightAge();
-            controlDiscardWeight = new ControlWeightAge();
+            controlDiscardWeight = new ControlStochasticWeightAge();
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -266,7 +266,7 @@ namespace AGEPRO.GUI
             loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general);
 
             //Discard Weight
-            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
+            //loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
 
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
