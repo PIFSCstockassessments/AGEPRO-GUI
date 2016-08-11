@@ -14,6 +14,7 @@ namespace AGEPRO.GUI
     {
         protected ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
         protected ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
+        protected bool settingParameterForControl { get; set; }
         public string stochasticParameterLabel { get; set; }
         
         public ControlStochasticAge()
@@ -23,6 +24,7 @@ namespace AGEPRO.GUI
             controlStochasticParamAgeFromFile = new ControlStochasticAgeFromFile();
             radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
             stochasticParameterLabel = "Stochastic Parameters"; //Default Fallback Text
+            settingParameterForControl = false;
         }
 
         public bool timeVarying
@@ -80,18 +82,26 @@ namespace AGEPRO.GUI
         
             base.OnLoad(e);
         }
-        private void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
+        protected virtual void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
         {
-            panelStochasticParameterAge.Controls.Clear();
-            controlStochasticParamAgeFromUser.Dock = DockStyle.Fill;
-            panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromUser);
+            if (settingParameterForControl == false)
+            {
+                panelStochasticParameterAge.Controls.Clear();
+                controlStochasticParamAgeFromUser.Dock = DockStyle.Fill;
+                panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromUser);
+            }
+
         }
 
-        private void radioParameterFromFile_CheckedChanged(object sender, EventArgs e)
+        protected virtual void radioParameterFromFile_CheckedChanged(object sender, EventArgs e)
         {
-            panelStochasticParameterAge.Controls.Clear();
-            controlStochasticParamAgeFromFile.Dock = DockStyle.Fill;
-            panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
+            if (settingParameterForControl == false)
+            {
+                panelStochasticParameterAge.Controls.Clear();
+                controlStochasticParamAgeFromFile.Dock = DockStyle.Fill;
+                panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
+            }
+            
         }
 
 
