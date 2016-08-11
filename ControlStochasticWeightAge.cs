@@ -18,12 +18,12 @@ namespace AGEPRO.GUI
         public int indexWeightOption { get; set; }
         public Dictionary<int, RadioButton> weightOptionDictionary;
 
+
         public ControlStochasticWeightAge()
         {
             InitializeComponent();
 
             this.stochasticParameterLabel = "Weights";
-            setWeightOptionDictionary();
 
             //Add Controls to Layout Programmically 
             this.SuspendLayout();
@@ -96,6 +96,9 @@ namespace AGEPRO.GUI
             this.groupOptions.Controls.Add(this.radioWeightsFromCatch);
 
             this.ResumeLayout();
+
+            setWeightOptionDictionary();
+
         
         }
         protected override void OnLoad(EventArgs e)
@@ -110,35 +113,36 @@ namespace AGEPRO.GUI
 
         private void radioWeightsFromJan1_CheckedChanged(object sender, EventArgs e)
         {
-
+            panelStochasticParameterAge.Controls.Clear();
         }
 
         private void radioWeightsFromSSB_CheckedChanged(object sender, EventArgs e)
         {
-
+            panelStochasticParameterAge.Controls.Clear();
         }
 
         private void radioWeightsFromMidYear_CheckedChanged(object sender, EventArgs e)
         {
-
+            panelStochasticParameterAge.Controls.Clear();
         }
 
         private void radioWeightsFromCatch_CheckedChanged(object sender, EventArgs e)
         {
-
+            panelStochasticParameterAge.Controls.Clear();
         }
 
         private void setWeightOptionDictionary()
         {
             weightOptionDictionary = new Dictionary<int, RadioButton>();
 
-            weightOptionDictionary.Add(0, radioParameterFromUser);
-            weightOptionDictionary.Add(1, radioParameterFromFile);
-            weightOptionDictionary.Add(-1, radioWeightsFromJan1);
-            weightOptionDictionary.Add(-2, radioWeightsFromSSB);
-            weightOptionDictionary.Add(-3, radioWeightsFromMidYear);
-            weightOptionDictionary.Add(-4, radioWeightsFromCatch);
+            weightOptionDictionary.Add(0, this.radioParameterFromUser);
+            weightOptionDictionary.Add(1, this.radioParameterFromFile);
+            weightOptionDictionary.Add(-1, this.radioWeightsFromJan1);
+            weightOptionDictionary.Add(-2, this.radioWeightsFromSSB);
+            weightOptionDictionary.Add(-3, this.radioWeightsFromMidYear);
+            weightOptionDictionary.Add(-4, this.radioWeightsFromCatch);
 
         }
+
     }
 }
