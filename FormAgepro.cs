@@ -283,7 +283,7 @@ namespace AGEPRO.GUI
             //Fraction Mortality Prior To Spawning (Biological)
             controlBiological.readFractionMortalityState = true;
             controlBiological.fractionMortality = 
-                setAgeproDataTable (controlBiological.fractionMortality, inpFile.biological.TSpawn);
+                getAgeproInputDataTable (controlBiological.fractionMortality, inpFile.biological.TSpawn);
             controlBiological.fractionMortalityTimeVarying = inpFile.biological.timeVarying;
             controlBiological.readFractionMortalityState = false;
 
@@ -319,7 +319,7 @@ namespace AGEPRO.GUI
             controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;  
 
             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = 
-                setAgeproDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, inpFile.retroAdjustOption.retroAdjust);
+                getAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, inpFile.retroAdjustOption.retroAdjust);
                       
             if (controlMiscOptions.miscOptionsRetroAdjustmentFactors == true)
             {
@@ -341,8 +341,8 @@ namespace AGEPRO.GUI
             ctl.numFleets = generalOpt.numFleets;
             ctl.timeVarying = inp.timeVarying;
             ctl.stochasticDataFile = inp.dataFile;
-            ctl.stochasticAgeTable = setAgeproDataTable(ctl.stochasticAgeTable, inp.byAgeData);
-            ctl.stochasticCV = setAgeproDataTable(ctl.stochasticCV, inp.byAgeCV);
+            ctl.stochasticAgeTable = getAgeproInputDataTable(ctl.stochasticAgeTable, inp.byAgeData);
+            ctl.stochasticCV = getAgeproInputDataTable(ctl.stochasticCV, inp.byAgeCV);
             if (!(ctl.stochasticAgeTable != null))
             {
                 ctl.enableTimeVaryingCheckBox = false;
@@ -360,7 +360,7 @@ namespace AGEPRO.GUI
             loadStochasticAgeInputData((ControlStochasticAge)ctl, (AGEPRO.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
         }
 
-        private DataTable setAgeproDataTable (DataTable dgvTable, DataTable inpFileTable)
+        private DataTable getAgeproInputDataTable (DataTable dgvTable, DataTable inpFileTable)
         {
             if (dgvTable != null)
             {
