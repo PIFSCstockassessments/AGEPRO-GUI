@@ -107,6 +107,8 @@ namespace AGEPRO.GUI
             
         }
 
+
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Terminate
@@ -254,16 +256,16 @@ namespace AGEPRO.GUI
             controlGeneralOptions.generalDiscards = inpFile.general.hasDiscards;
 
             //JAN-1
-            loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general);
+            loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
 
             //SSB
-            loadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general);
+            loadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general, true);
 
             //Mid-Year (Mean)
-            loadWeightAgeInputData(controlMidYearWeight, inpFile.meanWeight, inpFile.general);
+            loadWeightAgeInputData(controlMidYearWeight, inpFile.meanWeight, inpFile.general, true);
 
             //Catch Weight
-            loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general);
+            loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general, true);
 
             //Discard Weight
             loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
@@ -353,11 +355,54 @@ namespace AGEPRO.GUI
             }
             ctl.readInputFileState = false;
         }
+
         private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, AGEPRO.CoreLib.AgeproWeightAgeTable inp,
-            AGEPRO.CoreLib.AgeproGeneral generalOpt)
+            AGEPRO.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
         {
             ctl.indexWeightOption = inp.weightOpt;
             loadStochasticAgeInputData((ControlStochasticAge)ctl, (AGEPRO.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+
+            //Option to to fallback and create a empty DataTable if there input file DataTable (for 
+            //weightAgeTable CVtable is Null)
+            if (fallbackNullDataTable == true)
+            {
+                if (!(ctl.stochasticAgeTable != null))
+                {
+                    int numYears;
+                    if (ctl.timeVarying == true)
+                    {
+                        numYears = generalOpt.NumYears();
+                    }
+                    else
+                    {
+                        numYears = 1;
+                    }
+
+                    ctl.stochasticAgeTable = createFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
+                    ctl.enableTimeVaryingCheckBox = true;
+                }
+                if (!(ctl.stochasticCV != null))
+                {
+                    ctl.stochasticCV = createFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
+                }
+            }
+        }
+
+        private DataTable createFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
+        {
+            DataTable fallbackAgeTable = new DataTable();
+
+            for (int nage = 0; nage < numAges; nage++)
+            {
+                fallbackAgeTable.Columns.Add("Age " + (nage + 1));
+            }
+            int numFleetYears = numYears * numFleets;
+            for (int iyear = 0; iyear < numFleetYears; iyear++)
+            {
+                fallbackAgeTable.Rows.Add();
+            }
+      
+            return fallbackAgeTable;
         }
 
         private DataTable getAgeproInputDataTable (DataTable dgvTable, DataTable inpFileTable)
