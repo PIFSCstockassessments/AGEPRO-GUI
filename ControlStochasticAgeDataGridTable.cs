@@ -49,7 +49,11 @@ namespace AGEPRO.GUI
             set { checkBoxTimeVarying.Enabled = value; }
         }
         
-        
+        /// <summary>
+        /// Creates Row Headers for the stochastic parameter's by age DataTable. 
+        /// </summary>
+        /// <param name="yearArray">String array year sequence from first to last year of projection</param>
+        /// <param name="nfleets">Number of Fleets</param>
         private void setStochasticAgeTableRowHeaders(string[] yearArray, int nfleets)
         {
             
@@ -96,6 +100,9 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// Creates row headers for the stochastic parameter's CV DataTable.
+        /// </summary>
         private void setCVTableRowHeaders()
         {
 
@@ -116,9 +123,15 @@ namespace AGEPRO.GUI
             
         }
 
+        /// <summary>
+        /// When the 'Checked' value of the Time Varying Check Box changes, the program will clear all rows and then
+        /// draw the rows of the stochastic age DataTable. The number of rows drawn will be determined on the boolean 
+        /// value of the changed "Time Varying" checked state. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBoxTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO: Disable Time Varying Checkbox if there is no data
             
             if (this.readInputFileState == false)
             {
@@ -152,17 +165,18 @@ namespace AGEPRO.GUI
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridStochasticAgeTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRowHeaderCell header = dataGridStochasticAgeTable.Rows[e.RowIndex].HeaderCell;
             
-            //TODO: Limit multiple Cell_Formatting event.
-            //3-4x Row Headers function is called. Figure out which event triggers cell_formatting
-            //1. code 259?? 2. ... 3. changes in CellSytleFormatting
-            
+           
             if (header.Value == null)
             {
-                Console.WriteLine("Cell Formatting Event at {0}", e.RowIndex + 1);
                 if(timeVarying == true)
                 {
                     string[] stochasticAgeTableRowHeaders = seqYears;
@@ -184,20 +198,23 @@ namespace AGEPRO.GUI
                     }
                     setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
                 }
-                //setStochasticAgeTableRowHeaders(seqYears, numFleets);
-   
+                
             }
             
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridCVTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRowHeaderCell header = dataGridCVTable.Rows[e.RowIndex].HeaderCell;
             //header value is null
             if (header.Value == null)
             {
-                //Console.WriteLine("Cell Formatting CV Table at {0}", e.RowIndex);
                 setCVTableRowHeaders();
             }
         }
