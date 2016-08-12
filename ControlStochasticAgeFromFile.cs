@@ -12,6 +12,8 @@ namespace AGEPRO.GUI
 {
     public partial class ControlStochasticAgeFromFile : UserControl
     {
+        public event EventHandler timeVaryingFileChecked;
+
         public ControlStochasticAgeFromFile()
         {
             InitializeComponent();
@@ -20,6 +22,15 @@ namespace AGEPRO.GUI
         {
             get { return textBoxDataFile.Text; }
             set { textBoxDataFile.Text = value; }
+        }
+
+        public void checkBoxTimeVaryingFile_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.timeVaryingFileChecked != null)
+            {
+                this.timeVaryingFileChecked(sender, e);
+            }
+            
         }
     }
 }

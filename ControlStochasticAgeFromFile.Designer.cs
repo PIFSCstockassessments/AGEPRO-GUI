@@ -71,6 +71,7 @@
             this.checkBoxTimeVaryingFile.TabIndex = 3;
             this.checkBoxTimeVaryingFile.Text = "Data File is Time Varying";
             this.checkBoxTimeVaryingFile.UseVisualStyleBackColor = true;
+            this.checkBoxTimeVaryingFile.CheckedChanged += new System.EventHandler(this.checkBoxTimeVaryingFile_CheckedChanged);
             // 
             // ControlStochasticAgeFromFile
             // 
@@ -92,6 +93,6 @@
         private System.Windows.Forms.Label labelDataFile;
         private System.Windows.Forms.TextBox textBoxDataFile;
         private System.Windows.Forms.Button buttonLoadDataFile;
-        private System.Windows.Forms.CheckBox checkBoxTimeVaryingFile;
+        public System.Windows.Forms.CheckBox checkBoxTimeVaryingFile;
     }
 }

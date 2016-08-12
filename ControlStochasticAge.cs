@@ -25,6 +25,11 @@ namespace AGEPRO.GUI
             radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
             stochasticParameterLabel = "Stochastic Parameters"; //Default Fallback Text
             settingParameterForControl = false;
+
+            controlStochasticParamAgeFromFile.timeVaryingFileChecked += 
+                new EventHandler(linkTimeVaryingUserSpecAndFromFile);
+            controlStochasticParamAgeFromUser.timeVaryingCheckedChangedEvent +=
+                new EventHandler(linkTimeVaryingUserSpecAndFromFile);
         }
 
         public bool timeVarying
@@ -72,6 +77,20 @@ namespace AGEPRO.GUI
             get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox; }
             set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value; }
         }
+
+        protected void linkTimeVaryingUserSpecAndFromFile(object sender, EventArgs e)
+        {
+            var timeVaryingControl = sender as CheckBox;
+            if (timeVaryingControl.Name == "checkBoxTimeVaryingFile")
+            {
+                timeVarying = timeVaryingControl.Checked;                
+            }
+            else if (timeVaryingControl.Name == "checkBoxTimeVarying")
+            {
+                controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Checked = timeVaryingControl.Checked;
+                
+            }
+        }
         
         protected override void OnLoad(EventArgs e)
         {
@@ -79,7 +98,11 @@ namespace AGEPRO.GUI
             radioParameterFromUser.Text = "User Specified " + this.stochasticParameterLabel + " At Age";
             radioParameterFromFile.Text = "Read " + this.stochasticParameterLabel + " From File";
             controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = this.stochasticParameterLabel + " Of Age";
-        
+
+            //enforce 'Time Varying' value inbetween the 'User Specifed DataGrid Tables' & 'File Dialog' panels
+            controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Checked = timeVarying;
+            controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Enabled = enableTimeVaryingCheckBox;
+
             base.OnLoad(e);
         }
         protected virtual void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)

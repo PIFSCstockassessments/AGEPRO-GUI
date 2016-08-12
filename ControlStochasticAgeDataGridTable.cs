@@ -16,6 +16,7 @@ namespace AGEPRO.GUI
         public string[] seqYears { get; set; }
         public int numFleets { get; set; }
         public bool readInputFileState { get; set; }
+        public event EventHandler timeVaryingCheckedChangedEvent;
 
         public ControlStochasticAgeDataGridTable()
         {
@@ -105,7 +106,6 @@ namespace AGEPRO.GUI
         /// </summary>
         private void setCVTableRowHeaders()
         {
-
             int ifleet = 1;
             foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
             {
@@ -135,6 +135,12 @@ namespace AGEPRO.GUI
             
             if (this.readInputFileState == false)
             {
+                //Bubble this event for ControlStochasticAgeFromFile to read
+                if (this.timeVaryingCheckedChangedEvent != null)
+                {
+                    this.timeVaryingCheckedChangedEvent(sender, e);
+                }
+    
                 stochasticAgeTable.Clear(); //Clear All Rows
                 if (checkBoxTimeVarying.Checked)
                 {
@@ -161,8 +167,8 @@ namespace AGEPRO.GUI
                         }
                     }
                 }
-            }
-            
+
+            }// end if readInputFileState is false
         }
 
         /// <summary>
@@ -174,7 +180,6 @@ namespace AGEPRO.GUI
         {
             DataGridViewRowHeaderCell header = dataGridStochasticAgeTable.Rows[e.RowIndex].HeaderCell;
             
-           
             if (header.Value == null)
             {
                 if(timeVarying == true)
