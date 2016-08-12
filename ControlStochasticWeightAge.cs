@@ -99,8 +99,29 @@ namespace AGEPRO.GUI
 
             setWeightOptionDictionary();
 
-        
+
         }
+        public bool showJan1WeightsOption
+        {
+            get { return radioWeightsFromJan1.Visible; }
+            set { radioWeightsFromJan1.Visible = value; }
+        }
+        public bool showSSBWeightsOption
+        {
+            get { return radioWeightsFromSSB.Visible; }
+            set { radioWeightsFromSSB.Visible = value; }
+        }
+        public bool showMidYearWeightsOption
+        {
+            get { return radioWeightsFromMidYear.Visible; }
+            set { radioWeightsFromMidYear.Visible = value; }
+        }
+        public bool showCatchWeightsOption
+        {
+            get { return radioWeightsFromCatch.Visible; }
+            set { radioWeightsFromCatch.Visible = value; }
+        }
+        
         protected override void OnLoad(EventArgs e)
         {
             if (weightOptionDictionary.ContainsKey(indexWeightOption))

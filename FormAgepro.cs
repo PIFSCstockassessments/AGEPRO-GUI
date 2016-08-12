@@ -71,6 +71,18 @@ namespace AGEPRO.GUI
             controlMidYearWeight.isMultiFleet = false;
             controlCatchWeight.isMultiFleet = true;
             controlDiscardWeight.isMultiFleet = true;
+
+            controlJan1Weight.showJan1WeightsOption = false;
+            controlJan1Weight.showSSBWeightsOption = false;
+            controlJan1Weight.showMidYearWeightsOption = false;
+            controlJan1Weight.showCatchWeightsOption = false;
+            controlSSBWeight.showSSBWeightsOption = false;
+            controlSSBWeight.showMidYearWeightsOption = false;
+            controlSSBWeight.showCatchWeightsOption = false;
+            controlMidYearWeight.showMidYearWeightsOption = false;
+            controlMidYearWeight.showCatchWeightsOption = false;
+            controlCatchWeight.showCatchWeightsOption = false;
+            
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
