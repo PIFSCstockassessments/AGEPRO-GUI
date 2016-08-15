@@ -102,6 +102,9 @@ namespace AGEPRO.GUI
             //enforce 'Time Varying' value inbetween the 'User Specifed DataGrid Tables' & 'File Dialog' panels
             controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Checked = timeVarying;
             controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Enabled = enableTimeVaryingCheckBox;
+            //In cases where Stochastic Parameters has null data source (where the 'time varying' check box should 
+            //be disabled), use that disabled state for the 'from file' panel.
+            controlStochasticParamAgeFromFile.Enabled = enableTimeVaryingCheckBox;  
 
             base.OnLoad(e);
         }
