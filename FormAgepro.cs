@@ -235,7 +235,8 @@ namespace AGEPRO.GUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Can not load AGEPRO input file."+ Environment.NewLine + ex);
+                    MessageBox.Show("Can not load AGEPRO input file."+ Environment.NewLine + ex,
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }

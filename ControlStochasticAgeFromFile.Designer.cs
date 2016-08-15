@@ -61,6 +61,7 @@
             this.buttonLoadDataFile.TabIndex = 2;
             this.buttonLoadDataFile.Text = "Browse";
             this.buttonLoadDataFile.UseVisualStyleBackColor = true;
+            this.buttonLoadDataFile.Click += new System.EventHandler(this.buttonLoadDataFile_Click);
             // 
             // checkBoxTimeVaryingFile
             // 

@@ -98,6 +98,7 @@ namespace AGEPRO.GUI
             radioParameterFromUser.Text = "User Specified " + this.stochasticParameterLabel + " At Age";
             radioParameterFromFile.Text = "Read " + this.stochasticParameterLabel + " From File";
             controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = this.stochasticParameterLabel + " Of Age";
+            controlStochasticParamAgeFromFile.stochasticParameterFileLabel = this.stochasticParameterLabel;
 
             //enforce 'Time Varying' value inbetween the 'User Specifed DataGrid Tables' & 'File Dialog' panels
             controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Checked = timeVarying;
