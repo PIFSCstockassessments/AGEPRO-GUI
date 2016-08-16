@@ -71,7 +71,7 @@ namespace AGEPRO.GUI
             get { return textBoxRandomSeed.Text; }
             set { textBoxRandomSeed.Text = value; }
         }
-        public bool generalDiscards
+        public bool generalDiscardsPresent
         {
             get { return checkBoxDiscards.Checked; }
             set { checkBoxDiscards.Checked = value; }

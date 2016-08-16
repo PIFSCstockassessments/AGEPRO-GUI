@@ -252,6 +252,10 @@ namespace AGEPRO.GUI
             {
                 this.launchAGEPROModelToolStripMenuItem.Enabled = true;
             }
+            //if "Discards are Present" is not checked, disable the discard parameters panels.
+            controlDiscardWeight.Enabled = controlGeneralOptions.generalDiscardsPresent;
+            controlDiscardFraction.Enabled = controlGeneralOptions.generalDiscardsPresent;
+
         }
 
         private void LoadAgeproInputParameters(AgeproInputFile inpFile)
@@ -266,7 +270,7 @@ namespace AGEPRO.GUI
             controlGeneralOptions.generalNumberRecruitModels = inpFile.general.numRecModels.ToString();
             controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.numPopSims.ToString();
             controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
-            controlGeneralOptions.generalDiscards = inpFile.general.hasDiscards;
+            controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
 
             //JAN-1
             loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
@@ -281,7 +285,7 @@ namespace AGEPRO.GUI
             loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general, true);
 
             //Discard Weight
-            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
+            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general, true);
 
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
