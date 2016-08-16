@@ -285,7 +285,7 @@ namespace AGEPRO.GUI
             loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general, true);
 
             //Discard Weight
-            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general, true);
+            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general);
 
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
