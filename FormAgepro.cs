@@ -140,7 +140,7 @@ namespace AGEPRO.GUI
         {
             string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
             
-            //TODO REFACTOR THIS SWITCH STATEMEMT
+            //treeNode Action Dictionary
             Dictionary<string, Action> treeNodeDict = 
                 new Dictionary<string, Action> {
 
@@ -158,75 +158,12 @@ namespace AGEPRO.GUI
                 {"treeNodeMiscOptions", selectMiscOptionsParameterPanel},
             };
             
+            //If treeNode Action Dictionary key matches 'selectedTreeNode', then invoke the key's method
             if (treeNodeDict.ContainsKey(selectedTreeNode))
             {
                 treeNodeDict[selectedTreeNode].Invoke();
             }
 
-
-
-            //switch (selectedTreeNode)
-            //{
-            //    case "treeNodeGeneral":
-            //        panelAgeproParameter.Controls.Clear();
-            //        panelAgeproParameter.Controls.Add(controlGeneralOptions);
-            //        break;
-            //    case "treeNodeJan1":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlJan1Weight.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlJan1Weight);
-            //        break;
-            //    case "treeNodeSSB":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlSSBWeight.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlSSBWeight);
-            //        break;
-            //    case "treeNodeMidYear":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlMidYearWeight.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlMidYearWeight);
-            //        break;
-            //    case "treeNodeCatchWeight":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlCatchWeight.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlCatchWeight);
-            //        break;
-            //    case "treeNodeDiscardWeight":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlDiscardWeight.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlDiscardWeight);
-            //        break;
-            //    case "treeNodeFisherySelectivity":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlFisherySelectivity.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlFisherySelectivity);
-            //        break;
-            //    case "treeNodeDiscardFraction":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlDiscardFraction.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlDiscardFraction);
-            //        break;
-            //    case "treeNodeNaturalMortality":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlNaturalMortality.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlNaturalMortality);
-            //        break;
-            //    case "treeNodeBiological":
-            //        panelAgeproParameter.Controls.Clear();
-            //        controlBiological.Dock = DockStyle.Fill;
-            //        panelAgeproParameter.Controls.Add(controlBiological);
-            //        break;
-            //    case "treeNodeBootstrapping":
-            //        panelAgeproParameter.Controls.Clear();
-            //        panelAgeproParameter.Controls.Add(controlBootstrap);
-            //        break;
-            //    case "treeNodeMiscOptions":
-            //        panelAgeproParameter.Controls.Clear();
-            //        panelAgeproParameter.Controls.Add(controlMiscOptions);
-            //        break;
-            //    default:
-            //        break;
-            //}
         }
 
         private void selectGeneralOptionsParameterPanel()
@@ -278,6 +215,11 @@ namespace AGEPRO.GUI
             selectAgeproParameterPanel(controlMiscOptions);
         }
 
+        /// <summary>
+        /// Generalized method to set an AGEPRO Parameter User Control in the AGEPRO Parameter Panel
+        /// </summary>
+        /// <param name="ageproParameterControl">AGEPRO Parameter User Control</param>
+        /// <param name="dockFill">Option to set Panel's Dock value to Dockstyle.Fill </param>
         private void selectAgeproParameterPanel(UserControl ageproParameterControl, bool dockFill = false)
         {
             this.panelAgeproParameter.Controls.Clear();
