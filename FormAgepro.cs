@@ -82,16 +82,18 @@ namespace AGEPRO.GUI
             controlMidYearWeight.showMidYearWeightsOption = false;
             controlMidYearWeight.showCatchWeightsOption = false;
             controlCatchWeight.showCatchWeightsOption = false;
-            
          
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
             this.panelNavigation.Enabled = false;
 
-            
         }
           
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
         {
             try
@@ -121,8 +123,6 @@ namespace AGEPRO.GUI
             
         }
 
-
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Terminate
@@ -136,6 +136,12 @@ namespace AGEPRO.GUI
             aboutDialog.ShowDialog();
         }
 
+        /// <summary>
+        /// Replaces an AGEPRO parameter user control in panelAgeproParmeter when a tree node from 
+        /// treeViewNavigation is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeViewNavigation_AfterSelect(object sender, TreeViewEventArgs e)
         {
             string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
@@ -268,9 +274,13 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// Enables Navigation Panel, and menu controls that were disabled during the startup/first-run state.
+        /// Change Discard Parameter enabled state by generalDiscardPresent option.  
+        /// </summary>
         private void EnableNavigationPanel()
         {
-            //Activate Naivagation Panel if in first-run/startup state.
+            //Activates Naivagation Panel if in first-run/startup state.
             if (this.panelNavigation.Enabled == false)
             {
                 this.panelNavigation.Enabled = true;
@@ -285,6 +295,10 @@ namespace AGEPRO.GUI
 
         }
 
+        /// <summary>
+        /// Load AGEPRO InputFile data into AGEPRO Parameter Controls
+        /// </summary>
+        /// <param name="inpFile">AGEPRO CoreLib InputFile</param>
         private void LoadAgeproInputParameters(AgeproInputFile inpFile)
         {
             //General Options
@@ -373,13 +387,15 @@ namespace AGEPRO.GUI
                 controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
             }
 
-            
-            
-            
             Console.WriteLine("Loaded AGEPRO Parameters ..");
         }
 
-
+        /// <summary>
+        /// Generalized method to load Stochastic Data Parameters from AGEPRO Input Data files.
+        /// </summary>
+        /// <param name="ctl">AGEPRO Stochastic Parameter User Control and Values</param>
+        /// <param name="inp">AGEPRO InputFile StochasticAge Parameters </param>
+        /// <param name="generalOpt">AGEPRO InputFile General Options values</param>
         private void loadStochasticAgeInputData(ControlStochasticAge ctl, AGEPRO.CoreLib.AgeproStochasticAgeTable inp, 
             AGEPRO.CoreLib.AgeproGeneral generalOpt)
         {   
@@ -401,6 +417,14 @@ namespace AGEPRO.GUI
             ctl.readInputFileState = false;
         }
 
+        /// <summary>
+        /// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
+        /// </summary>
+        /// <param name="ctl">AGEPRO Stochastic Weight of Age User Control and Values</param>
+        /// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
+        /// <param name="generalOpt">AGEPRO InputFile General Options</param>
+        /// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
+        /// provide one</param>
         private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, AGEPRO.CoreLib.AgeproWeightAgeTable inp,
             AGEPRO.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
         {
@@ -433,6 +457,14 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// Creates an empty DataTable for AGEPRO Parameter Control based on the number ages and years (or 
+        /// fleet-years).
+        /// </summary>
+        /// <param name="numAges">Number of Age Classes.</param>
+        /// <param name="numYears">Number of Years (from First year to Last Year of projection)</param>
+        /// <param name="numFleets">Number of Fleets. Default is 1</param>
+        /// <returns>Returns a empty DataTable</returns>
         private DataTable createFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
         {
             DataTable fallbackAgeTable = new DataTable();
@@ -450,6 +482,12 @@ namespace AGEPRO.GUI
             return fallbackAgeTable;
         }
 
+        /// <summary>
+        /// Generalized Method to set the DataGridView's Data Sources from AGEPRO.CoreLib Input File Data Files 
+        /// </summary>
+        /// <param name="dgvTable">Control's DataGridView DataTable source</param>
+        /// <param name="inpFileTable">DataTable from AGEPRO.CoreLib.AgeproInputFile DataTables</param>
+        /// <returns>DataGridView DataTable</returns>
         private DataTable getAgeproInputDataTable (DataTable dgvTable, DataTable inpFileTable)
         {
             if (dgvTable != null)
