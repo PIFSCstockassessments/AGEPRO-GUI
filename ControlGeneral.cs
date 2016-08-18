@@ -79,28 +79,31 @@ namespace AGEPRO.GUI
 
         public void ValidateGeneralOptionsParameters()
         {
-            List <string> generalOptionsList = new List<string> { 
-                generalFirstYearProjection,
-                generalLastYearProjection,
-                Convert.ToString(generalFirstAgeClass),
-                Convert.ToString(generalLastAgeClass),
-                generalNumberFleets,
-                generalNumberRecruitModels,
-                generalNumberPopulationSimuations,
-                generalRandomSeed
+            
+            Dictionary <string, string> generalOptionsList = new Dictionary<string,string> {
+                {"First Year Of Projection", textBoxFirstYearProjection.Text},
+                {"Last Year Of Projection", textBoxLastYearProjection.Text},
+                {"First Age Class", spinBoxFirstAge.Value.ToString()},
+                {"Last Age Class", textBoxLastAge.Text},
+                {"Number Of Fleets", textBoxNumFleets.Text},
+                {"Number Of Recruitment Models", textBoxNumRecruitModels.Text},
+                {"Number Of Population Simulations", textBoxNumPopSim.Text},
+                {"Random Number Seed", textBoxRandomSeed.Text},
+       
             };
             Console.WriteLine("Foo");
 
-            foreach (string param in generalOptionsList)
+            foreach (KeyValuePair<string,string> param in generalOptionsList)
             {
-                if (IsNumeric(param) == false)
+                if (param.Value == "")
                 {
-                    throw new InvalidGeneralParameterException(param + "is not a numerical parameter");
+                    throw new InvalidGeneralParameterException( param.Key + " value must be specfied.");
                 }
-                if (param == "")
+                if (IsNumeric(param.Value) == false)
                 {
-                    throw new InvalidGeneralParameterException("Parameter"+ param + "must be specfied.");
+                    throw new InvalidGeneralParameterException( param.Key + ":" + param.Value + "is not a numerical parameter");
                 }
+
             }
             
         }
