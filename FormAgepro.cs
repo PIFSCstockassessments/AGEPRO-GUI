@@ -99,7 +99,11 @@ namespace AGEPRO.GUI
             try
             {
                 //TODO TODO TODO: Validate GeneralOption Parameters
+                controlGeneralOptions.ValidateGeneralOptionsParameters();
+                //if (IsNumeric(controlGeneralOptions.generalFirstYearProjection) == false)
+                //{
 
+                //}
                 //TODO Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
 
@@ -122,7 +126,7 @@ namespace AGEPRO.GUI
             }
             
         }
-
+        
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Terminate

@@ -123,6 +123,7 @@
     <Compile Include="FormAgepro.Designer.cs">
       <DependentUpon>FormAgepro.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvalidGeneralParameterException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutAgepro.resx">

@@ -77,6 +77,42 @@ namespace AGEPRO.GUI
             set { checkBoxDiscards.Checked = value; }
         }
 
+        public void ValidateGeneralOptionsParameters()
+        {
+            List <string> generalOptionsList = new List<string> { 
+                generalFirstYearProjection,
+                generalLastYearProjection,
+                Convert.ToString(generalFirstAgeClass),
+                Convert.ToString(generalLastAgeClass),
+                generalNumberFleets,
+                generalNumberRecruitModels,
+                generalNumberPopulationSimuations,
+                generalRandomSeed
+            };
+            Console.WriteLine("Foo");
+
+            foreach (string param in generalOptionsList)
+            {
+                if (IsNumeric(param) == false)
+                {
+                    throw new InvalidGeneralParameterException(param + "is not a numerical parameter");
+                }
+                if (param == "")
+                {
+                    throw new InvalidGeneralParameterException("Parameter"+ param + "must be specfied.");
+                }
+            }
+            
+        }
+
+        private bool IsNumeric(string s)
+        {
+            int numberForm;
+            bool isNumeric = int.TryParse(s, out numberForm);
+
+            return isNumeric;
+        }
+
         private void buttonSetGeneral_Click(object sender, EventArgs e)
         {
             //Transfer general option values to input file class
