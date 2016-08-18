@@ -15,10 +15,15 @@ namespace AGEPRO.GUI
     public partial class ControlGeneral : UserControl
     {
         public event EventHandler SetGeneral;
+        private int maxRandomSeed;
 
         public ControlGeneral()
         {
             InitializeComponent();
+            
+            //Set max constant
+            maxRandomSeed = 2147483647;
+
         }
         
         public string generalModelId
@@ -91,8 +96,8 @@ namespace AGEPRO.GUI
                 {"Random Number Seed", textBoxRandomSeed.Text},
        
             };
-            Console.WriteLine("Foo");
 
+            //Check If Each General Param Controls (1) has a value and (2) that value is a whole (integer) number.
             foreach (KeyValuePair<string,string> param in generalOptionsList)
             {
                 if (param.Value == "")
@@ -101,9 +106,21 @@ namespace AGEPRO.GUI
                 }
                 if (IsNumeric(param.Value) == false)
                 {
-                    throw new InvalidGeneralParameterException( param.Key + ":" + param.Value + "is not a numerical parameter");
+                    throw new InvalidGeneralParameterException( "In " + param.Key + ": '" + param.Value + "' is not a whole number");
                 }
 
+            }
+
+            //First Age Class: In case the spinBox(UpDownNumeric) control didn't catch the invalid value, catch it here.   
+            if (spinBoxFirstAge.Value > 1 || spinBoxFirstAge.Value < 0)
+            {
+                throw new InvalidGeneralParameterException("Invaild First Age Class Value: Should only be 0 or 1");
+            }
+
+            if (Math.Abs(Convert.ToInt32(textBoxRandomSeed.Text)) > maxRandomSeed)
+            {
+                throw new InvalidGeneralParameterException("Random Number Seed " + textBoxRandomSeed.Text + 
+                    Environment.NewLine + "Exceeds limit of " + maxRandomSeed + " or -" + maxRandomSeed );
             }
             
         }
@@ -126,5 +143,20 @@ namespace AGEPRO.GUI
             }
 
         }
+
+        /// <summary>
+        /// Returns a sequence of years from First year of projection
+        /// </summary>
+        /// <returns>Returns a enuumerable string array from <paramref name="textBoxFirstYearProjection"/> 
+        /// to <paramref name="textBoxLastYearProjection"/></returns>
+        public string[] SeqYears()
+        {
+            int numYears = Math.Abs(Convert.ToInt32(textBoxLastYearProjection.Text) -
+                Convert.ToInt32(textBoxFirstYearProjection.Text)) + 1;
+            int[] enumYearArray = Enumerable.Range(Convert.ToInt32(textBoxFirstYearProjection.Text), numYears).ToArray();
+            
+            return Array.ConvertAll(enumYearArray, element => element.ToString());
+        }
+
     }
 }

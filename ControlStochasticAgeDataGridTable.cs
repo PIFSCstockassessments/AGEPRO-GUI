@@ -140,7 +140,8 @@ namespace AGEPRO.GUI
                 {
                     this.timeVaryingCheckedChangedEvent(sender, e);
                 }
-    
+
+                //TODO: Handle cases where stochasticAgeTable is Null    
                 stochasticAgeTable.Clear(); //Clear All Rows
                 if (checkBoxTimeVarying.Checked)
                 {

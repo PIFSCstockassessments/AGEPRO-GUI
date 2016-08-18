@@ -88,44 +88,7 @@ namespace AGEPRO.GUI
             this.panelNavigation.Enabled = false;
 
         }
-          
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
-        {
-            try
-            {
-                //TODO TODO TODO: Validate GeneralOption Parameters
-                controlGeneralOptions.ValidateGeneralOptionsParameters();
-                //if (IsNumeric(controlGeneralOptions.generalFirstYearProjection) == false)
-                //{
-
-                //}
-                //TODO Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
-                //Discards are Present is not checked
-
-                //Use general options parameters to set inputFile parameters 
-                int generalSetNumAges = controlGeneralOptions.generalLastAgeClass -
-                    controlGeneralOptions.generalFirstAgeClass;
-                int generalSetNumYears = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection) -
-                    Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
-
-                controlMiscOptions.miscOptionsNAges = generalSetNumAges;
-                controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
-
-                //Activate Naivagation Panel if in first-run/startup state.
-                EnableNavigationPanel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not set AGEPRO general paraneters." + Environment.NewLine + ex.Message, 
-                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            
-        }
+        
         
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -238,6 +201,69 @@ namespace AGEPRO.GUI
                 ageproParameterControl.Dock = DockStyle.Fill;
             }
             this.panelAgeproParameter.Controls.Add(ageproParameterControl);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
+        {
+            try
+            {
+                //Validate GeneralOption Parameters
+                controlGeneralOptions.ValidateGeneralOptionsParameters();
+
+                //Check for AGEPRO parameter data that has already been loaded/set 
+
+                //Use general options parameters to set inputFile parameters 
+                int generalNumAges = controlGeneralOptions.generalLastAgeClass -
+                    controlGeneralOptions.generalFirstAgeClass + 1;
+                int generalNumYears = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection) -
+                    Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection) + 1;
+                int generalNumFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+
+                //Validate Number of Ages and Years
+                if (generalNumAges < 1)
+                {
+                    string exMessage = "Invaild Age Range - Is Last Age Class less than First Age Class?";
+                    throw new InvalidGeneralParameterException(exMessage);
+                }
+                if (generalNumYears < 1)
+                {
+                    string exMessage = "Invaild Year Range - Is Last Year Of Projection Earlier than First Year?";
+                    throw new InvalidGeneralParameterException(exMessage);
+                }
+                controlMiscOptions.miscOptionsNAges = generalNumAges;
+                controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
+
+                //Set DataGrids
+                controlFisherySelectivity.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+                controlFisherySelectivity.seqYears = controlGeneralOptions.SeqYears();
+                controlFisherySelectivity.readInputFileState = true;
+                if (generalNumYears > 1)
+                {
+                    controlFisherySelectivity.timeVarying = true;
+                }
+                controlFisherySelectivity.stochasticAgeTable =
+                    createFallbackAgeDataTable(generalNumAges, generalNumYears, generalNumFleets);
+                controlFisherySelectivity.stochasticCV =
+                    createFallbackAgeDataTable(generalNumAges, 1, generalNumFleets);
+                controlFisherySelectivity.readInputFileState = false;
+                
+                //Activate Naivagation Panel if in first-run/startup state.
+                //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
+                //Discards are Present is not checked
+                EnableNavigationPanel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not set AGEPRO general paraneters." + Environment.NewLine + ex.Message,
+                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
         }
 
         /// <summary>
@@ -501,6 +527,8 @@ namespace AGEPRO.GUI
             dgvTable = inpFileTable;
             return dgvTable;
         }
+
+
 
     }
 }

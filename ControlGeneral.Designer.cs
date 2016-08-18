@@ -127,6 +127,7 @@
             this.textBoxRandomSeed.Name = "textBoxRandomSeed";
             this.textBoxRandomSeed.Size = new System.Drawing.Size(120, 20);
             this.textBoxRandomSeed.TabIndex = 16;
+            this.textBoxRandomSeed.Text = "0";
             // 
             // textBoxLastAge
             // 
@@ -184,6 +185,7 @@
             this.textBoxNumRecruitModels.Name = "textBoxNumRecruitModels";
             this.textBoxNumRecruitModels.Size = new System.Drawing.Size(120, 20);
             this.textBoxNumRecruitModels.TabIndex = 12;
+            this.textBoxNumRecruitModels.Text = "1";
             // 
             // textBoxLastYearProjection
             // 
@@ -216,6 +218,7 @@
             this.textBoxNumFleets.Name = "textBoxNumFleets";
             this.textBoxNumFleets.Size = new System.Drawing.Size(120, 20);
             this.textBoxNumFleets.TabIndex = 10;
+            this.textBoxNumFleets.Text = "1";
             // 
             // labelNumFleets
             // 
