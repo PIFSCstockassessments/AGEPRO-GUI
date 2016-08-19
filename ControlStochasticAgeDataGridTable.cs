@@ -58,14 +58,14 @@ namespace AGEPRO.GUI
         private void setStochasticAgeTableRowHeaders(string[] yearArray, int nfleets)
         {
             
-            int countFleetYears = yearArray.Count() * nfleets;
-            if (countFleetYears != dataGridStochasticAgeTable.RowCount)
-            {
-                throw new InvalidOperationException("Amount of Fleet-Years does not equal to Data Table rows");
-            }
-            
             if (multiFleetTable == true)
             {
+                int countFleetYears = yearArray.Count() * nfleets;
+                if (countFleetYears != dataGridStochasticAgeTable.RowCount)
+                {
+                    throw new InvalidOperationException("Amount of Fleet-Years does not equal to Data Table rows");
+                }
+
                 string[] stochasticRowHeaders = new string[countFleetYears];
                 int irowHeader = 0;
                 for (int jfleet = 0; jfleet < nfleets; jfleet++)
