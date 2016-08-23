@@ -239,20 +239,17 @@ namespace AGEPRO.GUI
                 controlMiscOptions.miscOptionsNAges = generalNumAges;
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
 
-                //Set DataGrids
-                controlFisherySelectivity.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-                controlFisherySelectivity.seqYears = controlGeneralOptions.SeqYears();
-                controlFisherySelectivity.readInputFileState = true;
-                if (generalNumYears > 1)
-                {
-                    controlFisherySelectivity.timeVarying = true;
-                }
-                controlFisherySelectivity.stochasticAgeTable =
-                    createFallbackAgeDataTable(generalNumAges, generalNumYears, generalNumFleets);
-                controlFisherySelectivity.stochasticCV =
-                    createFallbackAgeDataTable(generalNumAges, 1, generalNumFleets);
-                controlFisherySelectivity.readInputFileState = false;
-                
+                //Set Stochastic Paramaeter DataGrids           
+                CreateStochasticParameterFallbackDataTable(controlJan1Weight, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlSSBWeight, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlMidYearWeight, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlCatchWeight, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlDiscardWeight, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlNaturalMortality, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlBiological.maturityAge, controlGeneralOptions);
+
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
@@ -263,6 +260,25 @@ namespace AGEPRO.GUI
                 MessageBox.Show("Can not set AGEPRO general paraneters." + Environment.NewLine + ex.Message,
                     "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+
+        }
+
+        private void CreateStochasticParameterFallbackDataTable(ControlStochasticAge ctl, ControlGeneral genOpt)
+        {
+            ctl.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
+            ctl.seqYears = genOpt.SeqYears();
+            ctl.readInputFileState = true;
+            if (ctl.timeVarying == true)
+            {
+                ctl.stochasticAgeTable = createFallbackAgeDataTable(genOpt.NumAges(), 
+                    genOpt.SeqYears().Count(), ctl.numFleets);
+            }
+            else
+            {
+                ctl.stochasticAgeTable = createFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
+            }
+            ctl.stochasticCV = createFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
+            ctl.readInputFileState = false;
 
         }
 

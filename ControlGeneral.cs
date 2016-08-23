@@ -158,5 +158,15 @@ namespace AGEPRO.GUI
             return Array.ConvertAll(enumYearArray, element => element.ToString());
         }
 
+        /// <summary>
+        /// Returns number of Ages in between <paramref name="spinBoxFirstAgeClass"/> and 
+        /// <paramref name="textBoxLastAgeClass"/>
+        /// </summary>
+        /// <returns>Integer</returns>
+        public int NumAges()
+        {
+            return (this.generalLastAgeClass - this.generalFirstAgeClass + 1);
+        }
+
     }
 }
