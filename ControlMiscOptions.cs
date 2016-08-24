@@ -187,17 +187,29 @@ namespace AGEPRO.GUI
             else
             {
                 //Create a Single Column Empty Table for the data grid view. Each row represents an age.
-                DataTable retroAdjustmentFallbackTable = new DataTable();
-                retroAdjustmentFallbackTable.Columns.Add("factor", typeof(double));
-                for (int i = 0; i < this.miscOptionsNAges ; i++)
-                {
-                    retroAdjustmentFallbackTable.Rows.Add();
-                }
-                this.dataGridRetroAdjustment.DataSource = retroAdjustmentFallbackTable;
+                //DataTable retroAdjustmentFallbackTable = new DataTable();
+                //retroAdjustmentFallbackTable.Columns.Add("factor", typeof(double));
+                //for (int i = 0; i < this.miscOptionsNAges ; i++)
+                //{
+                //    retroAdjustmentFallbackTable.Rows.Add();
+                //}
+                //this.dataGridRetroAdjustment.DataSource = retroAdjustmentFallbackTable;
+                this.dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(this.miscOptionsNAges);
 
                 SetRetroAdjustmentFactorRowHeaders();
                
             }
+        }
+
+        public DataTable GetRetroAdjustmentFallbackTable(int numAges)
+        {
+            DataTable fallbackTable = new DataTable();
+            fallbackTable.Columns.Add("factor", typeof(double));
+            for (int i = 0; i < numAges; i++)
+            {
+                fallbackTable.Rows.Add();
+            }
+            return fallbackTable;
         }
 
         /// <summary>

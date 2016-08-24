@@ -56,6 +56,7 @@ namespace AGEPRO.GUI
         {
             if (this.readFractionMortalityState == false)
             {
+                //if fractionMortality is null, error
                 fractionMortality.Columns.Clear(); //Clear all Columns
 
                 if (checkBoxFractionMortalityTimeVarying.Checked)

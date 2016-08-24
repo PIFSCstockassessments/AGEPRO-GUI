@@ -217,27 +217,23 @@ namespace AGEPRO.GUI
                 controlGeneralOptions.ValidateGeneralOptionsParameters();
 
                 //Check for AGEPRO parameter data that has already been loaded/set 
-
-                //Use general options parameters to set inputFile parameters 
-                int generalNumAges = controlGeneralOptions.generalLastAgeClass -
-                    controlGeneralOptions.generalFirstAgeClass + 1;
-                int generalNumYears = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection) -
-                    Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection) + 1;
-                int generalNumFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-
-                //Validate Number of Ages and Years
-                if (generalNumAges < 1)
-                {
-                    string exMessage = "Invaild Age Range - Is Last Age Class less than First Age Class?";
-                    throw new InvalidGeneralParameterException(exMessage);
-                }
-                if (generalNumYears < 1)
-                {
-                    string exMessage = "Invaild Year Range - Is Last Year Of Projection Earlier than First Year?";
-                    throw new InvalidGeneralParameterException(exMessage);
-                }
-                controlMiscOptions.miscOptionsNAges = generalNumAges;
+                controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
+                if (controlMiscOptions.miscOptionsRetroAdjustmentFactors)
+                {
+                    if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
+                    {
+                        if(controlGeneralOptions.NumAges() > 
+                            controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Rows.Count)
+                        {
+                            controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
+                        }
+                    }
+
+                    controlMiscOptions.miscOptionsRetroAdjustmentFactorTable =
+                        controlMiscOptions.GetRetroAdjustmentFallbackTable(controlMiscOptions.miscOptionsNAges);
+                    controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
+                }
 
                 //Set Stochastic Paramaeter DataGrids           
                 CreateStochasticParameterFallbackDataTable(controlJan1Weight, controlGeneralOptions);
@@ -263,6 +259,12 @@ namespace AGEPRO.GUI
 
         }
 
+        /// <summary>
+        /// Creates a empty Data Table for the Stochastic Parameter Control based on the user inputs gathered 
+        /// from the General Options control parameter.
+        /// </summary>
+        /// <param name="ctl">Stochastic Parameter Control</param>
+        /// <param name="genOpt">Paramters from the General Options Control</param>
         private void CreateStochasticParameterFallbackDataTable(ControlStochasticAge ctl, ControlGeneral genOpt)
         {
             ctl.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);

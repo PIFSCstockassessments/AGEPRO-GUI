@@ -122,6 +122,24 @@ namespace AGEPRO.GUI
                 throw new InvalidGeneralParameterException("Random Number Seed " + textBoxRandomSeed.Text + 
                     Environment.NewLine + "Exceeds limit of " + maxRandomSeed + " or -" + maxRandomSeed );
             }
+
+
+            //Use general options parameters to set inputFile parameters 
+            int generalNumAges = NumAges();
+            int generalNumYears = Convert.ToInt32(this.generalLastYearProjection) -
+                Convert.ToInt32(this.generalFirstYearProjection) + 1;
+          
+            //Validate Number of Ages and Years
+            if (generalNumAges < 1)
+            {
+                string exMessage = "Invaild Age Range - Is Last Age Class less than First Age Class?";
+                throw new InvalidGeneralParameterException(exMessage);
+            }
+            if (generalNumYears < 1)
+            {
+                string exMessage = "Invaild Year Range - Is Last Year Of Projection Earlier than First Year?";
+                throw new InvalidGeneralParameterException(exMessage);
+            }
             
         }
 
