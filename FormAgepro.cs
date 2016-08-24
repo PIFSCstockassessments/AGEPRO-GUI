@@ -219,17 +219,18 @@ namespace AGEPRO.GUI
                 //Check for AGEPRO parameter data that has already been loaded/set 
                 controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
+                //Retro Adjustment Factors
                 if (controlMiscOptions.miscOptionsRetroAdjustmentFactors)
                 {
                     if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
                     {
+                        //In case NumAges is larger than previous row count, "reset" dataGridView 
                         if(controlGeneralOptions.NumAges() > 
                             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Rows.Count)
                         {
                             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
                         }
                     }
-
                     controlMiscOptions.miscOptionsRetroAdjustmentFactorTable =
                         controlMiscOptions.GetRetroAdjustmentFallbackTable(controlMiscOptions.miscOptionsNAges);
                     controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
@@ -240,11 +241,30 @@ namespace AGEPRO.GUI
                 CreateStochasticParameterFallbackDataTable(controlSSBWeight, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlMidYearWeight, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlCatchWeight, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlDiscardWeight, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlNaturalMortality, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlBiological.maturityAge, controlGeneralOptions);
+                //Show Discard DataTables if Discards options is checked
+                if (controlGeneralOptions.generalDiscardsPresent == true)
+                {
+                    CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions);
+                    CreateStochasticParameterFallbackDataTable(controlDiscardWeight, controlGeneralOptions);
+                }
+                else
+                {   //Otherwise "reset" the dataGridView if data exists. 
+                    if(controlDiscardFraction.stochasticAgeTable != null)
+                    {
+                        controlDiscardFraction.stochasticAgeTable.Reset();
+                        controlDiscardFraction.stochasticCV.Reset();
+                    }
+                    if (controlDiscardWeight.stochasticAgeTable != null)
+                    {
+                        controlDiscardWeight.stochasticAgeTable.Reset();
+                        controlDiscardWeight.stochasticCV.Reset();
+                    }
+                }
+                //Fraction Mortality
+                controlBiological.CreateFractionMortalityColumns();
 
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 

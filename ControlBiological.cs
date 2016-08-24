@@ -52,28 +52,61 @@ namespace AGEPRO.GUI
             }
         }
 
+        public void CreateFractionMortalityColumns()
+        {
+            
+            if (fractionMortality != null)
+            {
+                fractionMortality.Columns.Clear(); //Clear all Columns
+            }
+            else
+            {
+                //If null, instantiate a empty Data Table /w two Rows
+                fractionMortality = new DataTable();
+                fractionMortality.Rows.Add();
+                fractionMortality.Rows.Add();
+            }
+
+            if (checkBoxFractionMortalityTimeVarying.Checked)
+            {
+                //Time Varying Fraction Mortality Data Table share the same time horizion as the
+                //Maturity Data Table (since it is coming from the General Options parameters)
+                for (int iyear = 0; iyear < maturityAge.seqYears.Count(); iyear++)
+                {
+                    string colNameYear = maturityAge.seqYears[iyear];
+                    fractionMortality.Columns.Add(colNameYear);
+                }
+            }
+            else
+            {
+                string colNameYear = "All Years";
+                fractionMortality.Columns.Add(colNameYear);
+            }
+        }
+
         private void checkBoxFractionMortalityTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
             if (this.readFractionMortalityState == false)
             {
-                //if fractionMortality is null, error
-                fractionMortality.Columns.Clear(); //Clear all Columns
+                ////if fractionMortality is null, error
+                //fractionMortality.Columns.Clear(); //Clear all Columns
 
-                if (checkBoxFractionMortalityTimeVarying.Checked)
-                {
-                    //Time Varying Fraction Mortality Data Table share the same time horizion as the
-                    //Maturity Data Table (since it is coming from the General Options parameters)
-                    for (int iyear = 0; iyear < maturityAge.seqYears.Count(); iyear++)
-                    {
-                        string colNameYear = maturityAge.seqYears[iyear]; 
-                        fractionMortality.Columns.Add(colNameYear);
-                    }
-                }
-                else
-                {
-                    string colNameYear = "All Years";
-                    fractionMortality.Columns.Add(colNameYear);
-                }
+                CreateFractionMortalityColumns();
+                //if (checkBoxFractionMortalityTimeVarying.Checked)
+                //{
+                //    //Time Varying Fraction Mortality Data Table share the same time horizion as the
+                //    //Maturity Data Table (since it is coming from the General Options parameters)
+                //    for (int iyear = 0; iyear < maturityAge.seqYears.Count(); iyear++)
+                //    {
+                //        string colNameYear = maturityAge.seqYears[iyear]; 
+                //        fractionMortality.Columns.Add(colNameYear);
+                //    }
+                //}
+                //else
+                //{
+                //    string colNameYear = "All Years";
+                //    fractionMortality.Columns.Add(colNameYear);
+                //}
             }
         }
         
