@@ -27,6 +27,7 @@ namespace AGEPRO.GUI
         private ControlStochasticWeightAge controlMidYearWeight;
         private ControlStochasticWeightAge controlCatchWeight;
         private ControlStochasticWeightAge controlDiscardWeight;
+        private ControlRecruitment controlRecruitment;
 
         public FormAgepro()
         {
@@ -47,6 +48,7 @@ namespace AGEPRO.GUI
             controlMidYearWeight = new ControlStochasticWeightAge();
             controlCatchWeight = new ControlStochasticWeightAge();
             controlDiscardWeight = new ControlStochasticWeightAge();
+            controlRecruitment = new ControlRecruitment();
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -123,12 +125,14 @@ namespace AGEPRO.GUI
                 {"treeNodeMidYear", selectMidYearWeightsParameterPanel},
                 {"treeNodeCatchWeight", selectCatchWeightParameterPanel},
                 {"treeNodeDiscardWeight", selectDiscardWeightParameterPanel},
+                {"treeNodeRecruitment",selectRecruitmentParameterPanel},
                 {"treeNodeFisherySelectivity", selectFisherySelectivityParameterPanel},
                 {"treeNodeDiscardFraction", selectDiscardFractionParameterPanel},
                 {"treeNodeNaturalMortality", selectNaturalMortalityParameterPanel},
                 {"treeNodeBiological", selectBiologicalParameterPanel},
                 {"treeNodeBootstrapping", selectBootstrappingParameterPanel},
                 {"treeNodeMiscOptions", selectMiscOptionsParameterPanel},
+                
             };
             
             //If treeNode Action Dictionary key matches 'selectedTreeNode', then invoke the key's method
@@ -186,6 +190,10 @@ namespace AGEPRO.GUI
         private void selectMiscOptionsParameterPanel()
         {
             selectAgeproParameterPanel(controlMiscOptions);
+        }
+        private void selectRecruitmentParameterPanel()
+        {
+            selectAgeproParameterPanel(controlRecruitment, true);
         }
 
         /// <summary>

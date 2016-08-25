@@ -57,7 +57,7 @@
             this.tabControlRecruitment.Location = new System.Drawing.Point(0, 6);
             this.tabControlRecruitment.Name = "tabControlRecruitment";
             this.tabControlRecruitment.SelectedIndex = 0;
-            this.tabControlRecruitment.Size = new System.Drawing.Size(897, 494);
+            this.tabControlRecruitment.Size = new System.Drawing.Size(897, 491);
             this.tabControlRecruitment.TabIndex = 0;
             // 
             // tabRecruitment
@@ -70,7 +70,7 @@
             this.tabRecruitment.Location = new System.Drawing.Point(4, 22);
             this.tabRecruitment.Name = "tabRecruitment";
             this.tabRecruitment.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRecruitment.Size = new System.Drawing.Size(889, 468);
+            this.tabRecruitment.Size = new System.Drawing.Size(889, 465);
             this.tabRecruitment.TabIndex = 0;
             this.tabRecruitment.Text = "Recruitment";
             this.tabRecruitment.UseVisualStyleBackColor = true;
@@ -87,11 +87,13 @@
             // 
             // groupScalingFactor
             // 
+            this.groupScalingFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupScalingFactor.Controls.Add(this.textBoxSSBScalingFactor);
             this.groupScalingFactor.Controls.Add(this.textBoxRecruitngScalingFactor);
             this.groupScalingFactor.Controls.Add(this.labelSSBScalingFactor);
             this.groupScalingFactor.Controls.Add(this.labelRecruitmentScalingFactor);
-            this.groupScalingFactor.Location = new System.Drawing.Point(15, 374);
+            this.groupScalingFactor.Location = new System.Drawing.Point(18, 388);
             this.groupScalingFactor.Name = "groupScalingFactor";
             this.groupScalingFactor.Size = new System.Drawing.Size(846, 71);
             this.groupScalingFactor.TabIndex = 0;
@@ -145,12 +147,13 @@
             // 
             this.dataGridRecruitProb.AllowUserToAddRows = false;
             this.dataGridRecruitProb.AllowUserToDeleteRows = false;
-            this.dataGridRecruitProb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridRecruitProb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridRecruitProb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRecruitProb.Location = new System.Drawing.Point(18, 211);
             this.dataGridRecruitProb.Name = "dataGridRecruitProb";
-            this.dataGridRecruitProb.Size = new System.Drawing.Size(843, 157);
+            this.dataGridRecruitProb.Size = new System.Drawing.Size(843, 154);
             this.dataGridRecruitProb.TabIndex = 2;
             // 
             // labelSelectRecruitModels
@@ -165,6 +168,9 @@
             // 
             // labelRecruitProb
             // 
+            this.labelRecruitProb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelRecruitProb.AutoSize = true;
             this.labelRecruitProb.Location = new System.Drawing.Point(15, 195);
             this.labelRecruitProb.Name = "labelRecruitProb";
