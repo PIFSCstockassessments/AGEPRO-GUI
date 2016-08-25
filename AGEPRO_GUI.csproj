@@ -93,6 +93,12 @@
     <Compile Include="ControlMiscOptions.Designer.cs">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitment.Designer.cs">
+      <DependentUpon>ControlRecruitment.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlStochasticAge.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlMiscOptions.resx">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitment.resx">
+      <DependentUpon>ControlRecruitment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlStochasticAge.resx">
       <DependentUpon>ControlStochasticAge.cs</DependentUpon>
