@@ -410,6 +410,8 @@ namespace AGEPRO.GUI
             controlRecruitment.recruitModelSelection = inpFile.recruitment.recruitType;
             controlRecruitment.numRecruitModels = inpFile.general.numRecModels;
             controlRecruitment.SetRecruitSelectionDataGridView(controlRecruitment.numRecruitModels);
+            controlRecruitment.seqRecruitYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
+            controlRecruitment.recruitmentProb = inpFile.recruitment.recruitProb;
             controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;
             controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
             

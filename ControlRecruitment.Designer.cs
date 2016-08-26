@@ -156,6 +156,7 @@
             this.dataGridRecruitProb.Name = "dataGridRecruitProb";
             this.dataGridRecruitProb.Size = new System.Drawing.Size(843, 154);
             this.dataGridRecruitProb.TabIndex = 2;
+            this.dataGridRecruitProb.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRecruitProb_CellFormatting);
             // 
             // labelSelectRecruitModels
             // 

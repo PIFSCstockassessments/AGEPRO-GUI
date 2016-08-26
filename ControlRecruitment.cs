@@ -14,6 +14,7 @@ namespace AGEPRO.GUI
     {
         public int numRecruitModels { get; set; }
         public int[] recruitModelSelection { get; set; }
+        public string[] seqRecruitYears { get; set; }
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
 
         public ControlRecruitment()
@@ -30,8 +31,10 @@ namespace AGEPRO.GUI
             columnRecruitModelSelection.ValueMember = "Key";
             columnRecruitModelSelection.DisplayMember = "Value";
             dataGridSelectRecruitModels.Columns.Add(columnRecruitModelSelection);
-            
+            dataGridSelectRecruitModels.RowHeadersWidth = 150;
+
             //Recruitment Prob
+            dataGridRecruitProb.RowHeadersWidth = 100;
 
         }
         public int recruitingScalingFactor
@@ -44,7 +47,11 @@ namespace AGEPRO.GUI
             get { return Convert.ToInt32(textBoxSSBScalingFactor.Text); }
             set { textBoxSSBScalingFactor.Text = value.ToString(); }
         }
-        
+        public DataTable recruitmentProb
+        {
+            get { return (DataTable)dataGridRecruitProb.DataSource; }
+            set { dataGridRecruitProb.DataSource = value; }
+        }
 
         protected override void OnLoad(EventArgs e)
         {
@@ -74,7 +81,15 @@ namespace AGEPRO.GUI
             }
         }
 
-        
+        private void SetRecruitmentProbRowHeaders()
+        {
+            int iyear = 0;
+            foreach (DataGridViewRow yearRow in this.dataGridRecruitProb.Rows)
+            {
+                yearRow.HeaderCell.Value = seqRecruitYears[iyear];
+                iyear++;
+            }
+        }
 
         /// <summary>
         /// Creates and sets the Recruitment Model Dictionary Object
@@ -109,6 +124,16 @@ namespace AGEPRO.GUI
             recruitModelDictionary.Add(21, "Model 21: Emperical Cumulative Distribution Function of Recruitment w/ Linear Decline to Zero");
 
             return recruitModelDictionary;
+        }
+
+        private void dataGridRecruitProb_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = dataGridRecruitProb.Rows[e.RowIndex].HeaderCell;
+
+            if (!(header.Value != null))
+            {
+                SetRecruitmentProbRowHeaders();
+            }
         }
 
     }
