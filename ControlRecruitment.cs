@@ -31,7 +31,6 @@ namespace AGEPRO.GUI
             columnRecruitModelSelection.DisplayMember = "Value";
             dataGridSelectRecruitModels.Columns.Add(columnRecruitModelSelection);
             
-            dataGridSelectRecruitModels.Rows.Add();
             //Recruitment Prob
 
         }
@@ -49,15 +48,33 @@ namespace AGEPRO.GUI
 
         protected override void OnLoad(EventArgs e)
         {
-            int irecruit = 0;
-            foreach(DataGridViewRow recruitSelection in dataGridSelectRecruitModels.Rows)
-            {
-                ((DataGridViewComboBoxCell)recruitSelection.Cells[0]).Value = recruitModelSelection[irecruit];
-                irecruit++;
-            }
-            //(DataGridViewComboBoxColumn)dataGridSelectRecruitModels.Columns[0];
+            SetRecruitSelectionDataGridView(numRecruitModels);
             base.OnLoad(e);
         }
+
+        public void SetRecruitSelectionDataGridView(int numRecruitModels)
+        {
+            if (dataGridSelectRecruitModels != null)
+            {
+                //Clear Out rows from Previous Run/Load/Call
+                dataGridSelectRecruitModels.Rows.Clear(); 
+            }
+
+            for (int i = 0; i < numRecruitModels; i++)
+            {
+                this.dataGridSelectRecruitModels.Rows.Add(); //Add Empty Row w/ ComboBoxColumn
+            }
+
+            int irecruit = 0;
+            foreach (DataGridViewRow recruitSelection in this.dataGridSelectRecruitModels.Rows)
+            {
+                //Set ComboBox Value with intended recruit model number.
+                ((DataGridViewComboBoxCell)recruitSelection.Cells[0]).Value = this.recruitModelSelection[irecruit];
+                irecruit++;
+            }
+        }
+
+        
 
         /// <summary>
         /// Creates and sets the Recruitment Model Dictionary Object
