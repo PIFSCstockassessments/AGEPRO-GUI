@@ -80,7 +80,7 @@
             this.tabRecruitModels.Location = new System.Drawing.Point(4, 22);
             this.tabRecruitModels.Name = "tabRecruitModels";
             this.tabRecruitModels.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRecruitModels.Size = new System.Drawing.Size(889, 468);
+            this.tabRecruitModels.Size = new System.Drawing.Size(889, 465);
             this.tabRecruitModels.TabIndex = 1;
             this.tabRecruitModels.Text = "Recruit Model";
             this.tabRecruitModels.UseVisualStyleBackColor = true;
@@ -140,6 +140,7 @@
             this.dataGridSelectRecruitModels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSelectRecruitModels.Location = new System.Drawing.Point(18, 23);
             this.dataGridSelectRecruitModels.Name = "dataGridSelectRecruitModels";
+            this.dataGridSelectRecruitModels.ShowEditingIcon = false;
             this.dataGridSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
             this.dataGridSelectRecruitModels.TabIndex = 1;
             // 

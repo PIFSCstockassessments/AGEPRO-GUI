@@ -405,6 +405,18 @@ namespace AGEPRO.GUI
             loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general,
                 controlGeneralOptions.generalDiscardsPresent);  //Fallback Table Dependent on DiscardsPresent
 
+            //Recruitment
+            controlRecruitment.recruitModelSelection = new int[inpFile.general.numRecModels];
+            int i = 0;
+            foreach(AGEPRO.CoreLib.RecruitmentModel srecruit in inpFile.recruitment.recruitList)
+            {
+                controlRecruitment.recruitModelSelection[i] = srecruit.recruitModelNum;
+                i++;
+            }
+            controlRecruitment.numRecruitModels = inpFile.general.numRecModels;
+
+            controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;
+            controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
 
