@@ -572,11 +572,11 @@ namespace AGEPRO.GUI
         {
             DataTable blankDataTable = new DataTable();
 
-            for (int i = 0; i < yCol; i++)
+            for (int icol = 0; icol < yCol; icol++)
             {
-                blankDataTable.Columns.Add(colName + " " + (i + 1));
+                blankDataTable.Columns.Add(colName + " " + (icol + 1));
             }
-            for (int x = 0; x < xRows; x++)
+            for (int row = 0; row < xRows; row++)
             {
                 blankDataTable.Rows.Add();
             }
