@@ -31,7 +31,7 @@ namespace AGEPRO.GUI
             columnRecruitModelSelection.ValueMember = "Key";
             columnRecruitModelSelection.DisplayMember = "Value";
             dataGridSelectRecruitModels.Columns.Add(columnRecruitModelSelection);
-            dataGridSelectRecruitModels.RowHeadersWidth = 150;
+            dataGridSelectRecruitModels.RowHeadersWidth = 100;
 
             //Recruitment Prob
             dataGridRecruitProb.RowHeadersWidth = 100;
@@ -133,6 +133,19 @@ namespace AGEPRO.GUI
             if (!(header.Value != null))
             {
                 SetRecruitmentProbRowHeaders();
+            }
+        }
+
+        private void dataGridSelectRecruitModels_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = dataGridSelectRecruitModels.Rows[e.RowIndex].HeaderCell;
+
+            if (!(header.Value != null))
+            {
+                for (int i = 0; i < dataGridSelectRecruitModels.Rows.Count; i++)
+                {
+                    dataGridSelectRecruitModels.Rows[i].HeaderCell.Value = "Selection " + (i + 1);
+                }
             }
         }
 

@@ -143,6 +143,7 @@
             this.dataGridSelectRecruitModels.ShowEditingIcon = false;
             this.dataGridSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
             this.dataGridSelectRecruitModels.TabIndex = 1;
+            this.dataGridSelectRecruitModels.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridSelectRecruitModels_CellFormatting);
             // 
             // dataGridRecruitProb
             // 
