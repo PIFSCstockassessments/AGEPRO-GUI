@@ -225,6 +225,7 @@ namespace AGEPRO.GUI
                 controlGeneralOptions.ValidateGeneralOptionsParameters();
 
                 //Check for AGEPRO parameter data that has already been loaded/set 
+                
                 controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
                 //Retro Adjustment Factors
@@ -252,6 +253,7 @@ namespace AGEPRO.GUI
                 CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlNaturalMortality, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlBiological.maturityAge, controlGeneralOptions);
+                
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
@@ -273,6 +275,15 @@ namespace AGEPRO.GUI
                 }
                 //Fraction Mortality
                 controlBiological.CreateFractionMortalityColumns();
+
+                //Recruitment
+                controlRecruitment.numRecruitModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                controlRecruitment.recruitModelSelection = new int[controlRecruitment.numRecruitModels];
+                controlRecruitment.SetRecruitSelectionDataGridView(controlRecruitment.numRecruitModels);
+                controlRecruitment.seqRecruitYears = controlGeneralOptions.SeqYears();
+                controlRecruitment.recruitmentProb = 
+                    CreateBlankDataTable(controlRecruitment.numRecruitModels, controlRecruitment.seqRecruitYears.Count(), 
+                    "Selection");
 
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
@@ -300,14 +311,14 @@ namespace AGEPRO.GUI
             ctl.readInputFileState = true;
             if (ctl.timeVarying == true)
             {
-                ctl.stochasticAgeTable = createFallbackAgeDataTable(genOpt.NumAges(), 
+                ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 
                     genOpt.SeqYears().Count(), ctl.numFleets);
             }
             else
             {
-                ctl.stochasticAgeTable = createFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
+                ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
             }
-            ctl.stochasticCV = createFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
+            ctl.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
             ctl.readInputFileState = false;
 
         }
@@ -533,12 +544,12 @@ namespace AGEPRO.GUI
                         numYears = 1;
                     }
 
-                    ctl.stochasticAgeTable = createFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
+                    ctl.stochasticAgeTable = CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
                     ctl.enableTimeVaryingCheckBox = true;
                 }
                 if (!(ctl.stochasticCV != null))
                 {
-                    ctl.stochasticCV = createFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
+                    ctl.stochasticCV = CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
                 }
             }
         }
@@ -551,22 +562,43 @@ namespace AGEPRO.GUI
         /// <param name="numYears">Number of Years (from First year to Last Year of projection)</param>
         /// <param name="numFleets">Number of Fleets. Default is 1</param>
         /// <returns>Returns a empty DataTable</returns>
-        private DataTable createFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
-        {
-            DataTable fallbackAgeTable = new DataTable();
+        //private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
+        //{
+        //    DataTable fallbackAgeTable = new DataTable();
 
-            for (int nage = 0; nage < numAges; nage++)
-            {
-                fallbackAgeTable.Columns.Add("Age " + (nage + 1));
-            }
-            int numFleetYears = numYears * numFleets;
-            for (int iyear = 0; iyear < numFleetYears; iyear++)
-            {
-                fallbackAgeTable.Rows.Add();
-            }
+        //    for (int nage = 0; nage < numAges; nage++)
+        //    {
+        //        fallbackAgeTable.Columns.Add("Age " + (nage + 1));
+        //    }
+        //    int numFleetYears = numYears * numFleets;
+        //    for (int iyear = 0; iyear < numFleetYears; iyear++)
+        //    {
+        //        fallbackAgeTable.Rows.Add();
+        //    }
       
-            return fallbackAgeTable;
+        //    return fallbackAgeTable;
+        //}
+        private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
+        {
+            int numFleetYears = numYears * numFleets;
+            return CreateBlankDataTable(numAges, numFleetYears, "Age");
         }
+
+        private DataTable CreateBlankDataTable(int yCol, int xRows, string colName)
+        {
+            DataTable blankDataTable = new DataTable();
+
+            for (int i = 0; i < yCol; i++)
+            {
+                blankDataTable.Columns.Add(colName + " " + (i + 1));
+            }
+            for (int x = 0; x < xRows; x++)
+            {
+                blankDataTable.Rows.Add();
+            }
+            return blankDataTable;
+        }
+
 
         /// <summary>
         /// Generalized Method to set the DataGridView's Data Sources from AGEPRO.CoreLib Input File Data Files 

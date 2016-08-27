@@ -91,6 +91,8 @@ namespace AGEPRO.GUI
             }
         }
 
+        
+
         /// <summary>
         /// Creates and sets the Recruitment Model Dictionary Object
         /// </summary>
@@ -139,7 +141,7 @@ namespace AGEPRO.GUI
         private void dataGridSelectRecruitModels_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRowHeaderCell header = dataGridSelectRecruitModels.Rows[e.RowIndex].HeaderCell;
-
+            
             if (!(header.Value != null))
             {
                 for (int i = 0; i < dataGridSelectRecruitModels.Rows.Count; i++)
