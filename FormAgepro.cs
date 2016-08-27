@@ -562,22 +562,6 @@ namespace AGEPRO.GUI
         /// <param name="numYears">Number of Years (from First year to Last Year of projection)</param>
         /// <param name="numFleets">Number of Fleets. Default is 1</param>
         /// <returns>Returns a empty DataTable</returns>
-        //private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
-        //{
-        //    DataTable fallbackAgeTable = new DataTable();
-
-        //    for (int nage = 0; nage < numAges; nage++)
-        //    {
-        //        fallbackAgeTable.Columns.Add("Age " + (nage + 1));
-        //    }
-        //    int numFleetYears = numYears * numFleets;
-        //    for (int iyear = 0; iyear < numFleetYears; iyear++)
-        //    {
-        //        fallbackAgeTable.Rows.Add();
-        //    }
-      
-        //    return fallbackAgeTable;
-        //}
         private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
         {
             int numFleetYears = numYears * numFleets;
