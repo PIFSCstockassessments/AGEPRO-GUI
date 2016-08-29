@@ -151,5 +151,43 @@ namespace AGEPRO.GUI
             }
         }
 
+        private void dataGridSelectRecruitModels_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is ComboBox)
+            {
+                ComboBox selectedModel = e.Control as ComboBox;
+                selectedModel.SelectionChangeCommitted += OnSelectingRecruitModelComboBox;
+            }
+        }
+
+        private void OnSelectingRecruitModelComboBox(object sender, EventArgs e)
+        {
+            var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
+            var senderCbx = sender as DataGridViewComboBoxEditingControl;
+            
+            if(senderCbx.SelectedIndex >= 0)
+            {
+                object kvpKey;
+                var selectedRecruit = senderCbx.SelectedItem;
+                if (selectedRecruit != null) 
+                {
+                    Type typeSelectedRecruit = selectedRecruit.GetType();
+                    if (typeSelectedRecruit.IsGenericType)
+                    {
+                        Type baseTypeSelectedRecruit = typeSelectedRecruit.GetGenericTypeDefinition();
+                        if (baseTypeSelectedRecruit == typeof(KeyValuePair<,>))
+                        {
+                            Type[] argTypes = baseTypeSelectedRecruit.GetGenericArguments();
+
+                            kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
+                            this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
+                        }
+                    }    
+                }
+            }
+            
+        }
+
+
     }
 }
