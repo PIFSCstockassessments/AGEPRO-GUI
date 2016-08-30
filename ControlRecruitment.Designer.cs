@@ -40,11 +40,16 @@
             this.labelSSBScalingFactor = new System.Windows.Forms.Label();
             this.labelRecruitmentScalingFactor = new System.Windows.Forms.Label();
             this.tabRecruitModels = new System.Windows.Forms.TabPage();
+            this.groupRecruitSelectionBox = new System.Windows.Forms.GroupBox();
+            this.comboBoxRecruitSelection = new System.Windows.Forms.ComboBox();
+            this.labelRecruitSelection = new System.Windows.Forms.Label();
             this.tabControlRecruitment.SuspendLayout();
             this.tabRecruitment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitProb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSelectRecruitModels)).BeginInit();
             this.groupScalingFactor.SuspendLayout();
+            this.tabRecruitModels.SuspendLayout();
+            this.groupRecruitSelectionBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlRecruitment
@@ -174,6 +179,7 @@
             // 
             // tabRecruitModels
             // 
+            this.tabRecruitModels.Controls.Add(this.groupRecruitSelectionBox);
             this.tabRecruitModels.Location = new System.Drawing.Point(4, 22);
             this.tabRecruitModels.Name = "tabRecruitModels";
             this.tabRecruitModels.Padding = new System.Windows.Forms.Padding(3);
@@ -181,6 +187,37 @@
             this.tabRecruitModels.TabIndex = 1;
             this.tabRecruitModels.Text = "Recruit Model";
             this.tabRecruitModels.UseVisualStyleBackColor = true;
+            // 
+            // groupRecruitSelectionBox
+            // 
+            this.groupRecruitSelectionBox.Controls.Add(this.labelRecruitSelection);
+            this.groupRecruitSelectionBox.Controls.Add(this.comboBoxRecruitSelection);
+            this.groupRecruitSelectionBox.Location = new System.Drawing.Point(15, 6);
+            this.groupRecruitSelectionBox.Name = "groupRecruitSelectionBox";
+            this.groupRecruitSelectionBox.Size = new System.Drawing.Size(542, 97);
+            this.groupRecruitSelectionBox.TabIndex = 0;
+            this.groupRecruitSelectionBox.TabStop = false;
+            // 
+            // comboBoxRecruitSelection
+            // 
+            this.comboBoxRecruitSelection.FormattingEnabled = true;
+            this.comboBoxRecruitSelection.Location = new System.Drawing.Point(21, 19);
+            this.comboBoxRecruitSelection.Name = "comboBoxRecruitSelection";
+            this.comboBoxRecruitSelection.Size = new System.Drawing.Size(473, 21);
+            this.comboBoxRecruitSelection.TabIndex = 0;
+            this.comboBoxRecruitSelection.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecruitSelection_SelectedIndexChanged);
+            // 
+            // labelRecruitSelection
+            // 
+            this.labelRecruitSelection.AutoSize = true;
+            this.labelRecruitSelection.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelRecruitSelection.Location = new System.Drawing.Point(21, 61);
+            this.labelRecruitSelection.MinimumSize = new System.Drawing.Size(475, 20);
+            this.labelRecruitSelection.Name = "labelRecruitSelection";
+            this.labelRecruitSelection.Size = new System.Drawing.Size(475, 20);
+            this.labelRecruitSelection.TabIndex = 1;
+            this.labelRecruitSelection.Text = "label1";
+            this.labelRecruitSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ControlRecruitment
             // 
@@ -196,6 +233,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSelectRecruitModels)).EndInit();
             this.groupScalingFactor.ResumeLayout(false);
             this.groupScalingFactor.PerformLayout();
+            this.tabRecruitModels.ResumeLayout(false);
+            this.groupRecruitSelectionBox.ResumeLayout(false);
+            this.groupRecruitSelectionBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -214,5 +254,8 @@
         private System.Windows.Forms.TextBox textBoxRecruitngScalingFactor;
         private System.Windows.Forms.Label labelSSBScalingFactor;
         private System.Windows.Forms.Label labelRecruitmentScalingFactor;
+        private System.Windows.Forms.GroupBox groupRecruitSelectionBox;
+        private System.Windows.Forms.Label labelRecruitSelection;
+        private System.Windows.Forms.ComboBox comboBoxRecruitSelection;
     }
 }

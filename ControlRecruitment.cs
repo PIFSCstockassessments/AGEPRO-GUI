@@ -188,6 +188,11 @@ namespace AGEPRO.GUI
             
         }
 
+        private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
