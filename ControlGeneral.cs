@@ -16,6 +16,7 @@ namespace AGEPRO.GUI
     {
         public event EventHandler SetGeneral;
         private int maxRandomSeed;
+        public int maxRecruitModels { get; set; }
 
         public ControlGeneral()
         {
@@ -23,6 +24,9 @@ namespace AGEPRO.GUI
             
             //Set max constant
             maxRandomSeed = 2147483647;
+
+            //Set Max Constants
+            maxRecruitModels = 21;
 
         }
         
@@ -138,6 +142,12 @@ namespace AGEPRO.GUI
             if (generalNumYears < 1)
             {
                 string exMessage = "Invaild Year Range - Is Last Year Of Projection Earlier than First Year?";
+                throw new InvalidGeneralParameterException(exMessage);
+            }
+
+            if(Convert.ToInt32(generalNumberRecruitModels) > this.maxRecruitModels)
+            {
+                string exMessage = "Number of Recruitment Models exceed limit of " + this.maxRecruitModels + ".";
                 throw new InvalidGeneralParameterException(exMessage);
             }
             

@@ -29,8 +29,6 @@ namespace AGEPRO.GUI
         private ControlStochasticWeightAge controlDiscardWeight;
         private ControlRecruitment controlRecruitment;
 
-        private int maxRecruitModels;
-
         public FormAgepro()
         {
             InitializeComponent();
@@ -87,9 +85,6 @@ namespace AGEPRO.GUI
             controlMidYearWeight.showCatchWeightsOption = false;
             controlCatchWeight.showCatchWeightsOption = false;
 
-            //Set Max Constants
-            maxRecruitModels = 21;
-         
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
             this.panelNavigation.Enabled = false;
@@ -228,6 +223,8 @@ namespace AGEPRO.GUI
             {
                 //Validate GeneralOption Parameters
                 controlGeneralOptions.ValidateGeneralOptionsParameters();
+
+
 
                 //Check for AGEPRO parameter data that has already been loaded/set 
                 
