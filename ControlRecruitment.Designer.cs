@@ -205,7 +205,7 @@
             this.comboBoxRecruitSelection.Name = "comboBoxRecruitSelection";
             this.comboBoxRecruitSelection.Size = new System.Drawing.Size(473, 21);
             this.comboBoxRecruitSelection.TabIndex = 0;
-            this.comboBoxRecruitSelection.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecruitSelection_SelectedIndexChanged);
+            this.comboBoxRecruitSelection.SelectionChangeCommitted += new System.EventHandler(this.comboBoxRecruitSelection_SelectionChangeCommitted);
             // 
             // labelRecruitSelection
             // 

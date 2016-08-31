@@ -57,6 +57,8 @@ namespace AGEPRO.GUI
         protected override void OnLoad(EventArgs e)
         {
             SetRecruitSelectionDataGridView(numRecruitModels);
+
+            labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
             base.OnLoad(e);
         }
 
@@ -195,7 +197,7 @@ namespace AGEPRO.GUI
                         }
                     }    
                 }
-
+                labelRecruitSelection.Text = getSelectedRecruitmentModelName(currentModel);
             }
             catch(Exception ex)
             {
@@ -206,9 +208,29 @@ namespace AGEPRO.GUI
         }
 
 
-        private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
-        {
+ 
 
+        private void comboBoxRecruitSelection_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Console.WriteLine("Debug:");
+            ComboBox modelSelectionCbx = sender as ComboBox;
+
+            labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
+            
+        }
+        private string getSelectedRecruitmentModelName(int index)
+        {
+            int selectedModel = this.recruitModelSelection[index];
+            string selectedRecruitModelName;
+            if (RecruitDictionary().TryGetValue(selectedModel, out selectedRecruitModelName))
+            {
+                return selectedRecruitModelName;
+            }
+            else
+            {
+                return "...";
+            }
+          
         }
 
 
