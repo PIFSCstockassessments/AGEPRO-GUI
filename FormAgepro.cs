@@ -430,7 +430,7 @@ namespace AGEPRO.GUI
             controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;
             controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
             controlRecruitment.setRecuitmentSelectionComboBox(inpFile.general.numRecModels);
-            
+            controlRecruitment.collectionAgeproRecruitmentModels = inpFile.recruitment.recruitList;
 
             
             //Fishery Selectivity

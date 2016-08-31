@@ -15,7 +15,8 @@ namespace AGEPRO.GUI
         public int numRecruitModels { get; set; }
         public int[] recruitModelSelection { get; set; }
         public string[] seqRecruitYears { get; set; }
-        
+        public List<AGEPRO.CoreLib.RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
         
         public ControlRecruitment()
@@ -217,6 +218,12 @@ namespace AGEPRO.GUI
 
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
             
+            //Load control in panelRecruitModelParameter
+            ControlRecruitmentEmperical empericalRecruitment = new ControlRecruitmentEmperical();
+            panelRecruitModelParameter.Controls.Clear();
+            empericalRecruitment.Dock = DockStyle.Fill;
+            panelRecruitModelParameter.Controls.Add(empericalRecruitment);
+
         }
         private string getSelectedRecruitmentModelName(int index)
         {

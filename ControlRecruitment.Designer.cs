@@ -43,7 +43,7 @@
             this.groupRecruitSelectionBox = new System.Windows.Forms.GroupBox();
             this.comboBoxRecruitSelection = new System.Windows.Forms.ComboBox();
             this.labelRecruitSelection = new System.Windows.Forms.Label();
-            this.panelRecruitModelParameters = new System.Windows.Forms.Panel();
+            this.panelRecruitModelParameter = new System.Windows.Forms.Panel();
             this.tabControlRecruitment.SuspendLayout();
             this.tabRecruitment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitProb)).BeginInit();
@@ -181,7 +181,7 @@
             // 
             // tabRecruitModels
             // 
-            this.tabRecruitModels.Controls.Add(this.panelRecruitModelParameters);
+            this.tabRecruitModels.Controls.Add(this.panelRecruitModelParameter);
             this.tabRecruitModels.Controls.Add(this.groupRecruitSelectionBox);
             this.tabRecruitModels.Location = new System.Drawing.Point(4, 22);
             this.tabRecruitModels.Name = "tabRecruitModels";
@@ -195,7 +195,7 @@
             // 
             this.groupRecruitSelectionBox.Controls.Add(this.labelRecruitSelection);
             this.groupRecruitSelectionBox.Controls.Add(this.comboBoxRecruitSelection);
-            this.groupRecruitSelectionBox.Location = new System.Drawing.Point(7, 6);
+            this.groupRecruitSelectionBox.Location = new System.Drawing.Point(17, 6);
             this.groupRecruitSelectionBox.Name = "groupRecruitSelectionBox";
             this.groupRecruitSelectionBox.Size = new System.Drawing.Size(542, 89);
             this.groupRecruitSelectionBox.TabIndex = 0;
@@ -222,16 +222,15 @@
             this.labelRecruitSelection.Text = "label1";
             this.labelRecruitSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panelRecruitModelParameters
+            // panelRecruitModelParameter
             // 
-            this.panelRecruitModelParameters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelRecruitModelParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelRecruitModelParameters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelRecruitModelParameters.Location = new System.Drawing.Point(7, 110);
-            this.panelRecruitModelParameters.Name = "panelRecruitModelParameters";
-            this.panelRecruitModelParameters.Size = new System.Drawing.Size(882, 355);
-            this.panelRecruitModelParameters.TabIndex = 1;
+            this.panelRecruitModelParameter.Location = new System.Drawing.Point(17, 110);
+            this.panelRecruitModelParameter.Name = "panelRecruitModelParameter";
+            this.panelRecruitModelParameter.Size = new System.Drawing.Size(872, 355);
+            this.panelRecruitModelParameter.TabIndex = 1;
             // 
             // ControlRecruitment
             // 
@@ -271,6 +270,6 @@
         private System.Windows.Forms.GroupBox groupRecruitSelectionBox;
         private System.Windows.Forms.Label labelRecruitSelection;
         private System.Windows.Forms.ComboBox comboBoxRecruitSelection;
-        private System.Windows.Forms.Panel panelRecruitModelParameters;
+        private System.Windows.Forms.Panel panelRecruitModelParameter;
     }
 }
