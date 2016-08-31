@@ -197,7 +197,7 @@ namespace AGEPRO.GUI
                         }
                     }    
                 }
-                labelRecruitSelection.Text = getSelectedRecruitmentModelName(currentModel);
+                
             }
             catch(Exception ex)
             {
@@ -231,6 +231,18 @@ namespace AGEPRO.GUI
                 return "...";
             }
           
+        }
+
+
+
+        private void tabControlRecruitment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //When switching to the "Recruit Model" Tab, set up selected model name for labelRecruitSelection
+            if ((sender as TabControl).SelectedIndex == 1)
+            {
+                labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
+            }
+            
         }
 
 
