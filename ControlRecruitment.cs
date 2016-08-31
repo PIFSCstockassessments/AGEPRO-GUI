@@ -15,8 +15,9 @@ namespace AGEPRO.GUI
         public int numRecruitModels { get; set; }
         public int[] recruitModelSelection { get; set; }
         public string[] seqRecruitYears { get; set; }
+        
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
-
+        
         public ControlRecruitment()
         {
             InitializeComponent();
@@ -78,7 +79,17 @@ namespace AGEPRO.GUI
                 //Set ComboBox Value with intended recruit model number.
                 ((DataGridViewComboBoxCell)recruitSelection.Cells[0]).Value = this.recruitModelSelection[irecruit];
                 irecruit++;
+            }   
+        }
+
+        public void setRecuitmentSelectionComboBox(int numSelections)
+        {
+            string[] selectionList = new string[numSelections];
+            for (int i = 0; i < selectionList.Count(); i++)
+            {
+                selectionList[i] = "Recruitment Selection - " + (i + 1);
             }
+            comboBoxRecruitSelection.DataSource = selectionList;
         }
 
         private void SetRecruitmentProbRowHeaders()
@@ -165,7 +176,7 @@ namespace AGEPRO.GUI
             var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
             var senderCbx = sender as DataGridViewComboBoxEditingControl;
             
-            if(senderCbx.SelectedIndex >= 0)
+            try
             {
                 object kvpKey;
                 var selectedRecruit = senderCbx.SelectedItem;
@@ -184,9 +195,16 @@ namespace AGEPRO.GUI
                         }
                     }    
                 }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("AGEPRO Recruitment selection can not be made." + Environment.NewLine + ex.Message,
+                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
         }
+
 
         private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
         {

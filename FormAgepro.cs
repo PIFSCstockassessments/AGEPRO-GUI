@@ -286,6 +286,8 @@ namespace AGEPRO.GUI
                 controlRecruitment.recruitmentProb = 
                     CreateBlankDataTable(controlRecruitment.numRecruitModels, controlRecruitment.seqRecruitYears.Count(), 
                     "Selection");
+                controlRecruitment.setRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
+
 
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
@@ -427,6 +429,9 @@ namespace AGEPRO.GUI
             controlRecruitment.recruitmentProb = inpFile.recruitment.recruitProb;
             controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;
             controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
+            controlRecruitment.setRecuitmentSelectionComboBox(inpFile.general.numRecModels);
+            
+
             
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
