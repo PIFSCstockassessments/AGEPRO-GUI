@@ -1,6 +1,6 @@
 ﻿namespace AGEPRO.GUI
 {
-    partial class ControlRecruitmentEmperical
+    partial class ControlRecruitmentEmpirical
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,43 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupEmpericalParameters = new System.Windows.Forms.GroupBox();
-            this.labelNumObservations = new System.Windows.Forms.Label();
-            this.spinBoxNumObservations = new System.Windows.Forms.NumericUpDown();
+            this.groupEmpiricalParameters = new System.Windows.Forms.GroupBox();
             this.buttonSetParameters = new System.Windows.Forms.Button();
+            this.spinBoxNumObservations = new System.Windows.Forms.NumericUpDown();
+            this.labelNumObservations = new System.Windows.Forms.Label();
             this.labelObservations = new System.Windows.Forms.Label();
             this.dataGridRecruitTable = new System.Windows.Forms.DataGridView();
-            this.groupEmpericalParameters.SuspendLayout();
+            this.groupEmpiricalParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitTable)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupEmpericalParameters
+            // groupEmpiricalParameters
             // 
-            this.groupEmpericalParameters.Controls.Add(this.buttonSetParameters);
-            this.groupEmpericalParameters.Controls.Add(this.spinBoxNumObservations);
-            this.groupEmpericalParameters.Controls.Add(this.labelNumObservations);
-            this.groupEmpericalParameters.Location = new System.Drawing.Point(0, 0);
-            this.groupEmpericalParameters.Name = "groupEmpericalParameters";
-            this.groupEmpericalParameters.Size = new System.Drawing.Size(574, 90);
-            this.groupEmpericalParameters.TabIndex = 0;
-            this.groupEmpericalParameters.TabStop = false;
-            // 
-            // labelNumObservations
-            // 
-            this.labelNumObservations.AutoSize = true;
-            this.labelNumObservations.Location = new System.Drawing.Point(18, 16);
-            this.labelNumObservations.Name = "labelNumObservations";
-            this.labelNumObservations.Size = new System.Drawing.Size(123, 13);
-            this.labelNumObservations.TabIndex = 0;
-            this.labelNumObservations.Text = "Number Of Observations";
-            // 
-            // spinBoxNumObservations
-            // 
-            this.spinBoxNumObservations.Location = new System.Drawing.Point(225, 14);
-            this.spinBoxNumObservations.Name = "spinBoxNumObservations";
-            this.spinBoxNumObservations.Size = new System.Drawing.Size(120, 20);
-            this.spinBoxNumObservations.TabIndex = 1;
+            this.groupEmpiricalParameters.Controls.Add(this.buttonSetParameters);
+            this.groupEmpiricalParameters.Controls.Add(this.spinBoxNumObservations);
+            this.groupEmpiricalParameters.Controls.Add(this.labelNumObservations);
+            this.groupEmpiricalParameters.Location = new System.Drawing.Point(0, 0);
+            this.groupEmpiricalParameters.Name = "groupEmpiricalParameters";
+            this.groupEmpiricalParameters.Size = new System.Drawing.Size(574, 90);
+            this.groupEmpiricalParameters.TabIndex = 0;
+            this.groupEmpiricalParameters.TabStop = false;
             // 
             // buttonSetParameters
             // 
@@ -74,6 +58,22 @@
             this.buttonSetParameters.TabIndex = 2;
             this.buttonSetParameters.Text = "SET";
             this.buttonSetParameters.UseVisualStyleBackColor = true;
+            // 
+            // spinBoxNumObservations
+            // 
+            this.spinBoxNumObservations.Location = new System.Drawing.Point(225, 14);
+            this.spinBoxNumObservations.Name = "spinBoxNumObservations";
+            this.spinBoxNumObservations.Size = new System.Drawing.Size(120, 20);
+            this.spinBoxNumObservations.TabIndex = 1;
+            // 
+            // labelNumObservations
+            // 
+            this.labelNumObservations.AutoSize = true;
+            this.labelNumObservations.Location = new System.Drawing.Point(18, 16);
+            this.labelNumObservations.Name = "labelNumObservations";
+            this.labelNumObservations.Size = new System.Drawing.Size(123, 13);
+            this.labelNumObservations.TabIndex = 0;
+            this.labelNumObservations.Text = "Number Of Observations";
             // 
             // labelObservations
             // 
@@ -97,18 +97,18 @@
             this.dataGridRecruitTable.Size = new System.Drawing.Size(855, 223);
             this.dataGridRecruitTable.TabIndex = 2;
             // 
-            // ControlRecruitmentEmperical
+            // ControlRecruitmentEmpirical
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridRecruitTable);
             this.Controls.Add(this.labelObservations);
-            this.Controls.Add(this.groupEmpericalParameters);
+            this.Controls.Add(this.groupEmpiricalParameters);
             this.MinimumSize = new System.Drawing.Size(870, 355);
-            this.Name = "ControlRecruitmentEmperical";
+            this.Name = "ControlRecruitmentEmpirical";
             this.Size = new System.Drawing.Size(870, 355);
-            this.groupEmpericalParameters.ResumeLayout(false);
-            this.groupEmpericalParameters.PerformLayout();
+            this.groupEmpiricalParameters.ResumeLayout(false);
+            this.groupEmpiricalParameters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitTable)).EndInit();
             this.ResumeLayout(false);
@@ -118,7 +118,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupEmpericalParameters;
+        private System.Windows.Forms.GroupBox groupEmpiricalParameters;
         private System.Windows.Forms.Button buttonSetParameters;
         private System.Windows.Forms.NumericUpDown spinBoxNumObservations;
         private System.Windows.Forms.Label labelNumObservations;

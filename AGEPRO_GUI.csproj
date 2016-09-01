@@ -132,11 +132,11 @@
     <Compile Include="InvalidGeneralParameterException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ControlRecruitmentEmperical.cs">
+    <Compile Include="ControlRecruitmentEmpirical.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlRecruitmentEmperical.Designer.cs">
-      <DependentUpon>ControlRecruitmentEmperical.cs</DependentUpon>
+    <Compile Include="ControlRecruitmentEmpirical.Designer.cs">
+      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
@@ -178,8 +178,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ControlRecruitmentEmperical.resx">
-      <DependentUpon>ControlRecruitmentEmperical.cs</DependentUpon>
+    <EmbeddedResource Include="ControlRecruitmentEmpirical.resx">
+      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\AGEPRO.CoreLib.AgeproInputFile.datasource" />
     <None Include="Properties\Settings.settings">
