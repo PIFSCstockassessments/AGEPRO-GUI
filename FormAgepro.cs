@@ -287,8 +287,9 @@ namespace AGEPRO.GUI
                     CreateBlankDataTable(controlRecruitment.numRecruitModels, controlRecruitment.seqRecruitYears.Count(), 
                     "Selection");
                 controlRecruitment.setRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
-
-
+                controlRecruitment.collectionAgeproRecruitmentModels = 
+                    new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
+                
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked

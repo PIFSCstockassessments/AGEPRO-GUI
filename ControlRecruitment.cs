@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AGEPRO.CoreLib;
 
 namespace AGEPRO.GUI
 {
@@ -60,6 +61,18 @@ namespace AGEPRO.GUI
             SetRecruitSelectionDataGridView(numRecruitModels);
 
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
+
+            if (collectionAgeproRecruitmentModels.Count == 0)
+            {
+                //if AgeproRecruitmentModel Colletction list is empty, intialize it
+                List<RecruitmentModel> userSpecRecruitList = new List<RecruitmentModel>();
+                for (int i = 0; i < numRecruitModels; i++)
+                {
+                    userSpecRecruitList.Add(new GeneralizedRecruitment());
+                }
+                collectionAgeproRecruitmentModels = userSpecRecruitList;
+            }
+            
             base.OnLoad(e);
         }
 
@@ -171,6 +184,8 @@ namespace AGEPRO.GUI
             {
                 ComboBox selectedModel = e.Control as ComboBox;
                 selectedModel.SelectionChangeCommitted += OnSelectingRecruitModelComboBox;
+                Console.WriteLine("DebugEnd");
+                
             }
         }
 
@@ -178,7 +193,7 @@ namespace AGEPRO.GUI
         {
             var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
             var senderCbx = sender as DataGridViewComboBoxEditingControl;
-            
+            Console.WriteLine("DebugStart");
             try
             {
                 object kvpKey;
@@ -195,9 +210,24 @@ namespace AGEPRO.GUI
 
                             kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
                             this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
+
+                            //TODO Goto AGEPRO.CoreLib.AgeproRecruitment, 
+                            // and convert AddToRecruitList to return a new AgeproRecruitmentModel Class
+                            int selectedModelNum = Convert.ToInt32(kvpKey);
+                            if (collectionAgeproRecruitmentModels[currentModel] != null)
+                            {
+                                collectionAgeproRecruitmentModels[currentModel] = 
+                                    AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
+                            }
+                                    
+                            
+                            Console.WriteLine("Debug1");
                         }
                     }    
                 }
+
+                
+                
                 
             }
             catch(Exception ex)
@@ -250,6 +280,7 @@ namespace AGEPRO.GUI
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
                 //Load the appropriate 
+                AGEPRO.CoreLib.RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex]; 
             }
             
         }
