@@ -183,8 +183,8 @@ namespace AGEPRO.GUI
             if (e.Control is ComboBox)
             {
                 ComboBox selectedModel = e.Control as ComboBox;
-                selectedModel.SelectionChangeCommitted += OnSelectingRecruitModelComboBox;
-                Console.WriteLine("DebugEnd");
+                selectedModel.SelectionChangeCommitted -= new EventHandler(OnSelectingRecruitModelComboBox);
+                selectedModel.SelectionChangeCommitted += new EventHandler(OnSelectingRecruitModelComboBox);
                 
             }
         }
@@ -193,7 +193,6 @@ namespace AGEPRO.GUI
         {
             var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
             var senderCbx = sender as DataGridViewComboBoxEditingControl;
-            Console.WriteLine("DebugStart");
             try
             {
                 object kvpKey;
@@ -223,7 +222,8 @@ namespace AGEPRO.GUI
                             
                             Console.WriteLine("Debug1");
                         }
-                    }    
+                    }
+    
                 }
 
                 
