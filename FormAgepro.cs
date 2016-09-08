@@ -281,12 +281,12 @@ namespace AGEPRO.GUI
                 //Recruitment
                 controlRecruitment.numRecruitModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
                 controlRecruitment.recruitModelSelection = new int[controlRecruitment.numRecruitModels];
-                controlRecruitment.SetRecruitSelectionDataGridView(controlRecruitment.numRecruitModels);
+                controlRecruitment.SetDataGridSelectRecruitModels(controlRecruitment.numRecruitModels);
                 controlRecruitment.seqRecruitYears = controlGeneralOptions.SeqYears();
                 controlRecruitment.recruitmentProb = 
                     CreateBlankDataTable(controlRecruitment.numRecruitModels, controlRecruitment.seqRecruitYears.Count(), 
                     "Selection");
-                controlRecruitment.setRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
+                controlRecruitment.SetRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
                 controlRecruitment.collectionAgeproRecruitmentModels = 
                     new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
                 
@@ -425,12 +425,12 @@ namespace AGEPRO.GUI
             controlRecruitment.recruitModelSelection = new int[inpFile.general.numRecModels];
             controlRecruitment.recruitModelSelection = inpFile.recruitment.recruitType;
             controlRecruitment.numRecruitModels = inpFile.general.numRecModels;
-            controlRecruitment.SetRecruitSelectionDataGridView(controlRecruitment.numRecruitModels);
+            controlRecruitment.SetDataGridSelectRecruitModels(controlRecruitment.numRecruitModels);
             controlRecruitment.seqRecruitYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
             controlRecruitment.recruitmentProb = inpFile.recruitment.recruitProb;
             controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;
             controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
-            controlRecruitment.setRecuitmentSelectionComboBox(inpFile.general.numRecModels);
+            controlRecruitment.SetRecuitmentSelectionComboBox(inpFile.general.numRecModels);
             controlRecruitment.collectionAgeproRecruitmentModels = inpFile.recruitment.recruitList;
 
             

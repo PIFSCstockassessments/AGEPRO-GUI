@@ -23,12 +23,13 @@ namespace AGEPRO.GUI
         public ControlRecruitment()
         {
             InitializeComponent();
-
+            
             columnRecruitModelSelection = new DataGridViewComboBoxColumn();
             columnRecruitModelSelection.DataPropertyName = "columnRecruitModelSelect";
             columnRecruitModelSelection.HeaderText = "Recruitment Model";
             columnRecruitModelSelection.Width = 500;
 
+            //Use the RecruitDictionary object to popluate dataGridRecruitModelSelection's Combo Boxes
             Dictionary <int, string> recuritDict = RecruitDictionary();
             columnRecruitModelSelection.DataSource = recuritDict.ToList();
             columnRecruitModelSelection.ValueMember = "Key";
@@ -58,7 +59,7 @@ namespace AGEPRO.GUI
 
         protected override void OnLoad(EventArgs e)
         {
-            SetRecruitSelectionDataGridView(numRecruitModels);
+            SetDataGridSelectRecruitModels(numRecruitModels);
 
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
@@ -75,8 +76,7 @@ namespace AGEPRO.GUI
             
             base.OnLoad(e);
         }
-
-        public void SetRecruitSelectionDataGridView(int numRecruitModels)
+        public void SetDataGridSelectRecruitModels(int numRecruitModels)
         {
             if (dataGridSelectRecruitModels != null)
             {
@@ -98,7 +98,7 @@ namespace AGEPRO.GUI
             }   
         }
 
-        public void setRecuitmentSelectionComboBox(int numSelections)
+        public void SetRecuitmentSelectionComboBox(int numSelections)
         {
             string[] selectionList = new string[numSelections];
             for (int i = 0; i < selectionList.Count(); i++)
@@ -108,6 +108,7 @@ namespace AGEPRO.GUI
             comboBoxRecruitSelection.DataSource = selectionList;
         }
 
+         
         private void SetRecruitmentProbRowHeaders()
         {
             int iyear = 0;
@@ -183,8 +184,12 @@ namespace AGEPRO.GUI
             if (e.Control is ComboBox)
             {
                 ComboBox selectedModel = e.Control as ComboBox;
-                selectedModel.SelectionChangeCommitted -= new EventHandler(OnSelectingRecruitModelComboBox);
-                selectedModel.SelectionChangeCommitted += new EventHandler(OnSelectingRecruitModelComboBox);
+                if (selectedModel != null)
+                {
+                    //Remove this handler first to keep itself from attaching multiple times (leaks)
+                    selectedModel.SelectedValueChanged -= new EventHandler(OnSelectingRecruitModelComboBox);
+                    selectedModel.SelectedValueChanged += new EventHandler(OnSelectingRecruitModelComboBox);
+                }
                 
             }
         }
@@ -218,7 +223,6 @@ namespace AGEPRO.GUI
                                 collectionAgeproRecruitmentModels[currentModel] = 
                                     AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
                             }
-                                    
                             
                             Console.WriteLine("Debug1");
                         }
@@ -226,9 +230,6 @@ namespace AGEPRO.GUI
     
                 }
 
-                
-                
-                
             }
             catch(Exception ex)
             {
@@ -243,7 +244,7 @@ namespace AGEPRO.GUI
 
         private void comboBoxRecruitSelection_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Console.WriteLine("Debug:");
+            
             ComboBox modelSelectionCbx = sender as ComboBox;
 
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
