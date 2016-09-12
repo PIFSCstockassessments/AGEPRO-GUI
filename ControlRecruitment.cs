@@ -19,16 +19,18 @@ namespace AGEPRO.GUI
         public List<AGEPRO.CoreLib.RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
-        
+        public bool populateDGV { get; set; }
+
         public ControlRecruitment()
         {
+            populateDGV = true;
             InitializeComponent();
             
             columnRecruitModelSelection = new DataGridViewComboBoxColumn();
             columnRecruitModelSelection.DataPropertyName = "columnRecruitModelSelect";
             columnRecruitModelSelection.HeaderText = "Recruitment Model";
             columnRecruitModelSelection.Width = 500;
-
+            
             //Use the RecruitDictionary object to popluate dataGridRecruitModelSelection's Combo Boxes
             Dictionary <int, string> recuritDict = RecruitDictionary();
             columnRecruitModelSelection.DataSource = recuritDict.ToList();
@@ -59,6 +61,7 @@ namespace AGEPRO.GUI
 
         protected override void OnLoad(EventArgs e)
         {
+            this.populateDGV = true;
             SetDataGridSelectRecruitModels(numRecruitModels);
 
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
@@ -73,8 +76,9 @@ namespace AGEPRO.GUI
                 }
                 collectionAgeproRecruitmentModels = userSpecRecruitList;
             }
-            
+
             base.OnLoad(e);
+            populateDGV = false;
         }
         public void SetDataGridSelectRecruitModels(int numRecruitModels)
         {
@@ -95,9 +99,11 @@ namespace AGEPRO.GUI
                 //Set ComboBox Value with intended recruit model number.
                 ((DataGridViewComboBoxCell)recruitSelection.Cells[0]).Value = this.recruitModelSelection[irecruit];
                 irecruit++;
-            }   
+            }
+            
         }
 
+        //in tabRecuitModels
         public void SetRecuitmentSelectionComboBox(int numSelections)
         {
             string[] selectionList = new string[numSelections];
@@ -172,26 +178,28 @@ namespace AGEPRO.GUI
             
             if (!(header.Value != null))
             {
+                
                 for (int i = 0; i < dataGridSelectRecruitModels.Rows.Count; i++)
                 {
                     dataGridSelectRecruitModels.Rows[i].HeaderCell.Value = "Selection " + (i + 1);
                 }
+                
             }
         }
 
         private void dataGridSelectRecruitModels_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (e.Control is ComboBox)
-            {
-                ComboBox selectedModel = e.Control as ComboBox;
-                if (selectedModel != null)
-                {
-                    //Remove this handler first to keep itself from attaching multiple times (leaks)
-                    selectedModel.SelectedValueChanged -= new EventHandler(OnSelectingRecruitModelComboBox);
-                    selectedModel.SelectedValueChanged += new EventHandler(OnSelectingRecruitModelComboBox);
-                }
+            //if (e.Control is ComboBox)
+            //{
+            //    ComboBox selectedModel = e.Control as ComboBox;
+            //    if (selectedModel != null)
+            //    {
+            //        //Remove this handler first to keep itself from attaching multiple times (leaks)
+            //        selectedModel.SelectedValueChanged -= new EventHandler(OnSelectingRecruitModelComboBox);
+            //        selectedModel.SelectedValueChanged += new EventHandler(OnSelectingRecruitModelComboBox);
+            //    }
                 
-            }
+            //}
         }
 
         private void OnSelectingRecruitModelComboBox(object sender, EventArgs e)
@@ -283,8 +291,84 @@ namespace AGEPRO.GUI
                 //Load the appropriate 
                 AGEPRO.CoreLib.RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex]; 
             }
+         }
+
+        // This event handler manually raises the CellValueChanged event 
+        // by calling the CommitEdit method. 
+        private void dataGridSelectRecruitModels_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridSelectRecruitModels.IsCurrentCellDirty)
+            {
+                // This fires the cell value changed handler below
+                dataGridSelectRecruitModels.CommitEdit(DataGridViewDataErrorContexts.Commit); 
+            }
+        }
+
+        private void dataGridSelectRecruitModels_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.populateDGV == false)
+            {
+                DataGridViewComboBoxCell cbxCell = (DataGridViewComboBoxCell)dataGridSelectRecruitModels.Rows[e.RowIndex].Cells[0];
+                //Should only bind to events to Recruitment Model Column
+                if (e.ColumnIndex == 0) 
+                {
+                    if (cbxCell != null)
+                    {
+                        var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
+                        var senderDGV = sender as DataGridView;
+                        var senderCbx = senderDGV.EditingControl as DataGridViewComboBoxEditingControl;
+                        OnSelectingRecruitModel(currentModel, senderCbx);
+
+                        dataGridSelectRecruitModels.Invalidate();
+                    }
+                } 
+            }
             
         }
+
+        private void OnSelectingRecruitModel(int currentModel, DataGridViewComboBoxEditingControl modelCbx)
+        {
+            try
+            {
+                object kvpKey;
+                var selectedRecruit = modelCbx.SelectedItem;
+                if (selectedRecruit != null) 
+                {
+                    Type typeSelectedRecruit = selectedRecruit.GetType();
+                    if (typeSelectedRecruit.IsGenericType)
+                    {
+                        Type baseTypeSelectedRecruit = typeSelectedRecruit.GetGenericTypeDefinition();
+                        if (baseTypeSelectedRecruit == typeof(KeyValuePair<,>))
+                        {
+                            Type[] argTypes = baseTypeSelectedRecruit.GetGenericArguments();
+
+                            kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
+                            this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
+
+                            //TODO Goto AGEPRO.CoreLib.AgeproRecruitment, 
+                            // and convert AddToRecruitList to return a new AgeproRecruitmentModel Class
+                            int selectedModelNum = Convert.ToInt32(kvpKey);
+                            if (collectionAgeproRecruitmentModels[currentModel] != null)
+                            {
+                                collectionAgeproRecruitmentModels[currentModel] = 
+                                    AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
+                            }
+                            
+                            Console.WriteLine("Debug1");
+                        }
+                    }
+    
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("AGEPRO Recruitment selection can not be made." + Environment.NewLine + ex.Message,
+                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
+        }
+
 
 
     }

@@ -40,10 +40,10 @@
             this.labelSSBScalingFactor = new System.Windows.Forms.Label();
             this.labelRecruitmentScalingFactor = new System.Windows.Forms.Label();
             this.tabRecruitModels = new System.Windows.Forms.TabPage();
-            this.groupRecruitSelectionBox = new System.Windows.Forms.GroupBox();
-            this.comboBoxRecruitSelection = new System.Windows.Forms.ComboBox();
-            this.labelRecruitSelection = new System.Windows.Forms.Label();
             this.panelRecruitModelParameter = new System.Windows.Forms.Panel();
+            this.groupRecruitSelectionBox = new System.Windows.Forms.GroupBox();
+            this.labelRecruitSelection = new System.Windows.Forms.Label();
+            this.comboBoxRecruitSelection = new System.Windows.Forms.ComboBox();
             this.tabControlRecruitment.SuspendLayout();
             this.tabRecruitment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitProb)).BeginInit();
@@ -131,6 +131,8 @@
             this.dataGridSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
             this.dataGridSelectRecruitModels.TabIndex = 2;
             this.dataGridSelectRecruitModels.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridSelectRecruitModels_CellFormatting);
+            this.dataGridSelectRecruitModels.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSelectRecruitModels_CellValueChanged);
+            this.dataGridSelectRecruitModels.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridSelectRecruitModels_CurrentCellDirtyStateChanged);
             this.dataGridSelectRecruitModels.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridSelectRecruitModels_EditingControlShowing);
             // 
             // groupScalingFactor
@@ -191,6 +193,16 @@
             this.tabRecruitModels.Text = "Recruit Model";
             this.tabRecruitModels.UseVisualStyleBackColor = true;
             // 
+            // panelRecruitModelParameter
+            // 
+            this.panelRecruitModelParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelRecruitModelParameter.Location = new System.Drawing.Point(17, 110);
+            this.panelRecruitModelParameter.Name = "panelRecruitModelParameter";
+            this.panelRecruitModelParameter.Size = new System.Drawing.Size(872, 355);
+            this.panelRecruitModelParameter.TabIndex = 1;
+            // 
             // groupRecruitSelectionBox
             // 
             this.groupRecruitSelectionBox.Controls.Add(this.labelRecruitSelection);
@@ -200,15 +212,6 @@
             this.groupRecruitSelectionBox.Size = new System.Drawing.Size(542, 89);
             this.groupRecruitSelectionBox.TabIndex = 0;
             this.groupRecruitSelectionBox.TabStop = false;
-            // 
-            // comboBoxRecruitSelection
-            // 
-            this.comboBoxRecruitSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRecruitSelection.Location = new System.Drawing.Point(21, 19);
-            this.comboBoxRecruitSelection.Name = "comboBoxRecruitSelection";
-            this.comboBoxRecruitSelection.Size = new System.Drawing.Size(473, 21);
-            this.comboBoxRecruitSelection.TabIndex = 0;
-            this.comboBoxRecruitSelection.SelectionChangeCommitted += new System.EventHandler(this.comboBoxRecruitSelection_SelectionChangeCommitted);
             // 
             // labelRecruitSelection
             // 
@@ -222,15 +225,14 @@
             this.labelRecruitSelection.Text = "label1";
             this.labelRecruitSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panelRecruitModelParameter
+            // comboBoxRecruitSelection
             // 
-            this.panelRecruitModelParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelRecruitModelParameter.Location = new System.Drawing.Point(17, 110);
-            this.panelRecruitModelParameter.Name = "panelRecruitModelParameter";
-            this.panelRecruitModelParameter.Size = new System.Drawing.Size(872, 355);
-            this.panelRecruitModelParameter.TabIndex = 1;
+            this.comboBoxRecruitSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRecruitSelection.Location = new System.Drawing.Point(21, 19);
+            this.comboBoxRecruitSelection.Name = "comboBoxRecruitSelection";
+            this.comboBoxRecruitSelection.Size = new System.Drawing.Size(473, 21);
+            this.comboBoxRecruitSelection.TabIndex = 0;
+            this.comboBoxRecruitSelection.SelectionChangeCommitted += new System.EventHandler(this.comboBoxRecruitSelection_SelectionChangeCommitted);
             // 
             // ControlRecruitment
             // 

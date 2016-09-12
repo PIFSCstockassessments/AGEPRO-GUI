@@ -432,7 +432,7 @@ namespace AGEPRO.GUI
             controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
             controlRecruitment.SetRecuitmentSelectionComboBox(inpFile.general.numRecModels);
             controlRecruitment.collectionAgeproRecruitmentModels = inpFile.recruitment.recruitList;
-
+            
             
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
