@@ -187,69 +187,6 @@ namespace AGEPRO.GUI
             }
         }
 
-        private void dataGridSelectRecruitModels_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            //if (e.Control is ComboBox)
-            //{
-            //    ComboBox selectedModel = e.Control as ComboBox;
-            //    if (selectedModel != null)
-            //    {
-            //        //Remove this handler first to keep itself from attaching multiple times (leaks)
-            //        selectedModel.SelectedValueChanged -= new EventHandler(OnSelectingRecruitModelComboBox);
-            //        selectedModel.SelectedValueChanged += new EventHandler(OnSelectingRecruitModelComboBox);
-            //    }
-                
-            //}
-        }
-
-        private void OnSelectingRecruitModelComboBox(object sender, EventArgs e)
-        {
-            var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
-            var senderCbx = sender as DataGridViewComboBoxEditingControl;
-            try
-            {
-                object kvpKey;
-                var selectedRecruit = senderCbx.SelectedItem;
-                if (selectedRecruit != null) 
-                {
-                    Type typeSelectedRecruit = selectedRecruit.GetType();
-                    if (typeSelectedRecruit.IsGenericType)
-                    {
-                        Type baseTypeSelectedRecruit = typeSelectedRecruit.GetGenericTypeDefinition();
-                        if (baseTypeSelectedRecruit == typeof(KeyValuePair<,>))
-                        {
-                            Type[] argTypes = baseTypeSelectedRecruit.GetGenericArguments();
-
-                            kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
-                            this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
-
-                            //TODO Goto AGEPRO.CoreLib.AgeproRecruitment, 
-                            // and convert AddToRecruitList to return a new AgeproRecruitmentModel Class
-                            int selectedModelNum = Convert.ToInt32(kvpKey);
-                            if (collectionAgeproRecruitmentModels[currentModel] != null)
-                            {
-                                collectionAgeproRecruitmentModels[currentModel] = 
-                                    AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
-                            }
-                            
-                            Console.WriteLine("Debug1");
-                        }
-                    }
-    
-                }
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("AGEPRO Recruitment selection can not be made." + Environment.NewLine + ex.Message,
-                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            
-        }
-
-
- 
-
         private void comboBoxRecruitSelection_SelectionChangeCommitted(object sender, EventArgs e)
         {
             

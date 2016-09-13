@@ -133,7 +133,6 @@
             this.dataGridSelectRecruitModels.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridSelectRecruitModels_CellFormatting);
             this.dataGridSelectRecruitModels.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSelectRecruitModels_CellValueChanged);
             this.dataGridSelectRecruitModels.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridSelectRecruitModels_CurrentCellDirtyStateChanged);
-            this.dataGridSelectRecruitModels.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridSelectRecruitModels_EditingControlShowing);
             // 
             // groupScalingFactor
             // 
