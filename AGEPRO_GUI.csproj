@@ -99,6 +99,12 @@
     <Compile Include="ControlRecruitment.Designer.cs">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitmentPredictor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentPredictor.Designer.cs">
+      <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlStochasticAge.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitment.resx">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentPredictor.resx">
+      <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlStochasticAge.resx">
       <DependentUpon>ControlStochasticAge.cs</DependentUpon>

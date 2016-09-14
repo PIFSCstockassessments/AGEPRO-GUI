@@ -80,6 +80,10 @@ namespace AGEPRO.GUI
             base.OnLoad(e);
             populateDGV = false;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numRecruitModels"></param>
         public void SetDataGridSelectRecruitModels(int numRecruitModels)
         {
             if (dataGridSelectRecruitModels != null)
@@ -103,7 +107,10 @@ namespace AGEPRO.GUI
             
         }
 
-        //in tabRecuitModels
+        /// <summary>
+        /// Populates the comboBoxRecruitmentSelection in the Recruit Models Tab
+        /// </summary>
+        /// <param name="numSelections">Recruitment selection count.</param>
         public void SetRecuitmentSelectionComboBox(int numSelections)
         {
             string[] selectionList = new string[numSelections];
@@ -282,21 +289,18 @@ namespace AGEPRO.GUI
                             kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
                             this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
 
-                            //TODO Goto AGEPRO.CoreLib.AgeproRecruitment, 
-                            // and convert AddToRecruitList to return a new AgeproRecruitmentModel Class
                             int selectedModelNum = Convert.ToInt32(kvpKey);
-                            if (collectionAgeproRecruitmentModels[currentModel] != null)
+                            if (this.collectionAgeproRecruitmentModels[currentModel] != null)
                             {
-                                collectionAgeproRecruitmentModels[currentModel] = 
+                                this.collectionAgeproRecruitmentModels[currentModel] = 
                                     AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
+                                
                             }
                             
                             Console.WriteLine("Debug1");
                         }
-                    }
-    
+                    }    
                 }
-
             }
             catch(Exception ex)
             {
@@ -304,9 +308,9 @@ namespace AGEPRO.GUI
                     "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
-        }
+        }//end OnSelectingRecruitingModel
 
-
+        
 
     }
 }
