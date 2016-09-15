@@ -196,7 +196,6 @@ namespace AGEPRO.GUI
 
         private void comboBoxRecruitSelection_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
             ComboBox modelSelectionCbx = sender as ComboBox;
 
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
