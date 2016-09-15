@@ -55,7 +55,7 @@
             this.groupPredictorParameters.Controls.Add(this.buttonSetParameters);
             this.groupPredictorParameters.Controls.Add(this.spinBoxNumRecruitPredictors);
             this.groupPredictorParameters.Controls.Add(this.labelNumRecruitPredictors);
-            this.groupPredictorParameters.Location = new System.Drawing.Point(3, 3);
+            this.groupPredictorParameters.Location = new System.Drawing.Point(0, 0);
             this.groupPredictorParameters.Name = "groupPredictorParameters";
             this.groupPredictorParameters.Size = new System.Drawing.Size(574, 94);
             this.groupPredictorParameters.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             // buttonSetParameters
             // 
-            this.buttonSetParameters.Location = new System.Drawing.Point(481, 59);
+            this.buttonSetParameters.Location = new System.Drawing.Point(478, 51);
             this.buttonSetParameters.Name = "buttonSetParameters";
             this.buttonSetParameters.Size = new System.Drawing.Size(75, 23);
             this.buttonSetParameters.TabIndex = 2;
@@ -122,7 +122,7 @@
             // 
             this.labelCoefficients.AutoSize = true;
             this.labelCoefficients.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCoefficients.Location = new System.Drawing.Point(0, 104);
+            this.labelCoefficients.Location = new System.Drawing.Point(-3, 105);
             this.labelCoefficients.Name = "labelCoefficients";
             this.labelCoefficients.Size = new System.Drawing.Size(62, 13);
             this.labelCoefficients.TabIndex = 2;
@@ -132,7 +132,7 @@
             // 
             this.labelObservations.AutoSize = true;
             this.labelObservations.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelObservations.Location = new System.Drawing.Point(299, 104);
+            this.labelObservations.Location = new System.Drawing.Point(276, 105);
             this.labelObservations.Name = "labelObservations";
             this.labelObservations.Size = new System.Drawing.Size(69, 13);
             this.labelObservations.TabIndex = 3;
@@ -145,9 +145,9 @@
             this.dataGridCoefficients.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridCoefficients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCoefficients.Location = new System.Drawing.Point(4, 121);
+            this.dataGridCoefficients.Location = new System.Drawing.Point(0, 121);
             this.dataGridCoefficients.Name = "dataGridCoefficients";
-            this.dataGridCoefficients.Size = new System.Drawing.Size(251, 231);
+            this.dataGridCoefficients.Size = new System.Drawing.Size(251, 219);
             this.dataGridCoefficients.TabIndex = 4;
             // 
             // dataGridObservations
@@ -158,9 +158,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridObservations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridObservations.Location = new System.Drawing.Point(302, 121);
+            this.dataGridObservations.Location = new System.Drawing.Point(279, 121);
             this.dataGridObservations.Name = "dataGridObservations";
-            this.dataGridObservations.Size = new System.Drawing.Size(555, 231);
+            this.dataGridObservations.Size = new System.Drawing.Size(565, 219);
             this.dataGridObservations.TabIndex = 5;
             // 
             // ControlRecruitmentPredictor
