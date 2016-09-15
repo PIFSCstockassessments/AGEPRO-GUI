@@ -199,12 +199,29 @@ namespace AGEPRO.GUI
             ComboBox modelSelectionCbx = sender as ComboBox;
 
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
+
+            RecruitmentModel currentRecruitSelection = this.collectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
+
+            if (currentRecruitSelection is EmpiricalRecruitment)
+            {
+                if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Empirical)
+                {
+                    //Load control in panelRecruitModelParameter
+                    ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
+                    panelRecruitModelParameter.Controls.Clear();
+                    empiricalParameterControls.Dock = DockStyle.Fill;
+                    panelRecruitModelParameter.Controls.Add(empiricalParameterControls);
+                }
+            }
+            else if (currentRecruitSelection is PredictorRecruitment)
+            {
+                ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
+                panelRecruitModelParameter.Controls.Clear();
+                predictorParameterControls.Dock = DockStyle.Fill;
+                panelRecruitModelParameter.Controls.Add(predictorParameterControls);
+            }
             
-            //Load control in panelRecruitModelParameter
-            ControlRecruitmentEmpirical empiricalRecruitment = new ControlRecruitmentEmpirical();
-            panelRecruitModelParameter.Controls.Clear();
-            empiricalRecruitment.Dock = DockStyle.Fill;
-            panelRecruitModelParameter.Controls.Add(empiricalRecruitment);
+            
 
         }
         private string getSelectedRecruitmentModelName(int index)
