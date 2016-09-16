@@ -16,6 +16,7 @@ namespace AGEPRO.GUI
         public int numRecruitModels { get; set; }
         public int[] recruitModelSelection { get; set; }
         public string[] seqRecruitYears { get; set; }
+
         public List<AGEPRO.CoreLib.RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
@@ -62,8 +63,7 @@ namespace AGEPRO.GUI
         protected override void OnLoad(EventArgs e)
         {
             this.populateDGV = true;
-            SetDataGridSelectRecruitModels(numRecruitModels);
-
+            
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
             if (collectionAgeproRecruitmentModels.Count == 0)
@@ -119,6 +119,7 @@ namespace AGEPRO.GUI
                 selectionList[i] = "Recruitment Selection - " + (i + 1);
             }
             comboBoxRecruitSelection.DataSource = selectionList;
+
         }
 
          
@@ -194,20 +195,39 @@ namespace AGEPRO.GUI
             }
         }
 
-        private void comboBoxRecruitSelection_SelectionChangeCommitted(object sender, EventArgs e)
+        private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox modelSelectionCbx = sender as ComboBox;
+            if (collectionAgeproRecruitmentModels != null)
+            {
+                ComboBox modelSelectionCbx = sender as ComboBox;
 
-            labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
+                labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
 
-            RecruitmentModel currentRecruitSelection = this.collectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
+                RecruitmentModel currentRecruitSelection = this.collectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
 
+                LoadRecruitModelParameterControls(currentRecruitSelection);
+            
+            }
+            
+        }
+
+        private void LoadRecruitModelParameterControls(RecruitmentModel currentRecruitSelection)
+        {
             if (currentRecruitSelection is EmpiricalRecruitment)
             {
                 if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Empirical)
                 {
+                    EmpiricalRecruitment currentEmpiricalRecruitSelection = (EmpiricalRecruitment)currentRecruitSelection;
+                    //create empty obsTable if null
+                    if (!(currentEmpiricalRecruitSelection.obsTable != null))
+                    {
+                        currentEmpiricalRecruitSelection.obsTable = currentEmpiricalRecruitSelection.SetNewObsTable(0);
+                    }
+
                     //Load control in panelRecruitModelParameter
                     ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
+                    empiricalParameterControls.observationTable = currentEmpiricalRecruitSelection.obsTable;
+                    empiricalParameterControls.numObservations = currentEmpiricalRecruitSelection.numObs;
                     panelRecruitModelParameter.Controls.Clear();
                     empiricalParameterControls.Dock = DockStyle.Fill;
                     panelRecruitModelParameter.Controls.Add(empiricalParameterControls);
@@ -215,15 +235,36 @@ namespace AGEPRO.GUI
             }
             else if (currentRecruitSelection is PredictorRecruitment)
             {
+                PredictorRecruitment currentPredictorRecruitSelection = (PredictorRecruitment)currentRecruitSelection;
+                if (!(currentPredictorRecruitSelection.coefficientTable != null))
+                {
+                    currentPredictorRecruitSelection.coefficientTable = currentPredictorRecruitSelection.SetNewCoefficientTable(0);
+                }
+                if (!(currentPredictorRecruitSelection.observationTable != null))
+                {
+                    currentPredictorRecruitSelection.observationTable =
+                        currentPredictorRecruitSelection.SetNewObsTable(0, this.seqRecruitYears);
+                }
+
                 ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
+                predictorParameterControls.numRecruitPredictors = currentPredictorRecruitSelection.numRecruitPredictors;
+                predictorParameterControls.variance = currentPredictorRecruitSelection.variance;
+                predictorParameterControls.intercept = currentPredictorRecruitSelection.intercept;
+                predictorParameterControls.coefficientTable = currentPredictorRecruitSelection.coefficientTable;
+                predictorParameterControls.observationTable = currentPredictorRecruitSelection.observationTable;
+                
                 panelRecruitModelParameter.Controls.Clear();
                 predictorParameterControls.Dock = DockStyle.Fill;
                 panelRecruitModelParameter.Controls.Add(predictorParameterControls);
             }
-            
-            
-
         }
+
+
+        /// <summary>
+        /// Returns the Selected Recruitment's Model Name based how it's model number matches the Recruit Dictionary. 
+        /// </summary>
+        /// <param name="index">Index of RecruitmentModelSelection Array</param>
+        /// <returns>String value from RecruitDictionary</returns>
         private string getSelectedRecruitmentModelName(int index)
         {
             int selectedModel = this.recruitModelSelection[index];
@@ -234,6 +275,7 @@ namespace AGEPRO.GUI
             }
             else
             {
+                //TODO: Throw an Error if selected model number doesn't match the dictionary.
                 return "...";
             }
           
@@ -249,7 +291,9 @@ namespace AGEPRO.GUI
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
                 //Load the appropriate 
-                AGEPRO.CoreLib.RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex]; 
+                RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
+
+                LoadRecruitModelParameterControls(selectedRecruitModel);
             }
          }
 
@@ -277,8 +321,12 @@ namespace AGEPRO.GUI
                         var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
                         var senderDGV = sender as DataGridView;
                         var senderCbx = senderDGV.EditingControl as DataGridViewComboBoxEditingControl;
-                        OnSelectingRecruitModel(currentModel, senderCbx);
-
+                        //check if senderCbx is actually the checkbox or not. (Programmically, sender would be null)
+                        if (senderCbx != null) 
+                        {
+                            OnSelectingRecruitModel(currentModel, senderCbx);
+                        }
+                        
                         dataGridSelectRecruitModels.Invalidate();
                     }
                 } 
@@ -324,7 +372,9 @@ namespace AGEPRO.GUI
                     "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
-        }//end OnSelectingRecruitingModel
+        }
+
+        //end OnSelectingRecruitingModel
 
         
 

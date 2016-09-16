@@ -12,6 +12,8 @@ namespace AGEPRO.GUI
 {
     public partial class ControlRecruitmentEmpirical : UserControl
     {
+        public int maxNumObservations { get; set; }
+
         public ControlRecruitmentEmpirical()
         {
             InitializeComponent();
@@ -26,6 +28,12 @@ namespace AGEPRO.GUI
         {
             get { return (DataTable)dataGridRecruitTable.DataSource; }
             set { dataGridRecruitTable.DataSource = value; }
+        }
+
+        private void buttonSetParameters_Click(object sender, EventArgs e)
+        {
+            
+            this.dataGridRecruitTable.RowCount = this.numObservations;
         }
 
 

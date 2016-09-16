@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupPredictorParameters = new System.Windows.Forms.GroupBox();
+            this.textBoxIntercept = new System.Windows.Forms.TextBox();
+            this.textBoxVariance = new System.Windows.Forms.TextBox();
+            this.labelIntercept = new System.Windows.Forms.Label();
+            this.labelVariance = new System.Windows.Forms.Label();
             this.buttonSetParameters = new System.Windows.Forms.Button();
             this.spinBoxNumRecruitPredictors = new System.Windows.Forms.NumericUpDown();
             this.labelNumRecruitPredictors = new System.Windows.Forms.Label();
-            this.labelVariance = new System.Windows.Forms.Label();
-            this.labelIntercept = new System.Windows.Forms.Label();
-            this.textBoxVariance = new System.Windows.Forms.TextBox();
-            this.textBoxIntercept = new System.Windows.Forms.TextBox();
             this.labelCoefficients = new System.Windows.Forms.Label();
             this.labelObservations = new System.Windows.Forms.Label();
             this.dataGridCoefficients = new System.Windows.Forms.DataGridView();
@@ -61,6 +61,38 @@
             this.groupPredictorParameters.TabIndex = 1;
             this.groupPredictorParameters.TabStop = false;
             // 
+            // textBoxIntercept
+            // 
+            this.textBoxIntercept.Location = new System.Drawing.Point(225, 66);
+            this.textBoxIntercept.Name = "textBoxIntercept";
+            this.textBoxIntercept.Size = new System.Drawing.Size(120, 20);
+            this.textBoxIntercept.TabIndex = 6;
+            // 
+            // textBoxVariance
+            // 
+            this.textBoxVariance.Location = new System.Drawing.Point(225, 40);
+            this.textBoxVariance.Name = "textBoxVariance";
+            this.textBoxVariance.Size = new System.Drawing.Size(120, 20);
+            this.textBoxVariance.TabIndex = 5;
+            // 
+            // labelIntercept
+            // 
+            this.labelIntercept.AutoSize = true;
+            this.labelIntercept.Location = new System.Drawing.Point(18, 69);
+            this.labelIntercept.Name = "labelIntercept";
+            this.labelIntercept.Size = new System.Drawing.Size(49, 13);
+            this.labelIntercept.TabIndex = 4;
+            this.labelIntercept.Text = "Intercept";
+            // 
+            // labelVariance
+            // 
+            this.labelVariance.AutoSize = true;
+            this.labelVariance.Location = new System.Drawing.Point(18, 43);
+            this.labelVariance.Name = "labelVariance";
+            this.labelVariance.Size = new System.Drawing.Size(49, 13);
+            this.labelVariance.TabIndex = 3;
+            this.labelVariance.Text = "Variance";
+            // 
             // buttonSetParameters
             // 
             this.buttonSetParameters.Location = new System.Drawing.Point(478, 51);
@@ -69,6 +101,7 @@
             this.buttonSetParameters.TabIndex = 2;
             this.buttonSetParameters.Text = "SET";
             this.buttonSetParameters.UseVisualStyleBackColor = true;
+            this.buttonSetParameters.Click += new System.EventHandler(this.buttonSetParameters_Click);
             // 
             // spinBoxNumRecruitPredictors
             // 
@@ -85,38 +118,6 @@
             this.labelNumRecruitPredictors.Size = new System.Drawing.Size(168, 13);
             this.labelNumRecruitPredictors.TabIndex = 0;
             this.labelNumRecruitPredictors.Text = "Number Of Recruitment Predictors";
-            // 
-            // labelVariance
-            // 
-            this.labelVariance.AutoSize = true;
-            this.labelVariance.Location = new System.Drawing.Point(18, 43);
-            this.labelVariance.Name = "labelVariance";
-            this.labelVariance.Size = new System.Drawing.Size(49, 13);
-            this.labelVariance.TabIndex = 3;
-            this.labelVariance.Text = "Variance";
-            // 
-            // labelIntercept
-            // 
-            this.labelIntercept.AutoSize = true;
-            this.labelIntercept.Location = new System.Drawing.Point(18, 69);
-            this.labelIntercept.Name = "labelIntercept";
-            this.labelIntercept.Size = new System.Drawing.Size(49, 13);
-            this.labelIntercept.TabIndex = 4;
-            this.labelIntercept.Text = "Intercept";
-            // 
-            // textBoxVariance
-            // 
-            this.textBoxVariance.Location = new System.Drawing.Point(225, 40);
-            this.textBoxVariance.Name = "textBoxVariance";
-            this.textBoxVariance.Size = new System.Drawing.Size(120, 20);
-            this.textBoxVariance.TabIndex = 5;
-            // 
-            // textBoxIntercept
-            // 
-            this.textBoxIntercept.Location = new System.Drawing.Point(225, 66);
-            this.textBoxIntercept.Name = "textBoxIntercept";
-            this.textBoxIntercept.Size = new System.Drawing.Size(120, 20);
-            this.textBoxIntercept.TabIndex = 6;
             // 
             // labelCoefficients
             // 
