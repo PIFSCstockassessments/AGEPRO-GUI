@@ -106,6 +106,11 @@
             // spinBoxNumRecruitPredictors
             // 
             this.spinBoxNumRecruitPredictors.Location = new System.Drawing.Point(225, 14);
+            this.spinBoxNumRecruitPredictors.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.spinBoxNumRecruitPredictors.Name = "spinBoxNumRecruitPredictors";
             this.spinBoxNumRecruitPredictors.Size = new System.Drawing.Size(120, 20);
             this.spinBoxNumRecruitPredictors.TabIndex = 1;

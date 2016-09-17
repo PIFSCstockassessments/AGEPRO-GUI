@@ -12,9 +12,13 @@ namespace AGEPRO.GUI
 {
     public partial class ControlRecruitmentPredictor : UserControl
     {
+        private int maxRecruitPredictors { get; set; }
+
         public ControlRecruitmentPredictor()
         {
             InitializeComponent();
+            maxRecruitPredictors = 5;
+            spinBoxNumRecruitPredictors.Maximum = maxRecruitPredictors;
         }
 
         public int numRecruitPredictors
