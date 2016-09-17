@@ -49,7 +49,52 @@ namespace AGEPRO.GUI
 
         private void buttonSetParameters_Click(object sender, EventArgs e)
         {
+            int newNumPredictors = Convert.ToInt32(this.spinBoxNumRecruitPredictors.Value);
+            coefficientTable = ResizePredictorDataGridTables(coefficientTable, newNumPredictors);
+            observationTable = ResizePredictorDataGridTables(observationTable, newNumPredictors);
+        }
 
+        private DataTable ResizePredictorDataGridTables(DataTable predictorDataTable, int numPredictors)
+        {
+            numPredictors = Convert.ToInt32(this.spinBoxNumRecruitPredictors.Value);
+
+            //Catch if the number of Observations exceed maxNumObservations limit 
+            //(in case control couldn't prevent it)
+            if (numPredictors > maxRecruitPredictors)
+            {
+                throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
+                    "Number of Observations exceed maximum limit of " + maxRecruitPredictors + ".");
+            }
+
+            //Delete rows if current count excceds new value
+            if (predictorDataTable.Rows.Count > numPredictors)
+            {
+                List<DataRow> rowsToDelete = new List<DataRow>();
+                for (int i = 0; i < predictorDataTable.Rows.Count; i++)
+                {
+                    if ((i + 1) > numPredictors)
+                    {
+                        DataRow deleteThisRow = predictorDataTable.Rows[i];
+                        rowsToDelete.Add(deleteThisRow);
+                    }
+                }
+                foreach (DataRow drow in rowsToDelete)
+                {
+                    predictorDataTable.Rows.Remove(drow);
+                }
+            }//Add rows if row counts is less than the new value 
+            else if (predictorDataTable.Rows.Count < numPredictors)
+            {
+                for (int i = predictorDataTable.Rows.Count; i < numPredictors; i++)
+                {
+                    predictorDataTable.Rows.Add();
+                }
+
+            }
+            return predictorDataTable;
+
+            
+            
         }
     }
 
