@@ -43,41 +43,15 @@ namespace AGEPRO.GUI
             try
             {
                 int newNumObservationsValue = Convert.ToInt32(this.spinBoxNumObservations.Value);
-                
+
                 //Catch if the number of Observations exceed maxNumObservations limit 
                 //(in case control couldn't prevent it)
                 if (newNumObservationsValue > maxNumObservations)
                 {
                     throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
-                        "Number of Observations exceed maximum limit of " + maxNumObservations +".");
+                        "Number of Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
-
-                //Delete rows if current count excceds new value
-                if (this.dataGridRecruitTable.RowCount > newNumObservationsValue)
-                {
-                    List<DataRow> rowsToDelete = new List<DataRow>();
-                    for(int i=0; i < (this.dataGridRecruitTable.RowCount); i++)
-                    {
-                        if ((i+1) > newNumObservationsValue)
-                        {
-                            DataRow deleteThisRow = ((DataTable)this.dataGridRecruitTable.DataSource).Rows[i];
-                            rowsToDelete.Add(deleteThisRow);
-                        }
-                    }
-                    foreach (DataRow drow in rowsToDelete)
-                    {
-                        ((DataTable)this.dataGridRecruitTable.DataSource).Rows.Remove(drow);
-                    }
-                }//Add rows if row counts is less than the new value 
-                else if (this.dataGridRecruitTable.RowCount < newNumObservationsValue)
-                {
-                    for (int i = this.dataGridRecruitTable.RowCount; i < newNumObservationsValue; i++)
-                    {
-                        ((DataTable)this.dataGridRecruitTable.DataSource).Rows.Add();
-                    }
-
-                }
-
+                observationTable = ResizeObservationTable(observationTable, newNumObservationsValue);
             }
             catch(Exception ex)
             {
@@ -85,6 +59,37 @@ namespace AGEPRO.GUI
                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
+        }
+
+        protected DataTable ResizeObservationTable(DataTable obsTable, int newNumObs)
+        {
+            //Delete rows if current count excceds new value
+            if (obsTable.Rows.Count > newNumObs)
+            {
+                List<DataRow> rowsToDelete = new List<DataRow>();
+                for (int i = 0; i < (obsTable.Rows.Count); i++)
+                {
+                    if ((i + 1) > newNumObs)
+                    {
+                        DataRow deleteThisRow = obsTable.Rows[i];
+                        rowsToDelete.Add(deleteThisRow);
+                    }
+                }
+                foreach (DataRow drow in rowsToDelete)
+                {
+                    obsTable.Rows.Remove(drow);
+                }
+            }//Add rows if row counts is less than the new value 
+            else if (this.dataGridRecruitTable.RowCount < newNumObs)
+            {
+                for (int i = this.dataGridRecruitTable.RowCount; i < newNumObs; i++)
+                {
+                    obsTable.Rows.Add();
+                }
+
+            }
+
+            return obsTable;
         }
 
 
