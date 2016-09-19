@@ -34,6 +34,8 @@
             this.labelNumObservations = new System.Windows.Forms.Label();
             this.labelObservations = new System.Windows.Forms.Label();
             this.dataGridRecruitTable = new System.Windows.Forms.DataGridView();
+            this.labelSSBHinge = new System.Windows.Forms.Label();
+            this.textBoxSSBHinge = new System.Windows.Forms.TextBox();
             this.groupEmpiricalParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitTable)).BeginInit();
@@ -41,6 +43,8 @@
             // 
             // groupEmpiricalParameters
             // 
+            this.groupEmpiricalParameters.Controls.Add(this.textBoxSSBHinge);
+            this.groupEmpiricalParameters.Controls.Add(this.labelSSBHinge);
             this.groupEmpiricalParameters.Controls.Add(this.buttonSetParameters);
             this.groupEmpiricalParameters.Controls.Add(this.spinBoxNumObservations);
             this.groupEmpiricalParameters.Controls.Add(this.labelNumObservations);
@@ -98,6 +102,24 @@
             this.dataGridRecruitTable.Size = new System.Drawing.Size(855, 223);
             this.dataGridRecruitTable.TabIndex = 2;
             // 
+            // labelSSBHinge
+            // 
+            this.labelSSBHinge.AutoSize = true;
+            this.labelSSBHinge.Location = new System.Drawing.Point(18, 56);
+            this.labelSSBHinge.Name = "labelSSBHinge";
+            this.labelSSBHinge.Size = new System.Drawing.Size(89, 13);
+            this.labelSSBHinge.TabIndex = 3;
+            this.labelSSBHinge.Text = "SSB Hinge Value";
+            this.labelSSBHinge.Visible = false;
+            // 
+            // textBoxSSBHinge
+            // 
+            this.textBoxSSBHinge.Location = new System.Drawing.Point(225, 51);
+            this.textBoxSSBHinge.Name = "textBoxSSBHinge";
+            this.textBoxSSBHinge.Size = new System.Drawing.Size(120, 20);
+            this.textBoxSSBHinge.TabIndex = 4;
+            this.textBoxSSBHinge.Visible = false;
+            // 
             // ControlRecruitmentEmpirical
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,11 +141,13 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupEmpiricalParameters;
-        private System.Windows.Forms.Button buttonSetParameters;
-        private System.Windows.Forms.NumericUpDown spinBoxNumObservations;
-        private System.Windows.Forms.Label labelNumObservations;
-        private System.Windows.Forms.Label labelObservations;
-        private System.Windows.Forms.DataGridView dataGridRecruitTable;
+        protected System.Windows.Forms.GroupBox groupEmpiricalParameters;
+        protected System.Windows.Forms.Button buttonSetParameters;
+        protected System.Windows.Forms.NumericUpDown spinBoxNumObservations;
+        protected System.Windows.Forms.Label labelNumObservations;
+        protected System.Windows.Forms.Label labelObservations;
+        protected System.Windows.Forms.DataGridView dataGridRecruitTable;
+        protected System.Windows.Forms.TextBox textBoxSSBHinge;
+        protected System.Windows.Forms.Label labelSSBHinge;
     }
 }
