@@ -56,10 +56,7 @@ namespace AGEPRO.GUI
 
         private DataTable ResizePredictorDataGridTables(DataTable predictorDataTable, int numPredictors)
         {
-            numPredictors = Convert.ToInt32(this.spinBoxNumRecruitPredictors.Value);
-
-            //Catch if the number of Observations exceed maxNumObservations limit 
-            //(in case control couldn't prevent it)
+            //Catch if the number of Predictors exceed limit (in case control couldn't prevent it)
             if (numPredictors > maxRecruitPredictors)
             {
                 throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
