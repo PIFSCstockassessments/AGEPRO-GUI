@@ -233,6 +233,18 @@ namespace AGEPRO.GUI
                     panelRecruitModelParameter.Controls.Add(empiricalParameterControls);
                 }
             }
+            else if (currentRecruitSelection is ParametricRecruitment)
+            {
+                ParametricRecruitment currentParametricRecruitSelection = (ParametricRecruitment)currentRecruitSelection;
+                if (currentParametricRecruitSelection.subtype == ParametricType.Curve)
+                {
+
+                }
+                else if (currentParametricRecruitSelection.subtype == ParametricType.Lognormal)
+                {
+
+                }
+            }
             else if (currentRecruitSelection is PredictorRecruitment)
             {
                 PredictorRecruitment currentPredictorRecruitSelection = (PredictorRecruitment)currentRecruitSelection;
