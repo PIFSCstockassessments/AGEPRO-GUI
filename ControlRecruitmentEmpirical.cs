@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AGEPRO.CoreLib;
 
 namespace AGEPRO.GUI
 {
@@ -92,6 +93,22 @@ namespace AGEPRO.GUI
             return obsTable;
         }
 
+        public virtual void SetEmpiricalRecruitmentControls(EmpiricalRecruitment currentEmpiricalRecruitSelection, 
+            Panel panelRecruitModelParameter)
+        {
+            //create empty obsTable if null
+            if (!(currentEmpiricalRecruitSelection.obsTable != null))
+            {
+                currentEmpiricalRecruitSelection.obsTable = currentEmpiricalRecruitSelection.SetNewObsTable(0);
+            }
 
+            //Load control in panelRecruitModelParameter
+            //ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
+            this.observationTable = currentEmpiricalRecruitSelection.obsTable;
+            this.numObservations = currentEmpiricalRecruitSelection.numObs;
+            panelRecruitModelParameter.Controls.Clear();
+            this.Dock = DockStyle.Fill;
+            panelRecruitModelParameter.Controls.Add(this);
+        }
     }
 }

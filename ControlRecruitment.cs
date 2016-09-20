@@ -218,19 +218,21 @@ namespace AGEPRO.GUI
                 if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Empirical)
                 {
                     EmpiricalRecruitment currentEmpiricalRecruitSelection = (EmpiricalRecruitment)currentRecruitSelection;
-                    //create empty obsTable if null
-                    if (!(currentEmpiricalRecruitSelection.obsTable != null))
-                    {
-                        currentEmpiricalRecruitSelection.obsTable = currentEmpiricalRecruitSelection.SetNewObsTable(0);
-                    }
+                    
+                    ////create empty obsTable if null
+                    //if (!(currentEmpiricalRecruitSelection.obsTable != null))
+                    //{
+                    //    currentEmpiricalRecruitSelection.obsTable = currentEmpiricalRecruitSelection.SetNewObsTable(0);
+                    //}
 
-                    //Load control in panelRecruitModelParameter
+                    ////Load control in panelRecruitModelParameter
                     ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
-                    empiricalParameterControls.observationTable = currentEmpiricalRecruitSelection.obsTable;
-                    empiricalParameterControls.numObservations = currentEmpiricalRecruitSelection.numObs;
-                    panelRecruitModelParameter.Controls.Clear();
-                    empiricalParameterControls.Dock = DockStyle.Fill;
-                    panelRecruitModelParameter.Controls.Add(empiricalParameterControls);
+                    empiricalParameterControls.SetEmpiricalRecruitmentControls(currentEmpiricalRecruitSelection, panelRecruitModelParameter);
+                    //empiricalParameterControls.observationTable = currentEmpiricalRecruitSelection.obsTable;
+                    //empiricalParameterControls.numObservations = currentEmpiricalRecruitSelection.numObs;
+                    //panelRecruitModelParameter.Controls.Clear();
+                    //empiricalParameterControls.Dock = DockStyle.Fill;
+                    //panelRecruitModelParameter.Controls.Add(empiricalParameterControls);
                 }
                 else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.TwoStage)
                 {
@@ -279,12 +281,12 @@ namespace AGEPRO.GUI
                 PredictorRecruitment currentPredictorRecruitSelection = (PredictorRecruitment)currentRecruitSelection;
                 if (!(currentPredictorRecruitSelection.coefficientTable != null))
                 {
-                    currentPredictorRecruitSelection.coefficientTable = currentPredictorRecruitSelection.SetNewCoefficientTable(0);
+                    currentPredictorRecruitSelection.coefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
                 }
                 if (!(currentPredictorRecruitSelection.observationTable != null))
                 {
-                    currentPredictorRecruitSelection.observationTable =
-                        currentPredictorRecruitSelection.SetNewObsTable(0, this.seqRecruitYears);
+                    currentPredictorRecruitSelection.observationTable = 
+                        PredictorRecruitment.SetNewObsTable(0, this.seqRecruitYears);
                 }
 
                 ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
