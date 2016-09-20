@@ -232,6 +232,35 @@ namespace AGEPRO.GUI
                     empiricalParameterControls.Dock = DockStyle.Fill;
                     panelRecruitModelParameter.Controls.Add(empiricalParameterControls);
                 }
+                else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.TwoStage)
+                {
+                    TwoStageEmpiricalRecruitment currentTwoStageEmpiricalRecruitSelection =
+                        (TwoStageEmpiricalRecruitment)currentRecruitSelection;
+
+                    if (!(currentTwoStageEmpiricalRecruitSelection.lv1Obs != null))
+                    {
+                        currentTwoStageEmpiricalRecruitSelection.lv1Obs =
+                            currentTwoStageEmpiricalRecruitSelection.SetNewObsTable(0);
+                    }
+                    if (!(currentTwoStageEmpiricalRecruitSelection.lv2Obs != null))
+                    {
+                        currentTwoStageEmpiricalRecruitSelection.lv2Obs =
+                            currentTwoStageEmpiricalRecruitSelection.SetNewObsTable(0);
+                    }
+
+                    //Load TwoStage Controls
+                    ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage();
+                    twoStageControls.lv1NumObservations = currentTwoStageEmpiricalRecruitSelection.lv1NumObs;
+                    twoStageControls.lv2NumObservations = currentTwoStageEmpiricalRecruitSelection.lv2NumObs;
+                    twoStageControls.SSBBreakValue = currentTwoStageEmpiricalRecruitSelection.SSBBreakVal;
+                    twoStageControls.lv1Observations = currentTwoStageEmpiricalRecruitSelection.lv1Obs;
+                    twoStageControls.lv2Observations = currentTwoStageEmpiricalRecruitSelection.lv2Obs;
+
+                    panelRecruitModelParameter.Controls.Clear();
+                    twoStageControls.Dock = DockStyle.Fill;
+                    panelRecruitModelParameter.Controls.Add(twoStageControls);
+                }
+                
             }
             else if (currentRecruitSelection is ParametricRecruitment)
             {
@@ -300,6 +329,7 @@ namespace AGEPRO.GUI
             //When switching to the "Recruit Model" Tab, set up selected model name for labelRecruitSelection
             if ((sender as TabControl).SelectedIndex == 1)
             {
+                //TODO: CATCH "NONE SELECTED" 
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
                 //Load the appropriate 
