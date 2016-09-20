@@ -89,9 +89,6 @@ namespace AGEPRO.GUI
 
             }
             return predictorDataTable;
-
-            
-            
         }
     }
 

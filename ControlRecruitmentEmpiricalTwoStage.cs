@@ -91,28 +91,28 @@ namespace AGEPRO.GUI
             this.labelLv1ObservationTable.Location = new System.Drawing.Point(-3, 101);
             this.labelLv1ObservationTable.Name = "labelLv1Observations";
             this.labelLv1ObservationTable.Size = new System.Drawing.Size(69, 13);
-            this.labelLv1ObservationTable.TabIndex = 7;
+            this.labelLv1ObservationTable.TabIndex = 8;
             this.labelLv1ObservationTable.Text = "Level 1 Observations";
             // 
             // dataGridLv1ObservationTable
             // 
             this.dataGridLv1ObservationTable.AllowUserToAddRows = false;
             this.dataGridLv1ObservationTable.AllowUserToDeleteRows = false;
-            this.dataGridLv1ObservationTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridLv1ObservationTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left) )));
             this.dataGridLv1ObservationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridLv1ObservationTable.Location = new System.Drawing.Point(0, 117);
             this.dataGridLv1ObservationTable.Name = "dataGridLv1Observations";
             this.dataGridLv1ObservationTable.Size = new System.Drawing.Size(328, 223);
-            this.dataGridLv1ObservationTable.TabIndex = 7;
+            this.dataGridLv1ObservationTable.TabIndex = 8;
             // 
             // labelLv2ObservationTable
             // 
             this.labelLv2ObservationTable.AutoSize = true;
-            this.labelLv2ObservationTable.Location = new System.Drawing.Point(427, 101);
+            this.labelLv2ObservationTable.Location = new System.Drawing.Point(447, 101);
             this.labelLv2ObservationTable.Name = "labelLv2Observations";
             this.labelLv2ObservationTable.Size = new System.Drawing.Size(69, 13);
-            this.labelLv2ObservationTable.TabIndex = 8;
+            this.labelLv2ObservationTable.TabIndex = 9;
             this.labelLv2ObservationTable.Text = "Level 2 Observations";
             // 
             // dataGridLv1ObservationTable
@@ -120,16 +120,16 @@ namespace AGEPRO.GUI
             this.dataGridLv2ObservationTable.AllowUserToAddRows = false;
             this.dataGridLv2ObservationTable.AllowUserToDeleteRows = false;
             this.dataGridLv2ObservationTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left) )));
             this.dataGridLv2ObservationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridLv2ObservationTable.Location = new System.Drawing.Point(430, 117);
+            this.dataGridLv2ObservationTable.Location = new System.Drawing.Point(450, 117);
             this.dataGridLv2ObservationTable.Name = "dataGridLv1Observations";
             this.dataGridLv2ObservationTable.Size = new System.Drawing.Size(328, 223);
-            this.dataGridLv2ObservationTable.TabIndex = 8;
+            this.dataGridLv2ObservationTable.TabIndex = 9;
 
 
 
-
+            this.buttonSetParameters.TabIndex = 7;
             this.groupEmpiricalParameters.Controls.Add(this.labelLv1NumObservations);
             this.groupEmpiricalParameters.Controls.Add(this.spinBoxLv1NumObservations);
             this.groupEmpiricalParameters.Controls.Add(this.labelLv2NumObservations);
