@@ -34,7 +34,6 @@
             // 
             // buttonSetParameters
             // 
-            this.buttonSetParameters.Click += new System.EventHandler(this.buttonSetParameters_Click);
             // 
             // ControlRecruitmentEmpiricalTwoStage
             // 
