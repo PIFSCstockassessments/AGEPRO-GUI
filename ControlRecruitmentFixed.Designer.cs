@@ -42,8 +42,10 @@
             this.dataGridFixedRecruitment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridFixedRecruitment.Location = new System.Drawing.Point(0, 18);
             this.dataGridFixedRecruitment.Name = "dataGridFixedRecruitment";
+            this.dataGridFixedRecruitment.RowHeadersWidth = 81;
             this.dataGridFixedRecruitment.Size = new System.Drawing.Size(735, 312);
             this.dataGridFixedRecruitment.TabIndex = 0;
+            this.dataGridFixedRecruitment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridFixedRecruitment_CellFormatting);
             // 
             // ControlRecruitmentFixed
             // 

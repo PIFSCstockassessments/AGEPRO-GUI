@@ -244,7 +244,13 @@ namespace AGEPRO.GUI
                 }
                 else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Fixed)
                 {
-                    EmpiricalRecruitment currentFixedRecruitmentSelection = (EmpiricalRecruitment)currentRecruitSelection;   
+                    EmpiricalRecruitment currentFixedRecruitmentSelection = (EmpiricalRecruitment)currentRecruitSelection;
+
+                    ControlRecruitmentFixed fixedRecruitmentControls = new ControlRecruitmentFixed();
+                    fixedRecruitmentControls.seqYears = this.seqRecruitYears;
+                    fixedRecruitmentControls.SetFixedRecruitmentControls(currentFixedRecruitmentSelection, panelRecruitModelParameter);
+                    fixedRecruitmentControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    fixedRecruitmentControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                 }
                 
             }
