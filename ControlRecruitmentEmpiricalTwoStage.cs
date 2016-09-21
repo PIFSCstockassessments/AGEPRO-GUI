@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using AGEPRO.CoreLib;
 
 namespace AGEPRO.GUI
 {
@@ -223,6 +224,30 @@ namespace AGEPRO.GUI
                 MessageBox.Show("Can not resize number of Observation(s)." + Environment.NewLine + ex.Message,
                     "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        public void SetTwoStageEmpiricalRecruitmentControls(TwoStageEmpiricalRecruitment currentRecruit, 
+            Panel panelRecruitModelParameter)
+        {
+            if (!(currentRecruit.lv1Obs != null))
+            {
+                currentRecruit.lv1Obs = currentRecruit.SetNewObsTable(0);
+            }
+            if (!(currentRecruit.lv2Obs != null))
+            {
+                currentRecruit.lv2Obs = currentRecruit.SetNewObsTable(0);
+            }
+
+            //Load TwoStage Controls
+            this.lv1NumObservations = currentRecruit.lv1NumObs;
+            this.lv2NumObservations = currentRecruit.lv2NumObs;
+            this.SSBBreakValue = currentRecruit.SSBBreakVal;
+            this.lv1Observations = currentRecruit.lv1Obs;
+            this.lv2Observations = currentRecruit.lv2Obs;
+
+            panelRecruitModelParameter.Controls.Clear();
+            this.Dock = DockStyle.Fill;
+            panelRecruitModelParameter.Controls.Add(this);
         }
     }
 }

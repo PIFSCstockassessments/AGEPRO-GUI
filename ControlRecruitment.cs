@@ -231,31 +231,20 @@ namespace AGEPRO.GUI
                     TwoStageEmpiricalRecruitment currentTwoStageEmpiricalRecruitSelection =
                         (TwoStageEmpiricalRecruitment)currentRecruitSelection;
 
-                    if (!(currentTwoStageEmpiricalRecruitSelection.lv1Obs != null))
-                    {
-                        currentTwoStageEmpiricalRecruitSelection.lv1Obs =
-                            currentTwoStageEmpiricalRecruitSelection.SetNewObsTable(0);
-                    }
-                    if (!(currentTwoStageEmpiricalRecruitSelection.lv2Obs != null))
-                    {
-                        currentTwoStageEmpiricalRecruitSelection.lv2Obs =
-                            currentTwoStageEmpiricalRecruitSelection.SetNewObsTable(0);
-                    }
-
                     //Load TwoStage Controls
                     ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage();
-                    twoStageControls.lv1NumObservations = currentTwoStageEmpiricalRecruitSelection.lv1NumObs;
-                    twoStageControls.lv2NumObservations = currentTwoStageEmpiricalRecruitSelection.lv2NumObs;
-                    twoStageControls.SSBBreakValue = currentTwoStageEmpiricalRecruitSelection.SSBBreakVal;
-                    twoStageControls.lv1Observations = currentTwoStageEmpiricalRecruitSelection.lv1Obs;
-                    twoStageControls.lv2Observations = currentTwoStageEmpiricalRecruitSelection.lv2Obs;
-
+                    twoStageControls.SetTwoStageEmpiricalRecruitmentControls(currentTwoStageEmpiricalRecruitSelection, 
+                        panelRecruitModelParameter);
                     twoStageControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
                     twoStageControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+                }
+                else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.CDFZero)
+                {
 
-                    panelRecruitModelParameter.Controls.Clear();
-                    twoStageControls.Dock = DockStyle.Fill;
-                    panelRecruitModelParameter.Controls.Add(twoStageControls);
+                }
+                else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Fixed)
+                {
+                    EmpiricalRecruitment currentFixedRecruitmentSelection = (EmpiricalRecruitment)currentRecruitSelection;   
                 }
                 
             }

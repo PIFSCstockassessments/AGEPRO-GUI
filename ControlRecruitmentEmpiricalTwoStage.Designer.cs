@@ -32,9 +32,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonSetParameters
-            // 
-            // 
             // ControlRecruitmentEmpiricalTwoStage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
