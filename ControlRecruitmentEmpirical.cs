@@ -13,7 +13,9 @@ namespace AGEPRO.GUI
 {
     public partial class ControlRecruitmentEmpirical : UserControl
     {
-        private int maxNumObservations { get; set; }
+        protected int maxNumObservations { get; set; }
+        public List<RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+        public int collectionSelectedIndex { get; set; }
 
         public ControlRecruitmentEmpirical()
         {
@@ -39,7 +41,7 @@ namespace AGEPRO.GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonSetParameters_Click(object sender, EventArgs e)
+        protected virtual void buttonSetParameters_Click(object sender, EventArgs e)
         {
             try
             {
@@ -53,6 +55,9 @@ namespace AGEPRO.GUI
                         "Number of Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
                 observationTable = ResizeObservationTable(observationTable, newNumObservationsValue);
+                numObservations = newNumObservationsValue;
+                ((EmpiricalRecruitment)this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).numObs
+                    = newNumObservationsValue;
             }
             catch(Exception ex)
             {
@@ -81,9 +86,9 @@ namespace AGEPRO.GUI
                     obsTable.Rows.Remove(drow);
                 }
             }//Add rows if row counts is less than the new value 
-            else if (this.dataGridRecruitTable.RowCount < newNumObs)
+            else if (obsTable.Rows.Count < newNumObs)
             {
-                for (int i = this.dataGridRecruitTable.RowCount; i < newNumObs; i++)
+                for (int i = obsTable.Rows.Count; i < newNumObs; i++)
                 {
                     obsTable.Rows.Add();
                 }
@@ -106,6 +111,7 @@ namespace AGEPRO.GUI
             //ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
             this.observationTable = currentEmpiricalRecruitSelection.obsTable;
             this.numObservations = currentEmpiricalRecruitSelection.numObs;
+
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;
             panelRecruitModelParameter.Controls.Add(this);

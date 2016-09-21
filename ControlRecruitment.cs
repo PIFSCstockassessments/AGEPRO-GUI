@@ -219,20 +219,12 @@ namespace AGEPRO.GUI
                 {
                     EmpiricalRecruitment currentEmpiricalRecruitSelection = (EmpiricalRecruitment)currentRecruitSelection;
                     
-                    ////create empty obsTable if null
-                    //if (!(currentEmpiricalRecruitSelection.obsTable != null))
-                    //{
-                    //    currentEmpiricalRecruitSelection.obsTable = currentEmpiricalRecruitSelection.SetNewObsTable(0);
-                    //}
-
-                    ////Load control in panelRecruitModelParameter
                     ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
+                    
                     empiricalParameterControls.SetEmpiricalRecruitmentControls(currentEmpiricalRecruitSelection, panelRecruitModelParameter);
-                    //empiricalParameterControls.observationTable = currentEmpiricalRecruitSelection.obsTable;
-                    //empiricalParameterControls.numObservations = currentEmpiricalRecruitSelection.numObs;
-                    //panelRecruitModelParameter.Controls.Clear();
-                    //empiricalParameterControls.Dock = DockStyle.Fill;
-                    //panelRecruitModelParameter.Controls.Add(empiricalParameterControls);
+                    empiricalParameterControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    empiricalParameterControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+                    
                 }
                 else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.TwoStage)
                 {
@@ -257,6 +249,9 @@ namespace AGEPRO.GUI
                     twoStageControls.SSBBreakValue = currentTwoStageEmpiricalRecruitSelection.SSBBreakVal;
                     twoStageControls.lv1Observations = currentTwoStageEmpiricalRecruitSelection.lv1Obs;
                     twoStageControls.lv2Observations = currentTwoStageEmpiricalRecruitSelection.lv2Obs;
+
+                    twoStageControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    twoStageControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
 
                     panelRecruitModelParameter.Controls.Clear();
                     twoStageControls.Dock = DockStyle.Fill;

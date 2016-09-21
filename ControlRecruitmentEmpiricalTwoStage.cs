@@ -189,9 +189,40 @@ namespace AGEPRO.GUI
         private System.Windows.Forms.DataGridView dataGridLv1ObservationTable;
         private System.Windows.Forms.DataGridView dataGridLv2ObservationTable;
 
-        private void buttonSetParameters_Click(object sender, EventArgs e)
+        protected override void buttonSetParameters_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int newNumLv1Obs = Convert.ToInt32(this.spinBoxLv1NumObservations.Value);
+                int newNumLv2Obs = Convert.ToInt32(this.spinBoxLv2NumObservations.Value);
 
+                if (newNumLv1Obs > maxNumObservations)
+                {
+                    throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
+                        "Number of Level 1 Observations exceed maximum limit of " + maxNumObservations + ".");
+                }
+                if (newNumLv2Obs > maxNumObservations)
+                {
+                    throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
+                        "Number of Level 2 Observations exceed maximum limit of " + maxNumObservations + ".");
+                }
+
+                lv1Observations = ResizeObservationTable(lv1Observations, newNumLv1Obs);
+                lv2Observations = ResizeObservationTable(lv2Observations, newNumLv2Obs);
+
+                ((AGEPRO.CoreLib.TwoStageEmpiricalRecruitment)
+                    this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv1NumObs = newNumLv1Obs;
+                ((AGEPRO.CoreLib.TwoStageEmpiricalRecruitment)
+                    this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv2NumObs = newNumLv2Obs;
+                ((AGEPRO.CoreLib.TwoStageEmpiricalRecruitment)
+                    this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).SSBBreakVal 
+                    = SSBBreakValue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not resize number of Observation(s)." + Environment.NewLine + ex.Message,
+                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }
