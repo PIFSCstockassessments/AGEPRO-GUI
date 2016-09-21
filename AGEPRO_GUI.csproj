@@ -105,6 +105,12 @@
     <Compile Include="ControlRecruitmentEmpiricalTwoStage.Designer.cs">
       <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitmentFixed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentFixed.Designer.cs">
+      <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlRecruitmentPredictor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentEmpiricalTwoStage.resx">
       <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentFixed.resx">
+      <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentPredictor.resx">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
