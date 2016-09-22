@@ -16,12 +16,14 @@ namespace AGEPRO.GUI
         protected int maxNumObservations { get; set; }
         public List<RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
         public int collectionSelectedIndex { get; set; }
+        private EmpiricalType empiricalSubtype { get; set; }
 
         public ControlRecruitmentEmpirical()
         {
             InitializeComponent();
             maxNumObservations = 500;
             spinBoxNumObservations.Maximum = maxNumObservations;
+            this.empiricalSubtype = EmpiricalType.Empirical;
         }
 
         public int numObservations
@@ -34,7 +36,7 @@ namespace AGEPRO.GUI
             get { return (DataTable)dataGridRecruitTable.DataSource; }
             set { dataGridRecruitTable.DataSource = value; }
         }
-
+       
         /// <summary>
         /// Changes the number of rows in the observations table, based on the value the
         /// Number of Observations spin box was set to.
@@ -58,6 +60,11 @@ namespace AGEPRO.GUI
                 numObservations = newNumObservationsValue;
                 ((EmpiricalRecruitment)this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).numObs
                     = newNumObservationsValue;
+                if (this.empiricalSubtype == EmpiricalType.CDFZero)
+                {
+                    ((EmpiricalCDFZero)this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).SSBHinge =
+                        Convert.ToDouble(this.textBoxSSBHinge.Text);
+                }
             }
             catch(Exception ex)
             {
@@ -83,6 +90,17 @@ namespace AGEPRO.GUI
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;
             panelRecruitModelParameter.Controls.Add(this);
+        }
+
+        public void SetEmpiricalCDFZeroRecruitmentControls(EmpiricalCDFZero currentRecruit, Panel panelRecruitModelParameter)
+        {
+            this.textBoxSSBHinge.Visible = true;
+            this.labelSSBHinge.Visible = true;
+            this.empiricalSubtype = EmpiricalType.CDFZero;
+
+            this.textBoxSSBHinge.Text = currentRecruit.SSBHinge.Value.ToString(); //To explictly cast value from nullable double
+
+            this.SetEmpiricalRecruitmentControls((EmpiricalRecruitment)currentRecruit, panelRecruitModelParameter);
         }
     }
 }

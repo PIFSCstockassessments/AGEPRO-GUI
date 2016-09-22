@@ -206,7 +206,6 @@ namespace AGEPRO.GUI
                 RecruitmentModel currentRecruitSelection = this.collectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
 
                 LoadRecruitModelParameterControls(currentRecruitSelection);
-            
             }
             
         }
@@ -240,7 +239,16 @@ namespace AGEPRO.GUI
                 }
                 else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.CDFZero)
                 {
+                    EmpiricalCDFZero currentEmpiricalCDFZeroRecruitmentSelection = (EmpiricalCDFZero)currentRecruitSelection;
 
+                    ControlRecruitmentEmpirical empiricalCDFZeroControls = new ControlRecruitmentEmpirical();
+
+                    empiricalCDFZeroControls.SetEmpiricalCDFZeroRecruitmentControls(
+                        currentEmpiricalCDFZeroRecruitmentSelection, panelRecruitModelParameter);
+                    empiricalCDFZeroControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    empiricalCDFZeroControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+
+                    
                 }
                 else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Fixed)
                 {
@@ -290,6 +298,11 @@ namespace AGEPRO.GUI
                 predictorParameterControls.Dock = DockStyle.Fill;
                 panelRecruitModelParameter.Controls.Add(predictorParameterControls);
             }
+            else
+            {
+                panelRecruitModelParameter.Controls.Clear();
+            }
+
         }
 
 
