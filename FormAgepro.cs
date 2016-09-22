@@ -314,6 +314,13 @@ namespace AGEPRO.GUI
             ctl.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
             ctl.seqYears = genOpt.SeqYears();
             ctl.readInputFileState = true;
+            //Reset Tables if they were used before
+            if (ctl.stochasticAgeTable != null)
+            {
+                ctl.stochasticAgeTable.Reset();
+                ctl.stochasticCV.Reset();
+            }
+
             if (ctl.timeVarying == true)
             {
                 ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 

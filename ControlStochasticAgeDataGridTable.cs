@@ -185,7 +185,7 @@ namespace AGEPRO.GUI
             {
                 if(timeVarying == true)
                 {
-                    string[] stochasticAgeTableRowHeaders = seqYears;
+                    string[] stochasticAgeTableRowHeaders = this.seqYears;
                     setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
                 }
                 else
