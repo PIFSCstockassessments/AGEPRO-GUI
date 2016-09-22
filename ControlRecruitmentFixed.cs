@@ -57,7 +57,6 @@ namespace AGEPRO.GUI
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;
             panelRecruitModelParameter.Controls.Add(this);
-
         }
 
         private void dataGridFixedRecruitment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
