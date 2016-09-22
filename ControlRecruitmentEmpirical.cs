@@ -54,7 +54,7 @@ namespace AGEPRO.GUI
                     throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
                         "Number of Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
-                observationTable = ResizeObservationTable(observationTable, newNumObservationsValue);
+                observationTable = ControlRecruitment.ResizeDataGridTable(observationTable, newNumObservationsValue);
                 numObservations = newNumObservationsValue;
                 ((EmpiricalRecruitment)this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).numObs
                     = newNumObservationsValue;
@@ -67,37 +67,6 @@ namespace AGEPRO.GUI
             
         }
 
-        protected DataTable ResizeObservationTable(DataTable obsTable, int newNumObs)
-        {
-            //Delete rows if current count excceds new value
-            if (obsTable.Rows.Count > newNumObs)
-            {
-                List<DataRow> rowsToDelete = new List<DataRow>();
-                for (int i = 0; i < (obsTable.Rows.Count); i++)
-                {
-                    if ((i + 1) > newNumObs)
-                    {
-                        DataRow deleteThisRow = obsTable.Rows[i];
-                        rowsToDelete.Add(deleteThisRow);
-                    }
-                }
-                foreach (DataRow drow in rowsToDelete)
-                {
-                    obsTable.Rows.Remove(drow);
-                }
-            }//Add rows if row counts is less than the new value 
-            else if (obsTable.Rows.Count < newNumObs)
-            {
-                for (int i = obsTable.Rows.Count; i < newNumObs; i++)
-                {
-                    obsTable.Rows.Add();
-                }
-
-            }
-
-            return obsTable;
-        }
-
         public virtual void SetEmpiricalRecruitmentControls(EmpiricalRecruitment currentEmpiricalRecruitSelection, 
             Panel panelRecruitModelParameter)
         {
@@ -108,7 +77,6 @@ namespace AGEPRO.GUI
             }
 
             //Load control in panelRecruitModelParameter
-            //ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
             this.observationTable = currentEmpiricalRecruitSelection.obsTable;
             this.numObservations = currentEmpiricalRecruitSelection.numObs;
 

@@ -208,8 +208,8 @@ namespace AGEPRO.GUI
                         "Number of Level 2 Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
 
-                lv1Observations = ResizeObservationTable(lv1Observations, newNumLv1Obs);
-                lv2Observations = ResizeObservationTable(lv2Observations, newNumLv2Obs);
+                lv1Observations = ControlRecruitment.ResizeDataGridTable(lv1Observations, newNumLv1Obs);
+                lv2Observations = ControlRecruitment.ResizeDataGridTable(lv2Observations, newNumLv2Obs);
 
                 ((AGEPRO.CoreLib.TwoStageEmpiricalRecruitment)
                     this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv1NumObs = newNumLv1Obs;

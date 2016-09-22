@@ -314,8 +314,6 @@ namespace AGEPRO.GUI
           
         }
 
-
-
         private void tabControlRecruitment_SelectedIndexChanged(object sender, EventArgs e)
         {
             //When switching to the "Recruit Model" Tab, set up selected model name for labelRecruitSelection
@@ -407,10 +405,36 @@ namespace AGEPRO.GUI
             }
             
         }
-
         //end OnSelectingRecruitingModel
 
-        
+        public static DataTable ResizeDataGridTable(DataTable dgvTable, int newRowCount)
+        {
+            //Delete rows if current count excceds new value
+            if (dgvTable.Rows.Count > newRowCount)
+            {
+                List<DataRow> rowsToDelete = new List<DataRow>();
+                for (int i = 0; i < (dgvTable.Rows.Count); i++)
+                {
+                    if ((i + 1) > newRowCount)
+                    {
+                        DataRow deleteThisRow = dgvTable.Rows[i];
+                        rowsToDelete.Add(deleteThisRow);
+                    }
+                }
+                foreach (DataRow drow in rowsToDelete)
+                {
+                    dgvTable.Rows.Remove(drow);
+                }
+            }//Add rows if row counts is less than the new value 
+            else if (dgvTable.Rows.Count < newRowCount)
+            {
+                for (int i = dgvTable.Rows.Count; i < newRowCount; i++)
+                {
+                    dgvTable.Rows.Add();
+                }
+            }
+            return dgvTable;
+        }
 
     }
 }
