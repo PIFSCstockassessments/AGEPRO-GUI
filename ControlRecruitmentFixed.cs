@@ -39,12 +39,21 @@ namespace AGEPRO.GUI
                 }
                 else
                 {
-                    currentRecruit.obsTable = currentRecruit.SetNewObsTable(seqYears.Count());
+                    currentRecruit.obsTable = currentRecruit.SetNewObsTable(seqYears.Count()-1);
+                }
+            }
+            else
+            {
+                //If recruitModel has more rows then resize  
+                if (currentRecruit.numObs > (this.seqYears.Count() - 1))
+                {
+                    currentRecruit.obsTable = 
+                        ControlRecruitment.ResizeDataGridTable(currentRecruit.obsTable, this.seqYears.Count()-1);
                 }
             }
 
             this.fixedRecruitTable = currentRecruit.obsTable;
-            
+
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;
             panelRecruitModelParameter.Controls.Add(this);
@@ -57,10 +66,14 @@ namespace AGEPRO.GUI
 
             if (!(header.Value != null))
             {
-                for (int i = 0; i < seqYears.Count(); i++)
+                if (dataGridFixedRecruitment.Rows.Count > 0)
                 {
-                    dataGridFixedRecruitment.Rows[i].HeaderCell.Value = seqYears[i];
+                    for (int i = 1; i < seqYears.Count(); i++)
+                    {
+                        dataGridFixedRecruitment.Rows[i-1].HeaderCell.Value = seqYears[i];
+                    }
                 }
+                
             }
 
         }
