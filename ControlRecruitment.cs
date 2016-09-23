@@ -264,12 +264,17 @@ namespace AGEPRO.GUI
             }
             else if (currentRecruitSelection is ParametricRecruitment)
             {
-                ParametricRecruitment currentParametricRecruitSelection = (ParametricRecruitment)currentRecruitSelection;
-                if (currentParametricRecruitSelection.subtype == ParametricType.Curve)
+                if (((ParametricRecruitment)currentRecruitSelection).subtype == ParametricType.Curve)
                 {
+                    ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruitSelection;
 
+                    ControlRecruitmentParametricCurve parametricCurveControls = new ControlRecruitmentParametricCurve();
+
+                    parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
+                    parametricCurveControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    parametricCurveControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                 }
-                else if (currentParametricRecruitSelection.subtype == ParametricType.Lognormal)
+                else if (((ParametricRecruitment)currentRecruitSelection).subtype == ParametricType.Lognormal)
                 {
 
                 }

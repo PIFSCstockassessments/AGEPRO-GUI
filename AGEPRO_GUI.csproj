@@ -111,11 +111,23 @@
     <Compile Include="ControlRecruitmentFixed.Designer.cs">
       <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitmentParametricCurve.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentParametricCurve.Designer.cs">
+      <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlRecruitmentPredictor.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ControlRecruitmentPredictor.Designer.cs">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlRecruitmentParametricBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentParametricBase.Designer.cs">
+      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlStochasticAge.cs">
       <SubType>UserControl</SubType>
@@ -180,8 +192,14 @@
     <EmbeddedResource Include="ControlRecruitmentFixed.resx">
       <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentParametricCurve.resx">
+      <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentPredictor.resx">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentParametricBase.resx">
+      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlStochasticAge.resx">
       <DependentUpon>ControlStochasticAge.cs</DependentUpon>
