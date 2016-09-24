@@ -276,7 +276,13 @@ namespace AGEPRO.GUI
                 }
                 else if (((ParametricRecruitment)currentRecruitSelection).subtype == ParametricType.Lognormal)
                 {
+                    ParametricLognormal currentParametricLognormalRecruit = (ParametricLognormal)currentRecruitSelection;
 
+                    ControlRecruitmentParametricLognormal lognormalControls = new ControlRecruitmentParametricLognormal();
+
+                    lognormalControls.SetParametricRecruitmentControls(currentParametricLognormalRecruit, panelRecruitModelParameter);
+                    lognormalControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    lognormalControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                 }
             }
             else if (currentRecruitSelection is PredictorRecruitment)

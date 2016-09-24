@@ -117,6 +117,12 @@
     <Compile Include="ControlRecruitmentParametricCurve.Designer.cs">
       <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitmentParametricLognormal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentParametricLognormal.Designer.cs">
+      <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlRecruitmentPredictor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentParametricCurve.resx">
       <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentParametricLognormal.resx">
+      <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentPredictor.resx">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
