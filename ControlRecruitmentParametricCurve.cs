@@ -16,12 +16,12 @@ namespace AGEPRO.GUI
             InitializeComponent();
             this.typeOfParmetric = ParametricType.Curve;
             
-            this.alpha = 0;
-            this.beta = 0;
-            this.kParm = 0;
-            this.variance = 0;
-            this.phi = 0;
-            this.lastResidual = 0;
+            this.textBoxAlpha.Text = "0";
+            this.textBoxBeta.Text = "0";
+            this.textBoxKParm.Text = "0";
+            this.textBoxVariance.Text = "0";
+            this.textBoxPhi.Text = "0";
+            this.textBoxLastResidual.Text = "0";
 
             //By default, K-Parm is invisible
             this.labelKparm.Visible = false;
@@ -34,47 +34,18 @@ namespace AGEPRO.GUI
             this.textBoxLastResidual.Enabled = false;
         }
 
-        public double alpha 
-        {
-            get { return Convert.ToDouble(textBoxAlpha.Text); }
-            set { textBoxAlpha.Text = value.ToString(); }
-        }
-        public double beta
-        {
-            get { return Convert.ToDouble(textBoxBeta.Text); }
-            set { textBoxBeta.Text = value.ToString(); }
-        }
-        public double kParm
-        {
-            get { return Convert.ToDouble(textBoxKParm.Text); }
-            set { textBoxKParm.Text = value.ToString(); }
-        }
-        public double variance
-        {
-            get { return Convert.ToDouble(textBoxVariance.Text); }
-            set { textBoxVariance.Text = value.ToString(); }
-        }
-        public double phi
-        {
-            get { return Convert.ToDouble(textBoxPhi.Text); }
-            set { textBoxPhi.Text = value.ToString(); }
-        }
-        public double lastResidual
-        {
-            get { return Convert.ToDouble(textBoxLastResidual.Text); }
-            set { textBoxLastResidual.Text = value.ToString(); }
-        }
-
         public override void SetParametricRecruitmentControls(ParametricRecruitment currentRecruit, Panel panelRecruitModelParameter)
         {
             ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruit;
-            this.alpha = currentParametricCurveRecruit.alpha;
-            this.beta = currentParametricCurveRecruit.beta;
+            this.textBoxAlpha.DataBindings.Add("Text", currentParametricCurveRecruit, "alpha");
+            this.textBoxBeta.DataBindings.Add("Text", currentParametricCurveRecruit, "beta");
+            this.textBoxVariance.DataBindings.Add("Text", currentParametricCurveRecruit, "variance");
+
             if(currentParametricCurveRecruit.IsThisAShepherdCurve())
             {
-                this.kParm = currentParametricCurveRecruit.kParm.Value;
                 this.labelKparm.Visible = true;
                 this.textBoxKParm.Visible = true;
+                this.textBoxKParm.DataBindings.Add("Text", currentParametricCurveRecruit, "kParm");
             }
 
             if (currentParametricCurveRecruit.autocorrelated)
@@ -84,8 +55,8 @@ namespace AGEPRO.GUI
                 this.textBoxPhi.Enabled = true;
                 this.textBoxLastResidual.Enabled = true;
 
-                this.phi = currentParametricCurveRecruit.phi.Value;
-                this.lastResidual = currentParametricCurveRecruit.lastResidual.Value;
+                this.textBoxPhi.DataBindings.Add("Text", currentParametricCurveRecruit, "Phi");
+                this.textBoxLastResidual.DataBindings.Add("Text", currentParametricCurveRecruit, "lastResidual");
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
