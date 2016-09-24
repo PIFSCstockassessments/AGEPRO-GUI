@@ -42,8 +42,9 @@ namespace AGEPRO.GUI
                 this.textBoxPhi.Enabled = true;
                 this.textBoxLastResidual.Enabled = true;
 
-                this.textBoxPhi.DataBindings.Add("Text", currentLognormalRecruit, "phi");
-                this.textBoxLastResidual.DataBindings.Add("Text", currentLognormalRecruit, "lastResidual");
+                this.textBoxPhi.DataBindings.Add("Text", currentLognormalRecruit, "phi", true, DataSourceUpdateMode.OnPropertyChanged);
+                this.textBoxLastResidual.DataBindings.Add("Text", currentLognormalRecruit, "lastResidual", true,
+                    DataSourceUpdateMode.OnPropertyChanged);
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);

@@ -45,7 +45,8 @@ namespace AGEPRO.GUI
             {
                 this.labelKparm.Visible = true;
                 this.textBoxKParm.Visible = true;
-                this.textBoxKParm.DataBindings.Add("Text", currentParametricCurveRecruit, "kParm");
+                this.textBoxKParm.DataBindings.Add("Text", currentParametricCurveRecruit, "kParm", true,
+                    DataSourceUpdateMode.OnPropertyChanged);
             }
 
             if (currentParametricCurveRecruit.autocorrelated)
@@ -55,8 +56,10 @@ namespace AGEPRO.GUI
                 this.textBoxPhi.Enabled = true;
                 this.textBoxLastResidual.Enabled = true;
 
-                this.textBoxPhi.DataBindings.Add("Text", currentParametricCurveRecruit, "Phi");
-                this.textBoxLastResidual.DataBindings.Add("Text", currentParametricCurveRecruit, "lastResidual");
+                this.textBoxPhi.DataBindings.Add("Text", currentParametricCurveRecruit, "phi", true, 
+                    DataSourceUpdateMode.OnPropertyChanged);
+                this.textBoxLastResidual.DataBindings.Add("Text", currentParametricCurveRecruit, "lastResidual", true,
+                    DataSourceUpdateMode.OnPropertyChanged);
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
