@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
 using AGEPRO.CoreLib;
 
 namespace AGEPRO.GUI
@@ -224,12 +226,10 @@ namespace AGEPRO.GUI
                 //Validate GeneralOption Parameters
                 controlGeneralOptions.ValidateGeneralOptionsParameters();
 
-
-
                 //Check for AGEPRO parameter data that has already been loaded/set 
-                
                 controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
+                
                 //Retro Adjustment Factors
                 if (controlMiscOptions.miscOptionsRetroAdjustmentFactors)
                 {
@@ -373,6 +373,131 @@ namespace AGEPRO.GUI
             }
         }
 
+        private void saveAGEPROInputDataAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAgeproInputDataFileDialog();
+        }
+
+        private void SaveAgeproInputDataFileDialog()
+        {
+            SaveFileDialog saveAgeproInputFile = new SaveFileDialog();
+            saveAgeproInputFile.InitialDirectory = "~";
+            saveAgeproInputFile.Filter = "AGEPRO input files (*.inp)|*.inp|All Files (*.*)|*.*";
+            saveAgeproInputFile.FilterIndex = 1;
+            saveAgeproInputFile.RestoreDirectory = true;
+
+            if (saveAgeproInputFile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    inputData.WriteInputFile(saveAgeproInputFile.FileName);
+
+                    MessageBox.Show("AGEPRO Input Data was saved at" + Environment.NewLine + saveAgeproInputFile.FileName,
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("AGEPRO input file was not saved." + Environment.NewLine + ex,
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+            }
+
+        }
+        
+        private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO:Ensure temp directory exists
+            string tempFile = @"\NFT\AGEPROV42\temp\test.INP";
+            inputData.WriteInputFile(tempFile);
+            
+            //check for bootstrap file
+            //1. File Exists from the bootstrap parameter
+            if (File.Exists(inputData.bootstrap.bootstrapFile))
+            {
+                File.Copy(inputData.bootstrap.bootstrapFile, @"\NFT\AGEPROV42\temp\Example1.bsn", true);
+            }
+            //2. If not, in the same directory as the AGEPRO Input File
+            else if(File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
+            {
+                File.Copy(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile),
+                    @"\NFT\AGEPROV42\temp\Example1.bsn", true);
+            }
+            //3. Else, Explictly locate the bootstrap file (via OpenFileDialog). 
+            //If user declines (Cancel), do not Launch AGEPRO Calc Engine
+            else
+            {
+                OpenFileDialog openBootstrapFileDialog = new OpenFileDialog();
+
+                openBootstrapFileDialog.InitialDirectory = "~";
+                openBootstrapFileDialog.Filter = "AGEPRO bootstrap files (*.inp)|*.bsn|All Files (*.*)|*.*";
+                openBootstrapFileDialog.FilterIndex = 1;
+                openBootstrapFileDialog.RestoreDirectory = true;
+                openBootstrapFileDialog.Title = "Open AGEPRO Bootstrap File";
+                
+                if (openBootstrapFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(openBootstrapFileDialog.FileName, @"\NFT\AGEPROV42\temp\Example1.bsn", true);
+
+                }
+                else
+                {
+                    Console.WriteLine("Cancel Launch AGEPRO Model");
+                    return;   
+                }
+            }
+            
+            
+            //use command line to open AGEPRO40.exe
+            LaunchAgeproModel(tempFile);
+        }
+        private string OpenBootstrapFile()
+        {
+            OpenFileDialog openBootstrapFileDialog = new OpenFileDialog();
+
+            openBootstrapFileDialog.InitialDirectory = "~";
+            openBootstrapFileDialog.Filter = "AGEPRO bootstrap files (*.inp)|*.bsn|All Files (*.*)|*.*";
+            openBootstrapFileDialog.FilterIndex = 1;
+            openBootstrapFileDialog.RestoreDirectory = true;
+            openBootstrapFileDialog.Title = "Open AGEPRO Bootstrap File";
+            openBootstrapFileDialog.ShowDialog();
+
+            return openBootstrapFileDialog.FileName;
+        }
+
+        static void LaunchAgeproModel(string inpFile)
+        {
+            string dirRoot = Path.GetPathRoot(Environment.SystemDirectory);
+
+            ProcessStartInfo ageproEngine = new ProcessStartInfo();
+            //TODO: STANDARD LOCATION
+            ageproEngine.WorkingDirectory = @"\NFT\AGEPROV42\";
+            ageproEngine.FileName = "AGEPRO40.exe";
+            ageproEngine.Arguments = "\"\"" + inpFile + "\"\"";
+            ageproEngine.WindowStyle = ProcessWindowStyle.Normal;
+
+            
+            try
+            {
+                using (Process exeProcess = Process.Start(ageproEngine))
+                {
+                    
+                    exeProcess.WaitForExit();
+                }
+                MessageBox.Show("AGEPRO Done. Can be Found at:" + Environment.NewLine + Path.GetDirectoryName(inpFile),
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured when running the AGEPRO Model." + Environment.NewLine + ex,
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        
+
         /// <summary>
         /// Enables Navigation Panel, and menu controls that were disabled during the startup/first-run state.
         /// Change Discard Parameter enabled state by generalDiscardPresent option.  
@@ -466,7 +591,7 @@ namespace AGEPRO.GUI
             
             //Misc Options
             controlMiscOptions.miscOptionsSummaryReport = inpFile.options.enableSummaryReport;
-            controlMiscOptions.miscOptionsAuxStochasticFiles = inpFile.options.enableDataFiles;
+            controlMiscOptions.miscOptionsAuxStochasticFiles = inpFile.options.enableAuxStochasticFiles;
             controlMiscOptions.miscOptionsExportR = inpFile.options.enableExportR;
             controlMiscOptions.miscOptionsPercentileReport = inpFile.options.enablePercentileReport;
             controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.percentile);
@@ -613,6 +738,8 @@ namespace AGEPRO.GUI
             dgvTable = inpFileTable;
             return dgvTable;
         }
+
+        
 
 
 
