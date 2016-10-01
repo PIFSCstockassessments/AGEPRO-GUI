@@ -423,8 +423,7 @@ namespace AGEPRO.GUI
                 File.Copy(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile),
                     @"\NFT\AGEPROV42\temp\Example1.bsn", true);
             }
-            //3. Else, Explictly locate the bootstrap file (via OpenFileDialog). 
-            //If user declines (Cancel), do not Launch AGEPRO Calc Engine
+            //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
             else
             {
                 OpenFileDialog openBootstrapFileDialog = new OpenFileDialog();
@@ -443,6 +442,7 @@ namespace AGEPRO.GUI
                 else
                 {
                     Console.WriteLine("Cancel Launch AGEPRO Model");
+                    //If user declines (Cancel), do not Launch AGEPRO Calc Engine
                     return;   
                 }
             }

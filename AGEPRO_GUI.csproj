@@ -111,6 +111,12 @@
     <Compile Include="ControlRecruitmentFixed.Designer.cs">
       <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitmentMarkovMatrix.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentMarkovMatrix.Designer.cs">
+      <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlRecruitmentParametricCurve.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentFixed.resx">
       <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentMarkovMatrix.resx">
+      <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentParametricCurve.resx">
       <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
