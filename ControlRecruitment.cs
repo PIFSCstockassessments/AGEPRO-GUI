@@ -309,6 +309,10 @@ namespace AGEPRO.GUI
                 predictorParameterControls.Dock = DockStyle.Fill;
                 panelRecruitModelParameter.Controls.Add(predictorParameterControls);
             }
+            else if(currentRecruitSelection is MarkovMatrixRecruitment)
+            {
+
+            }
             else
             {
                 panelRecruitModelParameter.Controls.Clear();
