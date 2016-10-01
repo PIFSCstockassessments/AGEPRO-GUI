@@ -21,5 +21,13 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
         }
+
+        public void SetRecruitmentControls(MarkovMatrixRecruitment currentRecruit, Panel panelRecruitModelParameter)
+        {
+            if (!(currentRecruit.markovRecruitment.Tables["Recruitment"] != null))
+            {
+
+            }
+        }
     }
 }
