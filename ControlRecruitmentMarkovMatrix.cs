@@ -104,5 +104,44 @@ namespace AGEPRO.GUI
                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void dataGridProbabilityTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = dataGridProbabilityTable.Rows[e.RowIndex].HeaderCell;
+
+            if (!(header.Value != null))
+            {
+                for (int i = 0; i < dataGridProbabilityTable.Rows.Count; i++)
+                {
+                    dataGridProbabilityTable.Rows[i].HeaderCell.Value = "SSB Level-" + (i + 1);
+                }
+            }
+        }
+
+        private void dataGridRecruitTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = dataGridRecruitTable.Rows[e.RowIndex].HeaderCell;
+
+            if (!(header.Value != null))
+            {
+                for (int i = 0; i < dataGridRecruitTable.Rows.Count; i++)
+                {
+                    dataGridRecruitTable.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                }
+            }
+        }
+
+        private void dataGridSSBTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = dataGridSSBTable.Rows[e.RowIndex].HeaderCell;
+
+            if (!(header.Value != null))
+            {
+                for (int i = 0; i < dataGridSSBTable.Rows.Count; i++)
+                {
+                    dataGridSSBTable.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                }
+            }
+        }
     }
 }
