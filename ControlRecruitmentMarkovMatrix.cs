@@ -36,7 +36,11 @@ namespace AGEPRO.GUI
             get { return (DataTable)dataGridProbabilityTable.DataSource; }
             set { dataGridProbabilityTable.DataSource = value; }
         }
-
+        protected override void OnLoad(EventArgs e)
+        {
+            dataGridSSBTable.Columns[0].Width = 120;
+            base.OnLoad(e);
+        }
 
         public void SetRecruitmentControls(MarkovMatrixRecruitment currentRecruit, Panel panelRecruitModelParameter)
         {

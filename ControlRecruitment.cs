@@ -210,6 +210,7 @@ namespace AGEPRO.GUI
             
         }
 
+        //TODO:REFACTOR 
         private void LoadRecruitModelParameterControls(RecruitmentModel currentRecruitSelection)
         {
             if (currentRecruitSelection is EmpiricalRecruitment)

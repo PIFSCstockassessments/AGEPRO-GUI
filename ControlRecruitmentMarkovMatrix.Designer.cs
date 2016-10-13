@@ -164,6 +164,7 @@
             this.dataGridProbabilityTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProbabilityTable.Location = new System.Drawing.Point(444, 89);
             this.dataGridProbabilityTable.Name = "dataGridProbabilityTable";
+            this.dataGridProbabilityTable.RowHeadersWidth = 110;
             this.dataGridProbabilityTable.Size = new System.Drawing.Size(398, 240);
             this.dataGridProbabilityTable.TabIndex = 6;
             // 
