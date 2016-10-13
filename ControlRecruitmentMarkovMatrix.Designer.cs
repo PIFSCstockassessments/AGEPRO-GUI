@@ -32,8 +32,8 @@
             this.groupMarkovMatrixParameters = new System.Windows.Forms.GroupBox();
             this.labelNumSSBLevels = new System.Windows.Forms.Label();
             this.buttonSetParameters = new System.Windows.Forms.Button();
-            this.labelNumRecruitLevels = new System.Windows.Forms.Label();
             this.spinBoxNumSSBLevels = new System.Windows.Forms.NumericUpDown();
+            this.labelNumRecruitLevels = new System.Windows.Forms.Label();
             this.labelRecruitTable = new System.Windows.Forms.Label();
             this.labelSSBTable = new System.Windows.Forms.Label();
             this.labelProbabilityTable = new System.Windows.Forms.Label();
@@ -76,7 +76,6 @@
             this.labelNumSSBLevels.Size = new System.Drawing.Size(114, 13);
             this.labelNumSSBLevels.TabIndex = 3;
             this.labelNumSSBLevels.Text = "Number of SSB Levels";
-            this.labelNumSSBLevels.Visible = false;
             // 
             // buttonSetParameters
             // 
@@ -86,6 +85,14 @@
             this.buttonSetParameters.TabIndex = 2;
             this.buttonSetParameters.Text = "SET";
             this.buttonSetParameters.UseVisualStyleBackColor = true;
+            this.buttonSetParameters.Click += new System.EventHandler(this.buttonSetParameters_Click);
+            // 
+            // spinBoxNumSSBLevels
+            // 
+            this.spinBoxNumSSBLevels.Location = new System.Drawing.Point(225, 40);
+            this.spinBoxNumSSBLevels.Name = "spinBoxNumSSBLevels";
+            this.spinBoxNumSSBLevels.Size = new System.Drawing.Size(120, 20);
+            this.spinBoxNumSSBLevels.TabIndex = 1;
             // 
             // labelNumRecruitLevels
             // 
@@ -95,13 +102,6 @@
             this.labelNumRecruitLevels.Size = new System.Drawing.Size(152, 13);
             this.labelNumRecruitLevels.TabIndex = 0;
             this.labelNumRecruitLevels.Text = "Number Of Recruitment Levels";
-            // 
-            // spinBoxNumSSBLevels
-            // 
-            this.spinBoxNumSSBLevels.Location = new System.Drawing.Point(225, 40);
-            this.spinBoxNumSSBLevels.Name = "spinBoxNumSSBLevels";
-            this.spinBoxNumSSBLevels.Size = new System.Drawing.Size(120, 20);
-            this.spinBoxNumSSBLevels.TabIndex = 1;
             // 
             // labelRecruitTable
             // 
@@ -134,6 +134,8 @@
             // 
             this.dataGridRecruitTable.AllowUserToAddRows = false;
             this.dataGridRecruitTable.AllowUserToDeleteRows = false;
+            this.dataGridRecruitTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridRecruitTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRecruitTable.Location = new System.Drawing.Point(0, 89);
             this.dataGridRecruitTable.Name = "dataGridRecruitTable";
@@ -144,6 +146,8 @@
             // 
             this.dataGridSSBTable.AllowUserToAddRows = false;
             this.dataGridSSBTable.AllowUserToDeleteRows = false;
+            this.dataGridSSBTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridSSBTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSSBTable.Location = new System.Drawing.Point(225, 89);
             this.dataGridSSBTable.Name = "dataGridSSBTable";
@@ -154,6 +158,9 @@
             // 
             this.dataGridProbabilityTable.AllowUserToAddRows = false;
             this.dataGridProbabilityTable.AllowUserToDeleteRows = false;
+            this.dataGridProbabilityTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridProbabilityTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProbabilityTable.Location = new System.Drawing.Point(444, 89);
             this.dataGridProbabilityTable.Name = "dataGridProbabilityTable";

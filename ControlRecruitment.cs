@@ -311,7 +311,13 @@ namespace AGEPRO.GUI
             }
             else if(currentRecruitSelection is MarkovMatrixRecruitment)
             {
+                MarkovMatrixRecruitment currentRecruit = (MarkovMatrixRecruitment)currentRecruitSelection;
 
+                ControlRecruitmentMarkovMatrix markovControls = new ControlRecruitmentMarkovMatrix();
+
+                markovControls.SetRecruitmentControls(currentRecruit,panelRecruitModelParameter);
+                markovControls.collectionAgeproRecruitModels = this.collectionAgeproRecruitmentModels;
+                markovControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
             }
             else
             {
@@ -462,6 +468,36 @@ namespace AGEPRO.GUI
                 }
             }
             return dgvTable;
+        }
+
+        public static DataTable ResizeDataGridTable(DataTable dgvTable, int newRowCount, int newColCount)
+        {
+            //Delete Cols if current column count excceds new value
+            if (dgvTable.Columns.Count > newColCount)
+            {
+                List<DataColumn> colsToDelete = new List<DataColumn>();
+                for (int j = 0; j < dgvTable.Columns.Count; j++)
+                {
+                    if ((j + 1) > newColCount)
+                    {
+                        DataColumn deleteThisCol = dgvTable.Columns[j];
+                        colsToDelete.Add(deleteThisCol);
+                    }
+                }
+                foreach (DataColumn dcol in colsToDelete)
+                {
+                    dgvTable.Columns.Remove(dcol);
+                }
+            }//Add columns if current column count is less than the new value
+            else if (dgvTable.Columns.Count < newColCount)
+            {
+                for (int j = dgvTable.Columns.Count; j < newColCount; j++)
+                {
+                    dgvTable.Columns.Add();
+                }
+            }
+
+            return ResizeDataGridTable(dgvTable, newRowCount);
         }
 
     }
