@@ -446,10 +446,15 @@ namespace AGEPRO.GUI
                     return;   
                 }
             }
-            
-            
+
             //use command line to open AGEPRO40.exe
             LaunchAgeproModel(tempFile);
+
+
+            //crude method to search for AGEPRO output file
+            string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(tempFile), "*.out").First();
+            
+            LaunchOutuptViewerProgram(ageproOutfile, controlMiscOptions);
         }
         private string OpenBootstrapFile()
         {
@@ -495,7 +500,20 @@ namespace AGEPRO.GUI
             }
             
         }
-
+        static void LaunchOutuptViewerProgram(string outfile, ControlMiscOptions outputOptions)
+        {
+            if (outputOptions.ageproOutputViewer == "System Default")
+            {
+                //open a program that is associated by its file type.
+                //If no association exists, system will ask user for a program. 
+                Process.Start(outfile); 
+            }
+            else if (outputOptions.ageproOutputViewer == "Notepad")
+            {
+                Process.Start("notepad.exe", outfile);
+            }
+           
+        }
         
 
         /// <summary>

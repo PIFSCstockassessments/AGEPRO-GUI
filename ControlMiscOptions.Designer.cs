@@ -62,6 +62,9 @@
             this.groupRetroAdjustment = new System.Windows.Forms.GroupBox();
             this.checkBoxRetroAdjustment = new System.Windows.Forms.CheckBox();
             this.dataGridRetroAdjustment = new System.Windows.Forms.DataGridView();
+            this.groupOutputViewer = new System.Windows.Forms.GroupBox();
+            this.labelOutputViewerProgram = new System.Windows.Forms.Label();
+            this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
             this.groupOuputOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxReportPercentile)).BeginInit();
             this.groupRefpoints.SuspendLayout();
@@ -69,6 +72,7 @@
             this.groupScaleFactors.SuspendLayout();
             this.groupRetroAdjustment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).BeginInit();
+            this.groupOutputViewer.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupOuputOptions
@@ -427,10 +431,43 @@
             this.dataGridRetroAdjustment.TabIndex = 0;
             this.dataGridRetroAdjustment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRetroAdjustment_CellFormatting);
             // 
+            // groupOutputViewer
+            // 
+            this.groupOutputViewer.Controls.Add(this.comboBoxOutputViewerProgram);
+            this.groupOutputViewer.Controls.Add(this.labelOutputViewerProgram);
+            this.groupOutputViewer.Location = new System.Drawing.Point(403, 392);
+            this.groupOutputViewer.Name = "groupOutputViewer";
+            this.groupOutputViewer.Size = new System.Drawing.Size(352, 75);
+            this.groupOutputViewer.TabIndex = 5;
+            this.groupOutputViewer.TabStop = false;
+            this.groupOutputViewer.Text = "Output File Viewer";
+            // 
+            // labelOutputViewerProgram
+            // 
+            this.labelOutputViewerProgram.AutoSize = true;
+            this.labelOutputViewerProgram.Location = new System.Drawing.Point(14, 23);
+            this.labelOutputViewerProgram.Name = "labelOutputViewerProgram";
+            this.labelOutputViewerProgram.Size = new System.Drawing.Size(189, 13);
+            this.labelOutputViewerProgram.TabIndex = 0;
+            this.labelOutputViewerProgram.Text = "Program to View AGEPRO Output File ";
+            // 
+            // comboBoxOutputViewerProgram
+            // 
+            this.comboBoxOutputViewerProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOutputViewerProgram.Items.AddRange(new object[] {
+            "System Default",
+            "Notepad",
+            "None"});
+            this.comboBoxOutputViewerProgram.Location = new System.Drawing.Point(17, 39);
+            this.comboBoxOutputViewerProgram.Name = "comboBoxOutputViewerProgram";
+            this.comboBoxOutputViewerProgram.Size = new System.Drawing.Size(318, 21);
+            this.comboBoxOutputViewerProgram.TabIndex = 1;
+            // 
             // ControlMiscOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupOutputViewer);
             this.Controls.Add(this.groupRetroAdjustment);
             this.Controls.Add(this.groupScaleFactors);
             this.Controls.Add(this.groupBounds);
@@ -450,6 +487,8 @@
             this.groupRetroAdjustment.ResumeLayout(false);
             this.groupRetroAdjustment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).EndInit();
+            this.groupOutputViewer.ResumeLayout(false);
+            this.groupOutputViewer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -490,5 +529,8 @@
         private System.Windows.Forms.CheckBox checkBoxRetroAdjustment;
         private System.Windows.Forms.DataGridView dataGridRetroAdjustment;
         private System.Windows.Forms.NumericUpDown spinBoxReportPercentile;
+        private System.Windows.Forms.GroupBox groupOutputViewer;
+        private System.Windows.Forms.ComboBox comboBoxOutputViewerProgram;
+        private System.Windows.Forms.Label labelOutputViewerProgram;
     }
 }

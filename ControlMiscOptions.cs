@@ -21,7 +21,7 @@ namespace AGEPRO.GUI
         public ControlMiscOptions()
         {
             InitializeComponent();
-            
+            comboBoxOutputViewerProgram.SelectedIndex = 0;
         }
 
         public bool miscOptionsSummaryReport
@@ -119,6 +119,11 @@ namespace AGEPRO.GUI
             get { return (DataTable)dataGridRetroAdjustment.DataSource; }
             set { dataGridRetroAdjustment.DataSource = value; }
         }
+        public string ageproOutputViewer
+        {
+            get { return comboBoxOutputViewerProgram.SelectedItem.ToString(); }
+        }
+
         public void SetRetroAdjustmentFactorRowHeaders()
         {
             this.dataGridRetroAdjustment.RowHeadersVisible = true;
