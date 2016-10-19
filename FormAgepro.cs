@@ -408,20 +408,26 @@ namespace AGEPRO.GUI
         private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO:Ensure temp directory exists
-            string tempFile = @"\NFT\AGEPROV42\temp\test.INP";
-            inputData.WriteInputFile(tempFile);
+            string ageproModelJobName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()); 
+            string ageproWorkPath = Path.Combine(Util.GetAgeproUserDataPath(), ageproModelJobName);
+            string inpFile = Path.Combine(ageproWorkPath, ageproModelJobName + ".INP");
+            string bsnFile = Path.Combine(ageproWorkPath, ageproModelJobName + ".BSN"); 
+            
+            //string tempFile = @"\NFT\AGEPROV42\temp\test.INP";
+            inputData.WriteInputFile(inpFile);
             
             //check for bootstrap file
             //1. File Exists from the bootstrap parameter
             if (File.Exists(inputData.bootstrap.bootstrapFile))
             {
-                File.Copy(inputData.bootstrap.bootstrapFile, @"\NFT\AGEPROV42\temp\Example1.bsn", true);
+                //File.Copy(inputData.bootstrap.bootstrapFile, @"\NFT\AGEPROV42\temp\Example1.bsn", true);
+                File.Copy(inputData.bootstrap.bootstrapFile, bsnFile, true);
             }
             //2. If not, in the same directory as the AGEPRO Input File
             else if(File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
             {
                 File.Copy(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile),
-                    @"\NFT\AGEPROV42\temp\Example1.bsn", true);
+                    bsnFile, true);
             }
             //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
             else
@@ -436,8 +442,7 @@ namespace AGEPRO.GUI
                 
                 if (openBootstrapFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    File.Copy(openBootstrapFileDialog.FileName, @"\NFT\AGEPROV42\temp\Example1.bsn", true);
-
+                    File.Copy(openBootstrapFileDialog.FileName, bsnFile, true);
                 }
                 else
                 {
@@ -448,11 +453,11 @@ namespace AGEPRO.GUI
             }
 
             //use command line to open AGEPRO40.exe
-            LaunchAgeproModel(tempFile);
+            LaunchAgeproModel(inpFile);
 
 
             //crude method to search for AGEPRO output file
-            string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(tempFile), "*.out").First();
+            string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
             
             LaunchOutuptViewerProgram(ageproOutfile, controlMiscOptions);
         }
@@ -476,7 +481,7 @@ namespace AGEPRO.GUI
 
             ProcessStartInfo ageproEngine = new ProcessStartInfo();
             //TODO: STANDARD LOCATION
-            ageproEngine.WorkingDirectory = @"\NFT\AGEPROV42\";
+            ageproEngine.WorkingDirectory = Application.StartupPath;
             ageproEngine.FileName = "AGEPRO40.exe";
             ageproEngine.Arguments = "\"\"" + inpFile + "\"\"";
             ageproEngine.WindowStyle = ProcessWindowStyle.Normal;
