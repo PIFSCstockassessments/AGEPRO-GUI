@@ -180,6 +180,7 @@
     <Compile Include="ControlRecruitmentEmpirical.Designer.cs">
       <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util.cs" />
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </EmbeddedResource>
