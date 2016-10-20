@@ -336,7 +336,7 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Calls the OpenFileDialog Window to retrive an existing AGEPRO Input file.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -410,7 +410,7 @@ namespace AGEPRO.GUI
             
             string ageproModelJobName;
             string jobDT;
-            
+            //set the user data work directory  
             if (string.IsNullOrWhiteSpace(controlGeneralOptions.generalInputFile))
             {
                 ageproModelJobName = "untitled_" + Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
@@ -483,7 +483,7 @@ namespace AGEPRO.GUI
                 //crude method to search for AGEPRO output file
                 string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
 
-                LaunchOutuptViewerProgram(ageproOutfile, controlMiscOptions);
+                LaunchOutputViewerProgram(ageproOutfile, controlMiscOptions);
 
                 //Open WorkPath directory for the user 
                 Process.Start(ageproWorkPath); 
@@ -519,7 +519,6 @@ namespace AGEPRO.GUI
             string dirRoot = Path.GetPathRoot(Environment.SystemDirectory);
 
             ProcessStartInfo ageproEngine = new ProcessStartInfo();
-            //TODO: STANDARD LOCATION
             ageproEngine.WorkingDirectory = Application.StartupPath;
             ageproEngine.FileName = "AGEPRO40.exe";
             ageproEngine.Arguments = "\"\"" + inpFile + "\"\"";
@@ -530,12 +529,10 @@ namespace AGEPRO.GUI
             {
                 using (Process exeProcess = Process.Start(ageproEngine))
                 {
-                    
                     exeProcess.WaitForExit();
                 }
                 MessageBox.Show("AGEPRO Done. Can be Found at:" + Environment.NewLine + Path.GetDirectoryName(inpFile),
                         "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
             }
             catch (Exception ex)
             {
@@ -544,7 +541,7 @@ namespace AGEPRO.GUI
             }
             
         }
-        static void LaunchOutuptViewerProgram(string outfile, ControlMiscOptions outputOptions)
+        static void LaunchOutputViewerProgram(string outfile, ControlMiscOptions outputOptions)
         {
             if (outputOptions.ageproOutputViewer == "System Default")
             {
