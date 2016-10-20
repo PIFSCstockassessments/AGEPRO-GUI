@@ -434,7 +434,6 @@ namespace AGEPRO.GUI
             {
                 Directory.CreateDirectory(ageproWorkPath);
             }
-            inputData.WriteInputFile(inpFile);
             
             //check for bootstrap file
             //1. File Exists from the bootstrap parameter
@@ -471,16 +470,35 @@ namespace AGEPRO.GUI
                 }
             }
 
-            //use command line to open AGEPRO40.exe
-            LaunchAgeproModel(inpFile);
+            string originalBSNFile = inputData.bootstrap.bootstrapFile;
 
-            //crude method to search for AGEPRO output file
-            string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
+            try
+            {
+                inputData.bootstrap.bootstrapFile = bsnFile; //set bootstrap file to copied workDir ver
+                inputData.WriteInputFile(inpFile);
+
+                //use command line to open AGEPRO40.exe
+                LaunchAgeproModel(inpFile);
+
+                //crude method to search for AGEPRO output file
+                string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
+
+                LaunchOutuptViewerProgram(ageproOutfile, controlMiscOptions);
+
+                //Open WorkPath directory for the user 
+                Process.Start(ageproWorkPath); 
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex,
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                //reset original bootstrap filename 
+                inputData.bootstrap.bootstrapFile = originalBSNFile;
+            }
             
-            LaunchOutuptViewerProgram(ageproOutfile, controlMiscOptions);
-
-            //Open WorkPath directory for the user 
-            Process.Start(ageproWorkPath); 
         }
         private string OpenBootstrapFile()
         {
