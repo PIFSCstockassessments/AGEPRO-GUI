@@ -87,6 +87,12 @@
     <Compile Include="ControlGeneral.Designer.cs">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlHarvestScenario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlHarvestScenario.Designer.cs">
+      <DependentUpon>ControlHarvestScenario.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlMiscOptions.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlGeneral.resx">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlHarvestScenario.resx">
+      <DependentUpon>ControlHarvestScenario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlMiscOptions.resx">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
