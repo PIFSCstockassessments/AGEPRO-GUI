@@ -16,5 +16,20 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
         }
+
+        private void radioNone_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioPStar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioRebuilderTarget_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
