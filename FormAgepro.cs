@@ -29,6 +29,7 @@ namespace AGEPRO.GUI
         private ControlStochasticWeightAge controlMidYearWeight;
         private ControlStochasticWeightAge controlCatchWeight;
         private ControlStochasticWeightAge controlDiscardWeight;
+        private ControlHarvestScenario controlHarvestScenario;
         private ControlRecruitment controlRecruitment;
 
         public FormAgepro()
@@ -51,6 +52,7 @@ namespace AGEPRO.GUI
             controlCatchWeight = new ControlStochasticWeightAge();
             controlDiscardWeight = new ControlStochasticWeightAge();
             controlRecruitment = new ControlRecruitment();
+            controlHarvestScenario = new ControlHarvestScenario();
 
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
@@ -133,6 +135,7 @@ namespace AGEPRO.GUI
                 {"treeNodeNaturalMortality", selectNaturalMortalityParameterPanel},
                 {"treeNodeBiological", selectBiologicalParameterPanel},
                 {"treeNodeBootstrapping", selectBootstrappingParameterPanel},
+                {"treeNodeHarvestScenario", selectHarvestScenarioParameterPanel},
                 {"treeNodeMiscOptions", selectMiscOptionsParameterPanel},
                 
             };
@@ -188,6 +191,10 @@ namespace AGEPRO.GUI
         private void selectBootstrappingParameterPanel()
         {
             selectAgeproParameterPanel(controlBootstrap);
+        }
+        private void selectHarvestScenarioParameterPanel()
+        {
+            selectAgeproParameterPanel(controlHarvestScenario, true);
         }
         private void selectMiscOptionsParameterPanel()
         {

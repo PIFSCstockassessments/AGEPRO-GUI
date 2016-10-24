@@ -42,7 +42,7 @@
             // labelHarvestScenario
             // 
             this.labelHarvestScenario.AutoSize = true;
-            this.labelHarvestScenario.Location = new System.Drawing.Point(1, 22);
+            this.labelHarvestScenario.Location = new System.Drawing.Point(26, 22);
             this.labelHarvestScenario.Name = "labelHarvestScenario";
             this.labelHarvestScenario.Size = new System.Drawing.Size(89, 13);
             this.labelHarvestScenario.TabIndex = 0;
@@ -53,9 +53,9 @@
             this.dataGridHarvestScenarioTable.AllowUserToAddRows = false;
             this.dataGridHarvestScenarioTable.AllowUserToDeleteRows = false;
             this.dataGridHarvestScenarioTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridHarvestScenarioTable.Location = new System.Drawing.Point(4, 38);
+            this.dataGridHarvestScenarioTable.Location = new System.Drawing.Point(29, 38);
             this.dataGridHarvestScenarioTable.Name = "dataGridHarvestScenarioTable";
-            this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(364, 460);
+            this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(360, 460);
             this.dataGridHarvestScenarioTable.TabIndex = 1;
             // 
             // groupAltCalcParameters
@@ -63,9 +63,9 @@
             this.groupAltCalcParameters.Controls.Add(this.radioNone);
             this.groupAltCalcParameters.Controls.Add(this.radioPStar);
             this.groupAltCalcParameters.Controls.Add(this.radioRebuilderTarget);
-            this.groupAltCalcParameters.Location = new System.Drawing.Point(402, 22);
+            this.groupAltCalcParameters.Location = new System.Drawing.Point(417, 22);
             this.groupAltCalcParameters.Name = "groupAltCalcParameters";
-            this.groupAltCalcParameters.Size = new System.Drawing.Size(495, 69);
+            this.groupAltCalcParameters.Size = new System.Drawing.Size(480, 69);
             this.groupAltCalcParameters.TabIndex = 2;
             this.groupAltCalcParameters.TabStop = false;
             this.groupAltCalcParameters.Text = "Additional Calcuations";
@@ -73,7 +73,7 @@
             // radioNone
             // 
             this.radioNone.AutoSize = true;
-            this.radioNone.Location = new System.Drawing.Point(313, 32);
+            this.radioNone.Location = new System.Drawing.Point(308, 32);
             this.radioNone.Name = "radioNone";
             this.radioNone.Size = new System.Drawing.Size(166, 17);
             this.radioNone.TabIndex = 2;
@@ -109,20 +109,20 @@
             // 
             // panelAltCalcParameters
             // 
-            this.panelAltCalcParameters.Location = new System.Drawing.Point(402, 98);
-            this.panelAltCalcParameters.MinimumSize = new System.Drawing.Size(495, 400);
+            this.panelAltCalcParameters.Location = new System.Drawing.Point(417, 98);
+            this.panelAltCalcParameters.MinimumSize = new System.Drawing.Size(400, 400);
             this.panelAltCalcParameters.Name = "panelAltCalcParameters";
-            this.panelAltCalcParameters.Size = new System.Drawing.Size(495, 400);
+            this.panelAltCalcParameters.Size = new System.Drawing.Size(479, 400);
             this.panelAltCalcParameters.TabIndex = 3;
             // 
             // ControlHarvestScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelHarvestScenario);
             this.Controls.Add(this.panelAltCalcParameters);
             this.Controls.Add(this.groupAltCalcParameters);
             this.Controls.Add(this.dataGridHarvestScenarioTable);
-            this.Controls.Add(this.labelHarvestScenario);
             this.Name = "ControlHarvestScenario";
             this.Size = new System.Drawing.Size(900, 520);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHarvestScenarioTable)).EndInit();
