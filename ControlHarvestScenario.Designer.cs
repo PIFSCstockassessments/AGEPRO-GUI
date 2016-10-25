@@ -52,6 +52,8 @@
             // 
             this.dataGridHarvestScenarioTable.AllowUserToAddRows = false;
             this.dataGridHarvestScenarioTable.AllowUserToDeleteRows = false;
+            this.dataGridHarvestScenarioTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridHarvestScenarioTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridHarvestScenarioTable.Location = new System.Drawing.Point(29, 38);
             this.dataGridHarvestScenarioTable.Name = "dataGridHarvestScenarioTable";
