@@ -650,6 +650,10 @@ namespace AGEPRO.GUI
             controlBiological.fractionMortalityTimeVarying = inpFile.biological.timeVarying;
             controlBiological.readFractionMortalityState = false;
 
+            //Harvest Scenario
+            controlHarvestScenario.HarvestScenarioTable =
+                getAgeproInputDataTable(controlHarvestScenario.HarvestScenarioTable, inpFile.harvestScenario.harvestScenarioTable);
+
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
             controlBootstrap.bootstrapIterations = inpFile.bootstrap.numBootstraps.ToString();

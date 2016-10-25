@@ -21,10 +21,12 @@ namespace AGEPRO.GUI
 
             columnHarvestSpecification = new DataGridViewComboBoxColumn();
             columnHarvestSpecification.HeaderText = "Harvest Specfication";
+            //'DataPropertyName' references harvest spec column in input data's Harvest Scenario DataTable 
+            columnHarvestSpecification.DataPropertyName = "Harvest Spec";
             columnHarvestSpecification.Width = 100;
 
             columnHarvestSpecification.DataSource = HarvestSpecification.GetHarvestSpec();
-            columnHarvestSpecification.ValueMember = "Index";
+            //Do not need 'ValueMember', because 'DataPropertyNameInstead' is referenced 
             columnHarvestSpecification.DisplayMember = "HarvestScenario";
             dataGridHarvestScenarioTable.Columns.Add(columnHarvestSpecification);
             dataGridHarvestScenarioTable.RowHeadersWidth = 90;
@@ -32,16 +34,37 @@ namespace AGEPRO.GUI
 
         }
 
+        public DataTable HarvestScenarioTable
+        {
+            get { return (DataTable)dataGridHarvestScenarioTable.DataSource; }
+            set { dataGridHarvestScenarioTable.DataSource = value; }
+        }
+
+        /// <summary>
+        /// Action that When the 'None' radio buttion is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioNone_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioPStar_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioRebuilderTarget_CheckedChanged(object sender, EventArgs e)
         {
 
