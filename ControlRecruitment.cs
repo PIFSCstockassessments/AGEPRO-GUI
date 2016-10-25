@@ -401,6 +401,12 @@ namespace AGEPRO.GUI
             
         }
 
+        /// <summary>
+        /// Sets the Recruitment Model of the current index of the multi-recruitment array based off from the
+        /// current selected cell value of dataGridSelectRecruitModel. 
+        /// </summary>
+        /// <param name="currentModel"></param>
+        /// <param name="modelCbx"></param>
         private void OnSelectingRecruitModel(int currentModel, DataGridViewComboBoxEditingControl modelCbx)
         {
             try
@@ -442,6 +448,12 @@ namespace AGEPRO.GUI
         }
         //end OnSelectingRecruitingModel
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dgvTable"></param>
+        /// <param name="newRowCount"></param>
+        /// <returns></returns>
         public static DataTable ResizeDataGridTable(DataTable dgvTable, int newRowCount)
         {
             //Delete rows if current count excceds new value
@@ -471,6 +483,13 @@ namespace AGEPRO.GUI
             return dgvTable;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dgvTable"></param>
+        /// <param name="newRowCount"></param>
+        /// <param name="newColCount"></param>
+        /// <returns></returns>
         public static DataTable ResizeDataGridTable(DataTable dgvTable, int newRowCount, int newColCount)
         {
             //Delete Cols if current column count excceds new value
