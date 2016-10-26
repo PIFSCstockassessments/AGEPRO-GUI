@@ -14,6 +14,7 @@ namespace AGEPRO.GUI
     public partial class ControlHarvestScenario : UserControl
     {
         private DataGridViewComboBoxColumn columnHarvestSpecification;
+        public string[] seqYears { get; set; }
 
         public ControlHarvestScenario()
         {
@@ -29,7 +30,7 @@ namespace AGEPRO.GUI
             //Do not need 'ValueMember', because 'DataPropertyNameInstead' is referenced 
             columnHarvestSpecification.DisplayMember = "HarvestScenario";
             dataGridHarvestScenarioTable.Columns.Add(columnHarvestSpecification);
-            dataGridHarvestScenarioTable.RowHeadersWidth = 90;
+            dataGridHarvestScenarioTable.RowHeadersWidth = 75;
             
 
         }
@@ -68,6 +69,23 @@ namespace AGEPRO.GUI
         private void radioRebuilderTarget_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;
+            
+            if (!(header.Value != null))
+            {
+                //set HarvestScenarioTable RowHeaders
+                int iyear = 0;
+                foreach (DataGridViewRow yearRow in dataGridHarvestScenarioTable.Rows)
+                {
+                    yearRow.HeaderCell.Value = seqYears[iyear];
+                    iyear++;
+                }
+
+            }
         }
     }
 }

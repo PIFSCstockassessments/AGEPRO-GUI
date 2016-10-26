@@ -52,16 +52,19 @@
             // 
             this.dataGridHarvestScenarioTable.AllowUserToAddRows = false;
             this.dataGridHarvestScenarioTable.AllowUserToDeleteRows = false;
-            this.dataGridHarvestScenarioTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridHarvestScenarioTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridHarvestScenarioTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridHarvestScenarioTable.Location = new System.Drawing.Point(29, 38);
             this.dataGridHarvestScenarioTable.Name = "dataGridHarvestScenarioTable";
             this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(360, 460);
             this.dataGridHarvestScenarioTable.TabIndex = 1;
+            this.dataGridHarvestScenarioTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridHarvestScenarioTable_CellFormatting);
             // 
             // groupAltCalcParameters
             // 
+            this.groupAltCalcParameters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupAltCalcParameters.Controls.Add(this.radioNone);
             this.groupAltCalcParameters.Controls.Add(this.radioPStar);
             this.groupAltCalcParameters.Controls.Add(this.radioRebuilderTarget);
@@ -111,6 +114,7 @@
             // 
             // panelAltCalcParameters
             // 
+            this.panelAltCalcParameters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelAltCalcParameters.Location = new System.Drawing.Point(417, 98);
             this.panelAltCalcParameters.MinimumSize = new System.Drawing.Size(400, 400);
             this.panelAltCalcParameters.Name = "panelAltCalcParameters";

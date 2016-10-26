@@ -651,6 +651,7 @@ namespace AGEPRO.GUI
             controlBiological.readFractionMortalityState = false;
 
             //Harvest Scenario
+            controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
             controlHarvestScenario.HarvestScenarioTable =
                 getAgeproInputDataTable(controlHarvestScenario.HarvestScenarioTable, inpFile.harvestScenario.harvestScenarioTable);
 
