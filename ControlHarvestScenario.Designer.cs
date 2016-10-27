@@ -68,9 +68,9 @@
             this.groupAltCalcParameters.Controls.Add(this.radioNone);
             this.groupAltCalcParameters.Controls.Add(this.radioPStar);
             this.groupAltCalcParameters.Controls.Add(this.radioRebuilderTarget);
-            this.groupAltCalcParameters.Location = new System.Drawing.Point(417, 22);
+            this.groupAltCalcParameters.Location = new System.Drawing.Point(411, 22);
             this.groupAltCalcParameters.Name = "groupAltCalcParameters";
-            this.groupAltCalcParameters.Size = new System.Drawing.Size(480, 69);
+            this.groupAltCalcParameters.Size = new System.Drawing.Size(465, 69);
             this.groupAltCalcParameters.TabIndex = 2;
             this.groupAltCalcParameters.TabStop = false;
             this.groupAltCalcParameters.Text = "Additional Calcuations";
@@ -78,11 +78,10 @@
             // radioNone
             // 
             this.radioNone.AutoSize = true;
-            this.radioNone.Location = new System.Drawing.Point(308, 32);
+            this.radioNone.Location = new System.Drawing.Point(294, 32);
             this.radioNone.Name = "radioNone";
             this.radioNone.Size = new System.Drawing.Size(166, 17);
             this.radioNone.TabIndex = 2;
-            this.radioNone.TabStop = true;
             this.radioNone.Text = "None (Only Harvest Scenario)";
             this.radioNone.UseVisualStyleBackColor = true;
             this.radioNone.CheckedChanged += new System.EventHandler(this.radioNone_CheckedChanged);
@@ -90,11 +89,10 @@
             // radioPStar
             // 
             this.radioPStar.AutoSize = true;
-            this.radioPStar.Location = new System.Drawing.Point(163, 32);
+            this.radioPStar.Location = new System.Drawing.Point(154, 32);
             this.radioPStar.Name = "radioPStar";
             this.radioPStar.Size = new System.Drawing.Size(134, 17);
             this.radioPStar.TabIndex = 1;
-            this.radioPStar.TabStop = true;
             this.radioPStar.Text = "Perform P-Star Analysis";
             this.radioPStar.UseVisualStyleBackColor = true;
             this.radioPStar.CheckedChanged += new System.EventHandler(this.radioPStar_CheckedChanged);
@@ -107,7 +105,6 @@
             this.radioRebuilderTarget.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.radioRebuilderTarget.Size = new System.Drawing.Size(133, 17);
             this.radioRebuilderTarget.TabIndex = 0;
-            this.radioRebuilderTarget.TabStop = true;
             this.radioRebuilderTarget.Text = "Apply Rebuilder Target";
             this.radioRebuilderTarget.UseVisualStyleBackColor = true;
             this.radioRebuilderTarget.CheckedChanged += new System.EventHandler(this.radioRebuilderTarget_CheckedChanged);
@@ -115,10 +112,10 @@
             // panelAltCalcParameters
             // 
             this.panelAltCalcParameters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelAltCalcParameters.Location = new System.Drawing.Point(417, 98);
-            this.panelAltCalcParameters.MinimumSize = new System.Drawing.Size(400, 400);
+            this.panelAltCalcParameters.Location = new System.Drawing.Point(411, 98);
+            this.panelAltCalcParameters.MinimumSize = new System.Drawing.Size(480, 400);
             this.panelAltCalcParameters.Name = "panelAltCalcParameters";
-            this.panelAltCalcParameters.Size = new System.Drawing.Size(479, 400);
+            this.panelAltCalcParameters.Size = new System.Drawing.Size(485, 400);
             this.panelAltCalcParameters.TabIndex = 3;
             // 
             // ControlHarvestScenario

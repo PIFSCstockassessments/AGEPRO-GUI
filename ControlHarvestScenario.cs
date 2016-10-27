@@ -30,7 +30,7 @@ namespace AGEPRO.GUI
             //Do not need 'ValueMember', because 'DataPropertyNameInstead' is referenced 
             columnHarvestSpecification.DisplayMember = "HarvestScenario";
             dataGridHarvestScenarioTable.Columns.Add(columnHarvestSpecification);
-            dataGridHarvestScenarioTable.RowHeadersWidth = 75;
+            dataGridHarvestScenarioTable.RowHeadersWidth = 70;
             
 
         }
