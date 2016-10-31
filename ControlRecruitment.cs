@@ -72,7 +72,7 @@ namespace AGEPRO.GUI
                 List<RecruitmentModel> userSpecRecruitList = new List<RecruitmentModel>();
                 for (int i = 0; i < numRecruitModels; i++)
                 {
-                    userSpecRecruitList.Add(new GeneralizedRecruitment());
+                    userSpecRecruitList.Add(new NullSelectRecruitment());
                 }
                 collectionAgeproRecruitmentModels = userSpecRecruitList;
             }
