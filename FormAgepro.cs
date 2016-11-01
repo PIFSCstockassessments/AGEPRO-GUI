@@ -57,8 +57,11 @@ namespace AGEPRO.GUI
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
             //Load General Options Controls to AGEPRO Parameter panel
+            //TODO: create a function to set General Options Controls (for "Create New Case" menu option)
             this.panelAgeproParameter.Controls.Clear();
             this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
+
+
 
             //initially set Number of Ages
             int initalNumAges = controlGeneralOptions.generalFirstAgeClass;
@@ -583,6 +586,12 @@ namespace AGEPRO.GUI
             controlDiscardWeight.Enabled = controlGeneralOptions.generalDiscardsPresent;
             controlDiscardFraction.Enabled = controlGeneralOptions.generalDiscardsPresent;
 
+            //Setup Data Binding for Parameter Controls  
+            if (inputData != null)
+            {
+                controlBootstrap.SetBootstrapControls(inputData.bootstrap);
+            }
+            
         }
 
         /// <summary>

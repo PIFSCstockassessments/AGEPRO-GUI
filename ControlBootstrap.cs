@@ -32,6 +32,17 @@ namespace AGEPRO.GUI
             set { textBoxPopScaleFactors.Text = value; }
         }
 
+
         //TODO:buttonLoadFile action
+        public void SetBootstrapControls(AGEPRO.CoreLib.AgeproBootstrap bootstrapOpt)
+        {
+            //Clear any existing bindings before creating new ones.
+            this.textBoxBootstrapFile.DataBindings.Clear();
+            this.textBoxNumBootstrapIterations.DataBindings.Clear();
+            this.textBoxPopScaleFactors.DataBindings.Clear();
+            this.textBoxBootstrapFile.DataBindings.Add("Text", bootstrapOpt, "bootstrapFile");
+            this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps");
+            this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor");
+        }
     }
 }
