@@ -39,7 +39,6 @@ namespace AGEPRO.GUI
             get { return checkBoxFractionMortalityTimeVarying.Checked; }
             set { checkBoxFractionMortalityTimeVarying.Checked = value; }
         }
-        
 
         private void dataGridFractionMortality_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
