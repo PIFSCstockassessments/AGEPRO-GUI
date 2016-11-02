@@ -300,6 +300,18 @@ namespace AGEPRO.GUI
                 controlRecruitment.collectionAgeproRecruitmentModels = 
                     new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
                 
+                //Set General parameters to AGEPRO.CoreLib inputData class
+                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
+                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
+                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
+                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
+                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
+                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
+                inputData.general.inputFile = controlGeneralOptions.generalInputFile;
+
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
@@ -400,6 +412,46 @@ namespace AGEPRO.GUI
             {
                 try
                 {
+
+                    //Natural Mortality
+                    inputData.jan1Weight.timeVarying = controlJan1Weight.timeVarying;
+                    inputData.SSBWeight.timeVarying = controlSSBWeight.timeVarying;
+                    inputData.meanWeight.timeVarying = controlSSBWeight.timeVarying;
+                    inputData.catchWeight.timeVarying = controlCatchWeight.timeVarying;
+                    inputData.maturity.timeVarying = controlBiological.maturityAge.timeVarying;
+                    inputData.biological.timeVarying = controlBiological.fractionMortalityTimeVarying;
+                    inputData.fishery.timeVarying = controlFisherySelectivity.timeVarying;
+                    
+                    if(inputData.general.hasDiscards == true)
+                    {
+                        inputData.discardWeight.timeVarying = controlDiscardWeight.timeVarying;
+                        inputData.discardFraction.timeVarying = controlDiscardWeight.timeVarying;
+                    }
+
+                    //TEMP: DO Data Binding
+                    //Misc options
+                    inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsSummaryReport;
+                    inputData.options.enableExportR = controlMiscOptions.miscOptionsExportR;
+                    inputData.options.enableAuxStochasticFiles = controlMiscOptions.miscOptionsAuxStochasticFiles;
+                    inputData.options.enablePercentileReport = controlMiscOptions.miscOptionsPercentileReport;
+                    inputData.options.enableRefpoint = controlMiscOptions.miscOptionsRefpointsReport;
+                    inputData.options.enableScaleFactors = controlMiscOptions.miscOptionsScaleFactors;
+                    inputData.options.enableBounds = controlMiscOptions.miscOptionsBounds;
+                    inputData.options.enableRetroAdjustmentFactors = controlMiscOptions.miscOptionsRetroAdjustmentFactors;
+
+                    inputData.refpoint.refSpawnBio = Convert.ToDouble(controlMiscOptions.miscOptionsSpawnBiomass);
+                    inputData.refpoint.refJan1Bio = Convert.ToDouble(controlMiscOptions.miscOptionsJan1Biomass);
+                    inputData.refpoint.refMeanBio = Convert.ToDouble(controlMiscOptions.miscOptionsMeanBiomass);
+                    inputData.refpoint.refFMort = Convert.ToDouble(controlMiscOptions.miscOptionsFishingMortality);
+
+                    inputData.reportPercentile.percentile = controlMiscOptions.miscOptionsReportPercentile;
+
+                    inputData.scale.scaleBio = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorBiomass);
+                    inputData.scale.scaleRec = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorRecruits);
+                    inputData.scale.scaleStockNum = Convert.ToDouble(controlMiscOptions.miscoptionsScaleFactorStockNumbers);
+
+                    inputData.retroAdjustOption.retroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
+
                     inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
                     MessageBox.Show("AGEPRO Input Data was saved at" + Environment.NewLine + saveAgeproInputFile.FileName,
