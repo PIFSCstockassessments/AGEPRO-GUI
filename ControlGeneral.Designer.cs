@@ -51,7 +51,6 @@
             this.labelInputFile = new System.Windows.Forms.Label();
             this.textBoxModelID = new System.Windows.Forms.TextBox();
             this.textBoxInputFile = new System.Windows.Forms.TextBox();
-            this.buttonLoadFile = new System.Windows.Forms.Button();
             this.groupGeneralOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxFirstAge)).BeginInit();
             this.SuspendLayout();
@@ -277,20 +276,10 @@
             this.textBoxInputFile.Size = new System.Drawing.Size(586, 20);
             this.textBoxInputFile.TabIndex = 3;
             // 
-            // buttonLoadFile
-            // 
-            this.buttonLoadFile.Location = new System.Drawing.Point(757, 210);
-            this.buttonLoadFile.Name = "buttonLoadFile";
-            this.buttonLoadFile.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoadFile.TabIndex = 4;
-            this.buttonLoadFile.Text = "Load File";
-            this.buttonLoadFile.UseVisualStyleBackColor = true;
-            // 
             // ControlGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonLoadFile);
             this.Controls.Add(this.textBoxInputFile);
             this.Controls.Add(this.textBoxModelID);
             this.Controls.Add(this.labelInputFile);
@@ -331,6 +320,5 @@
         private System.Windows.Forms.Label labelInputFile;
         private System.Windows.Forms.TextBox textBoxModelID;
         private System.Windows.Forms.TextBox textBoxInputFile;
-        private System.Windows.Forms.Button buttonLoadFile;
     }
 }
