@@ -15,6 +15,7 @@ namespace AGEPRO.GUI
         public bool multiFleetTable { get; set; }
         public string[] seqYears { get; set; }
         public int numFleets { get; set; }
+        public double defaultCellValue { get; set; }
         public bool readInputFileState { get; set; }
         public event EventHandler timeVaryingCheckedChangedEvent;
 
@@ -22,7 +23,7 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
             readInputFileState = false;
-
+            defaultCellValue = 0;
         }
         public string stochasticParamAgeDataGridLabel
         {
@@ -148,7 +149,7 @@ namespace AGEPRO.GUI
                     int countFleetYears = seqYears.Count() * this.numFleets;
                     for (int i = 0; i < countFleetYears; i++)
                     {
-                       stochasticAgeTable.Rows.Add();
+                        stochasticAgeTable.Rows.Add();
                     }
 
                 }
@@ -168,6 +169,14 @@ namespace AGEPRO.GUI
                         }
                     }
                 }
+
+                //Fills in blank cells with the defalutCellValue
+                var rowDefaults = 
+                    Enumerable.Repeat(defaultCellValue.ToString(), this.stochasticAgeTable.Columns.Count).ToArray();
+                foreach (DataRow dr in this.stochasticAgeTable.Rows)
+                {
+                    dr.ItemArray = rowDefaults;
+                }        
 
             }// end if readInputFileState is false
         }
