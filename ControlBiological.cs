@@ -14,7 +14,7 @@ namespace AGEPRO.GUI
     {
         public bool readFractionMortalityState;
         public ControlStochasticAge maturityAge;
-        
+        public double defaultCellValue { get; set; }
         public ControlBiological()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace AGEPRO.GUI
             maturityAge.Dock = DockStyle.Fill;
             
             tabMaturity.Controls.Add(maturityAge);
-
+            defaultCellValue = 0;
             
             
         }
@@ -74,12 +74,22 @@ namespace AGEPRO.GUI
                 {
                     string colNameYear = maturityAge.seqYears[iyear];
                     fractionMortality.Columns.Add(colNameYear);
+                    foreach (DataRow irow in fractionMortality.Rows)
+                    {
+                        irow[colNameYear] = defaultCellValue;
+                    }
                 }
+                
             }
             else
             {
                 string colNameYear = "All Years";
                 fractionMortality.Columns.Add(colNameYear);
+                
+                foreach (DataRow irow in fractionMortality.Rows)
+                {
+                    irow["All Years"] = defaultCellValue;
+                }
             }
         }
 
@@ -87,25 +97,7 @@ namespace AGEPRO.GUI
         {
             if (this.readFractionMortalityState == false)
             {
-                ////if fractionMortality is null, error
-                //fractionMortality.Columns.Clear(); //Clear all Columns
-
                 CreateFractionMortalityColumns();
-                //if (checkBoxFractionMortalityTimeVarying.Checked)
-                //{
-                //    //Time Varying Fraction Mortality Data Table share the same time horizion as the
-                //    //Maturity Data Table (since it is coming from the General Options parameters)
-                //    for (int iyear = 0; iyear < maturityAge.seqYears.Count(); iyear++)
-                //    {
-                //        string colNameYear = maturityAge.seqYears[iyear]; 
-                //        fractionMortality.Columns.Add(colNameYear);
-                //    }
-                //}
-                //else
-                //{
-                //    string colNameYear = "All Years";
-                //    fractionMortality.Columns.Add(colNameYear);
-                //}
             }
         }
         
