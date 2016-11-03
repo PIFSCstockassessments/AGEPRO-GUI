@@ -241,6 +241,7 @@
             // treeViewNavigation
             // 
             this.treeViewNavigation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewNavigation.HideSelection = false;
             this.treeViewNavigation.Location = new System.Drawing.Point(0, 0);
             this.treeViewNavigation.Name = "treeViewNavigation";
             treeNode1.Name = "treeNodeGeneral";
