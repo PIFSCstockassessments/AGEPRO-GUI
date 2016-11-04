@@ -86,7 +86,24 @@ namespace AGEPRO.GUI
             
             this.HarvestScenarioTable = inpFileTable;
             
-        } 
+        }
+
+        public void SetHarvestCalcuationRadioButtonOption(AGEPRO.CoreLib.HarvestScenarioAnalysis calcType)
+        {
+            if (calcType == HarvestScenarioAnalysis.HarvestScenario)
+            {
+                radioNone.Checked = true;
+            }
+            else if (calcType == HarvestScenarioAnalysis.PStar)
+            {
+                radioPStar.Checked = true;
+            }
+            else if (calcType == HarvestScenarioAnalysis.Rebuilder)
+            {
+                radioRebuilderTarget.Checked = true;
+            }
+
+        }
 
         private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

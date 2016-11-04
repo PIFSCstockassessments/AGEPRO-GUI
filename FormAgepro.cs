@@ -299,7 +299,14 @@ namespace AGEPRO.GUI
                 controlRecruitment.SetRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
                 controlRecruitment.collectionAgeproRecruitmentModels = 
                     new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
-                
+
+                //Harvest Scenario
+                //Set harvest calculations to "Harvest Scenario"/None by Default
+                controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
+                inputData.harvestScenario.analysisType = HarvestScenarioAnalysis.HarvestScenario;
+                controlHarvestScenario.SetHarvestCalcuationRadioButtonOption(inputData.harvestScenario.analysisType);
+
+
                 //Set General parameters to AGEPRO.CoreLib inputData class
                 inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
                 inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
@@ -714,6 +721,7 @@ namespace AGEPRO.GUI
             //Harvest Scenario
             controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
             controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
+            controlHarvestScenario.SetHarvestCalcuationRadioButtonOption(inpFile.harvestScenario.analysisType);
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
