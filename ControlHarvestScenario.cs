@@ -19,20 +19,7 @@ namespace AGEPRO.GUI
         public ControlHarvestScenario()
         {
             InitializeComponent();
-
-            columnHarvestSpecification = new DataGridViewComboBoxColumn();
-            columnHarvestSpecification.HeaderText = "Harvest Specfication";
-            //'DataPropertyName' references harvest spec column in input data's Harvest Scenario DataTable 
-            columnHarvestSpecification.DataPropertyName = "Harvest Spec";
-            columnHarvestSpecification.Width = 100;
-
-            columnHarvestSpecification.DataSource = HarvestSpecification.GetHarvestSpec();
-            //Do not need 'ValueMember', because 'DataPropertyNameInstead' is referenced 
-            columnHarvestSpecification.DisplayMember = "HarvestScenario";
-            dataGridHarvestScenarioTable.Columns.Add(columnHarvestSpecification);
-            dataGridHarvestScenarioTable.RowHeadersWidth = 70;
             
-
         }
 
         public DataTable HarvestScenarioTable
@@ -70,6 +57,36 @@ namespace AGEPRO.GUI
         {
 
         }
+
+        public void SetHarvestSpecificationColumn()
+        {
+
+            columnHarvestSpecification = new DataGridViewComboBoxColumn();
+            columnHarvestSpecification.HeaderText = "Harvest Specfication";
+            //'DataPropertyName' references harvest spec column in input data's Harvest Scenario DataTable 
+            columnHarvestSpecification.DataPropertyName = "Harvest Spec";
+            columnHarvestSpecification.Width = 100;
+            //Get Data Source from List<HarvestSpecification> Class
+            columnHarvestSpecification.DataSource = HarvestSpecification.GetHarvestSpec();
+            //Do not need 'ValueMember', because 'DataPropertyNameInstead' is referenced 
+            columnHarvestSpecification.DisplayMember = "HarvestScenario";
+            dataGridHarvestScenarioTable.Columns.Add(columnHarvestSpecification);
+            dataGridHarvestScenarioTable.RowHeadersWidth = 70;
+            
+
+        }
+
+        public void SetHarvestScenarioInputDataTable(DataTable inpFileTable)
+        {
+            if (this.HarvestScenarioTable != null)
+            {
+                this.HarvestScenarioTable.Reset();
+            }
+            SetHarvestSpecificationColumn();
+            
+            this.HarvestScenarioTable = inpFileTable;
+            
+        } 
 
         private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
