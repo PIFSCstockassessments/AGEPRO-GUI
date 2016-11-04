@@ -69,6 +69,7 @@
     <Compile Include="AboutAgepro.Designer.cs">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgeproPropertyChanged.cs" />
     <Compile Include="ControlBiological.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,6 +193,7 @@
     <Compile Include="ControlRecruitmentEmpirical.Designer.cs">
       <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </Compile>
+    <Compile Include="RebuilderTargetType.cs" />
     <Compile Include="Util.cs" />
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
