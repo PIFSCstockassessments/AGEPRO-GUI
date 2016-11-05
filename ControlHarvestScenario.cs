@@ -14,12 +14,16 @@ namespace AGEPRO.GUI
     public partial class ControlHarvestScenario : UserControl
     {
         private DataGridViewComboBoxColumn columnHarvestSpecification;
+        private ControlHarvestCalcRebuilder controlHarvestRebuilder;
         public string[] seqYears { get; set; }
-
+        public AGEPRO.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
+        public AGEPRO.CoreLib.PStarCalculation PStar { get; set; }
+        
         public ControlHarvestScenario()
         {
             InitializeComponent();
-            
+            controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
+           
         }
 
         public DataTable HarvestScenarioTable
@@ -28,6 +32,7 @@ namespace AGEPRO.GUI
             set { dataGridHarvestScenarioTable.DataSource = value; }
         }
 
+
         /// <summary>
         /// Action that When the 'None' radio buttion is selected.
         /// </summary>
@@ -35,7 +40,7 @@ namespace AGEPRO.GUI
         /// <param name="e"></param>
         private void radioNone_CheckedChanged(object sender, EventArgs e)
         {
-
+            panelAltCalcParameters.Controls.Clear();
         }
 
         /// <summary>
@@ -45,7 +50,7 @@ namespace AGEPRO.GUI
         /// <param name="e"></param>
         private void radioPStar_CheckedChanged(object sender, EventArgs e)
         {
-
+            panelAltCalcParameters.Controls.Clear();
         }
 
         /// <summary>
@@ -55,7 +60,26 @@ namespace AGEPRO.GUI
         /// <param name="e"></param>
         private void radioRebuilderTarget_CheckedChanged(object sender, EventArgs e)
         {
-
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    if (!(Rebuilder != null))
+                    {
+                        Rebuilder = new RebuilderTargetCalculation();
+                        Rebuilder.targetYear = 0;
+                        Rebuilder.targetValue = 0;
+                        Rebuilder.targetType = 0;
+                        Rebuilder.targetPercent = 0;
+                    }
+                    else
+                    {
+                        controlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, this.panelAltCalcParameters);
+                    }
+                    
+                }
+            }
         }
 
         public void SetHarvestSpecificationColumn()
@@ -88,8 +112,15 @@ namespace AGEPRO.GUI
             
         }
 
-        public void SetHarvestCalcuationRadioButtonOption(AGEPRO.CoreLib.HarvestScenarioAnalysis calcType)
+        
+        
+        
+        public void SetHarvestCalcuationParameter(AGEPRO.CoreLib.AgeproInputFile inpFile)
         {
+            AGEPRO.CoreLib.HarvestScenarioAnalysis calcType = inpFile.harvestScenario.analysisType;
+
+
+            //SetHarvestCalculationRadioButtonOption
             if (calcType == HarvestScenarioAnalysis.HarvestScenario)
             {
                 radioNone.Checked = true;
@@ -101,6 +132,7 @@ namespace AGEPRO.GUI
             else if (calcType == HarvestScenarioAnalysis.Rebuilder)
             {
                 radioRebuilderTarget.Checked = true;
+                controlHarvestRebuilder.SetHarvestCalcRebuilderControls(inpFile.rebuild, this.panelAltCalcParameters);
             }
 
         }

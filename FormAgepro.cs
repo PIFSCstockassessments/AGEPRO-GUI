@@ -53,7 +53,7 @@ namespace AGEPRO.GUI
             controlDiscardWeight = new ControlStochasticWeightAge();
             controlRecruitment = new ControlRecruitment();
             controlHarvestScenario = new ControlHarvestScenario();
-
+            
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
             //Load General Options Controls to AGEPRO Parameter panel
@@ -304,7 +304,7 @@ namespace AGEPRO.GUI
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
                 inputData.harvestScenario.analysisType = HarvestScenarioAnalysis.HarvestScenario;
-                controlHarvestScenario.SetHarvestCalcuationRadioButtonOption(inputData.harvestScenario.analysisType);
+                controlHarvestScenario.SetHarvestCalcuationParameter(inputData);
 
 
                 //Set General parameters to AGEPRO.CoreLib inputData class
@@ -721,7 +721,11 @@ namespace AGEPRO.GUI
             //Harvest Scenario
             controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
             controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
-            controlHarvestScenario.SetHarvestCalcuationRadioButtonOption(inpFile.harvestScenario.analysisType);
+            controlHarvestScenario.SetHarvestCalcuationParameter(inpFile);
+            if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.Rebuilder)
+            {
+                controlHarvestScenario.Rebuilder = inpFile.rebuild;
+            }
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
