@@ -52,14 +52,14 @@
             this.groupPStarParameters.Controls.Add(this.labelNumPStarLevels);
             this.groupPStarParameters.Location = new System.Drawing.Point(0, 3);
             this.groupPStarParameters.Name = "groupPStarParameters";
-            this.groupPStarParameters.Size = new System.Drawing.Size(480, 289);
+            this.groupPStarParameters.Size = new System.Drawing.Size(480, 282);
             this.groupPStarParameters.TabIndex = 0;
             this.groupPStarParameters.TabStop = false;
             this.groupPStarParameters.Text = "P-Star Specification";
             // 
             // textBoxPStarTargetYear
             // 
-            this.textBoxPStarTargetYear.Location = new System.Drawing.Point(186, 116);
+            this.textBoxPStarTargetYear.Location = new System.Drawing.Point(186, 113);
             this.textBoxPStarTargetYear.Name = "textBoxPStarTargetYear";
             this.textBoxPStarTargetYear.Size = new System.Drawing.Size(127, 20);
             this.textBoxPStarTargetYear.TabIndex = 6;
@@ -88,15 +88,16 @@
             this.dataGridPStarLevelValues.AllowUserToAddRows = false;
             this.dataGridPStarLevelValues.AllowUserToDeleteRows = false;
             this.dataGridPStarLevelValues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPStarLevelValues.Location = new System.Drawing.Point(6, 168);
+            this.dataGridPStarLevelValues.Location = new System.Drawing.Point(6, 161);
             this.dataGridPStarLevelValues.Name = "dataGridPStarLevelValues";
-            this.dataGridPStarLevelValues.Size = new System.Drawing.Size(468, 96);
+            this.dataGridPStarLevelValues.RowHeadersVisible = false;
+            this.dataGridPStarLevelValues.Size = new System.Drawing.Size(468, 92);
             this.dataGridPStarLevelValues.TabIndex = 3;
             // 
             // labelPStarTargetYear
             // 
             this.labelPStarTargetYear.AutoSize = true;
-            this.labelPStarTargetYear.Location = new System.Drawing.Point(39, 119);
+            this.labelPStarTargetYear.Location = new System.Drawing.Point(39, 116);
             this.labelPStarTargetYear.Name = "labelPStarTargetYear";
             this.labelPStarTargetYear.Size = new System.Drawing.Size(95, 13);
             this.labelPStarTargetYear.TabIndex = 2;

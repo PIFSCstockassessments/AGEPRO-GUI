@@ -92,11 +92,7 @@ namespace AGEPRO.GUI
                         Rebuilder.targetType = 0;
                         Rebuilder.targetPercent = 0;
                     }
-                    else
-                    {
-                        controlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, this.panelAltCalcParameters);
-                    }
-                    
+                    controlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, this.panelAltCalcParameters);
                 }
             }
         }
