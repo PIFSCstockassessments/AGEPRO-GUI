@@ -134,7 +134,8 @@ namespace AGEPRO.GUI
         
         
         /// <summary>
-        /// 
+        /// Sets Harvest Calculation option from when setting user specifed General Options or loading a 
+        /// existing AGEPRO input file. 
         /// </summary>
         /// <param name="inputData"></param>
         public void SetHarvestCalcuationOptionFromInput(AGEPRO.CoreLib.AgeproInputFile inpData)
