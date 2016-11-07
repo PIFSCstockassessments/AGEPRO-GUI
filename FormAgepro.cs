@@ -304,7 +304,7 @@ namespace AGEPRO.GUI
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
                 inputData.harvestScenario.analysisType = HarvestScenarioAnalysis.HarvestScenario;
-                controlHarvestScenario.SetHarvestCalcuationParameter(inputData);
+                controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inputData);
 
 
                 //Set General parameters to AGEPRO.CoreLib inputData class
@@ -719,13 +719,18 @@ namespace AGEPRO.GUI
             controlBiological.readFractionMortalityState = false;
 
             //Harvest Scenario
-            controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
-            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
-            controlHarvestScenario.SetHarvestCalcuationParameter(inpFile);
             if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.Rebuilder)
             {
                 controlHarvestScenario.Rebuilder = inpFile.rebuild;
             }
+            else if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.PStar)
+            {
+                controlHarvestScenario.PStar = inpFile.pstar;
+            }
+            controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
+            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
+            controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inpFile);
+            
 
             //Bootstrapping
             controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;

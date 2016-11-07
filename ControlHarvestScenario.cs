@@ -15,6 +15,7 @@ namespace AGEPRO.GUI
     {
         private DataGridViewComboBoxColumn columnHarvestSpecification;
         private ControlHarvestCalcRebuilder controlHarvestRebuilder;
+        private ControlHarvestCalcPStar controlHarvestPStar;
         public string[] seqYears { get; set; }
         public AGEPRO.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
         public AGEPRO.CoreLib.PStarCalculation PStar { get; set; }
@@ -23,7 +24,7 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
             controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
-           
+            controlHarvestPStar = new ControlHarvestCalcPStar();
         }
 
         public DataTable HarvestScenarioTable
@@ -50,7 +51,23 @@ namespace AGEPRO.GUI
         /// <param name="e"></param>
         private void radioPStar_CheckedChanged(object sender, EventArgs e)
         {
-            panelAltCalcParameters.Controls.Clear();
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    if (!(PStar != null))
+                    {
+                        PStar = new PStarCalculation();
+                        PStar.pStarLevels = 1;
+                        PStar.pStarF = 0;
+                        PStar.targetYear = 0;
+                        PStar.pStarTable = null; 
+                    }
+                    controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
+                }
+            }
+            
         }
 
         /// <summary>
@@ -65,6 +82,8 @@ namespace AGEPRO.GUI
             {
                 if (rb.Checked)
                 {
+                    //If Rebuilder has no data, create an empty/default set. 
+                    //Otherwise load stored 'Rebuilder' class data to GUI.
                     if (!(Rebuilder != null))
                     {
                         Rebuilder = new RebuilderTargetCalculation();
@@ -114,11 +133,13 @@ namespace AGEPRO.GUI
 
         
         
-        
-        public void SetHarvestCalcuationParameter(AGEPRO.CoreLib.AgeproInputFile inpFile)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inputData"></param>
+        public void SetHarvestCalcuationOptionFromInput(AGEPRO.CoreLib.AgeproInputFile inpData)
         {
-            AGEPRO.CoreLib.HarvestScenarioAnalysis calcType = inpFile.harvestScenario.analysisType;
-
+            AGEPRO.CoreLib.HarvestScenarioAnalysis calcType = inpData.harvestScenario.analysisType;
 
             //SetHarvestCalculationRadioButtonOption
             if (calcType == HarvestScenarioAnalysis.HarvestScenario)
@@ -127,14 +148,16 @@ namespace AGEPRO.GUI
             }
             else if (calcType == HarvestScenarioAnalysis.PStar)
             {
+                this.PStar = inpData.pstar;
                 radioPStar.Checked = true;
+                controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
             }
             else if (calcType == HarvestScenarioAnalysis.Rebuilder)
             {
+                this.Rebuilder = inpData.rebuild;
                 radioRebuilderTarget.Checked = true;
-                controlHarvestRebuilder.SetHarvestCalcRebuilderControls(inpFile.rebuild, this.panelAltCalcParameters);
+                controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
             }
-
         }
 
         private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
