@@ -116,7 +116,7 @@
             // 
             // comboBoxRebuilderTargetType
             // 
-            this.comboBoxRebuilderTargetType.FormattingEnabled = true;
+            this.comboBoxRebuilderTargetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRebuilderTargetType.Location = new System.Drawing.Point(217, 159);
             this.comboBoxRebuilderTargetType.Name = "comboBoxRebuilderTargetType";
             this.comboBoxRebuilderTargetType.Size = new System.Drawing.Size(186, 21);
