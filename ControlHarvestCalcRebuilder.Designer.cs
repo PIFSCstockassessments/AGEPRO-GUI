@@ -50,9 +50,9 @@
             this.groupRebuilderTargetParameters.Controls.Add(this.labelRebuilderTargetPercent);
             this.groupRebuilderTargetParameters.Controls.Add(this.labelRebuilderTargetBiomass);
             this.groupRebuilderTargetParameters.Controls.Add(this.labelRebuilderTargetYear);
-            this.groupRebuilderTargetParameters.Location = new System.Drawing.Point(3, 3);
+            this.groupRebuilderTargetParameters.Location = new System.Drawing.Point(0, 3);
             this.groupRebuilderTargetParameters.Name = "groupRebuilderTargetParameters";
-            this.groupRebuilderTargetParameters.Size = new System.Drawing.Size(474, 219);
+            this.groupRebuilderTargetParameters.Size = new System.Drawing.Size(477, 219);
             this.groupRebuilderTargetParameters.TabIndex = 0;
             this.groupRebuilderTargetParameters.TabStop = false;
             this.groupRebuilderTargetParameters.Text = "Rebuilder Specificatiion";
