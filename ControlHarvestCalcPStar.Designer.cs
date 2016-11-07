@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupPStarParameters = new System.Windows.Forms.GroupBox();
-            this.labelNumPStarLevels = new System.Windows.Forms.Label();
-            this.labelOverfishingF = new System.Windows.Forms.Label();
-            this.labelPStarTargetYear = new System.Windows.Forms.Label();
-            this.dataGridPStarLevelValues = new System.Windows.Forms.DataGridView();
-            this.spinBoxNumPStarLevels = new System.Windows.Forms.NumericUpDown();
-            this.textBoxOverfishingF = new System.Windows.Forms.TextBox();
             this.textBoxPStarTargetYear = new System.Windows.Forms.TextBox();
+            this.textBoxOverfishingF = new System.Windows.Forms.TextBox();
+            this.spinBoxNumPStarLevels = new System.Windows.Forms.NumericUpDown();
+            this.dataGridPStarLevelValues = new System.Windows.Forms.DataGridView();
+            this.labelPStarTargetYear = new System.Windows.Forms.Label();
+            this.labelOverfishingF = new System.Windows.Forms.Label();
+            this.labelNumPStarLevels = new System.Windows.Forms.Label();
             this.groupPStarParameters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPStarLevelValues)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumPStarLevels)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPStarLevelValues)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPStarParameters
@@ -52,47 +52,24 @@
             this.groupPStarParameters.Controls.Add(this.labelNumPStarLevels);
             this.groupPStarParameters.Location = new System.Drawing.Point(0, 3);
             this.groupPStarParameters.Name = "groupPStarParameters";
-            this.groupPStarParameters.Size = new System.Drawing.Size(480, 321);
+            this.groupPStarParameters.Size = new System.Drawing.Size(480, 289);
             this.groupPStarParameters.TabIndex = 0;
             this.groupPStarParameters.TabStop = false;
             this.groupPStarParameters.Text = "P-Star Specification";
             // 
-            // labelNumPStarLevels
+            // textBoxPStarTargetYear
             // 
-            this.labelNumPStarLevels.AutoSize = true;
-            this.labelNumPStarLevels.Location = new System.Drawing.Point(39, 45);
-            this.labelNumPStarLevels.Name = "labelNumPStarLevels";
-            this.labelNumPStarLevels.Size = new System.Drawing.Size(122, 13);
-            this.labelNumPStarLevels.TabIndex = 0;
-            this.labelNumPStarLevels.Text = "Number of P-Star Levels";
+            this.textBoxPStarTargetYear.Location = new System.Drawing.Point(186, 116);
+            this.textBoxPStarTargetYear.Name = "textBoxPStarTargetYear";
+            this.textBoxPStarTargetYear.Size = new System.Drawing.Size(127, 20);
+            this.textBoxPStarTargetYear.TabIndex = 6;
             // 
-            // labelOverfishingF
+            // textBoxOverfishingF
             // 
-            this.labelOverfishingF.AutoSize = true;
-            this.labelOverfishingF.Location = new System.Drawing.Point(39, 81);
-            this.labelOverfishingF.Name = "labelOverfishingF";
-            this.labelOverfishingF.Size = new System.Drawing.Size(69, 13);
-            this.labelOverfishingF.TabIndex = 1;
-            this.labelOverfishingF.Text = "Overfishing F";
-            // 
-            // labelPStarTargetYear
-            // 
-            this.labelPStarTargetYear.AutoSize = true;
-            this.labelPStarTargetYear.Location = new System.Drawing.Point(39, 119);
-            this.labelPStarTargetYear.Name = "labelPStarTargetYear";
-            this.labelPStarTargetYear.Size = new System.Drawing.Size(95, 13);
-            this.labelPStarTargetYear.TabIndex = 2;
-            this.labelPStarTargetYear.Text = "P-Star Target Year";
-            // 
-            // dataGridPStarLevelValues
-            // 
-            this.dataGridPStarLevelValues.AllowUserToAddRows = false;
-            this.dataGridPStarLevelValues.AllowUserToDeleteRows = false;
-            this.dataGridPStarLevelValues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPStarLevelValues.Location = new System.Drawing.Point(42, 168);
-            this.dataGridPStarLevelValues.Name = "dataGridPStarLevelValues";
-            this.dataGridPStarLevelValues.Size = new System.Drawing.Size(377, 135);
-            this.dataGridPStarLevelValues.TabIndex = 3;
+            this.textBoxOverfishingF.Location = new System.Drawing.Point(186, 78);
+            this.textBoxOverfishingF.Name = "textBoxOverfishingF";
+            this.textBoxOverfishingF.Size = new System.Drawing.Size(127, 20);
+            this.textBoxOverfishingF.TabIndex = 5;
             // 
             // spinBoxNumPStarLevels
             // 
@@ -106,19 +83,42 @@
             this.spinBoxNumPStarLevels.Size = new System.Drawing.Size(72, 20);
             this.spinBoxNumPStarLevels.TabIndex = 4;
             // 
-            // textBoxOverfishingF
+            // dataGridPStarLevelValues
             // 
-            this.textBoxOverfishingF.Location = new System.Drawing.Point(186, 78);
-            this.textBoxOverfishingF.Name = "textBoxOverfishingF";
-            this.textBoxOverfishingF.Size = new System.Drawing.Size(127, 20);
-            this.textBoxOverfishingF.TabIndex = 5;
+            this.dataGridPStarLevelValues.AllowUserToAddRows = false;
+            this.dataGridPStarLevelValues.AllowUserToDeleteRows = false;
+            this.dataGridPStarLevelValues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPStarLevelValues.Location = new System.Drawing.Point(6, 168);
+            this.dataGridPStarLevelValues.Name = "dataGridPStarLevelValues";
+            this.dataGridPStarLevelValues.Size = new System.Drawing.Size(468, 96);
+            this.dataGridPStarLevelValues.TabIndex = 3;
             // 
-            // textBoxPStarTargetYear
+            // labelPStarTargetYear
             // 
-            this.textBoxPStarTargetYear.Location = new System.Drawing.Point(186, 116);
-            this.textBoxPStarTargetYear.Name = "textBoxPStarTargetYear";
-            this.textBoxPStarTargetYear.Size = new System.Drawing.Size(127, 20);
-            this.textBoxPStarTargetYear.TabIndex = 6;
+            this.labelPStarTargetYear.AutoSize = true;
+            this.labelPStarTargetYear.Location = new System.Drawing.Point(39, 119);
+            this.labelPStarTargetYear.Name = "labelPStarTargetYear";
+            this.labelPStarTargetYear.Size = new System.Drawing.Size(95, 13);
+            this.labelPStarTargetYear.TabIndex = 2;
+            this.labelPStarTargetYear.Text = "P-Star Target Year";
+            // 
+            // labelOverfishingF
+            // 
+            this.labelOverfishingF.AutoSize = true;
+            this.labelOverfishingF.Location = new System.Drawing.Point(39, 81);
+            this.labelOverfishingF.Name = "labelOverfishingF";
+            this.labelOverfishingF.Size = new System.Drawing.Size(69, 13);
+            this.labelOverfishingF.TabIndex = 1;
+            this.labelOverfishingF.Text = "Overfishing F";
+            // 
+            // labelNumPStarLevels
+            // 
+            this.labelNumPStarLevels.AutoSize = true;
+            this.labelNumPStarLevels.Location = new System.Drawing.Point(39, 45);
+            this.labelNumPStarLevels.Name = "labelNumPStarLevels";
+            this.labelNumPStarLevels.Size = new System.Drawing.Size(122, 13);
+            this.labelNumPStarLevels.TabIndex = 0;
+            this.labelNumPStarLevels.Text = "Number of P-Star Levels";
             // 
             // ControlHarvestCalcPStar
             // 
@@ -130,8 +130,8 @@
             this.Size = new System.Drawing.Size(480, 400);
             this.groupPStarParameters.ResumeLayout(false);
             this.groupPStarParameters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPStarLevelValues)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumPStarLevels)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPStarLevelValues)).EndInit();
             this.ResumeLayout(false);
 
         }

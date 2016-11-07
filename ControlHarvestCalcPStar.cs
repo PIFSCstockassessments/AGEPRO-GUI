@@ -22,8 +22,15 @@ namespace AGEPRO.GUI
         {
 
             //Clear any previous Data Bindings
-
-            //Set up new Data Bindings 
+            this.spinBoxNumPStarLevels.DataBindings.Clear();
+            this.textBoxOverfishingF.DataBindings.Clear();
+            this.textBoxPStarTargetYear.DataBindings.Clear();
+            this.dataGridPStarLevelValues.DataBindings.Clear();
+            //Set up new Data Bindings
+            this.spinBoxNumPStarLevels.DataBindings.Add("value", pstar, "pStarLevels");
+            this.textBoxOverfishingF.DataBindings.Add("text", pstar, "pStarF");
+            this.textBoxPStarTargetYear.DataBindings.Add("text", pstar, "targetYear");
+            this.dataGridPStarLevelValues.DataBindings.Add("dataSource", pstar, "pStarTable");
 
             panelHarvestCalcParam.Controls.Clear();
             this.Dock = DockStyle.Fill;
