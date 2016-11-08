@@ -138,6 +138,16 @@ namespace AGEPRO.GUI
         {
             AGEPRO.CoreLib.HarvestScenarioAnalysis calcType = inpData.harvestScenario.analysisType;
 
+            //Clean out any previous instances of pstar and/or rebuilder. 
+            if (this.PStar != null)
+            {
+                PStar = null;
+            }
+            if (this.Rebuilder != null)
+            {
+                Rebuilder = null; 
+            }
+
             //SetHarvestCalculationRadioButtonOption
             if (calcType == HarvestScenarioAnalysis.HarvestScenario)
             {
