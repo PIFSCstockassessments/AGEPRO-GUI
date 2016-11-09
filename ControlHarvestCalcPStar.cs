@@ -12,15 +12,22 @@ namespace AGEPRO.GUI
 {
     public partial class ControlHarvestCalcPStar : UserControl
     {
+        private bool setControlValues;
         public ControlHarvestCalcPStar()
         {
             InitializeComponent();
+            setControlValues = false;
         }
-
-
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            //Ensure setControlValues bool flag to false after controls is setup.
+            setControlValues = false; 
+        }
+        
         public void SetHarvestCalcPStarControls(AGEPRO.CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam) 
         {
-
+            setControlValues = true;
             //Clear any previous Data Bindings
             this.spinBoxNumPStarLevels.DataBindings.Clear();
             this.textBoxOverfishingF.DataBindings.Clear();
@@ -35,7 +42,21 @@ namespace AGEPRO.GUI
             panelHarvestCalcParam.Controls.Clear();
             this.Dock = DockStyle.Fill;
             panelHarvestCalcParam.Controls.Add(this);
- 
+            
+            //If the PStar controls did not load for the first time, do not set setControlsValues to false.
+            //Otherwise, allow it. 
+            if (this.Created)
+            {
+                setControlValues = false;
+            }
+        }
+
+        private void spinBoxNumPStarLevels_ValueChanged(object sender, EventArgs e)
+        {
+            if (setControlValues == false)
+            {
+                Console.WriteLine("Debug");
+            }
         }
     }
 }
