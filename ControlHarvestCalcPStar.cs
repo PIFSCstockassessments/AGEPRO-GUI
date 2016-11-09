@@ -51,12 +51,37 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// Resizes the PStar Levels Data Grid View Table when the spinBoxNumPStarLevels value has been
+        /// changed by the user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void spinBoxNumPStarLevels_ValueChanged(object sender, EventArgs e)
         {
             if (setControlValues == false)
             {
-                Console.WriteLine("Debug");
+                NumericUpDown newPStarLevel = sender as NumericUpDown;
+                ControlRecruitment.ResizeDataGridTable(
+                    (DataTable)this.dataGridPStarLevelValues.DataSource, 1, Convert.ToInt32(newPStarLevel.Value));
+
+                //Rename Col
+                for (int colNum=0; colNum < this.dataGridPStarLevelValues.Columns.Count ; colNum++)
+                {
+                    this.dataGridPStarLevelValues.Columns[colNum].HeaderText = "Level " + (colNum + 1);
+
+                    //Set blank cells to 0
+                    for(int irow = 0; irow < 1; irow++)
+                    {
+                        if(string.IsNullOrEmpty(
+                            this.dataGridPStarLevelValues.Rows[irow].Cells[colNum].Value.ToString()))
+                        {
+                            this.dataGridPStarLevelValues.Rows[irow].Cells[colNum].Value = 0;
+                        }
+                    }
+                }
             }
-        }
+        }//end spinBoxNumPStarLevels_ValueChanged
+
     }
 }
