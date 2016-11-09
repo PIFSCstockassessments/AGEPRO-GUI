@@ -79,9 +79,19 @@
             0,
             0,
             0});
+            this.spinBoxNumPStarLevels.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.spinBoxNumPStarLevels.Name = "spinBoxNumPStarLevels";
             this.spinBoxNumPStarLevels.Size = new System.Drawing.Size(72, 20);
             this.spinBoxNumPStarLevels.TabIndex = 4;
+            this.spinBoxNumPStarLevels.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // dataGridPStarLevelValues
             // 
