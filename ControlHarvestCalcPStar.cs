@@ -65,19 +65,15 @@ namespace AGEPRO.GUI
                 ControlRecruitment.ResizeDataGridTable(
                     (DataTable)this.dataGridPStarLevelValues.DataSource, 1, Convert.ToInt32(newPStarLevel.Value));
 
-                //Rename Col
+                //Rename Columns
                 for (int colNum=0; colNum < this.dataGridPStarLevelValues.Columns.Count ; colNum++)
                 {
                     this.dataGridPStarLevelValues.Columns[colNum].HeaderText = "Level " + (colNum + 1);
 
                     //Set blank cells to 0
-                    for(int irow = 0; irow < 1; irow++)
+                    if(string.IsNullOrEmpty(this.dataGridPStarLevelValues.Rows[0].Cells[colNum].Value.ToString()))
                     {
-                        if(string.IsNullOrEmpty(
-                            this.dataGridPStarLevelValues.Rows[irow].Cells[colNum].Value.ToString()))
-                        {
-                            this.dataGridPStarLevelValues.Rows[irow].Cells[colNum].Value = 0;
-                        }
+                        this.dataGridPStarLevelValues.Rows[0].Cells[colNum].Value = 0;
                     }
                 }
             }
