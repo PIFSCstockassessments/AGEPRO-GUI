@@ -107,10 +107,21 @@ namespace AGEPRO.GUI
         private void createNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Dialog box to ensure that the user intends to start over and "create a new case"
+            var dlgResult = MessageBox.Show("Do you want to start over with a new case?" 
+                + Environment.NewLine + "New cases will discard current input data.", 
+                "Create a new Case", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-            //If not, <<cancel>>, exit this function.
-
-            //If so, Cleanup? and go to the Startup State
+            if (dlgResult == DialogResult.No)
+            {
+                //If not, exit this function.
+                return;
+            }
+            else if(dlgResult == DialogResult.Yes)
+            {
+                //If so, Cleanup? and go to the Startup State
+                SetupStartupState();
+            }
+            
         }
 
         
