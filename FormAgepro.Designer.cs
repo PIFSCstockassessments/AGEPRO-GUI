@@ -107,6 +107,7 @@
             this.createNewCaseToolStripMenuItem.Name = "createNewCaseToolStripMenuItem";
             this.createNewCaseToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.createNewCaseToolStripMenuItem.Text = "Create New Case";
+            this.createNewCaseToolStripMenuItem.Click += new System.EventHandler(this.createNewCaseToolStripMenuItem_Click);
             // 
             // openExistingAGEPROInputDataFileToolStripMenuItem
             // 

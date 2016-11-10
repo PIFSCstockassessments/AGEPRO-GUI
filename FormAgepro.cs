@@ -887,6 +887,11 @@ namespace AGEPRO.GUI
             return dgvTable;
         }
 
+        private void createNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         
 
 
