@@ -35,6 +35,11 @@ namespace AGEPRO.GUI
         public FormAgepro()
         {
             InitializeComponent();
+            SetupStartupState();
+        }
+
+        private void SetupStartupState()
+        {
             //AGEPRO Input Data, If any
             inputData = new AgeproInputFile();
 
@@ -65,7 +70,7 @@ namespace AGEPRO.GUI
 
             //initially set Number of Ages
             int initalNumAges = controlGeneralOptions.generalFirstAgeClass; //Spinbox Value
-         
+
             //Biological Stochastic Options
             controlFisherySelectivity.stochasticParameterLabel = "Fishery Selectivity";
             controlFisherySelectivity.isMultiFleet = true;
@@ -97,12 +102,15 @@ namespace AGEPRO.GUI
             this.panelNavigation.Enabled = false;
 
         }
-
-
+        
 
         private void createNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Dialog box to ensure that the user intends to start over and "create a new case"
 
+            //If not, <<cancel>>, exit this function.
+
+            //If so, Cleanup? and go to the Startup State
         }
 
         
