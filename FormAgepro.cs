@@ -53,7 +53,9 @@ namespace AGEPRO.GUI
             controlDiscardWeight = new ControlStochasticWeightAge();
             controlRecruitment = new ControlRecruitment();
             controlHarvestScenario = new ControlHarvestScenario();
-            
+
+            //Unsubcribe event handler in case previous one exists, before subcribing a new one
+            controlGeneralOptions.SetGeneral -= new EventHandler(StartupStateEvent_SetGeneralButton);
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
             //Load General Options Controls to AGEPRO Parameter panel
@@ -61,10 +63,8 @@ namespace AGEPRO.GUI
             this.panelAgeproParameter.Controls.Clear();
             this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
 
-
-
             //initially set Number of Ages
-            int initalNumAges = controlGeneralOptions.generalFirstAgeClass;
+            int initalNumAges = controlGeneralOptions.generalFirstAgeClass; //Spinbox Value
          
             //Biological Stochastic Options
             controlFisherySelectivity.stochasticParameterLabel = "Fishery Selectivity";
@@ -97,21 +97,15 @@ namespace AGEPRO.GUI
             this.panelNavigation.Enabled = false;
 
         }
-        
-        
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+
+        private void createNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Terminate
-            this.Close();
+
         }
 
-        private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //About Box Dialog
-            AboutAgepro aboutDialog = new AboutAgepro();
-            aboutDialog.ShowDialog();
-        }
-
+        
         /// <summary>
         /// Replaces an AGEPRO parameter user control in panelAgeproParmeter when a tree node from 
         /// treeViewNavigation is selected.
@@ -225,7 +219,7 @@ namespace AGEPRO.GUI
 
 
         /// <summary>
-        /// 
+        /// SWhen the "SET" button in the General options panel has been clicked.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -887,12 +881,28 @@ namespace AGEPRO.GUI
             return dgvTable;
         }
 
-        private void createNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Closes the AGEPRO GUI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //Terminate
+            this.Close();
         }
 
-        
+        /// <summary>
+        /// Opens the AGEPRO About Dialog Box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //About Box Dialog
+            AboutAgepro aboutDialog = new AboutAgepro();
+            aboutDialog.ShowDialog();
+        }
 
 
 
