@@ -923,6 +923,54 @@ namespace AGEPRO.GUI
             aboutDialog.ShowDialog();
         }
 
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Control ctlCut = this.ActiveControl;
+
+            if (ctlCut != null)
+            {
+                if (ctlCut is TextBox)
+                {
+                    TextBox textBoxToCut = (TextBox)ctlCut;
+                    textBoxToCut.Cut();
+                }
+                if (ctlCut is UserControl)
+                {
+
+
+                }
+                
+
+            }
+        }
+
+        //stackoverflow.com/questions/435433/what-is-the-preferred-way-to-find-focused-control-in-winforms-app
+        private static Control FindFocusedControl(Control control)
+        {
+            ContainerControl container = control as ContainerControl;
+            while (container != null)
+            {
+                control = container.ActiveControl;
+                container = control as ContainerControl; //null if control wasn't container
+            }
+            return null;
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

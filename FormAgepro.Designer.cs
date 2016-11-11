@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("JAN-1");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("SSB");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Mid-Year (Mean)");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Catch");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Discard");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Weights At Age", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Recruitment");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Biological");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Discard Fraction");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Natural Mortality");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Harvest Scenario");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Bootstrapping");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Misc. Options");
+            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("JAN-1");
+            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("SSB");
+            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("Mid-Year (Mean)");
+            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("Catch");
+            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("Discard");
+            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("Weights At Age", new System.Windows.Forms.TreeNode[] {
+            treeNode62,
+            treeNode63,
+            treeNode64,
+            treeNode65,
+            treeNode66});
+            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("Recruitment");
+            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("Biological");
+            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("Fishery Selectivity");
+            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("Discard Fraction");
+            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("Natural Mortality");
+            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("Harvest Scenario");
+            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("Bootstrapping");
+            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("Misc. Options");
             this.menuStripAgeproForm = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,28 +150,32 @@
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cutToolStripMenuItem.Text = "Cut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // runToolStripMenuItem
             // 
@@ -245,47 +249,47 @@
             this.treeViewNavigation.HideSelection = false;
             this.treeViewNavigation.Location = new System.Drawing.Point(0, 0);
             this.treeViewNavigation.Name = "treeViewNavigation";
-            treeNode1.Name = "treeNodeGeneral";
-            treeNode1.Text = "General";
-            treeNode2.Name = "treeNodeJan1";
-            treeNode2.Text = "JAN-1";
-            treeNode3.Name = "treeNodeSSB";
-            treeNode3.Text = "SSB";
-            treeNode4.Name = "treeNodeMidYear";
-            treeNode4.Text = "Mid-Year (Mean)";
-            treeNode5.Name = "treeNodeCatchWeight";
-            treeNode5.Text = "Catch";
-            treeNode6.Name = "treeNodeDiscardWeight";
-            treeNode6.Text = "Discard";
-            treeNode7.Name = "treeNodeWeightAge";
-            treeNode7.Text = "Weights At Age";
-            treeNode8.Name = "treeNodeRecruitment";
-            treeNode8.Text = "Recruitment";
-            treeNode9.Name = "treeNodeBiological";
-            treeNode9.Text = "Biological";
-            treeNode10.Name = "treeNodeFisherySelectivity";
-            treeNode10.Text = "Fishery Selectivity";
-            treeNode11.Name = "treeNodeDiscardFraction";
-            treeNode11.Text = "Discard Fraction";
-            treeNode12.Name = "treeNodeNaturalMortality";
-            treeNode12.Text = "Natural Mortality";
-            treeNode13.Name = "treeNodeHarvestScenario";
-            treeNode13.Text = "Harvest Scenario";
-            treeNode14.Name = "treeNodeBootstrapping";
-            treeNode14.Text = "Bootstrapping";
-            treeNode15.Name = "treeNodeMiscOptions";
-            treeNode15.Text = "Misc. Options";
+            treeNode61.Name = "treeNodeGeneral";
+            treeNode61.Text = "General";
+            treeNode62.Name = "treeNodeJan1";
+            treeNode62.Text = "JAN-1";
+            treeNode63.Name = "treeNodeSSB";
+            treeNode63.Text = "SSB";
+            treeNode64.Name = "treeNodeMidYear";
+            treeNode64.Text = "Mid-Year (Mean)";
+            treeNode65.Name = "treeNodeCatchWeight";
+            treeNode65.Text = "Catch";
+            treeNode66.Name = "treeNodeDiscardWeight";
+            treeNode66.Text = "Discard";
+            treeNode67.Name = "treeNodeWeightAge";
+            treeNode67.Text = "Weights At Age";
+            treeNode68.Name = "treeNodeRecruitment";
+            treeNode68.Text = "Recruitment";
+            treeNode69.Name = "treeNodeBiological";
+            treeNode69.Text = "Biological";
+            treeNode70.Name = "treeNodeFisherySelectivity";
+            treeNode70.Text = "Fishery Selectivity";
+            treeNode71.Name = "treeNodeDiscardFraction";
+            treeNode71.Text = "Discard Fraction";
+            treeNode72.Name = "treeNodeNaturalMortality";
+            treeNode72.Text = "Natural Mortality";
+            treeNode73.Name = "treeNodeHarvestScenario";
+            treeNode73.Text = "Harvest Scenario";
+            treeNode74.Name = "treeNodeBootstrapping";
+            treeNode74.Text = "Bootstrapping";
+            treeNode75.Name = "treeNodeMiscOptions";
+            treeNode75.Text = "Misc. Options";
             this.treeViewNavigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode7,
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15});
+            treeNode61,
+            treeNode67,
+            treeNode68,
+            treeNode69,
+            treeNode70,
+            treeNode71,
+            treeNode72,
+            treeNode73,
+            treeNode74,
+            treeNode75});
             this.treeViewNavigation.Size = new System.Drawing.Size(200, 536);
             this.treeViewNavigation.TabIndex = 1;
             this.treeViewNavigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewNavigation_AfterSelect);
