@@ -37,10 +37,10 @@ namespace AGEPRO.GUI
             this.textBoxRebuilderTargetPercent.DataBindings.Clear();
             this.comboBoxRebuilderTargetType.DataBindings.Clear();
             //Set Data Bindings 
-            this.textBoxRebuilderTargetYear.DataBindings.Add("text", rebuilderTarget, "targetYear", true);
-            this.textBoxRebuilderTargetBiomass.DataBindings.Add("text", rebuilderTarget, "targetValue", true);
-            this.textBoxRebuilderTargetPercent.DataBindings.Add("text", rebuilderTarget, "targetPercent", true);
-            this.comboBoxRebuilderTargetType.DataBindings.Add("SelectedIndex",rebuilderTarget,"targetType",true);
+            this.textBoxRebuilderTargetYear.DataBindings.Add("text", rebuilderTarget, "targetYear");
+            this.textBoxRebuilderTargetBiomass.DataBindings.Add("text", rebuilderTarget, "targetValue");
+            this.textBoxRebuilderTargetPercent.DataBindings.Add("text", rebuilderTarget, "targetPercent");
+            this.comboBoxRebuilderTargetType.DataBindings.Add("SelectedIndex",rebuilderTarget,"targetType");
 
             panelHarvestCalcParam.Controls.Clear();
             this.Dock = DockStyle.Fill;
