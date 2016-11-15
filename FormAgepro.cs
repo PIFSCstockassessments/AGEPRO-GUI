@@ -923,47 +923,59 @@ namespace AGEPRO.GUI
             aboutDialog.ShowDialog();
         }
 
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+
+        //stackoverflow.com/questions/435433/what-is-the-preferred-way-to-find-focused-control-in-winforms-app
+        private static Control FindFocusedControl(Control control)
         {
-            Control ctlCut = this.ActiveControl;
+            var container = control as IContainerControl;
+            while (container != null)
+            {
+                control = container.ActiveControl;
+                container = control as IContainerControl; //null if control wasn't container
+            }
+            return control;
+        }
+        
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {                
+            var ctlCut = FindFocusedControl(this.ActiveControl);
 
             if (ctlCut != null)
             {
                 if (ctlCut is TextBox)
                 {
+                    //Note: Text Boxes data bonded to AGEPRO_CoreLib will still retain their value 
+                    //if nothing.
                     TextBox textBoxToCut = (TextBox)ctlCut;
                     textBoxToCut.Cut();
                 }
-                if (ctlCut is UserControl)
-                {
-
-
-                }
-                
-
             }
-        }
-
-        //stackoverflow.com/questions/435433/what-is-the-preferred-way-to-find-focused-control-in-winforms-app
-        private static Control FindFocusedControl(Control control)
-        {
-            ContainerControl container = control as ContainerControl;
-            while (container != null)
-            {
-                control = container.ActiveControl;
-                container = control as ContainerControl; //null if control wasn't container
-            }
-            return null;
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var ctlCopy = FindFocusedControl(this.ActiveControl);
+            if (ctlCopy != null)
+            {
+                if (ctlCopy is TextBox)
+                {
+                    TextBox textBoxToCopy = (TextBox)ctlCopy;
+                    textBoxToCopy.Copy();
+                }
+            }
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var ctlPaste = FindFocusedControl(this.ActiveControl);
+            if (ctlPaste != null)
+            {
+                if (ctlPaste is TextBox)
+                {
+                    TextBox textBoxToPaste = (TextBox)ctlPaste;
+                    textBoxToPaste.Paste();
+                }
+            }
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
