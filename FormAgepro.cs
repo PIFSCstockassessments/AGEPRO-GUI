@@ -935,6 +935,12 @@ namespace AGEPRO.GUI
             }
             return control;
         }
+
+        private void EndEditModeFromDataGridViewTextBoxEditingControl(DataGridViewTextBoxEditingControl dgvtb)
+        {
+            DataGridView dgw = dgvtb.EditingControlDataGridView;
+            dgw.EndEdit();
+        }
         
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {                
@@ -948,6 +954,13 @@ namespace AGEPRO.GUI
                     //if nothing.
                     TextBox textBoxToCut = (TextBox)ctlCut;
                     textBoxToCut.Cut();
+
+                    if (ctlCut is DataGridViewTextBoxEditingControl)
+                    {
+                        DataGridViewTextBoxEditingControl dgvtb = (DataGridViewTextBoxEditingControl)ctlCut;
+                        EndEditModeFromDataGridViewTextBoxEditingControl(dgvtb);
+                    }
+                   
                 }
             }
         }
@@ -974,6 +987,12 @@ namespace AGEPRO.GUI
                 {
                     TextBox textBoxToPaste = (TextBox)ctlPaste;
                     textBoxToPaste.Paste();
+
+                    if (ctlPaste is DataGridViewTextBoxEditingControl)
+                    {
+                        DataGridViewTextBoxEditingControl dgvtb = (DataGridViewTextBoxEditingControl)ctlPaste;
+                        EndEditModeFromDataGridViewTextBoxEditingControl(dgvtb);
+                    }
                 }
             }
         }
