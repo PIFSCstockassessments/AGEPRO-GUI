@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NOAA-NMFS")]
-[assembly: AssemblyProduct("AGEPRO")]
+[assembly: AssemblyProduct("AGEPRO (Age Structured Projection Model)")]
 [assembly: AssemblyCopyright("Copyright © NOAA-NMFS")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
