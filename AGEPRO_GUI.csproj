@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>4.3.0.%2a</ApplicationVersion>
+    <ApplicationVersion>4.3.0.2</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -55,13 +55,10 @@
     <ManifestCertificateThumbprint>8F0EE663786F712615575968273D762670661E29</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AGEPRO_GUI_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AGEPRO_CoreLib">
@@ -290,7 +287,6 @@
     <EmbeddedResource Include="ControlRecruitmentEmpirical.resx">
       <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AGEPRO_GUI_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\AGEPRO.CoreLib.AgeproInputFile.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -329,7 +325,7 @@
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
