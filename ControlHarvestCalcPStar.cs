@@ -28,6 +28,7 @@ namespace AGEPRO.GUI
         public void SetHarvestCalcPStarControls(AGEPRO.CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam) 
         {
             setControlValues = true;
+
             //Clear any previous Data Bindings
             this.spinBoxNumPStarLevels.DataBindings.Clear();
             this.textBoxOverfishingF.DataBindings.Clear();

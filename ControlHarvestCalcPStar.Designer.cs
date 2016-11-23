@@ -36,6 +36,7 @@
             this.labelPStarTargetYear = new System.Windows.Forms.Label();
             this.labelOverfishingF = new System.Windows.Forms.Label();
             this.labelNumPStarLevels = new System.Windows.Forms.Label();
+            this.labelPStarTable = new System.Windows.Forms.Label();
             this.groupPStarParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumPStarLevels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPStarLevelValues)).BeginInit();
@@ -43,6 +44,7 @@
             // 
             // groupPStarParameters
             // 
+            this.groupPStarParameters.Controls.Add(this.labelPStarTable);
             this.groupPStarParameters.Controls.Add(this.textBoxPStarTargetYear);
             this.groupPStarParameters.Controls.Add(this.textBoxOverfishingF);
             this.groupPStarParameters.Controls.Add(this.spinBoxNumPStarLevels);
@@ -99,7 +101,7 @@
             this.dataGridPStarLevelValues.AllowUserToAddRows = false;
             this.dataGridPStarLevelValues.AllowUserToDeleteRows = false;
             this.dataGridPStarLevelValues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPStarLevelValues.Location = new System.Drawing.Point(6, 161);
+            this.dataGridPStarLevelValues.Location = new System.Drawing.Point(6, 175);
             this.dataGridPStarLevelValues.Name = "dataGridPStarLevelValues";
             this.dataGridPStarLevelValues.RowHeadersVisible = false;
             this.dataGridPStarLevelValues.Size = new System.Drawing.Size(468, 92);
@@ -132,6 +134,15 @@
             this.labelNumPStarLevels.TabIndex = 0;
             this.labelNumPStarLevels.Text = "Number of P-Star Levels";
             // 
+            // labelPStarTable
+            // 
+            this.labelPStarTable.AutoSize = true;
+            this.labelPStarTable.Location = new System.Drawing.Point(6, 157);
+            this.labelPStarTable.Name = "labelPStarTable";
+            this.labelPStarTable.Size = new System.Drawing.Size(70, 13);
+            this.labelPStarTable.TabIndex = 7;
+            this.labelPStarTable.Text = "P-Star Levels";
+            // 
             // ControlHarvestCalcPStar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,5 +169,6 @@
         private System.Windows.Forms.TextBox textBoxPStarTargetYear;
         private System.Windows.Forms.TextBox textBoxOverfishingF;
         private System.Windows.Forms.NumericUpDown spinBoxNumPStarLevels;
+        private System.Windows.Forms.Label labelPStarTable;
     }
 }

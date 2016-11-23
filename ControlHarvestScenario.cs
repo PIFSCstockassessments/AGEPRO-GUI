@@ -62,7 +62,10 @@ namespace AGEPRO.GUI
                         PStar.pStarLevels = 1;
                         PStar.pStarF = 0;
                         PStar.targetYear = 0;
-                        PStar.pStarTable = null; 
+                        //Create PStar Table
+                        PStar.pStarTable = PStar.CreateNewPStarTable();
+                        PStar.pStarTable.Rows.Add();
+                        AGEPRO.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.pStarTable);
                     }
                     controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
                 }

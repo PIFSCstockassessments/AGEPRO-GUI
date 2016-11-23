@@ -63,8 +63,6 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.launchAGEPROModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.commandWindowStaysOpenDurningRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.htmlHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceManualpdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -181,9 +179,7 @@
             // runToolStripMenuItem
             // 
             this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.launchAGEPROModelToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.commandWindowStaysOpenDurningRunToolStripMenuItem});
+            this.launchAGEPROModelToolStripMenuItem});
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.runToolStripMenuItem.Text = "Run";
@@ -192,22 +188,9 @@
             // 
             this.launchAGEPROModelToolStripMenuItem.Enabled = false;
             this.launchAGEPROModelToolStripMenuItem.Name = "launchAGEPROModelToolStripMenuItem";
-            this.launchAGEPROModelToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.launchAGEPROModelToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.launchAGEPROModelToolStripMenuItem.Text = "Launch AGEPRO model ...";
             this.launchAGEPROModelToolStripMenuItem.Click += new System.EventHandler(this.launchAGEPROModelToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(271, 6);
-            // 
-            // commandWindowStaysOpenDurningRunToolStripMenuItem
-            // 
-            this.commandWindowStaysOpenDurningRunToolStripMenuItem.Checked = true;
-            this.commandWindowStaysOpenDurningRunToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.commandWindowStaysOpenDurningRunToolStripMenuItem.Name = "commandWindowStaysOpenDurningRunToolStripMenuItem";
-            this.commandWindowStaysOpenDurningRunToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
-            this.commandWindowStaysOpenDurningRunToolStripMenuItem.Text = "Command window stays open durning run";
             // 
             // helpToolStripMenuItem
             // 
@@ -362,8 +345,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem launchAGEPROModelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem commandWindowStaysOpenDurningRunToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem htmlHelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem referenceManualpdfToolStripMenuItem;
