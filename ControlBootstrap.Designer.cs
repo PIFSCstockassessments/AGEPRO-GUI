@@ -32,10 +32,10 @@
             this.textBoxBootstrapFile = new System.Windows.Forms.TextBox();
             this.buttonLoadFile = new System.Windows.Forms.Button();
             this.groupBootstrapOptions = new System.Windows.Forms.GroupBox();
-            this.labelNumBootstrapIterations = new System.Windows.Forms.Label();
-            this.textBoxNumBootstrapIterations = new System.Windows.Forms.TextBox();
-            this.labelPopScaleFactors = new System.Windows.Forms.Label();
             this.textBoxPopScaleFactors = new System.Windows.Forms.TextBox();
+            this.labelPopScaleFactors = new System.Windows.Forms.Label();
+            this.textBoxNumBootstrapIterations = new System.Windows.Forms.TextBox();
+            this.labelNumBootstrapIterations = new System.Windows.Forms.Label();
             this.groupBootstrapOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,7 @@
             this.buttonLoadFile.TabIndex = 2;
             this.buttonLoadFile.Text = "Load File";
             this.buttonLoadFile.UseVisualStyleBackColor = true;
+            this.buttonLoadFile.Click += new System.EventHandler(this.buttonLoadFile_Click);
             // 
             // groupBootstrapOptions
             // 
@@ -78,21 +79,12 @@
             this.groupBootstrapOptions.TabStop = false;
             this.groupBootstrapOptions.Text = "Bootstrap Options";
             // 
-            // labelNumBootstrapIterations
+            // textBoxPopScaleFactors
             // 
-            this.labelNumBootstrapIterations.AutoSize = true;
-            this.labelNumBootstrapIterations.Location = new System.Drawing.Point(26, 32);
-            this.labelNumBootstrapIterations.Name = "labelNumBootstrapIterations";
-            this.labelNumBootstrapIterations.Size = new System.Drawing.Size(150, 13);
-            this.labelNumBootstrapIterations.TabIndex = 0;
-            this.labelNumBootstrapIterations.Text = "Number of Bootstrap Iterations";
-            // 
-            // textBoxNumBootstrapIterations
-            // 
-            this.textBoxNumBootstrapIterations.Location = new System.Drawing.Point(232, 25);
-            this.textBoxNumBootstrapIterations.Name = "textBoxNumBootstrapIterations";
-            this.textBoxNumBootstrapIterations.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNumBootstrapIterations.TabIndex = 1;
+            this.textBoxPopScaleFactors.Location = new System.Drawing.Point(232, 61);
+            this.textBoxPopScaleFactors.Name = "textBoxPopScaleFactors";
+            this.textBoxPopScaleFactors.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPopScaleFactors.TabIndex = 3;
             // 
             // labelPopScaleFactors
             // 
@@ -103,12 +95,21 @@
             this.labelPopScaleFactors.TabIndex = 2;
             this.labelPopScaleFactors.Text = "Population Scale Factors";
             // 
-            // textBoxPopScaleFactors
+            // textBoxNumBootstrapIterations
             // 
-            this.textBoxPopScaleFactors.Location = new System.Drawing.Point(232, 61);
-            this.textBoxPopScaleFactors.Name = "textBoxPopScaleFactors";
-            this.textBoxPopScaleFactors.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPopScaleFactors.TabIndex = 3;
+            this.textBoxNumBootstrapIterations.Location = new System.Drawing.Point(232, 25);
+            this.textBoxNumBootstrapIterations.Name = "textBoxNumBootstrapIterations";
+            this.textBoxNumBootstrapIterations.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNumBootstrapIterations.TabIndex = 1;
+            // 
+            // labelNumBootstrapIterations
+            // 
+            this.labelNumBootstrapIterations.AutoSize = true;
+            this.labelNumBootstrapIterations.Location = new System.Drawing.Point(26, 32);
+            this.labelNumBootstrapIterations.Name = "labelNumBootstrapIterations";
+            this.labelNumBootstrapIterations.Size = new System.Drawing.Size(150, 13);
+            this.labelNumBootstrapIterations.TabIndex = 0;
+            this.labelNumBootstrapIterations.Text = "Number of Bootstrap Iterations";
             // 
             // ControlBootstrap
             // 

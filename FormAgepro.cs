@@ -532,14 +532,8 @@ namespace AGEPRO.GUI
             //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
             else
             {
-                OpenFileDialog openBootstrapFileDialog = new OpenFileDialog();
+                OpenFileDialog openBootstrapFileDialog = ControlBootstrap.SetBootstrapOpenFileDialog();
 
-                openBootstrapFileDialog.InitialDirectory = "~";
-                openBootstrapFileDialog.Filter = "AGEPRO bootstrap files (*.inp)|*.bsn|All Files (*.*)|*.*";
-                openBootstrapFileDialog.FilterIndex = 1;
-                openBootstrapFileDialog.RestoreDirectory = true;
-                openBootstrapFileDialog.Title = "Open AGEPRO Bootstrap File";
-                
                 if (openBootstrapFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     File.Copy(openBootstrapFileDialog.FileName, bsnFile, true);
@@ -582,19 +576,7 @@ namespace AGEPRO.GUI
             }
             
         }
-        private string OpenBootstrapFile()
-        {
-            OpenFileDialog openBootstrapFileDialog = new OpenFileDialog();
 
-            openBootstrapFileDialog.InitialDirectory = "~";
-            openBootstrapFileDialog.Filter = "AGEPRO bootstrap files (*.inp)|*.bsn|All Files (*.*)|*.*";
-            openBootstrapFileDialog.FilterIndex = 1;
-            openBootstrapFileDialog.RestoreDirectory = true;
-            openBootstrapFileDialog.Title = "Open AGEPRO Bootstrap File";
-            openBootstrapFileDialog.ShowDialog();
-
-            return openBootstrapFileDialog.FileName;
-        }
 
         static void LaunchAgeproModel(string inpFile)
         {

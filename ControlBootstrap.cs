@@ -44,5 +44,33 @@ namespace AGEPRO.GUI
             this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps");
             this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor");
         }
+
+        public static OpenFileDialog SetBootstrapOpenFileDialog()
+        {
+            OpenFileDialog openBootstrapFileDialog = new OpenFileDialog();
+
+            openBootstrapFileDialog.InitialDirectory = "~";
+            openBootstrapFileDialog.Filter = "AGEPRO bootstrap files (*.BSN)|*.bsn|All Files (*.*)|*.*";
+            openBootstrapFileDialog.FilterIndex = 1;
+            openBootstrapFileDialog.RestoreDirectory = true;
+            openBootstrapFileDialog.Title = "Open AGEPRO Bootstrap File";
+
+            return openBootstrapFileDialog;
+        }
+
+
+
+        private void buttonLoadFile_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                OpenFileDialog bootstrapFileDialog = SetBootstrapOpenFileDialog();
+                if (bootstrapFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    bootstrapFilename = bootstrapFileDialog.FileName;
+                }
+            }
+        }
     }
 }
