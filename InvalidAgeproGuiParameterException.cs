@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 namespace AGEPRO.GUI
 {
     [Serializable]
-    public class InvalidGeneralParameterException : Exception
+    public class InvalidAgeproGuiParameterException : Exception
     {
-        public InvalidGeneralParameterException()
+        public InvalidAgeproGuiParameterException()
         {
 
         }
-        public InvalidGeneralParameterException(string message)
+        public InvalidAgeproGuiParameterException(string message)
             : base(message)
         {
 
         }
-        public InvalidGeneralParameterException(string message, Exception innerException) 
+        public InvalidAgeproGuiParameterException(string message, Exception innerException) 
             : base(message, innerException)
         {
 
         }
-        protected InvalidGeneralParameterException(SerializationInfo info, StreamingContext c)
+        protected InvalidAgeproGuiParameterException(SerializationInfo info, StreamingContext c)
             : base(info, c)
         {
 

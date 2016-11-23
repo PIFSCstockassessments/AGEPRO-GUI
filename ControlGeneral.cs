@@ -106,11 +106,11 @@ namespace AGEPRO.GUI
             {
                 if (param.Value == "")
                 {
-                    throw new InvalidGeneralParameterException( param.Key + " value must be specfied.");
+                    throw new InvalidAgeproGuiParameterException( param.Key + " value must be specfied.");
                 }
                 if (IsNumeric(param.Value) == false)
                 {
-                    throw new InvalidGeneralParameterException( "In " + param.Key + ": '" + param.Value + "' is not a whole number");
+                    throw new InvalidAgeproGuiParameterException( "In " + param.Key + ": '" + param.Value + "' is not a whole number");
                 }
 
             }
@@ -118,12 +118,12 @@ namespace AGEPRO.GUI
             //First Age Class: In case the spinBox(UpDownNumeric) control didn't catch the invalid value, catch it here.   
             if (spinBoxFirstAge.Value > 1 || spinBoxFirstAge.Value < 0)
             {
-                throw new InvalidGeneralParameterException("Invaild First Age Class Value: Should only be 0 or 1");
+                throw new InvalidAgeproGuiParameterException("Invaild First Age Class Value: Should only be 0 or 1");
             }
 
             if (Math.Abs(Convert.ToInt32(textBoxRandomSeed.Text)) > maxRandomSeed)
             {
-                throw new InvalidGeneralParameterException("Random Number Seed " + textBoxRandomSeed.Text + 
+                throw new InvalidAgeproGuiParameterException("Random Number Seed " + textBoxRandomSeed.Text + 
                     Environment.NewLine + "Exceeds limit of " + maxRandomSeed + " or -" + maxRandomSeed );
             }
 
@@ -137,18 +137,18 @@ namespace AGEPRO.GUI
             if (generalNumAges < 1)
             {
                 string exMessage = "Invaild Age Range - Is Last Age Class less than First Age Class?";
-                throw new InvalidGeneralParameterException(exMessage);
+                throw new InvalidAgeproGuiParameterException(exMessage);
             }
             if (generalNumYears < 1)
             {
                 string exMessage = "Invaild Year Range - Is Last Year Of Projection Earlier than First Year?";
-                throw new InvalidGeneralParameterException(exMessage);
+                throw new InvalidAgeproGuiParameterException(exMessage);
             }
 
             if(Convert.ToInt32(generalNumberRecruitModels) > this.maxRecruitModels)
             {
                 string exMessage = "Number of Recruitment Models exceed limit of " + this.maxRecruitModels + ".";
-                throw new InvalidGeneralParameterException(exMessage);
+                throw new InvalidAgeproGuiParameterException(exMessage);
             }
             
         }

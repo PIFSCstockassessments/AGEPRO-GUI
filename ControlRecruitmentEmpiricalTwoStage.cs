@@ -199,12 +199,12 @@ namespace AGEPRO.GUI
 
                 if (newNumLv1Obs > maxNumObservations)
                 {
-                    throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
+                    throw new AGEPRO.CoreLib.InvalidAgeproParameterException(
                         "Number of Level 1 Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
                 if (newNumLv2Obs > maxNumObservations)
                 {
-                    throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
+                    throw new AGEPRO.CoreLib.InvalidAgeproParameterException(
                         "Number of Level 2 Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
 

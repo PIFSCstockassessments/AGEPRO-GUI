@@ -59,7 +59,7 @@ namespace AGEPRO.GUI
             //Catch if the number of Predictors exceed limit (in case control couldn't prevent it)
             if (numPredictors > maxRecruitPredictors)
             {
-                throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
+                throw new AGEPRO.CoreLib.InvalidAgeproParameterException(
                     "Number of Observations exceed maximum limit of " + maxRecruitPredictors + ".");
             }
 

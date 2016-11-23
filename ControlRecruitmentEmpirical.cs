@@ -53,7 +53,7 @@ namespace AGEPRO.GUI
                 //(in case control couldn't prevent it)
                 if (newNumObservationsValue > maxNumObservations)
                 {
-                    throw new AGEPRO.CoreLib.InvalidRecruitmentParameterException(
+                    throw new AGEPRO.CoreLib.InvalidAgeproParameterException(
                         "Number of Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
                 observationTable = ControlRecruitment.ResizeDataGridTable(observationTable, newNumObservationsValue);
