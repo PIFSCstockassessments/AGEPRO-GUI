@@ -318,6 +318,10 @@ namespace AGEPRO.GUI
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
                 inputData.harvestScenario.analysisType = HarvestScenarioAnalysis.HarvestScenario;
                 controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inputData);
+                DataTable userGenBasedHarvestScenarioTable = AgeproHarvestScenario.NewHarvestTable(
+                    controlHarvestScenario.seqYears.Count(), 
+                    Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
+                controlHarvestScenario.SetHarvestScenarioInputDataTable(userGenBasedHarvestScenarioTable);
 
 
                 //Set General parameters to AGEPRO.CoreLib inputData class
