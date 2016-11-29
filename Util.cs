@@ -10,8 +10,8 @@ namespace AGEPRO.GUI
     {
         static public string GetAgeproUserDataPath()
         {
-            string appDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            appDir = System.IO.Path.Combine(appDir, System.Windows.Forms.Application.ProductName);
+            string appDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            appDir = System.IO.Path.Combine(appDir, "AGEPRO");
             if (!System.IO.Directory.Exists(appDir))
             {
                 System.IO.Directory.CreateDirectory(appDir);

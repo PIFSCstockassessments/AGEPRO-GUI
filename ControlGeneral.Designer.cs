@@ -273,6 +273,7 @@
             // 
             this.textBoxInputFile.Location = new System.Drawing.Point(154, 212);
             this.textBoxInputFile.Name = "textBoxInputFile";
+            this.textBoxInputFile.ReadOnly = true;
             this.textBoxInputFile.Size = new System.Drawing.Size(586, 20);
             this.textBoxInputFile.TabIndex = 3;
             // 
