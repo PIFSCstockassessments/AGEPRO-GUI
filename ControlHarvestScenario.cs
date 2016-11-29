@@ -13,7 +13,7 @@ namespace AGEPRO.GUI
 {
     public partial class ControlHarvestScenario : UserControl
     {
-        private DataGridViewComboBoxColumn columnHarvestSpecification;
+        private DataGridViewComboBoxColumn columnHarvestSpecification; //AGEPRO.CoreLib.HarvestSpecification
         private ControlHarvestCalcRebuilder controlHarvestRebuilder;
         private ControlHarvestCalcPStar controlHarvestPStar;
         public string[] seqYears { get; set; }
@@ -118,6 +118,11 @@ namespace AGEPRO.GUI
 
         }
 
+        /// <summary>
+        /// Sets up the Harvest Scenario Data Grid View Table, including the Harvest Specification combo box
+        /// column.
+        /// </summary>
+        /// <param name="inpFileTable">Harvest Scenario Data Table Source</param>
         public void SetHarvestScenarioInputDataTable(DataTable inpFileTable)
         {
             if (this.HarvestScenarioTable != null)
