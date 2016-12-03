@@ -203,6 +203,7 @@
     <Compile Include="FormAgepro.Designer.cs">
       <DependentUpon>FormAgepro.cs</DependentUpon>
     </Compile>
+    <Compile Include="HarvestSpecification.cs" />
     <Compile Include="InvalidAgeproGuiParameterException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
