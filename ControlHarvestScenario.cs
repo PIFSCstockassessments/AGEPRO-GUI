@@ -13,7 +13,7 @@ namespace AGEPRO.GUI
 {
     public partial class ControlHarvestScenario : UserControl
     {
-        private DataGridViewComboBoxColumn columnHarvestSpecification; //AGEPRO.CoreLib.HarvestSpecification
+        private DataGridViewComboBoxColumn columnHarvestSpecification; 
         private ControlHarvestCalcRebuilder controlHarvestRebuilder;
         private ControlHarvestCalcPStar controlHarvestPStar;
         public string[] seqYears { get; set; }
