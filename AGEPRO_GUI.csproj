@@ -205,6 +205,9 @@
     </Compile>
     <Compile Include="HarvestSpecification.cs" />
     <Compile Include="InvalidAgeproGuiParameterException.cs" />
+    <Compile Include="NFTDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ControlRecruitmentEmpirical.cs">
@@ -274,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NFTDataGridView.resx">
+      <DependentUpon>NFTDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
