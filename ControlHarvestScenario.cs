@@ -19,12 +19,34 @@ namespace AGEPRO.GUI
         public string[] seqYears { get; set; }
         public AGEPRO.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
         public AGEPRO.CoreLib.PStarCalculation PStar { get; set; }
-        
+
+        //Constructing Context Menu fo DataGridView
+        private ContextMenuStrip strip;
+        private ToolStripMenuItem menuCut = new ToolStripMenuItem();
+        private ToolStripMenuItem menuCopy = new ToolStripMenuItem();
+        private ToolStripMenuItem menuPaste = new ToolStripMenuItem();
+
         public ControlHarvestScenario()
         {
             InitializeComponent();
             controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
             controlHarvestPStar = new ControlHarvestCalcPStar();
+
+            menuCopy.Click -= new EventHandler(menuCopy_Click);
+            menuPaste.Click -= new EventHandler(menuPaste_Click);
+            menuCopy.Click += new EventHandler(menuCopy_Click);
+            menuPaste.Click += new EventHandler(menuPaste_Click);
+        }
+
+
+        void menuPaste_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void menuCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(dataGridHarvestScenarioTable.GetClipboardContent());
         }
 
         public DataTable HarvestScenarioTable
@@ -191,5 +213,25 @@ namespace AGEPRO.GUI
 
             }
         }
+
+        private void dataGridHarvestScenarioTable_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+
+            if (strip == null)
+            {
+                strip = new ContextMenuStrip();
+                menuCut.Text = "Cut";
+                menuCopy.Text = "Copy";
+                menuPaste.Text = "Paste";
+                strip.Items.Add(menuCut);
+                strip.Items.Add(menuCopy);
+                strip.Items.Add(new ToolStripSeparator());
+                strip.Items.Add(menuPaste);
+            }
+            e.ContextMenuStrip = strip;
+
+        }
+
+
     }
 }

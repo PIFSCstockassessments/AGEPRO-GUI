@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.labelHarvestScenario = new System.Windows.Forms.Label();
-            this.dataGridHarvestScenarioTable = new System.Windows.Forms.DataGridView();
             this.groupAltCalcParameters = new System.Windows.Forms.GroupBox();
             this.radioNone = new System.Windows.Forms.RadioButton();
             this.radioPStar = new System.Windows.Forms.RadioButton();
             this.radioRebuilderTarget = new System.Windows.Forms.RadioButton();
             this.panelAltCalcParameters = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridHarvestScenarioTable)).BeginInit();
+            this.dataGridHarvestScenarioTable = new AGEPRO.GUI.NFTDataGridView();
             this.groupAltCalcParameters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridHarvestScenarioTable)).BeginInit();
             this.SuspendLayout();
             // 
             // labelHarvestScenario
@@ -47,21 +47,6 @@
             this.labelHarvestScenario.Size = new System.Drawing.Size(89, 13);
             this.labelHarvestScenario.TabIndex = 0;
             this.labelHarvestScenario.Text = "Harvest Scenario";
-            // 
-            // dataGridHarvestScenarioTable
-            // 
-            this.dataGridHarvestScenarioTable.AllowUserToAddRows = false;
-            this.dataGridHarvestScenarioTable.AllowUserToDeleteRows = false;
-            this.dataGridHarvestScenarioTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridHarvestScenarioTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridHarvestScenarioTable.Location = new System.Drawing.Point(29, 38);
-            this.dataGridHarvestScenarioTable.Name = "dataGridHarvestScenarioTable";
-            this.dataGridHarvestScenarioTable.ShowEditingIcon = false;
-            this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(360, 460);
-            this.dataGridHarvestScenarioTable.TabIndex = 1;
-            this.dataGridHarvestScenarioTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridHarvestScenarioTable_CellFormatting);
             // 
             // groupAltCalcParameters
             // 
@@ -119,6 +104,22 @@
             this.panelAltCalcParameters.Size = new System.Drawing.Size(485, 400);
             this.panelAltCalcParameters.TabIndex = 3;
             // 
+            // dataGridHarvestScenarioTable
+            // 
+            this.dataGridHarvestScenarioTable.AllowUserToAddRows = false;
+            this.dataGridHarvestScenarioTable.AllowUserToDeleteRows = false;
+            this.dataGridHarvestScenarioTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridHarvestScenarioTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridHarvestScenarioTable.Location = new System.Drawing.Point(29, 38);
+            this.dataGridHarvestScenarioTable.Name = "dataGridHarvestScenarioTable";
+            this.dataGridHarvestScenarioTable.ShowEditingIcon = false;
+            this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(360, 460);
+            this.dataGridHarvestScenarioTable.TabIndex = 1;
+            this.dataGridHarvestScenarioTable.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridHarvestScenarioTable_CellContextMenuStripNeeded);
+            this.dataGridHarvestScenarioTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridHarvestScenarioTable_CellFormatting);
+            // 
             // ControlHarvestScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,9 +130,9 @@
             this.Controls.Add(this.dataGridHarvestScenarioTable);
             this.Name = "ControlHarvestScenario";
             this.Size = new System.Drawing.Size(900, 520);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridHarvestScenarioTable)).EndInit();
             this.groupAltCalcParameters.ResumeLayout(false);
             this.groupAltCalcParameters.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridHarvestScenarioTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +141,8 @@
         #endregion
 
         private System.Windows.Forms.Label labelHarvestScenario;
-        private System.Windows.Forms.DataGridView dataGridHarvestScenarioTable;
+        //private System.Windows.Forms.DataGridView dataGridHarvestScenarioTable;
+        private NFTDataGridView dataGridHarvestScenarioTable;
         private System.Windows.Forms.GroupBox groupAltCalcParameters;
         private System.Windows.Forms.RadioButton radioNone;
         private System.Windows.Forms.RadioButton radioPStar;
