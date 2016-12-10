@@ -67,6 +67,7 @@ namespace AGEPRO.GUI
             this.menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.menuCopy.Size = new System.Drawing.Size(139, 22);
             this.menuCopy.Text = "Copy";
+            this.menuCopy.Click += new System.EventHandler(this.menuCopy_Click);
             // 
             // menuPaste
             // 
@@ -74,12 +75,14 @@ namespace AGEPRO.GUI
             this.menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.menuPaste.Size = new System.Drawing.Size(139, 22);
             this.menuPaste.Text = "Paste";
+            this.menuPaste.Click += new System.EventHandler(this.menuPaste_Click);
             // 
             // NFTDataGridView
             // 
             this.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.NFTDataGridView_CellContextMenuStripNeeded);
             this.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseClick);
             this.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseDown);
+            this.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.NFTDataGridView_DataError);
             this.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.NFTDataGridView_EditingControlShowing);
             this.dgvMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -91,6 +94,7 @@ namespace AGEPRO.GUI
 
         private void NFTDataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
+            this.ContextMenuStrip = dgvMenuStrip; 
         }
 
         //right-click-context-menu-for-datagridview
@@ -107,7 +111,7 @@ namespace AGEPRO.GUI
                     dgvCell.DataGridView.CurrentCell = dgvCell;
                     dgvCell.Selected = true;
                 }
-                this.ContextMenuStrip = dgvMenuStrip;   
+                  
             }
         }
 
@@ -132,15 +136,103 @@ namespace AGEPRO.GUI
             e.Control.ContextMenuStrip = dgvMenuStrip;
         }
 
-        //void menuPaste_Click(object sender, EventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuCopy_Click(object sender, EventArgs e)
+        {
+            OnCopy();
+        }
 
-        //void menuCopy_Click(object sender, EventArgs e)
-        //{
-        //    Clipboard.SetDataObject(dataGridHarvestScenarioTable.GetClipboardContent());
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuPaste_Click(object sender, EventArgs e)
+        {
+            OnPaste();
+        }
+
+        private void OnCopy()
+        {
+            //Check If Current Cell is in Edit Mode
+            if (this.CurrentCell.IsInEditMode)
+            {
+                Clipboard.SetDataObject(this.CurrentCell.EditedFormattedValue);
+            }
+            else
+            {
+                Clipboard.SetDataObject(this.GetClipboardContent());
+            }
+
+        }
+
+        private void OnPaste()
+        {
+            //throw error if no cells are selected
+            if (this.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("No cells selected. Please select a cell", "Paste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            string clipboardString = Clipboard.GetText();
+            string[] clipboardLines = clipboardString.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            int irow = this.CurrentCell.RowIndex;
+            int icol = this.CurrentCell.ColumnIndex;
+            DataGridViewCell oCell;
+            //copy-and-paste-multiple-cells-within-datagridview
+            foreach (string line in clipboardLines)
+            {
+                string[] cellsToPaste = line.Split('\t');
+                int numCellsSelected = cellsToPaste.Length;
+                if (irow < this.Rows.Count)
+                {
+                    for (int x = 0; x < numCellsSelected; x++)
+                    {
+                        if (icol + x < this.Columns.Count)
+                        {
+                            //TODO: DETECT IF THIS CELL IS ACTUALLY DATAGRIDVIEWCOMBOBOXCELL
+                            oCell = this[icol + x, irow];
+                            oCell.Value = cellsToPaste[x];
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    irow++;    
+                }
+                else
+                {
+                    break;
+                }
+
+                
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// Handles when data-parsing/validations would throw exceptions. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NFTDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("An error occured." + 
+                Environment.NewLine + Environment.NewLine +
+                e.Exception.Message.ToString(),
+                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
 
     }
 }
