@@ -12,6 +12,7 @@ namespace AGEPRO.GUI
         private int maxRows {get; set;}
         private int maxColumns {get; set;}
 
+        private bool _nftReadOnly;
         //Constructing Context Menu fo DataGridView
         private ContextMenuStrip dgvMenuStrip;
         private System.ComponentModel.IContainer components;
@@ -24,6 +25,7 @@ namespace AGEPRO.GUI
         {
             InitializeComponent();
 
+            nftReadOnly = false; //False by default
             this.maxRows = 9999;
             this.maxColumns = 9999;
         }
@@ -91,6 +93,34 @@ namespace AGEPRO.GUI
         }
 
         #endregion
+
+        /// <summary>
+        /// nftDataGridView specfic settings, including it's menuStrip, whenever the 
+        /// 'read-only' option is set to true or false. The default is false. 
+        /// </summary>
+        public bool nftReadOnly
+        {
+            get { return this._nftReadOnly; }
+            set
+            {
+                this._nftReadOnly = value;
+                if (this._nftReadOnly == true)
+                {
+                    this.EditMode = DataGridViewEditMode.EditProgrammatically;
+                    menuCut.Enabled = false;
+                    menuCopy.Enabled = false;
+                    menuPaste.Enabled = false;
+                }
+                else
+                {
+                    this.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+                    menuCut.Enabled = true;
+                    menuCopy.Enabled = true;
+                    menuPaste.Enabled = true;
+                }
+            }
+            
+        }
 
         private void NFTDataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
