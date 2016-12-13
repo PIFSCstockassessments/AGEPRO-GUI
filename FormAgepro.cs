@@ -604,7 +604,7 @@ namespace AGEPRO.GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occured when running the AGEPRO Model." + Environment.NewLine + ex,
+                MessageBox.Show("An error occured when running the AGEPRO Model." + Environment.NewLine + ex.Message,
                         "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
