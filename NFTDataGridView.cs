@@ -153,7 +153,19 @@ namespace AGEPRO.GUI
         /// <param name="e"></param>
         private void menuPaste_Click(object sender, EventArgs e)
         {
-            OnPaste();
+            try
+            {
+                OnPaste();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured." +
+                Environment.NewLine + Environment.NewLine +
+                ex.Message.ToString(),
+                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        
+            }
+            
         }
 
         private void OnCopy()
@@ -197,9 +209,19 @@ namespace AGEPRO.GUI
                     {
                         if (icol + x < this.Columns.Count)
                         {
-                            //TODO: DETECT IF THIS CELL IS ACTUALLY DATAGRIDVIEWCOMBOBOXCELL
                             oCell = this[icol + x, irow];
-                            oCell.Value = cellsToPaste[x];
+                            //IF cell is a DataGridViewComboBoxCell
+                            if (oCell is DataGridViewComboBoxCell) 
+                            {
+                               MessageBox.Show("At Row Index " + oCell.RowIndex + ", Column Index " + oCell.ColumnIndex + ":" + 
+                                   Environment.NewLine + "Pasting any values to this type of cell is not allowed.",
+                                    "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                oCell.Value = cellsToPaste[x];
+                            }
+                            
                         }
                         else
                         {
