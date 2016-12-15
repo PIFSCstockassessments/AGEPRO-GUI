@@ -11,19 +11,22 @@ namespace AGEPRO.GUI
     {
         private int maxRows {get; set;}
         private int maxColumns {get; set;}
-
         private bool _nftReadOnly;
+
         //Constructing Context Menu fo DataGridView
-        private ContextMenuStrip dgvMenuStrip;
         private System.ComponentModel.IContainer components;
+        private ContextMenuStrip dgvMenuStrip;
         private ToolStripMenuItem menuCopy;
         private ToolStripMenuItem menuPaste;
+        private ToolStripSeparator menuSeparator1;
+        private ToolStripMenuItem menuSelectAll;
+        private ToolStripMenuItem menuDelete;
         private ToolStripMenuItem menuCut;
         
 
         public NFTDataGridView()
         {
-            InitializeComponent();
+            InitializeComponent(); //Component Designer generated Code
 
             nftReadOnly = false; //False by default
             this.maxRows = 9999;
@@ -43,6 +46,9 @@ namespace AGEPRO.GUI
             this.menuCut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -52,22 +58,26 @@ namespace AGEPRO.GUI
             this.dgvMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuCut,
             this.menuCopy,
-            this.menuPaste});
+            this.menuPaste,
+            this.menuDelete,
+            this.menuSeparator1,
+            this.menuSelectAll});
             this.dgvMenuStrip.Name = "dgvMenuStrip";
-            this.dgvMenuStrip.Size = new System.Drawing.Size(140, 70);
+            this.dgvMenuStrip.Size = new System.Drawing.Size(157, 120);
             // 
             // menuCut
             // 
             this.menuCut.Name = "menuCut";
             this.menuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuCut.Size = new System.Drawing.Size(139, 22);
+            this.menuCut.Size = new System.Drawing.Size(156, 22);
             this.menuCut.Text = "Cut";
+            this.menuCut.Click += new System.EventHandler(this.menuCut_Click);
             // 
             // menuCopy
             // 
             this.menuCopy.Name = "menuCopy";
             this.menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.menuCopy.Size = new System.Drawing.Size(139, 22);
+            this.menuCopy.Size = new System.Drawing.Size(156, 22);
             this.menuCopy.Text = "Copy";
             this.menuCopy.Click += new System.EventHandler(this.menuCopy_Click);
             // 
@@ -75,9 +85,30 @@ namespace AGEPRO.GUI
             // 
             this.menuPaste.Name = "menuPaste";
             this.menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.menuPaste.Size = new System.Drawing.Size(139, 22);
+            this.menuPaste.Size = new System.Drawing.Size(156, 22);
             this.menuPaste.Text = "Paste";
             this.menuPaste.Click += new System.EventHandler(this.menuPaste_Click);
+            // 
+            // menuSeparator1
+            // 
+            this.menuSeparator1.Name = "menuSeparator1";
+            this.menuSeparator1.Size = new System.Drawing.Size(153, 6);
+            // 
+            // menuSelectAll
+            // 
+            this.menuSelectAll.Name = "menuSelectAll";
+            this.menuSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.menuSelectAll.Size = new System.Drawing.Size(156, 22);
+            this.menuSelectAll.Text = "Select All";
+            this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
+            // 
+            // menuDelete
+            // 
+            this.menuDelete.Name = "menuDelete";
+            this.menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.menuDelete.Size = new System.Drawing.Size(156, 22);
+            this.menuDelete.Text = "Delete";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
             // NFTDataGridView
             // 
@@ -111,7 +142,7 @@ namespace AGEPRO.GUI
                     menuCopy.Enabled = false;
                     menuPaste.Enabled = false;
                 }
-                else
+                else //nftReadOnly is False
                 {
                     this.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
                     menuCut.Enabled = true;
@@ -145,6 +176,11 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void NFTDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -157,13 +193,33 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// Override the default Context menu with the NFTDataGridView's context menu strip
+        /// Overrides system's default Context menu with the NFTDataGridView's context menu strip
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void NFTDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.ContextMenuStrip = dgvMenuStrip;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuCut_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OnCopy();
+                OnDelete();
+                this.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured." + Environment.NewLine + Environment.NewLine +
+                ex.Message.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -186,21 +242,42 @@ namespace AGEPRO.GUI
             try
             {
                 OnPaste();
+                this.ClearSelection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occured." +
-                Environment.NewLine + Environment.NewLine +
-                ex.Message.ToString(),
-                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        
-            }
+                MessageBox.Show("An error occured." + Environment.NewLine + Environment.NewLine +
+                ex.Message.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }    
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            OnDelete();
+            this.ClearSelection();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuSelectAll_Click(object sender, EventArgs e)
+        {
             
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void OnCopy()
         {
-            //Check If Current Cell is in Edit Mode
             if (this.CurrentCell.IsInEditMode)
             {
                 Clipboard.SetDataObject(this.CurrentCell.EditedFormattedValue);
@@ -212,6 +289,10 @@ namespace AGEPRO.GUI
 
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void OnPaste()
         {
             //throw error if no cells are selected
@@ -222,12 +303,12 @@ namespace AGEPRO.GUI
                 return;
             }
 
-            
             string clipboardString = Clipboard.GetText();
             string[] clipboardLines = clipboardString.Split(new string[] { "\r\n" }, StringSplitOptions.None);
             int irow = this.CurrentCell.RowIndex;
             int icol = this.CurrentCell.ColumnIndex;
             DataGridViewCell oCell;
+
             //copy-and-paste-multiple-cells-within-datagridview
             foreach (string line in clipboardLines)
             {
@@ -240,7 +321,6 @@ namespace AGEPRO.GUI
                         if (icol + x < this.Columns.Count)
                         {
                             oCell = this[icol + x, irow];
-                            //IF cell is a DataGridViewComboBoxCell
                             if (oCell is DataGridViewComboBoxCell) 
                             {
                                MessageBox.Show("At Row Index " + oCell.RowIndex + ", Column Index " + oCell.ColumnIndex + ":" + 
@@ -250,8 +330,7 @@ namespace AGEPRO.GUI
                             else
                             {
                                 oCell.Value = cellsToPaste[x];
-                            }
-                            
+                            }      
                         }
                         else
                         {
@@ -264,11 +343,29 @@ namespace AGEPRO.GUI
                 {
                     break;
                 }
-
-                
-
             }
+        }//end OnPaste
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OnDelete()
+        {
+            //Get Selection Range
+            var selected = this.SelectedCells.Cast<DataGridViewCell>().ToList();
+            int startRow = selected.Min(x => x.RowIndex);
+            int startCol = selected.Min(x => x.ColumnIndex);
+            int endRow = selected.Max(x => x.RowIndex);
+            int endCol = selected.Max(x => x.ColumnIndex);
+
+            //"Delete" selected cells (by assigning them empty strings)
+            for (int irow = startRow; irow < (endRow+1); irow++)
+            {
+                for (int jcol = startCol; jcol < (endCol+1); jcol++)
+                {
+                    this.Rows[irow].Cells[jcol].Value = DBNull.Value;
+                }
+            }
 
         }
 
@@ -284,6 +381,7 @@ namespace AGEPRO.GUI
                 e.Exception.Message.ToString(),
                 "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
 
 
     }
