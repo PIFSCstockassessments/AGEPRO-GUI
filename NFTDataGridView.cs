@@ -16,12 +16,16 @@ namespace AGEPRO.GUI
         //Constructing Context Menu fo DataGridView
         private System.ComponentModel.IContainer components;
         private ContextMenuStrip dgvMenuStrip;
+        private ToolStripMenuItem menuCut;
         private ToolStripMenuItem menuCopy;
         private ToolStripMenuItem menuPaste;
-        private ToolStripSeparator menuSeparator1;
-        private ToolStripMenuItem menuSelectAll;
         private ToolStripMenuItem menuDelete;
-        private ToolStripMenuItem menuCut;
+        private ToolStripSeparator menuSeparator1;
+        private ToolStripSeparator menuSeparator2;
+        private ToolStripMenuItem menuFillWithZero;
+        private ToolStripMenuItem menuSelectAll;
+        
+  
         
 
         public NFTDataGridView()
@@ -46,9 +50,11 @@ namespace AGEPRO.GUI
             this.menuCut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuFillWithZero = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -61,9 +67,11 @@ namespace AGEPRO.GUI
             this.menuPaste,
             this.menuDelete,
             this.menuSeparator1,
-            this.menuSelectAll});
+            this.menuSelectAll,
+            this.menuSeparator2,
+            this.menuFillWithZero});
             this.dgvMenuStrip.Name = "dgvMenuStrip";
-            this.dgvMenuStrip.Size = new System.Drawing.Size(157, 120);
+            this.dgvMenuStrip.Size = new System.Drawing.Size(157, 148);
             // 
             // menuCut
             // 
@@ -89,6 +97,14 @@ namespace AGEPRO.GUI
             this.menuPaste.Text = "Paste";
             this.menuPaste.Click += new System.EventHandler(this.menuPaste_Click);
             // 
+            // menuDelete
+            // 
+            this.menuDelete.Name = "menuDelete";
+            this.menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.menuDelete.Size = new System.Drawing.Size(156, 22);
+            this.menuDelete.Text = "Delete";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
+            // 
             // menuSeparator1
             // 
             this.menuSeparator1.Name = "menuSeparator1";
@@ -102,13 +118,17 @@ namespace AGEPRO.GUI
             this.menuSelectAll.Text = "Select All";
             this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
             // 
-            // menuDelete
+            // menuSeparator2
             // 
-            this.menuDelete.Name = "menuDelete";
-            this.menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.menuDelete.Size = new System.Drawing.Size(156, 22);
-            this.menuDelete.Text = "Delete";
-            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
+            this.menuSeparator2.Name = "menuSeparator2";
+            this.menuSeparator2.Size = new System.Drawing.Size(153, 6);
+            // 
+            // menuFillWithZero
+            // 
+            this.menuFillWithZero.Name = "menuFillWithZero";
+            this.menuFillWithZero.Size = new System.Drawing.Size(156, 22);
+            this.menuFillWithZero.Text = "Fill Blank Cells";
+            this.menuFillWithZero.Click += new System.EventHandler(this.menuFillWithZero_Click);
             // 
             // NFTDataGridView
             // 
@@ -272,6 +292,12 @@ namespace AGEPRO.GUI
             
         }
 
+        private void menuFillWithZero_Click(object sender, EventArgs e)
+        {
+            FillDBNullsWithZero();
+            this.ClearSelection();
+        }
+
 
         /// <summary>
         /// 
@@ -352,7 +378,10 @@ namespace AGEPRO.GUI
         private void OnDelete()
         {
             //Get Selection Range
+            //DataGridViewSelectedCellCollection doesn't implement a generic IEnumerable<DataGridViewCell>, just IEnumerable.
+            //To enumerate the values when they are of type 'Object', .Cast<DataGridViewCell>
             var selected = this.SelectedCells.Cast<DataGridViewCell>().ToList();
+            //LINQ method to get start and end indexes
             int startRow = selected.Min(x => x.RowIndex);
             int startCol = selected.Min(x => x.ColumnIndex);
             int endRow = selected.Max(x => x.RowIndex);
@@ -366,7 +395,25 @@ namespace AGEPRO.GUI
                     this.Rows[irow].Cells[jcol].Value = DBNull.Value;
                 }
             }
+            
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void FillDBNullsWithZero()
+        {
+            for (int irow = 0; irow < this.Rows.Count; irow++)
+            {
+                for(int jcol =0; jcol < this.Columns.Count; jcol++)
+                {
+                    if(this.Rows[irow].Cells[jcol].Value is DBNull)
+                    {
+                        this.Rows[irow].Cells[jcol].Value = 0;
+                    }
+                }
+            }
+           
         }
 
         /// <summary>
@@ -381,6 +428,8 @@ namespace AGEPRO.GUI
                 e.Exception.Message.ToString(),
                 "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+
 
 
 
