@@ -103,7 +103,11 @@ namespace AGEPRO.GUI
 
         }
         
-
+        /// <summary>
+        /// Event when the "Create New Case" menu option is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void createNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Dialog box to ensure that the user intends to start over and "create a new case"
@@ -124,121 +128,8 @@ namespace AGEPRO.GUI
             
         }
 
-        
         /// <summary>
-        /// Replaces an AGEPRO parameter user control in panelAgeproParmeter when a tree node from 
-        /// treeViewNavigation is selected.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void treeViewNavigation_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
-            
-            //treeNode Action Dictionary
-            Dictionary<string, Action> treeNodeDict = 
-                new Dictionary<string, Action> {
-
-                {"treeNodeGeneral", selectGeneralOptionsParameterPanel},
-                {"treeNodeJan1", selectJan1WeightsParameterPanel},
-                {"treeNodeSSB", selectSSBWeightsParameterPanel},
-                {"treeNodeMidYear", selectMidYearWeightsParameterPanel},
-                {"treeNodeCatchWeight", selectCatchWeightParameterPanel},
-                {"treeNodeDiscardWeight", selectDiscardWeightParameterPanel},
-                {"treeNodeRecruitment",selectRecruitmentParameterPanel},
-                {"treeNodeFisherySelectivity", selectFisherySelectivityParameterPanel},
-                {"treeNodeDiscardFraction", selectDiscardFractionParameterPanel},
-                {"treeNodeNaturalMortality", selectNaturalMortalityParameterPanel},
-                {"treeNodeBiological", selectBiologicalParameterPanel},
-                {"treeNodeBootstrapping", selectBootstrappingParameterPanel},
-                {"treeNodeHarvestScenario", selectHarvestScenarioParameterPanel},
-                {"treeNodeMiscOptions", selectMiscOptionsParameterPanel},
-                
-            };
-            
-            //If treeNode Action Dictionary key matches 'selectedTreeNode', then invoke the key's method
-            if (treeNodeDict.ContainsKey(selectedTreeNode))
-            {
-                treeNodeDict[selectedTreeNode].Invoke();
-            }
-
-        }
-
-        private void selectGeneralOptionsParameterPanel()
-        {
-            selectAgeproParameterPanel(controlGeneralOptions);
-        }
-        private void selectJan1WeightsParameterPanel()
-        {
-            selectAgeproParameterPanel(controlJan1Weight, true);
-        }
-        private void selectSSBWeightsParameterPanel()
-        {
-            selectAgeproParameterPanel(controlSSBWeight, true);
-        }
-        private void selectMidYearWeightsParameterPanel()
-        {
-            selectAgeproParameterPanel(controlMidYearWeight, true);
-        }
-        private void selectCatchWeightParameterPanel()
-        {
-            selectAgeproParameterPanel(controlCatchWeight, true);
-        }
-        private void selectDiscardWeightParameterPanel()
-        {
-            selectAgeproParameterPanel(controlDiscardWeight, true);
-        }
-        private void selectFisherySelectivityParameterPanel()
-        {
-            selectAgeproParameterPanel(controlFisherySelectivity, true);
-        }
-        private void selectDiscardFractionParameterPanel()
-        {
-            selectAgeproParameterPanel(controlDiscardFraction, true);
-        }
-        private void selectNaturalMortalityParameterPanel()
-        {
-            selectAgeproParameterPanel(controlNaturalMortality, true);
-        }
-        private void selectBiologicalParameterPanel()
-        {
-            selectAgeproParameterPanel(controlBiological, true);
-        }
-        private void selectBootstrappingParameterPanel()
-        {
-            selectAgeproParameterPanel(controlBootstrap);
-        }
-        private void selectHarvestScenarioParameterPanel()
-        {
-            selectAgeproParameterPanel(controlHarvestScenario, true);
-        }
-        private void selectMiscOptionsParameterPanel()
-        {
-            selectAgeproParameterPanel(controlMiscOptions);
-        }
-        private void selectRecruitmentParameterPanel()
-        {
-            selectAgeproParameterPanel(controlRecruitment, true);
-        }
-
-        /// <summary>
-        /// Generalized method to set an AGEPRO Parameter User Control in the AGEPRO Parameter Panel
-        /// </summary>
-        /// <param name="ageproParameterControl">AGEPRO Parameter User Control</param>
-        /// <param name="dockFill">Option to set Panel's Dock value to Dockstyle.Fill </param>
-        private void selectAgeproParameterPanel(UserControl ageproParameterControl, bool dockFill = false)
-        {
-            this.panelAgeproParameter.Controls.Clear();
-            if (dockFill == true)
-            {
-                ageproParameterControl.Dock = DockStyle.Fill;
-            }
-            this.panelAgeproParameter.Controls.Add(ageproParameterControl);
-        }
-
-
-        /// <summary>
-        /// SWhen the "SET" button in the General options panel has been clicked.
+        /// Event when the "SET" button in the General options panel has been clicked.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -419,11 +310,19 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// Event when "Save AGEPRO Input Data As ..." menu option is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveAGEPROInputDataAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveAgeproInputDataFileDialog();
         }
 
+        /// <summary>
+        /// Saves data that is currently on the GUI to file. 
+        /// </summary>
         private void SaveAgeproInputDataFileDialog()
         {
             SaveFileDialog saveAgeproInputFile = new SaveFileDialog();
@@ -491,9 +390,17 @@ namespace AGEPRO.GUI
 
         }
         
+        /// <summary>
+        /// Event where "Launch AGEPRO Model" menu option is selected.
+        /// This gathers the bootstrap file, and stores it with the the GUI input under the "AGEPRO" subdirectory
+        /// in the desginagted user document directory. After the calcuation engine is done, the function will 
+        /// attempt to display the AGEPRO calcuation engine output file (if requested) and the directory the
+        /// outputs were written to.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             string ageproModelJobName;
             string jobDT;
             //set the user data work directory  
@@ -581,7 +488,10 @@ namespace AGEPRO.GUI
             
         }
 
-
+        /// <summary>
+        /// Launches the AGEPRO Calcuation Engine Program
+        /// </summary>
+        /// <param name="inpFile"></param>
         static void LaunchAgeproModel(string inpFile)
         {
             string dirRoot = Path.GetPathRoot(Environment.SystemDirectory);
@@ -592,7 +502,6 @@ namespace AGEPRO.GUI
             ageproEngine.Arguments = "\"\"" + inpFile + "\"\"";
             ageproEngine.WindowStyle = ProcessWindowStyle.Normal;
 
-            
             try
             {
                 using (Process exeProcess = Process.Start(ageproEngine))
@@ -609,6 +518,12 @@ namespace AGEPRO.GUI
             }
             
         }
+
+        /// <summary>
+        /// Launches a program to view the AGEPRO calcuation engine output file
+        /// </summary>
+        /// <param name="outfile">AGEPRO calcuation engine output file</param>
+        /// <param name="outputOptions"></param>
         static void LaunchOutputViewerProgram(string outfile, ControlMiscOptions outputOptions)
         {
             if (outputOptions.ageproOutputViewer == "System Default")
@@ -854,6 +769,13 @@ namespace AGEPRO.GUI
             return CreateBlankDataTable(numAges, numFleetYears, "Age");
         }
 
+        /// <summary>
+        /// Creates a generalized empty DataTable.
+        /// </summary>
+        /// <param name="yCol">Number of columns</param>
+        /// <param name="xRows">Number of Rows</param>
+        /// <param name="colName">Column Names</param>
+        /// <returns></returns>
         private DataTable CreateBlankDataTable(int yCol, int xRows, string colName)
         {
             DataTable blankDataTable = new DataTable();
@@ -922,6 +844,10 @@ namespace AGEPRO.GUI
             return control;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dgvtb"></param>
         private void EndEditModeFromDataGridViewTextBoxEditingControl(DataGridViewTextBoxEditingControl dgvtb)
         {
             DataGridView dgw = dgvtb.EditingControlDataGridView;
@@ -986,6 +912,119 @@ namespace AGEPRO.GUI
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// TreeViewNavigation 
+
+        /// <summary>
+        /// Replaces an AGEPRO parameter user control in panelAgeproParmeter when a tree node from 
+        /// treeViewNavigation is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeViewNavigation_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
+
+            //treeNode Action Dictionary
+            Dictionary<string, Action> treeNodeDict =
+                new Dictionary<string, Action> {
+
+                {"treeNodeGeneral", selectGeneralOptionsParameterPanel},
+                {"treeNodeJan1", selectJan1WeightsParameterPanel},
+                {"treeNodeSSB", selectSSBWeightsParameterPanel},
+                {"treeNodeMidYear", selectMidYearWeightsParameterPanel},
+                {"treeNodeCatchWeight", selectCatchWeightParameterPanel},
+                {"treeNodeDiscardWeight", selectDiscardWeightParameterPanel},
+                {"treeNodeRecruitment",selectRecruitmentParameterPanel},
+                {"treeNodeFisherySelectivity", selectFisherySelectivityParameterPanel},
+                {"treeNodeDiscardFraction", selectDiscardFractionParameterPanel},
+                {"treeNodeNaturalMortality", selectNaturalMortalityParameterPanel},
+                {"treeNodeBiological", selectBiologicalParameterPanel},
+                {"treeNodeBootstrapping", selectBootstrappingParameterPanel},
+                {"treeNodeHarvestScenario", selectHarvestScenarioParameterPanel},
+                {"treeNodeMiscOptions", selectMiscOptionsParameterPanel},
+                
+            };
+
+            //If treeNode Action Dictionary key matches 'selectedTreeNode', then invoke the key's method
+            if (treeNodeDict.ContainsKey(selectedTreeNode))
+            {
+                treeNodeDict[selectedTreeNode].Invoke();
+            }
+
+        }
+
+        private void selectGeneralOptionsParameterPanel()
+        {
+            selectAgeproParameterPanel(controlGeneralOptions);
+        }
+        private void selectJan1WeightsParameterPanel()
+        {
+            selectAgeproParameterPanel(controlJan1Weight, true);
+        }
+        private void selectSSBWeightsParameterPanel()
+        {
+            selectAgeproParameterPanel(controlSSBWeight, true);
+        }
+        private void selectMidYearWeightsParameterPanel()
+        {
+            selectAgeproParameterPanel(controlMidYearWeight, true);
+        }
+        private void selectCatchWeightParameterPanel()
+        {
+            selectAgeproParameterPanel(controlCatchWeight, true);
+        }
+        private void selectDiscardWeightParameterPanel()
+        {
+            selectAgeproParameterPanel(controlDiscardWeight, true);
+        }
+        private void selectFisherySelectivityParameterPanel()
+        {
+            selectAgeproParameterPanel(controlFisherySelectivity, true);
+        }
+        private void selectDiscardFractionParameterPanel()
+        {
+            selectAgeproParameterPanel(controlDiscardFraction, true);
+        }
+        private void selectNaturalMortalityParameterPanel()
+        {
+            selectAgeproParameterPanel(controlNaturalMortality, true);
+        }
+        private void selectBiologicalParameterPanel()
+        {
+            selectAgeproParameterPanel(controlBiological, true);
+        }
+        private void selectBootstrappingParameterPanel()
+        {
+            selectAgeproParameterPanel(controlBootstrap);
+        }
+        private void selectHarvestScenarioParameterPanel()
+        {
+            selectAgeproParameterPanel(controlHarvestScenario, true);
+        }
+        private void selectMiscOptionsParameterPanel()
+        {
+            selectAgeproParameterPanel(controlMiscOptions);
+        }
+        private void selectRecruitmentParameterPanel()
+        {
+            selectAgeproParameterPanel(controlRecruitment, true);
+        }
+
+        /// <summary>
+        /// Generalized method to set an AGEPRO Parameter User Control in the AGEPRO Parameter Panel
+        /// </summary>
+        /// <param name="ageproParameterControl">AGEPRO Parameter User Control</param>
+        /// <param name="dockFill">Option to set Panel's Dock value to Dockstyle.Fill </param>
+        private void selectAgeproParameterPanel(UserControl ageproParameterControl, bool dockFill = false)
+        {
+            this.panelAgeproParameter.Controls.Clear();
+            if (dockFill == true)
+            {
+                ageproParameterControl.Dock = DockStyle.Fill;
+            }
+            this.panelAgeproParameter.Controls.Add(ageproParameterControl);
         }
 
 
