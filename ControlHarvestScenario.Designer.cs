@@ -114,6 +114,7 @@
             this.dataGridHarvestScenarioTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridHarvestScenarioTable.Location = new System.Drawing.Point(29, 38);
             this.dataGridHarvestScenarioTable.Name = "dataGridHarvestScenarioTable";
+            this.dataGridHarvestScenarioTable.nftReadOnly = false;
             this.dataGridHarvestScenarioTable.ShowEditingIcon = false;
             this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(360, 460);
             this.dataGridHarvestScenarioTable.TabIndex = 1;

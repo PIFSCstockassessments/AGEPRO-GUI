@@ -9,11 +9,10 @@ namespace AGEPRO.GUI
 {
     public class NFTDataGridView : DataGridView
     {
-        private int maxRows {get; set;}
-        private int maxColumns {get; set;}
+
         private bool _nftReadOnly;
 
-        //Constructing Context Menu fo DataGridView
+        //Context Menu Strip for DataGridView
         private System.ComponentModel.IContainer components;
         private ContextMenuStrip dgvMenuStrip;
         private ToolStripMenuItem menuCut;
@@ -21,11 +20,13 @@ namespace AGEPRO.GUI
         private ToolStripMenuItem menuPaste;
         private ToolStripMenuItem menuDelete;
         private ToolStripSeparator menuSeparator1;
+        private ToolStripMenuItem menuSelectAll;
         private ToolStripSeparator menuSeparator2;
         private ToolStripMenuItem menuFillWithZero;
-        private ToolStripMenuItem menuSelectAll;
-        
-  
+
+        //Max Limits (unimplmented)
+        private int maxLimitRows { get; set; }
+        private int maxLimitColumns { get; set; }
         
 
         public NFTDataGridView()
@@ -33,8 +34,8 @@ namespace AGEPRO.GUI
             InitializeComponent(); //Component Designer generated Code
 
             nftReadOnly = false; //False by default
-            this.maxRows = 9999;
-            this.maxColumns = 9999;
+            this.maxLimitRows = 9999;
+            this.maxLimitColumns = 9999;
         }
 
         #region Component Designer generated code (InitializeComponent)
@@ -159,15 +160,17 @@ namespace AGEPRO.GUI
                 {
                     this.EditMode = DataGridViewEditMode.EditProgrammatically;
                     menuCut.Enabled = false;
-                    menuCopy.Enabled = false;
                     menuPaste.Enabled = false;
+                    menuDelete.Enabled = false;
+                    menuFillWithZero.Enabled = false;
                 }
                 else //nftReadOnly is False
                 {
                     this.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
                     menuCut.Enabled = true;
-                    menuCopy.Enabled = true;
                     menuPaste.Enabled = true;
+                    menuDelete.Enabled = true;
+                    menuFillWithZero.Enabled = true;
                 }
             }
             
@@ -289,9 +292,14 @@ namespace AGEPRO.GUI
         /// <param name="e"></param>
         private void menuSelectAll_Click(object sender, EventArgs e)
         {
-            
+            OnSelectAll();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuFillWithZero_Click(object sender, EventArgs e)
         {
             FillDBNullsWithZero();
@@ -397,6 +405,15 @@ namespace AGEPRO.GUI
             }
             
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OnSelectAll()
+        {
+            this.SelectAll();
+        }
+
 
         /// <summary>
         /// 
