@@ -176,19 +176,29 @@ namespace AGEPRO.GUI
             
         }
 
+        /// <summary>
+        /// Raises NFTDataGridView's context menu strip.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NFTDataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             this.ContextMenuStrip = dgvMenuStrip; 
         }
 
-        //right-click-context-menu-for-datagridview
+        /// <summary>
+        /// Sets the 'CurrentCell' location to the right-clicked selected cell. Behavior simliar to Excel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NFTDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //'right-click-context-menu-for-datagridview'        
             //Check if the user has right-clicked on the any cell of this Data Grid
             if (e.ColumnIndex != -1 && e.RowIndex != 1 && e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 DataGridViewCell dgvCell = (sender as DataGridView)[e.ColumnIndex, e.RowIndex];
-                //This will force the 'CurrentCell' to the right-clicked selected cell. Simliar to Excel.
+                
                 if (!dgvCell.Selected)
                 {
                     dgvCell.DataGridView.ClearSelection();
@@ -200,7 +210,7 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Launches the contextMenuStrip when the right mouse button is clicked on any cell of the data grid.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -226,7 +236,8 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Event when the "cut" menu option is selected. This will attempt to cut the contents of the data
+        /// grid to the clipboad.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -246,7 +257,8 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Event when the "Copy" menu option is selected. this will copy the contents of the data grid 
+        /// to the clipboard.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -256,7 +268,8 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Event when the "Paste" menu option is selected. This will attempt to paste the contents of the 
+        /// clipboard to the data grid.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -275,7 +288,7 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Event when the "Delete" menu option is selected. This will clear the selected values in this data grid.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -286,7 +299,7 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Event when the "Select All" menu option is selected. This will select all the cells in this data grid.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -296,7 +309,7 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Event when the "Fill Blank Cells" menu option is selected. This will fill applicable blank cells with zero.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -308,7 +321,7 @@ namespace AGEPRO.GUI
 
 
         /// <summary>
-        /// 
+        /// Copies the contents of the data grid to the system clipboard.
         /// </summary>
         private void OnCopy()
         {
@@ -325,7 +338,7 @@ namespace AGEPRO.GUI
 
 
         /// <summary>
-        /// 
+        /// Pastes the contents from the system clipboard to the data grid.
         /// </summary>
         private void OnPaste()
         {
@@ -343,7 +356,7 @@ namespace AGEPRO.GUI
             int icol = this.CurrentCell.ColumnIndex;
             DataGridViewCell oCell;
 
-            //copy-and-paste-multiple-cells-within-datagridview
+            //'copy-and-paste-multiple-cells-within-datagridview'
             foreach (string line in clipboardLines)
             {
                 string[] cellsToPaste = line.Split('\t');
@@ -381,13 +394,14 @@ namespace AGEPRO.GUI
         }//end OnPaste
 
         /// <summary>
-        /// 
+        /// Clears the values of the selected cells. 
         /// </summary>
         private void OnDelete()
         {
             //Get Selection Range
-            //DataGridViewSelectedCellCollection doesn't implement a generic IEnumerable<DataGridViewCell>, just IEnumerable.
-            //To enumerate the values when they are of type 'Object', .Cast<DataGridViewCell>
+            ///DataGridViewSelectedCellCollection (selectedCells) doesn't implement a generic 
+            ///IEnumerable<DataGridViewCell>, just IEnumerable.
+            ///To enumerate the values when they are of type 'Object', .Cast<DataGridViewCell>
             var selected = this.SelectedCells.Cast<DataGridViewCell>().ToList();
             //LINQ method to get start and end indexes
             int startRow = selected.Min(x => x.RowIndex);
@@ -407,7 +421,7 @@ namespace AGEPRO.GUI
         }
 
         /// <summary>
-        /// 
+        /// Selects all the cells in this data grid.
         /// </summary>
         private void OnSelectAll()
         {
@@ -416,7 +430,7 @@ namespace AGEPRO.GUI
 
 
         /// <summary>
-        /// 
+        /// Fills cells with blank or null values with a zero.
         /// </summary>
         private void FillDBNullsWithZero()
         {
