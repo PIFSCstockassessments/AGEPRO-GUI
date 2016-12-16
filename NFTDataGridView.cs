@@ -36,6 +36,9 @@ namespace AGEPRO.GUI
             nftReadOnly = false; //False by default
             this.maxLimitRows = 9999;
             this.maxLimitColumns = 9999;
+
+            this.AllowUserToResizeRows = false;
+
         }
 
         #region Component Designer generated code (InitializeComponent)
@@ -136,6 +139,7 @@ namespace AGEPRO.GUI
             this.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.NFTDataGridView_CellContextMenuStripNeeded);
             this.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseClick);
             this.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseDown);
+            this.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.NFTDataGridView_ColumnAdded);
             this.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.NFTDataGridView_DataError);
             this.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.NFTDataGridView_EditingControlShowing);
             this.dgvMenuStrip.ResumeLayout(false);
@@ -458,6 +462,16 @@ namespace AGEPRO.GUI
                 Environment.NewLine + Environment.NewLine +
                 e.Exception.Message.ToString(),
                 "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        /// When columns are added to NFTDataGridView, they will not be sortable by default. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NFTDataGridView_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
 
