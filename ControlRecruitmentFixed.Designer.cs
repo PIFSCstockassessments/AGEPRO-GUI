@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridFixedRecruitment = new System.Windows.Forms.DataGridView();
+            this.dataGridFixedRecruitment = new AGEPRO.GUI.NFTDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFixedRecruitment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +62,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridFixedRecruitment;
+        private AGEPRO.GUI.NFTDataGridView dataGridFixedRecruitment;
     }
 }

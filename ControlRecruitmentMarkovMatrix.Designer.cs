@@ -37,9 +37,9 @@
             this.labelRecruitTable = new System.Windows.Forms.Label();
             this.labelSSBTable = new System.Windows.Forms.Label();
             this.labelProbabilityTable = new System.Windows.Forms.Label();
-            this.dataGridRecruitTable = new System.Windows.Forms.DataGridView();
-            this.dataGridSSBTable = new System.Windows.Forms.DataGridView();
-            this.dataGridProbabilityTable = new System.Windows.Forms.DataGridView();
+            this.dataGridRecruitTable = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridSSBTable = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridProbabilityTable = new AGEPRO.GUI.NFTDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumRecruitLevels)).BeginInit();
             this.groupMarkovMatrixParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumSSBLevels)).BeginInit();
@@ -210,8 +210,8 @@
         private System.Windows.Forms.Label labelRecruitTable;
         private System.Windows.Forms.Label labelSSBTable;
         private System.Windows.Forms.Label labelProbabilityTable;
-        private System.Windows.Forms.DataGridView dataGridRecruitTable;
-        private System.Windows.Forms.DataGridView dataGridSSBTable;
-        private System.Windows.Forms.DataGridView dataGridProbabilityTable;
+        private AGEPRO.GUI.NFTDataGridView dataGridRecruitTable;
+        private AGEPRO.GUI.NFTDataGridView dataGridSSBTable;
+        private AGEPRO.GUI.NFTDataGridView dataGridProbabilityTable;
     }
 }

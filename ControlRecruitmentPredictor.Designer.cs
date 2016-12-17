@@ -38,8 +38,8 @@
             this.labelNumRecruitPredictors = new System.Windows.Forms.Label();
             this.labelCoefficients = new System.Windows.Forms.Label();
             this.labelObservations = new System.Windows.Forms.Label();
-            this.dataGridCoefficients = new System.Windows.Forms.DataGridView();
-            this.dataGridObservations = new System.Windows.Forms.DataGridView();
+            this.dataGridCoefficients = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridObservations = new AGEPRO.GUI.NFTDataGridView();
             this.groupPredictorParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumRecruitPredictors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCoefficients)).BeginInit();
@@ -203,7 +203,7 @@
         private System.Windows.Forms.Label labelNumRecruitPredictors;
         private System.Windows.Forms.Label labelCoefficients;
         private System.Windows.Forms.Label labelObservations;
-        private System.Windows.Forms.DataGridView dataGridCoefficients;
-        private System.Windows.Forms.DataGridView dataGridObservations;
+        private AGEPRO.GUI.NFTDataGridView dataGridCoefficients;
+        private AGEPRO.GUI.NFTDataGridView dataGridObservations;
     }
 }

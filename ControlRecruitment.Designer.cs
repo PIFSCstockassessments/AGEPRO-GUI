@@ -32,8 +32,8 @@
             this.tabRecruitment = new System.Windows.Forms.TabPage();
             this.labelRecruitProb = new System.Windows.Forms.Label();
             this.labelSelectRecruitModels = new System.Windows.Forms.Label();
-            this.dataGridRecruitProb = new System.Windows.Forms.DataGridView();
-            this.dataGridSelectRecruitModels = new System.Windows.Forms.DataGridView();
+            this.dataGridRecruitProb = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridSelectRecruitModels = new AGEPRO.GUI.NFTDataGridView();
             this.groupScalingFactor = new System.Windows.Forms.GroupBox();
             this.textBoxSSBScalingFactor = new System.Windows.Forms.TextBox();
             this.textBoxRecruitngScalingFactor = new System.Windows.Forms.TextBox();
@@ -108,12 +108,14 @@
             // 
             this.dataGridRecruitProb.AllowUserToAddRows = false;
             this.dataGridRecruitProb.AllowUserToDeleteRows = false;
+            this.dataGridRecruitProb.AllowUserToResizeRows = false;
             this.dataGridRecruitProb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridRecruitProb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRecruitProb.Location = new System.Drawing.Point(18, 211);
             this.dataGridRecruitProb.Name = "dataGridRecruitProb";
+            this.dataGridRecruitProb.nftReadOnly = false;
             this.dataGridRecruitProb.Size = new System.Drawing.Size(843, 154);
             this.dataGridRecruitProb.TabIndex = 4;
             this.dataGridRecruitProb.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRecruitProb_CellFormatting);
@@ -122,11 +124,13 @@
             // 
             this.dataGridSelectRecruitModels.AllowUserToAddRows = false;
             this.dataGridSelectRecruitModels.AllowUserToDeleteRows = false;
+            this.dataGridSelectRecruitModels.AllowUserToResizeRows = false;
             this.dataGridSelectRecruitModels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridSelectRecruitModels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSelectRecruitModels.Location = new System.Drawing.Point(18, 23);
             this.dataGridSelectRecruitModels.Name = "dataGridSelectRecruitModels";
+            this.dataGridSelectRecruitModels.nftReadOnly = false;
             this.dataGridSelectRecruitModels.ShowEditingIcon = false;
             this.dataGridSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
             this.dataGridSelectRecruitModels.TabIndex = 2;
@@ -261,8 +265,8 @@
         private System.Windows.Forms.TabPage tabRecruitModels;
         private System.Windows.Forms.Label labelRecruitProb;
         private System.Windows.Forms.Label labelSelectRecruitModels;
-        private System.Windows.Forms.DataGridView dataGridRecruitProb;
-        private System.Windows.Forms.DataGridView dataGridSelectRecruitModels;
+        private AGEPRO.GUI.NFTDataGridView dataGridRecruitProb;
+        private AGEPRO.GUI.NFTDataGridView dataGridSelectRecruitModels;
         private System.Windows.Forms.GroupBox groupScalingFactor;
         private System.Windows.Forms.TextBox textBoxSSBScalingFactor;
         private System.Windows.Forms.TextBox textBoxRecruitngScalingFactor;
