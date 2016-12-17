@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.labelStochasticAgeTable = new System.Windows.Forms.Label();
-            this.dataGridStochasticAgeTable = new System.Windows.Forms.DataGridView();
+            this.dataGridStochasticAgeTable = new AGEPRO.GUI.NFTDataGridView();
             this.labelCVTable = new System.Windows.Forms.Label();
-            this.dataGridCVTable = new System.Windows.Forms.DataGridView();
+            this.dataGridCVTable = new AGEPRO.GUI.NFTDataGridView();
             this.checkBoxTimeVarying = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStochasticAgeTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCVTable)).BeginInit();
@@ -122,9 +122,9 @@
         #endregion
 
         private System.Windows.Forms.Label labelStochasticAgeTable;
-        private System.Windows.Forms.DataGridView dataGridStochasticAgeTable;
+        private AGEPRO.GUI.NFTDataGridView dataGridStochasticAgeTable;
         private System.Windows.Forms.Label labelCVTable;
-        private System.Windows.Forms.DataGridView dataGridCVTable;
+        private AGEPRO.GUI.NFTDataGridView dataGridCVTable;
         private System.Windows.Forms.CheckBox checkBoxTimeVarying;
     }
 }
