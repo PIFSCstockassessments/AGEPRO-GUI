@@ -38,7 +38,7 @@ namespace AGEPRO.GUI
             this.maxLimitColumns = 9999;
 
             this.AllowUserToResizeRows = false;
-
+            this.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
 
         #region Component Designer generated code (InitializeComponent)
