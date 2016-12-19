@@ -24,19 +24,13 @@ namespace AGEPRO.GUI
         private ToolStripSeparator menuSeparator2;
         private ToolStripMenuItem menuFillWithZero;
 
-        //Max Limits (unimplmented)
-        private int maxLimitRows { get; set; }
-        private int maxLimitColumns { get; set; }
-        
+       
 
         public NFTDataGridView()
         {
             InitializeComponent(); //Component Designer generated Code
 
             nftReadOnly = false; //False by default
-            this.maxLimitRows = 9999;
-            this.maxLimitColumns = 9999;
-
             this.AllowUserToResizeRows = false;
             this.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
