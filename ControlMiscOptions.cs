@@ -191,14 +191,6 @@ namespace AGEPRO.GUI
             }
             else
             {
-                //Create a Single Column Empty Table for the data grid view. Each row represents an age.
-                //DataTable retroAdjustmentFallbackTable = new DataTable();
-                //retroAdjustmentFallbackTable.Columns.Add("factor", typeof(double));
-                //for (int i = 0; i < this.miscOptionsNAges ; i++)
-                //{
-                //    retroAdjustmentFallbackTable.Rows.Add();
-                //}
-                //this.dataGridRetroAdjustment.DataSource = retroAdjustmentFallbackTable;
                 this.dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(this.miscOptionsNAges);
 
                 SetRetroAdjustmentFactorRowHeaders();
@@ -206,13 +198,20 @@ namespace AGEPRO.GUI
             }
         }
 
+        /// <summary>
+        /// Creates a fallback Data Table source that the Retro Adjustment Factors Data Grid 
+        /// can use.
+        /// </summary>
+        /// <param name="numAges">Number of age rows. Each row represents an age.</param>
+        /// <returns>Returns a single column Data Table populated with 0.</returns>
         public DataTable GetRetroAdjustmentFallbackTable(int numAges)
         {
+            //Create a Single Column Table for the data grid view. Each row represents an age.
             DataTable fallbackTable = new DataTable();
-            fallbackTable.Columns.Add("factor", typeof(double));
+            fallbackTable.Columns.Add("factor");
             for (int i = 0; i < numAges; i++)
             {
-                fallbackTable.Rows.Add();
+                fallbackTable.Rows.Add(0);
             }
             return fallbackTable;
         }
