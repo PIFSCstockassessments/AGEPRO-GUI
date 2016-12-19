@@ -32,7 +32,7 @@
             this.textBoxPStarTargetYear = new System.Windows.Forms.TextBox();
             this.textBoxOverfishingF = new System.Windows.Forms.TextBox();
             this.spinBoxNumPStarLevels = new System.Windows.Forms.NumericUpDown();
-            this.dataGridPStarLevelValues = new System.Windows.Forms.DataGridView();
+            this.dataGridPStarLevelValues = new AGEPRO.GUI.NFTDataGridView();
             this.labelPStarTargetYear = new System.Windows.Forms.Label();
             this.labelOverfishingF = new System.Windows.Forms.Label();
             this.labelNumPStarLevels = new System.Windows.Forms.Label();
@@ -162,7 +162,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupPStarParameters;
-        private System.Windows.Forms.DataGridView dataGridPStarLevelValues;
+        private AGEPRO.GUI.NFTDataGridView dataGridPStarLevelValues;
         private System.Windows.Forms.Label labelPStarTargetYear;
         private System.Windows.Forms.Label labelOverfishingF;
         private System.Windows.Forms.Label labelNumPStarLevels;

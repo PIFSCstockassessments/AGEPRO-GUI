@@ -61,7 +61,7 @@
             this.checkBoxScaleFactors = new System.Windows.Forms.CheckBox();
             this.groupRetroAdjustment = new System.Windows.Forms.GroupBox();
             this.checkBoxRetroAdjustment = new System.Windows.Forms.CheckBox();
-            this.dataGridRetroAdjustment = new System.Windows.Forms.DataGridView();
+            this.dataGridRetroAdjustment = new AGEPRO.GUI.NFTDataGridView();
             this.groupOutputViewer = new System.Windows.Forms.GroupBox();
             this.labelOutputViewerProgram = new System.Windows.Forms.Label();
             this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
@@ -527,7 +527,7 @@
         private System.Windows.Forms.CheckBox checkBoxScaleFactors;
         private System.Windows.Forms.GroupBox groupRetroAdjustment;
         private System.Windows.Forms.CheckBox checkBoxRetroAdjustment;
-        private System.Windows.Forms.DataGridView dataGridRetroAdjustment;
+        private AGEPRO.GUI.NFTDataGridView dataGridRetroAdjustment;
         private System.Windows.Forms.NumericUpDown spinBoxReportPercentile;
         private System.Windows.Forms.GroupBox groupOutputViewer;
         private System.Windows.Forms.ComboBox comboBoxOutputViewerProgram;
