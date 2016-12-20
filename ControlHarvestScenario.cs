@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AGEPRO.CoreLib;
+using Nmfs.Agepro.CoreLib;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     public partial class ControlHarvestScenario : UserControl
     {
@@ -17,8 +17,8 @@ namespace AGEPRO.GUI
         private ControlHarvestCalcRebuilder controlHarvestRebuilder;
         private ControlHarvestCalcPStar controlHarvestPStar;
         public string[] seqYears { get; set; }
-        public AGEPRO.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
-        public AGEPRO.CoreLib.PStarCalculation PStar { get; set; }
+        public Nmfs.Agepro.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
+        public Nmfs.Agepro.CoreLib.PStarCalculation PStar { get; set; }
 
         public ControlHarvestScenario()
         {
@@ -66,7 +66,7 @@ namespace AGEPRO.GUI
                         //Create PStar Table
                         PStar.pStarTable = PStar.CreateNewPStarTable();
                         PStar.pStarTable.Rows.Add();
-                        AGEPRO.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.pStarTable);
+                        Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.pStarTable);
                     }
                     controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
                 }
@@ -143,9 +143,9 @@ namespace AGEPRO.GUI
         /// existing AGEPRO input file. 
         /// </summary>
         /// <param name="inputData"></param>
-        public void SetHarvestCalcuationOptionFromInput(AGEPRO.CoreLib.AgeproInputFile inpData)
+        public void SetHarvestCalcuationOptionFromInput(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
         {
-            AGEPRO.CoreLib.HarvestScenarioAnalysis calcType = inpData.harvestScenario.analysisType;
+            Nmfs.Agepro.CoreLib.HarvestScenarioAnalysis calcType = inpData.harvestScenario.analysisType;
 
             //Clean out any previous instances of pstar and/or rebuilder. 
             if (this.PStar != null)

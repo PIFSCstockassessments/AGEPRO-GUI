@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlMiscOptions
     {
@@ -61,7 +61,7 @@
             this.checkBoxScaleFactors = new System.Windows.Forms.CheckBox();
             this.groupRetroAdjustment = new System.Windows.Forms.GroupBox();
             this.checkBoxRetroAdjustment = new System.Windows.Forms.CheckBox();
-            this.dataGridRetroAdjustment = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
             this.groupOutputViewer = new System.Windows.Forms.GroupBox();
             this.labelOutputViewerProgram = new System.Windows.Forms.Label();
             this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
@@ -527,7 +527,7 @@
         private System.Windows.Forms.CheckBox checkBoxScaleFactors;
         private System.Windows.Forms.GroupBox groupRetroAdjustment;
         private System.Windows.Forms.CheckBox checkBoxRetroAdjustment;
-        private AGEPRO.GUI.NftDataGridView dataGridRetroAdjustment;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridRetroAdjustment;
         private System.Windows.Forms.NumericUpDown spinBoxReportPercentile;
         private System.Windows.Forms.GroupBox groupOutputViewer;
         private System.Windows.Forms.ComboBox comboBoxOutputViewerProgram;

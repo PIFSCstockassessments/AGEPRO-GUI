@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     class AgeproPropertyChanged : INotifyPropertyChanged
     {

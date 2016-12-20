@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     public partial class ControlHarvestCalcPStar : UserControl
     {
@@ -25,7 +25,7 @@ namespace AGEPRO.GUI
             setControlValues = false; 
         }
         
-        public void SetHarvestCalcPStarControls(AGEPRO.CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam) 
+        public void SetHarvestCalcPStarControls(Nmfs.Agepro.CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam) 
         {
             setControlValues = true;
 

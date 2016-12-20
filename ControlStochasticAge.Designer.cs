@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlStochasticAge
     {

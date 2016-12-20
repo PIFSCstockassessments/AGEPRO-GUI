@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     class RebuilderTargetType : AgeproPropertyChanged
     {

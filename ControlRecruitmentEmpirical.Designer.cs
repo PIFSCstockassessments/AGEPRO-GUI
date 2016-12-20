@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlRecruitmentEmpirical
     {
@@ -33,7 +33,7 @@
             this.spinBoxNumObservations = new System.Windows.Forms.NumericUpDown();
             this.labelNumObservations = new System.Windows.Forms.Label();
             this.labelObservations = new System.Windows.Forms.Label();
-            this.dataGridRecruitTable = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridRecruitTable = new Nmfs.Agepro.Gui.NftDataGridView();
             this.labelSSBHinge = new System.Windows.Forms.Label();
             this.textBoxSSBHinge = new System.Windows.Forms.TextBox();
             this.groupEmpiricalParameters.SuspendLayout();
@@ -146,7 +146,7 @@
         protected System.Windows.Forms.NumericUpDown spinBoxNumObservations;
         protected System.Windows.Forms.Label labelNumObservations;
         protected System.Windows.Forms.Label labelObservations;
-        protected AGEPRO.GUI.NftDataGridView dataGridRecruitTable;
+        protected Nmfs.Agepro.Gui.NftDataGridView dataGridRecruitTable;
         protected System.Windows.Forms.TextBox textBoxSSBHinge;
         protected System.Windows.Forms.Label labelSSBHinge;
     }

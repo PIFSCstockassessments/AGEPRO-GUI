@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlRecruitment
     {
@@ -32,8 +32,8 @@
             this.tabRecruitment = new System.Windows.Forms.TabPage();
             this.labelRecruitProb = new System.Windows.Forms.Label();
             this.labelSelectRecruitModels = new System.Windows.Forms.Label();
-            this.dataGridRecruitProb = new AGEPRO.GUI.NftDataGridView();
-            this.dataGridSelectRecruitModels = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridRecruitProb = new Nmfs.Agepro.Gui.NftDataGridView();
+            this.dataGridSelectRecruitModels = new Nmfs.Agepro.Gui.NftDataGridView();
             this.groupScalingFactor = new System.Windows.Forms.GroupBox();
             this.textBoxSSBScalingFactor = new System.Windows.Forms.TextBox();
             this.textBoxRecruitngScalingFactor = new System.Windows.Forms.TextBox();
@@ -265,8 +265,8 @@
         private System.Windows.Forms.TabPage tabRecruitModels;
         private System.Windows.Forms.Label labelRecruitProb;
         private System.Windows.Forms.Label labelSelectRecruitModels;
-        private AGEPRO.GUI.NftDataGridView dataGridRecruitProb;
-        private AGEPRO.GUI.NftDataGridView dataGridSelectRecruitModels;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridRecruitProb;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridSelectRecruitModels;
         private System.Windows.Forms.GroupBox groupScalingFactor;
         private System.Windows.Forms.TextBox textBoxSSBScalingFactor;
         private System.Windows.Forms.TextBox textBoxRecruitngScalingFactor;

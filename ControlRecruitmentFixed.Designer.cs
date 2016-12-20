@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlRecruitmentFixed
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridFixedRecruitment = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridFixedRecruitment = new Nmfs.Agepro.Gui.NftDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFixedRecruitment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +62,6 @@
 
         #endregion
 
-        private AGEPRO.GUI.NftDataGridView dataGridFixedRecruitment;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridFixedRecruitment;
     }
 }

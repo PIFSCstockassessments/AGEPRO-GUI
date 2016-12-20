@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     /// <summary>
     /// Settings for AGEPRO output and optional parameters.

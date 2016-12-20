@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlRecruitmentPredictor
     {
@@ -38,8 +38,8 @@
             this.labelNumRecruitPredictors = new System.Windows.Forms.Label();
             this.labelCoefficients = new System.Windows.Forms.Label();
             this.labelObservations = new System.Windows.Forms.Label();
-            this.dataGridCoefficients = new AGEPRO.GUI.NftDataGridView();
-            this.dataGridObservations = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridCoefficients = new Nmfs.Agepro.Gui.NftDataGridView();
+            this.dataGridObservations = new Nmfs.Agepro.Gui.NftDataGridView();
             this.groupPredictorParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumRecruitPredictors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCoefficients)).BeginInit();
@@ -203,7 +203,7 @@
         private System.Windows.Forms.Label labelNumRecruitPredictors;
         private System.Windows.Forms.Label labelCoefficients;
         private System.Windows.Forms.Label labelObservations;
-        private AGEPRO.GUI.NftDataGridView dataGridCoefficients;
-        private AGEPRO.GUI.NftDataGridView dataGridObservations;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridCoefficients;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridObservations;
     }
 }

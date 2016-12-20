@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     public partial class ControlHarvestCalcRebuilder : UserControl
     {
@@ -29,7 +29,7 @@ namespace AGEPRO.GUI
         }
 
         public void SetHarvestCalcRebuilderControls
-            (AGEPRO.CoreLib.RebuilderTargetCalculation rebuilderTarget, Panel panelHarvestCalcParam)
+            (Nmfs.Agepro.CoreLib.RebuilderTargetCalculation rebuilderTarget, Panel panelHarvestCalcParam)
         {
             //Clear Previous Data Bindings
             this.textBoxRebuilderTargetYear.DataBindings.Clear();

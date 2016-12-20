@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
-using AGEPRO.CoreLib;
+using Nmfs.Agepro.CoreLib;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
 
     public partial class FormAgepro : Form
@@ -215,7 +215,7 @@ namespace AGEPRO.GUI
                 controlHarvestScenario.SetHarvestScenarioInputDataTable(userGenBasedHarvestScenarioTable);
 
 
-                //Set General parameters to AGEPRO.CoreLib inputData class
+                //Set General parameters to Nmfs.Agepro.CoreLib inputData class
                 inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
                 inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
                 inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
@@ -291,7 +291,7 @@ namespace AGEPRO.GUI
             {
                 try
                 {
-                    //Use AGEPRO.CoreLib.AgeproInputFile.ReadInputFile
+                    //Use Nmfs.Agepro.CoreLib.AgeproInputFile.ReadInputFile
                     inputData = new AgeproInputFile();
                     inputData.ReadInputFile(openAgeproInputFile.FileName);
                     
@@ -694,8 +694,8 @@ namespace AGEPRO.GUI
         /// <param name="ctl">AGEPRO Stochastic Parameter User Control and Values</param>
         /// <param name="inp">AGEPRO InputFile StochasticAge Parameters </param>
         /// <param name="generalOpt">AGEPRO InputFile General Options values</param>
-        private void loadStochasticAgeInputData(ControlStochasticAge ctl, AGEPRO.CoreLib.AgeproStochasticAgeTable inp, 
-            AGEPRO.CoreLib.AgeproGeneral generalOpt)
+        private void loadStochasticAgeInputData(ControlStochasticAge ctl, Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp, 
+            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
         {   
             ctl.readInputFileState = true;
             ctl.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
@@ -723,11 +723,11 @@ namespace AGEPRO.GUI
         /// <param name="generalOpt">AGEPRO InputFile General Options</param>
         /// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
         /// provide one</param>
-        private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, AGEPRO.CoreLib.AgeproWeightAgeTable inp,
-            AGEPRO.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
+        private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
+            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
         {
             ctl.indexWeightOption = inp.weightOpt;
-            loadStochasticAgeInputData((ControlStochasticAge)ctl, (AGEPRO.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+            loadStochasticAgeInputData((ControlStochasticAge)ctl, (Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
 
             //Option to to fallback and create a empty DataTable if there input file DataTable (for 
             //weightAgeTable CVtable is Null)
@@ -793,10 +793,10 @@ namespace AGEPRO.GUI
 
 
         /// <summary>
-        /// Generalized Method to set the DataGridView's Data Sources from AGEPRO.CoreLib Input File Data Files 
+        /// Generalized Method to set the DataGridView's Data Sources from Nmfs.Agepro.CoreLib Input File Data Files 
         /// </summary>
         /// <param name="dgvTable">Control's DataGridView DataTable source</param>
-        /// <param name="inpFileTable">DataTable from AGEPRO.CoreLib.AgeproInputFile DataTables</param>
+        /// <param name="inpFileTable">DataTable from Nmfs.Agepro.CoreLib.AgeproInputFile DataTables</param>
         /// <returns>DataGridView DataTable</returns>
         private DataTable getAgeproInputDataTable (DataTable dgvTable, DataTable inpFileTable)
         {

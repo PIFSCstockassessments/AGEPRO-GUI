@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AGEPRO.CoreLib;
+using Nmfs.Agepro.CoreLib;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     public partial class ControlRecruitment : UserControl
     {
@@ -17,7 +17,7 @@ namespace AGEPRO.GUI
         public int[] recruitModelSelection { get; set; }
         public string[] seqRecruitYears { get; set; }
 
-        public List<AGEPRO.CoreLib.RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+        public List<Nmfs.Agepro.CoreLib.RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
         public bool populateDGV { get; set; }

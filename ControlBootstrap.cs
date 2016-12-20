@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     public partial class ControlBootstrap : UserControl
     {
@@ -34,7 +34,7 @@ namespace AGEPRO.GUI
 
 
         //TODO:buttonLoadFile action
-        public void SetBootstrapControls(AGEPRO.CoreLib.AgeproBootstrap bootstrapOpt)
+        public void SetBootstrapControls(Nmfs.Agepro.CoreLib.AgeproBootstrap bootstrapOpt)
         {
             //Clear any existing bindings before creating new ones.
             this.textBoxBootstrapFile.DataBindings.Clear();

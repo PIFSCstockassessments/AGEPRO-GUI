@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     public class NftDataGridView : DataGridView
     {

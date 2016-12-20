@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AGEPRO.CoreLib;
+using Nmfs.Agepro.CoreLib;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     static class Program
     {

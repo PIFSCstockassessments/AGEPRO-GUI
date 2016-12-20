@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     [Serializable]
     public class InvalidAgeproGuiParameterException : Exception

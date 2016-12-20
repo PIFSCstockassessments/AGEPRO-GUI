@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     /// <summary>
     /// This represents the various specifications avialable for the Harvest Specification Basis column
     /// of the Harvest Scenario Table. 
     /// 
     /// This can be used in used for populating comboBoxes. They are used to set the "Harvest Specification" 
-    /// DataGridViewComboBoxColumn of the HarvestScenarioTable in AGEPRO.GUI.ControlHarvestScenario.
+    /// DataGridViewComboBoxColumn of the HarvestScenarioTable in Nmfs.Agepro.Gui.ControlHarvestScenario.
     /// 
     /// (Not implemented yet, the HarvestScenarioTable class can use HarvestSpecification)  
     /// </summary>

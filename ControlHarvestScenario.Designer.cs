@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlHarvestScenario
     {
@@ -34,7 +34,7 @@
             this.radioPStar = new System.Windows.Forms.RadioButton();
             this.radioRebuilderTarget = new System.Windows.Forms.RadioButton();
             this.panelAltCalcParameters = new System.Windows.Forms.Panel();
-            this.dataGridHarvestScenarioTable = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridHarvestScenarioTable = new Nmfs.Agepro.Gui.NftDataGridView();
             this.groupAltCalcParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHarvestScenarioTable)).BeginInit();
             this.SuspendLayout();

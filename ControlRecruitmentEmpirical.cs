@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AGEPRO.CoreLib;
+using Nmfs.Agepro.CoreLib;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
     public partial class ControlRecruitmentEmpirical : UserControl
     {
@@ -53,7 +53,7 @@ namespace AGEPRO.GUI
                 //(in case control couldn't prevent it)
                 if (newNumObservationsValue > maxNumObservations)
                 {
-                    throw new AGEPRO.CoreLib.InvalidAgeproParameterException(
+                    throw new Nmfs.Agepro.CoreLib.InvalidAgeproParameterException(
                         "Number of Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
                 observationTable = ControlRecruitment.ResizeDataGridTable(observationTable, newNumObservationsValue);

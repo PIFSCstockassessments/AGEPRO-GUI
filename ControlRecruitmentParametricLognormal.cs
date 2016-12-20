@@ -5,11 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using AGEPRO.CoreLib;
+using Nmfs.Agepro.CoreLib;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
-    public partial class ControlRecruitmentParametricLognormal : AGEPRO.GUI.ControlRecruitmentParametricBase
+    public partial class ControlRecruitmentParametricLognormal : Nmfs.Agepro.Gui.ControlRecruitmentParametricBase
     {
         public ControlRecruitmentParametricLognormal()
         {

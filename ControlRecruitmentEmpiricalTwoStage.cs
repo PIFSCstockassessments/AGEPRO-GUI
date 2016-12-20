@@ -5,11 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using AGEPRO.CoreLib;
+using Nmfs.Agepro.CoreLib;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
-    public partial class ControlRecruitmentEmpiricalTwoStage : AGEPRO.GUI.ControlRecruitmentEmpirical
+    public partial class ControlRecruitmentEmpiricalTwoStage : Nmfs.Agepro.Gui.ControlRecruitmentEmpirical
     {
         public ControlRecruitmentEmpiricalTwoStage()
         {
@@ -24,8 +24,8 @@ namespace AGEPRO.GUI
             this.textBoxSSBBreakValue = new System.Windows.Forms.TextBox();
             this.labelLv1ObservationTable = new System.Windows.Forms.Label();
             this.labelLv2ObservationTable = new System.Windows.Forms.Label();
-            this.dataGridLv1ObservationTable = new AGEPRO.GUI.NftDataGridView();
-            this.dataGridLv2ObservationTable = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridLv1ObservationTable = new Nmfs.Agepro.Gui.NftDataGridView();
+            this.dataGridLv2ObservationTable = new Nmfs.Agepro.Gui.NftDataGridView();
             //this.groupEmpiricalParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxLv1NumObservations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxLv2NumObservations)).BeginInit();
@@ -187,8 +187,8 @@ namespace AGEPRO.GUI
         private System.Windows.Forms.TextBox textBoxSSBBreakValue;
         private System.Windows.Forms.Label labelLv1ObservationTable;
         private System.Windows.Forms.Label labelLv2ObservationTable;
-        private AGEPRO.GUI.NftDataGridView dataGridLv1ObservationTable;
-        private AGEPRO.GUI.NftDataGridView dataGridLv2ObservationTable;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridLv1ObservationTable;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridLv2ObservationTable;
 
         protected override void buttonSetParameters_Click(object sender, EventArgs e)
         {
@@ -199,23 +199,23 @@ namespace AGEPRO.GUI
 
                 if (newNumLv1Obs > maxNumObservations)
                 {
-                    throw new AGEPRO.CoreLib.InvalidAgeproParameterException(
+                    throw new Nmfs.Agepro.CoreLib.InvalidAgeproParameterException(
                         "Number of Level 1 Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
                 if (newNumLv2Obs > maxNumObservations)
                 {
-                    throw new AGEPRO.CoreLib.InvalidAgeproParameterException(
+                    throw new Nmfs.Agepro.CoreLib.InvalidAgeproParameterException(
                         "Number of Level 2 Observations exceed maximum limit of " + maxNumObservations + ".");
                 }
 
                 lv1Observations = ControlRecruitment.ResizeDataGridTable(lv1Observations, newNumLv1Obs);
                 lv2Observations = ControlRecruitment.ResizeDataGridTable(lv2Observations, newNumLv2Obs);
 
-                ((AGEPRO.CoreLib.TwoStageEmpiricalRecruitment)
+                ((Nmfs.Agepro.CoreLib.TwoStageEmpiricalRecruitment)
                     this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv1NumObs = newNumLv1Obs;
-                ((AGEPRO.CoreLib.TwoStageEmpiricalRecruitment)
+                ((Nmfs.Agepro.CoreLib.TwoStageEmpiricalRecruitment)
                     this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv2NumObs = newNumLv2Obs;
-                ((AGEPRO.CoreLib.TwoStageEmpiricalRecruitment)
+                ((Nmfs.Agepro.CoreLib.TwoStageEmpiricalRecruitment)
                     this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).SSBBreakVal 
                     = SSBBreakValue;
             }

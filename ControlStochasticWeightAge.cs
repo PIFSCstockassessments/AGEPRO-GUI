@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AGEPRO.GUI
+namespace Nmfs.Agepro.Gui
 {
-    public partial class ControlStochasticWeightAge : AGEPRO.GUI.ControlStochasticAge
+    public partial class ControlStochasticWeightAge : Nmfs.Agepro.Gui.ControlStochasticAge
     {
         private System.Windows.Forms.RadioButton radioWeightsFromCatch;
         private System.Windows.Forms.RadioButton radioWeightsFromMidYear;

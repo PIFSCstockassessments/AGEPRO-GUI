@@ -1,4 +1,4 @@
-﻿namespace AGEPRO.GUI
+﻿namespace Nmfs.Agepro.Gui
 {
     partial class ControlStochasticAgeDataGridTable
     {
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.labelStochasticAgeTable = new System.Windows.Forms.Label();
-            this.dataGridStochasticAgeTable = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridStochasticAgeTable = new Nmfs.Agepro.Gui.NftDataGridView();
             this.labelCVTable = new System.Windows.Forms.Label();
-            this.dataGridCVTable = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridCVTable = new Nmfs.Agepro.Gui.NftDataGridView();
             this.checkBoxTimeVarying = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStochasticAgeTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCVTable)).BeginInit();
@@ -122,9 +122,9 @@
         #endregion
 
         private System.Windows.Forms.Label labelStochasticAgeTable;
-        private AGEPRO.GUI.NftDataGridView dataGridStochasticAgeTable;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridStochasticAgeTable;
         private System.Windows.Forms.Label labelCVTable;
-        private AGEPRO.GUI.NftDataGridView dataGridCVTable;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridCVTable;
         private System.Windows.Forms.CheckBox checkBoxTimeVarying;
     }
 }
