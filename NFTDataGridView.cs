@@ -31,6 +31,7 @@ namespace AGEPRO.GUI
             InitializeComponent(); //Component Designer generated Code
 
             nftReadOnly = false; //False by default
+            this.AllowUserToAddRows = false;
             this.AllowUserToResizeRows = false;
             this.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
