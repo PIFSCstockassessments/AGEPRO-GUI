@@ -32,8 +32,8 @@
             this.tabRecruitment = new System.Windows.Forms.TabPage();
             this.labelRecruitProb = new System.Windows.Forms.Label();
             this.labelSelectRecruitModels = new System.Windows.Forms.Label();
-            this.dataGridRecruitProb = new AGEPRO.GUI.NFTDataGridView();
-            this.dataGridSelectRecruitModels = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridRecruitProb = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridSelectRecruitModels = new AGEPRO.GUI.NftDataGridView();
             this.groupScalingFactor = new System.Windows.Forms.GroupBox();
             this.textBoxSSBScalingFactor = new System.Windows.Forms.TextBox();
             this.textBoxRecruitngScalingFactor = new System.Windows.Forms.TextBox();
@@ -265,8 +265,8 @@
         private System.Windows.Forms.TabPage tabRecruitModels;
         private System.Windows.Forms.Label labelRecruitProb;
         private System.Windows.Forms.Label labelSelectRecruitModels;
-        private AGEPRO.GUI.NFTDataGridView dataGridRecruitProb;
-        private AGEPRO.GUI.NFTDataGridView dataGridSelectRecruitModels;
+        private AGEPRO.GUI.NftDataGridView dataGridRecruitProb;
+        private AGEPRO.GUI.NftDataGridView dataGridSelectRecruitModels;
         private System.Windows.Forms.GroupBox groupScalingFactor;
         private System.Windows.Forms.TextBox textBoxSSBScalingFactor;
         private System.Windows.Forms.TextBox textBoxRecruitngScalingFactor;

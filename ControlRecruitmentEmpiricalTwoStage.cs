@@ -24,8 +24,8 @@ namespace AGEPRO.GUI
             this.textBoxSSBBreakValue = new System.Windows.Forms.TextBox();
             this.labelLv1ObservationTable = new System.Windows.Forms.Label();
             this.labelLv2ObservationTable = new System.Windows.Forms.Label();
-            this.dataGridLv1ObservationTable = new AGEPRO.GUI.NFTDataGridView();
-            this.dataGridLv2ObservationTable = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridLv1ObservationTable = new AGEPRO.GUI.NftDataGridView();
+            this.dataGridLv2ObservationTable = new AGEPRO.GUI.NftDataGridView();
             //this.groupEmpiricalParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxLv1NumObservations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxLv2NumObservations)).BeginInit();
@@ -187,8 +187,8 @@ namespace AGEPRO.GUI
         private System.Windows.Forms.TextBox textBoxSSBBreakValue;
         private System.Windows.Forms.Label labelLv1ObservationTable;
         private System.Windows.Forms.Label labelLv2ObservationTable;
-        private AGEPRO.GUI.NFTDataGridView dataGridLv1ObservationTable;
-        private AGEPRO.GUI.NFTDataGridView dataGridLv2ObservationTable;
+        private AGEPRO.GUI.NftDataGridView dataGridLv1ObservationTable;
+        private AGEPRO.GUI.NftDataGridView dataGridLv2ObservationTable;
 
         protected override void buttonSetParameters_Click(object sender, EventArgs e)
         {

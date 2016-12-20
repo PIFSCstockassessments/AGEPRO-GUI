@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace AGEPRO.GUI
 {
-    public class NFTDataGridView : DataGridView
+    public class NftDataGridView : DataGridView
     {
 
         private bool _nftReadOnly;
@@ -26,7 +26,7 @@ namespace AGEPRO.GUI
 
        
 
-        public NFTDataGridView()
+        public NftDataGridView()
         {
             InitializeComponent(); //Component Designer generated Code
 

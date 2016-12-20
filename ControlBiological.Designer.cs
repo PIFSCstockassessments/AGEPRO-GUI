@@ -32,7 +32,7 @@
             this.tabMaturity = new System.Windows.Forms.TabPage();
             this.tabFractionMortality = new System.Windows.Forms.TabPage();
             this.checkBoxFractionMortalityTimeVarying = new System.Windows.Forms.CheckBox();
-            this.dataGridFractionMortality = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridFractionMortality = new AGEPRO.GUI.NftDataGridView();
             this.labelFractionMortality = new System.Windows.Forms.Label();
             this.tabControlBiological.SuspendLayout();
             this.tabFractionMortality.SuspendLayout();
@@ -133,7 +133,7 @@
         private System.Windows.Forms.TabPage tabMaturity;
         private System.Windows.Forms.TabPage tabFractionMortality;
         private System.Windows.Forms.CheckBox checkBoxFractionMortalityTimeVarying;
-        private AGEPRO.GUI.NFTDataGridView dataGridFractionMortality;
+        private AGEPRO.GUI.NftDataGridView dataGridFractionMortality;
         private System.Windows.Forms.Label labelFractionMortality;
 
 

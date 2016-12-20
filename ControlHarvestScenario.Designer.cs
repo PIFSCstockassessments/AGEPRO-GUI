@@ -34,7 +34,7 @@
             this.radioPStar = new System.Windows.Forms.RadioButton();
             this.radioRebuilderTarget = new System.Windows.Forms.RadioButton();
             this.panelAltCalcParameters = new System.Windows.Forms.Panel();
-            this.dataGridHarvestScenarioTable = new AGEPRO.GUI.NFTDataGridView();
+            this.dataGridHarvestScenarioTable = new AGEPRO.GUI.NftDataGridView();
             this.groupAltCalcParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHarvestScenarioTable)).BeginInit();
             this.SuspendLayout();
@@ -142,7 +142,7 @@
 
         private System.Windows.Forms.Label labelHarvestScenario;
         //private System.Windows.Forms.DataGridView dataGridHarvestScenarioTable;
-        private NFTDataGridView dataGridHarvestScenarioTable;
+        private NftDataGridView dataGridHarvestScenarioTable;
         private System.Windows.Forms.GroupBox groupAltCalcParameters;
         private System.Windows.Forms.RadioButton radioNone;
         private System.Windows.Forms.RadioButton radioPStar;
