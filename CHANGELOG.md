@@ -1,15 +1,15 @@
 
 # AGEPRO Changelog
 
-## 4.3.0.3-beta3 (Unimplmented)
+## 4.3.0.3-beta3 (Unreleased)
 
 ### Added
-- Clipboard functionality (Cut, Copy, Paste, Delete) to Data Grids
-- Added Context Menu to Data Grids.
-- Implement Delete Menu Option
+- Added Data Grid Context Menu.
+- Clipboard functionality (Cut, Copy, Paste, Delete, etc.) to data grids.
+-- Edit menu commands work with data grid cells.
 
 ### Fixed
-- Clicking Column Headers does not sort the Data Grid. This follows the behavior that original GUI.
+- Column headers follows the original GUI behavior by not sorting the data grid, if header is clicked.
 - Harvest Scenario: Fixed an issue where user generated "SET" multi-fleet parameters generated a Harvest Scenario Table with only a single row.
 
 ## 4.3.0.2-beta2 (2016-11-29)
