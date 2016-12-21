@@ -322,7 +322,7 @@ namespace Nmfs.Agepro.Gui
         /// <summary>
         /// Copies the contents of the data grid to the system clipboard.
         /// </summary>
-        private void OnCopy()
+        public void OnCopy()
         {
             if (this.CurrentCell.IsInEditMode)
             {
@@ -339,7 +339,7 @@ namespace Nmfs.Agepro.Gui
         /// <summary>
         /// Pastes the contents from the system clipboard to the data grid.
         /// </summary>
-        private void OnPaste()
+        public void OnPaste()
         {
             //throw error if no cells are selected
             if (this.SelectedCells.Count == 0)
@@ -395,7 +395,7 @@ namespace Nmfs.Agepro.Gui
         /// <summary>
         /// Clears the values of the selected cells. 
         /// </summary>
-        private void OnDelete()
+        public void OnDelete()
         {
             //Get Selection Range
             ///DataGridViewSelectedCellCollection (selectedCells) doesn't implement a generic 
@@ -422,7 +422,7 @@ namespace Nmfs.Agepro.Gui
         /// <summary>
         /// Selects all the cells in this data grid.
         /// </summary>
-        private void OnSelectAll()
+        public void OnSelectAll()
         {
             this.SelectAll();
         }

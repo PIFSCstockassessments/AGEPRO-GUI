@@ -866,13 +866,13 @@ namespace Nmfs.Agepro.Gui
                     //if nothing.
                     TextBox textBoxToCut = (TextBox)ctlCut;
                     textBoxToCut.Cut();
-
-                    if (ctlCut is DataGridViewTextBoxEditingControl)
-                    {
-                        DataGridViewTextBoxEditingControl dgvtb = (DataGridViewTextBoxEditingControl)ctlCut;
-                        EndEditModeFromDataGridViewTextBoxEditingControl(dgvtb);
-                    }
-                   
+                }
+                else if (ctlCut is NftDataGridView)
+                {
+                    NftDataGridView dataCellsToCut = (NftDataGridView)ctlCut;
+                    dataCellsToCut.OnCopy();
+                    dataCellsToCut.OnDelete();
+                    dataCellsToCut.ClearSelection();
                 }
             }
         }
@@ -887,6 +887,11 @@ namespace Nmfs.Agepro.Gui
                     TextBox textBoxToCopy = (TextBox)ctlCopy;
                     textBoxToCopy.Copy();
                 }
+                else if (ctlCopy is NftDataGridView)
+                {
+                    NftDataGridView dataCellsToCopy = (NftDataGridView)ctlCopy;
+                    dataCellsToCopy.OnCopy();
+                }
             }
         }
 
@@ -899,19 +904,33 @@ namespace Nmfs.Agepro.Gui
                 {
                     TextBox textBoxToPaste = (TextBox)ctlPaste;
                     textBoxToPaste.Paste();
-
-                    if (ctlPaste is DataGridViewTextBoxEditingControl)
-                    {
-                        DataGridViewTextBoxEditingControl dgvtb = (DataGridViewTextBoxEditingControl)ctlPaste;
-                        EndEditModeFromDataGridViewTextBoxEditingControl(dgvtb);
-                    }
+                }
+                else if (ctlPaste is NftDataGridView)
+                {
+                    NftDataGridView dataCellsToPaste = (NftDataGridView)ctlPaste;
+                    dataCellsToPaste.OnPaste();
+                    dataCellsToPaste.ClearSelection();
                 }
             }
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var ctlDelete = FindFocusedControl(this.ActiveControl);
+            if (ctlDelete != null)
+            {
+                if (ctlDelete is TextBox)
+                {
+                    TextBox textBoxTextToClear = (TextBox)ctlDelete;
+                    textBoxTextToClear.Clear();
+                }
+                else if (ctlDelete is NftDataGridView)
+                {
+                    NftDataGridView dataCellsToClear = (NftDataGridView)ctlDelete;
+                    dataCellsToClear.OnDelete();
+                    dataCellsToClear.ClearSelection();
+                }
+            }
         }
 
         /// TreeViewNavigation 
