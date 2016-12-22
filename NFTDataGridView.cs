@@ -320,6 +320,32 @@ namespace Nmfs.Agepro.Gui
 
 
         /// <summary>
+        /// Handles when data-parsing/validations would throw exceptions. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NFTDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("An error occured." +
+                Environment.NewLine + Environment.NewLine +
+                e.Exception.Message.ToString(),
+                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        /// When columns are added to NFTDataGridView, they will not be sortable by default. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NFTDataGridView_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+
+
+
+
+        /// <summary>
         /// Copies the contents of the data grid to the system clipboard.
         /// </summary>
         public void OnCopy()
@@ -445,30 +471,6 @@ namespace Nmfs.Agepro.Gui
             }
            
         }
-
-        /// <summary>
-        /// Handles when data-parsing/validations would throw exceptions. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NFTDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            MessageBox.Show("An error occured." + 
-                Environment.NewLine + Environment.NewLine +
-                e.Exception.Message.ToString(),
-                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        /// <summary>
-        /// When columns are added to NFTDataGridView, they will not be sortable by default. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NFTDataGridView_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
-        {
-            e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
-        }
-
 
 
 
