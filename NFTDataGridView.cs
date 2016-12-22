@@ -194,7 +194,7 @@ namespace Nmfs.Agepro.Gui
         {
             //'right-click-context-menu-for-datagridview'        
             //Check if the user has right-clicked on the any cell of this Data Grid
-            if (e.ColumnIndex != -1 && e.RowIndex != 1 && e.Button == System.Windows.Forms.MouseButtons.Right)
+            if (e.ColumnIndex != -1 && e.RowIndex != -1 && e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 DataGridViewCell dgvCell = (sender as DataGridView)[e.ColumnIndex, e.RowIndex];
                 
