@@ -1,7 +1,7 @@
 
 # AGEPRO Changelog
 
-## 4.3.0.3-beta3 (Unreleased)
+## 4.3.0.3-beta3 (2016-12-22)
 
 ### Added
 - Added Data Grid Context Menu.
