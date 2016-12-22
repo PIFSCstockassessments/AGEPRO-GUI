@@ -43,6 +43,12 @@ namespace Nmfs.Agepro.Gui
             //Recruitment Prob
             dataGridRecruitProb.RowHeadersWidth = 100;
 
+            ///Select Recruitment Models: 
+            ///Don't want to cut/paste these values, but still want the user to use combo boxes to
+            ///select a recruitment model.
+            this.dataGridSelectRecruitModels.nftReadOnly = true;
+            this.dataGridSelectRecruitModels.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
         }
         public int recruitingScalingFactor
         {
