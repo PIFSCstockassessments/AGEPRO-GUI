@@ -352,7 +352,18 @@ namespace Nmfs.Agepro.Gui
         {
             if (this.CurrentCell.IsInEditMode)
             {
-                Clipboard.SetDataObject(this.CurrentCell.EditedFormattedValue);
+                DataObject cellsToCopy = this.GetClipboardContent();
+                if (cellsToCopy != null)
+                {
+                    //There may be instances where a cell is in edit mode and part
+                    //of a cell selection at the same time.
+                    Clipboard.SetDataObject(cellsToCopy);
+                }
+                else
+                {
+                    Clipboard.SetDataObject(this.CurrentCell.EditedFormattedValue);
+                }
+                
             }
             else
             {
