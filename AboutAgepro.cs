@@ -101,5 +101,11 @@ namespace Nmfs.Agepro.Gui
             }
         }
         #endregion
+
+        private void AboutAgepro_Load(object sender, EventArgs e)
+        {
+            //textBoxDescription: Override AssemblyDescription with this text.
+            this.textBoxDescription.Text = "";
+        }
     }
 }
