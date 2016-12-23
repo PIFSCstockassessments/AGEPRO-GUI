@@ -387,7 +387,7 @@ namespace Nmfs.Agepro.Gui
             }
 
             string clipboardString = Clipboard.GetText();
-            string[] clipboardLines = clipboardString.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            string[] clipboardLines = clipboardString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             int irow = this.CurrentCell.RowIndex;
             int icol = this.CurrentCell.ColumnIndex;
             DataGridViewCell oCell;
