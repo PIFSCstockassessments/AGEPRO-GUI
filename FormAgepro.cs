@@ -401,20 +401,36 @@ namespace Nmfs.Agepro.Gui
         /// <param name="e"></param>
         private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Validate
+
+            //If Input Data is Valid LaunchAgeproModel() 
+            LaunchAgeproModel();
+            
+        }
+
+
+        /// <summary>
+        /// This gathers the bootstrap file, and stores it with the the GUI input under the "AGEPRO" subdirectory
+        /// in the desginagted user document directory. After the calcuation engine is done, the function will 
+        /// attempt to display the AGEPRO calcuation engine output file (if requested) and the directory the
+        /// outputs were written to.       
+        /// </summary>
+        private void LaunchAgeproModel()
+        {
             string ageproModelJobName;
             string jobDT;
             //set the user data work directory  
             if (string.IsNullOrWhiteSpace(controlGeneralOptions.generalInputFile))
             {
                 ageproModelJobName = "untitled_" + Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);            
+                jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
             }
             else
             {
                 ageproModelJobName = Path.GetFileNameWithoutExtension(controlGeneralOptions.generalInputFile);
                 //Remove potential invalid filename characters 
                 foreach (char c in Path.GetInvalidFileNameChars())
-                {   
+                {
                     ageproModelJobName = ageproModelJobName.Replace(c.ToString(), "");
                 }
                 jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
@@ -427,7 +443,7 @@ namespace Nmfs.Agepro.Gui
             {
                 Directory.CreateDirectory(ageproWorkPath);
             }
-            
+
             //check for bootstrap file
             //1. File Exists from the bootstrap parameter
             if (File.Exists(inputData.bootstrap.bootstrapFile))
@@ -435,7 +451,7 @@ namespace Nmfs.Agepro.Gui
                 File.Copy(inputData.bootstrap.bootstrapFile, bsnFile, true);
             }
             //2. If not, in the same directory as the AGEPRO Input File
-            else if(File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
+            else if (File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
             {
                 File.Copy(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile),
                     bsnFile, true);
@@ -453,7 +469,7 @@ namespace Nmfs.Agepro.Gui
                 {
                     Console.WriteLine("Cancel Launch AGEPRO Model");
                     //If user declines (Cancel), do not Launch AGEPRO Calc Engine
-                    return;   
+                    return;
                 }
             }
 
@@ -465,7 +481,7 @@ namespace Nmfs.Agepro.Gui
                 inputData.WriteInputFile(inpFile);
 
                 //use command line to open AGEPRO40.exe
-                LaunchAgeproModel(inpFile);
+                LaunchAgeproCalcEngineProgram(inpFile);
 
                 //crude method to search for AGEPRO output file
                 string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
@@ -473,9 +489,9 @@ namespace Nmfs.Agepro.Gui
                 LaunchOutputViewerProgram(ageproOutfile, controlMiscOptions);
 
                 //Open WorkPath directory for the user 
-                Process.Start(ageproWorkPath); 
+                Process.Start(ageproWorkPath);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex,
                         "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -485,14 +501,13 @@ namespace Nmfs.Agepro.Gui
                 //reset original bootstrap filename 
                 inputData.bootstrap.bootstrapFile = originalBSNFile;
             }
-            
         }
 
         /// <summary>
         /// Launches the AGEPRO Calcuation Engine Program
         /// </summary>
         /// <param name="inpFile"></param>
-        static void LaunchAgeproModel(string inpFile)
+        static void LaunchAgeproCalcEngineProgram(string inpFile)
         {
             string dirRoot = Path.GetPathRoot(Environment.SystemDirectory);
 
@@ -854,6 +869,11 @@ namespace Nmfs.Agepro.Gui
             dgw.EndEdit();
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {                
             var ctlCut = FindFocusedControl(this.ActiveControl);
@@ -877,6 +897,11 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var ctlCopy = FindFocusedControl(this.ActiveControl);
@@ -895,6 +920,11 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var ctlPaste = FindFocusedControl(this.ActiveControl);
@@ -914,6 +944,11 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var ctlDelete = FindFocusedControl(this.ActiveControl);
