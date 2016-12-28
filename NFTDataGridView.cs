@@ -483,6 +483,29 @@ namespace Nmfs.Agepro.Gui
            
         }
 
+        /// <summary>
+        /// Checks if this Data Grid has any cell that may be blank, null, or with only white-space. 
+        /// characters.
+        /// </summary>
+        /// <returns>If the function finds an single instance of a blank/null/white-space only cell,
+        /// then it will return true. Otherwise, false.</returns>
+        public bool HasBlankOrNullCells()
+        {
+            bool blankNullsExist = false;
+
+            foreach (DataGridViewRow dgvRow in this.Rows)
+            {
+                for (int i = 0; i < dgvRow.Cells.Count; i++)
+                {
+                    if (string.IsNullOrWhiteSpace(dgvRow.Cells[i].EditedFormattedValue.ToString()))
+                    {
+                        blankNullsExist = true;
+                    }
+                }
+            }
+
+            return blankNullsExist;
+        }
        
     }
 }
