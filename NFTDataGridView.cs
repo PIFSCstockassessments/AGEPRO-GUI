@@ -484,7 +484,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// Checks if this Data Grid has any cell that may be blank, null, or with only white-space. 
+        /// Checks if this Data Grid has any cell that may be blank, null, or with only white-space 
         /// characters.
         /// </summary>
         /// <returns>If the function finds an single instance of a blank/null/white-space only cell,
