@@ -97,10 +97,11 @@ namespace Nmfs.Agepro.Gui
 
             this.ResumeLayout();
 
-            setWeightOptionDictionary();
+            SetWeightOptionDictionary();
 
 
         }
+
         public bool showJan1WeightsOption
         {
             get { return radioWeightsFromJan1.Visible; }
@@ -152,7 +153,10 @@ namespace Nmfs.Agepro.Gui
             panelStochasticParameterAge.Controls.Clear();
         }
 
-        private void setWeightOptionDictionary()
+        /// <summary>
+        /// Creates the Stochastic Weights of Option Dictionary Object.
+        /// </summary>
+        private void SetWeightOptionDictionary()
         {
             weightOptionDictionary = new Dictionary<int, RadioButton>();
 
@@ -164,6 +168,8 @@ namespace Nmfs.Agepro.Gui
             weightOptionDictionary.Add(-4, this.radioWeightsFromCatch);
 
         }
+
+        
 
     }
 }
