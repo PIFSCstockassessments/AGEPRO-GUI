@@ -409,6 +409,24 @@ namespace Nmfs.Agepro.Gui
         }
 
 
+        private bool ValidateControlInputs()
+        {
+            bool validated = true;
+
+            //Set Bounds
+            if (controlMiscOptions.miscOptionsBounds == false)
+            {
+                controlMiscOptions.miscOptionsBoundsMaxWeight = "10.0";
+                controlMiscOptions.miscOptionsBoundsNaturalMortality = "1";
+            }
+
+            //Check Stock Weights
+            
+            return validated;
+        }
+
+        
+
         /// <summary>
         /// This gathers the bootstrap file, and stores it with the the GUI input under the "AGEPRO" subdirectory
         /// in the desginagted user document directory. After the calcuation engine is done, the function will 
@@ -643,7 +661,7 @@ namespace Nmfs.Agepro.Gui
             //Fraction Mortality Prior To Spawning (Biological)
             controlBiological.readFractionMortalityState = true;
             controlBiological.fractionMortality = 
-                getAgeproInputDataTable (controlBiological.fractionMortality, inpFile.biological.TSpawn);
+                Util.GetAgeproInputDataTable (controlBiological.fractionMortality, inpFile.biological.TSpawn);
             controlBiological.fractionMortalityTimeVarying = inpFile.biological.timeVarying;
             controlBiological.readFractionMortalityState = false;
 
@@ -693,7 +711,8 @@ namespace Nmfs.Agepro.Gui
             controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;  
 
             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = 
-                getAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, inpFile.retroAdjustOption.retroAdjust);
+                Util.GetAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, 
+                inpFile.retroAdjustOption.retroAdjust);
                       
             if (controlMiscOptions.miscOptionsRetroAdjustmentFactors == true)
             {
@@ -717,8 +736,8 @@ namespace Nmfs.Agepro.Gui
             ctl.numFleets = generalOpt.numFleets;
             ctl.timeVarying = inp.timeVarying;
             ctl.stochasticDataFile = inp.dataFile;
-            ctl.stochasticAgeTable = getAgeproInputDataTable(ctl.stochasticAgeTable, inp.byAgeData);
-            ctl.stochasticCV = getAgeproInputDataTable(ctl.stochasticCV, inp.byAgeCV);
+            ctl.stochasticAgeTable = Util.GetAgeproInputDataTable(ctl.stochasticAgeTable, inp.byAgeData);
+            ctl.stochasticCV = Util.GetAgeproInputDataTable(ctl.stochasticCV, inp.byAgeCV);
             if (!(ctl.stochasticAgeTable != null))
             {
                 ctl.enableTimeVaryingCheckBox = false;
@@ -806,22 +825,6 @@ namespace Nmfs.Agepro.Gui
             return blankDataTable;
         }
 
-
-        /// <summary>
-        /// Generalized Method to set the DataGridView's Data Sources from Nmfs.Agepro.CoreLib Input File Data Files 
-        /// </summary>
-        /// <param name="dgvTable">Control's DataGridView DataTable source</param>
-        /// <param name="inpFileTable">DataTable from Nmfs.Agepro.CoreLib.AgeproInputFile DataTables</param>
-        /// <returns>DataGridView DataTable</returns>
-        private DataTable getAgeproInputDataTable (DataTable dgvTable, DataTable inpFileTable)
-        {
-            if (dgvTable != null)
-            {
-                dgvTable.Reset();
-            }
-            dgvTable = inpFileTable;
-            return dgvTable;
-        }
 
         /// <summary>
         /// Closes the AGEPRO GUI

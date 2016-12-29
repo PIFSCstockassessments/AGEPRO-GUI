@@ -19,6 +19,21 @@ namespace Nmfs.Agepro.Gui
             return appDir;
         }
 
-        //create temp
+        /// <summary>
+        /// Generalized Method to set the DataGridView's Data Sources from Nmfs.Agepro.CoreLib Input File Data Files 
+        /// </summary>
+        /// <param name="dgvTable">Control's DataGridView DataTable source</param>
+        /// <param name="inpFileTable">DataTable from Nmfs.Agepro.CoreLib.AgeproInputFile DataTables</param>
+        /// <returns>DataGridView DataTable</returns>
+        public static System.Data.DataTable GetAgeproInputDataTable(System.Data.DataTable dgvTable, 
+            System.Data.DataTable inpFileTable)
+        {
+            if (dgvTable != null)
+            {
+                dgvTable.Reset();
+            }
+            dgvTable = inpFileTable;
+            return dgvTable;
+        }
     }
 }
