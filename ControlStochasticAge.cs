@@ -131,7 +131,80 @@ namespace Nmfs.Agepro.Gui
             
         }
 
+        public virtual bool ValidateStochasticParameter(int numAges)
+        {
+            bool isVaildParameter = false;
+            if (this.radioParameterFromUser.Checked)
+            {
+                //check if Data Grid has Blank or Null Cells 
+                if (!(controlStochasticParamAgeFromUser.ValidateStochasticAgeDataGridTable()))
+                {
+                    MessageBox.Show(this.stochasticParameterLabel + " At Age Data Table has" +
+                        "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (!(controlStochasticParamAgeFromUser.ValidateStochasticCVDataGridTable()))
+                {
+                    MessageBox.Show(this.stochasticParameterLabel + " CV Data Table has" +
+                        "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
 
+            }
+            else
+            {
+                //If the Stochastic Table Data File Doesn't Exist
+                if (!(System.IO.File.Exists(stochasticDataFile)))
+                {
+                    MessageBox.Show(this.stochasticParameterLabel + " stochastic table file does not exist", 
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                
+            }
+            isVaildParameter = true;
+            return isVaildParameter;
+        }
+
+        public virtual bool ValidateStochasticParameter(int numAges, double upperBounds)
+        {
+            
+            if (ValidateStochasticParameter(numAges) == false)
+            {
+                return false;
+            }
+
+            
+            //Get DataTables
+            DataTable stochasticTableToCheckBounds;
+            if (this.radioParameterFromUser.Checked)
+            {
+                stochasticTableToCheckBounds = this.stochasticAgeTable;
+            }
+            else
+            {
+                stochasticTableToCheckBounds = 
+                    Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable.ReadStochasticTableFile(stochasticDataFile, numAges);
+            }
+
+            //Check if a cell/item has excceded the upper bound.     
+            foreach (DataRow rowLines in stochasticTableToCheckBounds.Rows)
+            {
+                foreach (var item in rowLines.ItemArray)
+                {
+                    if (Convert.ToDouble(item) > upperBounds)
+                    {
+                        MessageBox.Show(this.stochasticParameterLabel + " at Age excceds the Upper Bound of " +
+                        upperBounds + Environment.NewLine +
+                        "Upper bounds limit for "+ this.stochasticParameterLabel + " can be set in 'Misc. Options' panel.",
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
 
     }
 }
