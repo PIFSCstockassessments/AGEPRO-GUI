@@ -413,15 +413,13 @@ namespace Nmfs.Agepro.Gui
         {
             bool validated = true;
 
-            //Set Bounds
-            if (controlMiscOptions.miscOptionsBounds == false)
+            //Enforce Bounds defaults if option is ujnchecked
+            if(this.controlMiscOptions.miscOptionsBounds == false)
             {
-                controlMiscOptions.miscOptionsBoundsMaxWeight = "10.0";
-                controlMiscOptions.miscOptionsBoundsNaturalMortality = "1";
+                this.controlMiscOptions.miscOptionsBoundsMaxWeight = "10.0";
+                this.controlMiscOptions.miscOptionsBoundsNaturalMortality = "1.0";
             }
 
-            //Check Stock Weights
-            
             return validated;
         }
 

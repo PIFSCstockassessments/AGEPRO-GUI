@@ -22,6 +22,10 @@ namespace Nmfs.Agepro.Gui
         {
             InitializeComponent();
             comboBoxOutputViewerProgram.SelectedIndex = 0;
+
+            //Set Bounds defaults
+            miscOptionsBoundsMaxWeight = "10.0";
+            miscOptionsBoundsNaturalMortality = "1.0";
         }
 
         public bool miscOptionsSummaryReport
