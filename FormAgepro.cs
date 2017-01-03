@@ -411,16 +411,96 @@ namespace Nmfs.Agepro.Gui
 
         private bool ValidateControlInputs()
         {
+            double boundsMaxWeight;
+            double boundsNaturalMortality;
             bool validated = true;
+            int numAges = controlGeneralOptions.NumAges();
 
-            //Enforce Bounds defaults if option is ujnchecked
+            //Enforce Bounds defaults if option is unchecked
             if(this.controlMiscOptions.miscOptionsBounds == false)
             {
-                this.controlMiscOptions.miscOptionsBoundsMaxWeight = "10.0";
-                this.controlMiscOptions.miscOptionsBoundsNaturalMortality = "1.0";
+                boundsMaxWeight = 10.0;
+                boundsNaturalMortality = 1.0;
+            }
+            else
+            {
+                boundsMaxWeight = Convert.ToDouble(this.controlMiscOptions.miscOptionsBoundsMaxWeight);
+                boundsNaturalMortality = Convert.ToDouble(
+                    this.controlMiscOptions.miscOptionsBoundsNaturalMortality);
             }
 
-            return validated;
+            //JAN-1 Weights (Stock Weights)
+            if (controlJan1Weight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+            {
+                return false;
+            }
+            //SSB Weights
+            if (controlSSBWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+            {
+                return false;
+            }
+            //Mean Weights
+            if (controlMidYearWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+            {
+                return false;
+            }
+            //Catch Weight
+            if (controlCatchWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+            {
+                return false;
+            }
+            //Natural Mortality
+            if (controlNaturalMortality.ValidateStochasticParameter(numAges, boundsNaturalMortality) == false)
+            {
+                return false;
+            }
+            //(Biological) Maturity
+            if (controlBiological.maturityAge.ValidateStochasticParameter(numAges) == false) 
+            {
+                return false;
+            }
+            //(Biological) Fraction Mortality Prior to Spawning (Biological)
+            if (controlBiological.ValidateFractionMortalityDataGrid() == false)
+            {
+                return false;
+            }
+            //Fishery Selectivity
+            if (controlFisherySelectivity.ValidateStochasticParameter(numAges) == false)
+            {
+                return false;
+            }
+            if (this.controlGeneralOptions.generalDiscardsPresent)
+            {
+                //Discard Weight
+                if (this.controlDiscardWeight.ValidateStochasticParameter(numAges) == false)
+                {
+                    return false;
+                }
+                //Discard Fraction
+                if (this.controlDiscardFraction.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+                {
+                    return false;
+                }
+            }
+
+
+            //Recruitment 
+
+            //Bootstrap
+
+            //Harvest Scenario
+
+            //Rebuilder
+
+            //P-Star
+
+            //Misc Options: Reference Points, Retro Adjustment Factors, Bounds.
+
+
+
+
+
+            return true;
         }
 
         

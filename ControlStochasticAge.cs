@@ -168,13 +168,11 @@ namespace Nmfs.Agepro.Gui
 
         public virtual bool ValidateStochasticParameter(int numAges, double upperBounds)
         {
-            
             if (ValidateStochasticParameter(numAges) == false)
             {
                 return false;
             }
 
-            
             //Get DataTables
             DataTable stochasticTableToCheckBounds;
             if (this.radioParameterFromUser.Checked)
@@ -182,7 +180,8 @@ namespace Nmfs.Agepro.Gui
                 stochasticTableToCheckBounds = this.stochasticAgeTable;
             }
             else
-            {
+            {   
+                //Read in stochastic table file for validation.
                 stochasticTableToCheckBounds = 
                     Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable.ReadStochasticTableFile(stochasticDataFile, numAges);
             }
