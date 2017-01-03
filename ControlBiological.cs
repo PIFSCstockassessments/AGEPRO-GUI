@@ -51,6 +51,9 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// Creates Columns for the Fraction Mortality Data Grid
+        /// </summary>
         public void CreateFractionMortalityColumns()
         {
             
@@ -93,6 +96,22 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// Checks is the Fraction Mortality Data Grid has any blank or null cells. 
+        /// </summary>
+        /// <returns></returns>
+        public bool ValidateFractionMortalityDataGrid()
+        {
+            return this.dataGridFractionMortality.HasBlankOrNullCells();
+        }
+
+
+        /// <summary>
+        /// Event that calls CreateFractionMortalityColumns whenever the Time Varying check 
+        /// box gets checked or unchecked. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBoxFractionMortalityTimeVarying_CheckedChanged(object sender, EventArgs e)
         {
             if (this.readFractionMortalityState == false)
