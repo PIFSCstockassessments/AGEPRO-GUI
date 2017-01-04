@@ -148,26 +148,36 @@
             // 
             this.dataGridCoefficients.AllowUserToAddRows = false;
             this.dataGridCoefficients.AllowUserToDeleteRows = false;
+            this.dataGridCoefficients.AllowUserToResizeRows = false;
             this.dataGridCoefficients.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridCoefficients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridCoefficients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCoefficients.Location = new System.Drawing.Point(0, 121);
             this.dataGridCoefficients.Name = "dataGridCoefficients";
+            this.dataGridCoefficients.nftReadOnly = false;
+            this.dataGridCoefficients.RowHeadersWidth = 70;
             this.dataGridCoefficients.Size = new System.Drawing.Size(251, 219);
             this.dataGridCoefficients.TabIndex = 4;
+            this.dataGridCoefficients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridCoefficients_CellFormatting);
             // 
             // dataGridObservations
             // 
             this.dataGridObservations.AllowUserToAddRows = false;
             this.dataGridObservations.AllowUserToDeleteRows = false;
+            this.dataGridObservations.AllowUserToResizeRows = false;
             this.dataGridObservations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridObservations.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridObservations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridObservations.Location = new System.Drawing.Point(279, 121);
             this.dataGridObservations.Name = "dataGridObservations";
+            this.dataGridObservations.nftReadOnly = false;
+            this.dataGridObservations.RowHeadersWidth = 70;
             this.dataGridObservations.Size = new System.Drawing.Size(565, 219);
             this.dataGridObservations.TabIndex = 5;
+            this.dataGridObservations.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridObservations_CellFormatting);
             // 
             // ControlRecruitmentPredictor
             // 

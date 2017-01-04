@@ -90,6 +90,32 @@ namespace Nmfs.Agepro.Gui
             }
             return predictorDataTable;
         }
+
+        private void dataGridCoefficients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = this.dataGridCoefficients.Rows[e.RowIndex].HeaderCell;
+            if (!(header.Value != null))
+            {
+                SetRecruitPredictorRowHeaders(this.dataGridCoefficients);
+            }
+        }
+
+        private void dataGridObservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = this.dataGridObservations.Rows[e.RowIndex].HeaderCell;
+            if (!(header.Value != null))
+            {
+                SetRecruitPredictorRowHeaders(this.dataGridObservations);
+            }
+        }
+
+        private void SetRecruitPredictorRowHeaders(NftDataGridView predictorDataGrid)
+        {
+            for (int i = 0; i < predictorDataGrid.Rows.Count; i++)
+            {
+                predictorDataGrid.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+        }
     }
 
 }
