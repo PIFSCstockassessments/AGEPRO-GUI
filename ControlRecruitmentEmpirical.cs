@@ -102,5 +102,22 @@ namespace Nmfs.Agepro.Gui
 
             this.SetEmpiricalRecruitmentControls((EmpiricalRecruitment)currentRecruit, panelRecruitModelParameter);
         }
+
+        private void dataGridRecruitTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = this.dataGridRecruitTable.Rows[e.RowIndex].HeaderCell;
+            if (!(header.Value != null))
+            {
+                SetEmpiricalRowHeadsers(this.dataGridRecruitTable);
+            }
+        }
+
+        protected void SetEmpiricalRowHeadsers(NftDataGridView empiricalDataGrid)
+        {
+            for (int i = 0; i < empiricalDataGrid.Rows.Count; i++)
+            {
+                empiricalDataGrid.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+        }
     }
 }

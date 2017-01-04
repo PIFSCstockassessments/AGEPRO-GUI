@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupEmpiricalParameters = new System.Windows.Forms.GroupBox();
+            this.textBoxSSBHinge = new System.Windows.Forms.TextBox();
+            this.labelSSBHinge = new System.Windows.Forms.Label();
             this.buttonSetParameters = new System.Windows.Forms.Button();
             this.spinBoxNumObservations = new System.Windows.Forms.NumericUpDown();
             this.labelNumObservations = new System.Windows.Forms.Label();
             this.labelObservations = new System.Windows.Forms.Label();
             this.dataGridRecruitTable = new Nmfs.Agepro.Gui.NftDataGridView();
-            this.labelSSBHinge = new System.Windows.Forms.Label();
-            this.textBoxSSBHinge = new System.Windows.Forms.TextBox();
             this.groupEmpiricalParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitTable)).BeginInit();
@@ -53,6 +53,24 @@
             this.groupEmpiricalParameters.Size = new System.Drawing.Size(574, 90);
             this.groupEmpiricalParameters.TabIndex = 0;
             this.groupEmpiricalParameters.TabStop = false;
+            // 
+            // textBoxSSBHinge
+            // 
+            this.textBoxSSBHinge.Location = new System.Drawing.Point(225, 51);
+            this.textBoxSSBHinge.Name = "textBoxSSBHinge";
+            this.textBoxSSBHinge.Size = new System.Drawing.Size(120, 20);
+            this.textBoxSSBHinge.TabIndex = 4;
+            this.textBoxSSBHinge.Visible = false;
+            // 
+            // labelSSBHinge
+            // 
+            this.labelSSBHinge.AutoSize = true;
+            this.labelSSBHinge.Location = new System.Drawing.Point(18, 56);
+            this.labelSSBHinge.Name = "labelSSBHinge";
+            this.labelSSBHinge.Size = new System.Drawing.Size(89, 13);
+            this.labelSSBHinge.TabIndex = 3;
+            this.labelSSBHinge.Text = "SSB Hinge Value";
+            this.labelSSBHinge.Visible = false;
             // 
             // buttonSetParameters
             // 
@@ -93,32 +111,19 @@
             // 
             this.dataGridRecruitTable.AllowUserToAddRows = false;
             this.dataGridRecruitTable.AllowUserToDeleteRows = false;
+            this.dataGridRecruitTable.AllowUserToResizeRows = false;
             this.dataGridRecruitTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridRecruitTable.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridRecruitTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRecruitTable.Location = new System.Drawing.Point(0, 117);
             this.dataGridRecruitTable.Name = "dataGridRecruitTable";
+            this.dataGridRecruitTable.nftReadOnly = false;
+            this.dataGridRecruitTable.RowHeadersWidth = 70;
             this.dataGridRecruitTable.Size = new System.Drawing.Size(855, 223);
             this.dataGridRecruitTable.TabIndex = 2;
-            // 
-            // labelSSBHinge
-            // 
-            this.labelSSBHinge.AutoSize = true;
-            this.labelSSBHinge.Location = new System.Drawing.Point(18, 56);
-            this.labelSSBHinge.Name = "labelSSBHinge";
-            this.labelSSBHinge.Size = new System.Drawing.Size(89, 13);
-            this.labelSSBHinge.TabIndex = 3;
-            this.labelSSBHinge.Text = "SSB Hinge Value";
-            this.labelSSBHinge.Visible = false;
-            // 
-            // textBoxSSBHinge
-            // 
-            this.textBoxSSBHinge.Location = new System.Drawing.Point(225, 51);
-            this.textBoxSSBHinge.Name = "textBoxSSBHinge";
-            this.textBoxSSBHinge.Size = new System.Drawing.Size(120, 20);
-            this.textBoxSSBHinge.TabIndex = 4;
-            this.textBoxSSBHinge.Visible = false;
+            this.dataGridRecruitTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRecruitTable_CellFormatting);
             // 
             // ControlRecruitmentEmpirical
             // 

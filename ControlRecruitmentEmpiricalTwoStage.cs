@@ -106,6 +106,9 @@ namespace Nmfs.Agepro.Gui
             this.dataGridLv1ObservationTable.Name = "dataGridLv1Observations";
             this.dataGridLv1ObservationTable.Size = new System.Drawing.Size(328, 223);
             this.dataGridLv1ObservationTable.TabIndex = 8;
+            this.dataGridLv1ObservationTable.RowHeadersWidth = 70;
+            this.dataGridLv1ObservationTable.CellFormatting -= new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv1ObservationTable_CellFormatting);
+            this.dataGridLv1ObservationTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv1ObservationTable_CellFormatting);
             // 
             // labelLv2ObservationTable
             // 
@@ -127,7 +130,9 @@ namespace Nmfs.Agepro.Gui
             this.dataGridLv2ObservationTable.Name = "dataGridLv1Observations";
             this.dataGridLv2ObservationTable.Size = new System.Drawing.Size(328, 223);
             this.dataGridLv2ObservationTable.TabIndex = 9;
-
+            this.dataGridLv2ObservationTable.RowHeadersWidth = 70;
+            this.dataGridLv1ObservationTable.CellFormatting -= new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv2ObservationTable_CellFormatting);
+            this.dataGridLv1ObservationTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv2ObservationTable_CellFormatting);
 
 
             this.buttonSetParameters.TabIndex = 7;
@@ -249,5 +254,24 @@ namespace Nmfs.Agepro.Gui
             this.Dock = DockStyle.Fill;
             panelRecruitModelParameter.Controls.Add(this);
         }
+
+        private void dataGridLv1ObservationTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = this.dataGridLv1ObservationTable.Rows[e.RowIndex].HeaderCell;
+            if (!(header.Value != null))
+            {
+                base.SetEmpiricalRowHeadsers(this.dataGridLv1ObservationTable);
+            }
+        }
+
+        private void dataGridLv2ObservationTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRowHeaderCell header = this.dataGridLv2ObservationTable.Rows[e.RowIndex].HeaderCell;
+            if (!(header.Value != null))
+            {
+                base.SetEmpiricalRowHeadsers(this.dataGridLv2ObservationTable);
+            }
+        }
+
     }
 }
