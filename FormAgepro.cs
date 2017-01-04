@@ -413,7 +413,6 @@ namespace Nmfs.Agepro.Gui
         {
             double boundsMaxWeight;
             double boundsNaturalMortality;
-            bool validated = true;
             int numAges = controlGeneralOptions.NumAges();
 
             //Enforce Bounds defaults if option is unchecked
