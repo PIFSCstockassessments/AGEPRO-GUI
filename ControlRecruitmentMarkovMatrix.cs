@@ -44,21 +44,52 @@ namespace Nmfs.Agepro.Gui
 
         public void SetRecruitmentControls(MarkovMatrixRecruitment currentRecruit, Panel panelRecruitModelParameter)
         {
-            //Create Data Table if null
-            if (!(currentRecruit.markovRecruitment.Tables["Recruitment"] != null))
+            //defaults
+            int defaultRecruitLvl = 1;
+            int defaultSSBLvl = 1;
+
+            //Assign Recruit/SSB levels to Default if they are (less than or) equal to zero
+            if (currentRecruit.numRecruitLevels <= 0)
             {
-                currentRecruit.markovRecruitment.Tables.Add(currentRecruit.NewRecruitLevelTable(currentRecruit.numRecruitLevels));
+                currentRecruit.numRecruitLevels = defaultRecruitLvl;
+            }
+            if (currentRecruit.numSSBLevels <= 0)
+            {
+                currentRecruit.numSSBLevels = defaultSSBLvl;
             }
 
-            if (!(currentRecruit.markovRecruitment.Tables["SSB"] != null))
+            if (!(currentRecruit.markovRecruitment != null))
             {
-                currentRecruit.markovRecruitment.Tables.Add(currentRecruit.NewSSBLevelTable(currentRecruit.numSSBLevels));
-            }
+                currentRecruit.markovRecruitment = new DataSet("markovRecruitmentTables");
 
-            if (!(currentRecruit.markovRecruitment.Tables["Probability"] != null))
+                DataTable markovRecruit = currentRecruit.NewRecruitLevelTable(defaultRecruitLvl);
+                DataTable markovSSBLevel = currentRecruit.NewSSBLevelTable(defaultSSBLvl);
+                DataTable markovProbability = currentRecruit.NewProbabilityTable(defaultSSBLvl, defaultRecruitLvl);
+                
+                currentRecruit.markovRecruitment.Tables.Add(markovRecruit);
+                currentRecruit.markovRecruitment.Tables.Add(markovSSBLevel);
+                currentRecruit.markovRecruitment.Tables.Add(markovProbability);
+            }
+            else
             {
-                currentRecruit.markovRecruitment.Tables.Add(
-                    currentRecruit.NewProbabilityTable(currentRecruit.numRecruitLevels, currentRecruit.numSSBLevels));
+                
+                //Create Data Table if null
+                if (!(currentRecruit.markovRecruitment.Tables["Recruitment"] != null))
+                {
+                    currentRecruit.markovRecruitment.Tables.Add(
+                        currentRecruit.NewRecruitLevelTable(currentRecruit.numRecruitLevels));
+                }
+
+                if (!(currentRecruit.markovRecruitment.Tables["SSB"] != null))
+                {
+                    currentRecruit.markovRecruitment.Tables.Add(currentRecruit.NewSSBLevelTable(currentRecruit.numSSBLevels));
+                }
+
+                if (!(currentRecruit.markovRecruitment.Tables["Probability"] != null))
+                {
+                    currentRecruit.markovRecruitment.Tables.Add(
+                        currentRecruit.NewProbabilityTable(currentRecruit.numSSBLevels, currentRecruit.numRecruitLevels));
+                }
             }
 
             this.spinBoxNumRecruitLevels.Value = currentRecruit.numRecruitLevels;
