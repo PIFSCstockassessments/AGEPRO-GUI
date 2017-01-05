@@ -195,7 +195,7 @@ namespace Nmfs.Agepro.Gui
                 //Recruitment
                 controlRecruitment.numRecruitModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
                 controlRecruitment.recruitModelSelection = new int[controlRecruitment.numRecruitModels];
-                controlRecruitment.SetDataGridSelectRecruitModels(controlRecruitment.numRecruitModels);
+                controlRecruitment.SetDataGridComboBoxSelectRecruitModels(controlRecruitment.numRecruitModels);
                 controlRecruitment.seqRecruitYears = controlGeneralOptions.SeqYears();
                 controlRecruitment.recruitmentProb = 
                     CreateBlankDataTable(controlRecruitment.numRecruitModels, controlRecruitment.seqRecruitYears.Count(), 
@@ -715,7 +715,7 @@ namespace Nmfs.Agepro.Gui
             controlRecruitment.recruitModelSelection = new int[inpFile.general.numRecModels];
             controlRecruitment.recruitModelSelection = inpFile.recruitment.recruitType;
             controlRecruitment.numRecruitModels = inpFile.general.numRecModels;
-            controlRecruitment.SetDataGridSelectRecruitModels(controlRecruitment.numRecruitModels);
+            controlRecruitment.SetDataGridComboBoxSelectRecruitModels(controlRecruitment.numRecruitModels);
             controlRecruitment.recruitmentProb = inpFile.recruitment.recruitProb;
             controlRecruitment.seqRecruitYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
             controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;

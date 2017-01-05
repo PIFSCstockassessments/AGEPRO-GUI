@@ -37,8 +37,8 @@ namespace Nmfs.Agepro.Gui
             columnRecruitModelSelection.DataSource = recuritDict.ToList();
             columnRecruitModelSelection.ValueMember = "Key";
             columnRecruitModelSelection.DisplayMember = "Value";
-            dataGridSelectRecruitModels.Columns.Add(columnRecruitModelSelection);
-            dataGridSelectRecruitModels.RowHeadersWidth = 100;
+            dataGridComboBoxSelectRecruitModels.Columns.Add(columnRecruitModelSelection);
+            dataGridComboBoxSelectRecruitModels.RowHeadersWidth = 100;
 
             //Recruitment Prob
             dataGridRecruitProb.RowHeadersWidth = 100;
@@ -46,8 +46,8 @@ namespace Nmfs.Agepro.Gui
             ///Select Recruitment Models: 
             ///Don't want to cut/paste these values, but still want the user to use combo boxes to
             ///select a recruitment model.
-            this.dataGridSelectRecruitModels.nftReadOnly = true;
-            this.dataGridSelectRecruitModels.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+            this.dataGridComboBoxSelectRecruitModels.nftReadOnly = true;
+            this.dataGridComboBoxSelectRecruitModels.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
 
         }
         public int recruitingScalingFactor
@@ -90,21 +90,21 @@ namespace Nmfs.Agepro.Gui
         /// 
         /// </summary>
         /// <param name="numRecruitModels"></param>
-        public void SetDataGridSelectRecruitModels(int numRecruitModels)
+        public void SetDataGridComboBoxSelectRecruitModels(int numRecruitModels)
         {
-            if (dataGridSelectRecruitModels != null)
+            if (dataGridComboBoxSelectRecruitModels != null)
             {
                 //Clear Out rows from Previous Run/Load/Call
-                dataGridSelectRecruitModels.Rows.Clear(); 
+                dataGridComboBoxSelectRecruitModels.Rows.Clear(); 
             }
 
             for (int i = 0; i < numRecruitModels; i++)
             {
-                this.dataGridSelectRecruitModels.Rows.Add(); //Add Empty Row w/ ComboBoxColumn
+                this.dataGridComboBoxSelectRecruitModels.Rows.Add(); //Add Empty Row w/ ComboBoxColumn
             }
 
             int irecruit = 0;
-            foreach (DataGridViewRow recruitSelection in this.dataGridSelectRecruitModels.Rows)
+            foreach (DataGridViewRow recruitSelection in this.dataGridComboBoxSelectRecruitModels.Rows)
             {
                 //Set ComboBox Value with intended recruit model number.
                 ((DataGridViewComboBoxCell)recruitSelection.Cells[0]).Value = this.recruitModelSelection[irecruit];
@@ -188,16 +188,16 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
-        private void dataGridSelectRecruitModels_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dataGridComboBoxSelectRecruitModels_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            DataGridViewRowHeaderCell header = dataGridSelectRecruitModels.Rows[e.RowIndex].HeaderCell;
+            DataGridViewRowHeaderCell header = dataGridComboBoxSelectRecruitModels.Rows[e.RowIndex].HeaderCell;
             
             if (!(header.Value != null))
             {
                 
-                for (int i = 0; i < dataGridSelectRecruitModels.Rows.Count; i++)
+                for (int i = 0; i < dataGridComboBoxSelectRecruitModels.Rows.Count; i++)
                 {
-                    dataGridSelectRecruitModels.Rows[i].HeaderCell.Value = "Selection " + (i + 1);
+                    dataGridComboBoxSelectRecruitModels.Rows[i].HeaderCell.Value = "Selection " + (i + 1);
                 }
                 
             }
@@ -374,26 +374,26 @@ namespace Nmfs.Agepro.Gui
 
         // This event handler manually raises the CellValueChanged event 
         // by calling the CommitEdit method. 
-        private void dataGridSelectRecruitModels_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void dataGridComboBoxSelectRecruitModels_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            if (dataGridSelectRecruitModels.IsCurrentCellDirty)
+            if (dataGridComboBoxSelectRecruitModels.IsCurrentCellDirty)
             {
                 // This fires the cell value changed handler below
-                dataGridSelectRecruitModels.CommitEdit(DataGridViewDataErrorContexts.Commit); 
+                dataGridComboBoxSelectRecruitModels.CommitEdit(DataGridViewDataErrorContexts.Commit); 
             }
         }
 
-        private void dataGridSelectRecruitModels_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridComboBoxSelectRecruitModels_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (this.populateDGV == false)
             {
-                DataGridViewComboBoxCell cbxCell = (DataGridViewComboBoxCell)dataGridSelectRecruitModels.Rows[e.RowIndex].Cells[0];
+                DataGridViewComboBoxCell cbxCell = (DataGridViewComboBoxCell)dataGridComboBoxSelectRecruitModels.Rows[e.RowIndex].Cells[0];
                 //Should only bind to events to Recruitment Model Column
                 if (e.ColumnIndex == 0) 
                 {
                     if (cbxCell != null)
                     {
-                        var currentModel = dataGridSelectRecruitModels.CurrentCell.RowIndex;
+                        var currentModel = dataGridComboBoxSelectRecruitModels.CurrentCell.RowIndex;
                         var senderDGV = sender as DataGridView;
                         var senderCbx = senderDGV.EditingControl as DataGridViewComboBoxEditingControl;
                         //check if senderCbx is actually the checkbox or not. (Programmically, sender would be null)
@@ -402,7 +402,7 @@ namespace Nmfs.Agepro.Gui
                             OnSelectingRecruitModel(currentModel, senderCbx);
                         }
                         
-                        dataGridSelectRecruitModels.Invalidate();
+                        dataGridComboBoxSelectRecruitModels.Invalidate();
                     }
                 } 
             }
@@ -411,7 +411,7 @@ namespace Nmfs.Agepro.Gui
 
         /// <summary>
         /// Sets the Recruitment Model of the current index of the multi-recruitment array based off from the
-        /// current selected cell value of dataGridSelectRecruitModel. 
+        /// current selected cell value of dataGridComboBoxRecruitModel. 
         /// </summary>
         /// <param name="currentModel"></param>
         /// <param name="modelCbx"></param>
@@ -442,7 +442,6 @@ namespace Nmfs.Agepro.Gui
                                 
                             }
                             
-                            Console.WriteLine("Debug1");
                         }
                     }    
                 }
@@ -455,6 +454,19 @@ namespace Nmfs.Agepro.Gui
             
         }
         //end OnSelectingRecruitingModel
+
+        public bool ValidateRecruitmentData()
+        {
+            if (this.dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells() == false )
+            {
+                
+                return false;
+            }
+
+
+            return true;
+        }
+
 
         /// <summary>
         /// 

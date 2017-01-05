@@ -33,7 +33,7 @@
             this.labelRecruitProb = new System.Windows.Forms.Label();
             this.labelSelectRecruitModels = new System.Windows.Forms.Label();
             this.dataGridRecruitProb = new Nmfs.Agepro.Gui.NftDataGridView();
-            this.dataGridSelectRecruitModels = new Nmfs.Agepro.Gui.NftDataGridView();
+            this.dataGridComboBoxSelectRecruitModels = new Nmfs.Agepro.Gui.NftDataGridView();
             this.groupScalingFactor = new System.Windows.Forms.GroupBox();
             this.textBoxSSBScalingFactor = new System.Windows.Forms.TextBox();
             this.textBoxRecruitngScalingFactor = new System.Windows.Forms.TextBox();
@@ -47,7 +47,7 @@
             this.tabControlRecruitment.SuspendLayout();
             this.tabRecruitment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitProb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelectRecruitModels)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridComboBoxSelectRecruitModels)).BeginInit();
             this.groupScalingFactor.SuspendLayout();
             this.tabRecruitModels.SuspendLayout();
             this.groupRecruitSelectionBox.SuspendLayout();
@@ -72,7 +72,7 @@
             this.tabRecruitment.Controls.Add(this.labelRecruitProb);
             this.tabRecruitment.Controls.Add(this.labelSelectRecruitModels);
             this.tabRecruitment.Controls.Add(this.dataGridRecruitProb);
-            this.tabRecruitment.Controls.Add(this.dataGridSelectRecruitModels);
+            this.tabRecruitment.Controls.Add(this.dataGridComboBoxSelectRecruitModels);
             this.tabRecruitment.Controls.Add(this.groupScalingFactor);
             this.tabRecruitment.Location = new System.Drawing.Point(4, 22);
             this.tabRecruitment.Name = "tabRecruitment";
@@ -120,23 +120,23 @@
             this.dataGridRecruitProb.TabIndex = 4;
             this.dataGridRecruitProb.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRecruitProb_CellFormatting);
             // 
-            // dataGridSelectRecruitModels
+            // dataGridComboBoxSelectRecruitModels
             // 
-            this.dataGridSelectRecruitModels.AllowUserToAddRows = false;
-            this.dataGridSelectRecruitModels.AllowUserToDeleteRows = false;
-            this.dataGridSelectRecruitModels.AllowUserToResizeRows = false;
-            this.dataGridSelectRecruitModels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridComboBoxSelectRecruitModels.AllowUserToAddRows = false;
+            this.dataGridComboBoxSelectRecruitModels.AllowUserToDeleteRows = false;
+            this.dataGridComboBoxSelectRecruitModels.AllowUserToResizeRows = false;
+            this.dataGridComboBoxSelectRecruitModels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridSelectRecruitModels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSelectRecruitModels.Location = new System.Drawing.Point(18, 23);
-            this.dataGridSelectRecruitModels.Name = "dataGridSelectRecruitModels";
-            this.dataGridSelectRecruitModels.nftReadOnly = false;
-            this.dataGridSelectRecruitModels.ShowEditingIcon = false;
-            this.dataGridSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
-            this.dataGridSelectRecruitModels.TabIndex = 2;
-            this.dataGridSelectRecruitModels.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridSelectRecruitModels_CellFormatting);
-            this.dataGridSelectRecruitModels.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSelectRecruitModels_CellValueChanged);
-            this.dataGridSelectRecruitModels.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridSelectRecruitModels_CurrentCellDirtyStateChanged);
+            this.dataGridComboBoxSelectRecruitModels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridComboBoxSelectRecruitModels.Location = new System.Drawing.Point(18, 23);
+            this.dataGridComboBoxSelectRecruitModels.Name = "dataGridSelectRecruitModels";
+            this.dataGridComboBoxSelectRecruitModels.nftReadOnly = false;
+            this.dataGridComboBoxSelectRecruitModels.ShowEditingIcon = false;
+            this.dataGridComboBoxSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
+            this.dataGridComboBoxSelectRecruitModels.TabIndex = 2;
+            this.dataGridComboBoxSelectRecruitModels.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridComboBoxSelectRecruitModels_CellFormatting);
+            this.dataGridComboBoxSelectRecruitModels.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridComboBoxSelectRecruitModels_CellValueChanged);
+            this.dataGridComboBoxSelectRecruitModels.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridComboBoxSelectRecruitModels_CurrentCellDirtyStateChanged);
             // 
             // groupScalingFactor
             // 
@@ -248,7 +248,7 @@
             this.tabRecruitment.ResumeLayout(false);
             this.tabRecruitment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitProb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelectRecruitModels)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridComboBoxSelectRecruitModels)).EndInit();
             this.groupScalingFactor.ResumeLayout(false);
             this.groupScalingFactor.PerformLayout();
             this.tabRecruitModels.ResumeLayout(false);
@@ -266,7 +266,7 @@
         private System.Windows.Forms.Label labelRecruitProb;
         private System.Windows.Forms.Label labelSelectRecruitModels;
         private Nmfs.Agepro.Gui.NftDataGridView dataGridRecruitProb;
-        private Nmfs.Agepro.Gui.NftDataGridView dataGridSelectRecruitModels;
+        private Nmfs.Agepro.Gui.NftDataGridView dataGridComboBoxSelectRecruitModels;
         private System.Windows.Forms.GroupBox groupScalingFactor;
         private System.Windows.Forms.TextBox textBoxSSBScalingFactor;
         private System.Windows.Forms.TextBox textBoxRecruitngScalingFactor;
