@@ -372,14 +372,33 @@ namespace Nmfs.Agepro.Gui
             }
          }
 
+
+
         // This event handler manually raises the CellValueChanged event 
         // by calling the CommitEdit method. 
         private void dataGridComboBoxSelectRecruitModels_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (dataGridComboBoxSelectRecruitModels.IsCurrentCellDirty)
             {
-                // This fires the cell value changed handler below
-                dataGridComboBoxSelectRecruitModels.CommitEdit(DataGridViewDataErrorContexts.Commit); 
+                //Store previous value in case of error
+                var senderDgv = sender as NftDataGridView;
+                var oldKey = senderDgv.CurrentCell.Value; 
+                var senderCbxCell = senderDgv.EditingControl as DataGridViewComboBoxEditingControl;
+                
+                try
+                {  
+                    // This fires the cell value changed handler below
+                    dataGridComboBoxSelectRecruitModels.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("AGEPRO Recruitment selection can not be made." + Environment.NewLine + 
+                        ex.Message, "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    
+                    //Revert selected value 
+                    senderCbxCell.SelectedValue = oldKey; 
+                }
+                 
             }
         }
 
@@ -394,7 +413,7 @@ namespace Nmfs.Agepro.Gui
                     if (cbxCell != null)
                     {
                         var currentModel = dataGridComboBoxSelectRecruitModels.CurrentCell.RowIndex;
-                        var senderDGV = sender as DataGridView;
+                        var senderDGV = sender as NftDataGridView;
                         var senderCbx = senderDGV.EditingControl as DataGridViewComboBoxEditingControl;
                         //check if senderCbx is actually the checkbox or not. (Programmically, sender would be null)
                         if (senderCbx != null) 
@@ -413,43 +432,36 @@ namespace Nmfs.Agepro.Gui
         /// Sets the Recruitment Model of the current index of the multi-recruitment array based off from the
         /// current selected cell value of dataGridComboBoxRecruitModel. 
         /// </summary>
-        /// <param name="currentModel"></param>
-        /// <param name="modelCbx"></param>
+        /// <param name="currentModel">Index of the recruitment collection array</param>
+        /// <param name="modelCbx">The DataGridViewComboBoxCell object that is being selected by the user</param>
         private void OnSelectingRecruitModel(int currentModel, DataGridViewComboBoxEditingControl modelCbx)
         {
-            try
+
+            object kvpKey;
+            var selectedRecruit = modelCbx.SelectedItem;
+            if (selectedRecruit != null) 
             {
-                object kvpKey;
-                var selectedRecruit = modelCbx.SelectedItem;
-                if (selectedRecruit != null) 
+                Type typeSelectedRecruit = selectedRecruit.GetType();
+                if (typeSelectedRecruit.IsGenericType)
                 {
-                    Type typeSelectedRecruit = selectedRecruit.GetType();
-                    if (typeSelectedRecruit.IsGenericType)
+                    Type baseTypeSelectedRecruit = typeSelectedRecruit.GetGenericTypeDefinition();
+                    if (baseTypeSelectedRecruit == typeof(KeyValuePair<,>))
                     {
-                        Type baseTypeSelectedRecruit = typeSelectedRecruit.GetGenericTypeDefinition();
-                        if (baseTypeSelectedRecruit == typeof(KeyValuePair<,>))
+                        Type[] argTypes = baseTypeSelectedRecruit.GetGenericArguments();
+
+                        kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
+                        this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
+
+                        int selectedModelNum = Convert.ToInt32(kvpKey);
+                        if (this.collectionAgeproRecruitmentModels[currentModel] != null)
                         {
-                            Type[] argTypes = baseTypeSelectedRecruit.GetGenericArguments();
-
-                            kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
-                            this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
-
-                            int selectedModelNum = Convert.ToInt32(kvpKey);
-                            if (this.collectionAgeproRecruitmentModels[currentModel] != null)
-                            {
-                                this.collectionAgeproRecruitmentModels[currentModel] = 
-                                    AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
+                            this.collectionAgeproRecruitmentModels[currentModel] = 
+                                AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
                                 
-                            }
-                            
                         }
-                    }    
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("AGEPRO Recruitment selection can not be made." + Environment.NewLine + ex.Message,
-                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            
+                    }
+                }    
             }
             
         }
@@ -539,6 +551,8 @@ namespace Nmfs.Agepro.Gui
 
             return ResizeDataGridTable(dgvTable, newRowCount);
         }
+
+        
 
     }
 }
