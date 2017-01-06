@@ -112,6 +112,7 @@
             this.dataGridRecruitProb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridRecruitProb.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridRecruitProb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRecruitProb.Location = new System.Drawing.Point(18, 211);
             this.dataGridRecruitProb.Name = "dataGridRecruitProb";
@@ -127,9 +128,10 @@
             this.dataGridComboBoxSelectRecruitModels.AllowUserToResizeRows = false;
             this.dataGridComboBoxSelectRecruitModels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridComboBoxSelectRecruitModels.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridComboBoxSelectRecruitModels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridComboBoxSelectRecruitModels.Location = new System.Drawing.Point(18, 23);
-            this.dataGridComboBoxSelectRecruitModels.Name = "dataGridSelectRecruitModels";
+            this.dataGridComboBoxSelectRecruitModels.Name = "dataGridComboBoxSelectRecruitModels";
             this.dataGridComboBoxSelectRecruitModels.nftReadOnly = false;
             this.dataGridComboBoxSelectRecruitModels.ShowEditingIcon = false;
             this.dataGridComboBoxSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
