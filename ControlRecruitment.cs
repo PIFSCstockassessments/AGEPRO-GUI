@@ -469,11 +469,48 @@ namespace Nmfs.Agepro.Gui
 
         public bool ValidateRecruitmentData()
         {
+            //Select Recruitment Models
             if (this.dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells() == false )
             {
-                
                 return false;
             }
+            //Recruitment Scaling Factor
+            if (string.IsNullOrWhiteSpace(this.textBoxRecruitngScalingFactor.Text))
+            {
+                MessageBox.Show("Missing Recruitment Scaling Factor value.",
+                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            //SSB Scaling Factor
+            if (string.IsNullOrWhiteSpace(this.textBoxSSBScalingFactor.Text))
+            {
+                MessageBox.Show("Missing Recruitment SSB Scaling Factor value.",
+                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            
+            //Recruitment Probability
+            if (this.dataGridRecruitProb.HasBlankOrNullCells() == false)
+            {
+                return false;
+            }
+            foreach (DataRow drow in this.dataGridRecruitProb.Rows)
+            {
+                try
+                {
+                    string[] recruitProbRow = Array.ConvertAll(drow.ItemArray, item => item.ToString());
+                    AgeproRecruitment.CheckRecruitProbabilitySum(recruitProbRow);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;                
+                }
+
+            }
+
+            //Recruit Models
 
 
             return true;
