@@ -496,21 +496,20 @@ namespace Nmfs.Agepro.Gui
             }
             foreach (DataRow drow in this.dataGridRecruitProb.Rows)
             {
-                try
+                string[] recruitProbRow = Array.ConvertAll(drow.ItemArray, item => item.ToString());
+                if(AgeproRecruitment.CheckRecruitProbabilitySum(recruitProbRow) == false) 
                 {
-                    string[] recruitProbRow = Array.ConvertAll(drow.ItemArray, item => item.ToString());
-                    AgeproRecruitment.CheckRecruitProbabilitySum(recruitProbRow);
+                    double rowSumRecruitProb = Array.ConvertAll<string, double>(recruitProbRow, double.Parse).Sum();
+                    MessageBox.Show("Recruitment probablity sum does not equal 1.0: Probability sum is " 
+                        + rowSumRecruitProb.ToString() ,
+                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message,
-                        "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw;                
-                }
-
+            
             }
 
             //Recruit Models
+
 
 
             return true;
