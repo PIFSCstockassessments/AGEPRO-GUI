@@ -261,7 +261,7 @@ namespace Nmfs.Agepro.Gui
                 }
                 else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Fixed)
                 {
-                    EmpiricalRecruitment currentFixedRecruitmentSelection = (EmpiricalRecruitment)currentRecruitSelection;
+                    FixedEmpiricalRecruitment currentFixedRecruitmentSelection = (FixedEmpiricalRecruitment)currentRecruitSelection;
 
                     ControlRecruitmentFixed fixedRecruitmentControls = new ControlRecruitmentFixed();
                     fixedRecruitmentControls.seqYears = this.seqRecruitYears;
@@ -509,7 +509,15 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Recruit Models
+            foreach (RecruitmentModel rmodelSelection in this.collectionAgeproRecruitmentModels)
+            {
+                int rmodelIndex = this.collectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
+                if (rmodelSelection is EmpiricalRecruitment)
+                {
+                    
+                }
 
+            }
 
 
             return true;
