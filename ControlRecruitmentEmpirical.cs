@@ -120,101 +120,28 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="selectedIndex"></param>
-        /// <returns></returns>
-        protected virtual bool CheckMissingNumObservations(int selectedIndex)
-        {
-            //Number of Observations
-            if (string.IsNullOrWhiteSpace(this.spinBoxNumObservations.Value.ToString()))
-            {
-                MessageBox.Show("Recruitment Selection " + selectedIndex + "has : "
-                    + Environment.NewLine + "Missing number of Observations",
-                    "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            return true;
-        }
-
-        protected virtual bool ValidateObservationTable(int selectedIndex)
+        public static bool ValidateObservationTable(EmpiricalRecruitment selectedRecruit, int selectedIndex)
         {
             //Observation Table - Check for blank/null cells
-            if (this.dataGridRecruitTable.HasBlankOrNullCells())
+            if (selectedRecruit.CheckObservationTableMissingValues() == false)
             {
                 MessageBox.Show("Recruitment Selection " + selectedIndex + ": "
                     + Environment.NewLine + "Has missing Data in observation table",
                     "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            //Observation Table - Check if value < 0.0001
-            foreach (DataRow drow in this.observationTable.Rows)
+            if (selectedRecruit.CheckObservationTableInsignificantValues() == false)
             {
-                foreach (DataColumn dcol in this.observationTable.Columns)
-                {
-                    if (Convert.ToDouble(drow[dcol]) < 0.0001)
-                    {
-                        MessageBox.Show("Recruitment Selection " + selectedIndex + ": "
-                            + Environment.NewLine + "Has insignificant values in observation table",
-                            "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                }
+                MessageBox.Show("Recruitment Selection " + selectedIndex + ": "
+                    + Environment.NewLine + "Has insignificant values in observation table",
+                    "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
 
             return true;
         }
 
-        protected virtual bool ValidateEmpiricalModel(EmpiricalRecruitment selectedRecruit, int selectedIndex)
-        {
-            if (selectedRecruit.subType == EmpiricalType.Empirical)
-            {
-                //Number of Observations
-                if (CheckMissingNumObservations(selectedIndex) == false)
-                {
-                    return false;
-                }
-                //Observation Table
-                if (ValidateObservationTable(selectedIndex) == false)
-                {
-                    return false;
-                }
 
-            }
-            else if (selectedRecruit.subType == EmpiricalType.CDFZero)
-            {
-                //Number of Observations
-                if (CheckMissingNumObservations(selectedIndex) == false)
-                {
-                    return false;
-                }
-                //SSB Hinge
-                if (string.IsNullOrWhiteSpace(this.textBoxSSBHinge.Text.ToString()))
-                {
-                    MessageBox.Show("Recruitment Selection " + selectedIndex + "has : "
-                        + Environment.NewLine + "Has missing SSB hinge value.",
-                        "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-                //Observation Table
-                if (ValidateObservationTable(selectedIndex) == false)
-                {
-                    return false;
-                }
-            }
-            else if (selectedRecruit.subType == EmpiricalType.Fixed)
-            {
-
-            }
-            return true;
-        }
-
-        protected virtual bool ValidateEmpiricalRecruitment(EmpiricalCDFZero selectedRecruit, int selectedIndex)
-        {
-            return true;
-        }
+        
     }
 }
