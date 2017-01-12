@@ -509,14 +509,22 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Recruit Models
+            Nmfs.Agepro.CoreLib.ValidationResult vaildRecruitmentResult;
+
             foreach (RecruitmentModel rmodelSelection in this.collectionAgeproRecruitmentModels)
             {
                 int rmodelIndex = this.collectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
-                if (rmodelSelection is EmpiricalRecruitment)
-                {
-                    
-                }
 
+                vaildRecruitmentResult = rmodelSelection.ValidateInput();
+
+                if (vaildRecruitmentResult.isValid == false)
+                {
+                    MessageBox.Show("In Recruitment Selection " + rmodelIndex + ": "
+                        + Environment.NewLine + vaildRecruitmentResult.message,
+                        "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
             }
 
 
@@ -526,48 +534,6 @@ namespace Nmfs.Agepro.Gui
 
 
         
-
-        public virtual bool ValidateEmpiricalModel(EmpiricalRecruitment selectedRecruit, int selectedIndex)
-        {
-            if (selectedRecruit.subType == EmpiricalType.Empirical)
-            {
-                //GUI functions prevent Missing/Null Number of Observations.Should default to 0 as a int type.
-
-                //Observation Table
-                if (ControlRecruitmentEmpirical.ValidateObservationTable(selectedRecruit, selectedIndex) == false)
-                {
-                    return false;
-                }
-
-            }
-            else if (selectedRecruit.subType == EmpiricalType.CDFZero)
-            {
-                //GUI functions prevent Missing/Null Number of Observations. Should default to 0 as a int type.
-                //SSB Hinge
-                //if (string.IsNullOrWhiteSpace(this.textBoxSSBHinge.Text.ToString()))
-                if (!(((EmpiricalCDFZero)selectedRecruit).SSBHinge != null))
-                {
-                    MessageBox.Show("Recruitment Selection " + selectedIndex + "has : "
-                        + Environment.NewLine + "Has missing SSB hinge value.",
-                        "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-                //Observation Table
-                if (ControlRecruitmentEmpirical.ValidateObservationTable(selectedRecruit, selectedIndex) == false)
-                {
-                    return false;
-                }
-            }
-            else if (selectedRecruit.subType == EmpiricalType.TwoStage)
-            {
-
-            }
-
-            return true;
-        }
-
-
-
 
 
         /// <summary>

@@ -120,28 +120,7 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
-        public static bool ValidateObservationTable(EmpiricalRecruitment selectedRecruit, int selectedIndex)
-        {
-            //Observation Table - Check for blank/null cells
-            if (selectedRecruit.CheckObservationTableMissingValues() == false)
-            {
-                MessageBox.Show("Recruitment Selection " + selectedIndex + ": "
-                    + Environment.NewLine + "Has missing Data in observation table",
-                    "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (selectedRecruit.CheckObservationTableInsignificantValues() == false)
-            {
-                MessageBox.Show("Recruitment Selection " + selectedIndex + ": "
-                    + Environment.NewLine + "Has insignificant values in observation table",
-                    "AGEPRO Empirical Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            return true;
-        }
 
 
-        
     }
 }
