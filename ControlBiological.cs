@@ -102,7 +102,14 @@ namespace Nmfs.Agepro.Gui
         /// <returns></returns>
         public bool ValidateFractionMortalityDataGrid()
         {
-            return this.dataGridFractionMortality.HasBlankOrNullCells();
+            if (this.dataGridFractionMortality.HasBlankOrNullCells() == true)
+            {
+                MessageBox.Show("Data Fraction Mortality Prior to Spawning Table has blank or missing values.",
+                    "AGEPRO Biological", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
 
