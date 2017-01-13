@@ -500,7 +500,7 @@ namespace Nmfs.Agepro.Gui
                 
                 return false;
             }
-            foreach (DataRow drow in this.dataGridRecruitProb.Rows)
+            foreach (DataRow drow in this.recruitmentProb.Rows)
             {
                 string[] recruitProbRow = Array.ConvertAll(drow.ItemArray, item => item.ToString());
                 if(AgeproRecruitment.CheckRecruitProbabilitySum(recruitProbRow) == false) 
@@ -525,7 +525,7 @@ namespace Nmfs.Agepro.Gui
 
                 if (vaildRecruitmentResult.isValid == false)
                 {
-                    MessageBox.Show("In Recruitment Selection " + rmodelIndex + ": "
+                    MessageBox.Show("In Recruitment Selection " + (rmodelIndex+1) + ": "
                         + Environment.NewLine + vaildRecruitmentResult.message,
                         "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
