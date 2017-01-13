@@ -470,8 +470,11 @@ namespace Nmfs.Agepro.Gui
         public bool ValidateRecruitmentData()
         {
             //Select Recruitment Models
-            if (this.dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells() == false )
+            if (this.dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells() == true )
             {
+                MessageBox.Show("Select Recruitment Model Data Grid has invalid data.",
+                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                
                 return false;
             }
             //Recruitment Scaling Factor
@@ -490,8 +493,11 @@ namespace Nmfs.Agepro.Gui
             }
             
             //Recruitment Probability
-            if (this.dataGridRecruitProb.HasBlankOrNullCells() == false)
+            if (this.dataGridRecruitProb.HasBlankOrNullCells() == true)
             {
+                MessageBox.Show("Recruitment prbability table has missing values.",
+                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                
                 return false;
             }
             foreach (DataRow drow in this.dataGridRecruitProb.Rows)
