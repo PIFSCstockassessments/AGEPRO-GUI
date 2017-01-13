@@ -402,9 +402,10 @@ namespace Nmfs.Agepro.Gui
         private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Validate
+            ValidateControlInputs();
 
             //If Input Data is Valid LaunchAgeproModel() 
-            LaunchAgeproModel();
+            //LaunchAgeproModel();
             
         }
 
@@ -483,7 +484,11 @@ namespace Nmfs.Agepro.Gui
             }
 
 
-            //Recruitment 
+            //Recruitment
+            if (this.controlRecruitment.ValidateRecruitmentData() == false)
+            {
+                return false;
+            }
 
             //Bootstrap
 
@@ -498,6 +503,8 @@ namespace Nmfs.Agepro.Gui
 
 
 
+            MessageBox.Show("Agepro Input Validated.",
+                       "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return true;
         }
