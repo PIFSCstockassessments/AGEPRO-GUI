@@ -137,13 +137,13 @@ namespace Nmfs.Agepro.Gui
             if (this.radioParameterFromUser.Checked)
             {
                 //check if Data Grid has Blank or Null Cells 
-                if (!(controlStochasticParamAgeFromUser.ValidateStochasticAgeDataGridTable()))
+                if (controlStochasticParamAgeFromUser.StochasticAgeDataGridTableContainMissingData())
                 {
-                    MessageBox.Show(this.stochasticParameterLabel + " At Age Data Table has" +
+                    MessageBox.Show(this.stochasticParameterLabel + " At Age Data Table has " +
                         "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                if (!(controlStochasticParamAgeFromUser.ValidateStochasticCVDataGridTable()))
+                if (controlStochasticParamAgeFromUser.StochasticCVDataGridTableContainMissingData())
                 {
                     MessageBox.Show(this.stochasticParameterLabel + " CV Data Table has" +
                         "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);

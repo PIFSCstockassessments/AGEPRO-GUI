@@ -238,7 +238,7 @@ namespace Nmfs.Agepro.Gui
         /// Checks if this Stochastic Age Data Grid has Blank or Null Cells 
         /// </summary>
         /// <returns></returns>
-        public bool ValidateStochasticAgeDataGridTable()
+        public bool StochasticAgeDataGridTableContainMissingData()
         {
             return this.dataGridStochasticAgeTable.HasBlankOrNullCells();
         }
@@ -246,7 +246,7 @@ namespace Nmfs.Agepro.Gui
         /// Checks if this Coefficient of Variation Data Grid has Blank or Null Cells
         /// </summary>
         /// <returns></returns>
-        public bool ValidateStochasticCVDataGridTable()
+        public bool StochasticCVDataGridTableContainMissingData()
         {
             return this.dataGridCVTable.HasBlankOrNullCells();
         }
