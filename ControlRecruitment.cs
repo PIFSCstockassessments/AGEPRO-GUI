@@ -515,7 +515,7 @@ namespace Nmfs.Agepro.Gui
             {
                 int rmodelIndex = this.collectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
 
-                vaildRecruitmentResult = rmodelSelection.ValidateInput();
+                vaildRecruitmentResult = rmodelSelection.ValidationCheck();
 
                 if (vaildRecruitmentResult.isValid == false)
                 {
