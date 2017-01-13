@@ -41,7 +41,7 @@ namespace Nmfs.Agepro.Gui
             this.textBoxBeta.DataBindings.Add("Text", currentParametricCurveRecruit, "beta");
             this.textBoxVariance.DataBindings.Add("Text", currentParametricCurveRecruit, "variance");
 
-            if(currentParametricCurveRecruit.IsThisAShepherdCurve())
+            if(currentParametricCurveRecruit.isShepherdCurve)
             {
                 this.labelKparm.Visible = true;
                 this.textBoxKParm.Visible = true;
