@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
     public partial class ControlRecruitmentPredictor : UserControl
     {
+        public List<RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+        public int collectionSelectedIndex { get; set; }
+
         private int maxRecruitPredictors { get; set; }
 
         public ControlRecruitmentPredictor()
@@ -115,6 +119,31 @@ namespace Nmfs.Agepro.Gui
             {
                 predictorDataGrid.Rows[i].HeaderCell.Value = (i + 1).ToString();
             }
+        }
+
+        public void SetPredictorRecruitmentcontrols(PredictorRecruitment recruit, Panel panelRecruitModelParameter)
+        {
+            //if (!(currentPredictorRecruitSelection.coefficientTable != null))
+            //{
+            //    currentPredictorRecruitSelection.coefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
+            //}
+            //if (!(currentPredictorRecruitSelection.observationTable != null))
+            //{
+            //    currentPredictorRecruitSelection.observationTable =
+            //        PredictorRecruitment.SetNewObsTable(0, this.seqRecruitYears);
+            //}
+            ////TODO DATA BINDINGS
+
+            //predictorParameterControls.numRecruitPredictors = currentPredictorRecruitSelection.numRecruitPredictors;
+            //predictorParameterControls.variance = currentPredictorRecruitSelection.variance;
+            //predictorParameterControls.intercept = currentPredictorRecruitSelection.intercept;
+            //predictorParameterControls.coefficientTable = currentPredictorRecruitSelection.coefficientTable;
+            //predictorParameterControls.observationTable = currentPredictorRecruitSelection.observationTable;
+
+            //panelRecruitModelParameter.Controls.Clear();
+            //predictorParameterControls.Dock = DockStyle.Fill;
+            //panelRecruitModelParameter.Controls.Add(predictorParameterControls);
+
         }
     }
 
