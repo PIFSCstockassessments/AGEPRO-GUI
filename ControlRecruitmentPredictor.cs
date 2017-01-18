@@ -15,6 +15,7 @@ namespace Nmfs.Agepro.Gui
     {
         public List<RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
         public int collectionSelectedIndex { get; set; }
+        public string[] seqYears { get; set; }
 
         private int maxRecruitPredictors { get; set; }
 
@@ -121,28 +122,34 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
-        public void SetPredictorRecruitmentcontrols(PredictorRecruitment recruit, Panel panelRecruitModelParameter)
+        public void SetPredictorRecruitmentcontrols(PredictorRecruitment recruitSelection, Panel panelRecruitModelParameter)
         {
-            //if (!(currentPredictorRecruitSelection.coefficientTable != null))
-            //{
-            //    currentPredictorRecruitSelection.coefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
-            //}
-            //if (!(currentPredictorRecruitSelection.observationTable != null))
-            //{
-            //    currentPredictorRecruitSelection.observationTable =
-            //        PredictorRecruitment.SetNewObsTable(0, this.seqRecruitYears);
-            //}
-            ////TODO DATA BINDINGS
+            if (!(recruitSelection.coefficientTable != null))
+            {
+                recruitSelection.coefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
+            }
+            if (!(recruitSelection.observationTable != null))
+            {
+                recruitSelection.observationTable =
+                    PredictorRecruitment.SetNewObsTable(0, this.seqYears);
+            }
+            //TODO DATA BINDINGS
+            this.spinBoxNumRecruitPredictors.DataBindings.Add("value", recruitSelection, "numRecruitPredictors", 
+                true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxVariance.DataBindings.Add("text", recruitSelection, "variance", true,
+                DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxIntercept.DataBindings.Add("text", recruitSelection, "intercept", true, 
+                DataSourceUpdateMode.OnPropertyChanged);
 
-            //predictorParameterControls.numRecruitPredictors = currentPredictorRecruitSelection.numRecruitPredictors;
-            //predictorParameterControls.variance = currentPredictorRecruitSelection.variance;
-            //predictorParameterControls.intercept = currentPredictorRecruitSelection.intercept;
-            //predictorParameterControls.coefficientTable = currentPredictorRecruitSelection.coefficientTable;
-            //predictorParameterControls.observationTable = currentPredictorRecruitSelection.observationTable;
+            this.numRecruitPredictors = recruitSelection.numRecruitPredictors;
+            this.variance = recruitSelection.variance;
+            this.intercept = recruitSelection.intercept;
+            this.coefficientTable = recruitSelection.coefficientTable;
+            this.observationTable = recruitSelection.observationTable;
 
-            //panelRecruitModelParameter.Controls.Clear();
-            //predictorParameterControls.Dock = DockStyle.Fill;
-            //panelRecruitModelParameter.Controls.Add(predictorParameterControls);
+            panelRecruitModelParameter.Controls.Clear();
+            this.Dock = DockStyle.Fill;
+            panelRecruitModelParameter.Controls.Add(this);
 
         }
     }

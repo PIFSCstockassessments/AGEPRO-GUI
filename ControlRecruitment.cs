@@ -279,9 +279,10 @@ namespace Nmfs.Agepro.Gui
 
                     ControlRecruitmentParametricCurve parametricCurveControls = new ControlRecruitmentParametricCurve();
 
-                    parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
                     parametricCurveControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
                     parametricCurveControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+                    parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
+
                 }
                 else if (((ParametricRecruitment)currentRecruitSelection).subtype == ParametricType.Lognormal)
                 {
@@ -297,26 +298,13 @@ namespace Nmfs.Agepro.Gui
             else if (currentRecruitSelection is PredictorRecruitment)
             {
                 PredictorRecruitment currentPredictorRecruitSelection = (PredictorRecruitment)currentRecruitSelection;
-                if (!(currentPredictorRecruitSelection.coefficientTable != null))
-                {
-                    currentPredictorRecruitSelection.coefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
-                }
-                if (!(currentPredictorRecruitSelection.observationTable != null))
-                {
-                    currentPredictorRecruitSelection.observationTable = 
-                        PredictorRecruitment.SetNewObsTable(0, this.seqRecruitYears);
-                }
-
-                ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
-                predictorParameterControls.numRecruitPredictors = currentPredictorRecruitSelection.numRecruitPredictors;
-                predictorParameterControls.variance = currentPredictorRecruitSelection.variance;
-                predictorParameterControls.intercept = currentPredictorRecruitSelection.intercept;
-                predictorParameterControls.coefficientTable = currentPredictorRecruitSelection.coefficientTable;
-                predictorParameterControls.observationTable = currentPredictorRecruitSelection.observationTable;
                 
-                panelRecruitModelParameter.Controls.Clear();
-                predictorParameterControls.Dock = DockStyle.Fill;
-                panelRecruitModelParameter.Controls.Add(predictorParameterControls);
+                ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
+
+                predictorParameterControls.seqYears = this.seqRecruitYears;
+                predictorParameterControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+                predictorParameterControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                predictorParameterControls.SetPredictorRecruitmentcontrols(currentPredictorRecruitSelection, panelRecruitModelParameter);
             }
             else if(currentRecruitSelection is MarkovMatrixRecruitment)
             {
@@ -536,10 +524,6 @@ namespace Nmfs.Agepro.Gui
 
             return true;
         }
-
-
-
-        
 
 
         /// <summary>
