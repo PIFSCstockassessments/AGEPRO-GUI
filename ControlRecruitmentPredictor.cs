@@ -124,16 +124,17 @@ namespace Nmfs.Agepro.Gui
 
         public void SetPredictorRecruitmentcontrols(PredictorRecruitment recruitSelection, Panel panelRecruitModelParameter)
         {
-            if (!(recruitSelection.coefficientTable != null))
+            //Create a new coefficient and/or table if they are null
+            if (recruitSelection.coefficientTable == null)
             {
                 recruitSelection.coefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
             }
-            if (!(recruitSelection.observationTable != null))
+            if (recruitSelection.observationTable == null)
             {
-                recruitSelection.observationTable =
-                    PredictorRecruitment.SetNewObsTable(0, this.seqYears);
+                recruitSelection.observationTable = PredictorRecruitment.SetNewObsTable(0, this.seqYears);
             }
-            //TODO DATA BINDINGS
+
+            //Set Data Bindings
             this.spinBoxNumRecruitPredictors.DataBindings.Add("value", recruitSelection, "numRecruitPredictors", 
                 true, DataSourceUpdateMode.OnPropertyChanged);
             this.textBoxVariance.DataBindings.Add("text", recruitSelection, "variance", true,
@@ -141,12 +142,11 @@ namespace Nmfs.Agepro.Gui
             this.textBoxIntercept.DataBindings.Add("text", recruitSelection, "intercept", true, 
                 DataSourceUpdateMode.OnPropertyChanged);
 
-            this.numRecruitPredictors = recruitSelection.numRecruitPredictors;
-            this.variance = recruitSelection.variance;
-            this.intercept = recruitSelection.intercept;
+            //
             this.coefficientTable = recruitSelection.coefficientTable;
             this.observationTable = recruitSelection.observationTable;
 
+            //Set panel
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;
             panelRecruitModelParameter.Controls.Add(this);
