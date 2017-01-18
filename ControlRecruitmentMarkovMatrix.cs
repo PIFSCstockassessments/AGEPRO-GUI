@@ -91,9 +91,11 @@ namespace Nmfs.Agepro.Gui
                         currentRecruit.NewProbabilityTable(currentRecruit.numSSBLevels, currentRecruit.numRecruitLevels));
                 }
             }
-
-            this.spinBoxNumRecruitLevels.Value = currentRecruit.numRecruitLevels;
-            this.spinBoxNumSSBLevels.Value = currentRecruit.numSSBLevels;
+            //Set data bindings
+            this.spinBoxNumRecruitLevels.DataBindings.Add("Value", currentRecruit, "numRecruitLevels", 
+                true, DataSourceUpdateMode.OnPropertyChanged);
+            this.spinBoxNumSSBLevels.DataBindings.Add("Value", currentRecruit, "numSSBlevels", true,
+                DataSourceUpdateMode.OnPropertyChanged);
 
             this.recruitLevelTable = currentRecruit.markovRecruitment.Tables["Recruitment"];
             this.SSBLevelTable = currentRecruit.markovRecruitment.Tables["SSB"];
