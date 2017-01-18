@@ -401,6 +401,13 @@ namespace Nmfs.Agepro.Gui
         /// <param name="e"></param>
         private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //If a cell is in edit mode, commit changes and end edit mode.
+            var ctlActive = FindFocusedControl(this.ActiveControl);
+            if (ctlActive is DataGridViewTextBoxEditingControl)
+            {
+                EndEditModeFromDataGridViewTextBoxEditingControl((DataGridViewTextBoxEditingControl)ctlActive);
+            }
+
             //Validate
             ValidateControlInputs();
 
