@@ -244,9 +244,13 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Load TwoStage Controls
-            this.lv1NumObservations = currentRecruit.lv1NumObs;
-            this.lv2NumObservations = currentRecruit.lv2NumObs;
-            this.SSBBreakValue = currentRecruit.SSBBreakVal;
+            this.spinBoxLv1NumObservations.DataBindings.Add("value", currentRecruit, "lv1NumObs", true, 
+                DataSourceUpdateMode.OnPropertyChanged);
+            this.spinBoxLv2NumObservations.DataBindings.Add("value", currentRecruit, "lv2NumObs", true,
+                DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxSSBBreakValue.DataBindings.Add("text", currentRecruit, "SSBBreakVal", true, 
+                DataSourceUpdateMode.OnPropertyChanged);
+
             this.lv1Observations = currentRecruit.lv1Obs;
             this.lv2Observations = currentRecruit.lv2Obs;
 

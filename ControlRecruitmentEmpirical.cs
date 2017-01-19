@@ -84,9 +84,10 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Load control in panelRecruitModelParameter
+            this.spinBoxNumObservations.DataBindings.Add("value", currentEmpiricalRecruitSelection, "numObs",
+                true, DataSourceUpdateMode.OnPropertyChanged);
             this.observationTable = currentEmpiricalRecruitSelection.obsTable;
-            this.numObservations = currentEmpiricalRecruitSelection.numObs;
-
+            
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;
             panelRecruitModelParameter.Controls.Add(this);
@@ -98,7 +99,9 @@ namespace Nmfs.Agepro.Gui
             this.labelSSBHinge.Visible = true;
             this.empiricalSubtype = EmpiricalType.CDFZero;
 
-            this.textBoxSSBHinge.Text = currentRecruit.SSBHinge.Value.ToString(); //To explictly cast value from nullable double
+            this.textBoxSSBHinge.DataBindings.Add("text", currentRecruit, "SSBHinge",
+                true, DataSourceUpdateMode.OnPropertyChanged);
+            //this.textBoxSSBHinge.Text = currentRecruit.SSBHinge.Value.ToString(); //To explictly cast value from nullable double
 
             this.SetEmpiricalRecruitmentControls((EmpiricalRecruitment)currentRecruit, panelRecruitModelParameter);
         }
