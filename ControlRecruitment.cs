@@ -508,12 +508,13 @@ namespace Nmfs.Agepro.Gui
             foreach (RecruitmentModel rmodelSelection in this.collectionAgeproRecruitmentModels)
             {
                 int rmodelIndex = this.collectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
-
+                
                 vaildRecruitmentResult = rmodelSelection.ValidationCheck();
 
                 if (vaildRecruitmentResult.isValid == false)
                 {
-                    MessageBox.Show("In Recruitment Selection " + (rmodelIndex+1) + ": "
+                    MessageBox.Show("In Recruitment Selection " + (rmodelIndex+1) + " - " 
+                        + "\"" + getSelectedRecruitmentModelName(rmodelIndex) + "\" : "
                         + Environment.NewLine + vaildRecruitmentResult.message,
                         "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
