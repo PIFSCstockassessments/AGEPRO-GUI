@@ -455,67 +455,88 @@ namespace Nmfs.Agepro.Gui
         }
         //end OnSelectingRecruitingModel
 
-        public bool ValidateRecruitmentData()
+        private Nmfs.Agepro.CoreLib.ValidationResult ValidateGeneralRecruitmentParameters()
         {
+            List<string> errorMsgList = new List<string>();
             //Select Recruitment Models
-            if (this.dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells() == true )
+            if (this.dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells() == true)
             {
-                MessageBox.Show("Select Recruitment Model Data Grid has invalid data.",
-                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                
-                return false;
+                errorMsgList.Add("Select Recruitment Model Data Grid has invalid data.");
             }
             //Recruitment Scaling Factor
             if (string.IsNullOrWhiteSpace(this.textBoxRecruitngScalingFactor.Text))
             {
-                MessageBox.Show("Missing Recruitment Scaling Factor value.",
-                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                errorMsgList.Add("Missing Recruitment Scaling Factor value.");
             }
             //SSB Scaling Factor
             if (string.IsNullOrWhiteSpace(this.textBoxSSBScalingFactor.Text))
             {
-                MessageBox.Show("Missing Recruitment SSB Scaling Factor value.",
-                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                errorMsgList.Add("Missing Recruitment SSB Scaling Factor value.");
             }
-            
+
             //Recruitment Probability
             if (this.dataGridRecruitProb.HasBlankOrNullCells() == true)
             {
-                MessageBox.Show("Recruitment prbability table has missing values.",
-                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                
-                return false;
+                errorMsgList.Add("Recruitment probability table has missing values.");
             }
             foreach (DataRow drow in this.recruitmentProb.Rows)
             {
-                string[] recruitProbRow = Array.ConvertAll(drow.ItemArray, item => item.ToString());
-                if(AgeproRecruitment.CheckRecruitProbabilitySum(recruitProbRow) == false) 
+                //If the
+                if (drow.ItemArray.Any(x => string.IsNullOrWhiteSpace(x.ToString())))
                 {
-                    double rowSumRecruitProb = Array.ConvertAll<string, double>(recruitProbRow, double.Parse).Sum();
-                    MessageBox.Show("Recruitment probablity sum does not equal 1.0: Probability sum is " 
-                        + rowSumRecruitProb.ToString() ,
-                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    errorMsgList.Add("At row " + this.recruitmentProb.Rows.IndexOf(drow) +
+                        ": Empty or missing value found.");
                 }
-            
+                else
+                {
+                    string[] recruitProbRow = Array.ConvertAll(drow.ItemArray, item => item.ToString());
+                    if (AgeproRecruitment.CheckRecruitProbabilitySum(recruitProbRow) == false)
+                    {
+                        double rowSumRecruitProb = Array.ConvertAll<string, double>(recruitProbRow, double.Parse).Sum();
+                        errorMsgList.Add("At row " + this.recruitmentProb.Rows.IndexOf(drow) +
+                            ": Recruitment probablity sum does not equal 1.0; probability sum is "
+                            + rowSumRecruitProb.ToString());
+                    }
+                }
+                
+
             }
 
+            var results = errorMsgList.EnumerateValidationResults();
+
+            return results;
+        }
+
+
+
+        public bool ValidateRecruitmentData()
+        {
+
+            Nmfs.Agepro.CoreLib.ValidationResult vaildGeneralRecruitParameters = 
+                this.ValidateGeneralRecruitmentParameters();
+
+            if(vaildGeneralRecruitParameters.isValid == false)
+            {
+                MessageBox.Show(vaildGeneralRecruitParameters.message,
+                    "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                return false;
+            }
+            
             //Recruit Models
-            Nmfs.Agepro.CoreLib.ValidationResult vaildRecruitmentResult;
+            Nmfs.Agepro.CoreLib.ValidationResult vaildRecruitmentModelResult;
 
             foreach (RecruitmentModel rmodelSelection in this.collectionAgeproRecruitmentModels)
             {
                 int rmodelIndex = this.collectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
                 
-                vaildRecruitmentResult = rmodelSelection.ValidationCheck();
+                vaildRecruitmentModelResult = rmodelSelection.ValidationCheck();
 
-                if (vaildRecruitmentResult.isValid == false)
+                if (vaildRecruitmentModelResult.isValid == false)
                 {
                     MessageBox.Show("In Recruitment Selection " + (rmodelIndex+1) + " - " 
                         + "\"" + getSelectedRecruitmentModelName(rmodelIndex) + "\" : "
-                        + Environment.NewLine + vaildRecruitmentResult.message,
+                        + Environment.NewLine + vaildRecruitmentModelResult.message,
                         "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
