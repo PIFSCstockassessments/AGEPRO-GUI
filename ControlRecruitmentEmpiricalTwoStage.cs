@@ -119,7 +119,7 @@ namespace Nmfs.Agepro.Gui
             this.labelLv2ObservationTable.TabIndex = 9;
             this.labelLv2ObservationTable.Text = "Level 2 Observations";
             // 
-            // dataGridLv1ObservationTable
+            // dataGridLv2ObservationTable
             // 
             this.dataGridLv2ObservationTable.AllowUserToAddRows = false;
             this.dataGridLv2ObservationTable.AllowUserToDeleteRows = false;
@@ -131,8 +131,8 @@ namespace Nmfs.Agepro.Gui
             this.dataGridLv2ObservationTable.Size = new System.Drawing.Size(328, 223);
             this.dataGridLv2ObservationTable.TabIndex = 9;
             this.dataGridLv2ObservationTable.RowHeadersWidth = 70;
-            this.dataGridLv1ObservationTable.CellFormatting -= new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv2ObservationTable_CellFormatting);
-            this.dataGridLv1ObservationTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv2ObservationTable_CellFormatting);
+            this.dataGridLv2ObservationTable.CellFormatting -= new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv2ObservationTable_CellFormatting);
+            this.dataGridLv2ObservationTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridLv2ObservationTable_CellFormatting);
 
 
             this.buttonSetParameters.TabIndex = 7;
