@@ -168,11 +168,11 @@ namespace Nmfs.Agepro.Gui
             get { return Convert.ToInt32(spinBoxLv2NumObservations.Value); }
             set { spinBoxLv2NumObservations.Value = value; }
         }
-        public int SSBBreakValue
-        {
-            get { return Convert.ToInt32(textBoxSSBBreakValue.Text); }
-            set { textBoxSSBBreakValue.Text = value.ToString(); }
-        }
+        //public int SSBBreakValue
+        //{
+        //    get { return Convert.ToInt32(textBoxSSBBreakValue.Text); }
+        //    set { textBoxSSBBreakValue.Text = value.ToString(); }
+        //}
         public DataTable lv1Observations
         {
             get { return (DataTable)dataGridLv1ObservationTable.DataSource; }
@@ -222,7 +222,7 @@ namespace Nmfs.Agepro.Gui
                     this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv2NumObs = newNumLv2Obs;
                 ((Nmfs.Agepro.CoreLib.TwoStageEmpiricalRecruitment)
                     this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).SSBBreakVal 
-                    = SSBBreakValue;
+                    = Convert.ToInt32(this.textBoxSSBBreakValue.Text);
             }
             catch (Exception ex)
             {
@@ -248,8 +248,9 @@ namespace Nmfs.Agepro.Gui
                 DataSourceUpdateMode.OnPropertyChanged);
             this.spinBoxLv2NumObservations.DataBindings.Add("value", currentRecruit, "lv2NumObs", true,
                 DataSourceUpdateMode.OnPropertyChanged);
-            this.textBoxSSBBreakValue.DataBindings.Add("text", currentRecruit, "SSBBreakVal", true, 
-                DataSourceUpdateMode.OnPropertyChanged);
+            Binding ssbBreakValBinding = this.textBoxSSBBreakValue.DataBindings.Add("text", currentRecruit, "SSBBreakVal", false, 
+                DataSourceUpdateMode.OnPropertyChanged, "");
+
 
             this.lv1Observations = currentRecruit.lv1Obs;
             this.lv2Observations = currentRecruit.lv2Obs;

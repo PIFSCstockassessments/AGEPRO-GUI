@@ -37,11 +37,11 @@ namespace Nmfs.Agepro.Gui
         public override void SetParametricRecruitmentControls(ParametricRecruitment currentRecruit, Panel panelRecruitModelParameter)
         {
             ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruit;
-            this.textBoxAlpha.DataBindings.Add("Text", currentParametricCurveRecruit, "alpha", true,
+            this.textBoxAlpha.DataBindings.Add("Text", currentParametricCurveRecruit, "alpha", false,
                 DataSourceUpdateMode.OnPropertyChanged);
-            this.textBoxBeta.DataBindings.Add("Text", currentParametricCurveRecruit, "beta", true,
+            this.textBoxBeta.DataBindings.Add("Text", currentParametricCurveRecruit, "beta", false,
                 DataSourceUpdateMode.OnPropertyChanged);
-            this.textBoxVariance.DataBindings.Add("Text", currentParametricCurveRecruit, "variance", true,
+            this.textBoxVariance.DataBindings.Add("Text", currentParametricCurveRecruit, "variance", false,
                 DataSourceUpdateMode.OnPropertyChanged);
 
             if(currentParametricCurveRecruit.isShepherdCurve)

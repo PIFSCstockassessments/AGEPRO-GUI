@@ -137,9 +137,9 @@ namespace Nmfs.Agepro.Gui
             //Set Data Bindings
             this.spinBoxNumRecruitPredictors.DataBindings.Add("value", recruitSelection, "numRecruitPredictors", 
                 true, DataSourceUpdateMode.OnPropertyChanged);
-            this.textBoxVariance.DataBindings.Add("text", recruitSelection, "variance", true,
+            this.textBoxVariance.DataBindings.Add("text", recruitSelection, "variance", false,
                 DataSourceUpdateMode.OnPropertyChanged);
-            this.textBoxIntercept.DataBindings.Add("text", recruitSelection, "intercept", true, 
+            this.textBoxIntercept.DataBindings.Add("text", recruitSelection, "intercept", false, 
                 DataSourceUpdateMode.OnPropertyChanged);
 
             //

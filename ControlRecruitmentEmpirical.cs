@@ -100,7 +100,7 @@ namespace Nmfs.Agepro.Gui
             this.empiricalSubtype = EmpiricalType.CDFZero;
 
             this.textBoxSSBHinge.DataBindings.Add("text", currentRecruit, "SSBHinge",
-                true, DataSourceUpdateMode.OnPropertyChanged);
+                true, DataSourceUpdateMode.OnPropertyChanged, string.Empty);
             //this.textBoxSSBHinge.Text = currentRecruit.SSBHinge.Value.ToString(); //To explictly cast value from nullable double
 
             this.SetEmpiricalRecruitmentControls((EmpiricalRecruitment)currentRecruit, panelRecruitModelParameter);
