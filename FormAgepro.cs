@@ -407,6 +407,13 @@ namespace Nmfs.Agepro.Gui
             {
                 EndEditModeFromDataGridViewTextBoxEditingControl((DataGridViewTextBoxEditingControl)ctlActive);
             }
+            else if (ctlActive is TextBox)
+            {
+                //Take focus away from text box to force textBox validation.
+                //use naviagation Tree workaround, since focusing on menuStrip isn't working
+                this.treeViewNavigation.Focus();  
+                ctlActive.Focus(); //focus back to textBox.
+            }
 
             //Validate
             ValidateControlInputs();
@@ -1174,7 +1181,6 @@ namespace Nmfs.Agepro.Gui
             }
             this.panelAgeproParameter.Controls.Add(ageproParameterControl);
         }
-
 
 
     }
