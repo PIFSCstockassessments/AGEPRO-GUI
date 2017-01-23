@@ -417,6 +417,10 @@ namespace Nmfs.Agepro.Gui
 
             //Validate
             ValidateControlInputs();
+            if (ValidateBootstrapFilename() == false)
+            {
+                return;
+            }
 
             //If Input Data is Valid LaunchAgeproModel() 
             //LaunchAgeproModel();
@@ -505,6 +509,11 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Bootstrap
+            if (this.controlBootstrap.ValidateBooleanInput() == false)
+            {
+                return false;
+            }
+            //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
 
             //Harvest Scenario
 
@@ -523,7 +532,60 @@ namespace Nmfs.Agepro.Gui
             return true;
         }
 
-        
+
+        /// <summary>
+        /// Validates The Bootstrap Filename parameter. If filename is invalid, it will attempt to find the 
+        /// file, or otherwise it will ask the user if they want to explictly locate a file to open, via
+        /// file dialog.
+        /// </summary>
+        /// <remarks>
+        /// There are three methods how the bootstrap file can be located:
+        /// 1. Filename exists from the bootstrap parameter
+        /// 2. If not, assume that the bootsrap file (*.BSN) is in the same directory as the AGEPRO Input File.
+        /// 3. Otherwise, User will must explictly locate the bootstrap file (via OpenFileDialog).
+        /// 
+        /// This is done automatically in LaunchAgeproModel. 
+        /// </remarks>
+        /// <returns></returns>
+        private bool ValidateBootstrapFilename()
+        {
+            DialogResult bootstrapChoice;
+
+            //Check Bootstrap File, but if value in textbox does not match, do not exit validation
+            //Tell? user that they will have to supply bootstrap file.
+            if (!File.Exists(this.controlBootstrap.bootstrapFilename))
+            {
+                if (File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\"
+                    + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
+                {
+                    string inpFileDir = Path.GetDirectoryName(inputData.general.inputFile);
+                    bootstrapChoice = MessageBox.Show(
+                        "Bootstrap filename was not found." + Environment.NewLine +
+                        "However, bootstap file was found at " + inpFileDir + Environment.NewLine +
+                        "Continue?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (bootstrapChoice == DialogResult.No)
+                    {
+                        return false;
+                    }
+                 
+                }
+                else
+                {
+                    bootstrapChoice = MessageBox.Show(
+                        "Bootstrap filename was not found." + Environment.NewLine +
+                        "However, a file dialog window will prompt the user to open a bootstrap file." + Environment.NewLine + 
+                        "Continue and load bootstrap file?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+                    if (bootstrapChoice == DialogResult.No)
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            return true;
+        }        
 
         /// <summary>
         /// This gathers the bootstrap file, and stores it with the the GUI input under the "AGEPRO" subdirectory

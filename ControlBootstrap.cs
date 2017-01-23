@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -58,7 +59,45 @@ namespace Nmfs.Agepro.Gui
             return openBootstrapFileDialog;
         }
 
+        private Nmfs.Agepro.CoreLib.ValidationResult CheckBootstrapInput(bool validateFilename = false)
+        {
+            List<string> errorMsgList = new List<string>();
+            if (string.IsNullOrWhiteSpace(this.bootstrapIterations))
+            {
+                errorMsgList.Add("Missing Number of Bootstraps.");
+            }
+            if (string.IsNullOrWhiteSpace(this.bootstrapScaleFactors))
+            {
+                errorMsgList.Add("Missing Number of Bootstrap Scale Factors.");
+            }
 
+            if (validateFilename)
+            {
+                if (System.IO.File.Exists(this.bootstrapFilename) == false)
+                {
+                    errorMsgList.Add("Bootstrap File not found in system.");
+                }
+            }
+
+            var results = Nmfs.Agepro.CoreLib.ValidatableExtensions.EnumerateValidationResults(errorMsgList);
+            return results;
+
+        }
+
+        public bool ValidateBooleanInput(bool validateFilename = false)
+        {
+            Nmfs.Agepro.CoreLib.ValidationResult result = CheckBootstrapInput(validateFilename);
+            if (result.isValid == false)
+            {
+                MessageBox.Show("Invalid Bootstrap values found: " + Environment.NewLine 
+                    + result.message, "AGEPRO Bootstrap", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            
+            
+            return true;
+        }
 
         private void buttonLoadFile_Click(object sender, EventArgs e)
         {
