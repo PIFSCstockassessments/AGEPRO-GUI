@@ -176,6 +176,17 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        public bool ValidateHarvestScenarioTable()
+        {
+            if (this.dataGridHarvestScenarioTable.HasBlankOrNullCells())
+            {
+                MessageBox.Show("Harvest Scenario Data Table has blank or missing values.", 
+                    "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
         private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;

@@ -516,6 +516,10 @@ namespace Nmfs.Agepro.Gui
             //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
 
             //Harvest Scenario
+            if (this.controlHarvestScenario.ValidateHarvestScenarioTable() == false)
+            {
+                return false;
+            }
 
             //Rebuilder
 
@@ -559,9 +563,10 @@ namespace Nmfs.Agepro.Gui
                     + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
                 {
                     string inpFileDir = Path.GetDirectoryName(inputData.general.inputFile);
+                    string bsnFileName = Path.GetFileName(inputData.bootstrap.bootstrapFile);
                     bootstrapChoice = MessageBox.Show(
                         "Bootstrap filename was not found." + Environment.NewLine +
-                        "However, bootstap file was found at " + inpFileDir + Environment.NewLine +
+                        "However, a bootstap file " + bsnFileName + " was found at " + inpFileDir + Environment.NewLine +
                         "Continue?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (bootstrapChoice == DialogResult.No)
@@ -574,7 +579,7 @@ namespace Nmfs.Agepro.Gui
                 {
                     bootstrapChoice = MessageBox.Show(
                         "Bootstrap filename was not found." + Environment.NewLine +
-                        "However, a file dialog window will prompt the user to open a bootstrap file." + Environment.NewLine + 
+                        "However, the bootstrap file can be selected from the open file dialog." + Environment.NewLine + 
                         "Continue and load bootstrap file?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             
                     if (bootstrapChoice == DialogResult.No)
