@@ -63,6 +63,7 @@ namespace Nmfs.Agepro.Gui
                         PStar.pStarLevels = 1;
                         PStar.pStarF = 0;
                         PStar.targetYear = 0;
+                        PStar.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                         //Create PStar Table
                         PStar.pStarTable = PStar.CreateNewPStarTable();
                         PStar.pStarTable.Rows.Add();
@@ -95,6 +96,7 @@ namespace Nmfs.Agepro.Gui
                         Rebuilder.targetValue = 0;
                         Rebuilder.targetType = 0;
                         Rebuilder.targetPercent = 0;
+                        Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                     }
                     controlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, this.panelAltCalcParameters);
                 }
@@ -166,12 +168,14 @@ namespace Nmfs.Agepro.Gui
             {
                 this.PStar = inpData.pstar;
                 radioPStar.Checked = true;
+                this.PStar.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                 controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
             }
             else if (calcType == HarvestScenarioAnalysis.Rebuilder)
             {
                 this.Rebuilder = inpData.rebuild;
                 radioRebuilderTarget.Checked = true;
+                this.Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                 controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
             }
         }
