@@ -169,6 +169,27 @@ namespace Nmfs.Agepro.Gui
 
         }
 
+        public override bool ValidateStochasticParameter(int numAges, double upperBounds)
+        {
+            if (weightOptionDictionary.ContainsKey(indexWeightOption))
+            {
+                if (this.indexWeightOption == 0 || this.indexWeightOption == 1)
+                {
+                    return base.ValidateStochasticParameter(numAges, upperBounds);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid weight of at Age option.",
+                    "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
+        }
         
 
     }
