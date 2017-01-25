@@ -180,6 +180,29 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        private bool EnumerateInvalidRebuilderRangeRows(List<string> invalidRowList)
+        {
+            string overflowMsg = ".";
+            if (invalidRowList != null && invalidRowList.Count > 50)
+            {
+                invalidRowList = invalidRowList.Take(50).ToList();
+                overflowMsg = "... (First 50 shown).";
+            }
+            var results = invalidRowList.EnumerateValidationResults();
+                
+            if (results.isValid == false)
+            {
+                string rowResults = results.message.Replace(Environment.NewLine, ", ");
+
+
+                MessageBox.Show("Invalid Harvest Specification for Rebuilder Range at row(s) "
+                    + rowResults + overflowMsg, "AGEPRO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
         public bool ValidateHarvestScenario()
         {
             if (this.dataGridHarvestScenarioTable.HasBlankOrNullCells())
@@ -191,26 +214,54 @@ namespace Nmfs.Agepro.Gui
 
             if (this.radioRebuilderTarget.Checked == true)
             {
+                bool validRebuilder = true;
                 ValidationResult rebuilderCheck = this.Rebuilder.ValidationCheck();
+                
                 if (rebuilderCheck.isValid == false)
                 {
                     MessageBox.Show("Invalid Rebuilder target parameters: " + Environment.NewLine + 
                         rebuilderCheck.message, "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    validRebuilder = false;
                 }
-                //Check Harvest Scenario Table
-
-
+                
+                //Check Harvest Scenario Table to see Harvest Specification is "F-MULT"
+                //From year 2 to target year.
+                int nFMult = (this.Rebuilder.targetYear - this.Rebuilder.obsYears[0]);
+                List<string> invalidRowList = new List<string>();
+                for(int irow=1 ; irow < nFMult ; irow++) 
+                {
+                    if (this.HarvestScenarioTable.Rows[irow][0].Equals("F-MULT") == false)
+                    {
+                        invalidRowList.Add((irow+1).ToString());
+                    }
+                }
+                if (this.EnumerateInvalidRebuilderRangeRows(invalidRowList) == false)
+                {
+                    validRebuilder = false;
+                }
+                return validRebuilder;
             }
             else if (this.radioPStar.Checked == true)
             {
+                bool validPStar = true;
                 ValidationResult pstarCheck = this.PStar.ValidationCheck();
                 if (pstarCheck.isValid == false)
                 {
-                    MessageBox.Show("Ivalid P-Star parameters: " + Environment.NewLine + pstarCheck.message,
+                    MessageBox.Show("Invalid P-Star parameters: " + Environment.NewLine + pstarCheck.message,
                         "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    validPStar = false;
                 }
-                
-                //Check the HarvestScenario Table
+                //Check Harvest Scenario Table to see Harvest Specification is "REMOVALS" on 
+                //the target year.
+                int indexTargetYr = Array.IndexOf(this.seqYears, this.PStar.targetYear.ToString());
+                if (this.HarvestScenarioTable.Rows[indexTargetYr][0].Equals("REMOVALS") == false)
+                {
+                    MessageBox.Show("Invalid Harvest Scenario Specification for P-Star Target Year "
+                        + this.PStar.targetYear +".",
+                        "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    validPStar = false;
+                }
+                return validPStar;
             }
             
 

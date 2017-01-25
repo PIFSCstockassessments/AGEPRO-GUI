@@ -515,15 +515,11 @@ namespace Nmfs.Agepro.Gui
             }
             //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
 
-            //Harvest Scenario
-            if (this.controlHarvestScenario.ValidateHarvestScenarioTable() == false)
+            //Harvest Scenario (this includes Rebuilder and P-Star options)
+            if (this.controlHarvestScenario.ValidateHarvestScenario() == false)
             {
                 return false;
             }
-
-            //Rebuilder
-
-            //P-Star
 
             //Misc Options: Reference Points, Retro Adjustment Factors, Bounds.
 
