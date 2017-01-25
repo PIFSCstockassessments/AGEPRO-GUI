@@ -180,7 +180,7 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
-        public bool ValidateHarvestScenarioTable()
+        public bool ValidateHarvestScenario()
         {
             if (this.dataGridHarvestScenarioTable.HasBlankOrNullCells())
             {
@@ -188,8 +188,35 @@ namespace Nmfs.Agepro.Gui
                     "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
+            if (this.radioRebuilderTarget.Checked == true)
+            {
+                ValidationResult rebuilderCheck = this.Rebuilder.ValidationCheck();
+                if (rebuilderCheck.isValid == false)
+                {
+                    MessageBox.Show("Invalid Rebuilder target parameters: " + Environment.NewLine + 
+                        rebuilderCheck.message, "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                //Check Harvest Scenario Table
+
+
+            }
+            else if (this.radioPStar.Checked == true)
+            {
+                ValidationResult pstarCheck = this.PStar.ValidationCheck();
+                if (pstarCheck.isValid == false)
+                {
+                    MessageBox.Show("Ivalid P-Star parameters: " + Environment.NewLine + pstarCheck.message,
+                        "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+                //Check the HarvestScenario Table
+            }
+            
+
             return true;
         }
+
 
         private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
