@@ -202,6 +202,64 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        public bool ValidateMiscOptions()
+        {
+            List<string> errorMsgList = new List<string>();
+            //Reference Points
+            if (this.miscOptionsRefpointsReport)
+            {
+                if (string.IsNullOrWhiteSpace(this.miscOptionsRefJan1Biomass))
+                {
+                    this.miscOptionsRefJan1Biomass = "0.0";
+                }
+                if (string.IsNullOrWhiteSpace(this.miscOptionsRefMeanBiomass))
+                {
+                    this.miscOptionsRefMeanBiomass = "0.0";
+                }
+                if (string.IsNullOrWhiteSpace(this.miscOptionsRefSpawnBiomass))
+                {
+                    this.miscOptionsRefSpawnBiomass = "0.0";
+                }
+                if (string.IsNullOrWhiteSpace(this.miscOptionsRefFishingMortality))
+                {
+                    this.miscOptionsRefFishingMortality = "0.0";
+                }
+            }
+            //Retrospective Adjustment Factors
+            if (this.dataGridRetroAdjustment.HasBlankOrNullCells())
+            {
+                errorMsgList.Add("Retro Adjustment Factors data grid has missing data.");
+            }
+
+            //Report Percentile
+            if (this.miscOptionsPercentileReport)
+            {
+                //todo: spinbox text issue
+                if (string.IsNullOrWhiteSpace(this.miscOptionsReportPercentile.ToString()))
+                {
+                    errorMsgList.Add("Missing Report Percentile");
+                }
+
+                if (this.miscOptionsReportPercentile < 0.0 || this.miscOptionsReportPercentile > 100)
+                {
+                    errorMsgList.Add("Invalid Report Percent value.");
+                }
+
+            }
+
+            if (errorMsgList.Any())
+            {
+                MessageBox.Show("Invalid values found in Misc. Options: " + Environment.NewLine + 
+                    string.Join(Environment.NewLine, errorMsgList),
+                    "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                return false;
+            }
+            
+            return true;
+        }
+
+
         /// <summary>
         /// Creates a fallback Data Table source that the Retro Adjustment Factors Data Grid 
         /// can use.

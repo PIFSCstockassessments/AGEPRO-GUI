@@ -546,9 +546,10 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Misc Options: Reference Points, Retro Adjustment Factors, Bounds.
-
-
-
+            if (this.controlMiscOptions.ValidateMiscOptions() == false)
+            {
+                return false;
+            }
 
             MessageBox.Show("Agepro Input Validated.",
                        "", MessageBoxButtons.OK, MessageBoxIcon.Information);
