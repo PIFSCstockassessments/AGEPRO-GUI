@@ -145,7 +145,7 @@ namespace Nmfs.Agepro.Gui
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
                 
                 //Retro Adjustment Factors
-                if (controlMiscOptions.miscOptionsRetroAdjustmentFactors)
+                if (controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors)
                 {
                     if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
                     {
@@ -353,14 +353,14 @@ namespace Nmfs.Agepro.Gui
 
                     //TEMP: DO Data Binding
                     //Misc options
-                    inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsSummaryReport;
-                    inputData.options.enableExportR = controlMiscOptions.miscOptionsExportR;
-                    inputData.options.enableAuxStochasticFiles = controlMiscOptions.miscOptionsAuxStochasticFiles;
-                    inputData.options.enablePercentileReport = controlMiscOptions.miscOptionsPercentileReport;
-                    inputData.options.enableRefpoint = controlMiscOptions.miscOptionsRefpointsReport;
-                    inputData.options.enableScaleFactors = controlMiscOptions.miscOptionsScaleFactors;
+                    inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
+                    inputData.options.enableExportR = controlMiscOptions.miscOptionsEnableExportR;
+                    inputData.options.enableAuxStochasticFiles = controlMiscOptions.miscOptionsEnableAuxStochasticFiles;
+                    inputData.options.enablePercentileReport = controlMiscOptions.miscOptionsEnablePercentileReport;
+                    inputData.options.enableRefpoint = controlMiscOptions.miscOptionsEnableRefpointsReport;
+                    inputData.options.enableScaleFactors = controlMiscOptions.miscOptionsEnableScaleFactors;
                     inputData.options.enableBounds = controlMiscOptions.miscOptionsBounds;
-                    inputData.options.enableRetroAdjustmentFactors = controlMiscOptions.miscOptionsRetroAdjustmentFactors;
+                    inputData.options.enableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
 
                     inputData.refpoint.refSpawnBio = Convert.ToDouble(controlMiscOptions.miscOptionsRefSpawnBiomass);
                     inputData.refpoint.refJan1Bio = Convert.ToDouble(controlMiscOptions.miscOptionsRefJan1Biomass);
@@ -550,6 +550,9 @@ namespace Nmfs.Agepro.Gui
             {
                 return false;
             }
+
+
+
 
             MessageBox.Show("Agepro Input Validated.",
                        "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -872,19 +875,19 @@ namespace Nmfs.Agepro.Gui
             controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.popScaleFactor.ToString();
             
             //Misc Options
-            controlMiscOptions.miscOptionsSummaryReport = inpFile.options.enableSummaryReport;
-            controlMiscOptions.miscOptionsAuxStochasticFiles = inpFile.options.enableAuxStochasticFiles;
-            controlMiscOptions.miscOptionsExportR = inpFile.options.enableExportR;
-            controlMiscOptions.miscOptionsPercentileReport = inpFile.options.enablePercentileReport;
+            controlMiscOptions.miscOptionsEnableSummaryReport = inpFile.options.enableSummaryReport;
+            controlMiscOptions.miscOptionsEnableAuxStochasticFiles = inpFile.options.enableAuxStochasticFiles;
+            controlMiscOptions.miscOptionsEnableExportR = inpFile.options.enableExportR;
+            controlMiscOptions.miscOptionsEnablePercentileReport = inpFile.options.enablePercentileReport;
             controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.percentile);
             
-            controlMiscOptions.miscOptionsRefpointsReport = inpFile.options.enableRefpoint;
+            controlMiscOptions.miscOptionsEnableRefpointsReport = inpFile.options.enableRefpoint;
             controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.refpoint.refSpawnBio.ToString();
             controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.refpoint.refJan1Bio.ToString();
             controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.refpoint.refMeanBio.ToString();
             controlMiscOptions.miscOptionsRefFishingMortality = inpFile.refpoint.refFMort.ToString();
             
-            controlMiscOptions.miscOptionsScaleFactors = inpFile.options.enableScaleFactors;
+            controlMiscOptions.miscOptionsEnableScaleFactors = inpFile.options.enableScaleFactors;
             controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.scaleBio.ToString();
             controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.scaleRec.ToString();
             controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.scale.scaleStockNum.ToString();
@@ -893,7 +896,7 @@ namespace Nmfs.Agepro.Gui
             controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.maxWeight.ToString();
             controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.maxNatMort.ToString();
 
-            controlMiscOptions.miscOptionsRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
+            controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
             controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
             controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;  
 
@@ -901,7 +904,7 @@ namespace Nmfs.Agepro.Gui
                 Util.GetAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, 
                 inpFile.retroAdjustOption.retroAdjust);
                       
-            if (controlMiscOptions.miscOptionsRetroAdjustmentFactors == true)
+            if (controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors == true)
             {
                 controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
             }

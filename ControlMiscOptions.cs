@@ -28,35 +28,35 @@ namespace Nmfs.Agepro.Gui
             miscOptionsBoundsNaturalMortality = "1.0";
         }
 
-        public bool miscOptionsSummaryReport
+        public bool miscOptionsEnableSummaryReport
         {
-            get { return checkBoxSummayReport.Checked; }
-            set { checkBoxSummayReport.Checked = value; }
+            get { return checkBoxEnableSummaryReport.Checked; }
+            set { checkBoxEnableSummaryReport.Checked = value; }
         }
-        public bool miscOptionsAuxStochasticFiles
+        public bool miscOptionsEnableAuxStochasticFiles
         {
-            get { return checkBoxAuxStochasticFiles.Checked; }
-            set { checkBoxAuxStochasticFiles.Checked = value; }
+            get { return checkBoxEnableAuxStochasticFiles.Checked; }
+            set { checkBoxEnableAuxStochasticFiles.Checked = value; }
         }
-        public bool miscOptionsExportR
+        public bool miscOptionsEnableExportR
         {
-            get { return checkBoxExportR.Checked; }
-            set { checkBoxExportR.Checked = value; }
+            get { return checkBoxEnableExportR.Checked; }
+            set { checkBoxEnableExportR.Checked = value; }
         }
-        public bool miscOptionsPercentileReport
+        public bool miscOptionsEnablePercentileReport
         {
-            get { return checkBoxPercentileReport.Checked; }
-            set { checkBoxPercentileReport.Checked = value;  }
+            get { return checkBoxEnablePercentileReport.Checked; }
+            set { checkBoxEnablePercentileReport.Checked = value;  }
         }
         public double miscOptionsReportPercentile
         {
             get { return Convert.ToDouble(spinBoxReportPercentile.Value); }
             set { spinBoxReportPercentile.Value = Convert.ToDecimal(value); }
         }
-        public bool miscOptionsRefpointsReport
+        public bool miscOptionsEnableRefpointsReport
         {
-            get { return checkBoxRefpoints.Checked; }
-            set { checkBoxRefpoints.Checked = value; }
+            get { return checkBoxEnableRefpoints.Checked; }
+            set { checkBoxEnableRefpoints.Checked = value; }
         }
         public string miscOptionsRefSpawnBiomass
         {
@@ -78,10 +78,10 @@ namespace Nmfs.Agepro.Gui
             get { return textBoxRefFishMortality.Text; }
             set { textBoxRefFishMortality.Text = value; }
         }
-        public bool miscOptionsScaleFactors
+        public bool miscOptionsEnableScaleFactors
         {
-            get { return checkBoxScaleFactors.Checked; }
-            set { checkBoxScaleFactors.Checked = value; }
+            get { return checkBoxEnableScaleFactors.Checked; }
+            set { checkBoxEnableScaleFactors.Checked = value; }
         }
         public string miscOptionsScaleFactorBiomass
         {
@@ -113,10 +113,10 @@ namespace Nmfs.Agepro.Gui
             get { return textBoxBoundsNatMortality.Text; }
             set { textBoxBoundsNatMortality.Text = value; }
         }
-        public bool miscOptionsRetroAdjustmentFactors
+        public bool miscOptionsEnableRetroAdjustmentFactors
         {
-            get { return checkBoxRetroAdjustment.Checked; }
-            set { checkBoxRetroAdjustment.Checked = value; }
+            get { return checkBoxEnableRetroAdjustment.Checked; }
+            set { checkBoxEnableRetroAdjustment.Checked = value; }
         }
         public DataTable miscOptionsRetroAdjustmentFactorTable
         {
@@ -142,7 +142,7 @@ namespace Nmfs.Agepro.Gui
         
         private void checkBoxPercentileReport_CheckStateChanged(object sender, EventArgs e)
         {
-            bool enabledPercentileReport = this.checkBoxPercentileReport.Checked;
+            bool enabledPercentileReport = this.checkBoxEnablePercentileReport.Checked;
             Console.WriteLine(enabledPercentileReport);
             this.labelReportPercentile.Enabled = enabledPercentileReport;
             this.spinBoxReportPercentile.Enabled = enabledPercentileReport;
@@ -150,30 +150,30 @@ namespace Nmfs.Agepro.Gui
         
         private void checkBoxPercentileReport_CheckedChanged(object sender, EventArgs e)
         {
-            this.labelReportPercentile.Enabled = this.checkBoxPercentileReport.Checked;
-            this.spinBoxReportPercentile.Enabled = this.checkBoxPercentileReport.Checked;
+            this.labelReportPercentile.Enabled = this.checkBoxEnablePercentileReport.Checked;
+            this.spinBoxReportPercentile.Enabled = this.checkBoxEnablePercentileReport.Checked;
         }
 
         private void checkBoxRefpoints_CheckedChanged(object sender, EventArgs e)
         {
-            this.labelSpawnBiomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxRefSpawnBiomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.labelJan1Biomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxRefJan1Biomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.labelMeanBiomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxRefMeanBiomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.labelFishMortality.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxRefFishMortality.Enabled = this.checkBoxRefpoints.Checked;
+            this.labelSpawnBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
+            this.textBoxRefSpawnBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
+            this.labelJan1Biomass.Enabled = this.checkBoxEnableRefpoints.Checked;
+            this.textBoxRefJan1Biomass.Enabled = this.checkBoxEnableRefpoints.Checked;
+            this.labelMeanBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
+            this.textBoxRefMeanBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
+            this.labelFishMortality.Enabled = this.checkBoxEnableRefpoints.Checked;
+            this.textBoxRefFishMortality.Enabled = this.checkBoxEnableRefpoints.Checked;
         }
 
         private void checkBoxScaleFactors_CheckedChanged(object sender, EventArgs e)
         {
-            this.labelScaleFactorBiomass.Enabled = this.checkBoxScaleFactors.Checked;
-            this.textBoxScaleFactorBiomass.Enabled = this.checkBoxScaleFactors.Checked;
-            this.labelScaleFactorRecruits.Enabled = this.checkBoxScaleFactors.Checked;
-            this.textBoxScaleFactorRecruits.Enabled = this.checkBoxScaleFactors.Checked;
-            this.labelScaleFactorStockNum.Enabled = this.checkBoxScaleFactors.Checked;
-            this.textBoxScaleFactorsStockNum.Enabled = this.checkBoxScaleFactors.Checked;
+            this.labelScaleFactorBiomass.Enabled = this.checkBoxEnableScaleFactors.Checked;
+            this.textBoxScaleFactorBiomass.Enabled = this.checkBoxEnableScaleFactors.Checked;
+            this.labelScaleFactorRecruits.Enabled = this.checkBoxEnableScaleFactors.Checked;
+            this.textBoxScaleFactorRecruits.Enabled = this.checkBoxEnableScaleFactors.Checked;
+            this.labelScaleFactorStockNum.Enabled = this.checkBoxEnableScaleFactors.Checked;
+            this.textBoxScaleFactorsStockNum.Enabled = this.checkBoxEnableScaleFactors.Checked;
 
         }
 
@@ -187,9 +187,9 @@ namespace Nmfs.Agepro.Gui
 
         private void checkBoxRetroAdjustment_CheckedChanged(object sender, EventArgs e)
         {
-            //this.dataGridRetroAdjustment.Enabled = this.checkBoxRetroAdjustment.Checked;
+            //this.dataGridRetroAdjustment.Enabled = this.checkBoxEnableRetroAdjustment.Checked;
             
-            if (this.checkBoxRetroAdjustment.Checked == false)
+            if (this.checkBoxEnableRetroAdjustment.Checked == false)
             {
                 this.dataGridRetroAdjustment.DataSource = null;
             }
@@ -206,7 +206,7 @@ namespace Nmfs.Agepro.Gui
         {
             List<string> errorMsgList = new List<string>();
             //Reference Points
-            if (this.miscOptionsRefpointsReport)
+            if (this.miscOptionsEnableRefpointsReport)
             {
                 if (string.IsNullOrWhiteSpace(this.miscOptionsRefJan1Biomass))
                 {
@@ -232,7 +232,7 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Report Percentile
-            if (this.miscOptionsPercentileReport)
+            if (this.miscOptionsEnablePercentileReport)
             {
                 //todo: spinbox text issue
                 if (string.IsNullOrWhiteSpace(this.miscOptionsReportPercentile.ToString()))

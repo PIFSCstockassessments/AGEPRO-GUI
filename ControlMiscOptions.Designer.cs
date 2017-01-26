@@ -31,15 +31,15 @@
             this.groupOuputOptions = new System.Windows.Forms.GroupBox();
             this.spinBoxReportPercentile = new System.Windows.Forms.NumericUpDown();
             this.labelReportPercentile = new System.Windows.Forms.Label();
-            this.checkBoxPercentileReport = new System.Windows.Forms.CheckBox();
-            this.checkBoxExportR = new System.Windows.Forms.CheckBox();
-            this.checkBoxAuxStochasticFiles = new System.Windows.Forms.CheckBox();
-            this.checkBoxSummayReport = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnablePercentileReport = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableExportR = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableAuxStochasticFiles = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableSummaryReport = new System.Windows.Forms.CheckBox();
             this.groupRefpoints = new System.Windows.Forms.GroupBox();
             this.textBoxRefFishMortality = new System.Windows.Forms.TextBox();
             this.labelFishMortality = new System.Windows.Forms.Label();
             this.textBoxRefMeanBiomass = new System.Windows.Forms.TextBox();
-            this.checkBoxRefpoints = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableRefpoints = new System.Windows.Forms.CheckBox();
             this.labelMeanBiomass = new System.Windows.Forms.Label();
             this.textBoxRefJan1Biomass = new System.Windows.Forms.TextBox();
             this.labelJan1Biomass = new System.Windows.Forms.Label();
@@ -58,9 +58,9 @@
             this.labelScaleFactorStockNum = new System.Windows.Forms.Label();
             this.textBoxScaleFactorBiomass = new System.Windows.Forms.TextBox();
             this.labelScaleFactorBiomass = new System.Windows.Forms.Label();
-            this.checkBoxScaleFactors = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableScaleFactors = new System.Windows.Forms.CheckBox();
             this.groupRetroAdjustment = new System.Windows.Forms.GroupBox();
-            this.checkBoxRetroAdjustment = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableRetroAdjustment = new System.Windows.Forms.CheckBox();
             this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
             this.groupOutputViewer = new System.Windows.Forms.GroupBox();
             this.labelOutputViewerProgram = new System.Windows.Forms.Label();
@@ -79,10 +79,10 @@
             // 
             this.groupOuputOptions.Controls.Add(this.spinBoxReportPercentile);
             this.groupOuputOptions.Controls.Add(this.labelReportPercentile);
-            this.groupOuputOptions.Controls.Add(this.checkBoxPercentileReport);
-            this.groupOuputOptions.Controls.Add(this.checkBoxExportR);
-            this.groupOuputOptions.Controls.Add(this.checkBoxAuxStochasticFiles);
-            this.groupOuputOptions.Controls.Add(this.checkBoxSummayReport);
+            this.groupOuputOptions.Controls.Add(this.checkBoxEnablePercentileReport);
+            this.groupOuputOptions.Controls.Add(this.checkBoxEnableExportR);
+            this.groupOuputOptions.Controls.Add(this.checkBoxEnableAuxStochasticFiles);
+            this.groupOuputOptions.Controls.Add(this.checkBoxEnableSummaryReport);
             this.groupOuputOptions.Location = new System.Drawing.Point(29, 15);
             this.groupOuputOptions.Name = "groupOuputOptions";
             this.groupOuputOptions.Size = new System.Drawing.Size(353, 143);
@@ -109,53 +109,53 @@
             this.labelReportPercentile.TabIndex = 4;
             this.labelReportPercentile.Text = "Report Percentile";
             // 
-            // checkBoxPercentileReport
+            // checkBoxEnablePercentileReport
             // 
-            this.checkBoxPercentileReport.AutoSize = true;
-            this.checkBoxPercentileReport.Location = new System.Drawing.Point(23, 92);
-            this.checkBoxPercentileReport.Name = "checkBoxPercentileReport";
-            this.checkBoxPercentileReport.Size = new System.Drawing.Size(151, 17);
-            this.checkBoxPercentileReport.TabIndex = 3;
-            this.checkBoxPercentileReport.Text = "Request Percentile Report";
-            this.checkBoxPercentileReport.UseVisualStyleBackColor = true;
-            this.checkBoxPercentileReport.CheckedChanged += new System.EventHandler(this.checkBoxPercentileReport_CheckedChanged);
+            this.checkBoxEnablePercentileReport.AutoSize = true;
+            this.checkBoxEnablePercentileReport.Location = new System.Drawing.Point(23, 92);
+            this.checkBoxEnablePercentileReport.Name = "checkBoxPercentileReport";
+            this.checkBoxEnablePercentileReport.Size = new System.Drawing.Size(151, 17);
+            this.checkBoxEnablePercentileReport.TabIndex = 3;
+            this.checkBoxEnablePercentileReport.Text = "Request Percentile Report";
+            this.checkBoxEnablePercentileReport.UseVisualStyleBackColor = true;
+            this.checkBoxEnablePercentileReport.CheckedChanged += new System.EventHandler(this.checkBoxPercentileReport_CheckedChanged);
             // 
-            // checkBoxExportR
+            // checkBoxEnableExportR
             // 
-            this.checkBoxExportR.AutoSize = true;
-            this.checkBoxExportR.Location = new System.Drawing.Point(23, 69);
-            this.checkBoxExportR.Name = "checkBoxExportR";
-            this.checkBoxExportR.Size = new System.Drawing.Size(117, 17);
-            this.checkBoxExportR.TabIndex = 2;
-            this.checkBoxExportR.Text = "Export Results to R";
-            this.checkBoxExportR.UseVisualStyleBackColor = true;
+            this.checkBoxEnableExportR.AutoSize = true;
+            this.checkBoxEnableExportR.Location = new System.Drawing.Point(23, 69);
+            this.checkBoxEnableExportR.Name = "checkBoxExportR";
+            this.checkBoxEnableExportR.Size = new System.Drawing.Size(117, 17);
+            this.checkBoxEnableExportR.TabIndex = 2;
+            this.checkBoxEnableExportR.Text = "Export Results to R";
+            this.checkBoxEnableExportR.UseVisualStyleBackColor = true;
             // 
-            // checkBoxAuxStochasticFiles
+            // checkBoxEnableAuxStochasticFiles
             // 
-            this.checkBoxAuxStochasticFiles.AutoSize = true;
-            this.checkBoxAuxStochasticFiles.Location = new System.Drawing.Point(23, 46);
-            this.checkBoxAuxStochasticFiles.Name = "checkBoxAuxStochasticFiles";
-            this.checkBoxAuxStochasticFiles.Size = new System.Drawing.Size(214, 17);
-            this.checkBoxAuxStochasticFiles.TabIndex = 1;
-            this.checkBoxAuxStochasticFiles.Text = "Generate Auxiliary Stochastic Data Files";
-            this.checkBoxAuxStochasticFiles.UseVisualStyleBackColor = true;
+            this.checkBoxEnableAuxStochasticFiles.AutoSize = true;
+            this.checkBoxEnableAuxStochasticFiles.Location = new System.Drawing.Point(23, 46);
+            this.checkBoxEnableAuxStochasticFiles.Name = "checkBoxAuxStochasticFiles";
+            this.checkBoxEnableAuxStochasticFiles.Size = new System.Drawing.Size(214, 17);
+            this.checkBoxEnableAuxStochasticFiles.TabIndex = 1;
+            this.checkBoxEnableAuxStochasticFiles.Text = "Generate Auxiliary Stochastic Data Files";
+            this.checkBoxEnableAuxStochasticFiles.UseVisualStyleBackColor = true;
             // 
-            // checkBoxSummayReport
+            // checkBoxEnableSummaryReport
             // 
-            this.checkBoxSummayReport.AutoSize = true;
-            this.checkBoxSummayReport.Location = new System.Drawing.Point(23, 23);
-            this.checkBoxSummayReport.Name = "checkBoxSummayReport";
-            this.checkBoxSummayReport.Size = new System.Drawing.Size(262, 17);
-            this.checkBoxSummayReport.TabIndex = 0;
-            this.checkBoxSummayReport.Text = "Output Summary Report of Stock Numbers At Age";
-            this.checkBoxSummayReport.UseVisualStyleBackColor = true;
+            this.checkBoxEnableSummaryReport.AutoSize = true;
+            this.checkBoxEnableSummaryReport.Location = new System.Drawing.Point(23, 23);
+            this.checkBoxEnableSummaryReport.Name = "checkBoxSummayReport";
+            this.checkBoxEnableSummaryReport.Size = new System.Drawing.Size(262, 17);
+            this.checkBoxEnableSummaryReport.TabIndex = 0;
+            this.checkBoxEnableSummaryReport.Text = "Output Summary Report of Stock Numbers At Age";
+            this.checkBoxEnableSummaryReport.UseVisualStyleBackColor = true;
             // 
             // groupRefpoints
             // 
             this.groupRefpoints.Controls.Add(this.textBoxRefFishMortality);
             this.groupRefpoints.Controls.Add(this.labelFishMortality);
             this.groupRefpoints.Controls.Add(this.textBoxRefMeanBiomass);
-            this.groupRefpoints.Controls.Add(this.checkBoxRefpoints);
+            this.groupRefpoints.Controls.Add(this.checkBoxEnableRefpoints);
             this.groupRefpoints.Controls.Add(this.labelMeanBiomass);
             this.groupRefpoints.Controls.Add(this.textBoxRefJan1Biomass);
             this.groupRefpoints.Controls.Add(this.labelJan1Biomass);
@@ -194,16 +194,16 @@
             this.textBoxRefMeanBiomass.Size = new System.Drawing.Size(117, 20);
             this.textBoxRefMeanBiomass.TabIndex = 6;
             // 
-            // checkBoxRefpoints
+            // checkBoxEnableRefpoints
             // 
-            this.checkBoxRefpoints.AutoSize = true;
-            this.checkBoxRefpoints.Location = new System.Drawing.Point(22, 19);
-            this.checkBoxRefpoints.Name = "checkBoxRefpoints";
-            this.checkBoxRefpoints.Size = new System.Drawing.Size(223, 17);
-            this.checkBoxRefpoints.TabIndex = 0;
-            this.checkBoxRefpoints.Text = "Output Reference Point Threshold Report";
-            this.checkBoxRefpoints.UseVisualStyleBackColor = true;
-            this.checkBoxRefpoints.CheckedChanged += new System.EventHandler(this.checkBoxRefpoints_CheckedChanged);
+            this.checkBoxEnableRefpoints.AutoSize = true;
+            this.checkBoxEnableRefpoints.Location = new System.Drawing.Point(22, 19);
+            this.checkBoxEnableRefpoints.Name = "checkBoxRefpoints";
+            this.checkBoxEnableRefpoints.Size = new System.Drawing.Size(223, 17);
+            this.checkBoxEnableRefpoints.TabIndex = 0;
+            this.checkBoxEnableRefpoints.Text = "Output Reference Point Threshold Report";
+            this.checkBoxEnableRefpoints.UseVisualStyleBackColor = true;
+            this.checkBoxEnableRefpoints.CheckedChanged += new System.EventHandler(this.checkBoxRefpoints_CheckedChanged);
             // 
             // labelMeanBiomass
             // 
@@ -322,7 +322,7 @@
             this.groupScaleFactors.Controls.Add(this.labelScaleFactorStockNum);
             this.groupScaleFactors.Controls.Add(this.textBoxScaleFactorBiomass);
             this.groupScaleFactors.Controls.Add(this.labelScaleFactorBiomass);
-            this.groupScaleFactors.Controls.Add(this.checkBoxScaleFactors);
+            this.groupScaleFactors.Controls.Add(this.checkBoxEnableScaleFactors);
             this.groupScaleFactors.Location = new System.Drawing.Point(29, 322);
             this.groupScaleFactors.Name = "groupScaleFactors";
             this.groupScaleFactors.Size = new System.Drawing.Size(353, 136);
@@ -384,20 +384,20 @@
             this.labelScaleFactorBiomass.TabIndex = 1;
             this.labelScaleFactorBiomass.Text = "Biomass";
             // 
-            // checkBoxScaleFactors
+            // checkBoxEnableScaleFactors
             // 
-            this.checkBoxScaleFactors.AutoSize = true;
-            this.checkBoxScaleFactors.Location = new System.Drawing.Point(22, 20);
-            this.checkBoxScaleFactors.Name = "checkBoxScaleFactors";
-            this.checkBoxScaleFactors.Size = new System.Drawing.Size(214, 17);
-            this.checkBoxScaleFactors.TabIndex = 0;
-            this.checkBoxScaleFactors.Text = "Specify Scale Factors for Output Report";
-            this.checkBoxScaleFactors.UseVisualStyleBackColor = true;
-            this.checkBoxScaleFactors.CheckedChanged += new System.EventHandler(this.checkBoxScaleFactors_CheckedChanged);
+            this.checkBoxEnableScaleFactors.AutoSize = true;
+            this.checkBoxEnableScaleFactors.Location = new System.Drawing.Point(22, 20);
+            this.checkBoxEnableScaleFactors.Name = "checkBoxScaleFactors";
+            this.checkBoxEnableScaleFactors.Size = new System.Drawing.Size(214, 17);
+            this.checkBoxEnableScaleFactors.TabIndex = 0;
+            this.checkBoxEnableScaleFactors.Text = "Specify Scale Factors for Output Report";
+            this.checkBoxEnableScaleFactors.UseVisualStyleBackColor = true;
+            this.checkBoxEnableScaleFactors.CheckedChanged += new System.EventHandler(this.checkBoxScaleFactors_CheckedChanged);
             // 
             // groupRetroAdjustment
             // 
-            this.groupRetroAdjustment.Controls.Add(this.checkBoxRetroAdjustment);
+            this.groupRetroAdjustment.Controls.Add(this.checkBoxEnableRetroAdjustment);
             this.groupRetroAdjustment.Controls.Add(this.dataGridRetroAdjustment);
             this.groupRetroAdjustment.Location = new System.Drawing.Point(403, 120);
             this.groupRetroAdjustment.Name = "groupRetroAdjustment";
@@ -406,16 +406,16 @@
             this.groupRetroAdjustment.TabStop = false;
             this.groupRetroAdjustment.Text = "Retrospective Adjustment Factors";
             // 
-            // checkBoxRetroAdjustment
+            // checkBoxEnableRetroAdjustment
             // 
-            this.checkBoxRetroAdjustment.AutoSize = true;
-            this.checkBoxRetroAdjustment.Location = new System.Drawing.Point(17, 20);
-            this.checkBoxRetroAdjustment.Name = "checkBoxRetroAdjustment";
-            this.checkBoxRetroAdjustment.Size = new System.Drawing.Size(223, 17);
-            this.checkBoxRetroAdjustment.TabIndex = 1;
-            this.checkBoxRetroAdjustment.Text = "Specify Retrospective Adjustment Factors";
-            this.checkBoxRetroAdjustment.UseVisualStyleBackColor = true;
-            this.checkBoxRetroAdjustment.CheckedChanged += new System.EventHandler(this.checkBoxRetroAdjustment_CheckedChanged);
+            this.checkBoxEnableRetroAdjustment.AutoSize = true;
+            this.checkBoxEnableRetroAdjustment.Location = new System.Drawing.Point(17, 20);
+            this.checkBoxEnableRetroAdjustment.Name = "checkBoxRetroAdjustment";
+            this.checkBoxEnableRetroAdjustment.Size = new System.Drawing.Size(223, 17);
+            this.checkBoxEnableRetroAdjustment.TabIndex = 1;
+            this.checkBoxEnableRetroAdjustment.Text = "Specify Retrospective Adjustment Factors";
+            this.checkBoxEnableRetroAdjustment.UseVisualStyleBackColor = true;
+            this.checkBoxEnableRetroAdjustment.CheckedChanged += new System.EventHandler(this.checkBoxRetroAdjustment_CheckedChanged);
             // 
             // dataGridRetroAdjustment
             // 
@@ -497,15 +497,15 @@
 
         private System.Windows.Forms.GroupBox groupOuputOptions;
         private System.Windows.Forms.Label labelReportPercentile;
-        private System.Windows.Forms.CheckBox checkBoxPercentileReport;
-        private System.Windows.Forms.CheckBox checkBoxExportR;
-        private System.Windows.Forms.CheckBox checkBoxAuxStochasticFiles;
-        private System.Windows.Forms.CheckBox checkBoxSummayReport;
+        private System.Windows.Forms.CheckBox checkBoxEnablePercentileReport;
+        private System.Windows.Forms.CheckBox checkBoxEnableExportR;
+        private System.Windows.Forms.CheckBox checkBoxEnableAuxStochasticFiles;
+        private System.Windows.Forms.CheckBox checkBoxEnableSummaryReport;
         private System.Windows.Forms.GroupBox groupRefpoints;
         private System.Windows.Forms.TextBox textBoxRefFishMortality;
         private System.Windows.Forms.Label labelFishMortality;
         private System.Windows.Forms.TextBox textBoxRefMeanBiomass;
-        private System.Windows.Forms.CheckBox checkBoxRefpoints;
+        private System.Windows.Forms.CheckBox checkBoxEnableRefpoints;
         private System.Windows.Forms.Label labelMeanBiomass;
         private System.Windows.Forms.TextBox textBoxRefJan1Biomass;
         private System.Windows.Forms.Label labelJan1Biomass;
@@ -524,9 +524,9 @@
         private System.Windows.Forms.Label labelScaleFactorStockNum;
         private System.Windows.Forms.TextBox textBoxScaleFactorBiomass;
         private System.Windows.Forms.Label labelScaleFactorBiomass;
-        private System.Windows.Forms.CheckBox checkBoxScaleFactors;
+        private System.Windows.Forms.CheckBox checkBoxEnableScaleFactors;
         private System.Windows.Forms.GroupBox groupRetroAdjustment;
-        private System.Windows.Forms.CheckBox checkBoxRetroAdjustment;
+        private System.Windows.Forms.CheckBox checkBoxEnableRetroAdjustment;
         private Nmfs.Agepro.Gui.NftDataGridView dataGridRetroAdjustment;
         private System.Windows.Forms.NumericUpDown spinBoxReportPercentile;
         private System.Windows.Forms.GroupBox groupOutputViewer;
