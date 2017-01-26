@@ -618,8 +618,9 @@ namespace Nmfs.Agepro.Gui
                     string bsnFileName = Path.GetFileName(inputData.bootstrap.bootstrapFile);
                     bootstrapChoice = MessageBox.Show(
                         "Bootstrap filename was not found." + Environment.NewLine +
-                        "However, a bootstap file " + bsnFileName + " was found at " + inpFileDir + Environment.NewLine +
-                        "Continue?", "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                        "However, a bootstap file " + bsnFileName + " was found at " + inpFileDir +
+                        Environment.NewLine + Environment.NewLine +
+                        "Continue?", "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (bootstrapChoice == DialogResult.No)
                     {
@@ -632,8 +633,8 @@ namespace Nmfs.Agepro.Gui
                     bootstrapChoice = MessageBox.Show(
                         "Bootstrap filename was not found." + Environment.NewLine +
                         "However, the bootstrap file can be loaded via the open file dialog window."
-                        + Environment.NewLine + "Continue and load bootstrap file?",
-                        "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                        + Environment.NewLine + Environment.NewLine + "Continue and load bootstrap file?",
+                        "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (bootstrapChoice == DialogResult.No)
                     {
