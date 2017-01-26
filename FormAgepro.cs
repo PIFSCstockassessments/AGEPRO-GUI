@@ -551,7 +551,28 @@ namespace Nmfs.Agepro.Gui
                 return false;
             }
 
+            //Output File Size Check 
+            int numBootstraps = Convert.ToInt32(this.controlBootstrap.bootstrapIterations);
+            int numSims = Convert.ToInt32(this.controlGeneralOptions.generalNumberPopulationSimuations);
+            int numYears = this.controlGeneralOptions.SeqYears().Count();
+            //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
+            int auxFileRowSize = numBootstraps * numSims * numYears;
+            int largeFileRowCount = 1000000;
+            if (auxFileRowSize > largeFileRowCount)
+            {
+                DialogResult outputFileSizePrompt;
 
+                if(this.controlMiscOptions.miscOptionsEnableSummaryReport ||
+                    this.controlMiscOptions.miscOptionsEnableAuxStochasticFiles)
+                {
+                    outputFileSizePrompt = MessageBox.Show(
+                        "The number of realizations times the number of projected years is greater than " 
+                        + largeFileRowCount + ". This will produce large auxiliary output files" + Environment.NewLine + 
+                        "This may affect the performance of calculation engine."
+                        + Environment.NewLine + "Do you wish to procced?",
+                        "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                }
+            }
 
 
             MessageBox.Show("Agepro Input Validated.",
