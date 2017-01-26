@@ -371,7 +371,7 @@ namespace Nmfs.Agepro.Gui
 
                     inputData.scale.scaleBio = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorBiomass);
                     inputData.scale.scaleRec = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorRecruits);
-                    inputData.scale.scaleStockNum = Convert.ToDouble(controlMiscOptions.miscoptionsScaleFactorStockNumbers);
+                    inputData.scale.scaleStockNum = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
 
                     inputData.retroAdjustOption.retroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
 
@@ -861,7 +861,7 @@ namespace Nmfs.Agepro.Gui
             controlMiscOptions.miscOptionsScaleFactors = inpFile.options.enableScaleFactors;
             controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.scaleBio.ToString();
             controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.scaleRec.ToString();
-            controlMiscOptions.miscoptionsScaleFactorStockNumbers = inpFile.scale.scaleStockNum.ToString();
+            controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.scale.scaleStockNum.ToString();
 
             controlMiscOptions.miscOptionsBounds = inpFile.options.enableBounds;
             controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.maxWeight.ToString();

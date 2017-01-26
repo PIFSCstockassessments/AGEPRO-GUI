@@ -93,7 +93,7 @@ namespace Nmfs.Agepro.Gui
             get { return textBoxScaleFactorRecruits.Text; }
             set { textBoxScaleFactorRecruits.Text = value; }
         }
-        public string miscoptionsScaleFactorStockNumbers
+        public string miscOptionsScaleFactorStockNumbers
         {
             get { return textBoxScaleFactorsStockNum.Text; }
             set { textBoxScaleFactorsStockNum.Text = value; }
