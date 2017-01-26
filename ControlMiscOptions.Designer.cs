@@ -36,14 +36,14 @@
             this.checkBoxAuxStochasticFiles = new System.Windows.Forms.CheckBox();
             this.checkBoxSummayReport = new System.Windows.Forms.CheckBox();
             this.groupRefpoints = new System.Windows.Forms.GroupBox();
-            this.textBoxFishMortality = new System.Windows.Forms.TextBox();
+            this.textBoxRefFishMortality = new System.Windows.Forms.TextBox();
             this.labelFishMortality = new System.Windows.Forms.Label();
-            this.textBoxMeanBiomass = new System.Windows.Forms.TextBox();
+            this.textBoxRefMeanBiomass = new System.Windows.Forms.TextBox();
             this.checkBoxRefpoints = new System.Windows.Forms.CheckBox();
             this.labelMeanBiomass = new System.Windows.Forms.Label();
-            this.textBoxJan1Biomass = new System.Windows.Forms.TextBox();
+            this.textBoxRefJan1Biomass = new System.Windows.Forms.TextBox();
             this.labelJan1Biomass = new System.Windows.Forms.Label();
-            this.textBoxSpawnBiomass = new System.Windows.Forms.TextBox();
+            this.textBoxRefSpawnBiomass = new System.Windows.Forms.TextBox();
             this.labelSpawnBiomass = new System.Windows.Forms.Label();
             this.groupBounds = new System.Windows.Forms.GroupBox();
             this.textBoxBoundsNatMortality = new System.Windows.Forms.TextBox();
@@ -152,14 +152,14 @@
             // 
             // groupRefpoints
             // 
-            this.groupRefpoints.Controls.Add(this.textBoxFishMortality);
+            this.groupRefpoints.Controls.Add(this.textBoxRefFishMortality);
             this.groupRefpoints.Controls.Add(this.labelFishMortality);
-            this.groupRefpoints.Controls.Add(this.textBoxMeanBiomass);
+            this.groupRefpoints.Controls.Add(this.textBoxRefMeanBiomass);
             this.groupRefpoints.Controls.Add(this.checkBoxRefpoints);
             this.groupRefpoints.Controls.Add(this.labelMeanBiomass);
-            this.groupRefpoints.Controls.Add(this.textBoxJan1Biomass);
+            this.groupRefpoints.Controls.Add(this.textBoxRefJan1Biomass);
             this.groupRefpoints.Controls.Add(this.labelJan1Biomass);
-            this.groupRefpoints.Controls.Add(this.textBoxSpawnBiomass);
+            this.groupRefpoints.Controls.Add(this.textBoxRefSpawnBiomass);
             this.groupRefpoints.Controls.Add(this.labelSpawnBiomass);
             this.groupRefpoints.Location = new System.Drawing.Point(29, 164);
             this.groupRefpoints.Name = "groupRefpoints";
@@ -168,13 +168,13 @@
             this.groupRefpoints.TabStop = false;
             this.groupRefpoints.Text = "Reference Points";
             // 
-            // textBoxFishMortality
+            // textBoxRefFishMortality
             // 
-            this.textBoxFishMortality.Enabled = false;
-            this.textBoxFishMortality.Location = new System.Drawing.Point(189, 120);
-            this.textBoxFishMortality.Name = "textBoxFishMortality";
-            this.textBoxFishMortality.Size = new System.Drawing.Size(117, 20);
-            this.textBoxFishMortality.TabIndex = 8;
+            this.textBoxRefFishMortality.Enabled = false;
+            this.textBoxRefFishMortality.Location = new System.Drawing.Point(189, 120);
+            this.textBoxRefFishMortality.Name = "textBoxFishMortality";
+            this.textBoxRefFishMortality.Size = new System.Drawing.Size(117, 20);
+            this.textBoxRefFishMortality.TabIndex = 8;
             // 
             // labelFishMortality
             // 
@@ -186,13 +186,13 @@
             this.labelFishMortality.TabIndex = 7;
             this.labelFishMortality.Text = "Fishing Mortality";
             // 
-            // textBoxMeanBiomass
+            // textBoxRefMeanBiomass
             // 
-            this.textBoxMeanBiomass.Enabled = false;
-            this.textBoxMeanBiomass.Location = new System.Drawing.Point(189, 94);
-            this.textBoxMeanBiomass.Name = "textBoxMeanBiomass";
-            this.textBoxMeanBiomass.Size = new System.Drawing.Size(117, 20);
-            this.textBoxMeanBiomass.TabIndex = 6;
+            this.textBoxRefMeanBiomass.Enabled = false;
+            this.textBoxRefMeanBiomass.Location = new System.Drawing.Point(189, 94);
+            this.textBoxRefMeanBiomass.Name = "textBoxMeanBiomass";
+            this.textBoxRefMeanBiomass.Size = new System.Drawing.Size(117, 20);
+            this.textBoxRefMeanBiomass.TabIndex = 6;
             // 
             // checkBoxRefpoints
             // 
@@ -215,13 +215,13 @@
             this.labelMeanBiomass.TabIndex = 5;
             this.labelMeanBiomass.Text = "Mean Biomass (MT)";
             // 
-            // textBoxJan1Biomass
+            // textBoxRefJan1Biomass
             // 
-            this.textBoxJan1Biomass.Enabled = false;
-            this.textBoxJan1Biomass.Location = new System.Drawing.Point(189, 68);
-            this.textBoxJan1Biomass.Name = "textBoxJan1Biomass";
-            this.textBoxJan1Biomass.Size = new System.Drawing.Size(117, 20);
-            this.textBoxJan1Biomass.TabIndex = 4;
+            this.textBoxRefJan1Biomass.Enabled = false;
+            this.textBoxRefJan1Biomass.Location = new System.Drawing.Point(189, 68);
+            this.textBoxRefJan1Biomass.Name = "textBoxJan1Biomass";
+            this.textBoxRefJan1Biomass.Size = new System.Drawing.Size(117, 20);
+            this.textBoxRefJan1Biomass.TabIndex = 4;
             // 
             // labelJan1Biomass
             // 
@@ -233,13 +233,13 @@
             this.labelJan1Biomass.TabIndex = 3;
             this.labelJan1Biomass.Text = "Jan-1 Stock Biomass (MT)";
             // 
-            // textBoxSpawnBiomass
+            // textBoxRefSpawnBiomass
             // 
-            this.textBoxSpawnBiomass.Enabled = false;
-            this.textBoxSpawnBiomass.Location = new System.Drawing.Point(189, 42);
-            this.textBoxSpawnBiomass.Name = "textBoxSpawnBiomass";
-            this.textBoxSpawnBiomass.Size = new System.Drawing.Size(117, 20);
-            this.textBoxSpawnBiomass.TabIndex = 2;
+            this.textBoxRefSpawnBiomass.Enabled = false;
+            this.textBoxRefSpawnBiomass.Location = new System.Drawing.Point(189, 42);
+            this.textBoxRefSpawnBiomass.Name = "textBoxSpawnBiomass";
+            this.textBoxRefSpawnBiomass.Size = new System.Drawing.Size(117, 20);
+            this.textBoxRefSpawnBiomass.TabIndex = 2;
             // 
             // labelSpawnBiomass
             // 
@@ -502,14 +502,14 @@
         private System.Windows.Forms.CheckBox checkBoxAuxStochasticFiles;
         private System.Windows.Forms.CheckBox checkBoxSummayReport;
         private System.Windows.Forms.GroupBox groupRefpoints;
-        private System.Windows.Forms.TextBox textBoxFishMortality;
+        private System.Windows.Forms.TextBox textBoxRefFishMortality;
         private System.Windows.Forms.Label labelFishMortality;
-        private System.Windows.Forms.TextBox textBoxMeanBiomass;
+        private System.Windows.Forms.TextBox textBoxRefMeanBiomass;
         private System.Windows.Forms.CheckBox checkBoxRefpoints;
         private System.Windows.Forms.Label labelMeanBiomass;
-        private System.Windows.Forms.TextBox textBoxJan1Biomass;
+        private System.Windows.Forms.TextBox textBoxRefJan1Biomass;
         private System.Windows.Forms.Label labelJan1Biomass;
-        private System.Windows.Forms.TextBox textBoxSpawnBiomass;
+        private System.Windows.Forms.TextBox textBoxRefSpawnBiomass;
         private System.Windows.Forms.Label labelSpawnBiomass;
         private System.Windows.Forms.GroupBox groupBounds;
         private System.Windows.Forms.TextBox textBoxBoundsNatMortality;

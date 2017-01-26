@@ -58,25 +58,25 @@ namespace Nmfs.Agepro.Gui
             get { return checkBoxRefpoints.Checked; }
             set { checkBoxRefpoints.Checked = value; }
         }
-        public string miscOptionsSpawnBiomass
+        public string miscOptionsRefSpawnBiomass
         {
-            get { return textBoxSpawnBiomass.Text; }
-            set { textBoxSpawnBiomass.Text = value; }
+            get { return textBoxRefSpawnBiomass.Text; }
+            set { textBoxRefSpawnBiomass.Text = value; }
         }
-        public string miscOptionsJan1Biomass
+        public string miscOptionsRefJan1Biomass
         {
-            get { return textBoxJan1Biomass.Text; }
-            set { textBoxJan1Biomass.Text = value; }
+            get { return textBoxRefJan1Biomass.Text; }
+            set { textBoxRefJan1Biomass.Text = value; }
         }
-        public string miscOptionsMeanBiomass
+        public string miscOptionsRefMeanBiomass
         {
-            get { return textBoxMeanBiomass.Text; }
-            set { textBoxMeanBiomass.Text = value; }
+            get { return textBoxRefMeanBiomass.Text; }
+            set { textBoxRefMeanBiomass.Text = value; }
         }
-        public string miscOptionsFishingMortality
+        public string miscOptionsRefFishingMortality
         {
-            get { return textBoxFishMortality.Text; }
-            set { textBoxFishMortality.Text = value; }
+            get { return textBoxRefFishMortality.Text; }
+            set { textBoxRefFishMortality.Text = value; }
         }
         public bool miscOptionsScaleFactors
         {
@@ -157,13 +157,13 @@ namespace Nmfs.Agepro.Gui
         private void checkBoxRefpoints_CheckedChanged(object sender, EventArgs e)
         {
             this.labelSpawnBiomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxSpawnBiomass.Enabled = this.checkBoxRefpoints.Checked;
+            this.textBoxRefSpawnBiomass.Enabled = this.checkBoxRefpoints.Checked;
             this.labelJan1Biomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxJan1Biomass.Enabled = this.checkBoxRefpoints.Checked;
+            this.textBoxRefJan1Biomass.Enabled = this.checkBoxRefpoints.Checked;
             this.labelMeanBiomass.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxMeanBiomass.Enabled = this.checkBoxRefpoints.Checked;
+            this.textBoxRefMeanBiomass.Enabled = this.checkBoxRefpoints.Checked;
             this.labelFishMortality.Enabled = this.checkBoxRefpoints.Checked;
-            this.textBoxFishMortality.Enabled = this.checkBoxRefpoints.Checked;
+            this.textBoxRefFishMortality.Enabled = this.checkBoxRefpoints.Checked;
         }
 
         private void checkBoxScaleFactors_CheckedChanged(object sender, EventArgs e)

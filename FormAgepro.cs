@@ -362,10 +362,10 @@ namespace Nmfs.Agepro.Gui
                     inputData.options.enableBounds = controlMiscOptions.miscOptionsBounds;
                     inputData.options.enableRetroAdjustmentFactors = controlMiscOptions.miscOptionsRetroAdjustmentFactors;
 
-                    inputData.refpoint.refSpawnBio = Convert.ToDouble(controlMiscOptions.miscOptionsSpawnBiomass);
-                    inputData.refpoint.refJan1Bio = Convert.ToDouble(controlMiscOptions.miscOptionsJan1Biomass);
-                    inputData.refpoint.refMeanBio = Convert.ToDouble(controlMiscOptions.miscOptionsMeanBiomass);
-                    inputData.refpoint.refFMort = Convert.ToDouble(controlMiscOptions.miscOptionsFishingMortality);
+                    inputData.refpoint.refSpawnBio = Convert.ToDouble(controlMiscOptions.miscOptionsRefSpawnBiomass);
+                    inputData.refpoint.refJan1Bio = Convert.ToDouble(controlMiscOptions.miscOptionsRefJan1Biomass);
+                    inputData.refpoint.refMeanBio = Convert.ToDouble(controlMiscOptions.miscOptionsRefMeanBiomass);
+                    inputData.refpoint.refFMort = Convert.ToDouble(controlMiscOptions.miscOptionsRefFishingMortality);
 
                     inputData.reportPercentile.percentile = controlMiscOptions.miscOptionsReportPercentile;
 
@@ -853,10 +853,10 @@ namespace Nmfs.Agepro.Gui
             controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.percentile);
             
             controlMiscOptions.miscOptionsRefpointsReport = inpFile.options.enableRefpoint;
-            controlMiscOptions.miscOptionsSpawnBiomass = inpFile.refpoint.refSpawnBio.ToString();
-            controlMiscOptions.miscOptionsJan1Biomass = inpFile.refpoint.refJan1Bio.ToString();
-            controlMiscOptions.miscOptionsMeanBiomass = inpFile.refpoint.refMeanBio.ToString();
-            controlMiscOptions.miscOptionsFishingMortality = inpFile.refpoint.refFMort.ToString();
+            controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.refpoint.refSpawnBio.ToString();
+            controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.refpoint.refJan1Bio.ToString();
+            controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.refpoint.refMeanBio.ToString();
+            controlMiscOptions.miscOptionsRefFishingMortality = inpFile.refpoint.refFMort.ToString();
             
             controlMiscOptions.miscOptionsScaleFactors = inpFile.options.enableScaleFactors;
             controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.scaleBio.ToString();
