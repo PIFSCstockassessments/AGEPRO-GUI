@@ -557,21 +557,28 @@ namespace Nmfs.Agepro.Gui
             int numYears = this.controlGeneralOptions.SeqYears().Count();
             //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
             int auxFileRowSize = numBootstraps * numSims * numYears;
-            int largeFileRowCount = 1000000;
+            int largeFileRowCount = 1000000; //1000000
             if (auxFileRowSize > largeFileRowCount)
             {
                 DialogResult outputFileSizePrompt;
 
-                if(this.controlMiscOptions.miscOptionsEnableSummaryReport ||
-                    this.controlMiscOptions.miscOptionsEnableAuxStochasticFiles)
+                if(this.controlMiscOptions.miscOptionsEnableSummaryReport == true  ||
+                    this.controlMiscOptions.miscOptionsEnableAuxStochasticFiles == true)
                 {
                     outputFileSizePrompt = MessageBox.Show(
-                        "The number of realizations times the number of projected years is greater than " 
-                        + largeFileRowCount + ". This will produce large auxiliary output files" + Environment.NewLine + 
-                        "This may affect the performance of calculation engine."
-                        + Environment.NewLine + "Do you wish to procced?",
+                        "The number of realizations times the number of projected years is greater than " +
+                        largeFileRowCount + ". This will produce large auxiliary output files. " +  
+                        "This will affect the performance of calculation engine." +
+                        Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
                         "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if (outputFileSizePrompt == DialogResult.No)
+                    {
+                        return false;
+                    }
                 }
+
+                
             }
 
 
