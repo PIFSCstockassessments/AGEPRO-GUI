@@ -433,18 +433,42 @@ namespace Nmfs.Agepro.Gui
             double boundsMaxWeight;
             double boundsNaturalMortality;
             int numAges = controlGeneralOptions.NumAges();
+            //Default values for bounds
+            double defaultMaxWeightBound = 10.0;
+            double defaultNatualMortalityBound = 1.0;
 
             //Enforce Bounds defaults if option is unchecked
             if(this.controlMiscOptions.miscOptionsBounds == false)
             {
-                boundsMaxWeight = 10.0;
-                boundsNaturalMortality = 1.0;
+                boundsMaxWeight = defaultMaxWeightBound;
+                boundsNaturalMortality = defaultMaxWeightBound;
             }
             else
             {
-                boundsMaxWeight = Convert.ToDouble(this.controlMiscOptions.miscOptionsBoundsMaxWeight);
-                boundsNaturalMortality = Convert.ToDouble(
-                    this.controlMiscOptions.miscOptionsBoundsNaturalMortality);
+                //Check Bounds text if they are empty. If so, use default value and inform the user about this.
+                if (string.IsNullOrWhiteSpace(this.controlMiscOptions.miscOptionsBoundsMaxWeight))
+                {
+                    MessageBox.Show("Missing max weight bound. Using default value of " + defaultMaxWeightBound 
+                        + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning );
+                    boundsMaxWeight = defaultMaxWeightBound;
+                }
+                else
+                {
+                    boundsMaxWeight = Convert.ToDouble(this.controlMiscOptions.miscOptionsBoundsMaxWeight);
+                }
+
+                if (string.IsNullOrWhiteSpace(this.controlMiscOptions.miscOptionsBoundsNaturalMortality))
+                {
+                    MessageBox.Show("Missing max natural mortality Bound. Using default value of " +
+                        defaultNatualMortalityBound + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    boundsNaturalMortality = defaultNatualMortalityBound;
+                }
+                else
+                {
+                    boundsNaturalMortality = Convert.ToDouble(
+                        this.controlMiscOptions.miscOptionsBoundsNaturalMortality);
+                }
+                
             }
 
             //JAN-1 Weights (Stock Weights)
