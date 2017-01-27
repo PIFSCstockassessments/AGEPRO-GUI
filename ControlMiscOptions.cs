@@ -259,6 +259,37 @@ namespace Nmfs.Agepro.Gui
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="auxFileRowSize"></param>
+        /// <param name="largeFileRowCount">Defaul to 1000000 </param>
+        /// <returns></returns>
+        public bool CheckOutputFileRowSize(int auxFileRowSize, int largeFileRowCount = 1000000)
+        {
+            if (auxFileRowSize > largeFileRowCount)
+            {
+                DialogResult outputFileSizePrompt;
+
+                if (this.miscOptionsEnableSummaryReport || this.miscOptionsEnableAuxStochasticFiles)
+                {
+                    outputFileSizePrompt = MessageBox.Show(
+                        "The number of realizations times the number of projected years is greater than " +
+                        largeFileRowCount + ". This will produce large auxiliary output files. " +
+                        "This will affect the performance of calculation engine." +
+                        Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
+                        "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if (outputFileSizePrompt == DialogResult.No)
+                    {
+                        return false;
+                    }
+                }
+
+
+            }
+            return true;
+        }
 
         /// <summary>
         /// Creates a fallback Data Table source that the Retro Adjustment Factors Data Grid 
