@@ -1,14 +1,32 @@
 
 # AGEPRO Changelog
 
+## 4.3.0.4-beta4 (2017-01-27)
+
+### Added
+- Validation data input checks.
+- Bootstrap filename vailidation check. Dialog w/ option to load filename. 
+- Namespace changes. AGEPRO.GUI is now 'Nmfs.Agepro.Gui', and AGEPRO.CoreLib is now 'Nmfs.Agepro.CoreLib'. 
+- Recruitment: Empirical and Predictor Recruitment observation tables now have Row Headers 
+- Recruitment: Added Markov Matrix Recruit/SSB level check to prevent zero/negative values. Added default recruit/SSB levels to use for these cases.
+
+### Fixed
+- Recruitment: Fixed Loading a new Parametric Recruitment model with either Autocorrelated Values and/or and K-Parm parameter for the first time are null/have no values shown.      
+- Recruitment: Resolved issues where some of the AGEPRO model parameters were not properly created when generated from general options:
+  - Properly check the MarkovRecruitment Data Table Set if they are null. Create a new Markov Matrix data set of tables as intended. 
+  - Data binded Predictor parameters to the CoreLib Data Structure.
+- Recruitment: Resolved an issue when a user selects the "None Selected" Recruitment to replace another recruitment model. It would then retain the controls/interfaces the replaced recruitment model used in the recruit model tab.
+- Recruitment: Fixed an error where Level 2 Observation Table rows was sharing Level 1 Observation Table events. Led to errors when adding/removing level 2 and level 1 observation table rows.
+
 ## 4.3.0.3-beta3 (2016-12-22)
 
 ### Added
 - Added Data Grid Context Menu.
 - Clipboard functionality (Cut, Copy, Paste, Delete, etc.) to data grids.
--- Edit menu commands work with data grid cells.
+  - Edit menu commands work with data grid cells.
 
 ### Fixed
+- Resolved an issue pasting cells directly from Excel 
 - Column headers follows the original GUI behavior by not sorting the data grid, if header is clicked.
 - Harvest Scenario: Fixed an issue where user generated "SET" multi-fleet parameters generated a Harvest Scenario Table with only a single row.
 
