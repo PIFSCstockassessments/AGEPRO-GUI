@@ -423,7 +423,7 @@ namespace Nmfs.Agepro.Gui
             }
 
             //If Input Data is Valid LaunchAgeproModel() 
-            //LaunchAgeproModel();
+            LaunchAgeproModel();
             
         }
 
