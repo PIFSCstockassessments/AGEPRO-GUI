@@ -8,7 +8,7 @@
 - Bootstrap filename vailidation check. Dialog w/ option to load filename. 
 - Namespace changes. AGEPRO.GUI is now 'Nmfs.Agepro.Gui', and AGEPRO.CoreLib is now 'Nmfs.Agepro.CoreLib'. 
 - Recruitment: Empirical and Predictor Recruitment observation tables now have Row Headers 
-- Recruitment: Added Markov Matrix Recruit/SSB level check to prevent zero/negative values. Added default recruit/SSB levels to use for these cases.
+- Recruitment: Markov Matrix Recruit/SSB level check to prevent zero/negative values. For these cases, use default recruit/SSB levels.
 
 ### Fixed
 - Recruitment: Fixed Loading a new Parametric Recruitment model with either Autocorrelated Values and/or and K-Parm parameter for the first time are null/have no values shown.      
@@ -16,7 +16,7 @@
   - Properly check the MarkovRecruitment Data Table Set if they are null. Create a new Markov Matrix data set of tables as intended. 
   - Data binded Predictor parameters to the CoreLib Data Structure.
 - Recruitment: Resolved an issue when a user selects the "None Selected" Recruitment to replace another recruitment model. It would then retain the controls/interfaces the replaced recruitment model used in the recruit model tab.
-- Recruitment: Fixed an error where Level 2 Observation Table rows was sharing Level 1 Observation Table events. Led to errors when adding/removing level 2 and level 1 observation table rows.
+- Recruitment: Error where Level 2 Observation Table rows was sharing Level 1 Observation Table events. Led to errors when adding/removing level 2 and level 1 observation table rows.
 
 ## 4.3.0.3-beta3 (2016-12-22)
 
