@@ -389,6 +389,27 @@ namespace Nmfs.Agepro.Gui
             }
 
         }
+
+        /// <summary>
+        /// Programmicaly commit data in current active winform control.  
+        /// </summary>
+        private void commitFocusedControl()
+        {
+            //If a cell is in edit mode, commit changes and end edit mode.
+            var ctlActive = FindFocusedControl(this.ActiveControl);
+            if (ctlActive is DataGridViewTextBoxEditingControl)
+            {
+                EndEditModeFromDataGridViewTextBoxEditingControl((DataGridViewTextBoxEditingControl)ctlActive);
+            }
+            else if (ctlActive is TextBox)
+            {
+                //Take focus away from text box to force textBox validation.
+                //use naviagation Tree workaround, since focusing on menuStrip isn't working
+                this.treeViewNavigation.Focus();
+                ctlActive.Focus(); //focus back to textBox.
+                
+            }
+        }
         
         /// <summary>
         /// Event where "Launch AGEPRO Model" menu option is selected.
@@ -401,19 +422,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="e"></param>
         private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //If a cell is in edit mode, commit changes and end edit mode.
-            var ctlActive = FindFocusedControl(this.ActiveControl);
-            if (ctlActive is DataGridViewTextBoxEditingControl)
-            {
-                EndEditModeFromDataGridViewTextBoxEditingControl((DataGridViewTextBoxEditingControl)ctlActive);
-            }
-            else if (ctlActive is TextBox)
-            {
-                //Take focus away from text box to force textBox validation.
-                //use naviagation Tree workaround, since focusing on menuStrip isn't working
-                this.treeViewNavigation.Focus();  
-                ctlActive.Focus(); //focus back to textBox.
-            }
+            commitFocusedControl();
 
             //Validate
             ValidateControlInputs();
@@ -1044,6 +1053,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="e"></param>
         private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            commitFocusedControl();
             //About Box Dialog
             AboutAgepro aboutDialog = new AboutAgepro();
             aboutDialog.ShowDialog();
