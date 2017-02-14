@@ -37,12 +37,8 @@ namespace Nmfs.Agepro.Gui
         public override void SetParametricRecruitmentControls(ParametricRecruitment currentRecruit, Panel panelRecruitModelParameter)
         {
             ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruit;
-            this.textBoxAlpha.DataBindings.Add("Text", currentParametricCurveRecruit, "alpha", false,
-                DataSourceUpdateMode.OnPropertyChanged, string.Empty,"0.####");
-            this.textBoxBeta.DataBindings.Add("Text", currentParametricCurveRecruit, "beta", false,
-                DataSourceUpdateMode.OnPropertyChanged, string.Empty, "0.####");
-            //this.textBoxVariance.DataBindings.Add("Text", currentParametricCurveRecruit, "variance", true,
-            //    DataSourceUpdateMode.OnPropertyChanged, string.Empty, "0.####");
+            DataBindTextBox(this.textBoxAlpha, currentParametricCurveRecruit, "alpha");
+            DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
             DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
 
             if(currentParametricCurveRecruit.isShepherdCurve)
@@ -61,14 +57,7 @@ namespace Nmfs.Agepro.Gui
                 this.textBoxLastResidual.Enabled = true;
 
                 DataBindTextBox(this.textBoxPhi, currentParametricCurveRecruit, "phi");
-                //Binding b =  new Binding("Text", currentParametricCurveRecruit, "phi", true);
-                //b.Format += new ConvertEventHandler(textBoxBinding_Format);
-                //b.Parse += new ConvertEventHandler(textBoxBinding_Parse);
-                //this.textBoxPhi.DataBindings.Add(b);
-                //this.textBoxPhi.DataBindings.Add("Text", currentParametricCurveRecruit, "phi", true, 
-                //    DataSourceUpdateMode.OnValidation, string.Empty);
-                this.textBoxLastResidual.DataBindings.Add("Text", currentParametricCurveRecruit, "lastResidual", true,
-                    DataSourceUpdateMode.OnValidation, string.Empty);
+                DataBindTextBox(this.textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
