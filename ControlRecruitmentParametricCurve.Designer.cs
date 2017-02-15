@@ -63,7 +63,7 @@
             // labelKparm
             // 
             this.labelKparm.AutoSize = true;
-            this.labelKparm.Location = new System.Drawing.Point(34, 109);
+            this.labelKparm.Location = new System.Drawing.Point(34, 142);
             this.labelKparm.Name = "labelKparm";
             this.labelKparm.Size = new System.Drawing.Size(41, 13);
             this.labelKparm.TabIndex = 4;
@@ -72,7 +72,7 @@
             // labelVariance
             // 
             this.labelVariance.AutoSize = true;
-            this.labelVariance.Location = new System.Drawing.Point(34, 142);
+            this.labelVariance.Location = new System.Drawing.Point(34, 109);
             this.labelVariance.Name = "labelVariance";
             this.labelVariance.Size = new System.Drawing.Size(49, 13);
             this.labelVariance.TabIndex = 6;
@@ -104,14 +104,14 @@
             // 
             // textBoxKParm
             // 
-            this.textBoxKParm.Location = new System.Drawing.Point(166, 106);
+            this.textBoxKParm.Location = new System.Drawing.Point(166, 139);
             this.textBoxKParm.Name = "textBoxKParm";
             this.textBoxKParm.Size = new System.Drawing.Size(135, 20);
             this.textBoxKParm.TabIndex = 5;
             // 
             // textBoxVariance
             // 
-            this.textBoxVariance.Location = new System.Drawing.Point(166, 139);
+            this.textBoxVariance.Location = new System.Drawing.Point(166, 106);
             this.textBoxVariance.Name = "textBoxVariance";
             this.textBoxVariance.Size = new System.Drawing.Size(135, 20);
             this.textBoxVariance.TabIndex = 7;
