@@ -41,12 +41,11 @@ namespace Nmfs.Agepro.Gui
             DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
             DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
 
-            if(currentParametricCurveRecruit.isShepherdCurve)
+            if(currentParametricCurveRecruit.GetType() == typeof(ParametricShepherdCurve))
             {
                 this.labelKparm.Visible = true;
                 this.textBoxKParm.Visible = true;
-                this.textBoxKParm.DataBindings.Add("Text", currentParametricCurveRecruit, "kParm", true,
-                    DataSourceUpdateMode.OnPropertyChanged);
+                DataBindTextBox(this.textBoxKParm, currentParametricCurveRecruit, "kParm");
             }
             
             if (currentParametricCurveRecruit.autocorrelated)
