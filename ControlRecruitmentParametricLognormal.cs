@@ -32,8 +32,8 @@ namespace Nmfs.Agepro.Gui
         {
             ParametricLognormal currentLognormalRecruit = (ParametricLognormal)currentRecruit;
 
-            this.textBoxMean.DataBindings.Add("Text", currentLognormalRecruit, "mean");
-            this.textBoxStdDeviation.DataBindings.Add("Text", currentLognormalRecruit, "stdDev");
+            DataBindTextBox(this.textBoxMean, currentLognormalRecruit, "mean");
+            DataBindTextBox(this.textBoxStdDeviation, currentLognormalRecruit, "stdDev");
 
             if (currentLognormalRecruit.autocorrelated)
             {
@@ -42,9 +42,8 @@ namespace Nmfs.Agepro.Gui
                 this.textBoxPhi.Enabled = true;
                 this.textBoxLastResidual.Enabled = true;
 
-                this.textBoxPhi.DataBindings.Add("Text", currentLognormalRecruit, "phi", true, DataSourceUpdateMode.OnPropertyChanged);
-                this.textBoxLastResidual.DataBindings.Add("Text", currentLognormalRecruit, "lastResidual", true,
-                    DataSourceUpdateMode.OnPropertyChanged);
+                DataBindTextBox(this.textBoxPhi, currentLognormalRecruit, "phi");
+                DataBindTextBox(this.textBoxLastResidual, currentLognormalRecruit, "lastResidual");
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
