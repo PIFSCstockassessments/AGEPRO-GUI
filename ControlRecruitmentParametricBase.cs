@@ -99,6 +99,8 @@ namespace Nmfs.Agepro.Gui
                     {
                         //Revert to binded object value, using reflection
                         var bindedVal = b.DataSource.GetType().GetProperty(bindedObjName).GetValue(b.DataSource, null);
+                        MessageBox.Show("Blank or invalid input for " + bindedObjName +".","AGEPRO",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         ctlTxt.Text = bindedVal.ToString();
                     }
                 }
