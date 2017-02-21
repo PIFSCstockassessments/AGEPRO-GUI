@@ -51,6 +51,8 @@
             // 
             // textBoxBootstrapFile
             // 
+            this.textBoxBootstrapFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBootstrapFile.Location = new System.Drawing.Point(42, 59);
             this.textBoxBootstrapFile.Name = "textBoxBootstrapFile";
             this.textBoxBootstrapFile.Size = new System.Drawing.Size(738, 20);
@@ -58,6 +60,7 @@
             // 
             // buttonLoadFile
             // 
+            this.buttonLoadFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLoadFile.Location = new System.Drawing.Point(786, 57);
             this.buttonLoadFile.Name = "buttonLoadFile";
             this.buttonLoadFile.Size = new System.Drawing.Size(75, 23);
@@ -119,6 +122,7 @@
             this.Controls.Add(this.buttonLoadFile);
             this.Controls.Add(this.textBoxBootstrapFile);
             this.Controls.Add(this.labelBootstrapFile);
+            this.MinimumSize = new System.Drawing.Size(900, 520);
             this.Name = "ControlBootstrap";
             this.Size = new System.Drawing.Size(900, 520);
             this.groupBootstrapOptions.ResumeLayout(false);

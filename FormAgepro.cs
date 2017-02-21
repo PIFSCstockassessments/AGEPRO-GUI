@@ -1264,7 +1264,7 @@ namespace Nmfs.Agepro.Gui
         }
         private void selectBootstrappingParameterPanel()
         {
-            selectAgeproParameterPanel(controlBootstrap);
+            selectAgeproParameterPanel(controlBootstrap, true);
         }
         private void selectHarvestScenarioParameterPanel()
         {
