@@ -7,7 +7,7 @@
     <ProjectGuid>{732B55EB-A7EA-4F16-B91E-7FCBB40429A6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AGEPRO.GUI</RootNamespace>
+    <RootNamespace>Nmfs.Agepro.Gui</RootNamespace>
     <AssemblyName>AGEPRO</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
