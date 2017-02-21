@@ -1,6 +1,16 @@
 
 # AGEPRO Changelog
 
+## 4.3.0.5-beta5 (2017-02-2x)
+
+## Fixed
+- Unified behavior how parametric recruitment text boxes deal with blanks and values with non-numeric input. They will revert to previous value.
+
+## Changed
+- Bootstrap controls are resizeale
+- Parametric Recruitment: Switched postions of KParm and Variance labels and textbox.
+- CoreLib: Refactored Shepherd Curve code in ParametricCurve to subclass ParametricShepherdCurve. 
+
 ## 4.3.0.4-beta4 (2017-01-27)
 
 ### Added
