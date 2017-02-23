@@ -82,6 +82,7 @@
     <Compile Include="AboutAgepro.Designer.cs">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgeproBinding.cs" />
     <Compile Include="AgeproPropertyChanged.cs" />
     <Compile Include="ControlBiological.cs">
       <SubType>UserControl</SubType>
@@ -206,6 +207,9 @@
     <Compile Include="HarvestSpecification.cs" />
     <Compile Include="InvalidAgeproGuiParameterException.cs" />
     <Compile Include="NftDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NftTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
