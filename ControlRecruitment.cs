@@ -21,6 +21,7 @@ namespace Nmfs.Agepro.Gui
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
         public bool populateDGV { get; set; }
+        private double prevValidRecruitFactors;
 
         public ControlRecruitment()
         {
@@ -71,6 +72,7 @@ namespace Nmfs.Agepro.Gui
             this.populateDGV = true;
             
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
+            prevValidRecruitFactors = recruitingScalingFactor;
 
             if (collectionAgeproRecruitmentModels.Count == 0)
             {
@@ -618,6 +620,37 @@ namespace Nmfs.Agepro.Gui
             }
 
             return ResizeDataGridTable(dgvTable, newRowCount);
+        }
+
+        private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
+        {
+            double recruitFactor;
+            if (double.TryParse(textBoxRecruitngScalingFactor.Text, out recruitFactor))
+            {
+                if (recruitFactor < 1 )
+                {
+                    MessageBox.Show("Recruiting Scale Factor should be a positive non-zero number.");
+                    //errorProviderRecruitment.SetError(textBoxRecruitngScalingFactor, "Recruiting Scale Factor should be a positive non-zero number.");
+                    e.Cancel = true;
+                    textBoxRecruitngScalingFactor.Text = prevValidRecruitFactors.ToString();
+                    return;
+                }
+                //errorProviderRecruitment.SetError(textBoxRecruitngScalingFactor, "");
+
+            }
+            else
+            {
+                MessageBox.Show("Recruiting Scale Factor must be a numeric.");
+                //errorProviderRecruitment.SetError(textBoxRecruitngScalingFactor, "Recruiting Scale Factor must be a numeric.");
+                e.Cancel = true;
+                textBoxRecruitngScalingFactor.Text = prevValidRecruitFactors.ToString();
+                return;
+            }
+        }
+
+        private void textBoxRecruitngScalingFactor_Validated(object sender, EventArgs e)
+        {
+            prevValidRecruitFactors = recruitingScalingFactor;
         }
 
         
