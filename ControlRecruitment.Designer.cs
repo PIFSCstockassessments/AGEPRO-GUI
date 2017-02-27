@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabControlRecruitment = new System.Windows.Forms.TabControl();
             this.tabRecruitment = new System.Windows.Forms.TabPage();
             this.labelRecruitProb = new System.Windows.Forms.Label();
@@ -43,7 +42,6 @@
             this.groupRecruitSelectionBox = new System.Windows.Forms.GroupBox();
             this.labelRecruitSelection = new System.Windows.Forms.Label();
             this.comboBoxRecruitSelection = new System.Windows.Forms.ComboBox();
-            this.errorProviderRecruitment = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataGridRecruitProb = new Nmfs.Agepro.Gui.NftDataGridView();
             this.dataGridComboBoxSelectRecruitModels = new Nmfs.Agepro.Gui.NftDataGridView();
             this.tabControlRecruitment.SuspendLayout();
@@ -51,7 +49,6 @@
             this.groupScalingFactor.SuspendLayout();
             this.tabRecruitModels.SuspendLayout();
             this.groupRecruitSelectionBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRecruitment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitProb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridComboBoxSelectRecruitModels)).BeginInit();
             this.SuspendLayout();
@@ -127,6 +124,8 @@
             this.textBoxSSBScalingFactor.Name = "textBoxSSBScalingFactor";
             this.textBoxSSBScalingFactor.Size = new System.Drawing.Size(131, 20);
             this.textBoxSSBScalingFactor.TabIndex = 3;
+            this.textBoxSSBScalingFactor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSSBScalingFactor_Validating);
+            this.textBoxSSBScalingFactor.Validated += new System.EventHandler(this.textBoxSSBScalingFactor_Validated);
             // 
             // textBoxRecruitngScalingFactor
             // 
@@ -208,12 +207,6 @@
             this.comboBoxRecruitSelection.TabIndex = 0;
             this.comboBoxRecruitSelection.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecruitSelection_SelectedIndexChanged);
             // 
-            // errorProviderRecruitment
-            // 
-            this.errorProviderRecruitment.BlinkRate = 0;
-            this.errorProviderRecruitment.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderRecruitment.ContainerControl = this;
-            // 
             // dataGridRecruitProb
             // 
             this.dataGridRecruitProb.AllowUserToAddRows = false;
@@ -265,7 +258,6 @@
             this.tabRecruitModels.ResumeLayout(false);
             this.groupRecruitSelectionBox.ResumeLayout(false);
             this.groupRecruitSelectionBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRecruitment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRecruitProb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridComboBoxSelectRecruitModels)).EndInit();
             this.ResumeLayout(false);
@@ -290,6 +282,5 @@
         private System.Windows.Forms.Label labelRecruitSelection;
         private System.Windows.Forms.ComboBox comboBoxRecruitSelection;
         private System.Windows.Forms.Panel panelRecruitModelParameter;
-        private System.Windows.Forms.ErrorProvider errorProviderRecruitment;
     }
 }

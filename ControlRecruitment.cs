@@ -21,7 +21,8 @@ namespace Nmfs.Agepro.Gui
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
         public bool populateDGV { get; set; }
-        private double prevValidRecruitFactors;
+        private int prevValidRecruitScalingFactors;
+        private int prevValidSSBScalingFactors;
 
         public ControlRecruitment()
         {
@@ -72,7 +73,8 @@ namespace Nmfs.Agepro.Gui
             this.populateDGV = true;
             
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
-            prevValidRecruitFactors = recruitingScalingFactor;
+            prevValidRecruitScalingFactors = recruitingScalingFactor;
+            prevValidSSBScalingFactors = SSBScalingFactor;
 
             if (collectionAgeproRecruitmentModels.Count == 0)
             {
@@ -622,36 +624,57 @@ namespace Nmfs.Agepro.Gui
             return ResizeDataGridTable(dgvTable, newRowCount);
         }
 
-        private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
+        private bool ValidateScalingFactor(TextBox txtFactor, string paramName, int prevValidValue)
         {
-            double recruitFactor;
-            if (double.TryParse(textBoxRecruitngScalingFactor.Text, out recruitFactor))
+            int scaleFactor;
+            if (int.TryParse(txtFactor.Text, out scaleFactor))
             {
-                if (recruitFactor < 1 )
+                if (scaleFactor < 0)
                 {
-                    MessageBox.Show("Recruiting Scale Factor should be a positive non-zero number.");
-                    //errorProviderRecruitment.SetError(textBoxRecruitngScalingFactor, "Recruiting Scale Factor should be a positive non-zero number.");
-                    e.Cancel = true;
-                    textBoxRecruitngScalingFactor.Text = prevValidRecruitFactors.ToString();
-                    return;
+                    MessageBox.Show(paramName + " should be a positive interger.", "AGEPRO",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtFactor.Text = prevValidValue.ToString();
+                    return false;
                 }
-                //errorProviderRecruitment.SetError(textBoxRecruitngScalingFactor, "");
-
             }
             else
             {
-                MessageBox.Show("Recruiting Scale Factor must be a numeric.");
-                //errorProviderRecruitment.SetError(textBoxRecruitngScalingFactor, "Recruiting Scale Factor must be a numeric.");
+                MessageBox.Show(paramName + " must be a integer.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFactor.Text = prevValidValue.ToString();
+                return false;
+            }
+            return true; // If Valid 
+        }
+
+        private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
+        {
+            //If Scaling Factors are not valid, raise the cancel event flag.
+            if (!ValidateScalingFactor(this.textBoxRecruitngScalingFactor, "Recruitment Scaling Factor", prevValidRecruitScalingFactors))
+            {
                 e.Cancel = true;
-                textBoxRecruitngScalingFactor.Text = prevValidRecruitFactors.ToString();
-                return;
             }
         }
 
         private void textBoxRecruitngScalingFactor_Validated(object sender, EventArgs e)
         {
-            prevValidRecruitFactors = recruitingScalingFactor;
+            prevValidRecruitScalingFactors = recruitingScalingFactor;
         }
+
+        private void textBoxSSBScalingFactor_Validating(object sender, CancelEventArgs e)
+        {
+            //If Scaling Factors are not valid, raise the cancel event flag.
+            if (!ValidateScalingFactor(this.textBoxSSBScalingFactor, "SSB Scaling Factor", prevValidSSBScalingFactors))
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void textBoxSSBScalingFactor_Validated(object sender, EventArgs e)
+        {
+            prevValidSSBScalingFactors = SSBScalingFactor;
+        }
+
+        
 
         
 
