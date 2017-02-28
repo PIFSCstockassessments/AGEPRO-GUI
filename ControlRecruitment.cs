@@ -21,8 +21,8 @@ namespace Nmfs.Agepro.Gui
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
         public bool populateDGV { get; set; }
-        private int prevValidRecruitScalingFactors;
-        private int prevValidSSBScalingFactors;
+        private double prevValidRecruitScalingFactors;
+        private double prevValidSSBScalingFactors;
 
         public ControlRecruitment()
         {
@@ -52,14 +52,14 @@ namespace Nmfs.Agepro.Gui
             this.dataGridComboBoxSelectRecruitModels.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
 
         }
-        public int recruitingScalingFactor
+        public double recruitingScalingFactor
         {
-            get { return Convert.ToInt32(textBoxRecruitngScalingFactor.Text); }
+            get { return Convert.ToDouble(textBoxRecruitngScalingFactor.Text); }
             set { textBoxRecruitngScalingFactor.Text = value.ToString(); }
         }
-        public int SSBScalingFactor
+        public double SSBScalingFactor
         {
-            get { return Convert.ToInt32(textBoxSSBScalingFactor.Text); }
+            get { return Convert.ToDouble(textBoxSSBScalingFactor.Text); }
             set { textBoxSSBScalingFactor.Text = value.ToString(); }
         }
         public DataTable recruitmentProb
@@ -624,14 +624,14 @@ namespace Nmfs.Agepro.Gui
             return ResizeDataGridTable(dgvTable, newRowCount);
         }
 
-        private bool ValidateScalingFactor(TextBox txtFactor, string paramName, int prevValidValue)
+        private bool ValidateScalingFactor(TextBox txtFactor, string paramName, double prevValidValue)
         {
-            int scaleFactor;
-            if (int.TryParse(txtFactor.Text, out scaleFactor))
+            double scaleFactor;
+            if (double.TryParse(txtFactor.Text, out scaleFactor))
             {
                 if (scaleFactor < 0)
                 {
-                    MessageBox.Show(paramName + " should be a positive interger.", "AGEPRO",
+                    MessageBox.Show(paramName + " must be a positive number.", "AGEPRO",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtFactor.Text = prevValidValue.ToString();
                     return false;
@@ -639,7 +639,7 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                MessageBox.Show(paramName + " must be a integer.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(paramName + " must be a numeric value.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtFactor.Text = prevValidValue.ToString();
                 return false;
             }
