@@ -1,13 +1,16 @@
 
 # AGEPRO Changelog
 
-## 4.3.0.5-beta5 (2017-02-2x)
+## 4.3.0.5-beta5 (2017-03-01)
+
+## Added
+- Validation for Recruitment Scale Factor, SSB Scale Factors, and Bootstrap Population Scale Factors.
 
 ## Fixed
-- Unified behavior how parametric recruitment text boxes deal with blanks and values with non-numeric input. They will revert to previous value.
+- Validation behavior for all parametric recruitment paramerters whether or data type is nullible or not: They will revert to previous value.
 
 ## Changed
-- Bootstrap controls are resizeale
+- Bootstrap controls are resizeale.
 - Parametric Recruitment: Switched postions of KParm and Variance labels and textbox.
 - CoreLib: Refactored Shepherd Curve code in ParametricCurve to subclass ParametricShepherdCurve. 
 
