@@ -88,6 +88,8 @@
             this.textBoxPopScaleFactors.Name = "textBoxPopScaleFactors";
             this.textBoxPopScaleFactors.Size = new System.Drawing.Size(100, 20);
             this.textBoxPopScaleFactors.TabIndex = 3;
+            this.textBoxPopScaleFactors.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPopScaleFactors_Validating);
+            this.textBoxPopScaleFactors.Validated += new System.EventHandler(this.textBoxPopScaleFactors_Validated);
             // 
             // labelPopScaleFactors
             // 

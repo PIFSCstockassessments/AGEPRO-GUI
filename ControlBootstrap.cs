@@ -13,6 +13,8 @@ namespace Nmfs.Agepro.Gui
 {
     public partial class ControlBootstrap : UserControl
     {
+        double prevValidBootstrapPopScaleFactors;
+
         public ControlBootstrap()
         {
             InitializeComponent();
@@ -44,6 +46,7 @@ namespace Nmfs.Agepro.Gui
             this.textBoxBootstrapFile.DataBindings.Add("Text", bootstrapOpt, "bootstrapFile");
             this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps");
             this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor");
+            this.prevValidBootstrapPopScaleFactors = bootstrapOpt.popScaleFactor;
         }
 
         public static OpenFileDialog SetBootstrapOpenFileDialog()
@@ -110,6 +113,35 @@ namespace Nmfs.Agepro.Gui
                     bootstrapFilename = bootstrapFileDialog.FileName;
                 }
             }
+        }
+
+        private void textBoxPopScaleFactors_Validating(object sender, CancelEventArgs e)
+        {
+            double scaleFactor;
+            if (double.TryParse(this.textBoxPopScaleFactors.Text, out scaleFactor))
+            {
+                if (scaleFactor < 0)
+                {
+                    MessageBox.Show("Bootsrap Population Scale Factors must be a positive number.", "AGEPRO",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.textBoxPopScaleFactors.Text = this.prevValidBootstrapPopScaleFactors.ToString();
+                    e.Cancel = true;
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bootstrap Population Scale Factors must be a numeric value.", "AGEPRO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.textBoxPopScaleFactors.Text = this.prevValidBootstrapPopScaleFactors.ToString();
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void textBoxPopScaleFactors_Validated(object sender, EventArgs e)
+        {
+            this.prevValidBootstrapPopScaleFactors = double.Parse(this.bootstrapScaleFactors);
         }
     }
 }
