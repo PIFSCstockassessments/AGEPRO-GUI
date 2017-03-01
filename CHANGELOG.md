@@ -3,10 +3,10 @@
 
 ## 4.3.0.5-beta5 (2017-03-01)
 
-## Added
+### Added
 - Validation for Recruitment Scale Factor, SSB Scale Factors, and Bootstrap Population Scale Factors.
 
-## Fixed
+### Fixed
 - Validation behavior for all parametric recruitment paramerters whether or not the data type is nullible or not: They will revert to previous value.
 - RecruitScaleFactor and SSBScalingFactor are now double floating-point data types instead of integers.
 - Parametric Recruitment: Switched postions of KParm and Variance labels and textbox.
