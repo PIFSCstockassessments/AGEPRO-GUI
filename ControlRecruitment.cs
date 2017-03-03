@@ -21,6 +21,8 @@ namespace Nmfs.Agepro.Gui
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
         public bool populateDGV { get; set; }
+        private double prevValidRecruitScalingFactors;
+        private double prevValidSSBScalingFactors;
 
         public ControlRecruitment()
         {
@@ -50,14 +52,14 @@ namespace Nmfs.Agepro.Gui
             this.dataGridComboBoxSelectRecruitModels.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
 
         }
-        public int recruitingScalingFactor
+        public double recruitingScalingFactor
         {
-            get { return Convert.ToInt32(textBoxRecruitngScalingFactor.Text); }
+            get { return Convert.ToDouble(textBoxRecruitngScalingFactor.Text); }
             set { textBoxRecruitngScalingFactor.Text = value.ToString(); }
         }
-        public int SSBScalingFactor
+        public double SSBScalingFactor
         {
-            get { return Convert.ToInt32(textBoxSSBScalingFactor.Text); }
+            get { return Convert.ToDouble(textBoxSSBScalingFactor.Text); }
             set { textBoxSSBScalingFactor.Text = value.ToString(); }
         }
         public DataTable recruitmentProb
@@ -71,6 +73,8 @@ namespace Nmfs.Agepro.Gui
             this.populateDGV = true;
             
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
+            prevValidRecruitScalingFactors = recruitingScalingFactor;
+            prevValidSSBScalingFactors = SSBScalingFactor;
 
             if (collectionAgeproRecruitmentModels.Count == 0)
             {
@@ -619,6 +623,58 @@ namespace Nmfs.Agepro.Gui
 
             return ResizeDataGridTable(dgvTable, newRowCount);
         }
+
+        private bool ValidateScalingFactor(TextBox txtFactor, string paramName, double prevValidValue)
+        {
+            double scaleFactor;
+            if (double.TryParse(txtFactor.Text, out scaleFactor))
+            {
+                if (scaleFactor < 0)
+                {
+                    MessageBox.Show(paramName + " must be a positive number.", "AGEPRO",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtFactor.Text = prevValidValue.ToString();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show(paramName + " must be a numeric value.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFactor.Text = prevValidValue.ToString();
+                return false;
+            }
+            return true; // If Valid 
+        }
+
+        private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
+        {
+            //If Scaling Factors are not valid, raise the cancel event flag.
+            if (!ValidateScalingFactor(this.textBoxRecruitngScalingFactor, "Recruitment Scaling Factor", prevValidRecruitScalingFactors))
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void textBoxRecruitngScalingFactor_Validated(object sender, EventArgs e)
+        {
+            prevValidRecruitScalingFactors = recruitingScalingFactor;
+        }
+
+        private void textBoxSSBScalingFactor_Validating(object sender, CancelEventArgs e)
+        {
+            //If Scaling Factors are not valid, raise the cancel event flag.
+            if (!ValidateScalingFactor(this.textBoxSSBScalingFactor, "SSB Scaling Factor", prevValidSSBScalingFactors))
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void textBoxSSBScalingFactor_Validated(object sender, EventArgs e)
+        {
+            prevValidSSBScalingFactors = SSBScalingFactor;
+        }
+
+        
 
         
 
