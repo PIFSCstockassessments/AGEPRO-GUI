@@ -32,10 +32,10 @@
             this.textBoxBootstrapFile = new System.Windows.Forms.TextBox();
             this.buttonLoadFile = new System.Windows.Forms.Button();
             this.groupBootstrapOptions = new System.Windows.Forms.GroupBox();
-            this.textBoxPopScaleFactors = new System.Windows.Forms.TextBox();
             this.labelPopScaleFactors = new System.Windows.Forms.Label();
-            this.textBoxNumBootstrapIterations = new System.Windows.Forms.TextBox();
             this.labelNumBootstrapIterations = new System.Windows.Forms.Label();
+            this.textBoxPopScaleFactors = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxNumBootstrapIterations = new Nmfs.Agepro.Gui.NftTextBox();
             this.groupBootstrapOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,15 +82,6 @@
             this.groupBootstrapOptions.TabStop = false;
             this.groupBootstrapOptions.Text = "Bootstrap Options";
             // 
-            // textBoxPopScaleFactors
-            // 
-            this.textBoxPopScaleFactors.Location = new System.Drawing.Point(232, 61);
-            this.textBoxPopScaleFactors.Name = "textBoxPopScaleFactors";
-            this.textBoxPopScaleFactors.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPopScaleFactors.TabIndex = 3;
-            this.textBoxPopScaleFactors.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPopScaleFactors_Validating);
-            this.textBoxPopScaleFactors.Validated += new System.EventHandler(this.textBoxPopScaleFactors_Validated);
-            // 
             // labelPopScaleFactors
             // 
             this.labelPopScaleFactors.AutoSize = true;
@@ -100,13 +91,6 @@
             this.labelPopScaleFactors.TabIndex = 2;
             this.labelPopScaleFactors.Text = "Population Scale Factors";
             // 
-            // textBoxNumBootstrapIterations
-            // 
-            this.textBoxNumBootstrapIterations.Location = new System.Drawing.Point(232, 25);
-            this.textBoxNumBootstrapIterations.Name = "textBoxNumBootstrapIterations";
-            this.textBoxNumBootstrapIterations.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNumBootstrapIterations.TabIndex = 1;
-            // 
             // labelNumBootstrapIterations
             // 
             this.labelNumBootstrapIterations.AutoSize = true;
@@ -115,6 +99,25 @@
             this.labelNumBootstrapIterations.Size = new System.Drawing.Size(150, 13);
             this.labelNumBootstrapIterations.TabIndex = 0;
             this.labelNumBootstrapIterations.Text = "Number of Bootstrap Iterations";
+            // 
+            // textBoxPopScaleFactors
+            // 
+            this.textBoxPopScaleFactors.Location = new System.Drawing.Point(232, 61);
+            this.textBoxPopScaleFactors.Name = "textBoxPopScaleFactors";
+            this.textBoxPopScaleFactors.paramName = null;
+            this.textBoxPopScaleFactors.prevValidValue = "";
+            this.textBoxPopScaleFactors.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPopScaleFactors.TabIndex = 3;
+            this.textBoxPopScaleFactors.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPopScaleFactors_Validating);
+            // 
+            // textBoxNumBootstrapIterations
+            // 
+            this.textBoxNumBootstrapIterations.Location = new System.Drawing.Point(232, 25);
+            this.textBoxNumBootstrapIterations.Name = "textBoxNumBootstrapIterations";
+            this.textBoxNumBootstrapIterations.paramName = null;
+            this.textBoxNumBootstrapIterations.prevValidValue = "";
+            this.textBoxNumBootstrapIterations.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNumBootstrapIterations.TabIndex = 1;
             // 
             // ControlBootstrap
             // 
@@ -140,9 +143,9 @@
         private System.Windows.Forms.TextBox textBoxBootstrapFile;
         private System.Windows.Forms.Button buttonLoadFile;
         private System.Windows.Forms.GroupBox groupBootstrapOptions;
-        private System.Windows.Forms.TextBox textBoxPopScaleFactors;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxPopScaleFactors;
         private System.Windows.Forms.Label labelPopScaleFactors;
-        private System.Windows.Forms.TextBox textBoxNumBootstrapIterations;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxNumBootstrapIterations;
         private System.Windows.Forms.Label labelNumBootstrapIterations;
     }
 }

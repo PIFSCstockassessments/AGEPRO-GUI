@@ -13,7 +13,6 @@ namespace Nmfs.Agepro.Gui
 {
     public partial class ControlBootstrap : UserControl
     {
-        double prevValidBootstrapPopScaleFactors;
 
         public ControlBootstrap()
         {
@@ -46,7 +45,8 @@ namespace Nmfs.Agepro.Gui
             this.textBoxBootstrapFile.DataBindings.Add("Text", bootstrapOpt, "bootstrapFile");
             this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps");
             this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor");
-            this.prevValidBootstrapPopScaleFactors = bootstrapOpt.popScaleFactor;
+            this.textBoxNumBootstrapIterations.prevValidValue = this.bootstrapIterations;
+            this.textBoxPopScaleFactors.prevValidValue = this.bootstrapScaleFactors;
         }
 
         public static OpenFileDialog SetBootstrapOpenFileDialog()
@@ -118,13 +118,14 @@ namespace Nmfs.Agepro.Gui
         private void textBoxPopScaleFactors_Validating(object sender, CancelEventArgs e)
         {
             double scaleFactor;
-            if (double.TryParse(this.textBoxPopScaleFactors.Text, out scaleFactor))
+            NftTextBox txtBootFac = sender as NftTextBox;
+            if (double.TryParse(txtBootFac.Text, out scaleFactor))
             {
                 if (scaleFactor < 0)
                 {
                     MessageBox.Show("Bootsrap Population Scale Factors must be a positive number.", "AGEPRO",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.textBoxPopScaleFactors.Text = this.prevValidBootstrapPopScaleFactors.ToString();
+                    txtBootFac.Text = txtBootFac.prevValidValue;
                     e.Cancel = true;
                     return;
                 }
@@ -133,15 +134,12 @@ namespace Nmfs.Agepro.Gui
             {
                 MessageBox.Show("Bootstrap Population Scale Factors must be a numeric value.", "AGEPRO",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.textBoxPopScaleFactors.Text = this.prevValidBootstrapPopScaleFactors.ToString();
+                txtBootFac.Text = txtBootFac.prevValidValue;
                 e.Cancel = true;
                 return;
             }
         }
 
-        private void textBoxPopScaleFactors_Validated(object sender, EventArgs e)
-        {
-            this.prevValidBootstrapPopScaleFactors = double.Parse(this.bootstrapScaleFactors);
-        }
+
     }
 }
