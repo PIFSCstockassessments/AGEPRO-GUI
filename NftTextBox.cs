@@ -10,12 +10,12 @@ namespace Nmfs.Agepro.Gui
     public class NftTextBox : TextBox
     {
 
-        public string prevValidValue { get; set; }   
-        public string paramName { get; set; }
+        public string PrevValidValue { get; set; }   
+        public string ParamName { get; set; }
 
         public NftTextBox()
         {
-            this.prevValidValue = string.Empty;
+            this.PrevValidValue = string.Empty;
             this.CausesValidation = true;
         }
 
@@ -25,9 +25,9 @@ namespace Nmfs.Agepro.Gui
         {
             if (string.IsNullOrWhiteSpace(this.Text))
             {
-                if (!string.IsNullOrWhiteSpace(this.prevValidValue))
+                if (!string.IsNullOrWhiteSpace(this.PrevValidValue))
                 {
-                    this.Text = this.prevValidValue;
+                    this.Text = this.PrevValidValue;
                 }
                 e.Cancel = true;
                 return;
@@ -37,7 +37,7 @@ namespace Nmfs.Agepro.Gui
 
         protected override void OnValidated(EventArgs e)
         {
-            this.prevValidValue = this.Text;
+            this.PrevValidValue = this.Text;
             base.OnValidated(e);
         }
           

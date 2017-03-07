@@ -158,8 +158,8 @@
             // 
             this.textBoxSSBScalingFactor.Location = new System.Drawing.Point(643, 29);
             this.textBoxSSBScalingFactor.Name = "textBoxSSBScalingFactor";
-            this.textBoxSSBScalingFactor.paramName = null;
-            this.textBoxSSBScalingFactor.prevValidValue = "";
+            this.textBoxSSBScalingFactor.ParamName = null;
+            this.textBoxSSBScalingFactor.PrevValidValue = "";
             this.textBoxSSBScalingFactor.Size = new System.Drawing.Size(131, 20);
             this.textBoxSSBScalingFactor.TabIndex = 3;
             this.textBoxSSBScalingFactor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSSBScalingFactor_Validating);
@@ -168,8 +168,8 @@
             // 
             this.textBoxRecruitngScalingFactor.Location = new System.Drawing.Point(229, 29);
             this.textBoxRecruitngScalingFactor.Name = "textBoxRecruitngScalingFactor";
-            this.textBoxRecruitngScalingFactor.paramName = null;
-            this.textBoxRecruitngScalingFactor.prevValidValue = "";
+            this.textBoxRecruitngScalingFactor.ParamName = null;
+            this.textBoxRecruitngScalingFactor.PrevValidValue = "";
             this.textBoxRecruitngScalingFactor.Size = new System.Drawing.Size(131, 20);
             this.textBoxRecruitngScalingFactor.TabIndex = 2;
             this.textBoxRecruitngScalingFactor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxRecruitngScalingFactor_Validating);

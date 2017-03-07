@@ -72,8 +72,8 @@ namespace Nmfs.Agepro.Gui
             
             labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
             //Set prevValidValues
-            this.textBoxRecruitngScalingFactor.prevValidValue = recruitingScalingFactor.ToString();
-            this.textBoxSSBScalingFactor.prevValidValue = SSBScalingFactor.ToString();
+            this.textBoxRecruitngScalingFactor.PrevValidValue = recruitingScalingFactor.ToString();
+            this.textBoxSSBScalingFactor.PrevValidValue = SSBScalingFactor.ToString();
 
             if (collectionAgeproRecruitmentModels.Count == 0)
             {
@@ -632,14 +632,14 @@ namespace Nmfs.Agepro.Gui
                 {
                     MessageBox.Show(paramName + " must be a positive number.", "AGEPRO",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtFactor.Text = txtFactor.prevValidValue;
+                    txtFactor.Text = txtFactor.PrevValidValue;
                     return false;
                 }
             }
             else
             {
                 MessageBox.Show(paramName + " must be a numeric value.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtFactor.Text = txtFactor.prevValidValue;
+                txtFactor.Text = txtFactor.PrevValidValue;
                 return false;
             }
             return true; // If Valid 

@@ -45,8 +45,8 @@ namespace Nmfs.Agepro.Gui
             this.textBoxBootstrapFile.DataBindings.Add("Text", bootstrapOpt, "bootstrapFile");
             this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps");
             this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor");
-            this.textBoxNumBootstrapIterations.prevValidValue = this.bootstrapIterations;
-            this.textBoxPopScaleFactors.prevValidValue = this.bootstrapScaleFactors;
+            this.textBoxNumBootstrapIterations.PrevValidValue = this.bootstrapIterations;
+            this.textBoxPopScaleFactors.PrevValidValue = this.bootstrapScaleFactors;
         }
 
         public static OpenFileDialog SetBootstrapOpenFileDialog()
@@ -125,7 +125,7 @@ namespace Nmfs.Agepro.Gui
                 {
                     MessageBox.Show("Bootsrap Population Scale Factors must be a positive number.", "AGEPRO",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtBootFac.Text = txtBootFac.prevValidValue;
+                    txtBootFac.Text = txtBootFac.PrevValidValue;
                     e.Cancel = true;
                     return;
                 }
@@ -134,7 +134,7 @@ namespace Nmfs.Agepro.Gui
             {
                 MessageBox.Show("Bootstrap Population Scale Factors must be a numeric value.", "AGEPRO",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBootFac.Text = txtBootFac.prevValidValue;
+                txtBootFac.Text = txtBootFac.PrevValidValue;
                 e.Cancel = true;
                 return;
             }

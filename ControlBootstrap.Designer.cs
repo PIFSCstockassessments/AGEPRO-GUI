@@ -104,8 +104,8 @@
             // 
             this.textBoxPopScaleFactors.Location = new System.Drawing.Point(232, 61);
             this.textBoxPopScaleFactors.Name = "textBoxPopScaleFactors";
-            this.textBoxPopScaleFactors.paramName = null;
-            this.textBoxPopScaleFactors.prevValidValue = "";
+            this.textBoxPopScaleFactors.ParamName = null;
+            this.textBoxPopScaleFactors.PrevValidValue = "";
             this.textBoxPopScaleFactors.Size = new System.Drawing.Size(100, 20);
             this.textBoxPopScaleFactors.TabIndex = 3;
             this.textBoxPopScaleFactors.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPopScaleFactors_Validating);
@@ -114,8 +114,8 @@
             // 
             this.textBoxNumBootstrapIterations.Location = new System.Drawing.Point(232, 25);
             this.textBoxNumBootstrapIterations.Name = "textBoxNumBootstrapIterations";
-            this.textBoxNumBootstrapIterations.paramName = null;
-            this.textBoxNumBootstrapIterations.prevValidValue = "";
+            this.textBoxNumBootstrapIterations.ParamName = null;
+            this.textBoxNumBootstrapIterations.PrevValidValue = "";
             this.textBoxNumBootstrapIterations.Size = new System.Drawing.Size(100, 20);
             this.textBoxNumBootstrapIterations.TabIndex = 1;
             // 
