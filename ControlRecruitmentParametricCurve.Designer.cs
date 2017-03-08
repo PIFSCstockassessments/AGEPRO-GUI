@@ -33,12 +33,12 @@
             this.labelKparm = new System.Windows.Forms.Label();
             this.labelVariance = new System.Windows.Forms.Label();
             this.labelPhi = new System.Windows.Forms.Label();
-            this.textBoxAlpha = new System.Windows.Forms.TextBox();
-            this.textBoxBeta = new System.Windows.Forms.TextBox();
-            this.textBoxKParm = new System.Windows.Forms.TextBox();
-            this.textBoxVariance = new System.Windows.Forms.TextBox();
-            this.textBoxPhi = new System.Windows.Forms.TextBox();
-            this.textBoxLastResidual = new System.Windows.Forms.TextBox();
+            this.textBoxAlpha = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxBeta = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxKParm = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxVariance = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxPhi = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxLastResidual = new Nmfs.Agepro.Gui.NftTextBox();
             this.labelLastResidual = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -170,12 +170,12 @@
         private System.Windows.Forms.Label labelKparm;
         private System.Windows.Forms.Label labelVariance;
         private System.Windows.Forms.Label labelPhi;
-        private System.Windows.Forms.TextBox textBoxAlpha;
-        private System.Windows.Forms.TextBox textBoxBeta;
-        private System.Windows.Forms.TextBox textBoxKParm;
-        private System.Windows.Forms.TextBox textBoxVariance;
-        private System.Windows.Forms.TextBox textBoxPhi;
-        private System.Windows.Forms.TextBox textBoxLastResidual;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxAlpha;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxBeta;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxKParm;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxVariance;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxPhi;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxLastResidual;
         private System.Windows.Forms.Label labelLastResidual;
 
     }

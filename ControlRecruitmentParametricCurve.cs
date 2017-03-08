@@ -23,6 +23,13 @@ namespace Nmfs.Agepro.Gui
             this.textBoxPhi.Text = "0";
             this.textBoxLastResidual.Text = "0";
 
+            this.textBoxAlpha.PrevValidValue = this.textBoxAlpha.Text;
+            this.textBoxBeta.PrevValidValue = this.textBoxBeta.Text;
+            this.textBoxKParm.PrevValidValue = this.textBoxKParm.Text;
+            this.textBoxVariance.PrevValidValue = this.textBoxVariance.Text;
+            this.textBoxPhi.PrevValidValue = this.textBoxPhi.Text;
+            this.textBoxLastResidual.PrevValidValue = this.textBoxLastResidual.Text;
+
             //By default, K-Parm is invisible
             this.labelKparm.Visible = false;
             this.textBoxKParm.Visible = false;
@@ -41,11 +48,16 @@ namespace Nmfs.Agepro.Gui
             DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
             DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
 
+            this.textBoxAlpha.PrevValidValue = this.textBoxAlpha.Text;
+            this.textBoxBeta.PrevValidValue = this.textBoxBeta.Text;
+            this.textBoxVariance.PrevValidValue = this.textBoxVariance.Text;
+            
             if(currentParametricCurveRecruit.GetType() == typeof(ParametricShepherdCurve))
             {
                 this.labelKparm.Visible = true;
                 this.textBoxKParm.Visible = true;
                 DataBindTextBox(this.textBoxKParm, currentParametricCurveRecruit, "kParm");
+                this.textBoxKParm.PrevValidValue = this.textBoxKParm.Text;
             }
             
             if (currentParametricCurveRecruit.autocorrelated)
@@ -57,6 +69,9 @@ namespace Nmfs.Agepro.Gui
 
                 DataBindTextBox(this.textBoxPhi, currentParametricCurveRecruit, "phi");
                 DataBindTextBox(this.textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
+                this.textBoxPhi.PrevValidValue = this.textBoxPhi.Text;
+                this.textBoxLastResidual.PrevValidValue = this.textBoxLastResidual.Text;
+
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
