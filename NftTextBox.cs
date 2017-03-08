@@ -23,15 +23,6 @@ namespace Nmfs.Agepro.Gui
 
         protected override void OnValidating(System.ComponentModel.CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.Text))
-            {
-                if (!string.IsNullOrWhiteSpace(this.PrevValidValue))
-                {
-                    this.Text = this.PrevValidValue;
-                }
-                e.Cancel = true;
-                return;
-            }
             base.OnValidating(e);
         }
 
