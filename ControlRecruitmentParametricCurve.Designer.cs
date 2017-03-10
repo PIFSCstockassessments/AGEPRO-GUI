@@ -92,45 +92,63 @@
             // 
             this.textBoxAlpha.Location = new System.Drawing.Point(166, 40);
             this.textBoxAlpha.Name = "textBoxAlpha";
+            this.textBoxAlpha.ParamName = "Alpha";
+            this.textBoxAlpha.PrevValidValue = "";
             this.textBoxAlpha.Size = new System.Drawing.Size(135, 20);
             this.textBoxAlpha.TabIndex = 1;
+            this.textBoxAlpha.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAlpha_Validating);
             // 
             // textBoxBeta
             // 
             this.textBoxBeta.Location = new System.Drawing.Point(166, 73);
             this.textBoxBeta.Name = "textBoxBeta";
+            this.textBoxBeta.ParamName = "Beta";
+            this.textBoxBeta.PrevValidValue = "";
             this.textBoxBeta.Size = new System.Drawing.Size(135, 20);
             this.textBoxBeta.TabIndex = 3;
+            this.textBoxBeta.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxBeta_Validating);
             // 
             // textBoxKParm
             // 
             this.textBoxKParm.Location = new System.Drawing.Point(166, 139);
             this.textBoxKParm.Name = "textBoxKParm";
+            this.textBoxKParm.ParamName = "K-Parm";
+            this.textBoxKParm.PrevValidValue = "";
             this.textBoxKParm.Size = new System.Drawing.Size(135, 20);
             this.textBoxKParm.TabIndex = 7;
+            this.textBoxKParm.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxKParm_Validating);
             // 
             // textBoxVariance
             // 
             this.textBoxVariance.Location = new System.Drawing.Point(166, 106);
             this.textBoxVariance.Name = "textBoxVariance";
+            this.textBoxVariance.ParamName = "Varaiance";
+            this.textBoxVariance.PrevValidValue = "";
             this.textBoxVariance.Size = new System.Drawing.Size(135, 20);
             this.textBoxVariance.TabIndex = 5;
+            this.textBoxVariance.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxVariance_Validating);
             // 
             // textBoxPhi
             // 
             this.textBoxPhi.Enabled = false;
             this.textBoxPhi.Location = new System.Drawing.Point(166, 172);
             this.textBoxPhi.Name = "textBoxPhi";
+            this.textBoxPhi.ParamName = "Phi";
+            this.textBoxPhi.PrevValidValue = "";
             this.textBoxPhi.Size = new System.Drawing.Size(135, 20);
             this.textBoxPhi.TabIndex = 9;
+            this.textBoxPhi.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPhi_Validating);
             // 
             // textBoxLastResidual
             // 
             this.textBoxLastResidual.Enabled = false;
             this.textBoxLastResidual.Location = new System.Drawing.Point(166, 205);
             this.textBoxLastResidual.Name = "textBoxLastResidual";
+            this.textBoxLastResidual.ParamName = "Last Residual";
+            this.textBoxLastResidual.PrevValidValue = "";
             this.textBoxLastResidual.Size = new System.Drawing.Size(135, 20);
             this.textBoxLastResidual.TabIndex = 11;
+            this.textBoxLastResidual.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxLastResidual_Validating);
             // 
             // labelLastResidual
             // 

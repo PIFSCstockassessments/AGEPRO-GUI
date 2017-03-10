@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.labelLastResidual = new System.Windows.Forms.Label();
-            this.textBoxLastResidual = new System.Windows.Forms.TextBox();
-            this.textBoxPhi = new System.Windows.Forms.TextBox();
-            this.textBoxStdDeviation = new System.Windows.Forms.TextBox();
-            this.textBoxMean = new System.Windows.Forms.TextBox();
+            this.textBoxLastResidual = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxPhi = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxStdDeviation = new Nmfs.Agepro.Gui.NftTextBox();
+            this.textBoxMean = new Nmfs.Agepro.Gui.NftTextBox();
             this.labelPhi = new System.Windows.Forms.Label();
             this.labelStdDeviation = new System.Windows.Forms.Label();
             this.labelMean = new System.Windows.Forms.Label();
@@ -53,30 +53,42 @@
             this.textBoxLastResidual.Enabled = false;
             this.textBoxLastResidual.Location = new System.Drawing.Point(166, 139);
             this.textBoxLastResidual.Name = "textBoxLastResidual";
+            this.textBoxLastResidual.ParamName = "Last Residual";
+            this.textBoxLastResidual.PrevValidValue = "";
             this.textBoxLastResidual.Size = new System.Drawing.Size(135, 20);
             this.textBoxLastResidual.TabIndex = 19;
+            this.textBoxLastResidual.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxLastResidual_Validating);
             // 
             // textBoxPhi
             // 
             this.textBoxPhi.Enabled = false;
             this.textBoxPhi.Location = new System.Drawing.Point(166, 106);
             this.textBoxPhi.Name = "textBoxPhi";
+            this.textBoxPhi.ParamName = "Phi";
+            this.textBoxPhi.PrevValidValue = "";
             this.textBoxPhi.Size = new System.Drawing.Size(135, 20);
             this.textBoxPhi.TabIndex = 17;
+            this.textBoxPhi.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPhi_Validating);
             // 
             // textBoxStdDeviation
             // 
             this.textBoxStdDeviation.Location = new System.Drawing.Point(166, 73);
             this.textBoxStdDeviation.Name = "textBoxStdDeviation";
+            this.textBoxStdDeviation.ParamName = "Std. Deviation";
+            this.textBoxStdDeviation.PrevValidValue = "";
             this.textBoxStdDeviation.Size = new System.Drawing.Size(135, 20);
             this.textBoxStdDeviation.TabIndex = 15;
+            this.textBoxStdDeviation.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStdDeviation_Validating);
             // 
             // textBoxMean
             // 
             this.textBoxMean.Location = new System.Drawing.Point(166, 40);
             this.textBoxMean.Name = "textBoxMean";
+            this.textBoxMean.ParamName = "Mean";
+            this.textBoxMean.PrevValidValue = "";
             this.textBoxMean.Size = new System.Drawing.Size(135, 20);
             this.textBoxMean.TabIndex = 13;
+            this.textBoxMean.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMean_Validating);
             // 
             // labelPhi
             // 
@@ -126,10 +138,10 @@
         #endregion
 
         private System.Windows.Forms.Label labelLastResidual;
-        private System.Windows.Forms.TextBox textBoxLastResidual;
-        private System.Windows.Forms.TextBox textBoxPhi;
-        private System.Windows.Forms.TextBox textBoxStdDeviation;
-        private System.Windows.Forms.TextBox textBoxMean;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxLastResidual;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxPhi;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxStdDeviation;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxMean;
         private System.Windows.Forms.Label labelPhi;
         private System.Windows.Forms.Label labelStdDeviation;
         private System.Windows.Forms.Label labelMean;

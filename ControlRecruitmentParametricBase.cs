@@ -44,8 +44,8 @@ namespace Nmfs.Agepro.Gui
         protected void DataBindTextBox(TextBox txtCtl, ParametricRecruitment recruitDataObj, string parameterName)
         {
             Binding b = new Binding("Text", recruitDataObj, parameterName, true);
-            b.Format += new ConvertEventHandler(textBoxBinding_Format);
-            b.Parse += new ConvertEventHandler(textBoxBinding_Parse);
+            //b.Format += new ConvertEventHandler(textBoxBinding_Format);
+            //b.Parse += new ConvertEventHandler(textBoxBinding_Parse);
             txtCtl.DataBindings.Add(b);
         }
 
@@ -77,7 +77,7 @@ namespace Nmfs.Agepro.Gui
 
         /// <summary>
         /// How the control's formatted value is stored to that object its bounded to. Control to Object.
-        /// This function gives an consistent interface with nullable and non-nullable data objects that textboxes bounded to.
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -104,6 +104,29 @@ namespace Nmfs.Agepro.Gui
                         ctlTxt.Text = bindedVal.ToString();
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Paramertic Parameter input data validation. Invalid data is reverted to previous valid value the NftTextBox 
+        /// object stored.
+        /// </summary>
+        /// <remarks>
+        /// For consistent validation with nullable and non-nullable data bounded objects, <code>DataSourceUpdateMode</code> 
+        /// should be set that to default, <code>OnValidation</code>.
+        /// </remarks>
+        /// <param name="txtParam"></param>
+        /// <param name="e"></param>
+        protected void ValidateParamerticParameter(NftTextBox txtParam, CancelEventArgs e)
+        {
+            double parametricVal;
+            if (!(double.TryParse(txtParam.Text, out parametricVal)))
+            {
+                MessageBox.Show("Invalid input for " + txtParam.ParamName + ": Must be a numeric value.", "AGEPRO",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtParam.Text = txtParam.PrevValidValue;
+                e.Cancel = true;
+                return;
             }
         }
 

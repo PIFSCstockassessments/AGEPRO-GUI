@@ -21,6 +21,11 @@ namespace Nmfs.Agepro.Gui
             this.textBoxPhi.Text = "0";
             this.textBoxLastResidual.Text = "0";
 
+            this.textBoxMean.PrevValidValue = this.textBoxMean.Text;
+            this.textBoxStdDeviation.PrevValidValue = this.textBoxStdDeviation.Text;
+            this.textBoxPhi.PrevValidValue = this.textBoxPhi.Text;
+            this.textBoxLastResidual.PrevValidValue = this.textBoxLastResidual.Text;
+
             //By Default, autocorrected vaules is seen as disabled
             this.labelPhi.Enabled = false;
             this.labelLastResidual.Enabled = false;
@@ -35,6 +40,9 @@ namespace Nmfs.Agepro.Gui
             DataBindTextBox(this.textBoxMean, currentLognormalRecruit, "mean");
             DataBindTextBox(this.textBoxStdDeviation, currentLognormalRecruit, "stdDev");
 
+            this.textBoxMean.PrevValidValue = currentLognormalRecruit.mean.ToString();
+            this.textBoxStdDeviation.PrevValidValue = currentLognormalRecruit.mean.ToString();
+
             if (currentLognormalRecruit.autocorrelated)
             {
                 this.labelPhi.Enabled = true;
@@ -47,6 +55,26 @@ namespace Nmfs.Agepro.Gui
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
+        }
+
+        private void textBoxMean_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxStdDeviation_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxPhi_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxLastResidual_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
         }
     }
 }

@@ -48,16 +48,16 @@ namespace Nmfs.Agepro.Gui
             DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
             DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
 
-            this.textBoxAlpha.PrevValidValue = this.textBoxAlpha.Text;
-            this.textBoxBeta.PrevValidValue = this.textBoxBeta.Text;
-            this.textBoxVariance.PrevValidValue = this.textBoxVariance.Text;
+            this.textBoxAlpha.PrevValidValue = currentParametricCurveRecruit.alpha.ToString();
+            this.textBoxBeta.PrevValidValue = currentParametricCurveRecruit.beta.ToString();
+            this.textBoxVariance.PrevValidValue = currentParametricCurveRecruit.variance.ToString();
             
             if(currentParametricCurveRecruit.GetType() == typeof(ParametricShepherdCurve))
             {
                 this.labelKparm.Visible = true;
                 this.textBoxKParm.Visible = true;
                 DataBindTextBox(this.textBoxKParm, currentParametricCurveRecruit, "kParm");
-                this.textBoxKParm.PrevValidValue = this.textBoxKParm.Text;
+                this.textBoxKParm.PrevValidValue = ((ParametricShepherdCurve)currentParametricCurveRecruit).kParm.ToString();
             }
             
             if (currentParametricCurveRecruit.autocorrelated)
@@ -69,12 +69,42 @@ namespace Nmfs.Agepro.Gui
 
                 DataBindTextBox(this.textBoxPhi, currentParametricCurveRecruit, "phi");
                 DataBindTextBox(this.textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
-                this.textBoxPhi.PrevValidValue = this.textBoxPhi.Text;
-                this.textBoxLastResidual.PrevValidValue = this.textBoxLastResidual.Text;
+                this.textBoxPhi.PrevValidValue = currentParametricCurveRecruit.phi.Value.ToString();
+                this.textBoxLastResidual.PrevValidValue = currentParametricCurveRecruit.lastResidual.Value.ToString();
 
             }
 
             base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
+        }
+
+        private void textBoxAlpha_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxBeta_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxVariance_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxKParm_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxPhi_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
+        }
+
+        private void textBoxLastResidual_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateParamerticParameter(sender as NftTextBox, e);
         }
 
 
