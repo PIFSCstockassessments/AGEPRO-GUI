@@ -212,7 +212,6 @@
     <Compile Include="NftTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="NullableDoubleStringValueConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ControlRecruitmentEmpirical.cs">
