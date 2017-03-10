@@ -44,68 +44,9 @@ namespace Nmfs.Agepro.Gui
         protected void DataBindTextBox(TextBox txtCtl, ParametricRecruitment recruitDataObj, string parameterName)
         {
             Binding b = new Binding("Text", recruitDataObj, parameterName, true);
-            //b.Format += new ConvertEventHandler(textBoxBinding_Format);
-            //b.Parse += new ConvertEventHandler(textBoxBinding_Parse);
             txtCtl.DataBindings.Add(b);
         }
 
-        /// <summary>
-        /// How the data object gets formatted to the control is bounded to.  Object to control.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void textBoxBinding_Format(object sender, ConvertEventArgs e)
-        {
-            Binding b = sender as Binding;
-            if (b != null)
-            {
-                TextBox ctlTxt = (b.Control as TextBox);
-                if (ctlTxt != null && e.Value == null)
-                {
-                    if (string.IsNullOrWhiteSpace(ctlTxt.Text))
-                    {
-                        //If control text wasn't initalized, just do it here.
-                        e.Value = default(double);
-                    }
-                    else
-                    {
-                        e.Value = ctlTxt.Text;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// How the control's formatted value is stored to that object its bounded to. Control to Object.
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void textBoxBinding_Parse(object sender, ConvertEventArgs e)
-        {
-            Binding b = sender as Binding;
-            string bindedObjName = b.BindingMemberInfo.BindingMember;
-            if (b != null)
-            {
-                TextBox ctlTxt = b.Control as TextBox;
-                if (ctlTxt != null)
-                {
-                    double val;
-                    if (Double.TryParse(e.Value.ToString(), out val))
-                    {
-                        e.Value = new double?(val);
-                    }
-                    else
-                    {
-                        //Revert to binded object value, using reflection
-                        var bindedVal = b.DataSource.GetType().GetProperty(bindedObjName).GetValue(b.DataSource, null);
-                        MessageBox.Show("Blank or invalid input for " + bindedObjName +".","AGEPRO",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        ctlTxt.Text = bindedVal.ToString();
-                    }
-                }
-            }
-        }
 
         /// <summary>
         /// Paramertic Parameter input data validation. Invalid data is reverted to previous valid value the NftTextBox 
