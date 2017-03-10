@@ -66,6 +66,7 @@ namespace Nmfs.Agepro.Gui
             //Load General Options Controls to AGEPRO Parameter panel
             //TODO: create a function to set General Options Controls (for "Create New Case" menu option)
             this.panelAgeproParameter.Controls.Clear();
+            controlGeneralOptions.Dock = DockStyle.Fill;
             this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
 
             //initially set Number of Ages
@@ -1224,7 +1225,7 @@ namespace Nmfs.Agepro.Gui
 
         private void selectGeneralOptionsParameterPanel()
         {
-            SelectAgeproParameterPanel(controlGeneralOptions, false);
+            SelectAgeproParameterPanel(controlGeneralOptions, true);
         }
         private void selectJan1WeightsParameterPanel()
         {

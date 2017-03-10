@@ -57,6 +57,8 @@
             // 
             // groupGeneralOptions
             // 
+            this.groupGeneralOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupGeneralOptions.Controls.Add(this.spinBoxFirstAge);
             this.groupGeneralOptions.Controls.Add(this.buttonSetGeneral);
             this.groupGeneralOptions.Controls.Add(this.checkBoxDiscards);
@@ -84,6 +86,7 @@
             // 
             // spinBoxFirstAge
             // 
+            this.spinBoxFirstAge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.spinBoxFirstAge.Location = new System.Drawing.Point(210, 99);
             this.spinBoxFirstAge.Maximum = new decimal(new int[] {
             1,
@@ -101,6 +104,7 @@
             // 
             // buttonSetGeneral
             // 
+            this.buttonSetGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonSetGeneral.Location = new System.Drawing.Point(620, 165);
             this.buttonSetGeneral.Name = "buttonSetGeneral";
             this.buttonSetGeneral.Size = new System.Drawing.Size(75, 23);
@@ -112,6 +116,7 @@
             // checkBoxDiscards
             // 
             this.checkBoxDiscards.AccessibleDescription = "";
+            this.checkBoxDiscards.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.checkBoxDiscards.AutoSize = true;
             this.checkBoxDiscards.Location = new System.Drawing.Point(67, 165);
             this.checkBoxDiscards.Name = "checkBoxDiscards";
@@ -122,6 +127,7 @@
             // 
             // textBoxRandomSeed
             // 
+            this.textBoxRandomSeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBoxRandomSeed.Location = new System.Drawing.Point(575, 131);
             this.textBoxRandomSeed.Name = "textBoxRandomSeed";
             this.textBoxRandomSeed.Size = new System.Drawing.Size(120, 20);
@@ -130,6 +136,7 @@
             // 
             // textBoxLastAge
             // 
+            this.textBoxLastAge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBoxLastAge.Location = new System.Drawing.Point(210, 131);
             this.textBoxLastAge.Name = "textBoxLastAge";
             this.textBoxLastAge.Size = new System.Drawing.Size(120, 20);
@@ -137,6 +144,7 @@
             // 
             // labelRandomSeed
             // 
+            this.labelRandomSeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelRandomSeed.AutoSize = true;
             this.labelRandomSeed.Location = new System.Drawing.Point(385, 134);
             this.labelRandomSeed.Name = "labelRandomSeed";
@@ -146,6 +154,7 @@
             // 
             // labelLastAge
             // 
+            this.labelLastAge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelLastAge.AutoSize = true;
             this.labelLastAge.Location = new System.Drawing.Point(65, 134);
             this.labelLastAge.Name = "labelLastAge";
@@ -155,6 +164,7 @@
             // 
             // textBoxNumPopSim
             // 
+            this.textBoxNumPopSim.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBoxNumPopSim.Location = new System.Drawing.Point(575, 98);
             this.textBoxNumPopSim.Name = "textBoxNumPopSim";
             this.textBoxNumPopSim.Size = new System.Drawing.Size(120, 20);
@@ -162,6 +172,7 @@
             // 
             // labelNumPopSim
             // 
+            this.labelNumPopSim.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelNumPopSim.AutoSize = true;
             this.labelNumPopSim.Location = new System.Drawing.Point(385, 101);
             this.labelNumPopSim.Name = "labelNumPopSim";
@@ -171,6 +182,7 @@
             // 
             // labelFirstAge
             // 
+            this.labelFirstAge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelFirstAge.AutoSize = true;
             this.labelFirstAge.Location = new System.Drawing.Point(65, 101);
             this.labelFirstAge.Name = "labelFirstAge";
@@ -180,6 +192,7 @@
             // 
             // textBoxNumRecruitModels
             // 
+            this.textBoxNumRecruitModels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBoxNumRecruitModels.Location = new System.Drawing.Point(575, 65);
             this.textBoxNumRecruitModels.Name = "textBoxNumRecruitModels";
             this.textBoxNumRecruitModels.Size = new System.Drawing.Size(120, 20);
@@ -188,6 +201,7 @@
             // 
             // textBoxLastYearProjection
             // 
+            this.textBoxLastYearProjection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBoxLastYearProjection.Location = new System.Drawing.Point(210, 65);
             this.textBoxLastYearProjection.Name = "textBoxLastYearProjection";
             this.textBoxLastYearProjection.Size = new System.Drawing.Size(120, 20);
@@ -195,6 +209,7 @@
             // 
             // labelNumRecruitModels
             // 
+            this.labelNumRecruitModels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelNumRecruitModels.AutoSize = true;
             this.labelNumRecruitModels.Location = new System.Drawing.Point(385, 68);
             this.labelNumRecruitModels.Name = "labelNumRecruitModels";
@@ -204,6 +219,7 @@
             // 
             // labelLastYearProjection
             // 
+            this.labelLastYearProjection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelLastYearProjection.AutoSize = true;
             this.labelLastYearProjection.Location = new System.Drawing.Point(65, 68);
             this.labelLastYearProjection.Name = "labelLastYearProjection";
@@ -213,6 +229,7 @@
             // 
             // textBoxNumFleets
             // 
+            this.textBoxNumFleets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBoxNumFleets.Location = new System.Drawing.Point(575, 32);
             this.textBoxNumFleets.Name = "textBoxNumFleets";
             this.textBoxNumFleets.Size = new System.Drawing.Size(120, 20);
@@ -221,6 +238,7 @@
             // 
             // labelNumFleets
             // 
+            this.labelNumFleets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelNumFleets.AutoSize = true;
             this.labelNumFleets.Location = new System.Drawing.Point(385, 35);
             this.labelNumFleets.Name = "labelNumFleets";
@@ -230,6 +248,7 @@
             // 
             // textBoxFirstYearProjection
             // 
+            this.textBoxFirstYearProjection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBoxFirstYearProjection.Location = new System.Drawing.Point(210, 32);
             this.textBoxFirstYearProjection.Name = "textBoxFirstYearProjection";
             this.textBoxFirstYearProjection.Size = new System.Drawing.Size(120, 20);
@@ -237,6 +256,7 @@
             // 
             // labelFirstYearProjection
             // 
+            this.labelFirstYearProjection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelFirstYearProjection.AutoSize = true;
             this.labelFirstYearProjection.Location = new System.Drawing.Point(65, 35);
             this.labelFirstYearProjection.Name = "labelFirstYearProjection";
@@ -264,17 +284,21 @@
             // 
             // textBoxModelID
             // 
+            this.textBoxModelID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxModelID.Location = new System.Drawing.Point(154, 170);
             this.textBoxModelID.Name = "textBoxModelID";
-            this.textBoxModelID.Size = new System.Drawing.Size(586, 20);
+            this.textBoxModelID.Size = new System.Drawing.Size(658, 20);
             this.textBoxModelID.TabIndex = 1;
             // 
             // textBoxInputFile
             // 
+            this.textBoxInputFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxInputFile.Location = new System.Drawing.Point(154, 212);
             this.textBoxInputFile.Name = "textBoxInputFile";
             this.textBoxInputFile.ReadOnly = true;
-            this.textBoxInputFile.Size = new System.Drawing.Size(586, 20);
+            this.textBoxInputFile.Size = new System.Drawing.Size(658, 20);
             this.textBoxInputFile.TabIndex = 3;
             // 
             // ControlGeneral
@@ -286,6 +310,7 @@
             this.Controls.Add(this.labelInputFile);
             this.Controls.Add(this.labelModelID);
             this.Controls.Add(this.groupGeneralOptions);
+            this.MinimumSize = new System.Drawing.Size(900, 520);
             this.Name = "ControlGeneral";
             this.Size = new System.Drawing.Size(900, 520);
             this.groupGeneralOptions.ResumeLayout(false);
