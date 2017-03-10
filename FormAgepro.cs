@@ -1224,59 +1224,59 @@ namespace Nmfs.Agepro.Gui
 
         private void selectGeneralOptionsParameterPanel()
         {
-            selectAgeproParameterPanel(controlGeneralOptions);
+            SelectAgeproParameterPanel(controlGeneralOptions, false);
         }
         private void selectJan1WeightsParameterPanel()
         {
-            selectAgeproParameterPanel(controlJan1Weight, true);
+            SelectAgeproParameterPanel(controlJan1Weight);
         }
         private void selectSSBWeightsParameterPanel()
         {
-            selectAgeproParameterPanel(controlSSBWeight, true);
+            SelectAgeproParameterPanel(controlSSBWeight);
         }
         private void selectMidYearWeightsParameterPanel()
         {
-            selectAgeproParameterPanel(controlMidYearWeight, true);
+            SelectAgeproParameterPanel(controlMidYearWeight);
         }
         private void selectCatchWeightParameterPanel()
         {
-            selectAgeproParameterPanel(controlCatchWeight, true);
+            SelectAgeproParameterPanel(controlCatchWeight);
         }
         private void selectDiscardWeightParameterPanel()
         {
-            selectAgeproParameterPanel(controlDiscardWeight, true);
+            SelectAgeproParameterPanel(controlDiscardWeight);
         }
         private void selectFisherySelectivityParameterPanel()
         {
-            selectAgeproParameterPanel(controlFisherySelectivity, true);
+            SelectAgeproParameterPanel(controlFisherySelectivity);
         }
         private void selectDiscardFractionParameterPanel()
         {
-            selectAgeproParameterPanel(controlDiscardFraction, true);
+            SelectAgeproParameterPanel(controlDiscardFraction);
         }
         private void selectNaturalMortalityParameterPanel()
         {
-            selectAgeproParameterPanel(controlNaturalMortality, true);
+            SelectAgeproParameterPanel(controlNaturalMortality);
         }
         private void selectBiologicalParameterPanel()
         {
-            selectAgeproParameterPanel(controlBiological, true);
+            SelectAgeproParameterPanel(controlBiological);
         }
         private void selectBootstrappingParameterPanel()
         {
-            selectAgeproParameterPanel(controlBootstrap, true);
+            SelectAgeproParameterPanel(controlBootstrap);
         }
         private void selectHarvestScenarioParameterPanel()
         {
-            selectAgeproParameterPanel(controlHarvestScenario, true);
+            SelectAgeproParameterPanel(controlHarvestScenario);
         }
         private void selectMiscOptionsParameterPanel()
         {
-            selectAgeproParameterPanel(controlMiscOptions);
+            SelectAgeproParameterPanel(controlMiscOptions, false);
         }
         private void selectRecruitmentParameterPanel()
         {
-            selectAgeproParameterPanel(controlRecruitment, true);
+            SelectAgeproParameterPanel(controlRecruitment);
         }
 
         /// <summary>
@@ -1284,7 +1284,7 @@ namespace Nmfs.Agepro.Gui
         /// </summary>
         /// <param name="ageproParameterControl">AGEPRO Parameter User Control</param>
         /// <param name="dockFill">Option to set Panel's Dock value to Dockstyle.Fill </param>
-        private void selectAgeproParameterPanel(UserControl ageproParameterControl, bool dockFill = false)
+        private void SelectAgeproParameterPanel(UserControl ageproParameterControl, bool dockFill = true)
         {
             this.panelAgeproParameter.Controls.Clear();
             if (dockFill == true)
