@@ -51,7 +51,7 @@
             this.tableLayoutStochasticAgePanel.MinimumSize = new System.Drawing.Size(900, 480);
             this.tableLayoutStochasticAgePanel.Name = "tableLayoutStochasticAgePanel";
             this.tableLayoutStochasticAgePanel.RowCount = 3;
-            this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutStochasticAgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutStochasticAgePanel.Size = new System.Drawing.Size(900, 480);
@@ -62,18 +62,19 @@
             this.panelStochasticParameterAge.AutoSize = true;
             this.panelStochasticParameterAge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelStochasticParameterAge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelStochasticParameterAge.Location = new System.Drawing.Point(23, 92);
+            this.panelStochasticParameterAge.Location = new System.Drawing.Point(23, 83);
             this.panelStochasticParameterAge.MinimumSize = new System.Drawing.Size(873, 350);
             this.panelStochasticParameterAge.Name = "panelStochasticParameterAge";
             this.panelStochasticParameterAge.Padding = new System.Windows.Forms.Padding(0, 0, 5, 10);
-            this.panelStochasticParameterAge.Size = new System.Drawing.Size(874, 385);
+            this.panelStochasticParameterAge.Size = new System.Drawing.Size(874, 394);
             this.panelStochasticParameterAge.TabIndex = 3;
             // 
             // groupOptions
             // 
+            this.groupOptions.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupOptions.Controls.Add(this.radioParameterFromFile);
             this.groupOptions.Controls.Add(this.radioParameterFromUser);
-            this.groupOptions.Location = new System.Drawing.Point(23, 23);
+            this.groupOptions.Location = new System.Drawing.Point(23, 19);
             this.groupOptions.Name = "groupOptions";
             this.groupOptions.Size = new System.Drawing.Size(789, 52);
             this.groupOptions.TabIndex = 4;
