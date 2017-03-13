@@ -72,7 +72,7 @@
             // spinBoxFirstAge
             // 
             this.spinBoxFirstAge.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.spinBoxFirstAge.Location = new System.Drawing.Point(233, 67);
+            this.spinBoxFirstAge.Location = new System.Drawing.Point(217, 67);
             this.spinBoxFirstAge.Maximum = new decimal(new int[] {
             1,
             0,
@@ -91,7 +91,7 @@
             // buttonSetGeneral
             // 
             this.buttonSetGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.buttonSetGeneral.Location = new System.Drawing.Point(616, 127);
+            this.buttonSetGeneral.Location = new System.Drawing.Point(611, 127);
             this.buttonSetGeneral.MinimumSize = new System.Drawing.Size(75, 23);
             this.buttonSetGeneral.Name = "buttonSetGeneral";
             this.buttonSetGeneral.Size = new System.Drawing.Size(75, 27);
@@ -105,7 +105,7 @@
             this.checkBoxDiscards.AccessibleDescription = "";
             this.checkBoxDiscards.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxDiscards.AutoSize = true;
-            this.checkBoxDiscards.Location = new System.Drawing.Point(74, 132);
+            this.checkBoxDiscards.Location = new System.Drawing.Point(81, 132);
             this.checkBoxDiscards.MinimumSize = new System.Drawing.Size(127, 17);
             this.checkBoxDiscards.Name = "checkBoxDiscards";
             this.checkBoxDiscards.Size = new System.Drawing.Size(127, 17);
@@ -116,7 +116,7 @@
             // textBoxRandomSeed
             // 
             this.textBoxRandomSeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxRandomSeed.Location = new System.Drawing.Point(590, 98);
+            this.textBoxRandomSeed.Location = new System.Drawing.Point(584, 98);
             this.textBoxRandomSeed.MinimumSize = new System.Drawing.Size(120, 20);
             this.textBoxRandomSeed.Name = "textBoxRandomSeed";
             this.textBoxRandomSeed.Size = new System.Drawing.Size(120, 20);
@@ -126,7 +126,7 @@
             // textBoxLastAge
             // 
             this.textBoxLastAge.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxLastAge.Location = new System.Drawing.Point(233, 98);
+            this.textBoxLastAge.Location = new System.Drawing.Point(217, 98);
             this.textBoxLastAge.MinimumSize = new System.Drawing.Size(120, 20);
             this.textBoxLastAge.Name = "textBoxLastAge";
             this.textBoxLastAge.Size = new System.Drawing.Size(120, 20);
@@ -136,7 +136,7 @@
             // 
             this.labelRandomSeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelRandomSeed.AutoSize = true;
-            this.labelRandomSeed.Location = new System.Drawing.Point(431, 102);
+            this.labelRandomSeed.Location = new System.Drawing.Point(418, 102);
             this.labelRandomSeed.Name = "labelRandomSeed";
             this.labelRandomSeed.Size = new System.Drawing.Size(115, 13);
             this.labelRandomSeed.TabIndex = 15;
@@ -146,7 +146,7 @@
             // 
             this.labelLastAge.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelLastAge.AutoSize = true;
-            this.labelLastAge.Location = new System.Drawing.Point(74, 102);
+            this.labelLastAge.Location = new System.Drawing.Point(81, 102);
             this.labelLastAge.Name = "labelLastAge";
             this.labelLastAge.Size = new System.Drawing.Size(77, 13);
             this.labelLastAge.TabIndex = 6;
@@ -155,7 +155,7 @@
             // textBoxNumPopSim
             // 
             this.textBoxNumPopSim.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxNumPopSim.Location = new System.Drawing.Point(590, 67);
+            this.textBoxNumPopSim.Location = new System.Drawing.Point(584, 67);
             this.textBoxNumPopSim.MinimumSize = new System.Drawing.Size(120, 20);
             this.textBoxNumPopSim.Name = "textBoxNumPopSim";
             this.textBoxNumPopSim.Size = new System.Drawing.Size(120, 20);
@@ -165,7 +165,7 @@
             // 
             this.labelNumPopSim.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelNumPopSim.AutoSize = true;
-            this.labelNumPopSim.Location = new System.Drawing.Point(431, 64);
+            this.labelNumPopSim.Location = new System.Drawing.Point(418, 64);
             this.labelNumPopSim.Name = "labelNumPopSim";
             this.labelNumPopSim.Size = new System.Drawing.Size(112, 26);
             this.labelNumPopSim.TabIndex = 13;
@@ -175,7 +175,7 @@
             // 
             this.labelFirstAge.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFirstAge.AutoSize = true;
-            this.labelFirstAge.Location = new System.Drawing.Point(74, 71);
+            this.labelFirstAge.Location = new System.Drawing.Point(81, 71);
             this.labelFirstAge.Name = "labelFirstAge";
             this.labelFirstAge.Size = new System.Drawing.Size(76, 13);
             this.labelFirstAge.TabIndex = 4;
@@ -185,7 +185,7 @@
             // 
             this.labelNumFleets.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelNumFleets.AutoSize = true;
-            this.labelNumFleets.Location = new System.Drawing.Point(431, 9);
+            this.labelNumFleets.Location = new System.Drawing.Point(418, 9);
             this.labelNumFleets.Name = "labelNumFleets";
             this.labelNumFleets.Size = new System.Drawing.Size(89, 13);
             this.labelNumFleets.TabIndex = 9;
@@ -195,7 +195,7 @@
             // 
             this.labelFirstYearProjection.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFirstYearProjection.AutoSize = true;
-            this.labelFirstYearProjection.Location = new System.Drawing.Point(74, 9);
+            this.labelFirstYearProjection.Location = new System.Drawing.Point(81, 9);
             this.labelFirstYearProjection.Name = "labelFirstYearProjection";
             this.labelFirstYearProjection.Size = new System.Drawing.Size(113, 13);
             this.labelFirstYearProjection.TabIndex = 0;
@@ -241,7 +241,7 @@
             // textBoxFirstYearProjection
             // 
             this.textBoxFirstYearProjection.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxFirstYearProjection.Location = new System.Drawing.Point(233, 5);
+            this.textBoxFirstYearProjection.Location = new System.Drawing.Point(217, 5);
             this.textBoxFirstYearProjection.MinimumSize = new System.Drawing.Size(120, 20);
             this.textBoxFirstYearProjection.Name = "textBoxFirstYearProjection";
             this.textBoxFirstYearProjection.Size = new System.Drawing.Size(120, 20);
@@ -250,7 +250,7 @@
             // textBoxLastYearProjection
             // 
             this.textBoxLastYearProjection.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxLastYearProjection.Location = new System.Drawing.Point(233, 36);
+            this.textBoxLastYearProjection.Location = new System.Drawing.Point(217, 36);
             this.textBoxLastYearProjection.MinimumSize = new System.Drawing.Size(120, 20);
             this.textBoxLastYearProjection.Name = "textBoxLastYearProjection";
             this.textBoxLastYearProjection.Size = new System.Drawing.Size(120, 20);
@@ -260,7 +260,7 @@
             // 
             this.labelLastYearProjection.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelLastYearProjection.AutoSize = true;
-            this.labelLastYearProjection.Location = new System.Drawing.Point(74, 40);
+            this.labelLastYearProjection.Location = new System.Drawing.Point(81, 40);
             this.labelLastYearProjection.Name = "labelLastYearProjection";
             this.labelLastYearProjection.Size = new System.Drawing.Size(114, 13);
             this.labelLastYearProjection.TabIndex = 2;
@@ -270,16 +270,16 @@
             // 
             this.labelNumRecruitModels.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelNumRecruitModels.AutoSize = true;
-            this.labelNumRecruitModels.Location = new System.Drawing.Point(431, 33);
+            this.labelNumRecruitModels.Location = new System.Drawing.Point(418, 40);
             this.labelNumRecruitModels.Name = "labelNumRecruitModels";
-            this.labelNumRecruitModels.Size = new System.Drawing.Size(121, 26);
+            this.labelNumRecruitModels.Size = new System.Drawing.Size(155, 13);
             this.labelNumRecruitModels.TabIndex = 11;
             this.labelNumRecruitModels.Text = "Number Of Recruitment Models";
             // 
             // textBoxNumRecruitModels
             // 
             this.textBoxNumRecruitModels.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxNumRecruitModels.Location = new System.Drawing.Point(590, 36);
+            this.textBoxNumRecruitModels.Location = new System.Drawing.Point(584, 36);
             this.textBoxNumRecruitModels.MinimumSize = new System.Drawing.Size(120, 20);
             this.textBoxNumRecruitModels.Name = "textBoxNumRecruitModels";
             this.textBoxNumRecruitModels.Size = new System.Drawing.Size(120, 20);
@@ -289,7 +289,7 @@
             // textBoxNumFleets
             // 
             this.textBoxNumFleets.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxNumFleets.Location = new System.Drawing.Point(590, 5);
+            this.textBoxNumFleets.Location = new System.Drawing.Point(584, 5);
             this.textBoxNumFleets.MinimumSize = new System.Drawing.Size(120, 20);
             this.textBoxNumFleets.Name = "textBoxNumFleets";
             this.textBoxNumFleets.Size = new System.Drawing.Size(120, 20);
@@ -300,32 +300,33 @@
             // 
             this.tableLayoutPanelGeneralOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanelGeneralOptions.ColumnCount = 7;
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.10818F));
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.47083F));
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.80409F));
+            this.tableLayoutPanelGeneralOptions.ColumnCount = 8;
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.068862F));
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.057385F));
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.21806F));
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.22256F));
             this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.47083F));
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.80409F));
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.341974F));
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelFirstYearProjection, 1, 0);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.buttonSetGeneral, 5, 4);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.spinBoxFirstAge, 2, 2);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.checkBoxDiscards, 1, 4);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumRecruitModels, 5, 1);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxRandomSeed, 5, 3);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxFirstYearProjection, 2, 0);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelRandomSeed, 4, 3);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxLastAge, 2, 3);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumFleets, 4, 0);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumFleets, 5, 0);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelLastAge, 1, 3);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumPopSim, 4, 2);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumRecruitModels, 4, 1);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumPopSim, 5, 2);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxLastYearProjection, 2, 1);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelFirstAge, 1, 2);
-            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelLastYearProjection, 1, 1);
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.53583F));
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.22256F));
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.674727F));
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelFirstYearProjection, 2, 0);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.buttonSetGeneral, 6, 4);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.spinBoxFirstAge, 3, 2);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.checkBoxDiscards, 2, 4);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumRecruitModels, 6, 1);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxRandomSeed, 6, 3);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxFirstYearProjection, 3, 0);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelRandomSeed, 5, 3);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxLastAge, 3, 3);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumFleets, 5, 0);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumFleets, 6, 0);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelLastAge, 2, 3);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumPopSim, 5, 2);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumRecruitModels, 5, 1);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumPopSim, 6, 2);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxLastYearProjection, 3, 1);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelFirstAge, 2, 2);
+            this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelLastYearProjection, 2, 1);
             this.tableLayoutPanelGeneralOptions.Location = new System.Drawing.Point(6, 34);
             this.tableLayoutPanelGeneralOptions.Name = "tableLayoutPanelGeneralOptions";
             this.tableLayoutPanelGeneralOptions.RowCount = 5;
