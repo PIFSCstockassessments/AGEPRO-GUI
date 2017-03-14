@@ -90,11 +90,11 @@
             // 
             // buttonSetGeneral
             // 
-            this.buttonSetGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.buttonSetGeneral.Location = new System.Drawing.Point(611, 127);
+            this.buttonSetGeneral.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSetGeneral.Location = new System.Drawing.Point(611, 129);
             this.buttonSetGeneral.MinimumSize = new System.Drawing.Size(75, 23);
             this.buttonSetGeneral.Name = "buttonSetGeneral";
-            this.buttonSetGeneral.Size = new System.Drawing.Size(75, 27);
+            this.buttonSetGeneral.Size = new System.Drawing.Size(75, 23);
             this.buttonSetGeneral.TabIndex = 17;
             this.buttonSetGeneral.Text = "SET";
             this.buttonSetGeneral.UseVisualStyleBackColor = true;
@@ -307,8 +307,8 @@
             this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.22256F));
             this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.53583F));
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.22256F));
-            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.674727F));
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.22257F));
+            this.tableLayoutPanelGeneralOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.674728F));
             this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelFirstYearProjection, 2, 0);
             this.tableLayoutPanelGeneralOptions.Controls.Add(this.buttonSetGeneral, 6, 4);
             this.tableLayoutPanelGeneralOptions.Controls.Add(this.spinBoxFirstAge, 3, 2);
@@ -330,11 +330,11 @@
             this.tableLayoutPanelGeneralOptions.Location = new System.Drawing.Point(6, 34);
             this.tableLayoutPanelGeneralOptions.Name = "tableLayoutPanelGeneralOptions";
             this.tableLayoutPanelGeneralOptions.RowCount = 5;
-            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.80529F));
-            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.80529F));
-            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.80529F));
-            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.80937F));
-            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.77476F));
+            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.79105F));
+            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.79073F));
+            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.79073F));
+            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.79481F));
+            this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.83268F));
             this.tableLayoutPanelGeneralOptions.Size = new System.Drawing.Size(774, 157);
             this.tableLayoutPanelGeneralOptions.TabIndex = 18;
             // 
