@@ -63,8 +63,8 @@
             this.checkBoxEnableRetroAdjustment = new System.Windows.Forms.CheckBox();
             this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
             this.groupOutputViewer = new System.Windows.Forms.GroupBox();
-            this.labelOutputViewerProgram = new System.Windows.Forms.Label();
             this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
+            this.labelOutputViewerProgram = new System.Windows.Forms.Label();
             this.groupOuputOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxReportPercentile)).BeginInit();
             this.groupRefpoints.SuspendLayout();
@@ -113,7 +113,7 @@
             // 
             this.checkBoxEnablePercentileReport.AutoSize = true;
             this.checkBoxEnablePercentileReport.Location = new System.Drawing.Point(23, 92);
-            this.checkBoxEnablePercentileReport.Name = "checkBoxPercentileReport";
+            this.checkBoxEnablePercentileReport.Name = "checkBoxEnablePercentileReport";
             this.checkBoxEnablePercentileReport.Size = new System.Drawing.Size(151, 17);
             this.checkBoxEnablePercentileReport.TabIndex = 3;
             this.checkBoxEnablePercentileReport.Text = "Request Percentile Report";
@@ -124,7 +124,7 @@
             // 
             this.checkBoxEnableExportR.AutoSize = true;
             this.checkBoxEnableExportR.Location = new System.Drawing.Point(23, 69);
-            this.checkBoxEnableExportR.Name = "checkBoxExportR";
+            this.checkBoxEnableExportR.Name = "checkBoxEnableExportR";
             this.checkBoxEnableExportR.Size = new System.Drawing.Size(117, 17);
             this.checkBoxEnableExportR.TabIndex = 2;
             this.checkBoxEnableExportR.Text = "Export Results to R";
@@ -134,7 +134,7 @@
             // 
             this.checkBoxEnableAuxStochasticFiles.AutoSize = true;
             this.checkBoxEnableAuxStochasticFiles.Location = new System.Drawing.Point(23, 46);
-            this.checkBoxEnableAuxStochasticFiles.Name = "checkBoxAuxStochasticFiles";
+            this.checkBoxEnableAuxStochasticFiles.Name = "checkBoxEnableAuxStochasticFiles";
             this.checkBoxEnableAuxStochasticFiles.Size = new System.Drawing.Size(214, 17);
             this.checkBoxEnableAuxStochasticFiles.TabIndex = 1;
             this.checkBoxEnableAuxStochasticFiles.Text = "Generate Auxiliary Stochastic Data Files";
@@ -144,7 +144,7 @@
             // 
             this.checkBoxEnableSummaryReport.AutoSize = true;
             this.checkBoxEnableSummaryReport.Location = new System.Drawing.Point(23, 23);
-            this.checkBoxEnableSummaryReport.Name = "checkBoxSummayReport";
+            this.checkBoxEnableSummaryReport.Name = "checkBoxEnableSummaryReport";
             this.checkBoxEnableSummaryReport.Size = new System.Drawing.Size(262, 17);
             this.checkBoxEnableSummaryReport.TabIndex = 0;
             this.checkBoxEnableSummaryReport.Text = "Output Summary Report of Stock Numbers At Age";
@@ -172,7 +172,7 @@
             // 
             this.textBoxRefFishMortality.Enabled = false;
             this.textBoxRefFishMortality.Location = new System.Drawing.Point(189, 120);
-            this.textBoxRefFishMortality.Name = "textBoxFishMortality";
+            this.textBoxRefFishMortality.Name = "textBoxRefFishMortality";
             this.textBoxRefFishMortality.Size = new System.Drawing.Size(117, 20);
             this.textBoxRefFishMortality.TabIndex = 8;
             // 
@@ -190,7 +190,7 @@
             // 
             this.textBoxRefMeanBiomass.Enabled = false;
             this.textBoxRefMeanBiomass.Location = new System.Drawing.Point(189, 94);
-            this.textBoxRefMeanBiomass.Name = "textBoxMeanBiomass";
+            this.textBoxRefMeanBiomass.Name = "textBoxRefMeanBiomass";
             this.textBoxRefMeanBiomass.Size = new System.Drawing.Size(117, 20);
             this.textBoxRefMeanBiomass.TabIndex = 6;
             // 
@@ -198,10 +198,10 @@
             // 
             this.checkBoxEnableRefpoints.AutoSize = true;
             this.checkBoxEnableRefpoints.Location = new System.Drawing.Point(22, 19);
-            this.checkBoxEnableRefpoints.Name = "checkBoxRefpoints";
-            this.checkBoxEnableRefpoints.Size = new System.Drawing.Size(223, 17);
+            this.checkBoxEnableRefpoints.Name = "checkBoxEnableRefpoints";
+            this.checkBoxEnableRefpoints.Size = new System.Drawing.Size(224, 17);
             this.checkBoxEnableRefpoints.TabIndex = 0;
-            this.checkBoxEnableRefpoints.Text = "Output Reference Point Threshold Report";
+            this.checkBoxEnableRefpoints.Text = "Enable Reference Point Threshold Report";
             this.checkBoxEnableRefpoints.UseVisualStyleBackColor = true;
             this.checkBoxEnableRefpoints.CheckedChanged += new System.EventHandler(this.checkBoxRefpoints_CheckedChanged);
             // 
@@ -219,7 +219,7 @@
             // 
             this.textBoxRefJan1Biomass.Enabled = false;
             this.textBoxRefJan1Biomass.Location = new System.Drawing.Point(189, 68);
-            this.textBoxRefJan1Biomass.Name = "textBoxJan1Biomass";
+            this.textBoxRefJan1Biomass.Name = "textBoxRefJan1Biomass";
             this.textBoxRefJan1Biomass.Size = new System.Drawing.Size(117, 20);
             this.textBoxRefJan1Biomass.TabIndex = 4;
             // 
@@ -237,7 +237,7 @@
             // 
             this.textBoxRefSpawnBiomass.Enabled = false;
             this.textBoxRefSpawnBiomass.Location = new System.Drawing.Point(189, 42);
-            this.textBoxRefSpawnBiomass.Name = "textBoxSpawnBiomass";
+            this.textBoxRefSpawnBiomass.Name = "textBoxRefSpawnBiomass";
             this.textBoxRefSpawnBiomass.Size = new System.Drawing.Size(117, 20);
             this.textBoxRefSpawnBiomass.TabIndex = 2;
             // 
@@ -328,7 +328,7 @@
             this.groupScaleFactors.Size = new System.Drawing.Size(353, 136);
             this.groupScaleFactors.TabIndex = 2;
             this.groupScaleFactors.TabStop = false;
-            this.groupScaleFactors.Text = "Scale Factors for Output Report";
+            this.groupScaleFactors.Text = "Scaling Factors for Output Report";
             // 
             // textBoxScaleFactorRecruits
             // 
@@ -388,10 +388,10 @@
             // 
             this.checkBoxEnableScaleFactors.AutoSize = true;
             this.checkBoxEnableScaleFactors.Location = new System.Drawing.Point(22, 20);
-            this.checkBoxEnableScaleFactors.Name = "checkBoxScaleFactors";
-            this.checkBoxEnableScaleFactors.Size = new System.Drawing.Size(214, 17);
+            this.checkBoxEnableScaleFactors.Name = "checkBoxEnableScaleFactors";
+            this.checkBoxEnableScaleFactors.Size = new System.Drawing.Size(233, 17);
             this.checkBoxEnableScaleFactors.TabIndex = 0;
-            this.checkBoxEnableScaleFactors.Text = "Specify Scale Factors for Output Report";
+            this.checkBoxEnableScaleFactors.Text = "Specify Scale Factors for Output Report File";
             this.checkBoxEnableScaleFactors.UseVisualStyleBackColor = true;
             this.checkBoxEnableScaleFactors.CheckedChanged += new System.EventHandler(this.checkBoxScaleFactors_CheckedChanged);
             // 
@@ -410,7 +410,7 @@
             // 
             this.checkBoxEnableRetroAdjustment.AutoSize = true;
             this.checkBoxEnableRetroAdjustment.Location = new System.Drawing.Point(17, 20);
-            this.checkBoxEnableRetroAdjustment.Name = "checkBoxRetroAdjustment";
+            this.checkBoxEnableRetroAdjustment.Name = "checkBoxEnableRetroAdjustment";
             this.checkBoxEnableRetroAdjustment.Size = new System.Drawing.Size(223, 17);
             this.checkBoxEnableRetroAdjustment.TabIndex = 1;
             this.checkBoxEnableRetroAdjustment.Text = "Specify Retrospective Adjustment Factors";
@@ -422,10 +422,12 @@
             this.dataGridRetroAdjustment.AllowUserToAddRows = false;
             this.dataGridRetroAdjustment.AllowUserToDeleteRows = false;
             this.dataGridRetroAdjustment.AllowUserToResizeRows = false;
+            this.dataGridRetroAdjustment.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridRetroAdjustment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRetroAdjustment.ColumnHeadersVisible = false;
             this.dataGridRetroAdjustment.Location = new System.Drawing.Point(17, 40);
             this.dataGridRetroAdjustment.Name = "dataGridRetroAdjustment";
+            this.dataGridRetroAdjustment.nftReadOnly = false;
             this.dataGridRetroAdjustment.RowHeadersWidth = 75;
             this.dataGridRetroAdjustment.Size = new System.Drawing.Size(329, 220);
             this.dataGridRetroAdjustment.TabIndex = 0;
@@ -442,15 +444,6 @@
             this.groupOutputViewer.TabStop = false;
             this.groupOutputViewer.Text = "Output File Viewer";
             // 
-            // labelOutputViewerProgram
-            // 
-            this.labelOutputViewerProgram.AutoSize = true;
-            this.labelOutputViewerProgram.Location = new System.Drawing.Point(14, 23);
-            this.labelOutputViewerProgram.Name = "labelOutputViewerProgram";
-            this.labelOutputViewerProgram.Size = new System.Drawing.Size(189, 13);
-            this.labelOutputViewerProgram.TabIndex = 0;
-            this.labelOutputViewerProgram.Text = "Program to View AGEPRO Output File ";
-            // 
             // comboBoxOutputViewerProgram
             // 
             this.comboBoxOutputViewerProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -462,6 +455,15 @@
             this.comboBoxOutputViewerProgram.Name = "comboBoxOutputViewerProgram";
             this.comboBoxOutputViewerProgram.Size = new System.Drawing.Size(318, 21);
             this.comboBoxOutputViewerProgram.TabIndex = 1;
+            // 
+            // labelOutputViewerProgram
+            // 
+            this.labelOutputViewerProgram.AutoSize = true;
+            this.labelOutputViewerProgram.Location = new System.Drawing.Point(14, 23);
+            this.labelOutputViewerProgram.Name = "labelOutputViewerProgram";
+            this.labelOutputViewerProgram.Size = new System.Drawing.Size(189, 13);
+            this.labelOutputViewerProgram.TabIndex = 0;
+            this.labelOutputViewerProgram.Text = "Program to View AGEPRO Output File ";
             // 
             // ControlMiscOptions
             // 
