@@ -389,13 +389,66 @@ Year       1 %        5 %        10 %       25 %       50 %       75 %       90 
 ### Export to R
 ### Specifying Alternate Percentile in Output Report
 
-## Specifying Reference Point Threshold Values
+## Reference Point Threshold Report
+To request a Reference Point Threshold Report, check the **Enable Reference Point Theshold Report** check box. Then, input the Threshold values desired.
+
+Biomass threshold values are in Metric Tons (MT). If a reference point has a value of zero (`0`), then that portion of the report will be skipped.
+
+The Program will Output a table by year of the probability that the requested threshold will be exceeded.
+
+### Example
+In this example, the user entered the values for *Spawning Stock Biomass* as `250300` and for *Fishing Mortality* as `0.26`.
+
+*JAN-1 Stock Biomass* and *Mean Biomass* has value `0`, therefore skipped in the threshold report.
+```
+Probability Spawning Stock Biomass Exceeds Threshold    250.300 (1000 MT)
+Year    Probability
+2005    0.000000
+2006    0.991000
+2007    0.991500
+2008    0.980000
+2009    0.962900
+2010    0.940200
+2011    0.901200
+2012    0.842400
+2013    0.721400
+2014    0.616900
+Probability Threshold Exceeded at Least Once =     0.9966
+```
+```
+Probability Total Fishing Mortality Exceeds Threshold     0.2600
+Year    Probability
+2005    0.006500
+2006    0.000000
+2007    0.000000
+2008    0.000000
+2009    0.000000
+2010    0.000000
+2011    0.000000
+2012    0.000000
+2013    0.000000
+2014    0.000000
+Probability Threshold Exceeded at Least Once =     0.0065
+```
+
+## Scaling Option in Optput Report
+AGEPRO by default will scale the calculated results for the Summary Report as follows:
+
+Data Type     | Default Report Units
+------------- | --------------------------------------------
+Biomass       | Metric Tons x 1000
+Recruitment   | [Recruitment Scale Factor](#specifying-scaling-factors-for-recruitment-and-ssb)
+Stock Numbers | [Bootstrap's](#bootstrap) Population Scale Factor
+
+However, the user may find that these defaults make the data hard to read in the report file. The user may override these defaults by checking the **Specify Scale Factors for Output Report** check box.
+
+**Please Note:** This scaling is only used in the Report File and in Plots within the graphical interface, and does not affect the internal calculations or the auxiliary files.
 
 ## Specifying Bounds
-This is an option to override the default maximum bounds values for *Weights of Age* (default: `10.0`) and *Natural Mortality* (default: `1.0`).
-The user can enable or disable this by checking/unchecking the **Specify Bounds** check box.
+The user has an option to override the default maximum bounds values for *Weights of Age* (default: `10.0`) and *Natural Mortality* (default: `1.0`).
+This is be enabled by checking the **Specify Bounds** check box.
 
-## Specifying Retrospective Adjustment Factors
+## Retrospective Adjustment Factors
 **Retrospective Adjustment Factors** are applied to the initial population numbers to correct for retrospective bias.
 This is an optional parameter, and the user can enable or disable it by checking/unchecking the **Specify Retrospective Adjustment Factors** check box.
 
