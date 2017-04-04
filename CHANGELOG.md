@@ -1,6 +1,18 @@
 
 # AGEPRO Changelog
 
+## 4.3.0.6-beta6 (2017-04-05)
+
+### Added
+- Added NftTextBox. Used for scale factor validation. 
+- General options panel is now "resizible"
+
+### Fixed
+- If ValidateControlInputs is false/invalid, then it should now prevent AGEPRO calcuation engine from being launched.
+- Program adheres to the user's cancellations (says "no") to launch the AGEPRO model, because the large file size/performace warning. 
+- CoreLib: Opening a Shepherd Curve with Auto Corrected Lognormal Error (Model #12) recruitment model from file now loads the phi and Last Residual parameters.
+- Misc. Options: Clarified Reference Point and Scaling Factors Check box Text
+
 ## 4.3.0.5-beta5 (2017-03-01)
 
 ### Added
