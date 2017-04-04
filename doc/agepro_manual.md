@@ -285,11 +285,9 @@ Year       Average        StdDev
 2019        0.1656        0.0000
 2020        0.1670        0.0000
 ```
-
 The program has set the F-Mult in all years of the rebuilder range to 0.1656
 
 By using a Reference Point Threshold, the user may validate that the target was met (**year 2019**) to the confidence level requested:
-
 ```
 Probability Spawning Stock Biomass Exceeds Threshold     43.200 (1000 MT)
 Year    Probability
@@ -385,9 +383,82 @@ Year       1 %        5 %        10 %       25 %       50 %       75 %       90 
 
 # Misc options
 ## Auxiliary Output Stochastic Files
+AGEPRO includes a set of enhanced auxiliary output files.
+
+The Auxiliary files have the same file root name as the input file, but have different file extensions.
+
+All auxiliary file data items are space delimited double precision real numbers in scientific notation.
+
+In the following auxiliary files the number of columns is equal to the number of years in the time horizon and the number of rows is equal to the number of observed values. These files are created in all cases.
+
+The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.  
+
+The **units used in the auxiliary files are not affected by the [summary report scaling factors](#/scaling-option-in-output-report)** optionally applied to the report file.
+
+File Extension| Model Items
+------------  | ----------------------
+XX2           | Recruits (Fish)
+XX3           | Spawning Stock Biomass (MT)
+XX4           | Jan-1 Biomass (MT)
+XX5           | Mean Biomass (MT)
+XX6           | Catch Biomass (Landings + Discards) (MT)
+XX7           | Landings (MT)
+XX8           | Discards (MT)
+XX9           | F-Mult
+
+
+
+
+
+
 ## Summary Report of Stock Numbers of Age
-### Export to R
-### Specifying Alternate Percentile in Output Report
+To request an summry report, check the option **Ouput Summary Report for Stock Numbers at Age**. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.
+
+Generating a summary report with a large time horizon and/or large number of age classes is not recommended, since it can affect completeion of the AGEPRO model run.
+
+## Export to R
+If **Export Results to R** is enabled, a file will be created in the same directory as the input file, with a name based on the name of the input file except with an `.RDAT` extension. The data in the file is stored in the the R "ddump" format, which is an ASCII representation of an R object.
+
+Data in this format can be read into R using a single "dget" command. In R, you would type something like:
+```r
+    x = dget('myfile.rdat')
+```
+Where `myfile.rdat` is the name of the file created during the export process.
+
+## Specifying a Specfic Percentile in Output Report
+The [Summary Report](#summary-report-of-stock-numbers-of-age) provides tables of the distribution of calculated results at standard distribution intervals including the median. However, a summary report with a specfic percentile that is not equal to the standard distribution internal can be requested.
+
+To create the Percentile Report in the Output File, check the  **Reqest Percentile Report** checkbox option in *Output Options* Section in the **Misc. Options** panel. Then, enter a percentile value between `0.0` and `100.0` in the **Report Percentile** spinbox.
+
+The [summary report scaling units](#/scaling-option-in-output-report) are the same as were are used in the output report with a standard distribution.
+
+### Example
+The Output Report will supply values for each year in the time horizon for the calculated results:
+
+```
+Requested Percentile Report
+Percentile =    60.00 %
+                                 2005       2006       2007       2008       2009       2010       2011       2012       2013       2014
+Recruits                      61.4121    61.5496    61.4263    61.5560    61.7028    61.5476    61.6189    61.5289    61.6729    61.7721
+Spawning Stock Biomass       107.2980   659.3243   683.8850   591.5898   502.6594   444.8396   393.4123   354.1344   314.3024   289.2476
+Jan-1 Stock Biomass          438.4464   727.1282   790.1585   703.2796   598.7040   535.7083   478.7315   432.9380   387.1672   360.1825
+Mean Biomass                 387.3808   634.6203   663.1946   573.3694   493.5514   441.9435   396.9153   359.6175   322.4296   300.5405
+Combined Catch Biomass        23.0890    54.3665   114.6540   134.2215   101.8851    89.4593    76.8770    67.2651    58.7692    53.3587
+Landings                      22.5330    52.7181   113.5268   132.7871   100.7810    88.4612    75.9868    66.4783    58.0849    52.7141
+Discards                       0.5560     1.6155     1.1014     1.3975     1.0788     0.9637     0.8638     0.7737     0.6854     0.6333
+FMort                          0.1869     0.2600     0.2600     0.2600     0.2400     0.2400     0.2400     0.2400     0.2400     0.2400
+Stock Numbers at Age
+Age 1                         12.3924    61.4121    61.5496    61.4263    61.5560    61.7028    61.5476    61.6189    61.5289    61.6729
+Age 2                        723.4452    10.1231    50.1152    50.2031    50.1283    50.2243    50.3180    50.1996    50.2535    50.2007
+Age 3                          0.9338   582.7218     8.1089    40.1317    40.2213    40.2209    40.2942    40.3655    40.2727    40.3275
+Age 4                          3.0425     0.7365   451.5521     6.2816    31.1053    31.3186    31.3142    31.3677    31.4161    31.3529
+Age 5                         37.3769     2.2338     0.5131   314.5587     4.3710    21.9489    22.0933    22.0963    22.1299    22.1605
+Age 6                          6.0544    25.7380     1.4098     0.3240   198.6922     2.8168    14.1379    14.2306    14.2335    14.2576
+Age 7                          7.7116     4.1326    16.2468     0.8896     0.2044   127.9874     1.8151     9.1085     9.1620     9.1677
+Age 8                          1.2546     5.2943     2.6091    10.2540     0.5615     0.1316    82.4348     1.1680     5.8667     5.9029
+Age 9                          4.4207     3.8955     5.7163     5.2276     9.6713     6.5808     4.3209    55.6507    36.6454    28.0549
+```
+
 
 ## Reference Point Threshold Report
 To request a Reference Point Threshold Report, check the **Enable Reference Point Theshold Report** check box. Then, input the Threshold values desired.
@@ -431,7 +502,7 @@ Year    Probability
 Probability Threshold Exceeded at Least Once =     0.0065
 ```
 
-## Scaling Option in Optput Report
+## Scaling Option in Output Report
 AGEPRO by default will scale the calculated results for the Summary Report as follows:
 
 Data Type     | Default Report Units
