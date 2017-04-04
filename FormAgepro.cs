@@ -426,7 +426,10 @@ namespace Nmfs.Agepro.Gui
             commitFocusedControl();
 
             //Validate
-            ValidateControlInputs();
+            if (ValidateControlInputs() == false)
+            {
+                return;
+            }
             if (ValidateBootstrapFilename() == false)
             {
                 return;
@@ -561,7 +564,7 @@ namespace Nmfs.Agepro.Gui
                 return false;
             }
 
-            //Output File Size Check 
+            //Aux Stochastic Output File Size Check 
             int numBootstraps = Convert.ToInt32(this.controlBootstrap.bootstrapIterations);
             int numSims = Convert.ToInt32(this.controlGeneralOptions.generalNumberPopulationSimuations);
             int numYears = this.controlGeneralOptions.SeqYears().Count();
