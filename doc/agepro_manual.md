@@ -381,8 +381,20 @@ Year       1 %        5 %        10 %       25 %       50 %       75 %       90 
 2014     2.9045     4.6582     6.0500     9.2075    14.5876    23.0587    35.2707    45.9843    75.4379
 ```
 
+
+# AGEPRO Output
+
+When the **Launch AGEPRO model** menu option is selected. AGEPRO will check if the form inputs are valid, then grabs a copy of the bootstrap file, and stores the GUI input under the desginagted work directory. `AGEPRO` subdirectory under the desginagted user document directory (`documents` or `My Documents`).
+
+That root name along with simple date-time stamp this model has been runThese files will be saved in under the subdirectory. the `AGEPRO` subdirectory.
+
+The `AGEPRO` subdirectory will be located in the desginagted user document directory (`documents` or `My Documents`).
+
+After the calcuation engine is done, the function will attempt to display the AGEPRO calcuation engine output file (if requested) and the directory the outputs were written to.      
+
 # Misc options
-## Auxiliary Output Stochastic Files
+
+## Auxiliary Output Files
 AGEPRO includes a set of enhanced auxiliary output files.
 
 The Auxiliary files have the same file root name as the input file, but have different file extensions.
@@ -395,20 +407,51 @@ The number of observed values is equal to the number of bootstrap iterations mul
 
 The **units used in the auxiliary files are not affected by the [summary report scaling factors](#/scaling-option-in-output-report)** optionally applied to the report file.
 
-File Extension| Model Items
-------------  | ----------------------
-XX2           | Recruits (Fish)
-XX3           | Spawning Stock Biomass (MT)
-XX4           | Jan-1 Biomass (MT)
-XX5           | Mean Biomass (MT)
-XX6           | Catch Biomass (Landings + Discards) (MT)
-XX7           | Landings (MT)
-XX8           | Discards (MT)
-XX9           | F-Mult
+File Extension | Model Items
+---------------|------------------------------------------------------
+XX1            | [Stock Numbers of Age](#summary-report-of-stock-numbers-of-age) (If **Output Summary Report for Stock Numbers at Age** is enabled)
+XX2            | Recruits (Fish)
+XX3            | Spawning Stock Biomass (MT)
+XX4            | Jan-1 Biomass (MT)
+XX5            | Mean Biomass (MT)
+XX6            | Catch Biomass (Landings + Discards) (MT)
+XX7            | Landings (MT)
+XX8            | Discards (MT)
+XX9            | F-Mult
 
+If the option **Output Summary Report for Stock Numbers at Age** is enabled, auxiliary file XX1 will be created. This file has stock numbers at age.  The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.
 
+**Please Note**:  The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.
 
+###  Multi-Fleet Auxiliary Data File (`*.XX10`)
 
+If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created.  The number of columns will be equal to the number of years in the time horizon.
+
+The number of data sections will be equal to the number of observed values multiplied by the number of fleets.  
+
+There are four rows in each section by fleet:
+* Fishing Mortality
+* Combined Catch Biomass
+* Landings
+* Discards
+
+### Generating Auxiliary Stochastic Data Files  
+The user may request that stochastic data at age be saved to auxiliary files on the Options tab.
+
+These stochasitic data files may be read in to subsequent model runs
+
+File Extension | Data Items
+---------------|-------------------------------------------------------------
+XXX1           | Stock Weights
+XXX2           | Spawning Stock Weights
+XXX3           | Mid-Year Weights
+XXX4           | Catch Weight
+XXX5           | Discard Weights
+XXX6           | Natural Mortality
+XXX7           | Maturity
+XXX8           | Fishery Selectivity
+XXX9           | Discard Fraction
+ 
 
 
 ## Summary Report of Stock Numbers of Age
@@ -421,7 +464,7 @@ If **Export Results to R** is enabled, a file will be created in the same direct
 
 Data in this format can be read into R using a single "dget" command. In R, you would type something like:
 ```r
-    x = dget('myfile.rdat')
+x = dget('myfile.rdat')
 ```
 Where `myfile.rdat` is the name of the file created during the export process.
 
