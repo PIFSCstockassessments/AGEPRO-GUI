@@ -318,7 +318,7 @@ For the multiple fleets scenario, the proportion of removals per fleet will be s
 ### Example
 ![alt text](img/pstarHarvestTable_01.png "Harvest Scenario Table")
 
-In the above example, the user has provided an initial guess of total removals of 20,000 MT. The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.
+In the above example, the user has provided an initial guess of total removals of 20,000 MT (`15000` for Fleet-1  + `7500` for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.
 
 The Overfishing F is 0.3.  The program will vary the levels of total removals to determine the level of removals required to exceed a Total F of 0.3 with 10%, 25%, and 50% levels of confidence.  
 
@@ -451,7 +451,7 @@ XXX6           | Natural Mortality
 XXX7           | Maturity
 XXX8           | Fishery Selectivity
 XXX9           | Discard Fraction
- 
+
 
 
 ## Summary Report of Stock Numbers of Age
