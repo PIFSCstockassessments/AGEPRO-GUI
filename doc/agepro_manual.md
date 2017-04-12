@@ -570,3 +570,11 @@ This is be enabled by checking the **Specify Bounds** check box.
 This is an optional parameter, and the user can enable or disable it by checking/unchecking the **Specify Retrospective Adjustment Factors** check box.
 
 The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be **multiplied by** the retrospective adjustment factors.
+
+## View AGEPRO Output files
+The user has as option to use a program to view AGEPRO Output Data (`*.out`), once the AGEPRO calculation engine is finished.
+
+If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following. 
+![alt text](img/outFile_Assiocation_01.png "File assoication")
+
+To bypass viewing AGEPRO Output data files after a model run, select **None**.
