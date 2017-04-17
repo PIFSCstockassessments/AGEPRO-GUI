@@ -400,7 +400,7 @@ After the calcuation engine is finished, AGEPRO will open a new window showing t
 ## Auxiliary Output Files
 AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted **AGEPRO Model Job run directory**.
 
-The Auxiliary files follow the naming conventions that are used to make the AGEPRO model job run directory, but have different file extensions. 
+The Auxiliary files follow the naming conventions that are used to make the AGEPRO model job run directory, but have different file extensions.
 
 All auxiliary file data items are space delimited double precision real numbers in scientific notation.
 
@@ -576,6 +576,6 @@ The user has as option to use a program to view AGEPRO Output Data (`*.out`), on
 
 If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
 
-![alt text](img/outFile_Assiocation_01.png "File assoication")
+![](img/outFile_Assiocation_01.png "File assoication")
 
 To bypass viewing AGEPRO Output data files after a model run, select **None**.
