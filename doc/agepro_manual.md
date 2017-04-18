@@ -74,6 +74,78 @@ Select Fill Blank Cells from the context menu. This will populate any blanks cel
 
 # Stochastic Age
 # Specifying Weights of Age
+AGEPRO allows the user to input stochastic weights at age.  
+
+From the navigation panel, expand the **Weights if Age** node to set the following stochastic weights of age:
+* JAN-1
+* SSB
+* Mid-Year (Mean)
+* Catch
+* Discard
+
+If *Discards are present* in **General Options** was unchecked or disabled, controls from *Discard* will be disabled.
+
+## JAN-1 Stock Weights at Age
+On the JAN-1 Weights panel, the user can select a data preference:
+
+* User Specfied Weights of Age
+* Read Weights from File
+
+The user may select to input mean weights at age and apply log-normal error on each observed value, or to read in [stochastic data from a file](#Stochastic-Data-Files).
+
+Furthermore, the user specifies whether the data supplied by either method will be supplied for each year in the time horizon as *time varying*. Otherwise, the data or to use a single set of weights at age for all years.
+
+### Example
+
+## Spawning Stock Weights at Age
+When the user selects **SSB** from the navigation panel, the user can select from the following:
+
+Label                         | Description
+------------------------------|-----------------------------------------------
+User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
+Read Weights from File        | Read the Weights at age with Stochastic error from an external file
+Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
+
+## Mid-Year Stock Weights at Age
+When the user selects **Mid-Year (Mean)** from the navigation panel, the user can select from the following:
+
+Label                         | Description
+------------------------------|-----------------------------------------------
+User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
+Read Weights from File        | Read the Weights at age with Stochastic error from an external file
+Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
+Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
+
+
+## Catch Weights at Age
+When the user selects **Catch** from the navigation panel, the user can select from the following:
+
+Label                        | Description
+-----------------------------|-----------------------------------------------
+User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
+Read Weights from File       | Read the Weights at age with Stochastic error from an external file
+Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
+Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
+Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
+
+## Discard Weights at Age
+If *Discards are present* in **General Options** was unchecked or disabled, controls from this weight of age will be disabled.
+
+When the user selects **Discard** from the navigation panel, the user *may* select from the following:
+
+Label                        | Description
+-----------------------------|-----------------------------------------------
+User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
+Read Weights from File       | Read the Weights at age with Stochastic error from an external file
+Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
+Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
+Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
+Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
+
+
+
+# Stochastic Data Files
+
 # Natural Mortality
 # Biological
 ## Maturity
