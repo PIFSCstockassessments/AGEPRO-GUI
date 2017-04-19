@@ -91,11 +91,21 @@ On the JAN-1 Weights panel, the user can select a data preference:
 * User Specfied Weights of Age
 * Read Weights from File
 
-The user may select to input mean weights at age and apply log-normal error on each observed value, or to read in [stochastic data from a file](#Stochastic-Data-Files).
+The user may select to input mean weights at age and apply log-normal error on each observed value, or to read in [stochastic data from a file](#stochastic-data-files).
 
 Furthermore, the user specifies whether the data supplied by either method will be supplied for each year in the time horizon as *time varying*. Otherwise, the data or to use a single set of weights at age for all years.
 
-### Example
+### Examples
+![](/img/jan1WeightAge_01.png "JAN-1 Time Varying")
+In this first example, *Time Varying* is enabled. The user supplies mean weights at age for each year in the time horizon. In addition, the user also specifies a coefficient of variation for each age.
+
+Log-Normal error with bias correction will be calculated and applied on each observed value for each year in the time horizon
+
+![](/img/jan1WeightAge_02.png "JAN-1 Non Time-Varying")
+In the next example, *Time Varying* is not enabled. The user will supply a single vector of mean values for weights at age.  The program will apply error on to he data supplied as above, but the data with error will not vary through the time horizon.
+
+![](/img/jan1WeightAge_03a.png "JAN-1 Read Weights From File")
+In this example, the user has selected to supply [data from an external file](#stochastic-data-files) with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file.  No further input is required.
 
 ## Spawning Stock Weights at Age
 When the user selects **SSB** from the navigation panel, the user can select from the following:
@@ -105,6 +115,8 @@ Label                         | Description
 User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
+
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
 ## Mid-Year Stock Weights at Age
 When the user selects **Mid-Year (Mean)** from the navigation panel, the user can select from the following:
@@ -116,6 +128,7 @@ Read Weights from File        | Read the Weights at age with Stochastic error fr
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
 
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
 ## Catch Weights at Age
 When the user selects **Catch** from the navigation panel, the user can select from the following:
@@ -127,6 +140,8 @@ Read Weights from File       | Read the Weights at age with Stochastic error fro
 Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
 Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
+
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
 ## Discard Weights at Age
 If *Discards are present* in **General Options** was unchecked or disabled, controls from this weight of age will be disabled.
@@ -142,7 +157,7 @@ Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply t
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
-
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
 # Stochastic Data Files
 
