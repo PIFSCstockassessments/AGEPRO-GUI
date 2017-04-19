@@ -97,14 +97,17 @@ Furthermore, the user specifies whether the data supplied by either method will 
 
 ### Examples
 ![JAN-1 Time Varying](img/jan1WeightAge_01.png "JAN-1 Time Varying")
+
 In this first example, *Time Varying* is enabled. The user supplies mean weights at age for each year in the time horizon. In addition, the user also specifies a coefficient of variation for each age.
 
 Log-Normal error with bias correction will be calculated and applied on each observed value for each year in the time horizon
 
 ![JAN-1 Non Time-Varying](img/jan1WeightAge_02.png "JAN-1 Non Time-Varying")
+
 In the next example, *Time Varying* is not enabled. The user will supply a single vector of mean values for weights at age.  The program will apply error on to he data supplied as above, but the data with error will not vary through the time horizon.
 
 ![JAN-1 Read Weights From File](img/jan1WeightAge_03a.png "JAN-1 Read Weights From File")
+
 In this example, the user has selected to supply [data from an external file](#stochastic-data-files) with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file.  No further input is required.
 
 ## Spawning Stock Weights at Age
