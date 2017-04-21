@@ -73,6 +73,77 @@ Select Fill Blank Cells from the context menu. This will populate any blanks cel
  
 
 # Stochastic Age
+# Stochastic Data Files
+AGEPRO allows the user to supply stochastic data at age. In addition, the data at age may also vary through the projection time horizon and vary by fleet where applicable.
+
+The user may create a file with stochastic data at age using R or any statistical tool of choice.
+
+## Stochastic Data File Format Layout
+In order to create a succesful Stochastic Data File, please follow the following data file layout.
+
+The data categories for which this option applies are:
+* JAN-1 Stock Weights
+* Mid-Year Stock Weights
+* Spawning Stock Weights
+* Catch Weights
+* Discards Weights
+* Natural Mortality
+* Fishery Selectivity
+* Discard Fraction
+
+The Stochastic data files are ASCII data files with **space delimited double precision real data**.
+
+For each stochastic observed value, the data consists of a number of **space delimited data items** on each line of the file.  Each line is terminated by newline character (a carriage return or carriage return-line feed combination).
+
+In AGEPRO, the user specifies the number of bootstrap iterations on the **Bootstrap** panel.  The user also specifies the number of simulations on the **General Options** panel.  
+
+The Number of Observed Values is equal to:
+> Number of Bootstraps x Number of Simulations
+
+## Time Variance
+If the user has specified that the data is ***not time varying***:
+> Number of Data Lines = Number of Observed Values
+
+> Number of Data Columns = Number of Age Classes
+
+However, if the user has specified that the data is ***time varying***, then the data layout is:
+
+>Number of Data Lines = Number of Observed Values x Number of Years
+
+>Number of Data Columns = Number of Age Classes
+
+### Example 1:
+```
+Number of Age Classes = 9
+Number of Bootstrap Iterations = 1000
+Number of Simulations on each Bootstrap iteration =  100
+Not Time Variant
+```
+The data file for the above input would consist of 100,000 lines of data each with **9** space delimited data values. For each observed value, a single line of data is read in and used in all years in the time horizon.
+
+### Example 2:
+```
+Number of Age Classes = 9
+Number of Bootstrap Iterations = 1000
+Number of Simulations on each Bootstrap iteration =  100
+Number of Years in Projection Horizon = 10
+Time Variant
+```
+The data file for the above input would consist of 1,000,000 lines of data each with **9** space delimited data values. For each of 100,000 observed values the data is read in for all 10 years.
+
+## Stochastic Data File Format with Multi-Fleets
+The following considerations apply to:
+* Catch Weights
+* Discard Weights
+* Fishery Selectivity
+* Discard Fraction
+
+If the user has specified more than one fleet, then the data layout differs only in the number of data columns:
+
+> Number of Data Columns = Number of Age Classes x Number of Fleets
+
+On each line the program reads the values at age for the first fleet followed by the values at age for the second fleet, etc.
+
 # Specifying Weights of Age
 AGEPRO allows the user to input stochastic weights at age.  
 
@@ -162,7 +233,7 @@ Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
 **User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
-# Stochastic Data Files
+
 
 # Natural Mortality
 # Biological
