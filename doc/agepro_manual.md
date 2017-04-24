@@ -232,11 +232,53 @@ Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
 **User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
-
+# Specifying Stochastic Age Data
 
 # Natural Mortality
+AGEPRO allows the user to input stochastic Natural Mortality.
+
+On the **Natural Mortality** panel, the user selects from:
+
+* User Specfied Natural Mortality of Age
+* Read Natural Mortality from File
+
+### Examples
+![](img/natmort_01.png)
+In the above example, *Time Varying* is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
+
+On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
+
+![](img/natmort_02.png)
+In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
+
+![](img/natmort_03.png)
+In this example, the user has specified that [natural mortality at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
+
 # Biological
+The **Biological** panel allows the user the following parameters:
+
+* Maturity
+* Fraction Mortality Prior to Spawning (or Fraction Mortality)
+
 ## Maturity
+AGEPRO allows the user to input stochastic Maturity at Age.
+
+On the **Maturity** tab on the **Biological** panel, the user selects from:
+* User Specfied Maturity of Age
+* Read Maturity from File
+
+### Examples
+![](img/bioMaturity_01a.png)
+In the above example, *Time Varying* is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
+
+On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
+
+![](img/bioMaturity_02a.png)
+In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
+
+![](img/bioMaturity_03.png)
+In this example, the user has specified that [maturity at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
+
 ## Fraction Mortality Prior to Spawning
 # Fishery Selectivity
 # Discard Fraction
