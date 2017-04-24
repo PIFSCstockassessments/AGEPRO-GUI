@@ -243,15 +243,18 @@ On the **Natural Mortality** panel, the user selects from:
 * Read Natural Mortality from File
 
 ### Examples
-![](img/natmort_01.png)
+![](img/natMort_01a.png)
+
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
-![](img/natmort_02.png)
+![](img/natMort_02a.png)
+
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
-![](img/natmort_03.png)
+![](img/natMort_03.png)
+
 In this example, the user has specified that [natural mortality at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 # Biological
@@ -269,14 +272,17 @@ On the **Maturity** tab on the **Biological** panel, the user selects from:
 
 ### Examples
 ![](img/bioMaturity_01a.png)
+
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
 ![](img/bioMaturity_02a.png)
+
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
 ![](img/bioMaturity_03.png)
+
 In this example, the user has specified that [maturity at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 ## Fraction Mortality Prior to Spawning
