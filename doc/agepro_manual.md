@@ -286,6 +286,17 @@ In the above example, *Time Varying* is not enabled. The user has selected to in
 In this example, the user has specified that [maturity at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 ## Fraction Mortality Prior to Spawning
+On the **Fraction Mortality** tab in the **Biological** panel, the user will input the fraction of mortality prior to spawning to be applied independently to Natural and Fishing Mortality.
+
+![](img/bioFractionMortality_01.png)
+In the above example, the user applies the same constant value to all years in the projection horizon.
+
+![](img/bioFractionMortality_02.png)
+In the above example, *time varying* is enabled, and the user has selected to input different values through the time horizon.
+
+
+
+
 # Fishery Selectivity
 # Discard Fraction
 
