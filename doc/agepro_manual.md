@@ -100,12 +100,12 @@ The Number of Observed Values is equal to:
 > Number of Bootstraps x Number of Simulations
 
 ## Time variance
-If the user has specified that the data is ***not time varying***:
+If the user has specified that the data is _**not time varying**_:
 > Number of Data Lines = Number of Observed Values
 
 > Number of Data Columns = Number of Age Classes
 
-However, if the user has specified that the data is ***time varying***, then the data layout is:
+However, if the user has specified that the data is _**time varying**_, then the data layout is:
 
 >Number of Data Lines = Number of Observed Values x Number of Years
 
@@ -289,9 +289,11 @@ In this example, the user has specified that [maturity at age with error data wi
 On the **Fraction Mortality** tab in the **Biological** panel, the user will input the fraction of mortality prior to spawning to be applied independently to Natural and Fishing Mortality.
 
 ![](img/bioFractionMortality_01.png)
+
 In the above example, the user applies the same constant value to all years in the projection horizon.
 
 ![](img/bioFractionMortality_02.png)
+
 In the above example, *time varying* is enabled, and the user has selected to input different values through the time horizon.
 
 
@@ -348,7 +350,7 @@ The combobox will be populated with the following models:
 * Model 20: Fixed Recruitment
 * Model 21: Empirical Cumulative Distribution Function of Recruitment w/ Linear Decline to Zero
 
-The user can choose multiple instances of a Recruitment Model (example: All 3 Recruitment Models can be a Beverton-Holt Curve Model). ***However, Only a single instance of the Markov Matrix model is allowed.***
+The user can choose multiple instances of a Recruitment Model (example: All 3 Recruitment Models can be a Beverton-Holt Curve Model). **However, Only a single instance of the Markov Matrix model is allowed.**
 
 Note: Model 9: Time-Varying Empirical Recruitment Distribution is not supported in AGEPRO version 4.0 and later. This model can be reimplemented by specifying multiple instances of Model 3.
 
