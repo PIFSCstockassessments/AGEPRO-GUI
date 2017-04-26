@@ -204,6 +204,8 @@ namespace Nmfs.Agepro.Gui
                 controlRecruitment.SetRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
                 controlRecruitment.collectionAgeproRecruitmentModels = 
                     new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
+                controlRecruitment.recruitingScalingFactor = 0;
+                controlRecruitment.SSBScalingFactor = 0;
 
                 //Harvest Scenario
                 //Set harvest calculations to "Harvest Scenario"/None by Default
