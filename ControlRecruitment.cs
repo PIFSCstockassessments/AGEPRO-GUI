@@ -356,10 +356,17 @@ namespace Nmfs.Agepro.Gui
                 //TODO: CATCH "NONE SELECTED" 
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
-                //Load the appropriate 
-                RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
+                //Load the appropriate panel
+                if (collectionAgeproRecruitmentModels.Count != 0)
+                {
+                    RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
 
-                LoadRecruitModelParameterControls(selectedRecruitModel);
+                    LoadRecruitModelParameterControls(selectedRecruitModel);
+                }
+                else
+                {
+                    panelRecruitModelParameter.Controls.Clear();
+                }
             }
          }
 
