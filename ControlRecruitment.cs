@@ -90,11 +90,31 @@ namespace Nmfs.Agepro.Gui
             populateDGV = false;
         }
 
-
+        /// <summary>
+        /// Sets up values for ControlRecruitment controls whenever the user either 
+        /// opens an existing AGEPRO input data file or creates a new case.
+        /// </summary>
+        /// <param name="nrecruits"> Number of Recuitment Models.</param>
+        /// <param name="selectedModels">List of AGEPRO Recruitment model objects.</param>
+        /// <param name="obsYears">A array of subsequent recuitment years in the projection</param>
+        /// <param name="recruitProb">Recruitment Probability data table</param>
+        /// <param name="scalingFactorRecruit">Recruitment Scaling Factor</param>
+        /// <param name="scalingFactorSSB">SSB Scaling Factor</param>
         public void SetupControlRecruitment(int nrecruits, List<RecruitmentModel> selectedModels, string[] obsYears, 
-            DataTable recruitProb, int recruitScalingFactor = 0, int SSBScalingFactor = 0)
+            DataTable recruitProb, int scalingFactorRecruit = 0, int scalingFactorSSB = 0)
         {
-                        
+            //Cleanup any previously used recruitment parameter controls.
+            this.panelRecruitModelParameter.Controls.Clear();
+
+            //numRecuritModels
+            this.numRecruitModels = nrecruits;
+
+            //collectionAgeproRecruitmentModels
+            this.collectionAgeproRecruitmentModels = selectedModels;
+
+            //seqRecruitYears
+            this.seqRecruitYears = obsYears;
+
             //recruitModelSelection
             this.recruitModelSelection = new int[nrecruits];
             //recruitModelSelection from recruitList
@@ -105,6 +125,17 @@ namespace Nmfs.Agepro.Gui
                     this.recruitModelSelection[rmodel] = selectedModels[rmodel].recruitModelNum;
                 }
             }
+
+            //setup RecruitmentSelectionComboBox in recruit models tab
+            this.SetRecuitmentSelectionComboBox(nrecruits);
+
+            //recruitmentProb
+            this.recruitmentProb = recruitProb;
+            
+            //recruitmentScalingfactor
+            this.recruitingScalingFactor = scalingFactorRecruit;
+            //SSBScalingFactor
+            this.SSBScalingFactor = scalingFactorSSB;
         } 
 
 
