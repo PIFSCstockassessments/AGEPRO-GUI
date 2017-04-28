@@ -89,6 +89,25 @@ namespace Nmfs.Agepro.Gui
             base.OnLoad(e);
             populateDGV = false;
         }
+
+
+        public void SetupControlRecruitment(int nrecruits, List<RecruitmentModel> selectedModels, string[] obsYears, 
+            DataTable recruitProb, int recruitScalingFactor = 0, int SSBScalingFactor = 0)
+        {
+                        
+            //recruitModelSelection
+            this.recruitModelSelection = new int[nrecruits];
+            //recruitModelSelection from recruitList
+            if (selectedModels.Count > 0)
+            {
+                for (int rmodel = 0; rmodel < selectedModels.Count; rmodel++)
+                {
+                    this.recruitModelSelection[rmodel] = selectedModels[rmodel].recruitModelNum;
+                }
+            }
+        } 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -143,9 +162,7 @@ namespace Nmfs.Agepro.Gui
                 iyear++;
             }
         }
-
-        
-
+         
         /// <summary>
         /// Creates and sets the Recruitment Model Dictionary Object
         /// </summary>
