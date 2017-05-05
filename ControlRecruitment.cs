@@ -101,7 +101,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="scalingFactorRecruit">Recruitment Scaling Factor</param>
         /// <param name="scalingFactorSSB">SSB Scaling Factor</param>
         public void SetupControlRecruitment(int nrecruits, List<RecruitmentModel> selectedModels, string[] obsYears, 
-            DataTable recruitProb, int scalingFactorRecruit = 0, int scalingFactorSSB = 0)
+            DataTable recruitProb, double scalingFactorRecruit = 0, double scalingFactorSSB = 0)
         {
             //Cleanup any previously used recruitment parameter controls.
             this.panelRecruitModelParameter.Controls.Clear();
