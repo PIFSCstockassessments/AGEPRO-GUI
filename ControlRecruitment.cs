@@ -129,6 +129,9 @@ namespace Nmfs.Agepro.Gui
             //setup RecruitmentSelectionComboBox in recruit models tab
             this.SetRecuitmentSelectionComboBox(nrecruits);
 
+            //setup dataGridComboBoxSelectRecruitModels in recruitment tab
+            this.SetDataGridComboBoxSelectRecruitModels(nrecruits);
+
             //recruitmentProb
             this.recruitmentProb = recruitProb;
             
@@ -256,7 +259,7 @@ namespace Nmfs.Agepro.Gui
 
         private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (collectionAgeproRecruitmentModels != null)
+            if (this.collectionAgeproRecruitmentModels != null)
             {
                 ComboBox modelSelectionCbx = sender as ComboBox;
 

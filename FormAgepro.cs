@@ -194,6 +194,7 @@ namespace Nmfs.Agepro.Gui
                 controlBiological.CreateFractionMortalityColumns();
 
                 //Recruitment
+                /*
                 controlRecruitment.numRecruitModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
                 controlRecruitment.recruitModelSelection = new int[controlRecruitment.numRecruitModels];
                 controlRecruitment.SetDataGridComboBoxSelectRecruitModels(controlRecruitment.numRecruitModels);
@@ -206,7 +207,22 @@ namespace Nmfs.Agepro.Gui
                     new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
                 controlRecruitment.recruitingScalingFactor = 0;
                 controlRecruitment.SSBScalingFactor = 0;
+                */
+                
 
+
+                int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                List <RecruitmentModel> newCaseRecruitList = new List<RecruitmentModel>(nrecruit);
+                for(int i = 0; i < nrecruit; i++){
+                    newCaseRecruitList.Add(new NullSelectRecruitment());
+                    newCaseRecruitList[i].obsYears = Array.ConvertAll<string,int>(controlGeneralOptions.SeqYears(), int.Parse);
+                }   
+                controlRecruitment.SetupControlRecruitment(
+                    nrecruit,
+                    newCaseRecruitList,
+                    controlGeneralOptions.SeqYears(),
+                    CreateBlankDataTable(Convert.ToInt32(nrecruit), controlGeneralOptions.SeqYears().Count(), "Selection"));
+                
                 //Harvest Scenario
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
