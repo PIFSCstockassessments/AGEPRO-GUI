@@ -204,7 +204,8 @@ namespace Nmfs.Agepro.Gui
                     nrecruit,
                     newCaseRecruitList,
                     controlGeneralOptions.SeqYears(),
-                    CreateBlankDataTable(Convert.ToInt32(nrecruit), controlGeneralOptions.SeqYears().Count(), "Selection"));
+                    controlRecruitment.CreateRecruitProbTable(Convert.ToInt32(nrecruit), 
+                        controlGeneralOptions.SeqYears().Count(), "Selection"));
                 
                 //Harvest Scenario
                 //Set harvest calculations to "Harvest Scenario"/None by Default
@@ -1011,30 +1012,22 @@ namespace Nmfs.Agepro.Gui
         private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
         {
             int numFleetYears = numYears * numFleets;
-            return CreateBlankDataTable(numAges, numFleetYears, "Age");
+
+            DataTable fallbackTable = new DataTable();
+
+            for (int icol = 0; icol < numAges; icol++)
+            {
+                fallbackTable.Columns.Add("Age" + " " + (icol + 1));
+            }
+            for (int row = 0; row < numFleetYears; row++)
+            {
+                fallbackTable.Rows.Add();
+            }
+
+            return fallbackTable;
         }
 
-        /// <summary>
-        /// Creates a generalized empty DataTable.
-        /// </summary>
-        /// <param name="yCol">Number of columns</param>
-        /// <param name="xRows">Number of Rows</param>
-        /// <param name="colName">Column Names</param>
-        /// <returns></returns>
-        private DataTable CreateBlankDataTable(int yCol, int xRows, string colName)
-        {
-            DataTable blankDataTable = new DataTable();
-
-            for (int icol = 0; icol < yCol; icol++)
-            {
-                blankDataTable.Columns.Add(colName + " " + (icol + 1));
-            }
-            for (int row = 0; row < xRows; row++)
-            {
-                blankDataTable.Rows.Add();
-            }
-            return blankDataTable;
-        }
+        
 
 
         /// <summary>
