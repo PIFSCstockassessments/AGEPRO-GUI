@@ -194,23 +194,6 @@ namespace Nmfs.Agepro.Gui
                 controlBiological.CreateFractionMortalityColumns();
 
                 //Recruitment
-                /*
-                controlRecruitment.numRecruitModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                controlRecruitment.recruitModelSelection = new int[controlRecruitment.numRecruitModels];
-                controlRecruitment.SetDataGridComboBoxSelectRecruitModels(controlRecruitment.numRecruitModels);
-                controlRecruitment.seqRecruitYears = controlGeneralOptions.SeqYears();
-                controlRecruitment.recruitmentProb = 
-                    CreateBlankDataTable(controlRecruitment.numRecruitModels, controlRecruitment.seqRecruitYears.Count(), 
-                    "Selection");
-                controlRecruitment.SetRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
-                controlRecruitment.collectionAgeproRecruitmentModels = 
-                    new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
-                controlRecruitment.recruitingScalingFactor = 0;
-                controlRecruitment.SSBScalingFactor = 0;
-                */
-                
-
-
                 int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
                 List <RecruitmentModel> newCaseRecruitList = new List<RecruitmentModel>(nrecruit);
                 for(int i = 0; i < nrecruit; i++){
@@ -866,17 +849,14 @@ namespace Nmfs.Agepro.Gui
                 controlGeneralOptions.generalDiscardsPresent);  //Fallback Table Dependent on DiscardsPresent
 
             //Recruitment
-            controlRecruitment.recruitModelSelection = new int[inpFile.general.numRecModels];
-            controlRecruitment.recruitModelSelection = inpFile.recruitment.recruitType;
-            controlRecruitment.numRecruitModels = inpFile.general.numRecModels;
-            controlRecruitment.SetDataGridComboBoxSelectRecruitModels(controlRecruitment.numRecruitModels);
-            controlRecruitment.recruitmentProb = inpFile.recruitment.recruitProb;
-            controlRecruitment.seqRecruitYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
-            controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;
-            controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
-            controlRecruitment.collectionAgeproRecruitmentModels = inpFile.recruitment.recruitList;
-            controlRecruitment.SetRecuitmentSelectionComboBox(inpFile.general.numRecModels);
-            
+            controlRecruitment.SetupControlRecruitment(
+                inpFile.general.numRecModels, 
+                inpFile.recruitment.recruitList,
+                inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray(),
+                inpFile.recruitment.recruitProb,
+                inpFile.recruitment.recruitScalingFactor,
+                inpFile.recruitment.SSBScalingFactor);
+
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
 
