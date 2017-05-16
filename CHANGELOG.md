@@ -1,6 +1,19 @@
 
 # AGEPRO Changelog
 
+## 4.3.0.7-beta7 (2017-05-00)
+
+### Added
+- ControlRecruitment: Null/'None Selected' fallback check on collectionAgeproRecruitmentModels when switching to "Recruit Model" Tab from the "Recruitment" tab.
+
+### Fixed
+- Corrected implementation issues loading recruitment parameters with the "Create new case" method
+  - New "SET" cases recuritment list collectoion is now initalized properly.  
+  - Passing default values for Recruitment Scaling Factor and SSB Scaling Factor. 
+  - Unify ControlRecruitment GUI control parameter setup method in ControlRecruitment.cs. This also disposes the previous recruitment parameter panel (recruit model tab).
+- Renamed CreateBlankDataTable in FormAgepro.cs to CreateRecruitProbTable in ControlRecruitment.cs
+  - For compatiablity, copied the original CreateBlankDataTable functionallity to CreateFallbackAgeDataTable in FormAgepro.cs.
+
 ## 4.3.0.6-beta6 (2017-04-05)
 
 ### Added
