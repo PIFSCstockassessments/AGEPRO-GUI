@@ -89,6 +89,59 @@ namespace Nmfs.Agepro.Gui
             base.OnLoad(e);
             populateDGV = false;
         }
+
+        /// <summary>
+        /// Sets up values for ControlRecruitment controls whenever the user either 
+        /// opens an existing AGEPRO input data file or creates a new case.
+        /// </summary>
+        /// <param name="nrecruits"> Number of Recuitment Models.</param>
+        /// <param name="selectedModels">List of AGEPRO Recruitment model objects.</param>
+        /// <param name="obsYears">A array of subsequent recuitment years in the projection</param>
+        /// <param name="recruitProb">Recruitment Probability data table</param>
+        /// <param name="scalingFactorRecruit">Recruitment Scaling Factor</param>
+        /// <param name="scalingFactorSSB">SSB Scaling Factor</param>
+        public void SetupControlRecruitment(int nrecruits, List<RecruitmentModel> selectedModels, string[] obsYears, 
+            DataTable recruitProb, double scalingFactorRecruit = 0, double scalingFactorSSB = 0)
+        {
+            //Cleanup any previously used recruitment parameter controls.
+            this.panelRecruitModelParameter.Controls.Clear();
+
+            //numRecuritModels
+            this.numRecruitModels = nrecruits;
+
+            //collectionAgeproRecruitmentModels
+            this.collectionAgeproRecruitmentModels = selectedModels;
+
+            //seqRecruitYears
+            this.seqRecruitYears = obsYears;
+
+            //recruitModelSelection
+            this.recruitModelSelection = new int[nrecruits];
+            //recruitModelSelection from recruitList
+            if (selectedModels.Count > 0)
+            {
+                for (int rmodel = 0; rmodel < selectedModels.Count; rmodel++)
+                {
+                    this.recruitModelSelection[rmodel] = selectedModels[rmodel].recruitModelNum;
+                }
+            }
+
+            //setup RecruitmentSelectionComboBox in recruit models tab
+            this.SetRecuitmentSelectionComboBox(nrecruits);
+
+            //setup dataGridComboBoxSelectRecruitModels in recruitment tab
+            this.SetDataGridComboBoxSelectRecruitModels(nrecruits);
+
+            //recruitmentProb
+            this.recruitmentProb = recruitProb;
+            
+            //recruitmentScalingfactor
+            this.recruitingScalingFactor = scalingFactorRecruit;
+            //SSBScalingFactor
+            this.SSBScalingFactor = scalingFactorSSB;
+        } 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -143,9 +196,7 @@ namespace Nmfs.Agepro.Gui
                 iyear++;
             }
         }
-
-        
-
+         
         /// <summary>
         /// Creates and sets the Recruitment Model Dictionary Object
         /// </summary>
@@ -208,7 +259,7 @@ namespace Nmfs.Agepro.Gui
 
         private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (collectionAgeproRecruitmentModels != null)
+            if (this.collectionAgeproRecruitmentModels != null)
             {
                 ComboBox modelSelectionCbx = sender as ComboBox;
 
@@ -342,7 +393,7 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                //TODO: Throw an Error if selected model number doesn't match the dictionary.
+                //Throw an Error if selected model number doesn't match the dictionary.
                 return "...";
             }
           
@@ -353,13 +404,19 @@ namespace Nmfs.Agepro.Gui
             //When switching to the "Recruit Model" Tab, set up selected model name for labelRecruitSelection
             if ((sender as TabControl).SelectedIndex == 1)
             {
-                //TODO: CATCH "NONE SELECTED" 
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
-                //Load the appropriate 
-                RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
-
-                LoadRecruitModelParameterControls(selectedRecruitModel);
+                //Catch for nulls
+                if (collectionAgeproRecruitmentModels.Count != 0)
+                {
+                    RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
+                    //Load the appropriate panel
+                    LoadRecruitModelParameterControls(selectedRecruitModel);
+                }
+                else
+                {
+                    panelRecruitModelParameter.Controls.Clear();
+                }
             }
          }
 
@@ -644,6 +701,46 @@ namespace Nmfs.Agepro.Gui
             }
             return true; // If Valid 
         }
+
+
+        /// <summary>
+        /// Creates a Recruitment Probability DataTable.
+        /// </summary>
+        /// <param name="yCol">Number of columns</param>
+        /// <param name="xRows">Number of Rows</param>
+        /// <param name="colName">Column Names</param>
+        /// <returns></returns>
+        public DataTable CreateRecruitProbTable(int yCol, int xRows, string colName)
+        {
+            DataTable recruitProbTable = new DataTable();
+
+            for (int icol = 0; icol < yCol; icol++)
+            {
+                recruitProbTable.Columns.Add(colName + " " + (icol + 1));
+            }
+            for (int row = 0; row < xRows; row++)
+            {
+                recruitProbTable.Rows.Add();
+            }
+            
+            //Fill Recruit Probability table with default set of values.
+            //Assume each new case recruit selection prob is spread evenly.
+            double recruitProbVal = 1 / Convert.ToDouble(yCol);
+            
+            for (int irow = 0; irow < xRows; irow++)
+            {
+                for (int jcol = 0; jcol < yCol; jcol++)
+                {
+                    if (recruitProbTable.Rows[irow][jcol] == DBNull.Value)
+                    {
+                        recruitProbTable.Rows[irow][jcol] = recruitProbVal;
+                    }
+                }
+            }
+            
+            return recruitProbTable;
+        }
+        
 
         private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
         {

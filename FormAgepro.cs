@@ -194,17 +194,19 @@ namespace Nmfs.Agepro.Gui
                 controlBiological.CreateFractionMortalityColumns();
 
                 //Recruitment
-                controlRecruitment.numRecruitModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                controlRecruitment.recruitModelSelection = new int[controlRecruitment.numRecruitModels];
-                controlRecruitment.SetDataGridComboBoxSelectRecruitModels(controlRecruitment.numRecruitModels);
-                controlRecruitment.seqRecruitYears = controlGeneralOptions.SeqYears();
-                controlRecruitment.recruitmentProb = 
-                    CreateBlankDataTable(controlRecruitment.numRecruitModels, controlRecruitment.seqRecruitYears.Count(), 
-                    "Selection");
-                controlRecruitment.SetRecuitmentSelectionComboBox(controlRecruitment.numRecruitModels);
-                controlRecruitment.collectionAgeproRecruitmentModels = 
-                    new List<RecruitmentModel>(controlRecruitment.numRecruitModels);
-
+                int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                List <RecruitmentModel> newCaseRecruitList = new List<RecruitmentModel>(nrecruit);
+                for(int i = 0; i < nrecruit; i++){
+                    newCaseRecruitList.Add(new NullSelectRecruitment());
+                    newCaseRecruitList[i].obsYears = Array.ConvertAll<string,int>(controlGeneralOptions.SeqYears(), int.Parse);
+                }   
+                controlRecruitment.SetupControlRecruitment(
+                    nrecruit,
+                    newCaseRecruitList,
+                    controlGeneralOptions.SeqYears(),
+                    controlRecruitment.CreateRecruitProbTable(Convert.ToInt32(nrecruit), 
+                        controlGeneralOptions.SeqYears().Count(), "Selection"));
+                
                 //Harvest Scenario
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
@@ -848,17 +850,14 @@ namespace Nmfs.Agepro.Gui
                 controlGeneralOptions.generalDiscardsPresent);  //Fallback Table Dependent on DiscardsPresent
 
             //Recruitment
-            controlRecruitment.recruitModelSelection = new int[inpFile.general.numRecModels];
-            controlRecruitment.recruitModelSelection = inpFile.recruitment.recruitType;
-            controlRecruitment.numRecruitModels = inpFile.general.numRecModels;
-            controlRecruitment.SetDataGridComboBoxSelectRecruitModels(controlRecruitment.numRecruitModels);
-            controlRecruitment.recruitmentProb = inpFile.recruitment.recruitProb;
-            controlRecruitment.seqRecruitYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
-            controlRecruitment.recruitingScalingFactor = inpFile.recruitment.recruitScalingFactor;
-            controlRecruitment.SSBScalingFactor = inpFile.recruitment.SSBScalingFactor;
-            controlRecruitment.collectionAgeproRecruitmentModels = inpFile.recruitment.recruitList;
-            controlRecruitment.SetRecuitmentSelectionComboBox(inpFile.general.numRecModels);
-            
+            controlRecruitment.SetupControlRecruitment(
+                inpFile.general.numRecModels, 
+                inpFile.recruitment.recruitList,
+                inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray(),
+                inpFile.recruitment.recruitProb,
+                inpFile.recruitment.recruitScalingFactor,
+                inpFile.recruitment.SSBScalingFactor);
+
             //Fishery Selectivity
             loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
 
@@ -1013,30 +1012,22 @@ namespace Nmfs.Agepro.Gui
         private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
         {
             int numFleetYears = numYears * numFleets;
-            return CreateBlankDataTable(numAges, numFleetYears, "Age");
+
+            DataTable fallbackTable = new DataTable();
+
+            for (int icol = 0; icol < numAges; icol++)
+            {
+                fallbackTable.Columns.Add("Age" + " " + (icol + 1));
+            }
+            for (int row = 0; row < numFleetYears; row++)
+            {
+                fallbackTable.Rows.Add();
+            }
+
+            return fallbackTable;
         }
 
-        /// <summary>
-        /// Creates a generalized empty DataTable.
-        /// </summary>
-        /// <param name="yCol">Number of columns</param>
-        /// <param name="xRows">Number of Rows</param>
-        /// <param name="colName">Column Names</param>
-        /// <returns></returns>
-        private DataTable CreateBlankDataTable(int yCol, int xRows, string colName)
-        {
-            DataTable blankDataTable = new DataTable();
-
-            for (int icol = 0; icol < yCol; icol++)
-            {
-                blankDataTable.Columns.Add(colName + " " + (icol + 1));
-            }
-            for (int row = 0; row < xRows; row++)
-            {
-                blankDataTable.Rows.Add();
-            }
-            return blankDataTable;
-        }
+        
 
 
         /// <summary>
@@ -1087,7 +1078,7 @@ namespace Nmfs.Agepro.Gui
         }
         
         /// <summary>
-        /// 
+        /// Raises the Cut clipboard function from the "Cut" edit menu option.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1115,7 +1106,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// 
+        /// Raises the Copy clipboard function from the "Copy" edit menu option.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1138,7 +1129,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// 
+        /// Raises the Paste clipboard function from the "Paste" edit menu option.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1162,7 +1153,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// 
+        /// Raises the Delete clipboard command from the "Delete" edit menu option. 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
