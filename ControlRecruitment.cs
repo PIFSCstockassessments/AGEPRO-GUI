@@ -393,7 +393,7 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                //TODO: Throw an Error if selected model number doesn't match the dictionary.
+                //Throw an Error if selected model number doesn't match the dictionary.
                 return "...";
             }
           
@@ -404,14 +404,13 @@ namespace Nmfs.Agepro.Gui
             //When switching to the "Recruit Model" Tab, set up selected model name for labelRecruitSelection
             if ((sender as TabControl).SelectedIndex == 1)
             {
-                //TODO: CATCH "NONE SELECTED" 
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
-                //Load the appropriate panel
+                //Catch for nulls
                 if (collectionAgeproRecruitmentModels.Count != 0)
                 {
                     RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
-
+                    //Load the appropriate panel
                     LoadRecruitModelParameterControls(selectedRecruitModel);
                 }
                 else

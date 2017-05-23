@@ -1078,7 +1078,7 @@ namespace Nmfs.Agepro.Gui
         }
         
         /// <summary>
-        /// 
+        /// Raises the Cut clipboard function from the "Cut" edit menu option.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1106,7 +1106,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// 
+        /// Raises the Copy clipboard function from the "Copy" edit menu option.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1129,7 +1129,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// 
+        /// Raises the Paste clipboard function from the "Paste" edit menu option.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1153,7 +1153,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// 
+        /// Raises the Delete clipboard command from the "Delete" edit menu option. 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
