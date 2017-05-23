@@ -1,7 +1,7 @@
 
 # AGEPRO Changelog
 
-## 4.3.0.7-beta7 (2017-05-00)
+## 4.3.0.7-beta7 (2017-05-24)
 
 ### Added
 - ControlRecruitment: Null/'None Selected' fallback check on collectionAgeproRecruitmentModels when switching to "Recruit Model" Tab from the "Recruitment" tab.
