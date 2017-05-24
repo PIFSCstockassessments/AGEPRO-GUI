@@ -304,26 +304,34 @@ On the **Fishery Selectivity** panel, the user may select:
 * User Specfied Fishery Selectivity of Age
 * Read Fishery Selectivity from File
 
-### Time Varying User Specfied Example
+### Example: Time Varying
 ![](img/fishSelectivity_01a.png)
 
 In the above example, *time varying* is eanbled, and the user has selected to input the mean fishery selectivity for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will apply bias corrected log-normal error to the mean fishery selectivity values at age for all fleets.
 
-### Non Time Varying User Specfied Example
+### Example: Non Time Varying
 ![](img/fishSelectivity_02a.png)
 
 In the above case, the user has selected to input a vector of mean fishery selectivity values at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will generate stochastic fishery selectivity values for each fleet.  The same values will be applied in all years of the time horizon.
 
-### Stochastic Data File Example
+### Example: From File Option
 ![](img/fishSelectivity_03.png)
 
 In this example, the user specified that [stochastic data for fishery selectivity will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 # Discard Fraction
+
+AGEPRO allows the user to input stochastic Discard Fraction
+
+On the **Discard Fraction** panel the user can select:
+
+* User Specfied Discard Fraction at Age
+* Read Discard Fraction from File
+
 
 # Bootstrap
 Bootstrapping input and options is located on the **Bootstrapping** panel.
