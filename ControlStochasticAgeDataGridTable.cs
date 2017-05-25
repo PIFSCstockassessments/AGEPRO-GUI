@@ -93,12 +93,23 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                int iyear = 0;
-                foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
+                if (timeVarying)
                 {
-                    stochasticRow.HeaderCell.Value = yearArray[iyear];
-                    iyear = iyear + 1;
+                    int iyear = 0;
+                    foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
+                    {
+                        stochasticRow.HeaderCell.Value = yearArray[iyear];
+                        iyear = iyear + 1;
+                    }
                 }
+                else
+                {
+                    foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
+                    {
+                        stochasticRow.HeaderCell.Value = "All Years";
+                    }
+                }
+                
             }
         }
 
@@ -199,19 +210,21 @@ namespace Nmfs.Agepro.Gui
                 }
                 else
                 {
-                    string[] stochasticAgeTableRowHeaders = new string[numFleets];
+                    
                     if (multiFleetTable == true)
                     {
-                        for (int ifleet = 0; ifleet < numFleets; ifleet++)
-                        {
-                            stochasticAgeTableRowHeaders[ifleet] = "Fleet-" + (ifleet+1);
-                        }
+                        //Pass in one empty string since setStochasticAgeTableRowHeaders sets the header string
+                        string[] stochasticAgeTableRowHeaders = {string.Empty};
+                        //stochasticAgeTableRowHeaders[0] = string.Empty;
+                        setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
                     }
                     else
                     {
-                        stochasticAgeTableRowHeaders[0] = "All Years";
+                        string[] stochasticAgeTableRowHeaders = {"All Years"};
+                        //stochasticAgeTableRowHeaders[0] = "All Years";
+                        setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, 1);
                     }
-                    setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
+                    
                 }
                 
             }
