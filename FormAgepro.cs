@@ -167,14 +167,14 @@ namespace Nmfs.Agepro.Gui
                 CreateStochasticParameterFallbackDataTable(controlSSBWeight, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlMidYearWeight, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlCatchWeight, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions);
+                CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions, true);
                 CreateStochasticParameterFallbackDataTable(controlNaturalMortality, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlBiological.maturityAge, controlGeneralOptions);
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
-                    CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions);
+                    CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions, true);
                     CreateStochasticParameterFallbackDataTable(controlDiscardWeight, controlGeneralOptions);
                 }
                 else
@@ -243,13 +243,17 @@ namespace Nmfs.Agepro.Gui
 
         }
 
+
         /// <summary>
         /// Creates a empty Data Table for the Stochastic Parameter Control based on the user inputs gathered 
         /// from the General Options control parameter.
         /// </summary>
         /// <param name="ctl">Stochastic Parameter Control</param>
         /// <param name="genOpt">Paramters from the General Options Control</param>
-        private void CreateStochasticParameterFallbackDataTable(ControlStochasticAge ctl, ControlGeneral genOpt)
+        /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
+        /// nubmber of fleets? Default is false.</param>
+        private void CreateStochasticParameterFallbackDataTable(ControlStochasticAge ctl, ControlGeneral genOpt, 
+            bool fleetDependent = false)
         {
             ctl.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
             ctl.seqYears = genOpt.SeqYears();
@@ -268,7 +272,15 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
+                if (fleetDependent)
+                {
+                    ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
+                }
+                else
+                {
+                    ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
+                }
+                
             }
             ctl.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
             ctl.readInputFileState = false;
