@@ -167,14 +167,16 @@ namespace Nmfs.Agepro.Gui
                 CreateStochasticParameterFallbackDataTable(controlSSBWeight, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlMidYearWeight, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlCatchWeight, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions, true);
+                CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions,
+                    StochasticAgeFleetDepency.dependent);
                 CreateStochasticParameterFallbackDataTable(controlNaturalMortality, controlGeneralOptions);
                 CreateStochasticParameterFallbackDataTable(controlBiological.maturityAge, controlGeneralOptions);
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
-                    CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions, true);
+                    CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions, 
+                        StochasticAgeFleetDepency.dependent);
                     CreateStochasticParameterFallbackDataTable(controlDiscardWeight, controlGeneralOptions);
                 }
                 else
@@ -243,6 +245,11 @@ namespace Nmfs.Agepro.Gui
 
         }
 
+        public enum StochasticAgeFleetDepency
+        {
+            dependent,
+            independent
+        };
 
         /// <summary>
         /// Creates a empty Data Table for the Stochastic Parameter Control based on the user inputs gathered 
@@ -253,7 +260,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
         /// nubmber of fleets? Default is false.</param>
         private void CreateStochasticParameterFallbackDataTable(ControlStochasticAge ctl, ControlGeneral genOpt, 
-            bool fleetDependent = false)
+            StochasticAgeFleetDepency fleetDependent = StochasticAgeFleetDepency.independent)
         {
             ctl.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
             ctl.seqYears = genOpt.SeqYears();
@@ -272,7 +279,7 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                if (fleetDependent)
+                if (fleetDependent == StochasticAgeFleetDepency.dependent)
                 {
                     ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
                 }
