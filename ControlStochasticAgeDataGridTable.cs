@@ -264,6 +264,5 @@ namespace Nmfs.Agepro.Gui
             return this.dataGridCVTable.HasBlankOrNullCells();
         }
 
-
     }
 }

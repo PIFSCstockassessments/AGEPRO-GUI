@@ -169,6 +169,56 @@ namespace Nmfs.Agepro.Gui
 
         }
 
+        //*** TODO  WORK ON THIS !!!!!!!!!!!!!!!!!!!!!!!! ***//
+
+        /// <summary>
+        /// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
+        /// </summary>
+        /// <param name="ctl">AGEPRO Stochastic Weight of Age User Control and Values</param>
+        /// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
+        /// <param name="generalOpt">AGEPRO InputFile General Options</param>
+        /// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
+        /// provide one</param>
+        public void loadWeightAgeInputData(Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
+            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
+        {
+            this.indexWeightOption = inp.weightOpt;
+            base.loadStochasticAgeInputData(inp, generalOpt);
+            //TODO
+
+            //Option to to fallback and create a empty DataTable if there input file DataTable (for 
+            //weightAgeTable CVtable is Null)
+            if (generalOpt.hasDiscards == true && this.stochasticAgeTable == null)
+            {
+
+            }
+
+            //if fallbackNullDataTable is true
+            if (this.stochasticAgeTable == null)
+            {
+                int numYears;
+                if (this.timeVarying == true)
+                {
+                    numYears = generalOpt.NumYears();
+                }
+                else
+                {
+                    numYears = 1;
+                }
+                    
+                this.stochasticAgeTable = CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
+                this.enableTimeVaryingCheckBox = true;
+            }
+            if (!(this.stochasticCV != null))
+            {
+                this.stochasticCV = CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
+            }
+            
+        }
+
+
+
+
         public override bool ValidateStochasticParameter(int numAges, double upperBounds)
         {
             if (weightOptionDictionary.ContainsKey(indexWeightOption))
@@ -191,6 +241,6 @@ namespace Nmfs.Agepro.Gui
             
         }
         
-
+        
     }
 }
