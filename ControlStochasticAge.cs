@@ -121,7 +121,7 @@ namespace Nmfs.Agepro.Gui
         /// </summary>
         /// <param name="inp">AGEPRO InputFile StochasticAge Parameters </param>
         /// <param name="generalOpt">AGEPRO InputFile General Options values</param>
-        public void loadStochasticAgeInputData(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp,
+        public void LoadStochasticAgeInputData(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp,
             Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
         {
             this.readInputFileState = true;

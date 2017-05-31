@@ -865,25 +865,25 @@ namespace Nmfs.Agepro.Gui
             controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
 
             //JAN-1
-            //loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
-            controlJan1Weight.loadWeightAgeInputData(inpFile.jan1Weight, inpFile.general, true);
+            //LoadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
+            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general, true);
 
             //SSB
-            //loadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general, true);
-            controlSSBWeight.loadWeightAgeInputData(inpFile.SSBWeight, inpFile.general, true);
+            //LoadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general, true);
+            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general, true);
 
             //Mid-Year (Mean)
-            //loadWeightAgeInputData(controlMidYearWeight, inpFile.meanWeight, inpFile.general, true);
-            controlMidYearWeight.loadWeightAgeInputData(inpFile.meanWeight, inpFile.general, true);
+            //LoadWeightAgeInputData(controlMidYearWeight, inpFile.meanWeight, inpFile.general, true);
+            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general, true);
 
             //Catch Weight
-            //loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general, true);
-            controlCatchWeight.loadWeightAgeInputData(inpFile.catchWeight, inpFile.general, true);
+            //LoadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general, true);
+            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general, true);
 
             //Discard Weight
-  //          loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general,
+  //          LoadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general,
   //              controlGeneralOptions.generalDiscardsPresent);  //Fallback Table Dependent on DiscardsPresent
-            controlDiscardWeight.loadWeightAgeInputData(inpFile.discardWeight, inpFile.general, 
+            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general, 
                 controlGeneralOptions.generalDiscardsPresent);
 
 
@@ -897,20 +897,20 @@ namespace Nmfs.Agepro.Gui
                 inpFile.recruitment.SSBScalingFactor);
 
             //Fishery Selectivity
-            //loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
-            controlFisherySelectivity.loadStochasticAgeInputData(inpFile.fishery, inpFile.general);
+            //LoadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
+            controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.fishery, inpFile.general);
 
             //Discard Fraction
-            //loadStochasticAgeInputData(controlDiscardFraction, inpFile.discardFraction, inpFile.general);
-            controlDiscardFraction.loadStochasticAgeInputData(inpFile.discardFraction, inpFile.general);
+            //LoadStochasticAgeInputData(controlDiscardFraction, inpFile.discardFraction, inpFile.general);
+            controlDiscardFraction.LoadStochasticAgeInputData(inpFile.discardFraction, inpFile.general);
 
             //Natural Mortality
-            //loadStochasticAgeInputData(controlNaturalMortality, inpFile.naturalMortality, inpFile.general);
-            controlNaturalMortality.loadStochasticAgeInputData(inpFile.naturalMortality, inpFile.general);
+            //LoadStochasticAgeInputData(controlNaturalMortality, inpFile.naturalMortality, inpFile.general);
+            controlNaturalMortality.LoadStochasticAgeInputData(inpFile.naturalMortality, inpFile.general);
 
             //Maturity (Biological)
-            //loadStochasticAgeInputData(controlBiological.maturityAge, inpFile.maturity, inpFile.general);
-            controlBiological.maturityAge.loadStochasticAgeInputData(inpFile.maturity, inpFile.general);
+            //LoadStochasticAgeInputData(controlBiological.maturityAge, inpFile.maturity, inpFile.general);
+            controlBiological.maturityAge.LoadStochasticAgeInputData(inpFile.maturity, inpFile.general);
 
             //Fraction Mortality Prior To Spawning (Biological)
             controlBiological.readFractionMortalityState = true;
@@ -982,7 +982,7 @@ namespace Nmfs.Agepro.Gui
         ///// <param name="ctl">AGEPRO Stochastic Parameter User Control and Values</param>
         ///// <param name="inp">AGEPRO InputFile StochasticAge Parameters </param>
         ///// <param name="generalOpt">AGEPRO InputFile General Options values</param>
-        //private void loadStochasticAgeInputData(ControlStochasticAge ctl, Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp,
+        //private void LoadStochasticAgeInputData(ControlStochasticAge ctl, Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp,
         //    Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
         //{
         //    ctl.readInputFileState = true;
@@ -1013,12 +1013,12 @@ namespace Nmfs.Agepro.Gui
         ///// <param name="generalOpt">AGEPRO InputFile General Options</param>
         ///// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
         ///// provide one</param>
-        //private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
+        //private void LoadWeightAgeInputData(ControlStochasticWeightAge ctl, Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
         //    Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
         //{
         //    ctl.indexWeightOption = inp.weightOpt;
-        //    //loadStochasticAgeInputData((ControlStochasticAge)ctl, (Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
-        //    ctl.loadStochasticAgeInputData((Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+        //    //LoadStochasticAgeInputData((ControlStochasticAge)ctl, (Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+        //    ctl.LoadStochasticAgeInputData((Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
 
         //    //Option to to fallback and create a empty DataTable if there input file DataTable (for 
         //    //weightAgeTable CVtable is Null)
