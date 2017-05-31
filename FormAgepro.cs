@@ -865,8 +865,8 @@ namespace Nmfs.Agepro.Gui
             controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
 
             //JAN-1
-            loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
-            //controlJan1Weight.loa
+            //loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
+            controlJan1Weight.loadWeightAgeInputData(inpFile.jan1Weight, inpFile.general, true);
 
             //SSB
             //loadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general, true);
@@ -1005,46 +1005,46 @@ namespace Nmfs.Agepro.Gui
 
 
         //Old Weights of Age 
-        /// <summary>
-        /// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
-        /// </summary>
-        /// <param name="ctl">AGEPRO Stochastic Weight of Age User Control and Values</param>
-        /// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
-        /// <param name="generalOpt">AGEPRO InputFile General Options</param>
-        /// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
-        /// provide one</param>
-        private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
-            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
-        {
-            ctl.indexWeightOption = inp.weightOpt;
-            //loadStochasticAgeInputData((ControlStochasticAge)ctl, (Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
-            ctl.loadStochasticAgeInputData((Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+        ///// <summary>
+        ///// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
+        ///// </summary>
+        ///// <param name="ctl">AGEPRO Stochastic Weight of Age User Control and Values</param>
+        ///// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
+        ///// <param name="generalOpt">AGEPRO InputFile General Options</param>
+        ///// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
+        ///// provide one</param>
+        //private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
+        //    Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
+        //{
+        //    ctl.indexWeightOption = inp.weightOpt;
+        //    //loadStochasticAgeInputData((ControlStochasticAge)ctl, (Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+        //    ctl.loadStochasticAgeInputData((Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
 
-            //Option to to fallback and create a empty DataTable if there input file DataTable (for 
-            //weightAgeTable CVtable is Null)
-            if (fallbackNullDataTable == true)
-            {
-                if (!(ctl.stochasticAgeTable != null))
-                {
-                    int numYears;
-                    if (ctl.timeVarying == true)
-                    {
-                        numYears = generalOpt.NumYears();
-                    }
-                    else
-                    {
-                        numYears = 1;
-                    }
+        //    //Option to to fallback and create a empty DataTable if there input file DataTable (for 
+        //    //weightAgeTable CVtable is Null)
+        //    if (fallbackNullDataTable == true)
+        //    {
+        //        if (!(ctl.stochasticAgeTable != null))
+        //        {
+        //            int numYears;
+        //            if (ctl.timeVarying == true)
+        //            {
+        //                numYears = generalOpt.NumYears();
+        //            }
+        //            else
+        //            {
+        //                numYears = 1;
+        //            }
 
-                    ctl.stochasticAgeTable = ctl.CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
-                    ctl.enableTimeVaryingCheckBox = true;
-                }
-                if (!(ctl.stochasticCV != null))
-                {
-                    ctl.stochasticCV = ctl.CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
-                }
-            }
-        }
+        //            ctl.stochasticAgeTable = ctl.CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
+        //            ctl.enableTimeVaryingCheckBox = true;
+        //        }
+        //        if (!(ctl.stochasticCV != null))
+        //        {
+        //            ctl.stochasticCV = ctl.CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
+        //        }
+        //    }
+        //}
 
         ///// <summary>
         ///// Creates an empty DataTable for AGEPRO Parameter Control based on the number ages and years (or 
