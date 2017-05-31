@@ -8,6 +8,15 @@ using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
+    public enum StochasticWeightOfAge
+    {
+        Jan1Weight,
+        SSBWeight,
+        MidYearWeight,
+        CatchWeight,
+        DiscardWeight
+    }
+
     public partial class ControlStochasticWeightAge : Nmfs.Agepro.Gui.ControlStochasticAge
     {
         private System.Windows.Forms.RadioButton radioWeightsFromCatch;
@@ -17,7 +26,7 @@ namespace Nmfs.Agepro.Gui
 
         public int indexWeightOption { get; set; }
         public Dictionary<int, RadioButton> weightOptionDictionary;
-
+        public StochasticWeightOfAge weightAgeType { get; set; }
 
         public ControlStochasticWeightAge()
         {
@@ -184,13 +193,10 @@ namespace Nmfs.Agepro.Gui
             this.indexWeightOption = inp.weightOpt;
             base.LoadStochasticAgeInputData(inp, generalOpt);
 
-            //Option to to fallback and create a empty DataTable if there input file DataTable (for 
+ 
+
+            //Create a empty DataTable if there input file DataTable (for 
             //weightAgeTable CVtable is Null)
-            if (generalOpt.hasDiscards == true && this.stochasticAgeTable == null)
-            {
-
-            }
-
             //if fallbackNullDataTable is true
             if (this.stochasticAgeTable == null)
             {

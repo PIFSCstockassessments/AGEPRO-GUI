@@ -87,6 +87,12 @@ namespace Nmfs.Agepro.Gui
             controlCatchWeight.isMultiFleet = true;
             controlDiscardWeight.isMultiFleet = true;
 
+            controlJan1Weight.weightAgeType = StochasticWeightOfAge.Jan1Weight;
+            controlSSBWeight.weightAgeType = StochasticWeightOfAge.SSBWeight;
+            controlMidYearWeight.weightAgeType = StochasticWeightOfAge.MidYearWeight;
+            controlCatchWeight.weightAgeType = StochasticWeightOfAge.CatchWeight;
+            controlDiscardWeight.weightAgeType = StochasticWeightOfAge.DiscardWeight;
+
             controlJan1Weight.showJan1WeightsOption = false;
             controlJan1Weight.showSSBWeightsOption = false;
             controlJan1Weight.showMidYearWeightsOption = false;
