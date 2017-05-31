@@ -182,18 +182,20 @@ namespace Nmfs.Agepro.Gui
         /// <summary>
         /// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
         /// </summary>
-        /// <param name="ctl">AGEPRO Stochastic Weight of Age User Control and Values</param>
         /// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
         /// <param name="generalOpt">AGEPRO InputFile General Options</param>
-        /// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
-        /// provide one</param>
         public void LoadWeightAgeInputData(Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
-            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
+            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
         {
             this.indexWeightOption = inp.weightOpt;
             base.LoadStochasticAgeInputData(inp, generalOpt);
 
- 
+            //For Discard weight, if "Discards are Present" is not selected, exit the function
+            //(to prevent fallback data table to be generated.)
+            if (this.weightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.hasDiscards == false)
+            {
+                return;
+            }
 
             //Create a empty DataTable if there input file DataTable (for 
             //weightAgeTable CVtable is Null)

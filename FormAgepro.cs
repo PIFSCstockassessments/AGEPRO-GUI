@@ -872,25 +872,24 @@ namespace Nmfs.Agepro.Gui
 
             //JAN-1
             //LoadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
-            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general, true);
+            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
 
             //SSB
             //LoadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general, true);
-            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general, true);
+            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
 
             //Mid-Year (Mean)
             //LoadWeightAgeInputData(controlMidYearWeight, inpFile.meanWeight, inpFile.general, true);
-            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general, true);
+            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general);
 
             //Catch Weight
             //LoadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general, true);
-            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general, true);
+            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general);
 
             //Discard Weight
   //          LoadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general,
   //              controlGeneralOptions.generalDiscardsPresent);  //Fallback Table Dependent on DiscardsPresent
-            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general, 
-                controlGeneralOptions.generalDiscardsPresent);
+            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general);
 
 
             //Recruitment
