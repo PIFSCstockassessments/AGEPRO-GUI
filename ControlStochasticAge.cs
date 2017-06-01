@@ -229,6 +229,7 @@ namespace Nmfs.Agepro.Gui
             {
                 fallbackTable.Rows.Add();
             }
+            Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(fallbackTable);
 
             return fallbackTable;
         }
