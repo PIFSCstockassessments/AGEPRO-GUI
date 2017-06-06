@@ -118,19 +118,29 @@ namespace Nmfs.Agepro.Gui
         /// </summary>
         private void setCVTableRowHeaders()
         {
-            int ifleet = 1;
-            foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
+            if (multiFleetTable)
             {
-                if (multiFleetTable == true)
+                int ifleet = 1;
+                foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
                 {
                     CVTableRow.HeaderCell.Value = "Fleet-" + ifleet;
+                    ifleet = ifleet + 1;
                 }
-                else
+            }
+            else
+            {
+                if (dataGridCVTable.Rows.Count > 1)
+                {
+                    throw new InvalidAgeproGuiParameterException("Single-Fleet or Fleet-Indpendent CV Table has more than one row.");
+                }
+                foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
                 {
                     CVTableRow.HeaderCell.Value = "All Years";
                 }
-                ifleet = ifleet + 1;
+                
             }
+
+            
       
             
         }

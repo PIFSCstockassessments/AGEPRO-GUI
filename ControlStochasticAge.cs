@@ -195,14 +195,16 @@ namespace Nmfs.Agepro.Gui
                 if (fleetDependent == StochasticAgeFleetDepency.dependent)
                 {
                     this.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, this.numFleets);
+                    this.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, this.numFleets);
                 }
                 else
                 {
                     this.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
+                    this.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
                 }
 
             }
-            this.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, this.numFleets);
+            
             this.readInputFileState = false;
 
         }
