@@ -182,7 +182,8 @@ namespace Nmfs.Agepro.Gui
                 controlJan1Weight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 controlSSBWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 controlMidYearWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
-                controlCatchWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+                controlCatchWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, 
+                    StochasticAgeFleetDependency.dependent);
                 controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
                     StochasticAgeFleetDependency.dependent);
                 controlNaturalMortality.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
