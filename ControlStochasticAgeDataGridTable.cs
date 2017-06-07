@@ -18,6 +18,7 @@ namespace Nmfs.Agepro.Gui
         public double defaultCellValue { get; set; }
         public bool readInputFileState { get; set; }
         public event EventHandler timeVaryingCheckedChangedEvent;
+        public StochasticAgeFleetDependency fleetDependent { get; set; }
 
         public ControlStochasticAgeDataGridTable()
         {
@@ -164,10 +165,20 @@ namespace Nmfs.Agepro.Gui
                 }
 
                 //TODO: Handle cases where stochasticAgeTable is Null    
-                stochasticAgeTable.Clear(); //Clear All Rows
+                //Clear all rows and draw a new stochasatic data table
+                stochasticAgeTable.Clear(); 
                 if (checkBoxTimeVarying.Checked)
                 {
-                    int countFleetYears = seqYears.Count() * this.numFleets;
+                    int countFleetYears;
+                    if (this.fleetDependent == StochasticAgeFleetDependency.dependent)
+                    {
+                        countFleetYears = seqYears.Count() * this.numFleets;
+                    }
+                    else //Fleet-indpendent Stochastic Parameters 
+                    {
+                        countFleetYears = seqYears.Count();
+                    }
+
                     for (int i = 0; i < countFleetYears; i++)
                     {
                         stochasticAgeTable.Rows.Add();
@@ -175,20 +186,22 @@ namespace Nmfs.Agepro.Gui
 
                 }
                 else
-                {   
-                    for (int i = 0; i < numFleets; i++)
+                {
+                    if (this.fleetDependent == StochasticAgeFleetDependency.dependent)
                     {
-                        stochasticAgeTable.Rows.Add();
-                        
-                        if (multiFleetTable)
+                        for (int i = 0; i < numFleets; i++)
                         {
+                            stochasticAgeTable.Rows.Add();
                             dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "Fleet-" + (i + 1);
                         }
-                        else
-                        {
-                            dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "All Years";
-                        }
+                        
                     }
+                    else
+                    {
+                        stochasticAgeTable.Rows.Add();
+                        dataGridStochasticAgeTable.Rows[0].HeaderCell.Value = "All Years";
+                    }
+                    
                 }
 
                 //Fills in blank cells with the defalutCellValue

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
-    public enum StochasticAgeFleetDepency
+    public enum StochasticAgeFleetDependency
     {
         dependent,
         independent
@@ -31,6 +31,9 @@ namespace Nmfs.Agepro.Gui
             radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
             stochasticParameterLabel = "Stochastic Parameters"; //Default Fallback Text
             settingParameterForControl = false;
+
+            //By Default, Stochastic Parameters are fleet independent.
+            fleetDependency = StochasticAgeFleetDependency.independent;
 
             controlStochasticParamAgeFromFile.timeVaryingFileChecked += 
                 new EventHandler(linkTimeVaryingUserSpecAndFromFile);
@@ -83,6 +86,12 @@ namespace Nmfs.Agepro.Gui
             get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox; }
             set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value; }
         }
+        public StochasticAgeFleetDependency fleetDependency 
+        {
+            get { return controlStochasticParamAgeFromUser.fleetDependent; }
+            set { controlStochasticParamAgeFromUser.fleetDependent = value; }
+        }
+
 
         protected void linkTimeVaryingUserSpecAndFromFile(object sender, EventArgs e)
         {
@@ -173,7 +182,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
         /// nubmber of fleets? Default is false.</param>
         public void CreateStochasticParameterFallbackDataTable(ControlGeneral genOpt,
-             StochasticAgeFleetDepency fleetDependent = StochasticAgeFleetDepency.independent)
+             StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
         {
             this.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
             this.seqYears = genOpt.SeqYears();
@@ -192,7 +201,7 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                if (fleetDependent == StochasticAgeFleetDepency.dependent)
+                if (fleetDependent == StochasticAgeFleetDependency.dependent)
                 {
                     this.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, this.numFleets);
                     this.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, this.numFleets);

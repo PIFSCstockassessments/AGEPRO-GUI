@@ -75,17 +75,27 @@ namespace Nmfs.Agepro.Gui
             //Biological Stochastic Options
             controlFisherySelectivity.stochasticParameterLabel = "Fishery Selectivity";
             controlFisherySelectivity.isMultiFleet = true;
+            controlFisherySelectivity.fleetDependency = StochasticAgeFleetDependency.dependent;
             controlDiscardFraction.stochasticParameterLabel = "Discard Fraction";
             controlDiscardFraction.isMultiFleet = true;
+            controlDiscardFraction.fleetDependency = StochasticAgeFleetDependency.dependent;
             controlNaturalMortality.stochasticParameterLabel = "Natural Mortality";
             controlNaturalMortality.isMultiFleet = false;
+            controlNaturalMortality.fleetDependency = StochasticAgeFleetDependency.independent;
+
+
 
             //Weight Age Options
             controlJan1Weight.isMultiFleet = false;
+            controlJan1Weight.fleetDependency = StochasticAgeFleetDependency.independent;
             controlSSBWeight.isMultiFleet = false;
+            controlSSBWeight.fleetDependency = StochasticAgeFleetDependency.independent;
             controlMidYearWeight.isMultiFleet = false;
+            controlMidYearWeight.fleetDependency = StochasticAgeFleetDependency.independent;
             controlCatchWeight.isMultiFleet = true;
+            controlCatchWeight.fleetDependency = StochasticAgeFleetDependency.dependent;
             controlDiscardWeight.isMultiFleet = true;
+            controlDiscardWeight.fleetDependency = StochasticAgeFleetDependency.dependent;
 
             controlJan1Weight.weightAgeType = StochasticWeightOfAge.Jan1Weight;
             controlSSBWeight.weightAgeType = StochasticWeightOfAge.SSBWeight;
@@ -174,7 +184,7 @@ namespace Nmfs.Agepro.Gui
                 controlMidYearWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 controlCatchWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
-                    StochasticAgeFleetDepency.dependent);
+                    StochasticAgeFleetDependency.dependent);
                 controlNaturalMortality.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 
@@ -182,7 +192,7 @@ namespace Nmfs.Agepro.Gui
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
                     controlDiscardFraction.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
-                        StochasticAgeFleetDepency.dependent);
+                        StochasticAgeFleetDependency.dependent);
                     controlDiscardWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 }
                 else
