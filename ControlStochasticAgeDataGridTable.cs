@@ -18,6 +18,7 @@ namespace Nmfs.Agepro.Gui
         public double defaultCellValue { get; set; }
         public bool readInputFileState { get; set; }
         public event EventHandler timeVaryingCheckedChangedEvent;
+        public StochasticAgeFleetDependency fleetDependent { get; set; }
 
         public ControlStochasticAgeDataGridTable()
         {
@@ -93,12 +94,23 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-                int iyear = 0;
-                foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
+                if (timeVarying)
                 {
-                    stochasticRow.HeaderCell.Value = yearArray[iyear];
-                    iyear = iyear + 1;
+                    int iyear = 0;
+                    foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
+                    {
+                        stochasticRow.HeaderCell.Value = yearArray[iyear];
+                        iyear = iyear + 1;
+                    }
                 }
+                else
+                {
+                    foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
+                    {
+                        stochasticRow.HeaderCell.Value = "All Years";
+                    }
+                }
+                
             }
         }
 
@@ -107,19 +119,29 @@ namespace Nmfs.Agepro.Gui
         /// </summary>
         private void setCVTableRowHeaders()
         {
-            int ifleet = 1;
-            foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
+            if (multiFleetTable)
             {
-                if (multiFleetTable == true)
+                int ifleet = 1;
+                foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
                 {
                     CVTableRow.HeaderCell.Value = "Fleet-" + ifleet;
+                    ifleet = ifleet + 1;
                 }
-                else
+            }
+            else
+            {
+                if (dataGridCVTable.Rows.Count > 1)
+                {
+                    throw new InvalidAgeproGuiParameterException("Single-Fleet or Fleet-Indpendent CV Table has more than one row.");
+                }
+                foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
                 {
                     CVTableRow.HeaderCell.Value = "All Years";
                 }
-                ifleet = ifleet + 1;
+                
             }
+
+            
       
             
         }
@@ -143,10 +165,20 @@ namespace Nmfs.Agepro.Gui
                 }
 
                 //TODO: Handle cases where stochasticAgeTable is Null    
-                stochasticAgeTable.Clear(); //Clear All Rows
+                //Clear all rows and draw a new stochasatic data table
+                stochasticAgeTable.Clear(); 
                 if (checkBoxTimeVarying.Checked)
                 {
-                    int countFleetYears = seqYears.Count() * this.numFleets;
+                    int countFleetYears;
+                    if (this.fleetDependent == StochasticAgeFleetDependency.dependent)
+                    {
+                        countFleetYears = seqYears.Count() * this.numFleets;
+                    }
+                    else //Fleet-indpendent Stochastic Parameters 
+                    {
+                        countFleetYears = seqYears.Count();
+                    }
+
                     for (int i = 0; i < countFleetYears; i++)
                     {
                         stochasticAgeTable.Rows.Add();
@@ -154,20 +186,22 @@ namespace Nmfs.Agepro.Gui
 
                 }
                 else
-                {   
-                    for (int i = 0; i < numFleets; i++)
+                {
+                    if (this.fleetDependent == StochasticAgeFleetDependency.dependent)
                     {
-                        stochasticAgeTable.Rows.Add();
-                        
-                        if (multiFleetTable)
+                        for (int i = 0; i < numFleets; i++)
                         {
+                            stochasticAgeTable.Rows.Add();
                             dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "Fleet-" + (i + 1);
                         }
-                        else
-                        {
-                            dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "All Years";
-                        }
+                        
                     }
+                    else
+                    {
+                        stochasticAgeTable.Rows.Add();
+                        dataGridStochasticAgeTable.Rows[0].HeaderCell.Value = "All Years";
+                    }
+                    
                 }
 
                 //Fills in blank cells with the defalutCellValue
@@ -199,19 +233,21 @@ namespace Nmfs.Agepro.Gui
                 }
                 else
                 {
-                    string[] stochasticAgeTableRowHeaders = new string[numFleets];
+                    
                     if (multiFleetTable == true)
                     {
-                        for (int ifleet = 0; ifleet < numFleets; ifleet++)
-                        {
-                            stochasticAgeTableRowHeaders[ifleet] = "Fleet-" + (ifleet+1);
-                        }
+                        //Pass in one empty string since setStochasticAgeTableRowHeaders sets the header string
+                        string[] stochasticAgeTableRowHeaders = {string.Empty};
+                        //stochasticAgeTableRowHeaders[0] = string.Empty;
+                        setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
                     }
                     else
                     {
-                        stochasticAgeTableRowHeaders[0] = "All Years";
+                        string[] stochasticAgeTableRowHeaders = {"All Years"};
+                        //stochasticAgeTableRowHeaders[0] = "All Years";
+                        setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, 1);
                     }
-                    setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
+                    
                 }
                 
             }
@@ -250,7 +286,6 @@ namespace Nmfs.Agepro.Gui
         {
             return this.dataGridCVTable.HasBlankOrNullCells();
         }
-
 
     }
 }

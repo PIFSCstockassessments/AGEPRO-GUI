@@ -8,6 +8,15 @@ using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
+    public enum StochasticWeightOfAge
+    {
+        Jan1Weight,
+        SSBWeight,
+        MidYearWeight,
+        CatchWeight,
+        DiscardWeight
+    }
+
     public partial class ControlStochasticWeightAge : Nmfs.Agepro.Gui.ControlStochasticAge
     {
         private System.Windows.Forms.RadioButton radioWeightsFromCatch;
@@ -17,7 +26,7 @@ namespace Nmfs.Agepro.Gui
 
         public int indexWeightOption { get; set; }
         public Dictionary<int, RadioButton> weightOptionDictionary;
-
+        public StochasticWeightOfAge weightAgeType { get; set; }
 
         public ControlStochasticWeightAge()
         {
@@ -169,6 +178,53 @@ namespace Nmfs.Agepro.Gui
 
         }
 
+ 
+        /// <summary>
+        /// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
+        /// </summary>
+        /// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
+        /// <param name="generalOpt">AGEPRO InputFile General Options</param>
+        public void LoadWeightAgeInputData(Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
+            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
+        {
+            this.indexWeightOption = inp.weightOpt;
+            base.LoadStochasticAgeInputData(inp, generalOpt);
+
+            //For Discard weight, if "Discards are Present" is not selected, exit the function
+            //(to prevent fallback data table to be generated.)
+            if (this.weightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.hasDiscards == false)
+            {
+                return;
+            }
+
+            //Create a empty DataTable if there input file DataTable (for 
+            //weightAgeTable CVtable is Null)
+            //if fallbackNullDataTable is true
+            if (this.stochasticAgeTable == null)
+            {
+                int numYears;
+                if (this.timeVarying == true)
+                {
+                    numYears = generalOpt.NumYears();
+                }
+                else
+                {
+                    numYears = 1;
+                }
+                    
+                this.stochasticAgeTable = CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
+                this.enableTimeVaryingCheckBox = true;
+            }
+            if (!(this.stochasticCV != null))
+            {
+                this.stochasticCV = CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
+            }
+            
+        }
+
+
+
+
         public override bool ValidateStochasticParameter(int numAges, double upperBounds)
         {
             if (weightOptionDictionary.ContainsKey(indexWeightOption))
@@ -191,6 +247,6 @@ namespace Nmfs.Agepro.Gui
             
         }
         
-
+        
     }
 }

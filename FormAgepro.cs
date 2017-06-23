@@ -75,17 +75,33 @@ namespace Nmfs.Agepro.Gui
             //Biological Stochastic Options
             controlFisherySelectivity.stochasticParameterLabel = "Fishery Selectivity";
             controlFisherySelectivity.isMultiFleet = true;
+            controlFisherySelectivity.fleetDependency = StochasticAgeFleetDependency.dependent;
             controlDiscardFraction.stochasticParameterLabel = "Discard Fraction";
             controlDiscardFraction.isMultiFleet = true;
+            controlDiscardFraction.fleetDependency = StochasticAgeFleetDependency.dependent;
             controlNaturalMortality.stochasticParameterLabel = "Natural Mortality";
             controlNaturalMortality.isMultiFleet = false;
+            controlNaturalMortality.fleetDependency = StochasticAgeFleetDependency.independent;
+
+
 
             //Weight Age Options
             controlJan1Weight.isMultiFleet = false;
+            controlJan1Weight.fleetDependency = StochasticAgeFleetDependency.independent;
             controlSSBWeight.isMultiFleet = false;
+            controlSSBWeight.fleetDependency = StochasticAgeFleetDependency.independent;
             controlMidYearWeight.isMultiFleet = false;
+            controlMidYearWeight.fleetDependency = StochasticAgeFleetDependency.independent;
             controlCatchWeight.isMultiFleet = true;
+            controlCatchWeight.fleetDependency = StochasticAgeFleetDependency.dependent;
             controlDiscardWeight.isMultiFleet = true;
+            controlDiscardWeight.fleetDependency = StochasticAgeFleetDependency.dependent;
+
+            controlJan1Weight.weightAgeType = StochasticWeightOfAge.Jan1Weight;
+            controlSSBWeight.weightAgeType = StochasticWeightOfAge.SSBWeight;
+            controlMidYearWeight.weightAgeType = StochasticWeightOfAge.MidYearWeight;
+            controlCatchWeight.weightAgeType = StochasticWeightOfAge.CatchWeight;
+            controlDiscardWeight.weightAgeType = StochasticWeightOfAge.DiscardWeight;
 
             controlJan1Weight.showJan1WeightsOption = false;
             controlJan1Weight.showSSBWeightsOption = false;
@@ -163,19 +179,22 @@ namespace Nmfs.Agepro.Gui
                 }
 
                 //Set Stochastic Paramaeter DataGrids           
-                CreateStochasticParameterFallbackDataTable(controlJan1Weight, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlSSBWeight, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlMidYearWeight, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlCatchWeight, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlFisherySelectivity, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlNaturalMortality, controlGeneralOptions);
-                CreateStochasticParameterFallbackDataTable(controlBiological.maturityAge, controlGeneralOptions);
+                controlJan1Weight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+                controlSSBWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+                controlCatchWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, 
+                    StochasticAgeFleetDependency.dependent);
+                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
+                    StochasticAgeFleetDependency.dependent);
+                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
-                    CreateStochasticParameterFallbackDataTable(controlDiscardFraction, controlGeneralOptions);
-                    CreateStochasticParameterFallbackDataTable(controlDiscardWeight, controlGeneralOptions);
+                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
+                        StochasticAgeFleetDependency.dependent);
+                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 }
                 else
                 {   //Otherwise "reset" the dataGridView if data exists. 
@@ -243,37 +262,6 @@ namespace Nmfs.Agepro.Gui
 
         }
 
-        /// <summary>
-        /// Creates a empty Data Table for the Stochastic Parameter Control based on the user inputs gathered 
-        /// from the General Options control parameter.
-        /// </summary>
-        /// <param name="ctl">Stochastic Parameter Control</param>
-        /// <param name="genOpt">Paramters from the General Options Control</param>
-        private void CreateStochasticParameterFallbackDataTable(ControlStochasticAge ctl, ControlGeneral genOpt)
-        {
-            ctl.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
-            ctl.seqYears = genOpt.SeqYears();
-            ctl.readInputFileState = true;
-            //Reset Tables if they were used before
-            if (ctl.stochasticAgeTable != null)
-            {
-                ctl.stochasticAgeTable.Reset();
-                ctl.stochasticCV.Reset();
-            }
-
-            if (ctl.timeVarying == true)
-            {
-                ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 
-                    genOpt.SeqYears().Count(), ctl.numFleets);
-            }
-            else
-            {
-                ctl.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
-            }
-            ctl.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, ctl.numFleets);
-            ctl.readInputFileState = false;
-
-        }
 
         /// <summary>
         /// Calls the OpenFileDialog Window to retrive an existing AGEPRO Input file.
@@ -834,20 +822,19 @@ namespace Nmfs.Agepro.Gui
             controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
 
             //JAN-1
-            loadWeightAgeInputData(controlJan1Weight, inpFile.jan1Weight, inpFile.general, true);
+            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
 
             //SSB
-            loadWeightAgeInputData(controlSSBWeight, inpFile.SSBWeight, inpFile.general, true);
+            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
 
             //Mid-Year (Mean)
-            loadWeightAgeInputData(controlMidYearWeight, inpFile.meanWeight, inpFile.general, true);
+            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general);
 
             //Catch Weight
-            loadWeightAgeInputData(controlCatchWeight, inpFile.catchWeight, inpFile.general, true);
+            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general);
 
             //Discard Weight
-            loadWeightAgeInputData(controlDiscardWeight, inpFile.discardWeight, inpFile.general,
-                controlGeneralOptions.generalDiscardsPresent);  //Fallback Table Dependent on DiscardsPresent
+            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general);
 
             //Recruitment
             controlRecruitment.SetupControlRecruitment(
@@ -859,16 +846,16 @@ namespace Nmfs.Agepro.Gui
                 inpFile.recruitment.SSBScalingFactor);
 
             //Fishery Selectivity
-            loadStochasticAgeInputData(controlFisherySelectivity, inpFile.fishery, inpFile.general);
+            controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.fishery, inpFile.general);
 
             //Discard Fraction
-            loadStochasticAgeInputData(controlDiscardFraction, inpFile.discardFraction, inpFile.general);
+            controlDiscardFraction.LoadStochasticAgeInputData(inpFile.discardFraction, inpFile.general);
 
             //Natural Mortality
-            loadStochasticAgeInputData(controlNaturalMortality, inpFile.naturalMortality, inpFile.general);
+            controlNaturalMortality.LoadStochasticAgeInputData(inpFile.naturalMortality, inpFile.general);
 
             //Maturity (Biological)
-            loadStochasticAgeInputData(controlBiological.maturityAge, inpFile.maturity, inpFile.general);
+            controlBiological.maturityAge.LoadStochasticAgeInputData(inpFile.maturity, inpFile.general);
 
             //Fraction Mortality Prior To Spawning (Biological)
             controlBiological.readFractionMortalityState = true;
@@ -933,101 +920,6 @@ namespace Nmfs.Agepro.Gui
 
             Console.WriteLine("Loaded AGEPRO Parameters ..");
         }
-
-        /// <summary>
-        /// Generalized method to load Stochastic Data Parameters from AGEPRO Input Data files.
-        /// </summary>
-        /// <param name="ctl">AGEPRO Stochastic Parameter User Control and Values</param>
-        /// <param name="inp">AGEPRO InputFile StochasticAge Parameters </param>
-        /// <param name="generalOpt">AGEPRO InputFile General Options values</param>
-        private void loadStochasticAgeInputData(ControlStochasticAge ctl, Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp, 
-            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
-        {   
-            ctl.readInputFileState = true;
-            ctl.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
-            ctl.numFleets = generalOpt.numFleets;
-            ctl.timeVarying = inp.timeVarying;
-            ctl.stochasticDataFile = inp.dataFile;
-            ctl.stochasticAgeTable = Util.GetAgeproInputDataTable(ctl.stochasticAgeTable, inp.byAgeData);
-            ctl.stochasticCV = Util.GetAgeproInputDataTable(ctl.stochasticCV, inp.byAgeCV);
-            if (!(ctl.stochasticAgeTable != null))
-            {
-                ctl.enableTimeVaryingCheckBox = false;
-            }
-            else
-            {
-                ctl.enableTimeVaryingCheckBox = true;
-            }
-            ctl.readInputFileState = false;
-        }
-
-        /// <summary>
-        /// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
-        /// </summary>
-        /// <param name="ctl">AGEPRO Stochastic Weight of Age User Control and Values</param>
-        /// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
-        /// <param name="generalOpt">AGEPRO InputFile General Options</param>
-        /// <param name="fallbackNullDataTable">Option to generate a empty DataTable if Input File does not 
-        /// provide one</param>
-        private void loadWeightAgeInputData(ControlStochasticWeightAge ctl, Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
-            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt, bool fallbackNullDataTable = false)
-        {
-            ctl.indexWeightOption = inp.weightOpt;
-            loadStochasticAgeInputData((ControlStochasticAge)ctl, (Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
-
-            //Option to to fallback and create a empty DataTable if there input file DataTable (for 
-            //weightAgeTable CVtable is Null)
-            if (fallbackNullDataTable == true)
-            {
-                if (!(ctl.stochasticAgeTable != null))
-                {
-                    int numYears;
-                    if (ctl.timeVarying == true)
-                    {
-                        numYears = generalOpt.NumYears();
-                    }
-                    else
-                    {
-                        numYears = 1;
-                    }
-
-                    ctl.stochasticAgeTable = CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
-                    ctl.enableTimeVaryingCheckBox = true;
-                }
-                if (!(ctl.stochasticCV != null))
-                {
-                    ctl.stochasticCV = CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Creates an empty DataTable for AGEPRO Parameter Control based on the number ages and years (or 
-        /// fleet-years).
-        /// </summary>
-        /// <param name="numAges">Number of Age Classes.</param>
-        /// <param name="numYears">Number of Years (from First year to Last Year of projection)</param>
-        /// <param name="numFleets">Number of Fleets. Default is 1</param>
-        /// <returns>Returns a empty DataTable</returns>
-        private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
-        {
-            int numFleetYears = numYears * numFleets;
-
-            DataTable fallbackTable = new DataTable();
-
-            for (int icol = 0; icol < numAges; icol++)
-            {
-                fallbackTable.Columns.Add("Age" + " " + (icol + 1));
-            }
-            for (int row = 0; row < numFleetYears; row++)
-            {
-                fallbackTable.Rows.Add();
-            }
-
-            return fallbackTable;
-        }
-
-        
 
 
         /// <summary>

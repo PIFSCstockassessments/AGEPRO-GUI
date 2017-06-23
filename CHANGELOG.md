@@ -1,6 +1,18 @@
 
 # AGEPRO Changelog
 
+## 4.3.0.8-beta8 (2017-06-13)
+
+### Added
+- Enumeration flags StochasticAgeFleetDepenendency and StochasticWeightOfAge
+
+### Fixed
+- Loading a stocahastic parameter via a new set cases wtih multiple fleets was causing interface crashes. 
+- Non fleet-dependent Stochastic Parameters with cases that have more than 1 fleet, will not cause errors when loading their daia grids. 
+- Refactored StochasticAge datatable loading/creation functions from FormAgepro to ControlStochasticAge classes.
+- Flag Catch Weight of Age as a Fleet Dependent Stochastic Weight of Age parameter.
+- Loading new stochastic parameters data grids from new set cases will have a default value (of "0").
+
 ## 4.3.0.7-beta7 (2017-05-24)
 
 ### Added
