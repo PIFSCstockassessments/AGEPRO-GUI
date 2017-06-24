@@ -217,7 +217,7 @@ Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply t
 **User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
 ## Discard Weights at Age
-If *Discards are present* in **General Options** was unchecked or disabled, controls from this weight of age will be disabled.
+If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this weight of age will be disabled.
 
 When the user selects **Discard** from the navigation panel, the user *may* select from the following:
 
@@ -325,6 +325,8 @@ In this example, the user specified that [stochastic data for fishery selectivit
 
 # Discard Fraction
 AGEPRO allows users to input stochastic Discard Fraction
+
+If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this stochastic parameter will be disabled.
 
 On the **Discard Fraction** panel the user can select:
 
