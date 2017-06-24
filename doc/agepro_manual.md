@@ -144,7 +144,7 @@ If the user has specified more than one fleet, then the data layout differs only
 On each line the program reads the values at age for the first fleet followed by the values at age for the second fleet, etc.
 
 # Specifying Weights of Age
-AGEPRO allows the user to input stochastic weights at age.  
+AGEPRO allows users to input stochastic weights at age.  
 
 From the navigation panel, expand the **Weights if Age** node to set the following stochastic weights of age:
 * JAN-1
@@ -235,7 +235,7 @@ Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 # Specifying Stochastic Age Data
 
 # Natural Mortality
-AGEPRO allows the user to input stochastic Natural Mortality.
+AGEPRO allows users to input stochastic Natural Mortality.
 
 On the **Natural Mortality** panel, the user selects from:
 
@@ -264,7 +264,7 @@ The **Biological** panel allows the user the following parameters:
 * Fraction Mortality Prior to Spawning (or Fraction Mortality)
 
 ## Maturity
-AGEPRO allows the user to input stochastic Maturity at Age.
+AGEPRO allows users to input stochastic Maturity at Age.
 
 On the **Maturity** tab on the **Biological** panel, the user selects from:
 * User Specfied Maturity of Age
@@ -297,7 +297,7 @@ In the above example, the user applies the same constant value to all years in t
 In the above example, *time varying* is enabled, and the user has selected to input different values through the time horizon.
 
 # Fishery Selectivity
-AGEPRO allows the user to input stochastic Fishery Selectivity at Age.
+AGEPRO allows users to input stochastic Fishery Selectivity at Age.
 
 On the **Fishery Selectivity** panel, the user may select:
 
@@ -324,13 +324,31 @@ On each observed value, the program will generate stochastic fishery selectivity
 In this example, the user specified that [stochastic data for fishery selectivity will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 # Discard Fraction
-
-AGEPRO allows the user to input stochastic Discard Fraction
+AGEPRO allows users to input stochastic Discard Fraction
 
 On the **Discard Fraction** panel the user can select:
 
 * User Specfied Discard Fraction at Age
 * Read Discard Fraction from File
+
+### Example: Time Varying
+![](img/discardFraction_01a.png)
+
+In the above example, *time varying* is eanbled, and the user has selected to input the mean discard fraction for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
+
+On each observed value, the program will apply bias corrected log-normal error to the mean discard fraction values at age for all fleets.
+
+### Example: Non Time Varying
+![](img/discardFraction_02a.png)
+
+In the above case, the user has selected to input a vector of mean discard fraction at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
+
+On each observed value, the program will generate stochastic discard fraction values for each fleet.  The same values will be applied in all years of the time horizon.
+
+### Example: From File Option
+![](img/discardFraction_03.png)
+
+In this example, the user specified that [stochastic data for discard fraction will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 
 # Bootstrap
