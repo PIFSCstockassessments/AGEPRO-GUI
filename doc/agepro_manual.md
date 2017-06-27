@@ -24,8 +24,18 @@ Click SET button to proceed.
 
 **Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must supply a file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
 
-
 # Opening an Existing AGEPRO Input Data File
+
+In the File menu, click on the **Open Existing AGERPO Input Data File** option.
+
+Use the Windows Open File Dialog to locate the desired input file to the interface.
+
+![](img/openExisting_01.png)
+
+AGEPRO Version 4.0 input files have a file extension `INP`.  Older versions had a file extension `IN`.  
+
+**Note**: AGEPRO version 4.3.0 is not compatible with input files prior to version 4.0. The user must review input from earlier versions before running for  AGEPRO version 4.3.0 and above.
+
 
 # Saving AGEPRO input into file
 
