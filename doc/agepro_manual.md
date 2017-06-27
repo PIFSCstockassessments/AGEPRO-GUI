@@ -18,12 +18,11 @@ For new cases, the user must supply the following input:
 - Random Number Seed
 - Discards are Present (optional)
 
-
 ![](img/generalOptions_01a.png "General Options")
 
 Click SET button to proceed.
 
-**Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must also supply a file with Bootstrap population data on the Bootstrap tab. See the Bootstrap section for more information. 
+**Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must supply a file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
 
 
 # Opening an Existing AGEPRO Input Data File
