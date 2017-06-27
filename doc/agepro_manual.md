@@ -3,6 +3,28 @@ Age Structured Projection Model (AGEPRO)
 
 # Getting Started
 # Creating a new Case
+An new input data set can be set from scratch. Click on **Create New Case** in the File menu. A dialog window will pop up to confirm. If so, all existing input and output data will be discarded.
+
+![](img/generalOptions_02.png)
+
+For new cases, the user must supply the following input:
+- First year in Projection
+- Last year in Projection
+- First Age Class (Age 1 by default)
+- Last Age Class
+- Number Of Fleets (1 by Default)
+- Number Of Recruitment Models (1 by Default)
+- Number Of Population Simulations
+- Random Number Seed
+- Discards are Present (optional)
+
+
+![](img/generalOptions_01a.png "General Options")
+
+Click SET button to proceed.
+
+**Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must also supply a file with Bootstrap population data on the Bootstrap tab. See the Bootstrap section for more information. 
+
 
 # Opening an Existing AGEPRO Input Data File
 
