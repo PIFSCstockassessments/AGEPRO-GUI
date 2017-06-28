@@ -39,6 +39,14 @@ AGEPRO Version 4.0 input files have a file extension `INP`.  Older versions had 
 
 # Saving AGEPRO input into file
 
+After reviewing and/or modifying the input data the user will save the input data.  Click on the Save Input Data As.. item on the File menu or click on the Save icon on the Toolbar.
+
+
+
+Use the Windows File Dialogue to save the input data using the file name and path desired:
+
+
+![](img/saveInputFile_01.png)
 
  
 
