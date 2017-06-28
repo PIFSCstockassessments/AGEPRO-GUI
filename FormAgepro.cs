@@ -324,8 +324,14 @@ namespace Nmfs.Agepro.Gui
 
             if (saveAgeproInputFile.ShowDialog() == DialogResult.OK)
             {
+ 
                 try
                 {
+                    //Validate
+                    if (ValidateControlInputs() == false)
+                    {
+                        throw new InvalidAgeproParameterException("Unable to save AGEPRO Input Data due to invalid input.");
+                    }
 
                     //Natural Mortality
                     inputData.jan1Weight.timeVarying = controlJan1Weight.timeVarying;
@@ -373,7 +379,7 @@ namespace Nmfs.Agepro.Gui
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("AGEPRO input file was not saved." + Environment.NewLine + ex,
+                    MessageBox.Show("AGEPRO input file was not saved." + Environment.NewLine + ex.Message,
                         "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
@@ -640,7 +646,8 @@ namespace Nmfs.Agepro.Gui
         {
             string ageproModelJobName;
             string jobDT;
-            //set the user data work directory  
+
+            //Set the user data work directory  
             if (string.IsNullOrWhiteSpace(controlGeneralOptions.generalInputFile))
             {
                 ageproModelJobName = "untitled_" + Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
@@ -693,12 +700,15 @@ namespace Nmfs.Agepro.Gui
                     return;
                 }
             }
-
+            //Store original bootstrap filename in case of error
             string originalBSNFile = inputData.bootstrap.bootstrapFile;
 
             try
             {
-                inputData.bootstrap.bootstrapFile = bsnFile; //set bootstrap file to copied workDir ver
+                //Set bootstrap filename to copied workDir version
+                inputData.bootstrap.bootstrapFile = bsnFile; 
+                
+                //Write Interface Inputs to file
                 inputData.WriteInputFile(inpFile);
 
                 //use command line to open AGEPRO40.exe
