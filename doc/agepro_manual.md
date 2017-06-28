@@ -36,19 +36,34 @@ AGEPRO Version 4.0 input files have a file extension `INP`.  Older versions had 
 
 **Note**: AGEPRO version 4.3.0 is not compatible with input files prior to version 4.0. The user must review input from earlier versions before running for  AGEPRO version 4.3.0 and above.
 
+# Saving AGEPRO input data into file
 
-# Saving AGEPRO input into file
+To store inputs done in the AGEPRO interface to file, click on the **Save AGEPRO Input Data As..** option in the File menu.
 
-After reviewing and/or modifying the input data the user will save the input data.  Click on the Save Input Data As.. item on the File menu or click on the Save icon on the Toolbar.
-
-
-
-Use the Windows File Dialogue to save the input data using the file name and path desired:
-
+Use the Windows Save File Dialogue to save the input data using the file name and path desired:
 
 ![](img/saveInputFile_01.png)
 
- 
+### Validation
+
+The program performs a series of data validation steps before it saves to file.
+
+If the input is valid (without missing or erroneous input), the user will see the following:
+
+![](img/saveInputFile_valid_01.png)
+
+![](img/saveInputFile_valid_02.png)
+
+Any errors or invalid input found will prevent the input data to be saved.
+
+A Dialog box will pop up indicating the issue, for example:
+
+![](img/saveInputFile_invalid_01.png)
+
+All invalid input has be resolved before the data may be saved.
+
+![](img/saveInputFile_invalid_02.png)
+
 
 # Using NFT Data Grids
 NOAA Fisheries Toolbox data grids have many functions that are similar to spreadsheet software programs. However, there are a few differences and limitations. The following topics will  describe in detail how to perform common tasks.
