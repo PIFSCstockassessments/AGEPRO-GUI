@@ -238,7 +238,7 @@ In this example, the user has selected to supply [data from an external file](#s
 When the user selects **SSB** from the navigation panel, the user can select from the following:
 
 Label                         | Description
-------------------------------|-----------------------------------------------
+:-----------------------------| :----------------------------------------------
 User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
@@ -249,7 +249,7 @@ Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 When the user selects **Mid-Year (Mean)** from the navigation panel, the user can select from the following:
 
 Label                         | Description
-------------------------------|-----------------------------------------------
+:-----------------------------| :----------------------------------------------
 User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
@@ -261,7 +261,7 @@ Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
 When the user selects **Catch** from the navigation panel, the user can select from the following:
 
 Label                        | Description
------------------------------|-----------------------------------------------
+:----------------------------|:----------------------------------------------
 User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
@@ -276,7 +276,7 @@ If a model case didn't include a discard option (*Discards are present* in **Gen
 When the user selects **Discard** from the navigation panel, the user *may* select from the following:
 
 Label                        | Description
------------------------------|-----------------------------------------------
+:----------------------------| :----------------------------------------------
 User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
@@ -737,7 +737,7 @@ The number of observed values is equal to the number of bootstrap iterations mul
 The **units used in the auxiliary files are not affected by the [summary report scaling factors](#/scaling-option-in-output-report)** optionally applied to the report file.
 
 File Extension | Model Items
----------------|------------------------------------------------------
+:--------------| :-----------------------------------------------------
 XX1            | [Stock Numbers of Age](#summary-report-of-stock-numbers-of-age) (If **Output Summary Report for Stock Numbers at Age** is enabled)
 XX2            | Recruits (Fish)
 XX3            | Spawning Stock Biomass (MT)
@@ -770,7 +770,7 @@ The user may request that stochastic data at age be saved to auxiliary files on 
 These stochasitic data files may be read in to subsequent model runs
 
 File Extension | Data Items
----------------|-------------------------------------------------------------
+:------------- | :---------------------------
 XXX1           | Stock Weights
 XXX2           | Spawning Stock Weights
 XXX3           | Mid-Year Weights
@@ -877,11 +877,11 @@ Probability Threshold Exceeded at Least Once =     0.0065
 ## Scaling Option in Output Report
 AGEPRO by default will scale the calculated results for the Summary Report as follows:
 
-Data Type     | Default Report Units
-------------- | --------------------------------------------
-Biomass       | Metric Tons x 1000
-Recruitment   | [Recruitment Scale Factor](#specifying-scaling-factors-for-recruitment-and-ssb)
-Stock Numbers | [Bootstrap's](#bootstrap) Population Scale Factor
+ Data Type     | Default Report Units
+ :------------ | :-------------------------------------------
+ Biomass       | Metric Tons x 1000
+ Recruitment   | [Recruitment Scale Factor](#specifying-scaling-factors-for-recruitment-and-ssb)
+ Stock Numbers | [Bootstrap's](#bootstrap) Population Scale Factor
 
 However, the user may find that these defaults make the data hard to read in the report file. The user may override these defaults by checking the **Specify Scale Factors for Output Report** check box.
 
