@@ -1,7 +1,7 @@
 Age Structured Projection Model (AGEPRO)
 ========================================
 
-Interface Version 4.3.0
+Version 4.3.0
 
 * [Getting Started](#getting-started)
 * [Creating a New Case](#creating-a-new-case)
@@ -48,9 +48,9 @@ Interface Version 4.3.0
 ---
 # Getting Started
 
-To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) from the General options panel.
+To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) in **General options**.
 
-Opening an existing AGEPRO input data file is a common method to start.
+Opening an existing AGEPRO input data file is the typical method to begin with.
 
 ---
 
@@ -72,7 +72,7 @@ For new cases, the user must supply the following input:
 
 ![](img/generalOptions_01a.png "General Options")
 
-Click SET button to proceed.
+Click **SET** button to proceed.
 
 **Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must supply a file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
 
@@ -100,7 +100,7 @@ Use the Windows Save File Dialogue to save the input data using the file name an
 
 ![](img/saveInputFile_01.png)
 
-### Validation
+## Validation
 
 The program performs a series of data validation steps before it saves to file.
 
@@ -116,7 +116,7 @@ A Dialog box will pop up indicating the issue, for example:
 
 ![](img/saveInputFile_invalid_01.png)
 
-All invalid input has be resolved before the data may be saved.
+**All invalid input has be resolved before the data may be saved.**
 
 ![](img/saveInputFile_invalid_02.png)
 
@@ -277,17 +277,19 @@ The user may select to input mean weights at age and apply log-normal error on e
 
 Furthermore, the user specifies whether the data supplied by either method will be supplied for each year in the time horizon as *time varying*. Otherwise, the data or to use a single set of weights at age for all years.
 
-### Examples
+### Example: Time Varying
 ![JAN-1 Time Varying](img/jan1WeightAge_01.png "JAN-1 Time Varying")
 
 In this first example, *Time Varying* is enabled. The user supplies mean weights at age for each year in the time horizon. In addition, the user also specifies a coefficient of variation for each age.
 
 Log-Normal error with bias correction will be calculated and applied on each observed value for each year in the time horizon
 
+### Example: Non Time Varying
 ![JAN-1 Non Time-Varying](img/jan1WeightAge_02.png "JAN-1 Non Time-Varying")
 
 In the next example, *Time Varying* is not enabled. The user will supply a single vector of mean values for weights at age.  The program will apply error on to he data supplied as above, but the data with error will not vary through the time horizon.
 
+### Example: From File Option
 ![JAN-1 Read Weights From File](img/jan1WeightAge_03a.png "JAN-1 Read Weights From File")
 
 In this example, the user has selected to supply [data from an external file](#stochastic-data-files) with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file.  No further input is required.
@@ -354,17 +356,19 @@ On the **Natural Mortality** panel, the user selects from:
 * User Specfied Natural Mortality of Age
 * Read Natural Mortality from File
 
-### Examples
+### Example: Time Varying
 ![](img/natMort_01a.png)
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
+### Example: Non Time Varying
 ![](img/natMort_02a.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
+### Example: From File Option
 ![](img/natMort_03.png)
 
 In this example, the user has specified that [natural mortality at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
@@ -384,17 +388,19 @@ On the **Maturity** tab on the **Biological** panel, the user selects from:
 * User Specfied Maturity of Age
 * Read Maturity from File
 
-### Examples
+### Example: Time Varying
 ![](img/bioMaturity_01a.png)
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
+### Example: Non Time Varying
 ![](img/bioMaturity_02a.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
+### Example: From File Option
 ![](img/bioMaturity_03.png)
 
 In this example, the user has specified that [maturity at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
