@@ -50,8 +50,6 @@ Version 4.3.0
 
 To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) in **General options**.
 
-Opening an existing AGEPRO input data file is the typical method to begin with.
-
 ---
 
 # Creating a new Case
