@@ -44,7 +44,7 @@ Interface Version 4.3.0
     * [Specifying Bounds](#specifying-bounds)
     * [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
     * [Program to view AGEPRO Output files](#view-agepro-output-files)
-    
+
 ---
 # Getting Started
 
@@ -374,8 +374,8 @@ In this example, the user has specified that [natural mortality at age with erro
 # Biological
 The **Biological** panel allows the user the following parameters:
 
-* Maturity
-* Fraction Mortality Prior to Spawning (or Fraction Mortality)
+* [Maturity](#maturity)
+* [Fraction Mortality Prior to Spawning (or Fraction Mortality)](#fraction-mortality-prior-to-spawning)
 
 ## Maturity
 AGEPRO allows users to input stochastic Maturity at Age.
