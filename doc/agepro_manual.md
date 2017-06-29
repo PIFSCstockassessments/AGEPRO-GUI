@@ -48,7 +48,7 @@ Interface Version 4.3.0
 ---
 # Getting Started
 
-To begin, the user will either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) by set the model options in the General options panel.
+To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) from the General options panel.
 
 Opening an existing AGEPRO input data file is a common method to start.
 
@@ -969,7 +969,7 @@ This is an optional parameter, and the user can enable or disable it by checking
 The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be **multiplied by** the retrospective adjustment factors.
 
 ## View AGEPRO Output files
-The user has as option to use a program to view AGEPRO Output Data (`*.out`), once the AGEPRO calculation engine is finished.
+An option to choose which program to view AGEPRO Output Data (`*.out`), once the AGEPRO calculation engine is finished, is availiable.
 
 If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
 
