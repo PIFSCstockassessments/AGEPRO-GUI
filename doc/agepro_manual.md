@@ -1,7 +1,59 @@
 Age Structured Projection Model (AGEPRO)
 ========================================
 
+Interface Version 4.3.0
+
+* [Getting Started](#getting-started)
+* [Creating a New Case](#creating-a-new-case)
+* [Opening an Existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file)
+* [Saving AGEPRO Input Data into file](#saving-agepro-input-data-into-file)
+* [Using NFT Data Grids](#using-nft-data-grids)
+* [Stochastic Data Files](#stochastic-data-files)
+* [Specifying Weights of Age](#specifying-weights-at-age)
+    * [JAN-1 Stock Weights at Age](#jan-1-stock-weights-at-age)
+    * [Spawning Stock Weights at Age](#spawning-stock-weights-at-age)
+    * [Mid-Year Stocks at Age](#mid-year-stocks-at-age)
+    * [Catch Weights at Age](#catch-weights-at-age)
+    * [Discard Weights at Age](#discard-weights-at-age)
+* [Natural Mortality](#natural-mortality)
+* [Biological](#biological)
+    * [Maturity](#maturity)
+    * [Fraction Mortality Prior to Spawning](#fraction-mortality-prior-to-spawning)
+* [Fishery Selectivity](#fishery-selectivity)
+* [Discard Fraction](#discard-fraction)
+* [Bootstrap](#bootstrap)
+* [Recruitment](#recruitment)
+* [Empirical Recruitment Models](#empirical-recruitment-models)
+    * [Fixed Recruitment Method](#fixed-recruitment-method)
+* [Parametric Recruitment Models](#parametric-recruitment-models)
+* [Predictor Recruitment Models](#predictor-recruitment-models)
+* [Markov Matrix Recruitment](#markov-matrix-recruitment)
+* [Harvest Scenario](#harvest-scenario)
+    * [Rebuider Target](#rebuilder-target-option)
+    * [P-Star Analysis](#p-star-analysis)
+* [AGEPRO Model Job Run](#agepro-model-job-run)
+* [Misc Options](#misc-options)
+    * [Auxiliary Output Files](#auxiliary-output-files)
+    * [Multi-Fleet Auxiliary Data File](#multi-fleet-auxiliary-data-file-\.xx10)   
+    * [Generating Auxiliary Stochastic Data Files](#generating-auxiliary-stochastic-data-files)
+    * [Summary Report of Stock Numbers of Age](#summary-report-of-stock-numbers-of-age)
+    * [Export to R](#export-to-r)
+    * [Specifying a Specfic Percentile in Output Report](#specifying-a-specfic-percentile-in-output-report)
+    * [Referece Point Threshold Report](#reference-point-threshold-report)
+    * [Scaling Options in Output Report](#scaling-option-in-output-report)
+    * [Specifying Bounds](#specifying-bounds)
+    * [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
+    * [Program to view AGEPRO Output files](#view-agepro-output-files)
+    
+---
 # Getting Started
+
+To begin, the user will either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) by set the model options in the General options panel.
+
+Opening an existing AGEPRO input data file is a common method to start.
+
+---
+
 # Creating a new Case
 An new input data set can be set from scratch. Click on **Create New Case** in the File menu. A dialog window will pop up to confirm. If so, all existing input and output data will be discarded.
 
@@ -24,6 +76,8 @@ Click SET button to proceed.
 
 **Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must supply a file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
 
+---
+
 # Opening an Existing AGEPRO Input Data File
 
 In the File menu, click on the **Open Existing AGERPO Input Data File** option.
@@ -35,6 +89,8 @@ Use the Windows Open File Dialog to locate the desired input file to the interfa
 AGEPRO Version 4.0 input files have a file extension `INP`.  Older versions had a file extension `IN`.  
 
 **Note**: AGEPRO version 4.3.0 is not compatible with input files prior to version 4.0. The user must review input from earlier versions before running for  AGEPRO version 4.3.0 and above.
+
+---
 
 # Saving AGEPRO input data into file
 
@@ -64,6 +120,7 @@ All invalid input has be resolved before the data may be saved.
 
 ![](img/saveInputFile_invalid_02.png)
 
+---
 
 # Using NFT Data Grids
 NOAA Fisheries Toolbox data grids have many functions that are similar to spreadsheet software programs. However, there are a few differences and limitations. The following topics will  describe in detail how to perform common tasks.
@@ -123,8 +180,7 @@ Select a cell or range of cells. Either **Right-Click** on the grid and select D
 ### Fill Data in Grid Cells
 Select Fill Blank Cells from the context menu. This will populate any blanks cell from the data grid with “0”.
 
-
- 
+---
 
 # Stochastic Data Files
 AGEPRO allows the user to supply stochastic data at age. In addition, the data at age may also vary through the projection time horizon and vary by fleet where applicable.
@@ -196,6 +252,8 @@ If the user has specified more than one fleet, then the data layout differs only
 > Number of Data Columns = Number of Age Classes x Number of Fleets
 
 On each line the program reads the values at age for the first fleet followed by the values at age for the second fleet, etc.
+
+---
 
 # Specifying Weights of Age
 AGEPRO allows users to input stochastic weights at age.  
@@ -286,7 +344,7 @@ Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
 **User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
 
-# Specifying Stochastic Age Data
+---
 
 # Natural Mortality
 AGEPRO allows users to input stochastic Natural Mortality.
@@ -310,6 +368,8 @@ In the above example, *Time Varying* is not enabled. The user has selected to in
 ![](img/natMort_03.png)
 
 In this example, the user has specified that [natural mortality at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
+
+---
 
 # Biological
 The **Biological** panel allows the user the following parameters:
@@ -350,6 +410,8 @@ In the above example, the user applies the same constant value to all years in t
 
 In the above example, *time varying* is enabled, and the user has selected to input different values through the time horizon.
 
+---
+
 # Fishery Selectivity
 AGEPRO allows users to input stochastic Fishery Selectivity at Age.
 
@@ -376,6 +438,8 @@ On each observed value, the program will generate stochastic fishery selectivity
 ![](img/fishSelectivity_03.png)
 
 In this example, the user specified that [stochastic data for fishery selectivity will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
+
+---
 
 # Discard Fraction
 AGEPRO allows users to input stochastic Discard Fraction
@@ -406,6 +470,7 @@ On each observed value, the program will generate stochastic discard fraction va
 
 In this example, the user specified that [stochastic data for discard fraction will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
+---
 
 # Bootstrap
 Bootstrapping input and options is located on the **Bootstrapping** panel.
@@ -426,8 +491,10 @@ Typically, bootstrap files are generated by the **VPA(Virtual Population Analysi
 In the following example, the **VPA program input** generates a bootstrap population file which uses a scaling factor of `1`. Thus, if this were the **VPA** file used to create for **AGEPRO** input, with AGEPRO's **Population Scaling Factor** of `1000`, then it will imply that the **VPA Catch data** was in **thousands** of fish.
 ![alt text](img/VPAExample_01.png "VPA Bootstrapping Output Options")
 
+---
+
 # Recruitment
-# Specifying Recruitment
+
 AGEPRO supports multiple recruitment methods. The number of recruitment methods can be specified in the **General Options** panel.
 
 Under **Select Recruitment Models** is a DataGrid object with combo box(es). The number of recruitment methods determines the number of combobox selections.
@@ -482,6 +549,8 @@ For those recruitment methods in which Recruitment is a function of Spawning Sto
 
 AGEPRO does not support first recruitment ages classes beyond 1. 
 
+---
+
 # Empirical Recruitment Models
 When an Empirical Recruitment model type is selected in the the recruitment selection drop down list in the *Recruit Model* tab of the **Recruitment** panel, input parameters for this type of recruitment will appear below.
 
@@ -506,7 +575,7 @@ Enter a new value for the number of observations and click on the SET button to 
 ## Fixed Recruitment Method
 In the datagrid, the user inputs fixed recruitment values for the projection time horizon **beginning with the 2nd Year.**  Recruitment in the 1st year of the projection time horizon is the value supplied in the bootstrap file for the first age class.
 
- 
+---
 
 # Parametric Recruitment Models
 When a Parametric Recruitment model type is selected in the the recruitment selection drop down list in the *Recruit Model* tab of the **Recruitment** panel, input parameters for this type of recruitment will appear below.
@@ -526,8 +595,7 @@ Multiple instances of the same parametric model are allowed.  This would allow t
 
 **Note:** Make sure that the scaling of the parametric parameters is consistent with the [SSB and Recruitment Scaling Factors](#specifying-scaling-factors-for-recruitment-and-ssb) on the **Recruitment** tab.
 
-
- 
+---
 
 # Predictor Recruitment Models
 When a predictor recruitment model type is selected in the the recruitment selection drop down list in the *Recruit Model* tab of the **Recruitment** panel, input parameters for this type of recruitment will appear below.
@@ -543,7 +611,7 @@ Multiple Instances of the same predictor model are allowed. Use the recruitment 
 
 To change the number of predictors, set the value of the *number of recruitment predictors* parameter by typing the value in or using spinbox arrows, and then click on the SET button. The valid number of predictors range from 0-5.
 
- 
+---
 
 # Markov Matrix Recruitment
 When **Model 1: Markov Matrix** is selected in the the recruitment selection drop down list in the *Recruit Model* tab of the **Recruitment** panel, input parameters for this type of recruitment will appear below. Only one instance of Markov Matrix recruitment is allowed.
@@ -554,7 +622,7 @@ Use the SET button to change the number of levels.
 
 **Note:** Make sure that the scaling of Recruitment and SSB cutpoint inputs is consistent with the [SSB and Recruitment Scaling Factors](#specifying-scaling-factors-for-recruitment-and-ssb) on the **Recruitment** tab.
 
- 
+---
 
 # Harvest Scenario
 The **Harvest Scenario** panel includes a data grid used to determine the level of population harvest for each year in the projection horizon.
@@ -707,6 +775,7 @@ Year       1 %        5 %        10 %       25 %       50 %       75 %       90 
 2014     2.9045     4.6582     6.0500     9.2075    14.5876    23.0587    35.2707    45.9843    75.4379
 ```
 
+---
 
 # AGEPRO Model Job Run
 
@@ -720,6 +789,8 @@ appended with a date-time stamp when the model was launched. If input file in ge
 Output files generated by the calcuation engine run will be stored at its **AGEPRO model job run directory**.
 
 After the calcuation engine is finished, AGEPRO will open a new window showing the directory the outputs were written to.
+
+---
 
 # Misc options
 
