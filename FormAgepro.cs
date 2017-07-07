@@ -1191,6 +1191,13 @@ namespace Nmfs.Agepro.Gui
             this.panelAgeproParameter.Controls.Add(ageproParameterControl);
         }
 
+        private void htmlHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var loc = new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().GetName().CodeBase));
+            System.Diagnostics.Process.Start( loc.AbsolutePath + @"/doc/agepro_manual.html");
+        }
+
 
     }
 }

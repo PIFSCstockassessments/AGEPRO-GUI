@@ -208,6 +208,7 @@
             this.htmlHelpToolStripMenuItem.Name = "htmlHelpToolStripMenuItem";
             this.htmlHelpToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.htmlHelpToolStripMenuItem.Text = "Html Help";
+            this.htmlHelpToolStripMenuItem.Click += new System.EventHandler(this.htmlHelpToolStripMenuItem_Click);
             // 
             // referenceManualpdfToolStripMenuItem
             // 
