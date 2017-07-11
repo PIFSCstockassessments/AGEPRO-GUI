@@ -1,6 +1,17 @@
 
 # AGEPRO Changelog
 
+## 4.3.0.9-beta9 (2017-07-00)
+
+## Added
+- Html help feature (Reimplentation of 'Using AGEPRO' help feature from version 4.2.2)
+
+## Changes
+- Disabled "Reference Manual (pdf)" menu item.
+
+## Fixed
+- Input Files: Implmented missing validation checks when the "Save AGEPRO input data as ..." menu option was selected from file menu.
+
 ## 4.3.0.8-beta8 (2017-06-13)
 
 ### Added
