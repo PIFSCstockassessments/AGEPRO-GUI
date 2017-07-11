@@ -5,6 +5,7 @@
 
 ## Added
 - Html help feature (Reimplentation of 'Using AGEPRO' help feature from version 4.2.2)
+- Interface and Calcuation Engine Versions in About AGEPRO dialog box. 
 
 ## Changes
 - Disabled "Reference Manual (pdf)" menu item.

@@ -105,7 +105,8 @@ namespace Nmfs.Agepro.Gui
         private void AboutAgepro_Load(object sender, EventArgs e)
         {
             //textBoxDescription: Override AssemblyDescription with this text.
-            this.textBoxDescription.Text = "";
+            this.textBoxDescription.Text = "Interface Version: " + AssemblyVersion + Environment.NewLine +
+                "Calcuation Engine Version: 4.0";
         }
     }
 }
