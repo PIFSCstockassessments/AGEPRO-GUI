@@ -1191,11 +1191,20 @@ namespace Nmfs.Agepro.Gui
             this.panelAgeproParameter.Controls.Add(ageproParameterControl);
         }
 
+        /// <summary>
+        /// Opens the "Age Structured Projection Model (AGEPRO)" help manual when the user
+        /// clicks on the "Html Help" menu item under Help.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void htmlHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //Get location of the assembled application's path.
             var loc = new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().GetName().CodeBase));
-            System.Diagnostics.Process.Start( loc.AbsolutePath + @"/doc/agepro_manual.html");
+            
+            //Append help html file and load it
+            string helpHtmlPath = loc.AbsolutePath + @"/doc/agepro_manual.html";
+            System.Diagnostics.Process.Start(helpHtmlPath);
         }
 
 
