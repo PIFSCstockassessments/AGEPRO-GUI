@@ -1199,11 +1199,11 @@ namespace Nmfs.Agepro.Gui
         /// <param name="e"></param>
         private void htmlHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Get location of the assembled application's path.
-            var loc = new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().GetName().CodeBase));
-            
+            //Get location of the application's path.
+            var loc = Path.GetDirectoryName(Application.ExecutablePath);
+
             //Append help html file and load it
-            string helpHtmlPath = loc.AbsolutePath + @"/doc/agepro_manual.html";
+            string helpHtmlPath = loc + @"/doc/agepro_manual.html";
             System.Diagnostics.Process.Start(helpHtmlPath);
         }
 
