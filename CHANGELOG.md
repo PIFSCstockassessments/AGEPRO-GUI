@@ -1,7 +1,7 @@
 
 # AGEPRO Changelog
 
-## 4.3.0.9-beta9 (2017-07-00)
+## 4.3.0.9-beta9 (2017-07-12)
 
 ## Added
 - Html help feature (Reimplentation of 'Using AGEPRO' help feature from version 4.2.2)
