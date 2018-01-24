@@ -139,6 +139,42 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// Data Binding setup for Misc Options Controls
+        /// </summary>
+        /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
+        public void SetupMiscOptionsDataBindings(Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOpt)
+        {
+            
+            SetControlDataBindings(this.textBoxRefMeanBiomass, 
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refSpawnBio");
+            SetControlDataBindings(this.textBoxRefJan1Biomass,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refJan1Bio");
+            SetControlDataBindings(this.textBoxRefMeanBiomass,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refMeanBio");
+            SetControlDataBindings(this.textBoxRefFishMortality,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refFMort");
+            SetControlDataBindings(this.textBoxScaleFactorBiomass,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.ScaleFactors)miscOpt, "scaleBio");
+            SetControlDataBindings(this.textBoxScaleFactorRecruits,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.ScaleFactors)miscOpt, "scaleRec");
+            SetControlDataBindings(this.textBoxScaleFactorsStockNum,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.ScaleFactors)miscOpt, "scaleStockNum");
+            SetControlDataBindings(this.textBoxBoundsMaxWeight,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Bounds)miscOpt, "maxWeight");
+            SetControlDataBindings(this.textBoxBoundsNatMortality,
+                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Bounds)miscOpt, "maxNatMort");
+
+        }
+        public void SetControlDataBindings(NftTextBox ctl, 
+            Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOptSrc, string miscOptField)
+        {
+            //Clear any existing (if any) bindings before creating new ones.
+            ctl.DataBindings.Clear();
+            ctl.DataBindings.Add("Text", miscOptSrc, miscOptField);
+        }
+
+
         
         private void checkBoxPercentileReport_CheckStateChanged(object sender, EventArgs e)
         {
