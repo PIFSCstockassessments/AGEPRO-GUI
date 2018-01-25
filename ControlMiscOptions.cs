@@ -140,33 +140,39 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// Data Binding setup for Misc Options Controls
+        /// Data Binding setup for Reference Point Options Controls
         /// </summary>
         /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
-        public void SetupMiscOptionsDataBindings(Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOpt)
+        public void SetupRefpointDataBindings(Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOpt)
         {
-            
-            SetControlDataBindings(this.textBoxRefMeanBiomass, 
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refSpawnBio");
-            SetControlDataBindings(this.textBoxRefJan1Biomass,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refJan1Bio");
-            SetControlDataBindings(this.textBoxRefMeanBiomass,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refMeanBio");
-            SetControlDataBindings(this.textBoxRefFishMortality,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Refpoint)miscOpt, "refFMort");
-            SetControlDataBindings(this.textBoxScaleFactorBiomass,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.ScaleFactors)miscOpt, "scaleBio");
-            SetControlDataBindings(this.textBoxScaleFactorRecruits,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.ScaleFactors)miscOpt, "scaleRec");
-            SetControlDataBindings(this.textBoxScaleFactorsStockNum,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.ScaleFactors)miscOpt, "scaleStockNum");
-            SetControlDataBindings(this.textBoxBoundsMaxWeight,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Bounds)miscOpt, "maxWeight");
-            SetControlDataBindings(this.textBoxBoundsNatMortality,
-                (Nmfs.Agepro.CoreLib.AgeproMiscOptions.Bounds)miscOpt, "maxNatMort");
-
+            SetControlDataBindings(this.textBoxRefSpawnBiomass, miscOpt, "refSpawnBio");
+            SetControlDataBindings(this.textBoxRefJan1Biomass, miscOpt, "refJan1Bio");
+            SetControlDataBindings(this.textBoxRefMeanBiomass, miscOpt, "refMeanBio");
+            SetControlDataBindings(this.textBoxRefFishMortality, miscOpt, "refFMort");
         }
-        public void SetControlDataBindings(NftTextBox ctl, 
+
+        /// <summary>
+        /// Data Binding setup for Scale Factor Controls
+        /// </summary>
+        /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
+        public void SetupScaleFactorsDataBindings(Nmfs.Agepro.CoreLib.ScaleFactors miscOpt)
+        {
+            SetControlDataBindings(this.textBoxScaleFactorBiomass, miscOpt, "scaleBio");
+            SetControlDataBindings(this.textBoxScaleFactorRecruits, miscOpt, "scaleRec");
+            SetControlDataBindings(this.textBoxScaleFactorsStockNum, miscOpt, "scaleStockNum");
+        }
+
+        /// <summary>
+        /// Data Binding setup for Bounds Controls
+        /// </summary>
+        /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
+        public void SetupBoundsDataBindings(Nmfs.Agepro.CoreLib.Bounds miscOpt)
+        {
+            SetControlDataBindings(this.textBoxBoundsMaxWeight, miscOpt, "maxWeight");
+            SetControlDataBindings(this.textBoxBoundsNatMortality, miscOpt, "maxNatMort");
+        }
+
+        private void SetControlDataBindings(NftTextBox ctl, 
             Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOptSrc, string miscOptField)
         {
             //Clear any existing (if any) bindings before creating new ones.
