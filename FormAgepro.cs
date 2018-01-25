@@ -809,6 +809,9 @@ namespace Nmfs.Agepro.Gui
             if (inputData != null)
             {
                 controlBootstrap.SetBootstrapControls(inputData.bootstrap);
+                controlMiscOptions.SetupRefpointDataBindings(inputData.refpoint);
+                controlMiscOptions.SetupScaleFactorsDataBindings(inputData.scale);
+                controlMiscOptions.SetupBoundsDataBindings(inputData.bounds);
             }
             
         }
