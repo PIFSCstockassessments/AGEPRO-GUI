@@ -138,7 +138,7 @@ namespace Nmfs.Agepro.Gui
                 this.dataGridRetroAdjustment.Rows[iage].HeaderCell.Value = ("Age " + iageForHeader);
             }
         }
-
+        
         /// <summary>
         /// Data Binding setup for Reference Point Options Controls
         /// </summary>
@@ -178,14 +178,12 @@ namespace Nmfs.Agepro.Gui
         {
             //Clear any existing (if any) bindings before creating new ones.
             ctl.DataBindings.Clear();
-            Binding b = new Binding("Text", miscOptSrc, miscOptField, false);
+            Binding b = new Binding("Text", miscOptSrc, miscOptField);
             if (decimalZeroFormat)
             {
                 b.Format += new ConvertEventHandler(DoubleToString);
                 b.Parse += new ConvertEventHandler(StringToDouble);
                 ctl.DataBindings.Add(b);
-                b.Format -= DoubleToString;
-                b.Parse -= StringToDouble;
             }
             else
             {
