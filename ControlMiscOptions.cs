@@ -168,18 +168,50 @@ namespace Nmfs.Agepro.Gui
         /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
         public void SetupBoundsDataBindings(Nmfs.Agepro.CoreLib.Bounds miscOpt)
         {
-            SetControlDataBindings(this.textBoxBoundsMaxWeight, miscOpt, "maxWeight");
-            SetControlDataBindings(this.textBoxBoundsNatMortality, miscOpt, "maxNatMort");
+            SetControlDataBindings(this.textBoxBoundsMaxWeight, miscOpt, "maxWeight", true);
+            SetControlDataBindings(this.textBoxBoundsNatMortality, miscOpt, "maxNatMort", true);
         }
 
         private void SetControlDataBindings(NftTextBox ctl, 
-            Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOptSrc, string miscOptField)
+            Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOptSrc, string miscOptField,
+            bool decimalZeroFormat = false)
         {
             //Clear any existing (if any) bindings before creating new ones.
             ctl.DataBindings.Clear();
-            ctl.DataBindings.Add("Text", miscOptSrc, miscOptField);
+            Binding b = new Binding("Text", miscOptSrc, miscOptField, false);
+            if (decimalZeroFormat)
+            {
+                b.Format += new ConvertEventHandler(DoubleToString);
+                b.Parse += new ConvertEventHandler(StringToDouble);
+                ctl.DataBindings.Add(b);
+                b.Format -= DoubleToString;
+                b.Parse -= StringToDouble;
+            }
+            else
+            {
+                ctl.DataBindings.Add(b);
+            }
+            
         }
 
+
+        private void DoubleToString(object sender, ConvertEventArgs sevent)
+        {
+            // The method converts only to string type. Test this using the DesiredType.
+            if (sevent.DesiredType != typeof(string)) return;
+
+            // Use the ToString method to format the value.
+            sevent.Value = ((double)sevent.Value).ToString("#.0");
+        }
+
+        private void StringToDouble(object sender, ConvertEventArgs sevent)
+        {
+            // ' The method converts only to decimal type. 
+            if (sevent.DesiredType != typeof(double)) return;
+
+            // Converts the string back to decimal using the static ToDouble method.
+            sevent.Value = Convert.ToDouble(sevent.Value.ToString());
+        }
 
         
         private void checkBoxPercentileReport_CheckStateChanged(object sender, EventArgs e)
