@@ -51,7 +51,7 @@
             this.labelModelID = new System.Windows.Forms.Label();
             this.labelInputFile = new System.Windows.Forms.Label();
             this.textBoxModelID = new System.Windows.Forms.TextBox();
-            this.textBoxInputFile = new System.Windows.Forms.TextBox();
+            this.textBoxInputFile = new Nmfs.Agepro.Gui.NftTextBox();
             this.groupGeneralOptions.SuspendLayout();
             this.tableLayoutPanelGeneralOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinBoxFirstAge)).BeginInit();
@@ -376,7 +376,7 @@
         private System.Windows.Forms.Label labelModelID;
         private System.Windows.Forms.Label labelInputFile;
         private System.Windows.Forms.TextBox textBoxModelID;
-        private System.Windows.Forms.TextBox textBoxInputFile;
+        private Nmfs.Agepro.Gui.NftTextBox textBoxInputFile;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGeneralOptions;
         private System.Windows.Forms.TextBox textBoxNumRecruitModels;
         private System.Windows.Forms.TextBox textBoxFirstYearProjection;
