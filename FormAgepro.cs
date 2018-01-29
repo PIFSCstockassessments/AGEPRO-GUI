@@ -63,11 +63,13 @@ namespace Nmfs.Agepro.Gui
             controlGeneralOptions.SetGeneral -= new EventHandler(StartupStateEvent_SetGeneralButton);
             controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
 
-            //Load General Options Controls to AGEPRO Parameter panel
-            //TODO: create a function to set General Options Controls (for "Create New Case" menu option)
+            //Load General Options Controls to AGEPRO Parameter panel           
             this.panelAgeproParameter.Controls.Clear();
             controlGeneralOptions.Dock = DockStyle.Fill;
             this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
+            //Set General Options Controls (to handle "New Cases")
+            controlGeneralOptions.generalInputFile = "untitled.INP";
+            controlGeneralOptions.generalModelId = "untitled";
 
             //initially set Number of Ages
             int initalNumAges = controlGeneralOptions.generalFirstAgeClass; //Spinbox Value
