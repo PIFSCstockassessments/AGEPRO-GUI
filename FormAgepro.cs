@@ -377,6 +377,9 @@ namespace Nmfs.Agepro.Gui
 
                     inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
+                    //Set filename to generalOptions Input File textbox
+                    controlGeneralOptions.generalInputFile = saveAgeproInputFile.FileName;
+ 
                     MessageBox.Show("AGEPRO Input Data was saved at" + Environment.NewLine + saveAgeproInputFile.FileName,
                         "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
