@@ -117,6 +117,7 @@ namespace Nmfs.Agepro.Gui
             //Instatiate Startup State:
             //Disable Navigation Tree Panel, AGEPRO run options, etc...
             this.panelNavigation.Enabled = false;
+            this.saveAGEPROInputDataAsToolStripMenuItem.Enabled = false;
 
         }
         
@@ -800,6 +801,10 @@ namespace Nmfs.Agepro.Gui
             if(this.launchAGEPROModelToolStripMenuItem.Enabled == false)
             {
                 this.launchAGEPROModelToolStripMenuItem.Enabled = true;
+            }
+            if (this.saveAGEPROInputDataAsToolStripMenuItem.Enabled == false)
+            {
+                this.saveAGEPROInputDataAsToolStripMenuItem.Enabled = true;
             }
             //if "Discards are Present" is not checked, disable the discard parameters panels.
             controlDiscardWeight.Enabled = controlGeneralOptions.generalDiscardsPresent;
