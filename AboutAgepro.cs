@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Text;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -20,7 +22,23 @@ namespace Nmfs.Agepro.Gui
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
+
+            //NMFS Licensing
+            string nmfsLicenseFile = 
+                Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath),"LICENSE.md");
+            
+            if (File.Exists(nmfsLicenseFile))
+            {
+                this.nmfsLicense = string.Join(" ", File.ReadAllLines(nmfsLicenseFile));
+            }
+            else
+            {
+                this.nmfsLicense = null;
+            }
         }
+
+        private string nmfsLicense;
+
 
         #region Assembly Attribute Accessors
 
@@ -102,11 +120,17 @@ namespace Nmfs.Agepro.Gui
         }
         #endregion
 
+        /// <summary>
+        /// Used to override default WinForms About Box AssemblyDescription text. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutAgepro_Load(object sender, EventArgs e)
         {
             //textBoxDescription: Override AssemblyDescription with this text.
             this.textBoxDescription.Text = "Interface Version: " + AssemblyVersion + Environment.NewLine +
-                "Calcuation Engine Version: 4.0";
+                "Calcuation Engine Version: 4.0" + Environment.NewLine + Environment.NewLine +
+                nmfsLicense;
         }
     }
 }
