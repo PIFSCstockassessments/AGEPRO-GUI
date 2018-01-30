@@ -68,7 +68,7 @@ namespace Nmfs.Agepro.Gui
             controlGeneralOptions.Dock = DockStyle.Fill;
             this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
             //Set General Options Controls (to handle "New Cases")
-            controlGeneralOptions.generalInputFile = "untitled.INP";
+            controlGeneralOptions.generalInputFile = "";
             controlGeneralOptions.generalModelId = "untitled";
 
             //initially set Number of Ages
