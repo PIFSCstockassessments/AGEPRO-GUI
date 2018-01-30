@@ -303,6 +303,9 @@
     </None>
     <None Include="doc\agepro_manual.md" />
     <None Include="doc\AGEPRO_v4.2_Reference_Manual.pdf" />
+    <None Include="LICENSE.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\DataSources\AGEPRO.CoreLib.AgeproInputFile.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
