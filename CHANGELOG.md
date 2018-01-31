@@ -1,6 +1,25 @@
 
 # AGEPRO Changelog
 
+## 4.3.0.10-beta10 (2018-01-31)
+
+## Added
+- AGEPRO v4.2 Reference Manual by Jon Brodziak.
+- Added LICENSE.md 
+- Added LICENSE information in About AGEPRO dialog box.
+- CoreLib: Data binded Misc Option Parameters and added MiscOptionsParameter class. Moved embeded AgeproMiscOptions miscOption classes as MiscOptionsParameter subclasses. (#3)
+- "Decimal-zero" format option for binded miscOptions textBoxes.  
+- Default value for generalOptions modelID
+ 
+## Changes
+- Reference Points, Scale Factors, and Bounds text boxes use NftTextBox.
+
+## Fixed
+- Disable "Save AGEPRO Input Data As ..." menu option during startup/uninitialized phase.  
+- CoreLib: More informative error messages with NullSelectRecruitment's input/output (ReadRecruitmentModel/WriteRecruitmentModel) functions. (#1)
+- CoreLib: Assign defaults (non blank/null values) for Reference Points and Scale Factors. (#3)
+- Ensure saved AGEPRO Input File path is diplayed on generalOptions InputFile textbox. (#2)
+
 ## 4.3.0.9-beta9 (2017-07-12)
 
 ## Added
