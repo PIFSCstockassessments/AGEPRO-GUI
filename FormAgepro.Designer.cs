@@ -212,10 +212,10 @@
             // 
             // referenceManualpdfToolStripMenuItem
             // 
-            this.referenceManualpdfToolStripMenuItem.Enabled = false;
             this.referenceManualpdfToolStripMenuItem.Name = "referenceManualpdfToolStripMenuItem";
             this.referenceManualpdfToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.referenceManualpdfToolStripMenuItem.Text = "Reference Manual (pdf)";
+            this.referenceManualpdfToolStripMenuItem.Click += new System.EventHandler(this.referenceManualpdfToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 

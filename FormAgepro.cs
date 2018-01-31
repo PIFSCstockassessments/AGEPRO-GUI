@@ -1220,6 +1220,21 @@ namespace Nmfs.Agepro.Gui
             System.Diagnostics.Process.Start(helpHtmlPath);
         }
 
+        private void referenceManualpdfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Get Location of Application Path
+            var loc = Path.GetDirectoryName(Application.ExecutablePath);
+
+            //Load Reference Manual from there
+            string refManualPath = Path.Combine(loc, "doc", "AGEPRO_v4.2_Reference_Manual.pdf");
+            if (!File.Exists(refManualPath))
+            {
+                throw new InvalidAgeproGuiParameterException("Reference Manual was not found.");
+            }
+
+            System.Diagnostics.Process.Start(refManualPath);
+        }
+
 
     }
 }
