@@ -38,6 +38,9 @@ namespace Nmfs.Agepro.Gui
             SetupStartupState();
         }
 
+        /// <summary>
+        /// Initiates the Control's "Startup State" or the "Uninitialized Model" phase.
+        /// </summary>
         private void SetupStartupState()
         {
             //AGEPRO Input Data, If any
@@ -351,7 +354,7 @@ namespace Nmfs.Agepro.Gui
                         inputData.discardFraction.timeVarying = controlDiscardWeight.timeVarying;
                     }
 
-                    //TEMP: DO Data Binding
+                    
                     //Misc options
                     inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
                     inputData.options.enableExportR = controlMiscOptions.miscOptionsEnableExportR;
@@ -442,7 +445,15 @@ namespace Nmfs.Agepro.Gui
             
         }
 
-
+        /// <summary>
+        /// AGEPRO GUI Control input validation. 
+        /// </summary>
+        /// <returns>
+        /// If all control inputs pass validation checks, a dialog message will 
+        /// verify so and return true. 
+        /// The first invaild case will exit validation, a dialog message of the type of 
+        /// invalidation, and return false.
+        /// </returns>
         private bool ValidateControlInputs()
         {
             double boundsMaxWeight;
@@ -970,7 +981,12 @@ namespace Nmfs.Agepro.Gui
         }
 
 
-        //stackoverflow.com/questions/435433/what-is-the-preferred-way-to-find-focused-control-in-winforms-app
+        /// <summary>
+        /// Method to find the current Active or Focused Control.
+        /// </summary>
+        /// <see cref="Https://stackoverflow.com/questions/435433/what-is-the-preferred-way-to-find-focused-control-in-winforms-app"/>
+        /// <param name="control">Control object</param>
+        /// <returns></returns>
         private static Control FindFocusedControl(Control control)
         {
             var container = control as IContainerControl;
@@ -1211,6 +1227,12 @@ namespace Nmfs.Agepro.Gui
             System.Diagnostics.Process.Start(helpHtmlPath);
         }
 
+        /// <summary>
+        /// Launches Brodizak's "AGEPRO Reference Manual" when the user clicks on
+        /// the "Reference Manual (Pdf)" menu item under Help.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void referenceManualpdfToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Get Location of Application Path
