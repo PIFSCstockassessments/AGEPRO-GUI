@@ -402,7 +402,7 @@ namespace Nmfs.Agepro.Gui
             var ctlActive = FindFocusedControl(this.ActiveControl);
             if (ctlActive is DataGridViewTextBoxEditingControl)
             {
-                EndEditModeFromDataGridViewTextBoxEditingControl((DataGridViewTextBoxEditingControl)ctlActive);
+                ((DataGridViewTextBoxEditingControl)ctlActive).EditingControlDataGridView.EndEdit();
             }
             else if (ctlActive is TextBox)
             {
@@ -982,15 +982,6 @@ namespace Nmfs.Agepro.Gui
             return control;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="dgvtb"></param>
-        private void EndEditModeFromDataGridViewTextBoxEditingControl(DataGridViewTextBoxEditingControl dgvtb)
-        {
-            DataGridView dgw = dgvtb.EditingControlDataGridView;
-            dgw.EndEdit();
-        }
         
         /// <summary>
         /// Raises the Cut clipboard function from the "Cut" edit menu option.
