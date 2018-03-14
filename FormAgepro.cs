@@ -667,7 +667,7 @@ namespace Nmfs.Agepro.Gui
             //Set the user data work directory  
             if (string.IsNullOrWhiteSpace(controlGeneralOptions.generalInputFile))
             {
-                ageproModelJobName = "untitled_" + Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
+                ageproModelJobName = "untitled_";
                 jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
             }
             else
