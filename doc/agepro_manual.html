@@ -84,7 +84,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#rebuilder-target-option">Rebuider Target</a></li>
 <li><a href="#p-star-analysis">P-Star Analysis</a></li>
 </ul></li>
-<li><a href="#agepro-model-job-run">AGEPRO Model Job Run</a></li>
+<li><a href="#agepro-model-output-run-directory">AGEPRO Model Output Run Directory</a>
+<ul>
+<li><a href="#directory-naming-format">Output Directory Naming Format</a></li>
+</ul></li>
 <li><a href="#misc-options">Misc Options</a>
 <ul>
 <li><a href="#auxiliary-output-files">Auxiliary Output Files</a></li>
@@ -107,44 +110,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <hr />
 <h1 id="creating-a-new-case">Creating a new Case</h1>
 <p>An new input data set can be set from scratch. Click on <strong>Create New Case</strong> in the File menu. A dialog window will pop up to confirm. If so, all existing input and output data will be discarded.</p>
-<p><img src="img/generalOptions_02.png" /></p>
-<p>For new cases, the user must supply the following input:</p>
-<ul>
-<li>First year in Projection</li>
-<li>Last year in Projection</li>
-<li>First Age Class (Age 1 by default)</li>
-<li>Last Age Class</li>
-<li>Number Of Fleets (1 by Default)</li>
-<li>Number Of Recruitment Models (1 by Default)</li>
-<li>Number Of Population Simulations</li>
-<li>Random Number Seed</li>
-<li>Discards are Present (optional)</li>
-</ul>
-<p><img src="img/generalOptions_01a.png" title="General Options" /></p>
+<div class="figure">
+<img src="img/generalOptions_02.png" />
+
+</div>
+<p>For new cases, the user must supply the following input: - First year in Projection - Last year in Projection - First Age Class (Age 1 by default) - Last Age Class - Number Of Fleets (1 by Default) - Number Of Recruitment Models (1 by Default) - Number Of Population Simulations - Random Number Seed - Discards are Present (optional)</p>
+<div class="figure">
+<img src="img/generalOptions_01a.png" title="General Options" />
+
+</div>
 <p>Click <strong>SET</strong> button to proceed.</p>
 <p><strong>Note</strong>: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must supply a file with Bootstrap population data on the <strong>Bootstrap</strong> panel. See the <a href="#bootstrap">Bootstrap</a> section for more information.</p>
 <hr />
 <h1 id="opening-an-existing-agepro-input-data-file">Opening an Existing AGEPRO Input Data File</h1>
 <p>In the File menu, click on the <strong>Open Existing AGERPO Input Data File</strong> option.</p>
 <p>Use the Windows Open File Dialog to locate the desired input file to the interface.</p>
-<p><img src="img/openExisting_01.png" /></p>
+<div class="figure">
+<img src="img/openExisting_01.png" />
+
+</div>
 <p>AGEPRO Version 4.0 input files have a file extension <code>INP</code>. Older versions had a file extension <code>IN</code>.</p>
 <p><strong>Note</strong>: AGEPRO version 4.3.0 is not compatible with input files prior to version 4.0. The user must review input from earlier versions before running for AGEPRO version 4.3.0 and above.</p>
 <hr />
 <h1 id="saving-agepro-input-data-into-file">Saving AGEPRO input data into file</h1>
 <p>To store inputs done in the AGEPRO interface to file, click on the <strong>Save AGEPRO Input Data As..</strong> option in the File menu.</p>
 <p>Use the Windows Save File Dialogue to save the input data using the file name and path desired:</p>
-<p><img src="img/saveInputFile_01.png" /></p>
+<div class="figure">
+<img src="img/saveInputFile_01.png" />
+
+</div>
 <h2 id="validation">Validation</h2>
 <p>The program performs a series of data validation steps before it saves to file.</p>
 <p>If the input is valid (without missing or erroneous input), the user will see the following:</p>
-<p><img src="img/saveInputFile_valid_01.png" /></p>
-<p><img src="img/saveInputFile_valid_02.png" /></p>
+<div class="figure">
+<img src="img/saveInputFile_valid_01.png" />
+
+</div>
+<div class="figure">
+<img src="img/saveInputFile_valid_02.png" />
+
+</div>
 <p>Any errors or invalid input found will prevent the input data to be saved.</p>
 <p>A Dialog box will pop up indicating the issue, for example:</p>
-<p><img src="img/saveInputFile_invalid_01.png" /></p>
+<div class="figure">
+<img src="img/saveInputFile_invalid_01.png" />
+
+</div>
 <p><strong>All invalid input has be resolved before the data may be saved.</strong></p>
-<p><img src="img/saveInputFile_invalid_02.png" /></p>
+<div class="figure">
+<img src="img/saveInputFile_invalid_02.png" />
+
+</div>
 <hr />
 <h1 id="using-nft-data-grids">Using NFT Data Grids</h1>
 <p>NOAA Fisheries Toolbox data grids have many functions that are similar to spreadsheet software programs. However, there are a few differences and limitations. The following topics will describe in detail how to perform common tasks.</p>
@@ -153,37 +169,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To select a single cell: Click the cell, or press one of the Arrow keys to move to the cell.</p>
 <p>To select more than one cell: Click the on the cell, and while holding the mouse button drag the pointer to the cell in the range of cells you are interested in.</p>
 <p>To select an entire row, click on the row heading.</p>
-<p>To select the entire grid, do one of the following:</p>
-<ul>
-<li>Right-Click on the grid and select Select All from the context menu.</li>
-<li>Press CTRL+A.</li>
-<li>Click the top left grid cell.</li>
-</ul>
+<p>To select the entire grid, do one of the following: * Right-Click on the grid and select Select All from the context menu. * Press CTRL+A. * Click the top left grid cell.</p>
 <h3 id="edit-cell-contents">Edit Cell Contents</h3>
 <p>You can edit the contents of a cell directly in the cell.</p>
-<p>To place the contents of a cell in editing mode:</p>
-<ul>
-<li>Double-click the cell that contains the data that you want to edit. Note that the cursor will be at the end of the cell's contents.</li>
-<li>Click the cell that contains the data that you want to edit, and then start typing. If the cell contained any data it will be erased when you start typing.</li>
-</ul>
+<p>To place the contents of a cell in editing mode: * Double-click the cell that contains the data that you want to edit. Note that the cursor will be at the end of the cell's contents. * Click the cell that contains the data that you want to edit, and then start typing. If the cell contained any data it will be erased when you start typing.</p>
 <p>While the cell is still in edit mode, use <strong>Esc</strong> key to cancel the edit. It will revert to previous value before it was entered.</p>
-<p>To commit the edits to the cell:</p>
-<ul>
-<li>Hit the <strong>Enter</strong> key to commit the changes and move the cell selection one cell below.</li>
-<li>Hit the <strong>Up</strong> Arrow key to commit the changes and move the cell selection one cell above.</li>
-<li>Hit the <strong>Down</strong> Arrow key to commit the changes and move to the cell selection one cell below.</li>
-<li>If you are at the last character, hitting the <strong>Right</strong> Arrow key will commit the edit and move the cell selection one cell to the right.</li>
-<li>If you are at the first character, hit the <strong>Left</strong> Arrow key will commit the edit and move the cell selection one cell to the left.</li>
-</ul>
+<p>To commit the edits to the cell: * Hit the <strong>Enter</strong> key to commit the changes and move the cell selection one cell below. * Hit the <strong>Up</strong> Arrow key to commit the changes and move the cell selection one cell above. * Hit the <strong>Down</strong> Arrow key to commit the changes and move to the cell selection one cell below. * If you are at the last character, hitting the <strong>Right</strong> Arrow key will commit the edit and move the cell selection one cell to the right. * If you are at the first character, hit the <strong>Left</strong> Arrow key will commit the edit and move the cell selection one cell to the left.</p>
 <h3 id="copy-grid-data">Copy Grid Data</h3>
 <p>Select a cell or range of cells. Either <strong>Right-Click</strong> on the grid and select Copy from the context menu, or use <strong>CTRL+C</strong>.</p>
 <h3 id="paste-grid-data">Paste Grid Data</h3>
 <p>If you want to paste data from a spreadsheet program, select and copy the range of cells within the spreadsheet program. The copied cells will be stored to the clipboard. You can also paste data from a text file. Data in a text file should be tab-delimited, rows are line-delimited.</p>
-<p>To select where you want the data to be pasted, do one of the following:</p>
-<ul>
-<li>If you have just one cell of data to paste, click on the cell where you want the data to go.</li>
-<li>If you have more than one cell of data to paste, click on the cell you want to be the topmost and leftmost cell of the pasted data. Pasted data will automatically be filled in to the right of and below the cell you select.</li>
-</ul>
+<p>To select where you want the data to be pasted, do one of the following: * If you have just one cell of data to paste, click on the cell where you want the data to go. * If you have more than one cell of data to paste, click on the cell you want to be the topmost and leftmost cell of the pasted data. Pasted data will automatically be filled in to the right of and below the cell you select.</p>
 <p>To paste the data, either <strong>Right-Click</strong> on the grid and select Copy from the context menu, or use <strong>CTRL+V</strong>.</p>
 <h3 id="cut-grid-data">Cut Grid Data</h3>
 <p>Select a cell or range of cells. Either <strong>Right-Click</strong> on the grid and select Cut from the context menu, or use <strong>CTRL+X</strong>.</p>
@@ -199,29 +195,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The user may create a file with stochastic data at age using R or any statistical tool of choice.</p>
 <h1 id="stochastic-data-file-format-layout">Stochastic data file format layout</h1>
 <p>In order to create a succesful Stochastic Data File, please follow the following data file layout.</p>
-<p>The data categories for which this option applies are:</p>
-<ul>
-<li>JAN-1 Stock Weights</li>
-<li>Mid-Year Stock Weights</li>
-<li>Spawning Stock Weights</li>
-<li>Catch Weights</li>
-<li>Discards Weights</li>
-<li>Natural Mortality</li>
-<li>Fishery Selectivity</li>
-<li>Discard Fraction</li>
-</ul>
+<p>The data categories for which this option applies are: * JAN-1 Stock Weights * Mid-Year Stock Weights * Spawning Stock Weights * Catch Weights * Discards Weights * Natural Mortality * Fishery Selectivity * Discard Fraction</p>
 <p>The Stochastic data files are ASCII data files with <strong>space delimited double precision real data</strong>.</p>
 <p>For each stochastic observed value, the data consists of a number of <strong>space delimited data items</strong> on each line of the file. Each line is terminated by newline character (a carriage return or carriage return-line feed combination).</p>
 <p>In AGEPRO, the user specifies the number of bootstrap iterations on the <strong>Bootstrap</strong> panel. The user also specifies the number of simulations on the <strong>General Options</strong> panel.</p>
-<p>The Number of Observed Values is equal to:</p>
-<blockquote>
-<p>Number of Bootstraps x Number of Simulations</p>
-</blockquote>
+<p>The Number of Observed Values is equal to: &gt; Number of Bootstraps x Number of Simulations</p>
 <h2 id="time-variance">Time variance</h2>
-<p>If the user has specified that the data is <em><strong>not time varying</strong></em>:</p>
-<blockquote>
-<p>Number of Data Lines = Number of Observed Values</p>
-</blockquote>
+<p>If the user has specified that the data is <em><strong>not time varying</strong></em>: &gt; Number of Data Lines = Number of Observed Values</p>
 <blockquote>
 <p>Number of Data Columns = Number of Age Classes</p>
 </blockquote>
@@ -246,13 +226,7 @@ Number of Years in Projection Horizon = 10
 Time Variant</code></pre>
 <p>The data file for the above input would consist of 1,000,000 lines of data each with <strong>9</strong> space delimited data values. For each of 100,000 observed values the data is read in for all 10 years.</p>
 <h2 id="stochastic-data-file-format-layout-with-multi-fleets">Stochastic data file format layout with multi-fleets</h2>
-<p>The following considerations apply to:</p>
-<ul>
-<li>Catch Weights</li>
-<li>Discard Weights</li>
-<li>Fishery Selectivity</li>
-<li>Discard Fraction</li>
-</ul>
+<p>The following considerations apply to: * Catch Weights * Discard Weights * Fishery Selectivity * Discard Fraction</p>
 <p>If the user has specified more than one fleet, then the data layout differs only in the number of data columns:</p>
 <blockquote>
 <p>Number of Data Columns = Number of Age Classes x Number of Fleets</p>
@@ -261,14 +235,7 @@ Time Variant</code></pre>
 <hr />
 <h1 id="specifying-weights-of-age">Specifying Weights of Age</h1>
 <p>AGEPRO allows users to input stochastic weights at age.</p>
-<p>From the navigation panel, expand the <strong>Weights if Age</strong> node to set the following stochastic weights of age:</p>
-<ul>
-<li>JAN-1</li>
-<li>SSB</li>
-<li>Mid-Year (Mean)</li>
-<li>Catch</li>
-<li>Discard</li>
-</ul>
+<p>From the navigation panel, expand the <strong>Weights if Age</strong> node to set the following stochastic weights of age: * JAN-1 * SSB * Mid-Year (Mean) * Catch * Discard</p>
 <p>If <em>Discards are present</em> in <strong>General Options</strong> was unchecked or disabled, controls from <em>Discard</em> will be disabled.</p>
 <h2 id="jan-1-stock-weights-at-age">JAN-1 Stock Weights at Age</h2>
 <p>On the JAN-1 Weights panel, the user can select a data preference:</p>
@@ -279,14 +246,23 @@ Time Variant</code></pre>
 <p>The user may select to input mean weights at age and apply log-normal error on each observed value, or to read in <a href="#stochastic-data-files">stochastic data from a file</a>.</p>
 <p>Furthermore, the user specifies whether the data supplied by either method will be supplied for each year in the time horizon as <em>time varying</em>. Otherwise, the data or to use a single set of weights at age for all years.</p>
 <h3 id="example-time-varying">Example: Time Varying</h3>
-<p><img src="img/jan1WeightAge_01.png" title="JAN-1 Time Varying" alt="JAN-1 Time Varying" /></p>
+<div class="figure">
+<img src="img/jan1WeightAge_01.png" title="JAN-1 Time Varying" alt="JAN-1 Time Varying" />
+<p class="caption">JAN-1 Time Varying</p>
+</div>
 <p>In this first example, <em>Time Varying</em> is enabled. The user supplies mean weights at age for each year in the time horizon. In addition, the user also specifies a coefficient of variation for each age.</p>
 <p>Log-Normal error with bias correction will be calculated and applied on each observed value for each year in the time horizon</p>
 <h3 id="example-non-time-varying">Example: Non Time Varying</h3>
-<p><img src="img/jan1WeightAge_02.png" title="JAN-1 Non Time-Varying" alt="JAN-1 Non Time-Varying" /></p>
+<div class="figure">
+<img src="img/jan1WeightAge_02.png" title="JAN-1 Non Time-Varying" alt="JAN-1 Non Time-Varying" />
+<p class="caption">JAN-1 Non Time-Varying</p>
+</div>
 <p>In the next example, <em>Time Varying</em> is not enabled. The user will supply a single vector of mean values for weights at age. The program will apply error on to he data supplied as above, but the data with error will not vary through the time horizon.</p>
 <h3 id="example-from-file-option">Example: From File Option</h3>
-<p><img src="img/jan1WeightAge_03a.png" title="JAN-1 Read Weights From File" alt="JAN-1 Read Weights From File" /></p>
+<div class="figure">
+<img src="img/jan1WeightAge_03a.png" title="JAN-1 Read Weights From File" alt="JAN-1 Read Weights From File" />
+<p class="caption">JAN-1 Read Weights From File</p>
+</div>
 <p>In this example, the user has selected to supply <a href="#stochastic-data-files">data from an external file</a> with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file. No further input is required.</p>
 <h2 id="spawning-stock-weights-at-age">Spawning Stock Weights at Age</h2>
 <p>When the user selects <strong>SSB</strong> from the navigation panel, the user can select from the following:</p>
@@ -438,14 +414,23 @@ Time Variant</code></pre>
 <li>Read Natural Mortality from File</li>
 </ul>
 <h3 id="example-time-varying-1">Example: Time Varying</h3>
-<p><img src="img/natMort_01a.png" /></p>
+<div class="figure">
+<img src="img/natMort_01a.png" />
+
+</div>
 <p>In the above example, <em>Time Varying</em> is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.</p>
 <p>On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.</p>
 <h3 id="example-non-time-varying-1">Example: Non Time Varying</h3>
-<p><img src="img/natMort_02a.png" /></p>
+<div class="figure">
+<img src="img/natMort_02a.png" />
+
+</div>
 <p>In the above example, <em>Time Varying</em> is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.</p>
 <h3 id="example-from-file-option-1">Example: From File Option</h3>
-<p><img src="img/natMort_03.png" /></p>
+<div class="figure">
+<img src="img/natMort_03.png" />
+
+</div>
 <p>In this example, the user has specified that <a href="#stochastic-data-files">natural mortality at age with error data will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
 <hr />
 <h1 id="biological">Biological</h1>
@@ -456,26 +441,37 @@ Time Variant</code></pre>
 </ul>
 <h2 id="maturity">Maturity</h2>
 <p>AGEPRO allows users to input stochastic Maturity at Age.</p>
-<p>On the <strong>Maturity</strong> tab on the <strong>Biological</strong> panel, the user selects from:</p>
-<ul>
-<li>User Specfied Maturity of Age</li>
-<li>Read Maturity from File</li>
-</ul>
+<p>On the <strong>Maturity</strong> tab on the <strong>Biological</strong> panel, the user selects from: * User Specfied Maturity of Age * Read Maturity from File</p>
 <h3 id="example-time-varying-2">Example: Time Varying</h3>
-<p><img src="img/bioMaturity_01a.png" /></p>
+<div class="figure">
+<img src="img/bioMaturity_01a.png" />
+
+</div>
 <p>In the above example, <em>Time Varying</em> is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.</p>
 <p>On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.</p>
 <h3 id="example-non-time-varying-2">Example: Non Time Varying</h3>
-<p><img src="img/bioMaturity_02a.png" /></p>
+<div class="figure">
+<img src="img/bioMaturity_02a.png" />
+
+</div>
 <p>In the above example, <em>Time Varying</em> is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.</p>
 <h3 id="example-from-file-option-2">Example: From File Option</h3>
-<p><img src="img/bioMaturity_03.png" /></p>
+<div class="figure">
+<img src="img/bioMaturity_03.png" />
+
+</div>
 <p>In this example, the user has specified that <a href="#stochastic-data-files">maturity at age with error data will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
 <h2 id="fraction-mortality-prior-to-spawning">Fraction Mortality Prior to Spawning</h2>
 <p>On the <strong>Fraction Mortality</strong> tab in the <strong>Biological</strong> panel, the user will input the fraction of mortality prior to spawning to be applied independently to Natural and Fishing Mortality.</p>
-<p><img src="img/bioFractionMortality_01.png" /></p>
+<div class="figure">
+<img src="img/bioFractionMortality_01.png" />
+
+</div>
 <p>In the above example, the user applies the same constant value to all years in the projection horizon.</p>
-<p><img src="img/bioFractionMortality_02.png" /></p>
+<div class="figure">
+<img src="img/bioFractionMortality_02.png" />
+
+</div>
 <p>In the above example, <em>time varying</em> is enabled, and the user has selected to input different values through the time horizon.</p>
 <hr />
 <h1 id="fishery-selectivity">Fishery Selectivity</h1>
@@ -486,15 +482,24 @@ Time Variant</code></pre>
 <li>Read Fishery Selectivity from File</li>
 </ul>
 <h3 id="example-time-varying-3">Example: Time Varying</h3>
-<p><img src="img/fishSelectivity_01a.png" /></p>
+<div class="figure">
+<img src="img/fishSelectivity_01a.png" />
+
+</div>
 <p>In the above example, <em>time varying</em> is eanbled, and the user has selected to input the mean fishery selectivity for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will apply bias corrected log-normal error to the mean fishery selectivity values at age for all fleets.</p>
 <h3 id="example-non-time-varying-3">Example: Non Time Varying</h3>
-<p><img src="img/fishSelectivity_02a.png" /></p>
+<div class="figure">
+<img src="img/fishSelectivity_02a.png" />
+
+</div>
 <p>In the above case, the user has selected to input a vector of mean fishery selectivity values at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will generate stochastic fishery selectivity values for each fleet. The same values will be applied in all years of the time horizon.</p>
 <h3 id="example-from-file-option-3">Example: From File Option</h3>
-<p><img src="img/fishSelectivity_03.png" /></p>
+<div class="figure">
+<img src="img/fishSelectivity_03.png" />
+
+</div>
 <p>In this example, the user specified that <a href="#stochastic-data-files">stochastic data for fishery selectivity will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
 <hr />
 <h1 id="discard-fraction">Discard Fraction</h1>
@@ -506,15 +511,24 @@ Time Variant</code></pre>
 <li>Read Discard Fraction from File</li>
 </ul>
 <h3 id="example-time-varying-4">Example: Time Varying</h3>
-<p><img src="img/discardFraction_01a.png" /></p>
+<div class="figure">
+<img src="img/discardFraction_01a.png" />
+
+</div>
 <p>In the above example, <em>time varying</em> is eanbled, and the user has selected to input the mean discard fraction for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will apply bias corrected log-normal error to the mean discard fraction values at age for all fleets.</p>
 <h3 id="example-non-time-varying-4">Example: Non Time Varying</h3>
-<p><img src="img/discardFraction_02a.png" /></p>
+<div class="figure">
+<img src="img/discardFraction_02a.png" />
+
+</div>
 <p>In the above case, the user has selected to input a vector of mean discard fraction at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will generate stochastic discard fraction values for each fleet. The same values will be applied in all years of the time horizon.</p>
 <h3 id="example-from-file-option-4">Example: From File Option</h3>
-<p><img src="img/discardFraction_03.png" /></p>
+<div class="figure">
+<img src="img/discardFraction_03.png" />
+
+</div>
 <p>In this example, the user specified that <a href="#stochastic-data-files">stochastic data for discard fraction will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
 <hr />
 <h1 id="bootstrap">Bootstrap</h1>
@@ -526,8 +540,7 @@ Time Variant</code></pre>
 <p>AGEPRO versions 3.4 and later do not support recruitment ages beyond age 1, therefore the second bootstrap file with Bootstrap F's in earlier versions is no longer used.</p>
 <h3 id="scaling-factors-with-vpavirtual-population-analysis">Scaling factors with VPA(Virtual Population Analysis)</h3>
 <p>Typically, bootstrap files are generated by the <strong>VPA(Virtual Population Analysis)</strong> or <strong>ASAP(Age Structured Assessment Program)</strong> Models. It is imperative that the user be consistent between VPA or ASAP runs and AGEPRO.</p>
-<p>In the following example, the <strong>VPA program input</strong> generates a bootstrap population file which uses a scaling factor of <code>1</code>. Thus, if this were the <strong>VPA</strong> file used to create for <strong>AGEPRO</strong> input, with AGEPRO's <strong>Population Scaling Factor</strong> of <code>1000</code>, then it will imply that the <strong>VPA Catch data</strong> was in <strong>thousands</strong> of fish.<br />
-<img src="img/VPAExample_01.png" title="VPA Bootstrapping Output Options" alt="alt text" /></p>
+<p>In the following example, the <strong>VPA program input</strong> generates a bootstrap population file which uses a scaling factor of <code>1</code>. Thus, if this were the <strong>VPA</strong> file used to create for <strong>AGEPRO</strong> input, with AGEPRO's <strong>Population Scaling Factor</strong> of <code>1000</code>, then it will imply that the <strong>VPA Catch data</strong> was in <strong>thousands</strong> of fish. <img src="img/VPAExample_01.png" title="VPA Bootstrapping Output Options" alt="alt text" /></p>
 <hr />
 <h1 id="recruitment">Recruitment</h1>
 <p>AGEPRO supports multiple recruitment methods. The number of recruitment methods can be specified in the <strong>General Options</strong> panel.</p>
@@ -628,12 +641,7 @@ Time Variant</code></pre>
 <p>The <strong>Harvest Scenario</strong> panel includes a data grid used to determine the level of population harvest for each year in the projection horizon.</p>
 <p>In addition, the user may use this data grid for additional harvest calculations such as the <strong>P-Star Analysis</strong>, or Stock <strong>Rebuilder Target</strong>. By default, <strong>None (only Harvest Scenario)</strong> is selected.</p>
 <h2 id="harvest-scenario-table">Harvest Scenario Table</h2>
-<p>In the Harvest Scenario data grid table, the user must specify the <em>Harvest Specfication</em> for each year in the projection time horizon. The choices are:</p>
-<ul>
-<li>Landings (MT)</li>
-<li>Removals (Landings and Discards) (MT)</li>
-<li>Total Fishing Mortality or &quot;F-MULT&quot;</li>
-</ul>
+<p>In the Harvest Scenario data grid table, the user must specify the <em>Harvest Specfication</em> for each year in the projection time horizon. The choices are: * Landings (MT) * Removals (Landings and Discards) (MT) * Total Fishing Mortality or &quot;F-MULT&quot;</p>
 <p>For single fleet models, apply the <em>Harvrest Specfication</em> values under the <em>HARVEST VALUE</em> column. For multiple fleet models, input the values for the intended fleet (e.g. <em>F-MULT</em> specfic values for <em>FLEET-2</em>). In either case, harvest specification values must be <em>numeric</em>.</p>
 <h2 id="rebuilder-target-option">Rebuilder Target Option</h2>
 <p>AGEPRO allows an option for the user to specify a Rebuilder target and calculate the Fishing Mortality level required to meet this target to a specified confidence level.</p>
@@ -649,7 +657,10 @@ Time Variant</code></pre>
 </ul>
 <p>If there is more than one fleet then the input estimates will be used to set the proportion of Fishing Mortality in each fleet. This proportion will be held constant as the F-Mult level changes to meet the target.</p>
 <h3 id="example">Example</h3>
-<p><img src="img/rebuilderHarvestTable_01.png" title="Harvest Scenario Table" alt="alt text" /></p>
+<div class="figure">
+<img src="img/rebuilderHarvestTable_01.png" title="Harvest Scenario Table" alt="alt text" />
+<p class="caption">alt text</p>
+</div>
 <p>In the example shown above the user has set a Landings Harvest Quota in the first year of <strong>2,100 MT</strong>.</p>
 <p>The Rebuilder range begins with the second year in the time horizon and ends at the target year <strong>2019</strong>.</p>
 <p>The user has also set the Harvest F-Mult in the Rebuilder Range at an initial guess.</p>
@@ -693,7 +704,10 @@ Probability Threshold Exceeded at Least Once =     0.9063</code></pre>
 </blockquote>
 <p>For the multiple fleets scenario, the proportion of removals per fleet will be set by the initial guess and this proportion will be held constant as total removal values are varied to meet the P-Star criteria.</p>
 <h3 id="example-3">Example</h3>
-<p><img src="img/pstarHarvestTable_01.png" title="Harvest Scenario Table" alt="alt text" /></p>
+<div class="figure">
+<img src="img/pstarHarvestTable_01.png" title="Harvest Scenario Table" alt="alt text" />
+<p class="caption">alt text</p>
+</div>
 <p>In the above example, the user has provided an initial guess of total removals of 20,000 MT (<code>15000</code> for Fleet-1 + <code>7500</code> for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.</p>
 <p>The Overfishing F is 0.3. The program will vary the levels of total removals to determine the level of removals required to exceed a Total F of 0.3 with 10%, 25%, and 50% levels of confidence.</p>
 <p>A table of results is reported for all levels</p>
@@ -743,18 +757,22 @@ Year       1 %        5 %        10 %       25 %       50 %       75 %       90 
 2013    10.0895    15.3514    18.2694    24.3797    32.6471    45.5232    63.8322    78.3229   113.7047
 2014     2.9045     4.6582     6.0500     9.2075    14.5876    23.0587    35.2707    45.9843    75.4379</code></pre>
 <hr />
-<h1 id="agepro-model-job-run">AGEPRO Model Job Run</h1>
-<p>Launching an AGEPRO model marks a new <strong>AGEPRO Model Job Run</strong>.</p>
-<p>When the <strong>Launch AGEPRO model</strong> menu option is selected. AGEPRO will check if the form inputs are valid. If valid, it will grab a copy of the bootstrap file, and stores the GUI input under a desginagted <strong>AGEPRO model job run directory</strong> under the <code>AGEPRO</code> subdirectory, under the desginagted user document directory (<code>documents</code> or <code>My Documents</code>). The <code>AGEPRO</code> subdirectory will be created if it didn't exist under the document directory.</p>
-<p>The <strong>AGEPRO model job run directory</strong> may be entitled two ways. It may take base name given in input file from general options (without file extensions)<br />
-appended with a date-time stamp when the model was launched. If input file in general options is blank, then it will generate a random filename (without file extensions) and the date-time stamp this model launched.</p>
-<p>Output files generated by the calcuation engine run will be stored at its <strong>AGEPRO model job run directory</strong>.</p>
-<p>After the calcuation engine is finished, AGEPRO will open a new window showing the directory the outputs were written to.</p>
+<h1 id="agepro-model-output-run-directory">AGEPRO Model Output Run Directory</h1>
+<p>Launching an AGEPRO model, via the <strong>Launch AGEPRO model</strong> option under <strong>Run</strong> menu, creates a new <strong>AGEPRO Model Output Run directory</strong>.</p>
+<p>Output files generated by the calcuation engine run will be stored here.</p>
+<p>In addition, the control's inputs and bootstrap settings are stored here. AGEPRO will check if the form inputs are valid. If valid, it will grab a copy of the bootstrap file, and stores the GUI input under a desginagted <strong>AGEPRO Model Output Run directory</strong> under the <code>AGEPRO</code> subdirectory, under the desginagted user document directory (<code>documents</code> or <code>My Documents</code>). The <code>AGEPRO</code> subdirectory will be created if it didn't exist under the document directory.</p>
+<p>After the calcuation engine is finished, AGEPRO will open a new window at the <strong>AGEPRO Model Output Run directory</strong> the outputs were written to.</p>
+<h2 id="directory-naming-format">Directory Naming Format</h2>
+<p>The <strong>AGEPRO Model Output Run directory</strong> may be entitled two ways:</p>
+<ul>
+<li>It may take base name given in input file from general options (without file extensions) appended with a date-time stamp when the model was launched.</li>
+<li>If input file in general options is blank, then it will generate a random filename (without file extensions) and the date-time stamp this model launched.</li>
+</ul>
 <hr />
 <h1 id="misc-options">Misc options</h1>
 <h2 id="auxiliary-output-files">Auxiliary Output Files</h2>
-<p>AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted <strong>AGEPRO Model Job run directory</strong>.</p>
-<p>The Auxiliary files follow the naming conventions that are used to make the AGEPRO model job run directory, but have different file extensions.</p>
+<p>AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted <strong>AGEPRO Model Output Run directory</strong>.</p>
+<p>The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.</p>
 <p>All auxiliary file data items are space delimited double precision real numbers in scientific notation.</p>
 <p>In the following auxiliary files the number of columns is equal to the number of years in the time horizon and the number of rows is equal to the number of observed values. These files are created in all cases.</p>
 <p>The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.</p>
@@ -814,13 +832,7 @@ appended with a date-time stamp when the model was launched. If input file in ge
 <h3 id="multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File (<code>*.XX10</code>)</h3>
 <p>If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created. The number of columns will be equal to the number of years in the time horizon.</p>
 <p>The number of data sections will be equal to the number of observed values multiplied by the number of fleets.</p>
-<p>There are four rows in each section by fleet:</p>
-<ul>
-<li>Fishing Mortality</li>
-<li>Combined Catch Biomass</li>
-<li>Landings</li>
-<li>Discards</li>
-</ul>
+<p>There are four rows in each section by fleet: * Fishing Mortality * Combined Catch Biomass * Landings * Discards</p>
 <h3 id="generating-auxiliary-stochastic-data-files">Generating Auxiliary Stochastic Data Files</h3>
 <p>The user may request that stochastic data at age be saved to auxiliary files on the Options tab.</p>
 <p>These stochasitic data files may be read in to subsequent model runs</p>
@@ -965,16 +977,17 @@ Probability Threshold Exceeded at Least Once =     0.0065</code></pre>
 <p>However, the user may find that these defaults make the data hard to read in the report file. The user may override these defaults by checking the <strong>Specify Scale Factors for Output Report</strong> check box.</p>
 <p><strong>Please Note:</strong> This scaling is only used in the Report File and in Plots within the graphical interface, and does not affect the internal calculations or the auxiliary files.</p>
 <h2 id="specifying-bounds">Specifying Bounds</h2>
-<p>The user has an option to override the default maximum bounds values for <em>Weights of Age</em> (default: <code>10.0</code>) and <em>Natural Mortality</em> (default: <code>1.0</code>).<br />
-This is be enabled by checking the <strong>Specify Bounds</strong> check box.</p>
+<p>The user has an option to override the default maximum bounds values for <em>Weights of Age</em> (default: <code>10.0</code>) and <em>Natural Mortality</em> (default: <code>1.0</code>). This is be enabled by checking the <strong>Specify Bounds</strong> check box.</p>
 <h2 id="retrospective-adjustment-factors">Retrospective Adjustment Factors</h2>
-<p><strong>Retrospective Adjustment Factors</strong> are applied to the initial population numbers to correct for retrospective bias.<br />
-This is an optional parameter, and the user can enable or disable it by checking/unchecking the <strong>Specify Retrospective Adjustment Factors</strong> check box.</p>
+<p><strong>Retrospective Adjustment Factors</strong> are applied to the initial population numbers to correct for retrospective bias. This is an optional parameter, and the user can enable or disable it by checking/unchecking the <strong>Specify Retrospective Adjustment Factors</strong> check box.</p>
 <p>The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be <strong>multiplied by</strong> the retrospective adjustment factors.</p>
 <h2 id="view-agepro-output-files">View AGEPRO Output files</h2>
 <p>Choose which program to view AGEPRO Output Data (<code>*.out</code>) files. This program will open once the AGEPRO calculation engine is finished.</p>
 <p>If <strong>System Default</strong> is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.</p>
-<p><img src="img/outFile_Assiocation_01.png" title="File assoication" /></p>
+<div class="figure">
+<img src="img/outFile_Assiocation_01.png" title="File assoication" />
+
+</div>
 <p>To bypass viewing AGEPRO Output data files after a model run, select <strong>None</strong>.</p>
 </body>
 </html>
