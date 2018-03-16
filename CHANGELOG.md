@@ -1,6 +1,46 @@
 
 # AGEPRO Changelog
 
+## 4.3.0 (2018-00-00)
+
+### Significant User Changes from AGEPRO 4.2.2
+- Replaced tabs with the a navigation Tree Node to navigate through AGEPRO parameters. 
+- AGEPRO option parameters are scalable.  
+- Consoldate recruitment model actions in single panel: Recruitment. 
+  - Contains general "Recruitment" options and "Recruit Model" Type ("Emprical-R", "Parametric-R", "Predictor-R", "Markov Matrix-R" in ver 4.2.2).
+  - "Recruit Model" handles multiple selections of varying model types. (Enforces the single Markov Matrix Recuitment Model rule.)
+- Launching AGEPRO Calcuation Engine saves a copy of current GUI input, bootstrap data, and calculation engine output in a new folder located AGEPRO user's HOME or documents directory instead of overwriting input file.
+- No output plot functionality for the calcuation engine output.
+- AGEPRO Input File Compatibility: Only for version 4.0 
+
+## Other Changes
+- Including 2018 revisions to Jon Brodizak's AGEPRO Reference Manual
+- In the Biological panel, "Fraction Mortality Prior to Spawing" and "Maturity at Age" are seperated into their own tabs.
+- Streamlined Menu options
+  - Output File Viewer option in Misc options.
+- Toolbar not included in this interface. 
+- "Discard Weights" and "Discard Fraction" are accessible if the discards is not enabled, however GUI controls are disabled.
+- Moved Time Varying Checkboxes.
+- 'Fill Down' and 'Fill Right' functionality are replaced with 'Fill Blank Cells'
+
+## Known Issues
+- Misc Options Panel is not Scaleable.
+
+## 4.3.0.11-beta11 (2018-03-16)
+
+## Added
+- Example Projection Model files: A Standard Projection Model Example, a Projection Model Example with PStar Analysis, and a Projection Model Example with a Rebuild Scenario. 
+
+## Changes
+- March 2018 revision of Jon Brodziak's AGEPRO Reference Manual
+  - Includes AGEPRO Input data formats for available AGEPRO Recruitment Models (Table 4)
+- Helpfile: Clarify how AGEPRO Model Calcuation Engine launches and how output is stored.
+  - Renamed section 'AGEPRO Output Run Directory' to `Launching AGEPRO Model to Calcuation Engine'
+  - Moved Section up the helpflie to help assoicate the AGEPRO workflow.
+- Removed GetRandomFileName to substring for blank/null model output run directory 
+  - Now 'untitled_' instead of the 'untitled_' + GetRandomFileName prefix in this case.
+- CoreLib: Removed function GetRecruitModelName
+
 ## 4.3.0.10-beta10 (2018-01-31)
 
 ## Added
@@ -126,10 +166,3 @@
 
 ## 4.3.0.1-beta1 (2016-11-22)
 First release of GUI rewrite.
- 
-### Significant User Changes from AGEPRO 4.2.2
-- Replace tabs with the a navigation Tree Node to navigate through AGEPRO parameters.    
-- Launching AGEPRO Calcuation Engine saves a copy of current GUI input (along with a copy of the bootstrap and engine output) to the AGEPRO users document folder instead of overwriting input file.
-- No output plot functionality for the calcuation engine output.
-- AGEPRO Input File Compatibility: Only for version 4.0 
-- Output File Viewer option now in Misc options.
