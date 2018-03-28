@@ -302,9 +302,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="doc\agepro_manual.md" />
-    <None Include="doc\AGEPRO_v4.2_Reference_Manual.pdf">
+    <Content Include="doc\AGEPRO_v4.2_Reference_Manual.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="examples\example1\Example1.BSN">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
