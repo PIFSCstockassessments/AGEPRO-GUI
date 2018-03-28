@@ -1,10 +1,10 @@
 
 # AGEPRO Changelog
 
-## 4.3.0 (2018-00-00)
+## 4.3.0 (2018-03-27)
 
-### Significant User Changes from AGEPRO 4.2.2
-- Replaced tabs with the a navigation Tree Node to navigate through AGEPRO parameters. 
+## Significant User Changes from AGEPRO 4.2.2
+- New user interface. Replaced tabs with the a navigation Tree Node to navigate through AGEPRO parameters. 
 - AGEPRO option parameters are scalable.  
 - Consoldate recruitment model actions in single panel: Recruitment. 
   - Contains general "Recruitment" options and "Recruit Model" Type ("Emprical-R", "Parametric-R", "Predictor-R", "Markov Matrix-R" in ver 4.2.2).
@@ -12,6 +12,7 @@
 - Launching AGEPRO Calcuation Engine saves a copy of current GUI input, bootstrap data, and calculation engine output in a new folder located AGEPRO user's HOME or documents directory instead of overwriting input file.
 - No output plot functionality for the calcuation engine output.
 - AGEPRO Input File Compatibility: Only for version 4.0 
+- AGEPRO Help Manual ('Using AGEPRO' in ver 4.2.2) is now in web page format.
 
 ## Other Changes
 - Including 2018 revisions to Jon Brodizak's AGEPRO Reference Manual
@@ -22,9 +23,12 @@
 - "Discard Weights" and "Discard Fraction" are accessible if the discards is not enabled, however GUI controls are disabled.
 - Moved Time Varying Checkboxes.
 - 'Fill Down' and 'Fill Right' functionality are replaced with 'Fill Blank Cells'
+- README and LICENCE compliant with DOC Policy.
 
 ## Known Issues
 - Misc Options Panel is not Scaleable.
+
+# AGEPRO 4.3.0 Beta Changelog
 
 ## 4.3.0.11-beta11 (2018-03-16)
 
