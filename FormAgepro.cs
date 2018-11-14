@@ -365,16 +365,16 @@ namespace Nmfs.Agepro.Gui
                     inputData.options.enableBounds = controlMiscOptions.miscOptionsBounds;
                     inputData.options.enableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
 
-                    inputData.refpoint.refSpawnBio = Convert.ToDouble(controlMiscOptions.miscOptionsRefSpawnBiomass);
-                    inputData.refpoint.refJan1Bio = Convert.ToDouble(controlMiscOptions.miscOptionsRefJan1Biomass);
-                    inputData.refpoint.refMeanBio = Convert.ToDouble(controlMiscOptions.miscOptionsRefMeanBiomass);
-                    inputData.refpoint.refFMort = Convert.ToDouble(controlMiscOptions.miscOptionsRefFishingMortality);
+                    inputData.refpoint.refSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
+                    inputData.refpoint.refJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
+                    inputData.refpoint.refMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
+                    inputData.refpoint.refFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
 
                     inputData.reportPercentile.percentile = controlMiscOptions.miscOptionsReportPercentile;
 
-                    inputData.scale.scaleBio = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorBiomass);
-                    inputData.scale.scaleRec = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorRecruits);
-                    inputData.scale.scaleStockNum = Convert.ToDouble(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
+                    inputData.scale.scaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
+                    inputData.scale.scaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
+                    inputData.scale.scaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
 
                     inputData.retroAdjustOption.retroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
 
