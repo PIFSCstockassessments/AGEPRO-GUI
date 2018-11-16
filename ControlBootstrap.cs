@@ -13,7 +13,6 @@ namespace Nmfs.Agepro.Gui
 {
     public partial class ControlBootstrap : UserControl
     {
-
         public ControlBootstrap()
         {
             InitializeComponent();
@@ -38,11 +37,12 @@ namespace Nmfs.Agepro.Gui
         //TODO:buttonLoadFile action
         public void SetBootstrapControls(Nmfs.Agepro.CoreLib.AgeproBootstrap bootstrapOpt)
         {
+
             //Clear any existing bindings before creating new ones.
             this.textBoxBootstrapFile.DataBindings.Clear();
             this.textBoxNumBootstrapIterations.DataBindings.Clear();
             this.textBoxPopScaleFactors.DataBindings.Clear();
-            this.textBoxBootstrapFile.DataBindings.Add("Text", bootstrapOpt, "bootstrapFile");
+            this.textBoxBootstrapFile.DataBindings.Add("Text", bootstrapOpt, "bootstrapFile", false, DataSourceUpdateMode.OnPropertyChanged);
             this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps");
             this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor");
             this.textBoxNumBootstrapIterations.PrevValidValue = this.bootstrapIterations;
@@ -97,8 +97,6 @@ namespace Nmfs.Agepro.Gui
                 return false;
             }
 
-            
-            
             return true;
         }
 
@@ -110,7 +108,7 @@ namespace Nmfs.Agepro.Gui
                 OpenFileDialog bootstrapFileDialog = SetBootstrapOpenFileDialog();
                 if (bootstrapFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    bootstrapFilename = bootstrapFileDialog.FileName;
+                    bootstrapFilename = bootstrapFileDialog.FileName;                    
                 }
             }
         }
