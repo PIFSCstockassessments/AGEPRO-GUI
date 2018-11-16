@@ -397,6 +397,125 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
+        /// Load AGEPRO InputFile data into AGEPRO Parameter Controls
+        /// </summary>
+        /// <param name="inpFile">AGEPRO CoreLib InputFile</param>
+        private void LoadAgeproInputParameters(AgeproInputFile inpFile)
+        {
+            //General Options
+            controlGeneralOptions.generalModelId = inpFile.caseID;
+            controlGeneralOptions.generalFirstYearProjection = inpFile.general.projYearStart.ToString();
+            controlGeneralOptions.generalLastYearProjection = inpFile.general.projYearEnd.ToString();
+            controlGeneralOptions.generalFirstAgeClass = inpFile.general.ageBegin;
+            controlGeneralOptions.generalLastAgeClass = inpFile.general.ageEnd;
+            controlGeneralOptions.generalNumberFleets = inpFile.general.numFleets.ToString();
+            controlGeneralOptions.generalNumberRecruitModels = inpFile.general.numRecModels.ToString();
+            controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.numPopSims.ToString();
+            controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
+            controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
+
+            //JAN-1
+            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
+
+            //SSB
+            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
+
+            //Mid-Year (Mean)
+            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general);
+
+            //Catch Weight
+            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general);
+
+            //Discard Weight
+            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general);
+
+            //Recruitment
+            controlRecruitment.SetupControlRecruitment(
+                inpFile.general.numRecModels,
+                inpFile.recruitment.recruitList,
+                inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray(),
+                inpFile.recruitment.recruitProb,
+                inpFile.recruitment.recruitScalingFactor,
+                inpFile.recruitment.SSBScalingFactor);
+
+            //Fishery Selectivity
+            controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.fishery, inpFile.general);
+
+            //Discard Fraction
+            controlDiscardFraction.LoadStochasticAgeInputData(inpFile.discardFraction, inpFile.general);
+
+            //Natural Mortality
+            controlNaturalMortality.LoadStochasticAgeInputData(inpFile.naturalMortality, inpFile.general);
+
+            //Maturity (Biological)
+            controlBiological.maturityAge.LoadStochasticAgeInputData(inpFile.maturity, inpFile.general);
+
+            //Fraction Mortality Prior To Spawning (Biological)
+            controlBiological.readFractionMortalityState = true;
+            controlBiological.fractionMortality =
+                Util.GetAgeproInputDataTable(controlBiological.fractionMortality, inpFile.biological.TSpawn);
+            controlBiological.fractionMortalityTimeVarying = inpFile.biological.timeVarying;
+            controlBiological.readFractionMortalityState = false;
+
+            //Harvest Scenario
+            if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.Rebuilder)
+            {
+                controlHarvestScenario.Rebuilder = inpFile.rebuild;
+            }
+            else if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.PStar)
+            {
+                controlHarvestScenario.PStar = inpFile.pstar;
+            }
+            controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
+            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
+            controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inpFile);
+
+
+            //Bootstrapping
+            controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
+            controlBootstrap.bootstrapIterations = inpFile.bootstrap.numBootstraps.ToString();
+            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.popScaleFactor.ToString();
+
+            //Misc Options
+            controlMiscOptions.miscOptionsEnableSummaryReport = inpFile.options.enableSummaryReport;
+            controlMiscOptions.miscOptionsEnableAuxStochasticFiles = inpFile.options.enableAuxStochasticFiles;
+            controlMiscOptions.miscOptionsEnableExportR = inpFile.options.enableExportR;
+            controlMiscOptions.miscOptionsEnablePercentileReport = inpFile.options.enablePercentileReport;
+            controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.percentile);
+
+            controlMiscOptions.miscOptionsEnableRefpointsReport = inpFile.options.enableRefpoint;
+            controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.refpoint.refSpawnBio.ToString();
+            controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.refpoint.refJan1Bio.ToString();
+            controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.refpoint.refMeanBio.ToString();
+            controlMiscOptions.miscOptionsRefFishingMortality = inpFile.refpoint.refFMort.ToString();
+
+            controlMiscOptions.miscOptionsEnableScaleFactors = inpFile.options.enableScaleFactors;
+            controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.scaleBio.ToString();
+            controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.scaleRec.ToString();
+            controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.scale.scaleStockNum.ToString();
+
+            controlMiscOptions.miscOptionsBounds = inpFile.options.enableBounds;
+            controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.maxWeight.ToString();
+            controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.maxNatMort.ToString();
+
+            controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
+            controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
+            controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;
+
+            controlMiscOptions.miscOptionsRetroAdjustmentFactorTable =
+                Util.GetAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable,
+                inpFile.retroAdjustOption.retroAdjust);
+
+            if (controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors == true)
+            {
+                controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
+            }
+
+            Console.WriteLine("Loaded AGEPRO Parameters ..");
+        }
+
+
+        /// <summary>
         /// Programmicaly commit data in current active winform control.  
         /// </summary>
         private void commitFocusedControl()
@@ -838,125 +957,6 @@ namespace Nmfs.Agepro.Gui
         }
 
         /// <summary>
-        /// Load AGEPRO InputFile data into AGEPRO Parameter Controls
-        /// </summary>
-        /// <param name="inpFile">AGEPRO CoreLib InputFile</param>
-        private void LoadAgeproInputParameters(AgeproInputFile inpFile)
-        {
-            //General Options
-            controlGeneralOptions.generalModelId = inpFile.caseID;
-            controlGeneralOptions.generalFirstYearProjection = inpFile.general.projYearStart.ToString();
-            controlGeneralOptions.generalLastYearProjection = inpFile.general.projYearEnd.ToString();
-            controlGeneralOptions.generalFirstAgeClass = inpFile.general.ageBegin;
-            controlGeneralOptions.generalLastAgeClass = inpFile.general.ageEnd;
-            controlGeneralOptions.generalNumberFleets = inpFile.general.numFleets.ToString();
-            controlGeneralOptions.generalNumberRecruitModels = inpFile.general.numRecModels.ToString();
-            controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.numPopSims.ToString();
-            controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
-            controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
-
-            //JAN-1
-            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
-
-            //SSB
-            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
-
-            //Mid-Year (Mean)
-            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general);
-
-            //Catch Weight
-            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general);
-
-            //Discard Weight
-            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general);
-
-            //Recruitment
-            controlRecruitment.SetupControlRecruitment(
-                inpFile.general.numRecModels, 
-                inpFile.recruitment.recruitList,
-                inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray(),
-                inpFile.recruitment.recruitProb,
-                inpFile.recruitment.recruitScalingFactor,
-                inpFile.recruitment.SSBScalingFactor);
-
-            //Fishery Selectivity
-            controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.fishery, inpFile.general);
-
-            //Discard Fraction
-            controlDiscardFraction.LoadStochasticAgeInputData(inpFile.discardFraction, inpFile.general);
-
-            //Natural Mortality
-            controlNaturalMortality.LoadStochasticAgeInputData(inpFile.naturalMortality, inpFile.general);
-
-            //Maturity (Biological)
-            controlBiological.maturityAge.LoadStochasticAgeInputData(inpFile.maturity, inpFile.general);
-
-            //Fraction Mortality Prior To Spawning (Biological)
-            controlBiological.readFractionMortalityState = true;
-            controlBiological.fractionMortality = 
-                Util.GetAgeproInputDataTable (controlBiological.fractionMortality, inpFile.biological.TSpawn);
-            controlBiological.fractionMortalityTimeVarying = inpFile.biological.timeVarying;
-            controlBiological.readFractionMortalityState = false;
-
-            //Harvest Scenario
-            if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.Rebuilder)
-            {
-                controlHarvestScenario.Rebuilder = inpFile.rebuild;
-            }
-            else if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.PStar)
-            {
-                controlHarvestScenario.PStar = inpFile.pstar;
-            }
-            controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
-            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
-            controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inpFile);
-            
-
-            //Bootstrapping
-            controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
-            controlBootstrap.bootstrapIterations = inpFile.bootstrap.numBootstraps.ToString();
-            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.popScaleFactor.ToString();
-            
-            //Misc Options
-            controlMiscOptions.miscOptionsEnableSummaryReport = inpFile.options.enableSummaryReport;
-            controlMiscOptions.miscOptionsEnableAuxStochasticFiles = inpFile.options.enableAuxStochasticFiles;
-            controlMiscOptions.miscOptionsEnableExportR = inpFile.options.enableExportR;
-            controlMiscOptions.miscOptionsEnablePercentileReport = inpFile.options.enablePercentileReport;
-            controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.percentile);
-            
-            controlMiscOptions.miscOptionsEnableRefpointsReport = inpFile.options.enableRefpoint;
-            controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.refpoint.refSpawnBio.ToString();
-            controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.refpoint.refJan1Bio.ToString();
-            controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.refpoint.refMeanBio.ToString();
-            controlMiscOptions.miscOptionsRefFishingMortality = inpFile.refpoint.refFMort.ToString();
-            
-            controlMiscOptions.miscOptionsEnableScaleFactors = inpFile.options.enableScaleFactors;
-            controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.scaleBio.ToString();
-            controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.scaleRec.ToString();
-            controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.scale.scaleStockNum.ToString();
-
-            controlMiscOptions.miscOptionsBounds = inpFile.options.enableBounds;
-            controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.maxWeight.ToString();
-            controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.maxNatMort.ToString();
-
-            controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
-            controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
-            controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;  
-
-            controlMiscOptions.miscOptionsRetroAdjustmentFactorTable = 
-                Util.GetAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable, 
-                inpFile.retroAdjustOption.retroAdjust);
-                      
-            if (controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors == true)
-            {
-                controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
-            }
-
-            Console.WriteLine("Loaded AGEPRO Parameters ..");
-        }
-
-
-        /// <summary>
         /// Closes the AGEPRO GUI
         /// </summary>
         /// <param name="sender"></param>
@@ -966,20 +966,6 @@ namespace Nmfs.Agepro.Gui
             //Terminate
             this.Close();
         }
-
-        /// <summary>
-        /// Opens the AGEPRO About Dialog Box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            commitFocusedControl();
-            //About Box Dialog
-            AboutAgepro aboutDialog = new AboutAgepro();
-            aboutDialog.ShowDialog();
-        }
-
 
         /// <summary>
         /// Method to find the current Active or Focused Control.
@@ -1246,6 +1232,19 @@ namespace Nmfs.Agepro.Gui
             }
 
             System.Diagnostics.Process.Start(refManualPath);
+        }
+
+        /// <summary>
+        /// Opens the AGEPRO About Dialog Box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            commitFocusedControl();
+            //About Box Dialog
+            AboutAgepro aboutDialog = new AboutAgepro();
+            aboutDialog.ShowDialog();
         }
 
 
