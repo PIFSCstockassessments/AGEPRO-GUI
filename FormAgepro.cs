@@ -63,8 +63,8 @@ namespace Nmfs.Agepro.Gui
             controlHarvestScenario = new ControlHarvestScenario();
 
             //Unsubcribe event handler in case previous one exists, before subcribing a new one
-            controlGeneralOptions.SetGeneral -= new EventHandler(StartupStateEvent_SetGeneralButton);
-            controlGeneralOptions.SetGeneral += new EventHandler(StartupStateEvent_SetGeneralButton);
+            controlGeneralOptions.SetGeneral -= new EventHandler(EventSetButton_CreateNewCase);
+            controlGeneralOptions.SetGeneral += new EventHandler(EventSetButton_CreateNewCase);
 
             //Load General Options Controls to AGEPRO Parameter panel           
             this.panelAgeproParameter.Controls.Clear();
@@ -156,7 +156,7 @@ namespace Nmfs.Agepro.Gui
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void StartupStateEvent_SetGeneralButton(object sender, EventArgs e)
+        public void EventSetButton_CreateNewCase(object sender, EventArgs e)
         {
             try
             {
