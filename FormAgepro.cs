@@ -340,48 +340,48 @@ namespace Nmfs.Agepro.Gui
                     }
 
                     //Natural Mortality
-                    inputData.jan1Weight.timeVarying = controlJan1Weight.timeVarying;
-                    inputData.SSBWeight.timeVarying = controlSSBWeight.timeVarying;
-                    inputData.meanWeight.timeVarying = controlSSBWeight.timeVarying;
-                    inputData.catchWeight.timeVarying = controlCatchWeight.timeVarying;
-                    inputData.maturity.timeVarying = controlBiological.maturityAge.timeVarying;
-                    inputData.biological.timeVarying = controlBiological.fractionMortalityTimeVarying;
-                    inputData.fishery.timeVarying = controlFisherySelectivity.timeVarying;
+                    this.inputData.jan1Weight.timeVarying = controlJan1Weight.timeVarying;
+                    this.inputData.SSBWeight.timeVarying = controlSSBWeight.timeVarying;
+                    this.inputData.meanWeight.timeVarying = controlSSBWeight.timeVarying;
+                    this.inputData.catchWeight.timeVarying = controlCatchWeight.timeVarying;
+                    this.inputData.maturity.timeVarying = controlBiological.maturityAge.timeVarying;
+                    this.inputData.biological.timeVarying = controlBiological.fractionMortalityTimeVarying;
+                    this.inputData.fishery.timeVarying = controlFisherySelectivity.timeVarying;
                     
-                    if(inputData.general.hasDiscards == true)
+                    if(this.inputData.general.hasDiscards == true)
                     {
-                        inputData.discardWeight.timeVarying = controlDiscardWeight.timeVarying;
-                        inputData.discardFraction.timeVarying = controlDiscardWeight.timeVarying;
+                        this.inputData.discardWeight.timeVarying = controlDiscardWeight.timeVarying;
+                        this.inputData.discardFraction.timeVarying = controlDiscardWeight.timeVarying;
                     }
 
                     
                     //Misc options
-                    inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
-                    inputData.options.enableExportR = controlMiscOptions.miscOptionsEnableExportR;
-                    inputData.options.enableAuxStochasticFiles = controlMiscOptions.miscOptionsEnableAuxStochasticFiles;
-                    inputData.options.enablePercentileReport = controlMiscOptions.miscOptionsEnablePercentileReport;
-                    inputData.options.enableRefpoint = controlMiscOptions.miscOptionsEnableRefpointsReport;
-                    inputData.options.enableScaleFactors = controlMiscOptions.miscOptionsEnableScaleFactors;
-                    inputData.options.enableBounds = controlMiscOptions.miscOptionsBounds;
-                    inputData.options.enableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
+                    this.inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
+                    this.inputData.options.enableExportR = controlMiscOptions.miscOptionsEnableExportR;
+                    this.inputData.options.enableAuxStochasticFiles = controlMiscOptions.miscOptionsEnableAuxStochasticFiles;
+                    this.inputData.options.enablePercentileReport = controlMiscOptions.miscOptionsEnablePercentileReport;
+                    this.inputData.options.enableRefpoint = controlMiscOptions.miscOptionsEnableRefpointsReport;
+                    this.inputData.options.enableScaleFactors = controlMiscOptions.miscOptionsEnableScaleFactors;
+                    this.inputData.options.enableBounds = controlMiscOptions.miscOptionsBounds;
+                    this.inputData.options.enableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
 
-                    inputData.refpoint.refSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
-                    inputData.refpoint.refJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
-                    inputData.refpoint.refMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
-                    inputData.refpoint.refFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
+                    this.inputData.refpoint.refSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
+                    this.inputData.refpoint.refJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
+                    this.inputData.refpoint.refMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
+                    this.inputData.refpoint.refFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
 
-                    inputData.reportPercentile.percentile = controlMiscOptions.miscOptionsReportPercentile;
+                    this.inputData.reportPercentile.percentile = controlMiscOptions.miscOptionsReportPercentile;
 
-                    inputData.scale.scaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
-                    inputData.scale.scaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
-                    inputData.scale.scaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
+                    this.inputData.scale.scaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
+                    this.inputData.scale.scaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
+                    this.inputData.scale.scaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
 
-                    inputData.retroAdjustOption.retroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
+                    this.inputData.retroAdjustOption.retroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
 
-                    inputData.WriteInputFile(saveAgeproInputFile.FileName);
+                    this.inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
                     //Set filename to generalOptions Input File textbox
-                    controlGeneralOptions.generalInputFile = saveAgeproInputFile.FileName;
+                    this.controlGeneralOptions.generalInputFile = saveAgeproInputFile.FileName;
  
                     MessageBox.Show("AGEPRO Input Data was saved at" + Environment.NewLine + saveAgeproInputFile.FileName,
                         "", MessageBoxButtons.OK, MessageBoxIcon.Information);
