@@ -26,6 +26,17 @@ namespace Nmfs.Agepro.Gui
             //Set Bounds defaults
             miscOptionsBoundsMaxWeight = "10.0";
             miscOptionsBoundsNaturalMortality = "1.0";
+
+            miscOptionsRefJan1Biomass = "0.0";
+            miscOptionsRefMeanBiomass = "0.0";
+            miscOptionsRefSpawnBiomass = "0.0";
+            miscOptionsRefFishingMortality = "0.0";
+
+            miscOptionsScaleFactorBiomass = "0.0";
+            miscOptionsScaleFactorRecruits = "0.0";
+            miscOptionsScaleFactorStockNumbers = "0.0";
+
+            miscOptionsReportPercentile = 0;
         }
 
         public bool miscOptionsEnableSummaryReport
