@@ -194,6 +194,17 @@ namespace Nmfs.Agepro.Gui
                     StochasticAgeFleetDependency.dependent);
                 controlNaturalMortality.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
                 controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+
+
+                inputData.jan1Weight.byAgeData = controlJan1Weight.stochasticAgeTable; 
+                inputData.SSBWeight.byAgeData = controlSSBWeight.stochasticAgeTable;
+                inputData.meanWeight.byAgeData = controlMidYearWeight.stochasticAgeTable;
+                inputData.catchWeight.byAgeData = controlCatchWeight.stochasticAgeTable;
+                
+                inputData.jan1Weight.byAgeCV = controlJan1Weight.stochasticCV;
+                inputData.SSBWeight.byAgeCV = controlSSBWeight.stochasticCV;
+                inputData.meanWeight.byAgeCV = controlMidYearWeight.stochasticCV;
+                inputData.catchWeight.byAgeCV = controlCatchWeight.stochasticCV;
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
@@ -201,6 +212,9 @@ namespace Nmfs.Agepro.Gui
                     controlDiscardFraction.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
                         StochasticAgeFleetDependency.dependent);
                     controlDiscardWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+
+                    inputData.discardWeight.byAgeData = controlDiscardWeight.stochasticAgeTable;
+                    inputData.discardWeight.byAgeCV = controlDiscardWeight.stochasticCV;
                 }
                 else
                 {   //Otherwise "reset" the dataGridView if data exists. 
@@ -254,6 +268,8 @@ namespace Nmfs.Agepro.Gui
                 inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
                 inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
                 inputData.general.inputFile = controlGeneralOptions.generalInputFile;
+
+                inputData.version = "AGEPRO VERSION 4.0"; 
 
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
