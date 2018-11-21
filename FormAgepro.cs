@@ -235,6 +235,7 @@ namespace Nmfs.Agepro.Gui
                 //Recruitment
                 int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
                 List <RecruitmentModel> newCaseRecruitList = new List<RecruitmentModel>(nrecruit);
+                
                 for(int i = 0; i < nrecruit; i++){
                     newCaseRecruitList.Add(new NullSelectRecruitment());
                     newCaseRecruitList[i].obsYears = Array.ConvertAll<string,int>(controlGeneralOptions.SeqYears(), int.Parse);
@@ -243,7 +244,7 @@ namespace Nmfs.Agepro.Gui
                     nrecruit,
                     newCaseRecruitList,
                     controlGeneralOptions.SeqYears(),
-                    controlRecruitment.CreateRecruitProbTable(Convert.ToInt32(nrecruit), 
+                    Nmfs.Agepro.CoreLib.AgeproRecruitment.CreateRecruitProbTable(Convert.ToInt32(nrecruit), 
                         controlGeneralOptions.SeqYears().Count(), "Selection"));
                 
                 //Harvest Scenario
