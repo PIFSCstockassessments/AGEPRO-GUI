@@ -178,7 +178,7 @@ namespace Nmfs.Agepro.Gui
         {
             //Clear any existing (if any) bindings before creating new ones.
             ctl.DataBindings.Clear();
-            Binding b = new Binding("Text", miscOptSrc, miscOptField);
+            Binding b = new Binding("Text", miscOptSrc, miscOptField, true, DataSourceUpdateMode.OnPropertyChanged);
             if (decimalZeroFormat)
             {
                 b.Format += new ConvertEventHandler(DoubleToString);
