@@ -703,44 +703,7 @@ namespace Nmfs.Agepro.Gui
         }
 
 
-        /// <summary>
-        /// Creates a Recruitment Probability DataTable.
-        /// </summary>
-        /// <param name="yCol">Number of columns</param>
-        /// <param name="xRows">Number of Rows</param>
-        /// <param name="colName">Column Names</param>
-        /// <returns></returns>
-        public DataTable CreateRecruitProbTable(int yCol, int xRows, string colName)
-        {
-            DataTable recruitProbTable = new DataTable();
-
-            for (int icol = 0; icol < yCol; icol++)
-            {
-                recruitProbTable.Columns.Add(colName + " " + (icol + 1));
-            }
-            for (int row = 0; row < xRows; row++)
-            {
-                recruitProbTable.Rows.Add();
-            }
-            
-            //Fill Recruit Probability table with default set of values.
-            //Assume each new case recruit selection prob is spread evenly.
-            double recruitProbVal = 1 / Convert.ToDouble(yCol);
-            
-            for (int irow = 0; irow < xRows; irow++)
-            {
-                for (int jcol = 0; jcol < yCol; jcol++)
-                {
-                    if (recruitProbTable.Rows[irow][jcol] == DBNull.Value)
-                    {
-                        recruitProbTable.Rows[irow][jcol] = recruitProbVal;
-                    }
-                }
-            }
-            
-            return recruitProbTable;
-        }
-        
+   
 
         private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
         {
