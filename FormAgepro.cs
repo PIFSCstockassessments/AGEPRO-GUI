@@ -276,6 +276,8 @@ namespace Nmfs.Agepro.Gui
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
                 EnableNavigationPanel();
+
+                MessageBox.Show ("General parameters set.","AGEPRO",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
