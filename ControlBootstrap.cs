@@ -16,6 +16,9 @@ namespace Nmfs.Agepro.Gui
         public ControlBootstrap()
         {
             InitializeComponent();
+
+            bootstrapIterations = "0";
+            bootstrapScaleFactors = "0";
         }
         public string bootstrapFilename
         {
@@ -34,7 +37,7 @@ namespace Nmfs.Agepro.Gui
         }
 
 
-        //TODO:buttonLoadFile action
+        
         public void SetBootstrapControls(Nmfs.Agepro.CoreLib.AgeproBootstrap bootstrapOpt)
         {
 
@@ -43,8 +46,8 @@ namespace Nmfs.Agepro.Gui
             this.textBoxNumBootstrapIterations.DataBindings.Clear();
             this.textBoxPopScaleFactors.DataBindings.Clear();
             this.textBoxBootstrapFile.DataBindings.Add("Text", bootstrapOpt, "bootstrapFile", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps");
-            this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor");
+            this.textBoxNumBootstrapIterations.DataBindings.Add("Text", bootstrapOpt, "numBootstraps", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxPopScaleFactors.DataBindings.Add("Text", bootstrapOpt, "popScaleFactor", true, DataSourceUpdateMode.OnPropertyChanged);
             this.textBoxNumBootstrapIterations.PrevValidValue = this.bootstrapIterations;
             this.textBoxPopScaleFactors.PrevValidValue = this.bootstrapScaleFactors;
         }
@@ -99,7 +102,7 @@ namespace Nmfs.Agepro.Gui
 
             return true;
         }
-
+        
         private void buttonLoadFile_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;

@@ -257,6 +257,8 @@ namespace Nmfs.Agepro.Gui
                     Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
                 controlHarvestScenario.SetHarvestScenarioInputDataTable(userGenBasedHarvestScenarioTable);
 
+                //Bootstrap
+                controlBootstrap.SetBootstrapControls(inputData.bootstrap);
 
                 //Set General parameters to Nmfs.Agepro.CoreLib inputData class
                 inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
