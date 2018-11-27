@@ -277,7 +277,9 @@ namespace Nmfs.Agepro.Gui
                 //Discards are Present is not checked
                 EnableNavigationPanel();
 
-                MessageBox.Show ("General parameters set.","AGEPRO",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show ("General AGEPRO Projection Parameters set." + Environment.NewLine + Environment.NewLine +
+                "Recruitment and Bootstrap file is required to save as AGEPRO input file or "+
+                "to launch AGEPRO model.","AGEPRO",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
