@@ -702,7 +702,7 @@ namespace Nmfs.Agepro.Gui
             }
 
             //Bootstrap
-            if (this.controlBootstrap.ValidateBooleanInput() == false)
+            if (this.controlBootstrap.ValidateBootstrapInput() == false)
             {
                 return false;
             }

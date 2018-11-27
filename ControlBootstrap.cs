@@ -65,7 +65,14 @@ namespace Nmfs.Agepro.Gui
             return openBootstrapFileDialog;
         }
 
-        private Nmfs.Agepro.CoreLib.ValidationResult CheckBootstrapInput(bool validateFilename = false)
+        
+
+        /// <summary>
+        /// Input Validation
+        /// </summary>
+        /// <param name="validateFilename">Check existance of bootstrap file in system</param>
+        /// <returns>Returns false on the first invalid object found. Otherwise true.</returns>
+        public bool ValidateBootstrapInput(bool validateFilename = false)
         {
             List<string> errorMsgList = new List<string>();
             if (string.IsNullOrWhiteSpace(this.bootstrapIterations))
@@ -86,17 +93,11 @@ namespace Nmfs.Agepro.Gui
             }
 
             var results = Nmfs.Agepro.CoreLib.ValidatableExtensions.EnumerateValidationResults(errorMsgList);
-            return results;
-
-        }
-
-        public bool ValidateBooleanInput(bool validateFilename = false)
-        {
-            Nmfs.Agepro.CoreLib.ValidationResult result = CheckBootstrapInput(validateFilename);
-            if (result.isValid == false)
+                       
+            if (results.isValid == false)
             {
                 MessageBox.Show("Invalid Bootstrap values found: " + Environment.NewLine 
-                    + result.message, "AGEPRO Bootstrap", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    + results.message, "AGEPRO Bootstrap", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
