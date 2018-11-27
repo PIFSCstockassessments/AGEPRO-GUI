@@ -238,13 +238,11 @@ namespace Nmfs.Agepro.Gui
                     {
                         //Pass in one empty string since setStochasticAgeTableRowHeaders sets the header string
                         string[] stochasticAgeTableRowHeaders = {string.Empty};
-                        //stochasticAgeTableRowHeaders[0] = string.Empty;
                         setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
                     }
                     else
                     {
                         string[] stochasticAgeTableRowHeaders = {"All Years"};
-                        //stochasticAgeTableRowHeaders[0] = "All Years";
                         setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, 1);
                     }
                     

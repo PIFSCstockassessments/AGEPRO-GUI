@@ -37,7 +37,10 @@ namespace Nmfs.Agepro.Gui
         }
 
 
-        
+        /// <summary>
+        /// Intializes the control's values and data bindings to the AgeproBootstrap object
+        /// </summary>
+        /// <param name="bootstrapOpt">AGEPRO CoreLib Bootstrap object</param>
         public void SetBootstrapControls(Nmfs.Agepro.CoreLib.AgeproBootstrap bootstrapOpt)
         {
 
@@ -52,6 +55,10 @@ namespace Nmfs.Agepro.Gui
             this.textBoxPopScaleFactors.PrevValidValue = this.bootstrapScaleFactors;
         }
 
+        /// <summary>
+        /// Handles File Dialog events after user presses the "Load File".
+        /// </summary>
+        /// <returns></returns>
         public static OpenFileDialog SetBootstrapOpenFileDialog()
         {
             OpenFileDialog openBootstrapFileDialog = new OpenFileDialog();
@@ -104,6 +111,11 @@ namespace Nmfs.Agepro.Gui
             return true;
         }
         
+        /// <summary>
+        /// Handles events that occur when user clicks the "Load File" Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLoadFile_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -117,6 +129,11 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// Pop Scale Factor Validating Event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxPopScaleFactors_Validating(object sender, CancelEventArgs e)
         {
             double scaleFactor;
