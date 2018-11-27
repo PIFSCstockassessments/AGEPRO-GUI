@@ -270,7 +270,8 @@ namespace Nmfs.Agepro.Gui
                 inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
                 inputData.general.inputFile = controlGeneralOptions.generalInputFile;
 
-                inputData.version = "AGEPRO VERSION 4.0"; 
+                //New Cases references version included in AGEPRO Reference Manual
+                inputData.version = "AGEPRO VERSION 4.2";
 
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
