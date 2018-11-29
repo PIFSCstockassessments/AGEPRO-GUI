@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -177,12 +178,13 @@ namespace Nmfs.Agepro.Gui
         /// Creates a empty Data Table for the Stochastic Parameter Control based on the user inputs gathered 
         /// from the General Options control parameter.
         /// </summary>
-        /// <param name="ctl">Stochastic Parameter Control</param>
         /// <param name="genOpt">Paramters from the General Options Control</param>
+        /// <param name="objNT">Object representing the Stochastic Parameter</param>
         /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
         /// nubmber of fleets? Default is false.</param>
         public void CreateStochasticParameterFallbackDataTable(ControlGeneral genOpt,
-             StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
+            Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable objNT,
+            StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
         {
             this.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
             this.seqYears = genOpt.SeqYears();
@@ -213,7 +215,10 @@ namespace Nmfs.Agepro.Gui
                 }
 
             }
-            
+
+            objNT.byAgeData = this.stochasticAgeTable;
+            objNT.byAgeCV = this.stochasticCV;
+
             this.readInputFileState = false;
 
         }

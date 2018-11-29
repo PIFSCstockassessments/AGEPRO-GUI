@@ -185,36 +185,26 @@ namespace Nmfs.Agepro.Gui
                 }
 
                 //Set Stochastic Paramaeter DataGrids           
-                controlJan1Weight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
-                controlSSBWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
-                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
-                controlCatchWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, 
+                controlJan1Weight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.jan1Weight);
+                controlSSBWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.SSBWeight);
+                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.meanWeight);
+                controlCatchWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.catchWeight,
                     StochasticAgeFleetDependency.dependent);
-                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
+                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.fishery,
                     StochasticAgeFleetDependency.dependent);
-                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
-                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
-
-
-                inputData.jan1Weight.byAgeData = controlJan1Weight.stochasticAgeTable; 
-                inputData.SSBWeight.byAgeData = controlSSBWeight.stochasticAgeTable;
-                inputData.meanWeight.byAgeData = controlMidYearWeight.stochasticAgeTable;
-                inputData.catchWeight.byAgeData = controlCatchWeight.stochasticAgeTable;
                 
-                inputData.jan1Weight.byAgeCV = controlJan1Weight.stochasticCV;
-                inputData.SSBWeight.byAgeCV = controlSSBWeight.stochasticCV;
-                inputData.meanWeight.byAgeCV = controlMidYearWeight.stochasticCV;
-                inputData.catchWeight.byAgeCV = controlCatchWeight.stochasticCV;
+                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.naturalMortality);
+                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.maturity);
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
-                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(controlGeneralOptions,
+                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.discardFraction,
                         StochasticAgeFleetDependency.dependent);
-                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions);
+                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.discardWeight);
 
-                    inputData.discardWeight.byAgeData = controlDiscardWeight.stochasticAgeTable;
-                    inputData.discardWeight.byAgeCV = controlDiscardWeight.stochasticCV;
+                    //inputData.discardWeight.byAgeData = controlDiscardWeight.stochasticAgeTable;
+                    //inputData.discardWeight.byAgeCV = controlDiscardWeight.stochasticCV;
                 }
                 else
                 {   //Otherwise "reset" the dataGridView if data exists. 
@@ -260,17 +250,6 @@ namespace Nmfs.Agepro.Gui
                 //Bootstrap
                 controlBootstrap.SetBootstrapControls(inputData.bootstrap);
 
-                //Set General parameters to Nmfs.Agepro.CoreLib inputData class
-                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
-                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
-                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
-                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
-                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
-                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
-                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
-                inputData.general.inputFile = controlGeneralOptions.generalInputFile;
 
                 //New Cases references version included in AGEPRO Reference Manual
                 inputData.version = "AGEPRO VERSION 4.2";
