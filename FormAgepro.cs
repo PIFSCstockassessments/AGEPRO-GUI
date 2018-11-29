@@ -202,9 +202,7 @@ namespace Nmfs.Agepro.Gui
                     controlDiscardFraction.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.discardFraction,
                         StochasticAgeFleetDependency.dependent);
                     controlDiscardWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.discardWeight);
-
-                    //inputData.discardWeight.byAgeData = controlDiscardWeight.stochasticAgeTable;
-                    //inputData.discardWeight.byAgeCV = controlDiscardWeight.stochasticCV;
+                
                 }
                 else
                 {   //Otherwise "reset" the dataGridView if data exists. 
@@ -219,8 +217,10 @@ namespace Nmfs.Agepro.Gui
                         controlDiscardWeight.stochasticCV.Reset();
                     }
                 }
-                //Fraction Mortality
-                controlBiological.CreateFractionMortalityColumns();
+                
+                //(Biological) Fraction Mortality
+                inputData.biological.CreateFallbackTSpawnTable(controlGeneralOptions.SeqYears());
+                controlBiological.fractionMortality = inputData.biological.TSpawn;
 
                 //Recruitment
                 int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
