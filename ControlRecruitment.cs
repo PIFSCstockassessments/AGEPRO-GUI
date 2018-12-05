@@ -95,34 +95,38 @@ namespace Nmfs.Agepro.Gui
         /// opens an existing AGEPRO input data file or creates a new case.
         /// </summary>
         /// <param name="nrecruits"> Number of Recuitment Models.</param>
-        /// <param name="selectedModels">List of AGEPRO Recruitment model objects.</param>
-        /// <param name="obsYears">A array of subsequent recuitment years in the projection</param>
-        /// <param name="recruitProb">Recruitment Probability data table</param>
-        /// <param name="scalingFactorRecruit">Recruitment Scaling Factor</param>
-        /// <param name="scalingFactorSSB">SSB Scaling Factor</param>
-        public void SetupControlRecruitment(int nrecruits, List<RecruitmentModel> selectedModels, string[] obsYears, 
-            DataTable recruitProb, double scalingFactorRecruit = 0, double scalingFactorSSB = 0)
+        /// <param name="selectedModels">AgeproRecruitment CoreLib object.</param>
+        public void SetupControlRecruitment(int nrecruits, 
+            Nmfs.Agepro.CoreLib.AgeproRecruitment objRecruitment)
         {
             //Cleanup any previously used recruitment parameter controls.
             this.panelRecruitModelParameter.Controls.Clear();
 
+            //Bindings
+            this.textBoxRecruitngScalingFactor.Clear();
+            this.textBoxSSBScalingFactor.Clear();
+            this.textBoxRecruitngScalingFactor.DataBindings.Add("Text", objRecruitment, "recruitScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxSSBScalingFactor.DataBindings.Add("Text", objRecruitment, "SSBScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxRecruitngScalingFactor.PrevValidValue = this.textBoxRecruitngScalingFactor.Text;
+            this.textBoxSSBScalingFactor.PrevValidValue = this.textBoxSSBScalingFactor.Text;
+            
             //numRecuritModels
             this.numRecruitModels = nrecruits;
 
             //collectionAgeproRecruitmentModels
-            this.collectionAgeproRecruitmentModels = selectedModels;
+            this.collectionAgeproRecruitmentModels = objRecruitment.recruitList;
 
             //seqRecruitYears
-            this.seqRecruitYears = obsYears;
+            this.seqRecruitYears = Array.ConvertAll(objRecruitment.observationYears, element => element.ToString());
 
             //recruitModelSelection
             this.recruitModelSelection = new int[nrecruits];
             //recruitModelSelection from recruitList
-            if (selectedModels.Count > 0)
+            if (objRecruitment.observationYears.Count() > 0)
             {
-                for (int rmodel = 0; rmodel < selectedModels.Count; rmodel++)
+                for (int rmodel = 0; rmodel < objRecruitment.recruitList.Count; rmodel++)
                 {
-                    this.recruitModelSelection[rmodel] = selectedModels[rmodel].recruitModelNum;
+                    this.recruitModelSelection[rmodel] = objRecruitment.recruitList[rmodel].recruitModelNum;
                 }
             }
 
@@ -133,12 +137,12 @@ namespace Nmfs.Agepro.Gui
             this.SetDataGridComboBoxSelectRecruitModels(nrecruits);
 
             //recruitmentProb
-            this.recruitmentProb = recruitProb;
+            this.recruitmentProb = objRecruitment.recruitProb;
             
             //recruitmentScalingfactor
-            this.recruitingScalingFactor = scalingFactorRecruit;
+            this.recruitingScalingFactor = objRecruitment.recruitScalingFactor;
             //SSBScalingFactor
-            this.SSBScalingFactor = scalingFactorSSB;
+            this.SSBScalingFactor = objRecruitment.SSBScalingFactor;
         } 
 
 

@@ -224,19 +224,10 @@ namespace Nmfs.Agepro.Gui
 
                 //Recruitment
                 int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                List <RecruitmentModel> newCaseRecruitList = new List<RecruitmentModel>(nrecruit);
+                inputData.recruitment.newCaseRecruitment(nrecruit, controlGeneralOptions.SeqYears());
+                controlRecruitment.SetupControlRecruitment(nrecruit, inputData.recruitment);
                 
-                for(int i = 0; i < nrecruit; i++){
-                    newCaseRecruitList.Add(new NullSelectRecruitment());
-                    newCaseRecruitList[i].obsYears = Array.ConvertAll<string,int>(controlGeneralOptions.SeqYears(), int.Parse);
-                }   
-                controlRecruitment.SetupControlRecruitment(
-                    nrecruit,
-                    newCaseRecruitList,
-                    controlGeneralOptions.SeqYears(),
-                    Nmfs.Agepro.CoreLib.AgeproRecruitment.CreateRecruitProbTable(Convert.ToInt32(nrecruit), 
-                        controlGeneralOptions.SeqYears().Count(), "Selection"));
-                
+
                 //Harvest Scenario
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
@@ -433,13 +424,7 @@ namespace Nmfs.Agepro.Gui
             controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general);
 
             //Recruitment
-            controlRecruitment.SetupControlRecruitment(
-                inpFile.general.numRecModels,
-                inpFile.recruitment.recruitList,
-                inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray(),
-                inpFile.recruitment.recruitProb,
-                inpFile.recruitment.recruitScalingFactor,
-                inpFile.recruitment.SSBScalingFactor);
+            controlRecruitment.SetupControlRecruitment(inpFile.general.numRecModels, inpFile.recruitment);
 
             //Fishery Selectivity
             controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.fishery, inpFile.general);
