@@ -695,10 +695,6 @@ namespace Nmfs.Agepro.Gui
                 return false;
             }
 
-
-            MessageBox.Show("Agepro Input Validated.",
-                       "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             return true;
         }
 
