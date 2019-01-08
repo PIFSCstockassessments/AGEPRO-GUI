@@ -237,6 +237,7 @@ namespace Nmfs.Agepro.Gui
                     controlHarvestScenario.seqYears.Count(), 
                     Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
                 controlHarvestScenario.SetHarvestScenarioInputDataTable(userGenBasedHarvestScenarioTable);
+                inputData.harvestScenario.harvestScenarioTable = userGenBasedHarvestScenarioTable;
 
                 //Bootstrap
                 controlBootstrap.SetBootstrapControls(inputData.bootstrap);
