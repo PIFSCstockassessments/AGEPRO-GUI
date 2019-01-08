@@ -101,10 +101,12 @@ namespace Nmfs.Agepro.Gui
         {
             //Cleanup any previously used recruitment parameter controls.
             this.panelRecruitModelParameter.Controls.Clear();
-
-            //Bindings
             this.textBoxRecruitngScalingFactor.Clear();
             this.textBoxSSBScalingFactor.Clear();
+
+            //Bindings
+            this.textBoxRecruitngScalingFactor.DataBindings.Clear();
+            this.textBoxSSBScalingFactor.DataBindings.Clear();
             this.textBoxRecruitngScalingFactor.DataBindings.Add("Text", objRecruitment, "recruitScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
             this.textBoxSSBScalingFactor.DataBindings.Add("Text", objRecruitment, "SSBScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
             this.textBoxRecruitngScalingFactor.PrevValidValue = this.textBoxRecruitngScalingFactor.Text;
