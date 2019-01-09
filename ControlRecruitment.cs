@@ -547,10 +547,10 @@ namespace Nmfs.Agepro.Gui
             }
             foreach (DataRow drow in this.recruitmentProb.Rows)
             {
-                //If the
+                //List rows that have nulls/missing data
                 if (drow.ItemArray.Any(x => string.IsNullOrWhiteSpace(x.ToString())))
                 {
-                    errorMsgList.Add("At row " + this.recruitmentProb.Rows.IndexOf(drow) +
+                    errorMsgList.Add("At row " + (this.recruitmentProb.Rows.IndexOf(drow)+1) +
                         ": Empty or missing value found.");
                 }
                 else
