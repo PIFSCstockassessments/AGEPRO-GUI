@@ -60,6 +60,7 @@ An new input data set can be set from scratch. Click on **Create New Case** in t
 ![](img/generalOptions_02.png)
 
 For new cases, the user must supply the following input:
+
 - First year in Projection
 - Last year in Projection
 - First Age Class (Age 1 by default)
