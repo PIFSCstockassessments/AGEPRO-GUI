@@ -1,6 +1,17 @@
 
 # AGEPRO Changelog
 
+## 4.3.1 (2019-01-00)
+
+## Changes 
+- Implicitly set new case default values during initialization. (#1)
+- Implemented Null Checks. Add the AGEPRO [PARMETER] to NULL error msg to indicate which one has NULL input. (#1)
+- Tweaked the binded values updates to OnPropertyChanged. (#1) 
+- Fixed a data binding issue if the user submits (General options 'SET' button) a new case over a new case.
+- Helpfile: Clarifcations on the P-Star and Rebulider sections.
+- CoreLib: Updated to handle version input file 'AGEPRO VERSION 4.2'
+- CoreLib: Added AgeproCoreLibProperty for generic Agepro Parameter Data Binding  
+
 ## 4.3.0 (2018-03-27)
 
 ## Significant User Changes from AGEPRO 4.2.2
