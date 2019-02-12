@@ -54,11 +54,11 @@ namespace Nmfs.Agepro.Gui
             controlDiscardFraction = new ControlStochasticAge();
             controlNaturalMortality = new ControlStochasticAge();
             controlBiological = new ControlBiological();
-            controlJan1Weight = new ControlStochasticWeightAge();
-            controlSSBWeight = new ControlStochasticWeightAge();
-            controlMidYearWeight = new ControlStochasticWeightAge();
-            controlCatchWeight = new ControlStochasticWeightAge();
-            controlDiscardWeight = new ControlStochasticWeightAge();
+            controlJan1Weight = new ControlStochasticWeightAge(new int[] {0,1});
+            controlSSBWeight = new ControlStochasticWeightAge(new int[] {0,1,-1});
+            controlMidYearWeight = new ControlStochasticWeightAge(new int[] {0,1,-1,-2});
+            controlCatchWeight = new ControlStochasticWeightAge(new int[] {0,1,-1,-2,-3});
+            controlDiscardWeight = new ControlStochasticWeightAge(new int[] {0,1,-1,-2,-3,-4});
             controlRecruitment = new ControlRecruitment();
             controlHarvestScenario = new ControlHarvestScenario();
 

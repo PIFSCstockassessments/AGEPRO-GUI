@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -27,12 +28,14 @@ namespace Nmfs.Agepro.Gui
         public int indexWeightOption { get; set; }
         public Dictionary<int, RadioButton> weightOptionDictionary;
         public StochasticWeightOfAge weightAgeType { get; set; }
+        public int[] validWeightAgeOpt;
 
-        public ControlStochasticWeightAge()
+        public ControlStochasticWeightAge(int[] weightAgeOptions)
         {
             InitializeComponent();
 
             this.stochasticParameterLabel = "Weights";
+            this.validWeightAgeOpt = weightAgeOptions;
 
             //Add Controls to Layout Programmically 
             this.SuspendLayout();
@@ -243,7 +246,8 @@ namespace Nmfs.Agepro.Gui
 
         public override bool ValidateStochasticParameter(int numAges, double upperBounds)
         {
-            if (weightOptionDictionary.ContainsKey(indexWeightOption))
+            //if (weightOptionDictionary.ContainsKey(indexWeightOption))
+            if(validWeightAgeOpt.Contains(indexWeightOption))
             {
                 if (this.indexWeightOption == 0 || this.indexWeightOption == 1)
                 {
