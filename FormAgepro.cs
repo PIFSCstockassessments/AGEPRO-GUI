@@ -205,7 +205,7 @@ namespace Nmfs.Agepro.Gui
                 
                 }
                 else
-                {   //Otherwise "reset" the dataGridView if data exists. 
+                {   //Otherwise remove ("reset") any dataGridView existing data. 
                     if(controlDiscardFraction.stochasticAgeTable != null)
                     {
                         controlDiscardFraction.stochasticAgeTable.Reset();
