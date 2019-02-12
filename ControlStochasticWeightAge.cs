@@ -142,23 +142,39 @@ namespace Nmfs.Agepro.Gui
             base.OnLoad(e);
         }
 
+        protected override void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
+        {
+            this.indexWeightOption = 0;
+            base.radioParameterFromUser_CheckedChanged(sender, e);
+        }
+
+        protected override void radioParameterFromFile_CheckedChanged(object sender, EventArgs e)
+        {
+            this.indexWeightOption = 1;
+            base.radioParameterFromFile_CheckedChanged(sender, e);
+        }
+
         private void radioWeightsFromJan1_CheckedChanged(object sender, EventArgs e)
         {
+            this.indexWeightOption = -1;
             panelStochasticParameterAge.Controls.Clear();
         }
 
         private void radioWeightsFromSSB_CheckedChanged(object sender, EventArgs e)
         {
+            this.indexWeightOption = -2;
             panelStochasticParameterAge.Controls.Clear();
         }
 
         private void radioWeightsFromMidYear_CheckedChanged(object sender, EventArgs e)
         {
+            this.indexWeightOption = -3;
             panelStochasticParameterAge.Controls.Clear();
         }
 
         private void radioWeightsFromCatch_CheckedChanged(object sender, EventArgs e)
         {
+            this.indexWeightOption = -4;
             panelStochasticParameterAge.Controls.Clear();
         }
 
