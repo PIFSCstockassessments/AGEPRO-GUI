@@ -335,21 +335,20 @@ namespace Nmfs.Agepro.Gui
                     }
 
                     //Natural Mortality
-                    this.inputData.jan1Weight.timeVarying = controlJan1Weight.timeVarying;
-                    this.inputData.SSBWeight.timeVarying = controlSSBWeight.timeVarying;
-                    this.inputData.meanWeight.timeVarying = controlSSBWeight.timeVarying;
-                    this.inputData.catchWeight.timeVarying = controlCatchWeight.timeVarying;
-                    this.inputData.maturity.timeVarying = controlBiological.maturityAge.timeVarying;
+                    controlJan1Weight.bindStochasticAgeData(this.inputData.jan1Weight);
+                    controlSSBWeight.bindStochasticAgeData(this.inputData.SSBWeight);
+                    controlMidYearWeight.bindStochasticAgeData(this.inputData.meanWeight);
+                    controlCatchWeight.bindStochasticAgeData(this.inputData.catchWeight);
+                    controlBiological.maturityAge.bindStochasticAgeData(this.inputData.maturity);
                     this.inputData.biological.timeVarying = controlBiological.fractionMortalityTimeVarying;
-                    this.inputData.fishery.timeVarying = controlFisherySelectivity.timeVarying;
-                    
+                    controlFisherySelectivity.bindStochasticAgeData(this.inputData.fishery);
+
                     if(this.inputData.general.hasDiscards == true)
                     {
-                        this.inputData.discardWeight.timeVarying = controlDiscardWeight.timeVarying;
-                        this.inputData.discardFraction.timeVarying = controlDiscardWeight.timeVarying;
+                        controlDiscardWeight.bindStochasticAgeData(this.inputData.discardWeight);
+                        controlDiscardFraction.bindStochasticAgeData(this.inputData.discardFraction);     
                     }
 
-                    
                     //Misc options
                     this.inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
                     this.inputData.options.enableExportR = controlMiscOptions.miscOptionsEnableExportR;

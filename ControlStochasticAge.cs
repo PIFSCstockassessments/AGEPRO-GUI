@@ -170,8 +170,32 @@ namespace Nmfs.Agepro.Gui
                 panelStochasticParameterAge.Controls.Clear();
                 controlStochasticParamAgeFromFile.Dock = DockStyle.Fill;
                 panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
+
             }
             
+        }
+
+        public virtual void bindStochasticAgeData(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp)
+        {
+            if (readInputFileState == false)
+            {
+                inp.fromFile = false;
+                inp.timeVarying = this.timeVarying;
+                inp.byAgeData = this.stochasticAgeTable;
+                inp.byAgeCV = this.stochasticCV;
+            }
+            else if (readInputFileState == true)
+            {
+                inp.fromFile = true;
+                inp.timeVarying = this.timeVarying;
+                inp.byAgeData.Clear();
+                inp.byAgeCV.Clear();
+
+            }
+            else
+            {
+                throw new InvalidAgeproParameterException("readInputFileState is NULL");
+            }
         }
 
         /// <summary>

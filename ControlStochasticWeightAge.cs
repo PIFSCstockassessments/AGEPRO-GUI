@@ -181,6 +181,40 @@ namespace Nmfs.Agepro.Gui
             panelStochasticParameterAge.Controls.Clear();
         }
 
+
+        public override void bindStochasticAgeData(CoreLib.AgeproStochasticAgeTable inp)
+        {
+            if (validWeightAgeOpt.Contains(indexWeightOption))
+            {
+
+                Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inpWeight = inp as CoreLib.AgeproWeightAgeTable;
+                inpWeight.weightOpt = this.indexWeightOption;
+                inpWeight.validOpt = this.validWeightAgeOpt;
+
+                if (this.indexWeightOption == 0 )
+                {
+                    inpWeight.fromFile = false;
+                    inpWeight.timeVarying = this.timeVarying;
+                    inpWeight.byAgeData = this.stochasticAgeTable;
+                    inpWeight.byAgeCV = this.stochasticCV; 
+                    
+                }
+                else if (this.indexWeightOption == 1)
+                {
+                    inpWeight.fromFile = true;
+                    inpWeight.timeVarying = this.timeVarying;
+                    inpWeight.byAgeData.Clear();
+                    inpWeight.byAgeCV.Clear();
+                }
+
+                
+            }
+            else
+            {
+                throw new InvalidAgeproGuiParameterException("Invalid weight of at Age option.");
+            }
+            
+        }
         /// <summary>
         /// Creates the Stochastic Weights of Option Dictionary Object.
         /// </summary>
