@@ -334,6 +334,9 @@ namespace Nmfs.Agepro.Gui
                         throw new InvalidAgeproParameterException("Unable to save AGEPRO Input Data due to invalid input.");
                     }
 
+                    //Case Id
+                    this.inputData.caseID = controlGeneralOptions.generalModelId;
+
                     //Natural Mortality
                     controlJan1Weight.bindStochasticAgeData(this.inputData.jan1Weight);
                     controlSSBWeight.bindStochasticAgeData(this.inputData.SSBWeight);
