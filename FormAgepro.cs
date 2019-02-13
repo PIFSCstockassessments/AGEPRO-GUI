@@ -246,6 +246,17 @@ namespace Nmfs.Agepro.Gui
                 //New Cases references version included in AGEPRO Reference Manual
                 inputData.version = "AGEPRO VERSION 4.2";
 
+                //Save General Options iput to CoreLib Input Data Object
+                inputData.general.ageBegin = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+                inputData.general.ageEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
+                inputData.general.projYearStart = controlGeneralOptions.generalFirstAgeClass;
+                inputData.general.projYearEnd = controlGeneralOptions.generalLastAgeClass;
+                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
+                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
+                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
+
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
