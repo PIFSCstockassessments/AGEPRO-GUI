@@ -1,19 +1,21 @@
 
 # AGEPRO Changelog
 
-## 4.3.1 (2019-02-00)
+## 4.3.1 (2019-02-14)
 
 ## Changes
+- Ensure GUI input modifications, and GUI input from User generated new cases are written to AGEPRO input data files(#1)
+  - GUI input fixes to General Options (when submitted via 'SET' button), Stochastic Weights of Age, Stochastic Ages (Natural Mortality, Maturity, Fishery Selectivity), and Case ID. (#4, #5)
+  - Fixed a data binding issue if the user submits (General options 'SET' button) a new case over a new case.
+  - CoreLib: Added AgeproCoreLibProperty for generic Agepro Parameter Data Binding
 - Implicitly set new case default values during initialization. (#1)
-- Fixed major an issue where saved AGEPRO input files couldn't save changes to GUI user input to  General Options (submitted via 'SET' button), Stochastic Weights of Age, Stochastic Ages (Natural Mortality, Maturity, Fishery Selectivity), and Case ID. (#4, #5)
    - Case ID defaults to 'untitled' (#3) 
-- Implemented Null Checks. Add the AGEPRO [PARMETER] to NULL error msg to indicate which one has NULL input. (#1, #4)
-- Tweaked the binded values updates to OnPropertyChanged. (#1) 
-- Fixed a data binding issue if the user submits (General options 'SET' button) a new case over a new case.
+- Implemented Null Checks. Add the AGEPRO [PARMETER] to NULL error msg to indicate parameter with blank/NULL input. (#1, #4)
+- Misc Options, Parametric Recruitment: Tweaked binded values updates to OnPropertyChanged. (#1) 
 - Helpfile: Clarifcations on the P-Star and Rebulider sections.
 - CoreLib: Updated to handle version input file 'AGEPRO VERSION 4.2'
   - Input data files are now saved in the 'AGEPRO VERSION 4.2' format. 
-- CoreLib: Added AgeproCoreLibProperty for generic Agepro Parameter Data Binding  
+  
 
 ## 4.3.0 (2018-03-27)
 
