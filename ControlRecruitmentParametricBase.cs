@@ -43,7 +43,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="parameterName"></param>
         protected void DataBindTextBox(TextBox txtCtl, ParametricRecruitment recruitDataObj, string parameterName)
         {
-            Binding b = new Binding("Text", recruitDataObj, parameterName, true);
+            Binding b = new Binding("Text", recruitDataObj, parameterName, true, DataSourceUpdateMode.OnPropertyChanged);
             txtCtl.DataBindings.Add(b);
         }
 

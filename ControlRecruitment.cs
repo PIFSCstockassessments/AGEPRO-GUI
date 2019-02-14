@@ -95,34 +95,40 @@ namespace Nmfs.Agepro.Gui
         /// opens an existing AGEPRO input data file or creates a new case.
         /// </summary>
         /// <param name="nrecruits"> Number of Recuitment Models.</param>
-        /// <param name="selectedModels">List of AGEPRO Recruitment model objects.</param>
-        /// <param name="obsYears">A array of subsequent recuitment years in the projection</param>
-        /// <param name="recruitProb">Recruitment Probability data table</param>
-        /// <param name="scalingFactorRecruit">Recruitment Scaling Factor</param>
-        /// <param name="scalingFactorSSB">SSB Scaling Factor</param>
-        public void SetupControlRecruitment(int nrecruits, List<RecruitmentModel> selectedModels, string[] obsYears, 
-            DataTable recruitProb, double scalingFactorRecruit = 0, double scalingFactorSSB = 0)
+        /// <param name="selectedModels">AgeproRecruitment CoreLib object.</param>
+        public void SetupControlRecruitment(int nrecruits, 
+            Nmfs.Agepro.CoreLib.AgeproRecruitment objRecruitment)
         {
             //Cleanup any previously used recruitment parameter controls.
             this.panelRecruitModelParameter.Controls.Clear();
+            this.textBoxRecruitngScalingFactor.Clear();
+            this.textBoxSSBScalingFactor.Clear();
 
+            //Bindings
+            this.textBoxRecruitngScalingFactor.DataBindings.Clear();
+            this.textBoxSSBScalingFactor.DataBindings.Clear();
+            this.textBoxRecruitngScalingFactor.DataBindings.Add("Text", objRecruitment, "recruitScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxSSBScalingFactor.DataBindings.Add("Text", objRecruitment, "SSBScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxRecruitngScalingFactor.PrevValidValue = this.textBoxRecruitngScalingFactor.Text;
+            this.textBoxSSBScalingFactor.PrevValidValue = this.textBoxSSBScalingFactor.Text;
+            
             //numRecuritModels
             this.numRecruitModels = nrecruits;
 
             //collectionAgeproRecruitmentModels
-            this.collectionAgeproRecruitmentModels = selectedModels;
+            this.collectionAgeproRecruitmentModels = objRecruitment.recruitList;
 
             //seqRecruitYears
-            this.seqRecruitYears = obsYears;
+            this.seqRecruitYears = Array.ConvertAll(objRecruitment.observationYears, element => element.ToString());
 
             //recruitModelSelection
             this.recruitModelSelection = new int[nrecruits];
             //recruitModelSelection from recruitList
-            if (selectedModels.Count > 0)
+            if (objRecruitment.observationYears.Count() > 0)
             {
-                for (int rmodel = 0; rmodel < selectedModels.Count; rmodel++)
+                for (int rmodel = 0; rmodel < objRecruitment.recruitList.Count; rmodel++)
                 {
-                    this.recruitModelSelection[rmodel] = selectedModels[rmodel].recruitModelNum;
+                    this.recruitModelSelection[rmodel] = objRecruitment.recruitList[rmodel].recruitModelNum;
                 }
             }
 
@@ -133,12 +139,12 @@ namespace Nmfs.Agepro.Gui
             this.SetDataGridComboBoxSelectRecruitModels(nrecruits);
 
             //recruitmentProb
-            this.recruitmentProb = recruitProb;
+            this.recruitmentProb = objRecruitment.recruitProb;
             
             //recruitmentScalingfactor
-            this.recruitingScalingFactor = scalingFactorRecruit;
+            this.recruitingScalingFactor = objRecruitment.recruitScalingFactor;
             //SSBScalingFactor
-            this.SSBScalingFactor = scalingFactorSSB;
+            this.SSBScalingFactor = objRecruitment.SSBScalingFactor;
         } 
 
 
@@ -541,10 +547,10 @@ namespace Nmfs.Agepro.Gui
             }
             foreach (DataRow drow in this.recruitmentProb.Rows)
             {
-                //If the
+                //List rows that have nulls/missing data
                 if (drow.ItemArray.Any(x => string.IsNullOrWhiteSpace(x.ToString())))
                 {
-                    errorMsgList.Add("At row " + this.recruitmentProb.Rows.IndexOf(drow) +
+                    errorMsgList.Add("At row " + (this.recruitmentProb.Rows.IndexOf(drow)+1) +
                         ": Empty or missing value found.");
                 }
                 else
@@ -703,44 +709,7 @@ namespace Nmfs.Agepro.Gui
         }
 
 
-        /// <summary>
-        /// Creates a Recruitment Probability DataTable.
-        /// </summary>
-        /// <param name="yCol">Number of columns</param>
-        /// <param name="xRows">Number of Rows</param>
-        /// <param name="colName">Column Names</param>
-        /// <returns></returns>
-        public DataTable CreateRecruitProbTable(int yCol, int xRows, string colName)
-        {
-            DataTable recruitProbTable = new DataTable();
-
-            for (int icol = 0; icol < yCol; icol++)
-            {
-                recruitProbTable.Columns.Add(colName + " " + (icol + 1));
-            }
-            for (int row = 0; row < xRows; row++)
-            {
-                recruitProbTable.Rows.Add();
-            }
-            
-            //Fill Recruit Probability table with default set of values.
-            //Assume each new case recruit selection prob is spread evenly.
-            double recruitProbVal = 1 / Convert.ToDouble(yCol);
-            
-            for (int irow = 0; irow < xRows; irow++)
-            {
-                for (int jcol = 0; jcol < yCol; jcol++)
-                {
-                    if (recruitProbTable.Rows[irow][jcol] == DBNull.Value)
-                    {
-                        recruitProbTable.Rows[irow][jcol] = recruitProbVal;
-                    }
-                }
-            }
-            
-            return recruitProbTable;
-        }
-        
+   
 
         private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
         {

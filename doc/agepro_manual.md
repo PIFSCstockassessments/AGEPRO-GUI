@@ -1,7 +1,7 @@
 Age Structured Projection Model (AGEPRO)
 ========================================
 
-Version 4.3.0
+Version 4.3.1
 
 * [Getting Started](#getting-started)
 * [Creating a New Case](#creating-a-new-case)
@@ -60,6 +60,7 @@ An new input data set can be set from scratch. Click on **Create New Case** in t
 ![](img/generalOptions_02.png)
 
 For new cases, the user must supply the following input:
+
 - First year in Projection
 - Last year in Projection
 - First Age Class (Age 1 by default)
@@ -668,7 +669,7 @@ For single fleet models, apply the *Harvrest Specfication* values under the *HAR
 ## Rebuilder Target Option
 AGEPRO allows an option for the user to specify a Rebuilder target and calculate the Fishing Mortality level required to meet this target to a specified confidence level.  
 
-Select the **Apply Rebuilder Target** option for *Additional calculations* box in the **Harvest Scenario** panel. The Rebuilder Option input will appear directly below.
+Select the **Apply Rebuilder Target** option for *Additional calculations* box in the **Harvest Scenario** panel. **Rebuilder Specification** will appear directly below.
 
 > For the Harvest Scenario Table, the *Harvest Specification* from the second year (row 2) in the time horizon to the **Rebuild Target Year** must be set to **F-MULT**
 
@@ -681,7 +682,7 @@ For **Rebuilder Target Type**, the user may set the rebuilder target as:
 If there is more than one fleet then the input estimates will be used to set the proportion of Fishing Mortality in each fleet. This proportion will be held constant as the F-Mult level changes to meet the target.
 
 ### Example
-![Single Fleet Harvest Scenario Table with a rebuild target](img/rebuilderHarvestTable_01.png "Harvest Scenario Table")
+![Single Fleet Harvest Scenario Table with a rebuild target](img/rebuilderHarvestScenario_03.png "Harvest Scenario Table")
 
 In the example shown above the user has set a Landings Harvest Quota in the first year of **2,100 MT**.
 
@@ -731,14 +732,14 @@ Probability Threshold Exceeded at Least Once =     0.9063
 ## P-Star Analysis
 **P-Star Analysis** determines *P-Star* (risk of overfishing) at multiple levels.
 
-Select the **Peform P-Star Analysis** option for *Additional calculations* box in the **Harvest Scenario** panel. The P-Star Analysis input will appear directly below. The specification allows the user to specify the number and values of P-Star levels, Overfishing F criteria, and P-Star Target Year. P-Star levels in should be entered in ascending order.
+Select the **Peform P-Star Analysis** option for *Additional calculations* box in the **Harvest Scenario** panel. This will show the **P-Star Specfication** directly below. The **P-Star Specification** allows the user to specify the number and values of P-Star levels, Overfishing F criteria, and P-Star Target Year. P-Star levels in should be entered in ascending order.
 
 > For the Harvest Scenario Table, the user must set the column *Harvest Specification* to **REMOVALS** (landings and discards) *on the year (row) that* **P-Star Target Year** is set to.
 
 For the multiple fleets scenario, the proportion of removals per fleet will be set by the initial guess and this proportion will be held constant as total removal values are varied to meet the P-Star criteria.
 
 ### Example
-![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/pstarHarvestTable_01.png "Harvest Scenario Table")
+![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/pstarHarvestScenario_03.png "Harvest Scenario Table")
 
 In the above example, the user has provided an initial guess of total removals of 20,000 MT (`15000` for Fleet-1  + `7500` for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.
 
