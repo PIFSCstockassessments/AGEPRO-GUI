@@ -246,11 +246,11 @@ namespace Nmfs.Agepro.Gui
                 //New Cases references version included in AGEPRO Reference Manual
                 inputData.version = "AGEPRO VERSION 4.2";
 
-                //Save General Options iput to CoreLib Input Data Object
-                inputData.general.ageBegin = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
-                inputData.general.ageEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
-                inputData.general.projYearStart = controlGeneralOptions.generalFirstAgeClass;
-                inputData.general.projYearEnd = controlGeneralOptions.generalLastAgeClass;
+                //Save General Options input to CoreLib Input Data Object
+                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection); 
+                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
+                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
+                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
                 inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
                 inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
                 inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
