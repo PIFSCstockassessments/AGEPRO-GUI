@@ -73,6 +73,8 @@ namespace Nmfs.Agepro.Gui
             //Set General Options Controls (to handle "New Cases")
             controlGeneralOptions.generalInputFile = "";
             controlGeneralOptions.generalModelId = "untitled";
+            this.inputData.general.inputFile = "";
+            this.inputData.caseID = controlGeneralOptions.generalModelId;
 
             //initially set Number of Ages
             int initalNumAges = controlGeneralOptions.generalFirstAgeClass; //Spinbox Value
@@ -245,7 +247,7 @@ namespace Nmfs.Agepro.Gui
 
                 //New Cases references version included in AGEPRO Reference Manual
                 inputData.version = "AGEPRO VERSION 4.2";
-
+                                
                 //Save General Options input to CoreLib Input Data Object
                 inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection); 
                 inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
@@ -256,7 +258,9 @@ namespace Nmfs.Agepro.Gui
                 inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
                 inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
                 inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
-
+                //Store CASEID to input data object
+                inputData.caseID = controlGeneralOptions.generalModelId;
+               
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
