@@ -360,6 +360,7 @@ namespace Nmfs.Agepro.Gui
                     controlBiological.maturityAge.bindStochasticAgeData(this.inputData.maturity);
                     this.inputData.biological.timeVarying = controlBiological.fractionMortalityTimeVarying;
                     controlFisherySelectivity.bindStochasticAgeData(this.inputData.fishery);
+                    controlNaturalMortality.bindStochasticAgeData(this.inputData.naturalMortality);
 
                     if(this.inputData.general.hasDiscards == true)
                     {
