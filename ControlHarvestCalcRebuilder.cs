@@ -37,10 +37,10 @@ namespace Nmfs.Agepro.Gui
             this.textBoxRebuilderTargetPercent.DataBindings.Clear();
             this.comboBoxRebuilderTargetType.DataBindings.Clear();
             //Set Data Bindings 
-            this.textBoxRebuilderTargetYear.DataBindings.Add("text", rebuilderTarget, "targetYear");
-            this.textBoxRebuilderTargetBiomass.DataBindings.Add("text", rebuilderTarget, "targetValue");
-            this.textBoxRebuilderTargetPercent.DataBindings.Add("text", rebuilderTarget, "targetPercent");
-            this.comboBoxRebuilderTargetType.DataBindings.Add("SelectedIndex",rebuilderTarget,"targetType");
+            this.textBoxRebuilderTargetYear.DataBindings.Add("text", rebuilderTarget, "targetYear", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxRebuilderTargetBiomass.DataBindings.Add("text", rebuilderTarget, "targetValue", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxRebuilderTargetPercent.DataBindings.Add("text", rebuilderTarget, "targetPercent", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.comboBoxRebuilderTargetType.DataBindings.Add("SelectedIndex",rebuilderTarget,"targetType", true, DataSourceUpdateMode.OnPropertyChanged);
 
             panelHarvestCalcParam.Controls.Clear();
             this.Dock = DockStyle.Fill;

@@ -57,7 +57,7 @@ namespace Nmfs.Agepro.Gui
             {
                 if (rb.Checked)
                 {
-                    if (!(PStar != null))
+                    if (PStar == null)
                     {
                         PStar = new PStarCalculation();
                         PStar.pStarLevels = 1;
@@ -89,7 +89,7 @@ namespace Nmfs.Agepro.Gui
                 {
                     //If Rebuilder has no data, create an empty/default set. 
                     //Otherwise load stored 'Rebuilder' class data to GUI.
-                    if (!(Rebuilder != null))
+                    if (Rebuilder == null)
                     {
                         Rebuilder = new RebuilderTargetCalculation();
                         Rebuilder.targetYear = 0;

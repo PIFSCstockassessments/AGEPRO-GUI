@@ -35,10 +35,10 @@ namespace Nmfs.Agepro.Gui
             this.textBoxPStarTargetYear.DataBindings.Clear();
             this.dataGridPStarLevelValues.DataBindings.Clear();
             //Set up new Data Bindings
-            this.spinBoxNumPStarLevels.DataBindings.Add("value", pstar, "pStarLevels");
-            this.textBoxOverfishingF.DataBindings.Add("text", pstar, "pStarF");
-            this.textBoxPStarTargetYear.DataBindings.Add("text", pstar, "targetYear");
-            this.dataGridPStarLevelValues.DataBindings.Add("dataSource", pstar, "pStarTable");
+            this.spinBoxNumPStarLevels.DataBindings.Add("value", pstar, "pStarLevels", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxOverfishingF.DataBindings.Add("text", pstar, "pStarF", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.textBoxPStarTargetYear.DataBindings.Add("text", pstar, "targetYear", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.dataGridPStarLevelValues.DataBindings.Add("dataSource", pstar, "pStarTable", true, DataSourceUpdateMode.OnPropertyChanged);
 
             panelHarvestCalcParam.Controls.Clear();
             this.Dock = DockStyle.Fill;
