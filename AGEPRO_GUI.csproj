@@ -222,6 +222,7 @@
     </Compile>
     <Compile Include="RebuilderTargetType.cs" />
     <Compile Include="Util.cs" />
+    <None Include="Resources\logoPictureBox.Image.png" />
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +473,7 @@
     <Content Include="doc\img\VPAExample_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\%24this.Icon.ico" />
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
   <ItemGroup />
