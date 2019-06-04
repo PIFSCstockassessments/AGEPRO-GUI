@@ -311,7 +311,7 @@ namespace Nmfs.Agepro.Gui
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Can not load AGEPRO input file."+ Environment.NewLine + ex,
+                    MessageBox.Show("Error loading AGEPRO input file:"+ Environment.NewLine + ex.Message,
                         "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
