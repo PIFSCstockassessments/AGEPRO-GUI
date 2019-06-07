@@ -141,7 +141,7 @@ namespace Nmfs.Agepro.Gui
             this.stochasticDataFile = inp.dataFile;
             this.stochasticAgeTable = Util.GetAgeproInputDataTable(this.stochasticAgeTable, inp.byAgeData);
             this.stochasticCV = Util.GetAgeproInputDataTable(this.stochasticCV, inp.byAgeCV);
-            if (!(this.stochasticAgeTable != null))
+            if (this.stochasticAgeTable == null)
             {
                 this.enableTimeVaryingCheckBox = false;
             }

@@ -268,7 +268,7 @@ namespace Nmfs.Agepro.Gui
                 this.stochasticAgeTable = CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
                 this.enableTimeVaryingCheckBox = true;
             }
-            if (!(this.stochasticCV != null))
+            if (this.stochasticCV == null)
             {
                 this.stochasticCV = CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
             }
