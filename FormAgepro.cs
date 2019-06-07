@@ -165,6 +165,22 @@ namespace Nmfs.Agepro.Gui
                 //Validate GeneralOption Parameters
                 controlGeneralOptions.ValidateGeneralOptionsParameters();
 
+                //New Cases references version included in AGEPRO Reference Manual
+                inputData.version = "AGEPRO VERSION 4.0";
+
+                //Save General Options input to CoreLib Input Data Object
+                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
+                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
+                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
+                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
+                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
+                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
+                //Store CASEID to input data object
+                inputData.caseID = controlGeneralOptions.generalModelId;
+
                 //Check for AGEPRO parameter data that has already been loaded/set 
                 controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
@@ -244,23 +260,6 @@ namespace Nmfs.Agepro.Gui
                 //Bootstrap
                 controlBootstrap.SetBootstrapControls(inputData.bootstrap);
 
-
-                //New Cases references version included in AGEPRO Reference Manual
-                inputData.version = "AGEPRO VERSION 4.0";
-                                
-                //Save General Options input to CoreLib Input Data Object
-                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection); 
-                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
-                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
-                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
-                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
-                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
-                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
-                //Store CASEID to input data object
-                inputData.caseID = controlGeneralOptions.generalModelId;
-               
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
