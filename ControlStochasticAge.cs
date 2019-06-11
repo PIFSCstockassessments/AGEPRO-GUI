@@ -206,12 +206,12 @@ namespace Nmfs.Agepro.Gui
         /// <param name="objNT">Object representing the Stochastic Parameter</param>
         /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
         /// nubmber of fleets? Default is false.</param>
-        public void CreateStochasticParameterFallbackDataTable(ControlGeneral genOpt,
+        public void CreateStochasticParameterFallbackDataTable(Nmfs.Agepro.CoreLib.AgeproGeneral genOpt,
             Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable objNT,
             StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
         {
-            this.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
-            this.seqYears = genOpt.SeqYears();
+            this.numFleets = Convert.ToInt32(genOpt.numFleets);
+            this.seqYears = Array.ConvertAll(genOpt.SeqYears(), element => element.ToString());
             this.readInputFileState = true;
             //Reset Tables if they were used before
             if (this.stochasticAgeTable != null)
