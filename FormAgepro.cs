@@ -203,23 +203,23 @@ namespace Nmfs.Agepro.Gui
                 }
 
                 //Set Stochastic Paramaeter DataGrids           
-                controlJan1Weight.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.jan1Weight, StochasticAgeFleetDependency.independent);
-                controlSSBWeight.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.SSBWeight, StochasticAgeFleetDependency.independent);
-                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.meanWeight, StochasticAgeFleetDependency.independent);
-                controlCatchWeight.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.catchWeight,
+                controlJan1Weight.CreateStochasticParameterFallbackDataTable(inputData.jan1Weight, inputData.general, StochasticAgeFleetDependency.independent);
+                controlSSBWeight.CreateStochasticParameterFallbackDataTable(inputData.SSBWeight, inputData.general, StochasticAgeFleetDependency.independent);
+                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(inputData.meanWeight, inputData.general, StochasticAgeFleetDependency.independent);
+                controlCatchWeight.CreateStochasticParameterFallbackDataTable(inputData.catchWeight, inputData.general,
                     StochasticAgeFleetDependency.dependent);
-                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.fishery,
+                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(inputData.fishery, inputData.general,
                     StochasticAgeFleetDependency.dependent);
                 
-                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.naturalMortality, StochasticAgeFleetDependency.independent);
-                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.maturity, StochasticAgeFleetDependency.independent);
+                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(inputData.naturalMortality, inputData.general, StochasticAgeFleetDependency.independent);
+                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(inputData.maturity, inputData.general, StochasticAgeFleetDependency.independent);
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
-                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.discardFraction,
+                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.discardFraction, inputData.general,
                         StochasticAgeFleetDependency.dependent);
-                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(inputData.general, inputData.discardWeight, StochasticAgeFleetDependency.independent);
+                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(inputData.discardWeight, inputData.general, StochasticAgeFleetDependency.independent);
                 
                 }
                 else

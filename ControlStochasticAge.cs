@@ -202,12 +202,12 @@ namespace Nmfs.Agepro.Gui
         /// Creates a empty Data Table for the Stochastic Parameter Control based on the user inputs gathered 
         /// from the General Options control parameter.
         /// </summary>
-        /// <param name="genOpt">Paramters from the General Options Control</param>
         /// <param name="objNT">Object representing the Stochastic Parameter</param>
+        /// <param name="genOpt">Paramters from the General Options Control</param>
         /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
         /// nubmber of fleets? Default is false.</param>
-        public void CreateStochasticParameterFallbackDataTable(Nmfs.Agepro.CoreLib.AgeproGeneral genOpt,
-            Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable objNT,
+        public void CreateStochasticParameterFallbackDataTable(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable objNT,
+            Nmfs.Agepro.CoreLib.AgeproGeneral genOpt,
             StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
         {
             this.numFleets = Convert.ToInt32(genOpt.numFleets);
