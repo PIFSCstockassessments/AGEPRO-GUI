@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
