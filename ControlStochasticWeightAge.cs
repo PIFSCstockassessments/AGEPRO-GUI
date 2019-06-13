@@ -241,15 +241,17 @@ namespace Nmfs.Agepro.Gui
         public void LoadWeightAgeInputData(Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
             Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
         {
+            
+            this.indexWeightOption = inp.weightOpt;
+            //Call StochasticAgeInputData 
+            base.LoadStochasticAgeInputData((Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+
             //For Discard weight, if "Discards are Present" is not selected, exit the function
             //(to prevent fallback data table to be generated.)
             if (this.weightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.hasDiscards == false)
             {
                 return;
             }
-
-            this.indexWeightOption = inp.weightOpt;
-            base.LoadStochasticAgeInputData(inp, generalOpt);
 
             //Create a empty DataTable if there input file DataTable (for 
             //weightAgeTable CVtable is Null)
