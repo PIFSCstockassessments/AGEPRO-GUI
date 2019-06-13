@@ -255,7 +255,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="numYears">Number of Years (from First year to Last Year of projection)</param>
         /// <param name="numFleets">Number of Fleets. Default is 1</param>
         /// <returns>Returns a empty DataTable</returns>
-        public DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
+        private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
         {
             int numFleetYears = numYears * numFleets;
 
