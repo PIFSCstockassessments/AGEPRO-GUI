@@ -238,8 +238,7 @@ namespace Nmfs.Agepro.Gui
         /// </summary>
         /// <param name="inp">AGEPRO InputFile Weight of Age Onject</param>
         /// <param name="generalOpt">AGEPRO InputFile General Options</param>
-        public void LoadWeightAgeInputData(Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inp,
-            Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
+        public void LoadStochasticWeightAgeInputData(AgeproWeightAgeTable inp, AgeproGeneral generalOpt) 
         {
             
             this.indexWeightOption = inp.weightOpt;
@@ -256,24 +255,9 @@ namespace Nmfs.Agepro.Gui
             //Create a empty DataTable if there input file DataTable (for 
             //weightAgeTable CVtable is Null)
             //if fallbackNullDataTable is true
-            if (this.stochasticAgeTable == null)
+            if (this.stochasticAgeTable == null && this.indexWeightOption == 0)
             {
-                int numYears;
-                if (this.timeVarying == true)
-                {
-                    numYears = generalOpt.NumYears();
-                }
-                else
-                {
-                    numYears = 1;
-                }
-                    
-                this.stochasticAgeTable = CreateFallbackAgeDataTable(generalOpt.NumAges(), numYears, generalOpt.numFleets);
-                this.enableTimeVaryingCheckBox = true;
-            }
-            if (this.stochasticCV == null)
-            {
-                this.stochasticCV = CreateFallbackAgeDataTable(generalOpt.NumAges(), 1, generalOpt.numFleets);
+                this.CreateStochasticParameterFallbackDataTable((AgeproStochasticAgeTable)inp, generalOpt, this.fleetDependency);
             }
             
         }

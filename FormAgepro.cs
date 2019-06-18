@@ -427,19 +427,19 @@ namespace Nmfs.Agepro.Gui
             controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
 
             //JAN-1
-            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
+            controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
 
             //SSB
-            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
+            controlSSBWeight.LoadStochasticWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
 
             //Mid-Year (Mean)
-            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general);
+            controlMidYearWeight.LoadStochasticWeightAgeInputData(inpFile.meanWeight, inpFile.general);
 
             //Catch Weight
-            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general);
+            controlCatchWeight.LoadStochasticWeightAgeInputData(inpFile.catchWeight, inpFile.general);
 
             //Discard Weight
-            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general);
+            controlDiscardWeight.LoadStochasticWeightAgeInputData(inpFile.discardWeight, inpFile.general);
 
             //Recruitment
             controlRecruitment.SetupControlRecruitment(inpFile.general.numRecModels, inpFile.recruitment);
