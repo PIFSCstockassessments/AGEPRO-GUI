@@ -193,17 +193,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To select a single cell: Click the cell, or press one of the Arrow keys to move to the cell.</p>
 <p>To select more than one cell: Click the on the cell, and while holding the mouse button drag the pointer to the cell in the range of cells you are interested in.</p>
 <p>To select an entire row, click on the row heading.</p>
-<p>To select the entire grid, do one of the following: * Right-Click on the grid and select Select All from the context menu. * Press CTRL+A. * Click the top left grid cell.</p>
+<p>To select the entire grid, do one of the following:</p>
+<ul>
+<li>Right-Click on the grid and select Select All from the context menu.</li>
+<li>Press CTRL+A.</li>
+<li>Click the top left grid cell.</li>
+</ul>
 <h3 id="edit-cell-contents">Edit Cell Contents</h3>
 <p>You can edit the contents of a cell directly in the cell.</p>
-<p>To place the contents of a cell in editing mode: * Double-click the cell that contains the data that you want to edit. Note that the cursor will be at the end of the cell's contents. * Click the cell that contains the data that you want to edit, and then start typing. If the cell contained any data it will be erased when you start typing.</p>
+<p>To place the contents of a cell in editing mode:</p>
+<ul>
+<li>Double-click the cell that contains the data that you want to edit. Note that the cursor will be at the end of the cell's contents.</li>
+<li>Click the cell that contains the data that you want to edit, and then start typing. If the cell contained any data it will be erased when you start typing.</li>
+</ul>
 <p>While the cell is still in edit mode, use <strong>Esc</strong> key to cancel the edit. It will revert to previous value before it was entered.</p>
-<p>To commit the edits to the cell: * Hit the <strong>Enter</strong> key to commit the changes and move the cell selection one cell below. * Hit the <strong>Up</strong> Arrow key to commit the changes and move the cell selection one cell above. * Hit the <strong>Down</strong> Arrow key to commit the changes and move to the cell selection one cell below. * If you are at the last character, hitting the <strong>Right</strong> Arrow key will commit the edit and move the cell selection one cell to the right. * If you are at the first character, hit the <strong>Left</strong> Arrow key will commit the edit and move the cell selection one cell to the left.</p>
+<p>To commit the edits to the cell:</p>
+<ul>
+<li>Hit the <strong>Enter</strong> key to commit the changes and move the cell selection one cell below.</li>
+<li>Hit the <strong>Up</strong> Arrow key to commit the changes and move the cell selection one cell above.</li>
+<li>Hit the <strong>Down</strong> Arrow key to commit the changes and move to the cell selection one cell below.</li>
+<li>If you are at the last character, hitting the <strong>Right</strong> Arrow key will commit the edit and move the cell selection one cell to the right.</li>
+<li>If you are at the first character, hit the <strong>Left</strong> Arrow key will commit the edit and move the cell selection one cell to the left.</li>
+</ul>
 <h3 id="copy-grid-data">Copy Grid Data</h3>
 <p>Select a cell or range of cells. Either <strong>Right-Click</strong> on the grid and select Copy from the context menu, or use <strong>CTRL+C</strong>.</p>
 <h3 id="paste-grid-data">Paste Grid Data</h3>
 <p>If you want to paste data from a spreadsheet program, select and copy the range of cells within the spreadsheet program. The copied cells will be stored to the clipboard. You can also paste data from a text file. Data in a text file should be tab-delimited, rows are line-delimited.</p>
-<p>To select where you want the data to be pasted, do one of the following: * If you have just one cell of data to paste, click on the cell where you want the data to go. * If you have more than one cell of data to paste, click on the cell you want to be the topmost and leftmost cell of the pasted data. Pasted data will automatically be filled in to the right of and below the cell you select.</p>
+<p>To select where you want the data to be pasted, do one of the following:</p>
+<ul>
+<li>If you have just one cell of data to paste, click on the cell where you want the data to go.</li>
+<li>If you have more than one cell of data to paste, click on the cell you want to be the topmost and leftmost cell of the pasted data. Pasted data will automatically be filled in to the right of and below the cell you select.</li>
+</ul>
 <p>To paste the data, either <strong>Right-Click</strong> on the grid and select Copy from the context menu, or use <strong>CTRL+V</strong>.</p>
 <h3 id="cut-grid-data">Cut Grid Data</h3>
 <p>Select a cell or range of cells. Either <strong>Right-Click</strong> on the grid and select Cut from the context menu, or use <strong>CTRL+X</strong>.</p>
@@ -219,7 +239,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The user may create a file with stochastic data at age using R or any statistical tool of choice.</p>
 <h1 id="stochastic-data-file-format-layout">Stochastic data file format layout</h1>
 <p>In order to create a succesful Stochastic Data File, please follow the following data file layout.</p>
-<p>The data categories for which this option applies are: * JAN-1 Stock Weights * Mid-Year Stock Weights * Spawning Stock Weights * Catch Weights * Discards Weights * Natural Mortality * Fishery Selectivity * Discard Fraction</p>
+<p>The data categories for which this option applies are:</p>
+<ul>
+<li>JAN-1 Stock Weights</li>
+<li>Mid-Year Stock Weights</li>
+<li>Spawning Stock Weights</li>
+<li>Catch Weights</li>
+<li>Discards Weights</li>
+<li>Natural Mortality</li>
+<li>Fishery Selectivity</li>
+<li>Discard Fraction</li>
+</ul>
 <p>The Stochastic data files are ASCII data files with <strong>space delimited double precision real data</strong>.</p>
 <p>For each stochastic observed value, the data consists of a number of <strong>space delimited data items</strong> on each line of the file. Each line is terminated by newline character (a carriage return or carriage return-line feed combination).</p>
 <p>In AGEPRO, the user specifies the number of bootstrap iterations on the <strong>Bootstrap</strong> panel. The user also specifies the number of simulations on the <strong>General Options</strong> panel.</p>
@@ -250,7 +280,13 @@ Number of Years in Projection Horizon = 10
 Time Variant</code></pre>
 <p>The data file for the above input would consist of 1,000,000 lines of data each with <strong>9</strong> space delimited data values. For each of 100,000 observed values the data is read in for all 10 years.</p>
 <h2 id="stochastic-data-file-format-layout-with-multi-fleets">Stochastic data file format layout with multi-fleets</h2>
-<p>The following considerations apply to: * Catch Weights * Discard Weights * Fishery Selectivity * Discard Fraction</p>
+<p>The following considerations apply to:</p>
+<ul>
+<li>Catch Weights</li>
+<li>Discard Weights</li>
+<li>Fishery Selectivity</li>
+<li>Discard Fraction</li>
+</ul>
 <p>If the user has specified more than one fleet, then the data layout differs only in the number of data columns:</p>
 <blockquote>
 <p>Number of Data Columns = Number of Age Classes x Number of Fleets</p>
@@ -259,7 +295,14 @@ Time Variant</code></pre>
 <hr />
 <h1 id="specifying-weights-of-age">Specifying Weights of Age</h1>
 <p>AGEPRO allows users to input stochastic weights at age.</p>
-<p>From the navigation panel, expand the <strong>Weights if Age</strong> node to set the following stochastic weights of age: * JAN-1 * SSB * Mid-Year (Mean) * Catch * Discard</p>
+<p>From the navigation panel, expand the <strong>Weights if Age</strong> node to set the following stochastic weights of age:</p>
+<ul>
+<li>JAN-1</li>
+<li>SSB</li>
+<li>Mid-Year (Mean)</li>
+<li>Catch</li>
+<li>Discard</li>
+</ul>
 <p>If <em>Discards are present</em> in <strong>General Options</strong> was unchecked or disabled, controls from <em>Discard</em> will be disabled.</p>
 <h2 id="jan-1-stock-weights-at-age">JAN-1 Stock Weights at Age</h2>
 <p>On the JAN-1 Weights panel, the user can select a data preference:</p>

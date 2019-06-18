@@ -157,6 +157,7 @@ To select more than one cell: Click the on the cell, and while holding the mouse
 To select an entire row, click on the row heading.
 
 To select the entire grid, do one of the following:
+
 * Right-Click on the grid and select Select All from the context menu.
 * Press CTRL+A.
 * Click the top left grid cell.
@@ -165,12 +166,14 @@ To select the entire grid, do one of the following:
 You can edit the contents of a cell directly in the cell.
 
 To place the contents of a cell in editing mode:
+
 * Double-click the cell that contains the data that you want to edit. Note that the cursor will be at the end of the cell's contents.
 * Click the cell that contains the data that you want to edit, and then start typing. If the cell contained any data it will be erased when you start typing.
 
 While the cell is still in edit mode, use **Esc** key to cancel the edit. It will revert to previous value before it was entered.
 
 To commit the edits to the cell:
+
 * Hit the **Enter** key to commit the changes and move the cell selection one cell below.
 * Hit the **Up** Arrow key to commit the changes and move the cell selection one cell above.
 * Hit the **Down** Arrow key to commit the changes and move to the cell selection one cell below.
@@ -184,6 +187,7 @@ Select a cell or range of cells. Either **Right-Click** on the grid and select C
 If you want to paste data from a spreadsheet program, select and copy the range of cells within  the spreadsheet program. The copied cells will be stored to the clipboard.  You can also paste data from a text file. Data in a text file should be tab-delimited, rows are line-delimited.
 
 To select where you want the data to be pasted, do one of the following:
+
 * If you have just one cell of data to paste, click on the cell where you want the data to go.
 * If you have more than one cell of data to paste, click on the cell you want to be the topmost and leftmost cell of the pasted data. Pasted data will automatically be filled in to the right of and below the cell you select.
 
@@ -213,6 +217,7 @@ The user may create a file with stochastic data at age using R or any statistica
 In order to create a succesful Stochastic Data File, please follow the following data file layout.
 
 The data categories for which this option applies are:
+
 * JAN-1 Stock Weights
 * Mid-Year Stock Weights
 * Spawning Stock Weights
@@ -264,6 +269,7 @@ The data file for the above input would consist of 1,000,000 lines of data each 
 
 ## Stochastic data file format layout with multi-fleets
 The following considerations apply to:
+
 * Catch Weights
 * Discard Weights
 * Fishery Selectivity
@@ -281,6 +287,7 @@ On each line the program reads the values at age for the first fleet followed by
 AGEPRO allows users to input stochastic weights at age.  
 
 From the navigation panel, expand the **Weights if Age** node to set the following stochastic weights of age:
+
 * JAN-1
 * SSB
 * Mid-Year (Mean)
