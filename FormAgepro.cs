@@ -165,6 +165,22 @@ namespace Nmfs.Agepro.Gui
                 //Validate GeneralOption Parameters
                 controlGeneralOptions.ValidateGeneralOptionsParameters();
 
+                //New Cases references version included in AGEPRO Reference Manual
+                inputData.version = "AGEPRO VERSION 4.0";
+
+                //Save General Options input to CoreLib Input Data Object
+                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
+                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
+                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
+                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
+                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
+                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
+                //Store CASEID to input data object
+                inputData.caseID = controlGeneralOptions.generalModelId;
+
                 //Check for AGEPRO parameter data that has already been loaded/set 
                 controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
                 controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
@@ -187,23 +203,23 @@ namespace Nmfs.Agepro.Gui
                 }
 
                 //Set Stochastic Paramaeter DataGrids           
-                controlJan1Weight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.jan1Weight);
-                controlSSBWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.SSBWeight);
-                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.meanWeight);
-                controlCatchWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.catchWeight,
+                controlJan1Weight.CreateStochasticParameterFallbackDataTable(inputData.jan1Weight, inputData.general, StochasticAgeFleetDependency.independent);
+                controlSSBWeight.CreateStochasticParameterFallbackDataTable(inputData.SSBWeight, inputData.general, StochasticAgeFleetDependency.independent);
+                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(inputData.meanWeight, inputData.general, StochasticAgeFleetDependency.independent);
+                controlCatchWeight.CreateStochasticParameterFallbackDataTable(inputData.catchWeight, inputData.general,
                     StochasticAgeFleetDependency.dependent);
-                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.fishery,
+                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(inputData.fishery, inputData.general,
                     StochasticAgeFleetDependency.dependent);
                 
-                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.naturalMortality);
-                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.maturity);
+                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(inputData.naturalMortality, inputData.general, StochasticAgeFleetDependency.independent);
+                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(inputData.maturity, inputData.general, StochasticAgeFleetDependency.independent);
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
-                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.discardFraction,
+                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.discardFraction, inputData.general,
                         StochasticAgeFleetDependency.dependent);
-                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(controlGeneralOptions, inputData.discardWeight);
+                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(inputData.discardWeight, inputData.general, StochasticAgeFleetDependency.independent);
                 
                 }
                 else
@@ -244,23 +260,6 @@ namespace Nmfs.Agepro.Gui
                 //Bootstrap
                 controlBootstrap.SetBootstrapControls(inputData.bootstrap);
 
-
-                //New Cases references version included in AGEPRO Reference Manual
-                inputData.version = "AGEPRO VERSION 4.0";
-                                
-                //Save General Options input to CoreLib Input Data Object
-                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection); 
-                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
-                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
-                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
-                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
-                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
-                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
-                //Store CASEID to input data object
-                inputData.caseID = controlGeneralOptions.generalModelId;
-               
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
                 //Discards are Present is not checked
@@ -311,7 +310,7 @@ namespace Nmfs.Agepro.Gui
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Can not load AGEPRO input file."+ Environment.NewLine + ex,
+                    MessageBox.Show("Error loading AGEPRO input file:"+ Environment.NewLine + ex.Message,
                         "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -428,19 +427,19 @@ namespace Nmfs.Agepro.Gui
             controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
 
             //JAN-1
-            controlJan1Weight.LoadWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
+            controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
 
             //SSB
-            controlSSBWeight.LoadWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
+            controlSSBWeight.LoadStochasticWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
 
             //Mid-Year (Mean)
-            controlMidYearWeight.LoadWeightAgeInputData(inpFile.meanWeight, inpFile.general);
+            controlMidYearWeight.LoadStochasticWeightAgeInputData(inpFile.meanWeight, inpFile.general);
 
             //Catch Weight
-            controlCatchWeight.LoadWeightAgeInputData(inpFile.catchWeight, inpFile.general);
+            controlCatchWeight.LoadStochasticWeightAgeInputData(inpFile.catchWeight, inpFile.general);
 
             //Discard Weight
-            controlDiscardWeight.LoadWeightAgeInputData(inpFile.discardWeight, inpFile.general);
+            controlDiscardWeight.LoadStochasticWeightAgeInputData(inpFile.discardWeight, inpFile.general);
 
             //Recruitment
             controlRecruitment.SetupControlRecruitment(inpFile.general.numRecModels, inpFile.recruitment);

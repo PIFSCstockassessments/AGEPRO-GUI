@@ -141,7 +141,7 @@ namespace Nmfs.Agepro.Gui
             this.stochasticDataFile = inp.dataFile;
             this.stochasticAgeTable = Util.GetAgeproInputDataTable(this.stochasticAgeTable, inp.byAgeData);
             this.stochasticCV = Util.GetAgeproInputDataTable(this.stochasticCV, inp.byAgeCV);
-            if (!(this.stochasticAgeTable != null))
+            if (this.stochasticAgeTable == null)
             {
                 this.enableTimeVaryingCheckBox = false;
             }
@@ -202,16 +202,16 @@ namespace Nmfs.Agepro.Gui
         /// Creates a empty Data Table for the Stochastic Parameter Control based on the user inputs gathered 
         /// from the General Options control parameter.
         /// </summary>
-        /// <param name="genOpt">Paramters from the General Options Control</param>
         /// <param name="objNT">Object representing the Stochastic Parameter</param>
+        /// <param name="genOpt">Paramters from the General Options Control</param>
         /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
         /// nubmber of fleets? Default is false.</param>
-        public void CreateStochasticParameterFallbackDataTable(ControlGeneral genOpt,
-            Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable objNT,
+        public void CreateStochasticParameterFallbackDataTable(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable objNT,
+            Nmfs.Agepro.CoreLib.AgeproGeneral genOpt,
             StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
         {
-            this.numFleets = Convert.ToInt32(genOpt.generalNumberFleets);
-            this.seqYears = genOpt.SeqYears();
+            this.numFleets = Convert.ToInt32(genOpt.numFleets);
+            this.seqYears = Array.ConvertAll(genOpt.SeqYears(), element => element.ToString());
             this.readInputFileState = true;
             //Reset Tables if they were used before
             if (this.stochasticAgeTable != null)
@@ -255,7 +255,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="numYears">Number of Years (from First year to Last Year of projection)</param>
         /// <param name="numFleets">Number of Fleets. Default is 1</param>
         /// <returns>Returns a empty DataTable</returns>
-        public DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
+        private DataTable CreateFallbackAgeDataTable(int numAges, int numYears, int numFleets = 1)
         {
             int numFleetYears = numYears * numFleets;
 
