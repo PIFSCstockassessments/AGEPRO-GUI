@@ -180,6 +180,11 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
+        /// <summary>
+        /// Helper Method to emumerate invalidation errors messages .
+        /// </summary>
+        /// <param name="invalidRowList"></param>
+        /// <returns></returns>
         private bool EnumerateInvalidRebuilderRangeRows(List<string> invalidRowList)
         {
             string overflowMsg = ".";
@@ -203,6 +208,10 @@ namespace Nmfs.Agepro.Gui
             return true;
         }
 
+        /// <summary>
+        /// Data Validation. 
+        /// </summary>
+        /// <returns></returns>
         public bool ValidateHarvestScenario()
         {
             if (this.dataGridHarvestScenarioTable.HasBlankOrNullCells())
@@ -268,7 +277,11 @@ namespace Nmfs.Agepro.Gui
             return true;
         }
 
-
+        /// <summary>
+        /// Cell Formmetting event event used to customise Harvest Scnario Data Grid View Headers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;
