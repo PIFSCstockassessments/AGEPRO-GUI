@@ -250,7 +250,7 @@ namespace Nmfs.Agepro.Gui
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
                 inputData.harvestScenario.analysisType = HarvestScenarioAnalysis.HarvestScenario;
-                controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inputData);
+                controlHarvestScenario.SetHarvestScenarioCalcControls(inputData);
                 DataTable userGenBasedHarvestScenarioTable = AgeproHarvestScenario.NewHarvestTable(
                     controlHarvestScenario.seqYears.Count(), 
                     Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
@@ -474,7 +474,7 @@ namespace Nmfs.Agepro.Gui
             }
             controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
             controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
-            controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inpFile);
+            controlHarvestScenario.SetHarvestScenarioCalcControls(inpFile);
 
 
             //Bootstrapping

@@ -145,7 +145,7 @@ namespace Nmfs.Agepro.Gui
         /// existing AGEPRO input file. 
         /// </summary>
         /// <param name="inputData"></param>
-        public void SetHarvestCalcuationOptionFromInput(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
+        public void SetHarvestScenarioCalcControls(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
         {
             Nmfs.Agepro.CoreLib.HarvestScenarioAnalysis calcType = inpData.harvestScenario.analysisType;
 
