@@ -19,12 +19,14 @@ namespace Nmfs.Agepro.Gui
         public string[] seqYears { get; set; }
         public Nmfs.Agepro.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
         public Nmfs.Agepro.CoreLib.PStarCalculation PStar { get; set; }
+        public Nmfs.Agepro.CoreLib.HarvestScenarioAnalysis calcType { get; set; }
 
         public ControlHarvestScenario()
         {
             InitializeComponent();
             controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
             controlHarvestPStar = new ControlHarvestCalcPStar();
+            calcType = HarvestScenarioAnalysis.HarvestScenario;
 
         }
 
@@ -147,7 +149,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="inputData"></param>
         public void SetHarvestScenarioCalcControls(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
         {
-            Nmfs.Agepro.CoreLib.HarvestScenarioAnalysis calcType = inpData.harvestScenario.analysisType;
+            this.calcType = inpData.harvestScenario.analysisType;
 
             //Clean out any previous instances of pstar and/or rebuilder. 
             if (this.PStar != null)
