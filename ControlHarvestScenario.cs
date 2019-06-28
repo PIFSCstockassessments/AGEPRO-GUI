@@ -27,7 +27,21 @@ namespace Nmfs.Agepro.Gui
             controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
             controlHarvestPStar = new ControlHarvestCalcPStar();
             this.calcType = HarvestScenarioAnalysis.HarvestScenario;
+            this.Rebuilder = new Nmfs.Agepro.CoreLib.RebuilderTargetCalculation();
+            this.PStar = new Nmfs.Agepro.CoreLib.PStarCalculation();
+            this.seqYears = new string[1]{"1"};
+            
+            //PStar Defaults
+            this.controlHarvestPStar.pstarLevels = 1;
+            this.controlHarvestPStar.targetYear = "0";
+            this.controlHarvestPStar.overfishingF = "0.0";
+            //Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(this.controlHarvestPStar.pstarLevelsTable);
 
+            //Rebuilder Defaults
+            this.controlHarvestRebuilder.rebuilderTargetYear = "0";
+            this.controlHarvestRebuilder.rebuilderBiomass = "0.0";
+            this.controlHarvestRebuilder.rebuilderPercentConfidence = "0.0";
+            this.controlHarvestRebuilder.rebuilderType = 0;
         }
 
         public DataTable HarvestScenarioTable
