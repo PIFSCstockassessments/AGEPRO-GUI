@@ -26,7 +26,7 @@ namespace Nmfs.Agepro.Gui
             InitializeComponent();
             controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
             controlHarvestPStar = new ControlHarvestCalcPStar();
-            calcType = HarvestScenarioAnalysis.HarvestScenario;
+            this.calcType = HarvestScenarioAnalysis.HarvestScenario;
 
         }
 
@@ -45,6 +45,7 @@ namespace Nmfs.Agepro.Gui
         private void radioNone_CheckedChanged(object sender, EventArgs e)
         {
             panelAltCalcParameters.Controls.Clear();
+            this.calcType = HarvestScenarioAnalysis.HarvestScenario;
         }
 
         /// <summary>
@@ -71,6 +72,7 @@ namespace Nmfs.Agepro.Gui
                         PStar.pStarTable.Rows.Add();
                         Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.pStarTable);
                     }
+                    this.calcType = HarvestScenarioAnalysis.PStar;
                     controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
                 }
             }
@@ -100,7 +102,8 @@ namespace Nmfs.Agepro.Gui
                         Rebuilder.targetPercent = 0;
                         Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                     }
-                    controlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, this.panelAltCalcParameters);
+                    this.calcType = HarvestScenarioAnalysis.Rebuilder;
+                    controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
                 }
             }
         }
@@ -137,9 +140,7 @@ namespace Nmfs.Agepro.Gui
             SetHarvestSpecificationColumn();
             
             this.HarvestScenarioTable = inpFileTable;
-            
         }
-
         
         
         /// <summary>

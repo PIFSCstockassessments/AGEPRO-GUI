@@ -26,6 +26,7 @@ namespace Nmfs.Agepro.Gui
             comboBoxRebuilderTargetType.ValueMember = "index";
             comboBoxRebuilderTargetType.DisplayMember = "rebuilderTargetTypeName";
             comboBoxRebuilderTargetType.DataSource = typeList;
+
         }
 
         public string rebuilderTargetYear
