@@ -13,11 +13,31 @@ namespace Nmfs.Agepro.Gui
     public partial class ControlHarvestCalcPStar : UserControl
     {
         private bool setControlValues;
+        public DataTable pstarLevelsTable { get; set; }
+
         public ControlHarvestCalcPStar()
         {
             InitializeComponent();
             setControlValues = false;
         }
+
+        public int pstarLevels 
+        { 
+            get{return Decimal.ToInt32(spinBoxNumPStarLevels.Value);} 
+            set{spinBoxNumPStarLevels.Value = value;} 
+        }
+        public string targetYear
+        {
+            get { return textBoxPStarTargetYear.Text; }
+            set { textBoxPStarTargetYear.Text = value; }
+        }
+        public string overfishingF
+        {
+            get { return textBoxOverfishingF.Text; }
+            set { textBoxOverfishingF.Text = value; }
+        }
+        
+     
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
