@@ -105,9 +105,7 @@ namespace Nmfs.Agepro.Gui
             {
                 if (rb.Checked)
                 {
-                    //If Rebuilder has no data, create an empty/default set. 
-                    //Otherwise load stored 'Rebuilder' class data to GUI.
-                    if (Rebuilder == null)
+                    if (this.Rebuilder == null)
                     {
                         Rebuilder = new RebuilderTargetCalculation();
                         Rebuilder.targetYear = 0;
@@ -185,7 +183,14 @@ namespace Nmfs.Agepro.Gui
             {
                 this.PStar = inpData.pstar;
                 radioPStar.Checked = true;
-                this.PStar.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
+
+                //Create Defaluts if Pstar is null
+                if (PStar == null)
+                {
+                    PStar = new PStarCalculation();
+                    this.PStar.obsYears = inpData.general.SeqYears();
+                }
+
                 controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
             }
             else if (calcType == HarvestScenarioAnalysis.Rebuilder)
@@ -193,6 +198,14 @@ namespace Nmfs.Agepro.Gui
                 this.Rebuilder = inpData.rebuild;
                 radioRebuilderTarget.Checked = true;
                 this.Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
+
+                //If Rebuilder has no data, create an empty/default set. 
+                if (this.Rebuilder == null)
+                {
+                    this.Rebuilder = new RebuilderTargetCalculation();
+                    this.Rebuilder.obsYears = inpData.general.SeqYears();
+                }
+
                 controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
             }
         }
