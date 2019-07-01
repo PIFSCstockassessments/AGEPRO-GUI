@@ -267,7 +267,7 @@ namespace Nmfs.Agepro.Gui
                 //From year 2 to target year.
                 int nFMult = (this.Rebuilder.targetYear - this.Rebuilder.obsYears[0]);
                 List<string> invalidRowList = new List<string>();
-                for(int irow=1 ; irow < nFMult ; irow++) 
+                for(int irow=2 ; irow < nFMult ; irow++) 
                 {
                     if (this.HarvestScenarioTable.Rows[irow][0].Equals("F-MULT") == false)
                     {
