@@ -19,13 +19,29 @@ namespace Nmfs.Agepro.Gui
         public string[] seqYears { get; set; }
         public Nmfs.Agepro.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
         public Nmfs.Agepro.CoreLib.PStarCalculation PStar { get; set; }
+        public Nmfs.Agepro.CoreLib.HarvestScenarioAnalysis calcType { get; set; }
 
         public ControlHarvestScenario()
         {
             InitializeComponent();
             controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
             controlHarvestPStar = new ControlHarvestCalcPStar();
+            this.calcType = HarvestScenarioAnalysis.HarvestScenario;
+            this.Rebuilder = new Nmfs.Agepro.CoreLib.RebuilderTargetCalculation();
+            this.PStar = new Nmfs.Agepro.CoreLib.PStarCalculation();
+            this.seqYears = new string[1]{"1"};
+            
+            //PStar Defaults
+            this.controlHarvestPStar.pstarLevels = 1;
+            this.controlHarvestPStar.targetYear = "0";
+            this.controlHarvestPStar.overfishingF = "0.0";
+            //Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(this.controlHarvestPStar.pstarLevelsTable);
 
+            //Rebuilder Defaults
+            this.controlHarvestRebuilder.rebuilderTargetYear = "0";
+            this.controlHarvestRebuilder.rebuilderBiomass = "0.0";
+            this.controlHarvestRebuilder.rebuilderPercentConfidence = "0.0";
+            this.controlHarvestRebuilder.rebuilderType = 0;
         }
 
         public DataTable HarvestScenarioTable
@@ -43,6 +59,7 @@ namespace Nmfs.Agepro.Gui
         private void radioNone_CheckedChanged(object sender, EventArgs e)
         {
             panelAltCalcParameters.Controls.Clear();
+            this.calcType = HarvestScenarioAnalysis.HarvestScenario;
         }
 
         /// <summary>
@@ -69,6 +86,7 @@ namespace Nmfs.Agepro.Gui
                         PStar.pStarTable.Rows.Add();
                         Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.pStarTable);
                     }
+                    this.calcType = HarvestScenarioAnalysis.PStar;
                     controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
                 }
             }
@@ -87,9 +105,7 @@ namespace Nmfs.Agepro.Gui
             {
                 if (rb.Checked)
                 {
-                    //If Rebuilder has no data, create an empty/default set. 
-                    //Otherwise load stored 'Rebuilder' class data to GUI.
-                    if (Rebuilder == null)
+                    if (this.Rebuilder == null)
                     {
                         Rebuilder = new RebuilderTargetCalculation();
                         Rebuilder.targetYear = 0;
@@ -98,7 +114,8 @@ namespace Nmfs.Agepro.Gui
                         Rebuilder.targetPercent = 0;
                         Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                     }
-                    controlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, this.panelAltCalcParameters);
+                    this.calcType = HarvestScenarioAnalysis.Rebuilder;
+                    controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
                 }
             }
         }
@@ -135,9 +152,7 @@ namespace Nmfs.Agepro.Gui
             SetHarvestSpecificationColumn();
             
             this.HarvestScenarioTable = inpFileTable;
-            
         }
-
         
         
         /// <summary>
@@ -145,9 +160,9 @@ namespace Nmfs.Agepro.Gui
         /// existing AGEPRO input file. 
         /// </summary>
         /// <param name="inputData"></param>
-        public void SetHarvestCalcuationOptionFromInput(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
+        public void SetHarvestScenarioCalcControls(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
         {
-            Nmfs.Agepro.CoreLib.HarvestScenarioAnalysis calcType = inpData.harvestScenario.analysisType;
+            this.calcType = inpData.harvestScenario.analysisType;
 
             //Clean out any previous instances of pstar and/or rebuilder. 
             if (this.PStar != null)
@@ -168,7 +183,14 @@ namespace Nmfs.Agepro.Gui
             {
                 this.PStar = inpData.pstar;
                 radioPStar.Checked = true;
-                this.PStar.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
+
+                //Create Defaluts if Pstar is null
+                if (PStar == null)
+                {
+                    PStar = new PStarCalculation();
+                    this.PStar.obsYears = inpData.general.SeqYears();
+                }
+
                 controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
             }
             else if (calcType == HarvestScenarioAnalysis.Rebuilder)
@@ -176,10 +198,23 @@ namespace Nmfs.Agepro.Gui
                 this.Rebuilder = inpData.rebuild;
                 radioRebuilderTarget.Checked = true;
                 this.Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
+
+                //If Rebuilder has no data, create an empty/default set. 
+                if (this.Rebuilder == null)
+                {
+                    this.Rebuilder = new RebuilderTargetCalculation();
+                    this.Rebuilder.obsYears = inpData.general.SeqYears();
+                }
+
                 controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
             }
         }
 
+        /// <summary>
+        /// Helper Method to emumerate invalidation errors messages .
+        /// </summary>
+        /// <param name="invalidRowList"></param>
+        /// <returns></returns>
         private bool EnumerateInvalidRebuilderRangeRows(List<string> invalidRowList)
         {
             string overflowMsg = ".";
@@ -203,6 +238,10 @@ namespace Nmfs.Agepro.Gui
             return true;
         }
 
+        /// <summary>
+        /// Data Validation. 
+        /// </summary>
+        /// <returns></returns>
         public bool ValidateHarvestScenario()
         {
             if (this.dataGridHarvestScenarioTable.HasBlankOrNullCells())
@@ -228,7 +267,7 @@ namespace Nmfs.Agepro.Gui
                 //From year 2 to target year.
                 int nFMult = (this.Rebuilder.targetYear - this.Rebuilder.obsYears[0]);
                 List<string> invalidRowList = new List<string>();
-                for(int irow=1 ; irow < nFMult ; irow++) 
+                for(int irow=2 ; irow < nFMult ; irow++) 
                 {
                     if (this.HarvestScenarioTable.Rows[irow][0].Equals("F-MULT") == false)
                     {
@@ -268,7 +307,11 @@ namespace Nmfs.Agepro.Gui
             return true;
         }
 
-
+        /// <summary>
+        /// Cell Formmetting event event used to customise Harvest Scnario Data Grid View Headers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;

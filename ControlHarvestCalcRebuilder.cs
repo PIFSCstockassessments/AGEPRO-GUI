@@ -26,6 +26,29 @@ namespace Nmfs.Agepro.Gui
             comboBoxRebuilderTargetType.ValueMember = "index";
             comboBoxRebuilderTargetType.DisplayMember = "rebuilderTargetTypeName";
             comboBoxRebuilderTargetType.DataSource = typeList;
+
+        }
+
+        public string rebuilderTargetYear
+        {
+            get { return textBoxRebuilderTargetYear.Text; }
+            set { textBoxRebuilderTargetYear.Text = value; }
+        }
+
+        public string rebuilderBiomass
+        {
+            get { return textBoxRebuilderTargetBiomass.Text; }
+            set { textBoxRebuilderTargetBiomass.Text = value; }
+        }
+        public string rebuilderPercentConfidence
+        {
+            get { return textBoxRebuilderTargetPercent.Text; }
+            set { textBoxRebuilderTargetPercent.Text = value; }
+        }
+        public int rebuilderType
+        {
+            get { return comboBoxRebuilderTargetType.SelectedIndex; }
+            set { comboBoxRebuilderTargetType.SelectedIndex = value; }
         }
 
         public void SetHarvestCalcRebuilderControls

@@ -250,7 +250,7 @@ namespace Nmfs.Agepro.Gui
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
                 inputData.harvestScenario.analysisType = HarvestScenarioAnalysis.HarvestScenario;
-                controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inputData);
+                controlHarvestScenario.SetHarvestScenarioCalcControls(inputData);
                 DataTable userGenBasedHarvestScenarioTable = AgeproHarvestScenario.NewHarvestTable(
                     controlHarvestScenario.seqYears.Count(), 
                     Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
@@ -367,6 +367,25 @@ namespace Nmfs.Agepro.Gui
                         controlDiscardFraction.bindStochasticAgeData(this.inputData.discardFraction);     
                     }
 
+                    //Harvest Scenario: Rebuilder/PStar
+                    if (controlHarvestScenario.calcType == HarvestScenarioAnalysis.PStar)
+                    {
+                        this.inputData.harvestScenario.analysisType = controlHarvestScenario.calcType;
+                        this.inputData.pstar.analysisType = controlHarvestScenario.calcType;
+                        this.inputData.pstar.pStarLevels = controlHarvestScenario.PStar.pStarLevels;
+                        this.inputData.pstar.pStarF = controlHarvestScenario.PStar.pStarF;
+                        this.inputData.pstar.targetYear = controlHarvestScenario.PStar.targetYear;
+                        this.inputData.pstar.pStarTable = controlHarvestScenario.PStar.pStarTable;
+                    }
+                    else if (controlHarvestScenario.calcType == HarvestScenarioAnalysis.Rebuilder)
+                    {
+                        this.inputData.harvestScenario.analysisType = controlHarvestScenario.calcType;
+                        this.inputData.rebuild.analysisType = controlHarvestScenario.calcType;
+                        this.inputData.rebuild.targetYear = controlHarvestScenario.Rebuilder.targetYear;
+                        this.inputData.rebuild.targetPercent = controlHarvestScenario.Rebuilder.targetPercent;
+                        this.inputData.rebuild.targetType = controlHarvestScenario.Rebuilder.targetType;
+                    }
+
                     //Misc options
                     this.inputData.options.enableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
                     this.inputData.options.enableExportR = controlMiscOptions.miscOptionsEnableExportR;
@@ -474,7 +493,7 @@ namespace Nmfs.Agepro.Gui
             }
             controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
             controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
-            controlHarvestScenario.SetHarvestCalcuationOptionFromInput(inpFile);
+            controlHarvestScenario.SetHarvestScenarioCalcControls(inpFile);
 
 
             //Bootstrapping
