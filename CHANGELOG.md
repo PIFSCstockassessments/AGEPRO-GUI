@@ -1,7 +1,7 @@
 
 # AGEPRO Changelog
 
-## 4.3.2 (2019-04-00)
+## 4.3.2 (2019-07-01)
 
 ## Changes
 - Fixed an issue preventing AGEPRO Input Files with tabular whitespace delimiters to be loaded to GUI. 
@@ -12,8 +12,11 @@
   - Set access to helper method CreateFallbackAgeTable to private.
   - Cleaned up null checks
 - Replaced Nmfs.AGEPRO.GUI.ControlGeneral with Nmfs.AGEPRO.CoreLib.AgerproGeneral as the General Options class parameter of the  CreateStochasticParameterFallbackDataTable method to match consistency with Stochastic Data Tables.  
+- Fixed data binding issues for PStar and Rebuilder values.
+  - Fixed an issue where new/modified PStar or Rebuilder GUI input didn't save to input data file.
 - Prioritize binding CoreLib General Options Data over other AGEPRO parameters when setting user generated new cases. 
 - Simplfied the AGEPRO Input File Loading Exeception Dialog to error messages only.
+- Fixed Rebuilder option's Harvest Specification validation to begin on the 3rd projection year row.   
 - Minor help manual updates and format tweaks. 
 
 ## 4.3.1 (2019-03-29)
