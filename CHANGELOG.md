@@ -1,7 +1,7 @@
 
 # AGEPRO Changelog
 
-## 4.3.2 (2019-07-01)
+## 4.3.2 (2019-07-24)
 
 ## Changes
 - Fixed an issue preventing AGEPRO Input Files with tabular whitespace delimiters to be loaded to GUI. 
