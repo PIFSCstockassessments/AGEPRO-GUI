@@ -222,6 +222,7 @@
     </Compile>
     <Compile Include="RebuilderTargetType.cs" />
     <Compile Include="Util.cs" />
+    <None Include="Resources\logoPictureBox.bmp" />
     <None Include="Resources\logoPictureBox.Image.png" />
     <EmbeddedResource Include="AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
