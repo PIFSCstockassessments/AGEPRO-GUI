@@ -60,9 +60,29 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AGEPRO_CoreLib">
-      <HintPath>..\AGEPRO_CoreLib\bin\Debug\AGEPRO_CoreLib.dll</HintPath>
+      <HintPath>..\AGEPRO-CoreLib\bin\Debug\AGEPRO_CoreLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -132,6 +152,12 @@
     <Compile Include="ControlRecruitment.Designer.cs">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitmentEmpirical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentEmpirical.Designer.cs">
+      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlRecruitmentEmpiricalTwoStage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +176,12 @@
     <Compile Include="ControlRecruitmentMarkovMatrix.Designer.cs">
       <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlRecruitmentParametricBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRecruitmentParametricBase.Designer.cs">
+      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlRecruitmentParametricCurve.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,12 +199,6 @@
     </Compile>
     <Compile Include="ControlRecruitmentPredictor.Designer.cs">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricBase.Designer.cs">
-      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlStochasticAge.cs">
       <SubType>UserControl</SubType>
@@ -214,14 +240,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ControlRecruitmentEmpirical.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentEmpirical.Designer.cs">
-      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
-    </Compile>
     <Compile Include="RebuilderTargetType.cs" />
     <Compile Include="Util.cs" />
+    <Content Include="Resources\logoPictureBoxImage1.png" />
     <None Include="Resources\logoPictureBox.bmp" />
     <None Include="Resources\logoPictureBox.Image.png" />
     <EmbeddedResource Include="AboutAgepro.resx">
@@ -251,6 +272,9 @@
     <EmbeddedResource Include="ControlRecruitment.resx">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentEmpirical.resx">
+      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentEmpiricalTwoStage.resx">
       <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +284,9 @@
     <EmbeddedResource Include="ControlRecruitmentMarkovMatrix.resx">
       <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlRecruitmentParametricBase.resx">
+      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentParametricCurve.resx">
       <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,9 +295,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlRecruitmentPredictor.resx">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentParametricBase.resx">
-      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlStochasticAge.resx">
       <DependentUpon>ControlStochasticAge.cs</DependentUpon>
@@ -297,9 +321,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ControlRecruitmentEmpirical.resx">
-      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="CHANGELOG.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -477,7 +498,14 @@
     <None Include="Resources\%24this.Icon.ico" />
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\gui\bootstrap\" />
+    <Folder Include="src\gui\general\" />
+    <Folder Include="src\gui\harvestScenario\" />
+    <Folder Include="src\gui\options\" />
+    <Folder Include="src\gui\recruitment\" />
+    <Folder Include="src\gui\stochasticAge\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
