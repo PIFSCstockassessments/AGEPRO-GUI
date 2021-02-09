@@ -499,12 +499,12 @@
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\gui\bootstrap\" />
-    <Folder Include="src\gui\general\" />
-    <Folder Include="src\gui\harvestScenario\" />
-    <Folder Include="src\gui\options\" />
-    <Folder Include="src\gui\recruitment\" />
-    <Folder Include="src\gui\stochasticAge\" />
+    <Folder Include="src\ui\bootstrap\" />
+    <Folder Include="src\ui\general\" />
+    <Folder Include="src\ui\harvestScenario\" />
+    <Folder Include="src\ui\options\" />
+    <Folder Include="src\ui\recruitment\" />
+    <Folder Include="src\ui\stochasticAge\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
