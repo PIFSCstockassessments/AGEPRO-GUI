@@ -89,5 +89,15 @@ namespace Nmfs.Agepro.Gui.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap noaa_fisheries_pictureBoxImage {
+            get {
+                object obj = ResourceManager.GetObject("noaa_fisheries_pictureBoxImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

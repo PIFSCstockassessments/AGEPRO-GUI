@@ -240,6 +240,8 @@
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />
     <Content Include="Resources\logoPictureBoxImage1.png" />
+    <None Include="Resources\noaa_fisheries_pictureBoxImage.png" />
+    <None Include="Resources\noaa_fisheries_ pictureBoxImage.png" />
     <EmbeddedResource Include="src\about\AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </EmbeddedResource>
