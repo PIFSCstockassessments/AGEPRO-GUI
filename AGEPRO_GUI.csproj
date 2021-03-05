@@ -95,10 +95,10 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\about\AboutAgepro.cs">
+    <Compile Include="src\ui\about\AboutAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\about\AboutAgepro.Designer.cs">
+    <Compile Include="src\ui\about\AboutAgepro.Designer.cs">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </Compile>
     <Compile Include="src\NFT\NFTDataGridView.cs">
@@ -107,206 +107,204 @@
     <Compile Include="src\NFT\NftTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\ui\biological\ControlBiological.cs">
+    <Compile Include="src\ui\formAgepro\biological\ControlBiological.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\biological\ControlBiological.Designer.cs">
+    <Compile Include="src\ui\formAgepro\biological\ControlBiological.Designer.cs">
       <DependentUpon>ControlBiological.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\bootstrap\ControlBootstrap.cs">
+    <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\bootstrap\ControlBootstrap.Designer.cs">
+    <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.Designer.cs">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\FormAgepro.cs">
+    <Compile Include="src\ui\formAgepro\FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\ui\FormAgepro.Designer.cs">
+    <Compile Include="src\ui\formAgepro\FormAgepro.Designer.cs">
       <DependentUpon>FormAgepro.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\general\ControlGeneral.cs">
+    <Compile Include="src\ui\formAgepro\home\ControlGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\general\ControlGeneral.Designer.cs">
+    <Compile Include="src\ui\formAgepro\home\ControlGeneral.Designer.cs">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\harvestScenario\ControlHarvestCalcPStar.cs">
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\harvestScenario\ControlHarvestCalcPStar.Designer.cs">
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.Designer.cs">
       <DependentUpon>ControlHarvestCalcPStar.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\harvestScenario\ControlHarvestCalcRebuilder.cs">
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcRebuilder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\harvestScenario\ControlHarvestCalcRebuilder.Designer.cs">
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcRebuilder.Designer.cs">
       <DependentUpon>ControlHarvestCalcRebuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\harvestScenario\ControlHarvestScenario.cs">
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestScenario.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\harvestScenario\ControlHarvestScenario.Designer.cs">
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestScenario.Designer.cs">
       <DependentUpon>ControlHarvestScenario.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\harvestScenario\HarvestSpecification.cs" />
-    <Compile Include="src\ui\harvestScenario\RebuilderTargetType.cs" />
-    <Compile Include="src\ui\options\ControlMiscOptions.cs">
+    <Compile Include="src\ui\formAgepro\harvestScenario\HarvestSpecification.cs" />
+    <Compile Include="src\ui\formAgepro\harvestScenario\RebuilderTargetType.cs" />
+    <Compile Include="src\ui\formAgepro\options\ControlMiscOptions.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\options\ControlMiscOptions.Designer.cs">
+    <Compile Include="src\ui\formAgepro\options\ControlMiscOptions.Designer.cs">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitment.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitment.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitment.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitment.Designer.cs">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentEmpirical.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpirical.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentEmpirical.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpirical.Designer.cs">
       <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentEmpiricalTwoStage.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpiricalTwoStage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentEmpiricalTwoStage.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpiricalTwoStage.Designer.cs">
       <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentFixed.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentFixed.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentFixed.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentFixed.Designer.cs">
       <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentMarkovMatrix.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentMarkovMatrix.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentMarkovMatrix.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentMarkovMatrix.Designer.cs">
       <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentParametricBase.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentParametricBase.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricBase.Designer.cs">
       <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentParametricCurve.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricCurve.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentParametricCurve.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricCurve.Designer.cs">
       <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentParametricLognormal.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricLognormal.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentParametricLognormal.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricLognormal.Designer.cs">
       <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentPredictor.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentPredictor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\recruitment\ControlRecruitmentPredictor.Designer.cs">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentPredictor.Designer.cs">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticAge.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAge.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticAge.Designer.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAge.Designer.cs">
       <DependentUpon>ControlStochasticAge.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticAgeDataGridTable.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeDataGridTable.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticAgeDataGridTable.Designer.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeDataGridTable.Designer.cs">
       <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticAgeFromFile.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeFromFile.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticAgeFromFile.Designer.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeFromFile.Designer.cs">
       <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticWeightAge.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticWeightAge.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\stochasticAge\ControlStochasticWeightAge.Designer.cs">
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticWeightAge.Designer.cs">
       <DependentUpon>ControlStochasticWeightAge.cs</DependentUpon>
     </Compile>
     <Compile Include="src\util\AgeproBinding.cs" />
     <Compile Include="src\util\AgeproPropertyChanged.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />
-    <Content Include="Resources\logoPictureBoxImage1.png" />
     <None Include="Resources\noaa_fisheries_pictureBoxImage.png" />
-    <None Include="Resources\noaa_fisheries_ pictureBoxImage.png" />
-    <EmbeddedResource Include="src\about\AboutAgepro.resx">
+    <EmbeddedResource Include="src\ui\about\AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\NFT\NFTDataGridView.resx">
       <DependentUpon>NFTDataGridView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\biological\ControlBiological.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\biological\ControlBiological.resx">
       <DependentUpon>ControlBiological.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\bootstrap\ControlBootstrap.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\bootstrap\ControlBootstrap.resx">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\FormAgepro.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\FormAgepro.resx">
       <DependentUpon>FormAgepro.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\general\ControlGeneral.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\home\ControlGeneral.resx">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\harvestScenario\ControlHarvestCalcPStar.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.resx">
       <DependentUpon>ControlHarvestCalcPStar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\harvestScenario\ControlHarvestCalcRebuilder.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcRebuilder.resx">
       <DependentUpon>ControlHarvestCalcRebuilder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\harvestScenario\ControlHarvestScenario.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestScenario.resx">
       <DependentUpon>ControlHarvestScenario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\options\ControlMiscOptions.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\options\ControlMiscOptions.resx">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitment.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitment.resx">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentEmpirical.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpirical.resx">
       <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentEmpiricalTwoStage.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpiricalTwoStage.resx">
       <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentFixed.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentFixed.resx">
       <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentMarkovMatrix.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentMarkovMatrix.resx">
       <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentParametricBase.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricBase.resx">
       <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentParametricCurve.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricCurve.resx">
       <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentParametricLognormal.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricLognormal.resx">
       <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\recruitment\ControlRecruitmentPredictor.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentPredictor.resx">
       <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\stochasticAge\ControlStochasticAge.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\stochastic\ControlStochasticAge.resx">
       <DependentUpon>ControlStochasticAge.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\stochasticAge\ControlStochasticAgeDataGridTable.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\stochastic\ControlStochasticAgeDataGridTable.resx">
       <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\stochasticAge\ControlStochasticAgeFromFile.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\stochastic\ControlStochasticAgeFromFile.resx">
       <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Resources\logoPictureBox.bmp" />
