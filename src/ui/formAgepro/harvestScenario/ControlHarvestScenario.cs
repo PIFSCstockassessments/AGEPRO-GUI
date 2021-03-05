@@ -263,21 +263,6 @@ namespace Nmfs.Agepro.Gui
                     validRebuilder = false;
                 }
                 
-                //Check Harvest Scenario Table to see Harvest Specification is "F-MULT"
-                //From year 2 to target year.
-                int nFMult = (this.Rebuilder.targetYear - this.Rebuilder.obsYears[0]);
-                List<string> invalidRowList = new List<string>();
-                for(int irow=2 ; irow < nFMult ; irow++) 
-                {
-                    if (this.HarvestScenarioTable.Rows[irow][0].Equals("F-MULT") == false)
-                    {
-                        invalidRowList.Add((irow+1).ToString());
-                    }
-                }
-                if (this.EnumerateInvalidRebuilderRangeRows(invalidRowList) == false)
-                {
-                    validRebuilder = false;
-                }
                 return validRebuilder;
             }
             else if (this.radioPStar.Checked == true)
