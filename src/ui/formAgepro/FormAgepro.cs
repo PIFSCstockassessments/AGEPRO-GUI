@@ -343,7 +343,7 @@ namespace Nmfs.Agepro.Gui
                 try
                 {
                     //Validate
-                    if (ValidateControlInputs() == false)
+                    if (ValidateControlInputs== false)
                     {
                         throw new InvalidAgeproParameterException("Unable to save AGEPRO Input Data due to invalid input.");
                     }
@@ -539,11 +539,14 @@ namespace Nmfs.Agepro.Gui
             Console.WriteLine("Loaded AGEPRO Parameters ..");
         }
 
+    /*****************************************************************************************
+     *  LAUNCH TO AGEPRO CALCULATION ENGINE
+     ****************************************************************************************/
 
-        /// <summary>
-        /// Programmicaly commit data in current active winform control.  
-        /// </summary>
-        private void commitFocusedControl()
+    /// <summary>
+    /// Programmicaly commit data in current active winform control.  
+    /// </summary>
+    private void commitFocusedControl()
         {
             //If a cell is in edit mode, commit changes and end edit mode.
             var ctlActive = FindFocusedControl(this.ActiveControl);
@@ -575,7 +578,7 @@ namespace Nmfs.Agepro.Gui
             commitFocusedControl();
 
             //Validate
-            if (ValidateControlInputs() == false)
+            if (ValidateControlInputs== false)
             {
                 return;
             }
@@ -589,168 +592,327 @@ namespace Nmfs.Agepro.Gui
             
         }
 
-        /// <summary>
-        /// AGEPRO GUI Control input validation. 
-        /// </summary>
-        /// <returns>
-        /// If all control inputs pass validation checks, a dialog message will 
-        /// verify so and return true. 
-        /// The first invaild case will exit validation, a dialog message of the type of 
-        /// invalidation, and return false.
-        /// </returns>
-        private bool ValidateControlInputs()
-        {
-            double boundsMaxWeight;
-            double boundsNaturalMortality;
-            int numAges = controlGeneralOptions.NumAges();
-            //Default values for bounds
-            double defaultMaxWeightBound = 10.0;
-            double defaultNatualMortalityBound = 1.0;
+    /// <summary>
+    /// This gathers the bootstrap file, and stores it with the the GUI input under the "AGEPRO" subdirectory
+    /// in the desginagted user document directory. After the calcuation engine is done, the function will 
+    /// attempt to display the AGEPRO calcuation engine output file (if requested) and the directory the
+    /// outputs were written to.       
+    /// </summary>
+    private void LaunchAgeproModel()
+    {
+      string ageproModelJobName;
+      string jobDT;
 
-            //Enforce Bounds defaults if option is unchecked
-            if(this.controlMiscOptions.miscOptionsBounds == false)
+      //Set the user data work directory  
+      if (string.IsNullOrWhiteSpace(controlGeneralOptions.generalInputFile))
+      {
+        ageproModelJobName = "untitled_";
+        jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
+      }
+      else
+      {
+        ageproModelJobName = Path.GetFileNameWithoutExtension(controlGeneralOptions.generalInputFile);
+        //Remove potential invalid filename characters 
+        foreach (char c in Path.GetInvalidFileNameChars())
+        {
+          ageproModelJobName = ageproModelJobName.Replace(c.ToString(), "");
+        }
+        jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
+      }
+      string ageproWorkPath = Path.Combine(Util.GetAgeproUserDataPath(), jobDT);
+      string inpFile = Path.Combine(ageproWorkPath, ageproModelJobName + ".INP");
+      string bsnFile = Path.Combine(ageproWorkPath, ageproModelJobName + ".BSN");
+
+      if (!Directory.Exists(ageproWorkPath))
+      {
+        Directory.CreateDirectory(ageproWorkPath);
+      }
+
+      //check for bootstrap file
+      //1. File Exists from the bootstrap parameter
+      if (File.Exists(inputData.bootstrap.bootstrapFile))
+      {
+        File.Copy(inputData.bootstrap.bootstrapFile, bsnFile, true);
+      }
+      //2. If not, in the same directory as the AGEPRO Input File
+      else if (File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
+      {
+        File.Copy(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile),
+            bsnFile, true);
+      }
+      //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
+      else
+      {
+        OpenFileDialog openBootstrapFileDialog = ControlBootstrap.SetBootstrapOpenFileDialog();
+
+        if (openBootstrapFileDialog.ShowDialog() == DialogResult.OK)
+        {
+          File.Copy(openBootstrapFileDialog.FileName, bsnFile, true);
+        }
+        else
+        {
+          Console.WriteLine("Cancel Launch AGEPRO Model");
+          //If user declines (Cancel), do not Launch AGEPRO Calc Engine
+          return;
+        }
+      }
+      //Store original bootstrap filename in case of error
+      string originalBSNFile = inputData.bootstrap.bootstrapFile;
+
+      try
+      {
+        //Set bootstrap filename to copied workDir version
+        inputData.bootstrap.bootstrapFile = bsnFile;
+
+        //Write Interface Inputs to file
+        inputData.WriteInputFile(inpFile);
+
+        //use command line to open AGEPRO40.exe
+        LaunchAgeproCalcEngineProgram(inpFile);
+
+        //crude method to search for AGEPRO output file
+        string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
+
+        LaunchOutputViewerProgram(ageproOutfile, controlMiscOptions);
+
+        //Open WorkPath directory for the user 
+        Process.Start(ageproWorkPath);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex,
+                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+      finally
+      {
+        //reset original bootstrap filename 
+        inputData.bootstrap.bootstrapFile = originalBSNFile;
+      }
+    }
+
+
+    /// <summary>
+    /// Launches the AGEPRO Calcuation Engine Program
+    /// </summary>
+    /// <param name="inpFile"></param>
+    static void LaunchAgeproCalcEngineProgram(string inpFile)
+    {
+      string dirRoot = Path.GetPathRoot(Environment.SystemDirectory);
+
+      ProcessStartInfo ageproEngine = new ProcessStartInfo();
+      ageproEngine.WorkingDirectory = Application.StartupPath;
+      ageproEngine.FileName = "AGEPRO40.exe";
+      ageproEngine.Arguments = "\"\"" + inpFile + "\"\"";
+      ageproEngine.WindowStyle = ProcessWindowStyle.Normal;
+
+      try
+      {
+        using (Process exeProcess = Process.Start(ageproEngine))
+        {
+          exeProcess.WaitForExit();
+        }
+        MessageBox.Show("AGEPRO Done. Can be Found at:" + Environment.NewLine + Path.GetDirectoryName(inpFile),
+                "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("An error occured when running the AGEPRO Model." + Environment.NewLine + ex.Message,
+                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+    }
+
+    /// <summary>
+    /// Launches a program to view the AGEPRO calcuation engine output file
+    /// </summary>
+    /// <param name="outfile">AGEPRO calcuation engine output file</param>
+    /// <param name="outputOptions"></param>
+    static void LaunchOutputViewerProgram(string outfile, ControlMiscOptions outputOptions)
+    {
+      if (outputOptions.ageproOutputViewer == "System Default")
+      {
+        //open a program that is associated by its file type.
+        //If no association exists, system will ask user for a program. 
+        Process.Start(outfile);
+      }
+      else if (outputOptions.ageproOutputViewer == "Notepad")
+      {
+        Process.Start("notepad.exe", outfile);
+      }
+
+    }
+
+
+    /*****************************************************************************************
+     *  VALAIDATION
+     ****************************************************************************************/
+
+    /// <summary>
+    /// AGEPRO GUI Control input validation. 
+    /// </summary>
+    /// <returns>
+    /// If all control inputs pass validation checks, a dialog message will 
+    /// verify so and return true. 
+    /// The first invaild case will exit validation, a dialog message of the type of 
+    /// invalidation, and return false.
+    /// </returns>
+    private bool ValidateControlInputs
+    {
+      get
+      {
+        double boundsMaxWeight;
+        double boundsNaturalMortality;
+        int numAges = controlGeneralOptions.NumAges();
+        //Default values for bounds
+        double defaultMaxWeightBound = 10.0;
+        double defaultNatualMortalityBound = 1.0;
+
+        //Enforce Bounds defaults if option is unchecked
+        switch (controlMiscOptions.miscOptionsBounds)
+        {
+          case false:
+            boundsMaxWeight = defaultMaxWeightBound;
+            boundsNaturalMortality = defaultMaxWeightBound;
+            break;
+          default:
+            //Check Bounds text if they are empty. If so, use default value and inform the user about this.
+            if (string.IsNullOrWhiteSpace(controlMiscOptions.miscOptionsBoundsMaxWeight))
             {
-                boundsMaxWeight = defaultMaxWeightBound;
-                boundsNaturalMortality = defaultMaxWeightBound;
+              MessageBox.Show("Missing max weight bound. Using default value of " + defaultMaxWeightBound
+                  + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              boundsMaxWeight = defaultMaxWeightBound;
             }
             else
             {
-                //Check Bounds text if they are empty. If so, use default value and inform the user about this.
-                if (string.IsNullOrWhiteSpace(this.controlMiscOptions.miscOptionsBoundsMaxWeight))
-                {
-                    MessageBox.Show("Missing max weight bound. Using default value of " + defaultMaxWeightBound 
-                        + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning );
-                    boundsMaxWeight = defaultMaxWeightBound;
-                }
-                else
-                {
-                    boundsMaxWeight = Convert.ToDouble(this.controlMiscOptions.miscOptionsBoundsMaxWeight);
-                }
-
-                if (string.IsNullOrWhiteSpace(this.controlMiscOptions.miscOptionsBoundsNaturalMortality))
-                {
-                    MessageBox.Show("Missing max natural mortality Bound. Using default value of " +
-                        defaultNatualMortalityBound + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    boundsNaturalMortality = defaultNatualMortalityBound;
-                }
-                else
-                {
-                    boundsNaturalMortality = Convert.ToDouble(
-                        this.controlMiscOptions.miscOptionsBoundsNaturalMortality);
-                }
-                
+              boundsMaxWeight = Convert.ToDouble(controlMiscOptions.miscOptionsBoundsMaxWeight);
             }
 
-            //JAN-1 Weights (Stock Weights)
-            if (controlJan1Weight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+            if (string.IsNullOrWhiteSpace(controlMiscOptions.miscOptionsBoundsNaturalMortality))
             {
-                return false;
+              MessageBox.Show("Missing max natural mortality Bound. Using default value of " +
+                  defaultNatualMortalityBound + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              boundsNaturalMortality = defaultNatualMortalityBound;
             }
-            //SSB Weights
-            if (controlSSBWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+            else
             {
-                return false;
-            }
-            //Mean Weights
-            if (controlMidYearWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
-            {
-                return false;
-            }
-            //Catch Weight
-            if (controlCatchWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
-            {
-                return false;
-            }
-            //Natural Mortality
-            if (controlNaturalMortality.ValidateStochasticParameter(numAges, boundsNaturalMortality) == false)
-            {
-                return false;
-            }
-            //(Biological) Maturity
-            if (controlBiological.maturityAge.ValidateStochasticParameter(numAges) == false) 
-            {
-                return false;
-            }
-            //(Biological) Fraction Mortality Prior to Spawning (Biological)
-            if (controlBiological.ValidateFractionMortalityDataGrid() == false)
-            {
-                return false;
-            }
-            //Fishery Selectivity
-            if (controlFisherySelectivity.ValidateStochasticParameter(numAges) == false)
-            {
-                return false;
-            }
-            if (this.controlGeneralOptions.generalDiscardsPresent)
-            {
-                //Discard Weight
-                if (this.controlDiscardWeight.ValidateStochasticParameter(numAges) == false)
-                {
-                    return false;
-                }
-                //Discard Fraction
-                if (this.controlDiscardFraction.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
-                {
-                    return false;
-                }
+              boundsNaturalMortality = Convert.ToDouble(
+                  controlMiscOptions.miscOptionsBoundsNaturalMortality);
             }
 
+            break;
+        }
 
-            //Recruitment
-            if (this.controlRecruitment.ValidateRecruitmentData() == false)
-            {
-                return false;
-            }
-
-            //Bootstrap
-            if (this.controlBootstrap.ValidateBootstrapInput() == false)
-            {
-                return false;
-            }
-            //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
-
-            //Harvest Scenario (this includes Rebuilder and P-Star options)
-            if (this.controlHarvestScenario.ValidateHarvestScenario() == false)
-            {
-                return false;
-            }
-
-            //Misc Options: Reference Points, Retro Adjustment Factors, Bounds.
-            if (this.controlMiscOptions.ValidateMiscOptions() == false)
-            {
-                return false;
-            }
-
-            //Aux Stochastic Output File Size Check 
-            int numBootstraps = Convert.ToInt32(this.controlBootstrap.bootstrapIterations);
-            int numSims = Convert.ToInt32(this.controlGeneralOptions.generalNumberPopulationSimuations);
-            int numYears = this.controlGeneralOptions.SeqYears().Count();
-            //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
-            int auxFileRowSize = numBootstraps * numSims * numYears;
-            if (this.controlMiscOptions.CheckOutputFileRowSize(auxFileRowSize) == false)
-            {
-                return false;
-            }
-
-            return true;
+        //JAN-1 Weights (Stock Weights)
+        if (controlJan1Weight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+        {
+          return false;
+        }
+        //SSB Weights
+        if (controlSSBWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+        {
+          return false;
+        }
+        //Mean Weights
+        if (controlMidYearWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+        {
+          return false;
+        }
+        //Catch Weight
+        if (controlCatchWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+        {
+          return false;
+        }
+        //Natural Mortality
+        if (controlNaturalMortality.ValidateStochasticParameter(numAges, boundsNaturalMortality) == false)
+        {
+          return false;
+        }
+        //(Biological) Maturity
+        if (controlBiological.maturityAge.ValidateStochasticParameter(numAges) == false)
+        {
+          return false;
+        }
+        //(Biological) Fraction Mortality Prior to Spawning (Biological)
+        if (controlBiological.ValidateFractionMortalityDataGrid() == false)
+        {
+          return false;
+        }
+        //Fishery Selectivity
+        if (controlFisherySelectivity.ValidateStochasticParameter(numAges) == false)
+        {
+          return false;
+        }
+        if (this.controlGeneralOptions.generalDiscardsPresent)
+        {
+          //Discard Weight
+          if (this.controlDiscardWeight.ValidateStochasticParameter(numAges) == false)
+          {
+            return false;
+          }
+          //Discard Fraction
+          if (this.controlDiscardFraction.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+          {
+            return false;
+          }
         }
 
 
-        /// <summary>
-        /// Validates The Bootstrap Filename parameter. If filename is invalid, it will attempt to find the 
-        /// file, or otherwise it will ask the user if they want to explictly locate a file to open, via
-        /// file dialog.
-        /// </summary>
-        /// <remarks>
-        /// There are three methods how the bootstrap file can be located:
-        /// 1. Filename exists from the bootstrap parameter
-        /// 2. If not, assume that the bootsrap file (*.BSN) is in the same directory as the AGEPRO Input File.
-        /// 3. Otherwise, User will must explictly locate the bootstrap file (via OpenFileDialog).
-        /// 
-        /// This is done automatically in LaunchAgeproModel. 
-        /// </remarks>
-        /// <returns></returns>
-        private bool ValidateBootstrapFilename()
+        //Recruitment
+        if (this.controlRecruitment.ValidateRecruitmentData() == false)
+        {
+          return false;
+        }
+
+        //Bootstrap
+        if (this.controlBootstrap.ValidateBootstrapInput() == false)
+        {
+          return false;
+        }
+        //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
+
+        //Harvest Scenario (this includes Rebuilder and P-Star options)
+        if (this.controlHarvestScenario.ValidateHarvestScenario() == false)
+        {
+          return false;
+        }
+
+        //Misc Options: Reference Points, Retro Adjustment Factors, Bounds.
+        if (this.controlMiscOptions.ValidateMiscOptions() == false)
+        {
+          return false;
+        }
+
+        //Aux Stochastic Output File Size Check 
+        int numBootstraps = Convert.ToInt32(this.controlBootstrap.bootstrapIterations);
+        int numSims = Convert.ToInt32(this.controlGeneralOptions.generalNumberPopulationSimuations);
+        int numYears = this.controlGeneralOptions.SeqYears().Count();
+        //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
+        int auxFileRowSize = numBootstraps * numSims * numYears;
+        if (this.controlMiscOptions.CheckOutputFileRowSize(auxFileRowSize) == false)
+        {
+          return false;
+        }
+
+        return true;
+      }
+    }
+
+
+    /// <summary>
+    /// Validates The Bootstrap Filename parameter. If filename is invalid, it will attempt to find the 
+    /// file, or otherwise it will ask the user if they want to explictly locate a file to open, via
+    /// file dialog.
+    /// </summary>
+    /// <remarks>
+    /// There are three methods how the bootstrap file can be located:
+    /// 1. Filename exists from the bootstrap parameter
+    /// 2. If not, assume that the bootsrap file (*.BSN) is in the same directory as the AGEPRO Input File.
+    /// 3. Otherwise, User will must explictly locate the bootstrap file (via OpenFileDialog).
+    /// 
+    /// This is done automatically in LaunchAgeproModel. 
+    /// </remarks>
+    /// <returns></returns>
+    private bool ValidateBootstrapFilename()
         {
             DialogResult bootstrapChoice;
 
@@ -793,155 +955,8 @@ namespace Nmfs.Agepro.Gui
             return true;
         }        
 
-        /// <summary>
-        /// This gathers the bootstrap file, and stores it with the the GUI input under the "AGEPRO" subdirectory
-        /// in the desginagted user document directory. After the calcuation engine is done, the function will 
-        /// attempt to display the AGEPRO calcuation engine output file (if requested) and the directory the
-        /// outputs were written to.       
-        /// </summary>
-        private void LaunchAgeproModel()
-        {
-            string ageproModelJobName;
-            string jobDT;
 
-            //Set the user data work directory  
-            if (string.IsNullOrWhiteSpace(controlGeneralOptions.generalInputFile))
-            {
-                ageproModelJobName = "untitled_";
-                jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
-            }
-            else
-            {
-                ageproModelJobName = Path.GetFileNameWithoutExtension(controlGeneralOptions.generalInputFile);
-                //Remove potential invalid filename characters 
-                foreach (char c in Path.GetInvalidFileNameChars())
-                {
-                    ageproModelJobName = ageproModelJobName.Replace(c.ToString(), "");
-                }
-                jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
-            }
-            string ageproWorkPath = Path.Combine(Util.GetAgeproUserDataPath(), jobDT);
-            string inpFile = Path.Combine(ageproWorkPath, ageproModelJobName + ".INP");
-            string bsnFile = Path.Combine(ageproWorkPath, ageproModelJobName + ".BSN");
-
-            if (!Directory.Exists(ageproWorkPath))
-            {
-                Directory.CreateDirectory(ageproWorkPath);
-            }
-
-            //check for bootstrap file
-            //1. File Exists from the bootstrap parameter
-            if (File.Exists(inputData.bootstrap.bootstrapFile))
-            {
-                File.Copy(inputData.bootstrap.bootstrapFile, bsnFile, true);
-            }
-            //2. If not, in the same directory as the AGEPRO Input File
-            else if (File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
-            {
-                File.Copy(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile),
-                    bsnFile, true);
-            }
-            //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
-            else
-            {
-                OpenFileDialog openBootstrapFileDialog = ControlBootstrap.SetBootstrapOpenFileDialog();
-
-                if (openBootstrapFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    File.Copy(openBootstrapFileDialog.FileName, bsnFile, true);
-                }
-                else
-                {
-                    Console.WriteLine("Cancel Launch AGEPRO Model");
-                    //If user declines (Cancel), do not Launch AGEPRO Calc Engine
-                    return;
-                }
-            }
-            //Store original bootstrap filename in case of error
-            string originalBSNFile = inputData.bootstrap.bootstrapFile;
-
-            try
-            {
-                //Set bootstrap filename to copied workDir version
-                inputData.bootstrap.bootstrapFile = bsnFile; 
-                
-                //Write Interface Inputs to file
-                inputData.WriteInputFile(inpFile);
-
-                //use command line to open AGEPRO40.exe
-                LaunchAgeproCalcEngineProgram(inpFile);
-
-                //crude method to search for AGEPRO output file
-                string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
-
-                LaunchOutputViewerProgram(ageproOutfile, controlMiscOptions);
-
-                //Open WorkPath directory for the user 
-                Process.Start(ageproWorkPath);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex,
-                        "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                //reset original bootstrap filename 
-                inputData.bootstrap.bootstrapFile = originalBSNFile;
-            }
-        }
-
-        /// <summary>
-        /// Launches the AGEPRO Calcuation Engine Program
-        /// </summary>
-        /// <param name="inpFile"></param>
-        static void LaunchAgeproCalcEngineProgram(string inpFile)
-        {
-            string dirRoot = Path.GetPathRoot(Environment.SystemDirectory);
-
-            ProcessStartInfo ageproEngine = new ProcessStartInfo();
-            ageproEngine.WorkingDirectory = Application.StartupPath;
-            ageproEngine.FileName = "AGEPRO40.exe";
-            ageproEngine.Arguments = "\"\"" + inpFile + "\"\"";
-            ageproEngine.WindowStyle = ProcessWindowStyle.Normal;
-
-            try
-            {
-                using (Process exeProcess = Process.Start(ageproEngine))
-                {
-                    exeProcess.WaitForExit();
-                }
-                MessageBox.Show("AGEPRO Done. Can be Found at:" + Environment.NewLine + Path.GetDirectoryName(inpFile),
-                        "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occured when running the AGEPRO Model." + Environment.NewLine + ex.Message,
-                        "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
-
-        /// <summary>
-        /// Launches a program to view the AGEPRO calcuation engine output file
-        /// </summary>
-        /// <param name="outfile">AGEPRO calcuation engine output file</param>
-        /// <param name="outputOptions"></param>
-        static void LaunchOutputViewerProgram(string outfile, ControlMiscOptions outputOptions)
-        {
-            if (outputOptions.ageproOutputViewer == "System Default")
-            {
-                //open a program that is associated by its file type.
-                //If no association exists, system will ask user for a program. 
-                Process.Start(outfile); 
-            }
-            else if (outputOptions.ageproOutputViewer == "Notepad")
-            {
-                Process.Start("notepad.exe", outfile);
-            }
-           
-        }
-        
+       
 
         /// <summary>
         /// Enables Navigation Panel, and menu controls that were disabled during the startup/first-run state.
