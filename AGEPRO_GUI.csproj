@@ -119,6 +119,7 @@
     <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.Designer.cs">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\ui\formAgepro\controlValidation.cs" />
     <Compile Include="src\ui\formAgepro\FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,100 +401,45 @@
     <Content Include="doc\agepro_manual.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\bioFractionMortality_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioFractionMortality_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioMaturity_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioMaturity_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioMaturity_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\discardFraction_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\discardFraction_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\discardFraction_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\fishSelectivity_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\fishSelectivity_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\fishSelectivity_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\generalOptions_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="doc\img\bio_fractionMortality_01.png" />
+    <Content Include="doc\img\bio_fractionMortality_02.png" />
+    <Content Include="doc\img\bio_maturityAge_01.png" />
+    <Content Include="doc\img\bio_maturityAge_02.png" />
+    <Content Include="doc\img\bio_maturityAge_03.png" />
+    <Content Include="doc\img\generalOptions_01.png" />
     <Content Include="doc\img\generalOptions_02.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\jan1WeightAge_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\jan1WeightAge_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\jan1WeightAge_03a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\natMort_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\natMort_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\natMort_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="doc\img\generalOptions_03.png" />
+    <Content Include="doc\img\harvest_pstar_01.png" />
+    <Content Include="doc\img\harvest_rebuilder_01.png" />
     <Content Include="doc\img\openExisting_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\outFile_Assiocation_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\pstarHarvestScenario_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\pstarHarvestTable_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\rebuilderHarvestScenario_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\rebuilderHarvestTable_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_invalid_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_invalid_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_valid_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_valid_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="doc\img\outFile_association_01.png" />
+    <Content Include="doc\img\outFile_association_02.png" />
+    <Content Include="doc\img\saveINP_01.png" />
+    <Content Include="doc\img\saveINP_invalid_01.png" />
+    <Content Include="doc\img\saveINP_invalid_01a.png" />
+    <Content Include="doc\img\saveINP_invalid_02.png" />
+    <Content Include="doc\img\saveINP_vaildated_02.png" />
+    <Content Include="doc\img\stochastic_naturalMortality_01.png" />
+    <Content Include="doc\img\stochastic_naturalMortality_02.png" />
+    <Content Include="doc\img\stochastic_naturalMortality_03.png" />
+    <Content Include="doc\img\stochastic_discardFraction_00.png" />
+    <Content Include="doc\img\stochastic_discardFraction_01.png" />
+    <Content Include="doc\img\stochastic_discardFraction_02.png" />
+    <Content Include="doc\img\stochastic_discardFraction_03.png" />
+    <Content Include="doc\img\stochastic_fisherySelectivity_01.png" />
+    <Content Include="doc\img\stochastic_fisherySelectivity_02.png" />
+    <Content Include="doc\img\stochastic_fisherySelectivity_03.png" />
     <Content Include="doc\img\VPAExample_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\%24this.Icon.ico" />
+    <Content Include="doc\img\weightAge_jan1_01.png" />
+    <Content Include="doc\img\weightAge_jan1_02.png" />
+    <Content Include="doc\img\weightAge_jan1_03.png" />
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
   <ItemGroup />

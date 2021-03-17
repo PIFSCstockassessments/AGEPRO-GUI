@@ -1,7 +1,7 @@
 Age Structured Projection Model (AGEPRO)
 ========================================
 
-Version 4.3.2
+Version 4.3.3
 
 * [Getting Started](#getting-started)
 * [Creating a New Case](#creating-a-new-case)
@@ -71,11 +71,11 @@ For new cases, the user must supply the following input:
 - Random Number Seed
 - Discards are Present (optional)
 
-![](img/generalOptions_01a.png "General Options")
+![](img/generalOptions_01.png "General Options")
 
 Click **SET** button to proceed.
 
-**Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must supply a file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
+**Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. Supply the file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
 
 ---
 
@@ -95,31 +95,23 @@ AGEPRO Version 4.0 input files have a file extension `INP`.  Older versions had 
 
 # Saving AGEPRO input data into file
 
-To store inputs done in the AGEPRO interface to file, click on the **Save AGEPRO Input Data As..** option in the File menu.
+To save your inputs, click on the **Save AGEPRO Input Data As..** option in the File menu. Save the file as a __`*.INP`__ file to your desired path as shown below:
 
-Use the Windows Save File Dialogue to save the input data using the file name and path desired:
-
-![](img/saveInputFile_01.png)
+![](img/saveINP_01.png)
 
 ## Validation
 
-The program performs a series of data validation steps before it saves to file.
+The program performs a series of data validation steps before it saves to file. If validated, the following dialog will confrim the location the AGEPRO input data file was saved:
 
-If the input is valid (without missing or erroneous input), the user will see the following:
+![](img/saveINP_vaildated_02.png)
 
-![](img/saveInputFile_valid_01.png)
+If the validator cathches an error or finds invalid input, it will stop, prevent the input data to be saved, and present the validation error in a dialog box, for example:  
 
-![](img/saveInputFile_valid_02.png)
+![](img/saveINP_invalid_01.png)
 
-Any errors or invalid input found will prevent the input data to be saved.
-
-A Dialog box will pop up indicating the issue, for example:
-
-![](img/saveInputFile_invalid_01.png)
+![](img/saveINP_invalid_02.png)
 
 **All invalid input has be resolved before the data may be saved.**
-
-![](img/saveInputFile_invalid_02.png)
 
 ---
 
@@ -307,19 +299,19 @@ The user may select to input mean weights at age and apply log-normal error on e
 Furthermore, the user specifies whether the data supplied by either method will be supplied for each year in the time horizon as *time varying*. Otherwise, the data or to use a single set of weights at age for all years.
 
 ### Example: Time Varying
-![JAN-1 Time Varying](img/jan1WeightAge_01.png "JAN-1 Time Varying")
+![JAN-1 Time Varying](img/weightAge_jan1_01.png "JAN-1 Time Varying")
 
 In this first example, *Time Varying* is enabled. The user supplies mean weights at age for each year in the time horizon. In addition, the user also specifies a coefficient of variation for each age.
 
 Log-Normal error with bias correction will be calculated and applied on each observed value for each year in the time horizon
 
 ### Example: Non Time Varying
-![JAN-1 Non Time-Varying](img/jan1WeightAge_02.png "JAN-1 Non Time-Varying")
+![JAN-1 Non Time-Varying](img/weightAge_jan1_02.png "JAN-1 Non Time-Varying")
 
 In the next example, *Time Varying* is not enabled. The user will supply a single vector of mean values for weights at age.  The program will apply error on to he data supplied as above, but the data with error will not vary through the time horizon.
 
 ### Example: From File Option
-![JAN-1 Read Weights From File](img/jan1WeightAge_03a.png "JAN-1 Read Weights From File")
+![JAN-1 Read Weights From File](img/weightAge_jan1_03.png "JAN-1 Read Weights From File")
 
 In this example, the user has selected to supply [data from an external file](#stochastic-data-files) with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file.  No further input is required.
 
@@ -386,19 +378,19 @@ On the **Natural Mortality** panel, the user selects from:
 * Read Natural Mortality from File
 
 ### Example: Time Varying
-![](img/natMort_01a.png)
+![](img/stochastic_naturalMortality_01.png)
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
 ### Example: Non Time Varying
-![](img/natMort_02a.png)
+![](img/stochastic_naturalMortality_02.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
 ### Example: From File Option
-![](img/natMort_03.png)
+![](img/stochastic_naturalMortality_03.png)
 
 In this example, the user has specified that [natural mortality at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -418,30 +410,30 @@ On the **Maturity** tab on the **Biological** panel, the user selects from:
 * Read Maturity from File
 
 ### Example: Time Varying
-![](img/bioMaturity_01a.png)
+![](img/bio_maturityAge_01.png)
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
 ### Example: Non Time Varying
-![](img/bioMaturity_02a.png)
+![](img/bio_maturityAge_02.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
 ### Example: From File Option
-![](img/bioMaturity_03.png)
+![](img/bio_maturityAge_03.png)
 
 In this example, the user has specified that [maturity at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 ## Fraction Mortality Prior to Spawning
 On the **Fraction Mortality** tab in the **Biological** panel, the user will input the fraction of mortality prior to spawning to be applied independently to Natural and Fishing Mortality.
 
-![](img/bioFractionMortality_01.png)
+![](img/bio_fractionMortality_01.png)
 
 In the above example, the user applies the same constant value to all years in the projection horizon.
 
-![](img/bioFractionMortality_02.png)
+![](img/bio_fractionMortality_02.png)
 
 In the above example, *time varying* is enabled, and the user has selected to input different values through the time horizon.
 
@@ -456,21 +448,21 @@ On the **Fishery Selectivity** panel, the user may select:
 * Read Fishery Selectivity from File
 
 ### Example: Time Varying
-![](img/fishSelectivity_01a.png)
+![](img/stochastic_fisherySelectivity_01.png)
 
 In the above example, *time varying* is eanbled, and the user has selected to input the mean fishery selectivity for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will apply bias corrected log-normal error to the mean fishery selectivity values at age for all fleets.
 
 ### Example: Non Time Varying
-![](img/fishSelectivity_02a.png)
+![](img/stochastic_fisherySelectivity_02.png)
 
 In the above case, the user has selected to input a vector of mean fishery selectivity values at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will generate stochastic fishery selectivity values for each fleet.  The same values will be applied in all years of the time horizon.
 
 ### Example: From File Option
-![](img/fishSelectivity_03.png)
+![](img/stochastic_fisherySelectivity_03.png)
 
 In this example, the user specified that [stochastic data for fishery selectivity will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -481,27 +473,29 @@ AGEPRO allows users to input stochastic Discard Fraction
 
 If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this stochastic parameter will be disabled.
 
+![](img/stochastic_discardFraction_00.png)
+
 On the **Discard Fraction** panel the user can select:
 
 * User Specfied Discard Fraction at Age
 * Read Discard Fraction from File
 
 ### Example: Time Varying
-![](img/discardFraction_01a.png)
+![](img/stochastic_discardFraction_01.png)
 
 In the above example, *time varying* is eanbled, and the user has selected to input the mean discard fraction for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will apply bias corrected log-normal error to the mean discard fraction values at age for all fleets.
 
 ### Example: Non Time Varying
-![](img/discardFraction_02a.png)
+![](img/stochastic_discardFraction_02.png)
 
 In the above case, the user has selected to input a vector of mean discard fraction at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will generate stochastic discard fraction values for each fleet.  The same values will be applied in all years of the time horizon.
 
 ### Example: From File Option
-![](img/discardFraction_03.png)
+![](img/stochastic_discardFraction_03.png)
 
 In this example, the user specified that [stochastic data for discard fraction will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -689,7 +683,7 @@ For **Rebuilder Target Type**, the user may set the rebuilder target as:
 If there is more than one fleet then the input estimates will be used to set the proportion of Fishing Mortality in each fleet. This proportion will be held constant as the F-Mult level changes to meet the target.
 
 ### Example
-![Single Fleet Harvest Scenario Table with a rebuild target](img/rebuilderHarvestScenario_03.png "Harvest Scenario Table")
+![Single Fleet Harvest Scenario Table with a rebuild target](img/harvest_rebuilder_01.png "Harvest Scenario Table")
 
 In the example shown above the user has set a Landings Harvest Quota in the first year of **2,100 MT**.
 
@@ -746,7 +740,7 @@ Select the **Peform P-Star Analysis** option for *Additional calculations* box i
 For the multiple fleets scenario, the proportion of removals per fleet will be set by the initial guess and this proportion will be held constant as total removal values are varied to meet the P-Star criteria.
 
 ### Example
-![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/pstarHarvestScenario_03.png "Harvest Scenario Table")
+![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/harvest_pstar_01.png "Harvest Scenario Table")
 
 In the above example, the user has provided an initial guess of total removals of 20,000 MT (`15000` for Fleet-1  + `7500` for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.
 
@@ -994,6 +988,6 @@ Choose which program to view AGEPRO Output Data (`*.out`) files. This program wi
 
 If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
 
-![](img/outFile_Assiocation_01.png "File assoication")
+![](img/outFile_association_01.png "File association")
 
 To bypass viewing AGEPRO Output data files after a model run, select **None**.
