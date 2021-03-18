@@ -217,7 +217,7 @@
 <ul>
 <li><a href="#getting-started">Getting Started</a></li>
 <li><a href="#creating-a-new-case">Creating a New Case</a></li>
-<li><a href="#opening-an-existing-agepro-input-file">Opening an Existing AGEPRO Input Data file</a></li>
+<li><a href="#opening-an-existing-agepro-input-data-file">Opening an Existing AGEPRO Input Data file</a></li>
 <li><a href="#saving-agepro-input-data-into-file">Saving AGEPRO Input Data into file</a></li>
 <li><a href="#launching-agepro-model-to-the-calculation-engine">Launching AGEPRO Model to Calculation Engine</a>
 <ul>
@@ -225,11 +225,11 @@
 </ul></li>
 <li><a href="#using-nft-data-grids">Using NFT Data Grids</a></li>
 <li><a href="#stochastic-data-files">Stochastic Data Files</a></li>
-<li><a href="#specifying-weights-at-age">Specifying Weights of Age</a>
+<li><a href="#specifying-weights-at-age">Specifying Weights at Age</a>
 <ul>
 <li><a href="#jan-1-stock-weights-at-age">JAN-1 Stock Weights at Age</a></li>
 <li><a href="#spawning-stock-weights-at-age">Spawning Stock Weights at Age</a></li>
-<li><a href="#mid-year-stocks-at-age">Mid-Year Stocks at Age</a></li>
+<li><a href="#mid-year-stock-weights-at-age">Mid-Year Stocks at Age</a></li>
 <li><a href="#catch-weights-at-age">Catch Weights at Age</a></li>
 <li><a href="#discard-weights-at-age">Discard Weights at Age</a></li>
 </ul></li>
@@ -273,7 +273,7 @@
 </ul>
 <hr />
 <h1 id="getting-started">Getting Started</h1>
-<p>To begin, either <a href="#opening-an-existing-agepro-input-file">open an existing AGEPRO Input Data file</a>, or <a href="#creating-a-new-case">create a new case</a> in <strong>General options</strong>.</p>
+<p>To begin, either <a href="#opening-an-existing-agepro-input-data-file">open an existing AGEPRO Input Data file</a>, or <a href="#creating-a-new-case">create a new case</a> in <strong>General options</strong>.</p>
 <hr />
 <h1 id="creating-a-new-case">Creating a new Case</h1>
 <p>An new input data set can be set from scratch. Click on <strong>Create New Case</strong> in the File menu. A dialog window will pop up to confirm. If so, all existing input and output data will be discarded.</p>
@@ -432,7 +432,7 @@ Time Variant</code></pre>
 </blockquote>
 <p>On each line the program reads the values at age for the first fleet followed by the values at age for the second fleet, etc.</p>
 <hr />
-<h1 id="specifying-weights-of-age">Specifying Weights of Age</h1>
+<h1 id="specifying-weights-at-age">Specifying Weights at Age</h1>
 <p>AGEPRO allows users to input stochastic weights at age.</p>
 <p>From the navigation panel, expand the <strong>Weights if Age</strong> node to set the following stochastic weights of age:</p>
 <ul>
@@ -495,7 +495,7 @@ Time Variant</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-of-age"><em>JAN-1 Stock Weights of Age</em></a> above.</p>
+<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> above.</p>
 <h2 id="mid-year-stock-weights-at-age">Mid-Year Stock Weights at Age</h2>
 <p>When the user selects <strong>Mid-Year (Mean)</strong> from the navigation panel, the user can select from the following:</p>
 <table>
@@ -528,7 +528,7 @@ Time Variant</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-of-age"><em>JAN-1 Stock Weights of Age</em></a> above.</p>
+<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> above.</p>
 <h2 id="catch-weights-at-age">Catch Weights at Age</h2>
 <p>When the user selects <strong>Catch</strong> from the navigation panel, the user can select from the following:</p>
 <table>
@@ -565,7 +565,7 @@ Time Variant</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-of-age"><em>JAN-1 Stock Weights of Age</em></a> above.</p>
+<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> above.</p>
 <h2 id="discard-weights-at-age">Discard Weights at Age</h2>
 <p>If a model case didn’t include a discard option (<em>Discards are present</em> in <strong>General Options</strong>), controls from this weight of age will be disabled.</p>
 <p>When the user selects <strong>Discard</strong> from the navigation panel, the user <em>may</em> select from the following:</p>
@@ -607,7 +607,7 @@ Time Variant</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-of-age"><em>JAN-1 Stock Weights of Age</em></a> above.</p>
+<p><strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong> options has been described in the section <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> above.</p>
 <hr />
 <h1 id="natural-mortality">Natural Mortality</h1>
 <p>AGEPRO allows users to input stochastic Natural Mortality.</p>
@@ -1054,7 +1054,7 @@ Year       Average        StdDev
 <p>All auxiliary file data items are space delimited double precision real numbers in scientific notation.</p>
 <p>In the following auxiliary files the number of columns is equal to the number of years in the time horizon and the number of rows is equal to the number of observed values. These files are created in all cases.</p>
 <p>The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.</p>
-<p>The <strong>units used in the auxiliary files are not affected by the <a href="#/scaling-option-in-output-report">summary report scaling factors</a></strong> optionally applied to the report file.</p>
+<p>The <strong>units used in the auxiliary files are not affected by the <a href="#scaling-option-in-output-report">summary report scaling factors</a></strong> optionally applied to the report file.</p>
 <table>
 <colgroup>
 <col style="width: 21%" />
@@ -1171,7 +1171,7 @@ Year       Average        StdDev
 <h2 id="specifying-a-specfic-percentile-in-output-report">Specifying a Specfic Percentile in Output Report</h2>
 <p>The <a href="#summary-report-of-stock-numbers-of-age">Summary Report</a> provides tables of the distribution of calculated results at standard distribution intervals including the median. However, a summary report with a specfic percentile that is not equal to the standard distribution internal can be requested.</p>
 <p>To create the Percentile Report in the Output File, check the <strong>Reqest Percentile Report</strong> checkbox option in <em>Output Options</em> Section in the <strong>Misc. Options</strong> panel. Then, enter a percentile value between <code>0.0</code> and <code>100.0</code> in the <strong>Report Percentile</strong> spinbox.</p>
-<p>The <a href="#/scaling-option-in-output-report">summary report scaling units</a> are the same as were are used in the output report with a standard distribution.</p>
+<p>The <a href="#scaling-option-in-output-report">summary report scaling units</a> are the same as were are used in the output report with a standard distribution.</p>
 <h3 id="example-4">Example</h3>
 <p>The Output Report will supply values for each year in the time horizon for the calculated results:</p>
 <pre><code>Requested Percentile Report

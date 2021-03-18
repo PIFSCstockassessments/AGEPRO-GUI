@@ -5,16 +5,16 @@ Version 4.3.3
 
 * [Getting Started](#getting-started)
 * [Creating a New Case](#creating-a-new-case)
-* [Opening an Existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file)
+* [Opening an Existing AGEPRO Input Data file](#opening-an-existing-agepro-input-data-file)
 * [Saving AGEPRO Input Data into file](#saving-agepro-input-data-into-file)
 * [Launching AGEPRO Model to Calculation Engine](#launching-agepro-model-to-the-calculation-engine)
 	* [AGEPRO Model Output Run Directory](#agepro-model-output-run-directory)
 * [Using NFT Data Grids](#using-nft-data-grids)
 * [Stochastic Data Files](#stochastic-data-files)
-* [Specifying Weights of Age](#specifying-weights-at-age)
+* [Specifying Weights at Age](#specifying-weights-at-age)
     * [JAN-1 Stock Weights at Age](#jan-1-stock-weights-at-age)
     * [Spawning Stock Weights at Age](#spawning-stock-weights-at-age)
-    * [Mid-Year Stocks at Age](#mid-year-stocks-at-age)
+    * [Mid-Year Stocks at Age](#mid-year-stock-weights-at-age)
     * [Catch Weights at Age](#catch-weights-at-age)
     * [Discard Weights at Age](#discard-weights-at-age)
 * [Natural Mortality](#natural-mortality)
@@ -50,7 +50,7 @@ Version 4.3.3
 
 # Getting Started
 
-To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) in **General options**.
+To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-data-file), or [create a new case](#creating-a-new-case) in **General options**.
 
 ---
 
@@ -275,7 +275,7 @@ On each line the program reads the values at age for the first fleet followed by
 
 ---
 
-# Specifying Weights of Age
+# Specifying Weights at Age
 AGEPRO allows users to input stochastic weights at age.  
 
 From the navigation panel, expand the **Weights if Age** node to set the following stochastic weights of age:
@@ -324,7 +324,7 @@ User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal e
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ## Mid-Year Stock Weights at Age
 When the user selects **Mid-Year (Mean)** from the navigation panel, the user can select from the following:
@@ -336,7 +336,7 @@ Read Weights from File        | Read the Weights at age with Stochastic error fr
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ## Catch Weights at Age
 When the user selects **Catch** from the navigation panel, the user can select from the following:
@@ -349,7 +349,7 @@ Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to a
 Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ## Discard Weights at Age
 If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this weight of age will be disabled.
@@ -365,7 +365,7 @@ Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply t
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ---
 
@@ -821,7 +821,7 @@ In the following auxiliary files the number of columns is equal to the number of
 
 The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.  
 
-The **units used in the auxiliary files are not affected by the [summary report scaling factors](#/scaling-option-in-output-report)** optionally applied to the report file.
+The **units used in the auxiliary files are not affected by the [summary report scaling factors](#scaling-option-in-output-report)** optionally applied to the report file.
 
 File Extension | Model Items
 :--------------| :-----------------------------------------------------
@@ -889,7 +889,7 @@ The [Summary Report](#summary-report-of-stock-numbers-of-age) provides tables of
 
 To create the Percentile Report in the Output File, check the  **Reqest Percentile Report** checkbox option in *Output Options* Section in the **Misc. Options** panel. Then, enter a percentile value between `0.0` and `100.0` in the **Report Percentile** spinbox.
 
-The [summary report scaling units](#/scaling-option-in-output-report) are the same as were are used in the output report with a standard distribution.
+The [summary report scaling units](#scaling-option-in-output-report) are the same as were are used in the output report with a standard distribution.
 
 ### Example
 The Output Report will supply values for each year in the time horizon for the calculated results:
