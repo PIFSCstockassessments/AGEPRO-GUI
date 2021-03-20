@@ -119,7 +119,6 @@
     <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.Designer.cs">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\formAgepro\controlValidation.cs" />
     <Compile Include="src\ui\formAgepro\FormAgepro.cs">
       <SubType>Form</SubType>
     </Compile>
