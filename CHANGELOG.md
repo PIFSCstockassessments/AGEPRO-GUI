@@ -8,11 +8,11 @@
 - AGEPRO user help manual
   - Updated screenshots to Windows 10
   - Formatted with the Pandoc default html styleseet
-  - Converted example Combined Catch Distrbution & Requested Percentile Report output as tables  
+  - Converted example Combined Catch Distrbution & Requested Percentile Report output as tables
   - Fixup help manual section links
 - About: Updated NOAA Branding
 - Minor refactoring
-  - GUI & CoreLib: catergoized code in src subdirectories (no changes to namespaces)  
+  - GUI & CoreLib: catergoized code in src subdirectories (no changes to namespaces)
  
 ## 4.3.2 (2019-07-24)
 
