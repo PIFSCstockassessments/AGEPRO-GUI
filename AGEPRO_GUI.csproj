@@ -30,7 +30,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -60,10 +60,27 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AGEPRO_CoreLib">
-      <HintPath>..\AGEPRO_CoreLib\bin\Debug\AGEPRO_CoreLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,217 +93,222 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutAgepro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutAgepro.Designer.cs">
-      <DependentUpon>AboutAgepro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AgeproBinding.cs" />
-    <Compile Include="AgeproPropertyChanged.cs" />
-    <Compile Include="ControlBiological.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlBiological.Designer.cs">
-      <DependentUpon>ControlBiological.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlBootstrap.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlBootstrap.Designer.cs">
-      <DependentUpon>ControlBootstrap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlGeneral.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlGeneral.Designer.cs">
-      <DependentUpon>ControlGeneral.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlHarvestCalcPStar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlHarvestCalcPStar.Designer.cs">
-      <DependentUpon>ControlHarvestCalcPStar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlHarvestCalcRebuilder.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlHarvestCalcRebuilder.Designer.cs">
-      <DependentUpon>ControlHarvestCalcRebuilder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlHarvestScenario.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlHarvestScenario.Designer.cs">
-      <DependentUpon>ControlHarvestScenario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlMiscOptions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlMiscOptions.Designer.cs">
-      <DependentUpon>ControlMiscOptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitment.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitment.Designer.cs">
-      <DependentUpon>ControlRecruitment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentEmpiricalTwoStage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentEmpiricalTwoStage.Designer.cs">
-      <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentFixed.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentFixed.Designer.cs">
-      <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentMarkovMatrix.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentMarkovMatrix.Designer.cs">
-      <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricCurve.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricCurve.Designer.cs">
-      <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricLognormal.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricLognormal.Designer.cs">
-      <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentPredictor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentPredictor.Designer.cs">
-      <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlRecruitmentParametricBase.Designer.cs">
-      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlStochasticAge.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlStochasticAge.Designer.cs">
-      <DependentUpon>ControlStochasticAge.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlStochasticAgeFromFile.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlStochasticAgeFromFile.Designer.cs">
-      <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlStochasticAgeDataGridTable.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlStochasticAgeDataGridTable.Designer.cs">
-      <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlStochasticWeightAge.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlStochasticWeightAge.Designer.cs">
-      <DependentUpon>ControlStochasticWeightAge.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAgepro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAgepro.Designer.cs">
-      <DependentUpon>FormAgepro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HarvestSpecification.cs" />
-    <Compile Include="InvalidAgeproGuiParameterException.cs" />
-    <Compile Include="NftDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="NftTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ControlRecruitmentEmpirical.cs">
+    <Compile Include="src\ui\about\AboutAgepro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\ui\about\AboutAgepro.Designer.cs">
+      <DependentUpon>AboutAgepro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\NFT\NFTDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\NFT\NftTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\biological\ControlBiological.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlRecruitmentEmpirical.Designer.cs">
+    <Compile Include="src\ui\formAgepro\biological\ControlBiological.Designer.cs">
+      <DependentUpon>ControlBiological.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.Designer.cs">
+      <DependentUpon>ControlBootstrap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\FormAgepro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\FormAgepro.Designer.cs">
+      <DependentUpon>FormAgepro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\home\ControlGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\home\ControlGeneral.Designer.cs">
+      <DependentUpon>ControlGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.Designer.cs">
+      <DependentUpon>ControlHarvestCalcPStar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcRebuilder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcRebuilder.Designer.cs">
+      <DependentUpon>ControlHarvestCalcRebuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestScenario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestScenario.Designer.cs">
+      <DependentUpon>ControlHarvestScenario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\harvestScenario\HarvestSpecification.cs" />
+    <Compile Include="src\ui\formAgepro\harvestScenario\RebuilderTargetType.cs" />
+    <Compile Include="src\ui\formAgepro\options\ControlMiscOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\options\ControlMiscOptions.Designer.cs">
+      <DependentUpon>ControlMiscOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitment.Designer.cs">
+      <DependentUpon>ControlRecruitment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpirical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpirical.Designer.cs">
       <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
     </Compile>
-    <Compile Include="RebuilderTargetType.cs" />
-    <Compile Include="Util.cs" />
-    <None Include="Resources\logoPictureBox.bmp" />
-    <None Include="Resources\logoPictureBox.Image.png" />
-    <EmbeddedResource Include="AboutAgepro.resx">
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpiricalTwoStage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpiricalTwoStage.Designer.cs">
+      <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentFixed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentFixed.Designer.cs">
+      <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentMarkovMatrix.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentMarkovMatrix.Designer.cs">
+      <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricBase.Designer.cs">
+      <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricCurve.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricCurve.Designer.cs">
+      <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricLognormal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricLognormal.Designer.cs">
+      <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentPredictor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\recruitment\ControlRecruitmentPredictor.Designer.cs">
+      <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAge.Designer.cs">
+      <DependentUpon>ControlStochasticAge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeDataGridTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeDataGridTable.Designer.cs">
+      <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeFromFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticAgeFromFile.Designer.cs">
+      <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticWeightAge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticWeightAge.Designer.cs">
+      <DependentUpon>ControlStochasticWeightAge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\util\AgeproBinding.cs" />
+    <Compile Include="src\util\AgeproPropertyChanged.cs" />
+    <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
+    <Compile Include="src\util\Util.cs" />
+    <None Include="Resources\noaa_fisheries_pictureBoxImage.png" />
+    <EmbeddedResource Include="src\ui\about\AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlBiological.resx">
+    <EmbeddedResource Include="src\NFT\NFTDataGridView.resx">
+      <DependentUpon>NFTDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\biological\ControlBiological.resx">
       <DependentUpon>ControlBiological.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlBootstrap.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\bootstrap\ControlBootstrap.resx">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlGeneral.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\FormAgepro.resx">
+      <DependentUpon>FormAgepro.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\home\ControlGeneral.resx">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlHarvestCalcPStar.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.resx">
       <DependentUpon>ControlHarvestCalcPStar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlHarvestCalcRebuilder.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcRebuilder.resx">
       <DependentUpon>ControlHarvestCalcRebuilder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlHarvestScenario.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestScenario.resx">
       <DependentUpon>ControlHarvestScenario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlMiscOptions.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\options\ControlMiscOptions.resx">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitment.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitment.resx">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentEmpiricalTwoStage.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpirical.resx">
+      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentEmpiricalTwoStage.resx">
       <DependentUpon>ControlRecruitmentEmpiricalTwoStage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentFixed.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentFixed.resx">
       <DependentUpon>ControlRecruitmentFixed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentMarkovMatrix.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentMarkovMatrix.resx">
       <DependentUpon>ControlRecruitmentMarkovMatrix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentParametricCurve.resx">
-      <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentParametricLognormal.resx">
-      <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentPredictor.resx">
-      <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlRecruitmentParametricBase.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricBase.resx">
       <DependentUpon>ControlRecruitmentParametricBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlStochasticAge.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricCurve.resx">
+      <DependentUpon>ControlRecruitmentParametricCurve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentParametricLognormal.resx">
+      <DependentUpon>ControlRecruitmentParametricLognormal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitmentPredictor.resx">
+      <DependentUpon>ControlRecruitmentPredictor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\stochastic\ControlStochasticAge.resx">
       <DependentUpon>ControlStochasticAge.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlStochasticAgeFromFile.resx">
-      <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlStochasticAgeDataGridTable.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\stochastic\ControlStochasticAgeDataGridTable.resx">
       <DependentUpon>ControlStochasticAgeDataGridTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgepro.resx">
-      <DependentUpon>FormAgepro.cs</DependentUpon>
+    <EmbeddedResource Include="src\ui\formAgepro\stochastic\ControlStochasticAgeFromFile.resx">
+      <DependentUpon>ControlStochasticAgeFromFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NftDataGridView.resx">
-      <DependentUpon>NftDataGridView.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="Resources\logoPictureBox.bmp" />
+    <None Include="Resources\logoPictureBox.Image.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -297,9 +319,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ControlRecruitmentEmpirical.resx">
-      <DependentUpon>ControlRecruitmentEmpirical.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="CHANGELOG.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -381,103 +400,54 @@
     <Content Include="doc\agepro_manual.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\bioFractionMortality_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioFractionMortality_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioMaturity_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioMaturity_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\bioMaturity_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\discardFraction_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\discardFraction_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\discardFraction_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\fishSelectivity_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\fishSelectivity_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\fishSelectivity_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\generalOptions_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="doc\img\bio_fractionMortality_01.png" />
+    <Content Include="doc\img\bio_fractionMortality_02.png" />
+    <Content Include="doc\img\bio_maturityAge_01.png" />
+    <Content Include="doc\img\bio_maturityAge_02.png" />
+    <Content Include="doc\img\bio_maturityAge_03.png" />
+    <Content Include="doc\img\generalOptions_01.png" />
     <Content Include="doc\img\generalOptions_02.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\jan1WeightAge_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\jan1WeightAge_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\jan1WeightAge_03a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\natMort_01a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\natMort_02a.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\natMort_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="doc\img\generalOptions_03.png" />
+    <Content Include="doc\img\harvest_pstar_01.png" />
+    <Content Include="doc\img\harvest_rebuilder_01.png" />
     <Content Include="doc\img\openExisting_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\outFile_Assiocation_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\pstarHarvestScenario_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\pstarHarvestTable_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\rebuilderHarvestScenario_03.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\rebuilderHarvestTable_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_invalid_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_invalid_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_valid_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\img\saveInputFile_valid_02.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="doc\img\outFile_association_01.png" />
+    <Content Include="doc\img\outFile_association_02.png" />
+    <Content Include="doc\img\saveINP_01.png" />
+    <Content Include="doc\img\saveINP_invalid_01.png" />
+    <Content Include="doc\img\saveINP_invalid_01a.png" />
+    <Content Include="doc\img\saveINP_invalid_02.png" />
+    <Content Include="doc\img\saveINP_vaildated_02.png" />
+    <Content Include="doc\img\stochastic_naturalMortality_01.png" />
+    <Content Include="doc\img\stochastic_naturalMortality_02.png" />
+    <Content Include="doc\img\stochastic_naturalMortality_03.png" />
+    <Content Include="doc\img\stochastic_discardFraction_00.png" />
+    <Content Include="doc\img\stochastic_discardFraction_01.png" />
+    <Content Include="doc\img\stochastic_discardFraction_02.png" />
+    <Content Include="doc\img\stochastic_discardFraction_03.png" />
+    <Content Include="doc\img\stochastic_fisherySelectivity_01.png" />
+    <Content Include="doc\img\stochastic_fisherySelectivity_02.png" />
+    <Content Include="doc\img\stochastic_fisherySelectivity_03.png" />
     <Content Include="doc\img\VPAExample_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\%24this.Icon.ico" />
+    <Content Include="doc\img\weightAge_jan1_01.png" />
+    <Content Include="doc\img\weightAge_jan1_02.png" />
+    <Content Include="doc\img\weightAge_jan1_03.png" />
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AGEPRO-CoreLib\AGEPRO_CoreLib.csproj">
+      <Project>{b1bdccf1-78c4-4c2d-ae11-5c8d336758fc}</Project>
+      <Name>AGEPRO_CoreLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

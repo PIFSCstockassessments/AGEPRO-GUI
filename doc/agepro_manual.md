@@ -1,20 +1,20 @@
 Age Structured Projection Model (AGEPRO)
 ========================================
 
-Version 4.3.2
+Version 4.3.3
 
 * [Getting Started](#getting-started)
 * [Creating a New Case](#creating-a-new-case)
-* [Opening an Existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file)
+* [Opening an Existing AGEPRO Input Data file](#opening-an-existing-agepro-input-data-file)
 * [Saving AGEPRO Input Data into file](#saving-agepro-input-data-into-file)
 * [Launching AGEPRO Model to Calculation Engine](#launching-agepro-model-to-the-calculation-engine)
 	* [AGEPRO Model Output Run Directory](#agepro-model-output-run-directory)
 * [Using NFT Data Grids](#using-nft-data-grids)
 * [Stochastic Data Files](#stochastic-data-files)
-* [Specifying Weights of Age](#specifying-weights-at-age)
+* [Specifying Weights at Age](#specifying-weights-at-age)
     * [JAN-1 Stock Weights at Age](#jan-1-stock-weights-at-age)
     * [Spawning Stock Weights at Age](#spawning-stock-weights-at-age)
-    * [Mid-Year Stocks at Age](#mid-year-stocks-at-age)
+    * [Mid-Year Stocks at Age](#mid-year-stock-weights-at-age)
     * [Catch Weights at Age](#catch-weights-at-age)
     * [Discard Weights at Age](#discard-weights-at-age)
 * [Natural Mortality](#natural-mortality)
@@ -50,7 +50,7 @@ Version 4.3.2
 
 # Getting Started
 
-To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-file), or [create a new case](#creating-a-new-case) in **General options**.
+To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-agepro-input-data-file), or [create a new case](#creating-a-new-case) in **General options**.
 
 ---
 
@@ -71,11 +71,11 @@ For new cases, the user must supply the following input:
 - Random Number Seed
 - Discards are Present (optional)
 
-![](img/generalOptions_01a.png "General Options")
+![](img/generalOptions_01.png "General Options")
 
 Click **SET** button to proceed.
 
-**Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. The user must supply a file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
+**Note**: To run a new case in the calcuation engine, a bootstrap population data file is required. Supply the file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
 
 ---
 
@@ -95,31 +95,23 @@ AGEPRO Version 4.0 input files have a file extension `INP`.  Older versions had 
 
 # Saving AGEPRO input data into file
 
-To store inputs done in the AGEPRO interface to file, click on the **Save AGEPRO Input Data As..** option in the File menu.
+To save your inputs, click on the **Save AGEPRO Input Data As..** option in the File menu. Save the file as a __`*.INP`__ file to your desired path as shown below:
 
-Use the Windows Save File Dialogue to save the input data using the file name and path desired:
-
-![](img/saveInputFile_01.png)
+![](img/saveINP_01.png)
 
 ## Validation
 
-The program performs a series of data validation steps before it saves to file.
+The program performs a series of data validation steps before it saves to file. If validated, the following dialog will confrim the location the AGEPRO input data file was saved:
 
-If the input is valid (without missing or erroneous input), the user will see the following:
+![](img/saveINP_vaildated_02.png)
 
-![](img/saveInputFile_valid_01.png)
+If the validator cathches an error or finds invalid input, it will stop, prevent the input data to be saved, and present the validation error in a dialog box, for example:  
 
-![](img/saveInputFile_valid_02.png)
+![](img/saveINP_invalid_01.png)
 
-Any errors or invalid input found will prevent the input data to be saved.
-
-A Dialog box will pop up indicating the issue, for example:
-
-![](img/saveInputFile_invalid_01.png)
+![](img/saveINP_invalid_02.png)
 
 **All invalid input has be resolved before the data may be saved.**
-
-![](img/saveInputFile_invalid_02.png)
 
 ---
 
@@ -283,7 +275,7 @@ On each line the program reads the values at age for the first fleet followed by
 
 ---
 
-# Specifying Weights of Age
+# Specifying Weights at Age
 AGEPRO allows users to input stochastic weights at age.  
 
 From the navigation panel, expand the **Weights if Age** node to set the following stochastic weights of age:
@@ -307,19 +299,19 @@ The user may select to input mean weights at age and apply log-normal error on e
 Furthermore, the user specifies whether the data supplied by either method will be supplied for each year in the time horizon as *time varying*. Otherwise, the data or to use a single set of weights at age for all years.
 
 ### Example: Time Varying
-![JAN-1 Time Varying](img/jan1WeightAge_01.png "JAN-1 Time Varying")
+![JAN-1 Time Varying](img/weightAge_jan1_01.png "JAN-1 Time Varying")
 
 In this first example, *Time Varying* is enabled. The user supplies mean weights at age for each year in the time horizon. In addition, the user also specifies a coefficient of variation for each age.
 
 Log-Normal error with bias correction will be calculated and applied on each observed value for each year in the time horizon
 
 ### Example: Non Time Varying
-![JAN-1 Non Time-Varying](img/jan1WeightAge_02.png "JAN-1 Non Time-Varying")
+![JAN-1 Non Time-Varying](img/weightAge_jan1_02.png "JAN-1 Non Time-Varying")
 
 In the next example, *Time Varying* is not enabled. The user will supply a single vector of mean values for weights at age.  The program will apply error on to he data supplied as above, but the data with error will not vary through the time horizon.
 
 ### Example: From File Option
-![JAN-1 Read Weights From File](img/jan1WeightAge_03a.png "JAN-1 Read Weights From File")
+![JAN-1 Read Weights From File](img/weightAge_jan1_03.png "JAN-1 Read Weights From File")
 
 In this example, the user has selected to supply [data from an external file](#stochastic-data-files) with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file.  No further input is required.
 
@@ -332,7 +324,7 @@ User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal e
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ## Mid-Year Stock Weights at Age
 When the user selects **Mid-Year (Mean)** from the navigation panel, the user can select from the following:
@@ -344,7 +336,7 @@ Read Weights from File        | Read the Weights at age with Stochastic error fr
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ## Catch Weights at Age
 When the user selects **Catch** from the navigation panel, the user can select from the following:
@@ -357,7 +349,7 @@ Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to a
 Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ## Discard Weights at Age
 If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this weight of age will be disabled.
@@ -373,7 +365,7 @@ Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply t
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights of Age*](#jan-1-stock-weights-of-age) above.
+**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
 
 ---
 
@@ -386,19 +378,19 @@ On the **Natural Mortality** panel, the user selects from:
 * Read Natural Mortality from File
 
 ### Example: Time Varying
-![](img/natMort_01a.png)
+![](img/stochastic_naturalMortality_01.png)
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
 ### Example: Non Time Varying
-![](img/natMort_02a.png)
+![](img/stochastic_naturalMortality_02.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
 ### Example: From File Option
-![](img/natMort_03.png)
+![](img/stochastic_naturalMortality_03.png)
 
 In this example, the user has specified that [natural mortality at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -418,30 +410,30 @@ On the **Maturity** tab on the **Biological** panel, the user selects from:
 * Read Maturity from File
 
 ### Example: Time Varying
-![](img/bioMaturity_01a.png)
+![](img/bio_maturityAge_01.png)
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
 ### Example: Non Time Varying
-![](img/bioMaturity_02a.png)
+![](img/bio_maturityAge_02.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
 ### Example: From File Option
-![](img/bioMaturity_03.png)
+![](img/bio_maturityAge_03.png)
 
 In this example, the user has specified that [maturity at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 ## Fraction Mortality Prior to Spawning
 On the **Fraction Mortality** tab in the **Biological** panel, the user will input the fraction of mortality prior to spawning to be applied independently to Natural and Fishing Mortality.
 
-![](img/bioFractionMortality_01.png)
+![](img/bio_fractionMortality_01.png)
 
 In the above example, the user applies the same constant value to all years in the projection horizon.
 
-![](img/bioFractionMortality_02.png)
+![](img/bio_fractionMortality_02.png)
 
 In the above example, *time varying* is enabled, and the user has selected to input different values through the time horizon.
 
@@ -456,21 +448,21 @@ On the **Fishery Selectivity** panel, the user may select:
 * Read Fishery Selectivity from File
 
 ### Example: Time Varying
-![](img/fishSelectivity_01a.png)
+![](img/stochastic_fisherySelectivity_01.png)
 
 In the above example, *time varying* is eanbled, and the user has selected to input the mean fishery selectivity for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will apply bias corrected log-normal error to the mean fishery selectivity values at age for all fleets.
 
 ### Example: Non Time Varying
-![](img/fishSelectivity_02a.png)
+![](img/stochastic_fisherySelectivity_02.png)
 
 In the above case, the user has selected to input a vector of mean fishery selectivity values at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will generate stochastic fishery selectivity values for each fleet.  The same values will be applied in all years of the time horizon.
 
 ### Example: From File Option
-![](img/fishSelectivity_03.png)
+![](img/stochastic_fisherySelectivity_03.png)
 
 In this example, the user specified that [stochastic data for fishery selectivity will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -481,27 +473,29 @@ AGEPRO allows users to input stochastic Discard Fraction
 
 If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this stochastic parameter will be disabled.
 
+![](img/stochastic_discardFraction_00.png)
+
 On the **Discard Fraction** panel the user can select:
 
 * User Specfied Discard Fraction at Age
 * Read Discard Fraction from File
 
 ### Example: Time Varying
-![](img/discardFraction_01a.png)
+![](img/stochastic_discardFraction_01.png)
 
 In the above example, *time varying* is eanbled, and the user has selected to input the mean discard fraction for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will apply bias corrected log-normal error to the mean discard fraction values at age for all fleets.
 
 ### Example: Non Time Varying
-![](img/discardFraction_02a.png)
+![](img/stochastic_discardFraction_02.png)
 
 In the above case, the user has selected to input a vector of mean discard fraction at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will generate stochastic discard fraction values for each fleet.  The same values will be applied in all years of the time horizon.
 
 ### Example: From File Option
-![](img/discardFraction_03.png)
+![](img/stochastic_discardFraction_03.png)
 
 In this example, the user specified that [stochastic data for discard fraction will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -689,7 +683,7 @@ For **Rebuilder Target Type**, the user may set the rebuilder target as:
 If there is more than one fleet then the input estimates will be used to set the proportion of Fishing Mortality in each fleet. This proportion will be held constant as the F-Mult level changes to meet the target.
 
 ### Example
-![Single Fleet Harvest Scenario Table with a rebuild target](img/rebuilderHarvestScenario_03.png "Harvest Scenario Table")
+![Single Fleet Harvest Scenario Table with a rebuild target](img/harvest_rebuilder_01.png "Harvest Scenario Table")
 
 In the example shown above the user has set a Landings Harvest Quota in the first year of **2,100 MT**.
 
@@ -746,7 +740,7 @@ Select the **Peform P-Star Analysis** option for *Additional calculations* box i
 For the multiple fleets scenario, the proportion of removals per fleet will be set by the initial guess and this proportion will be held constant as total removal values are varied to meet the P-Star criteria.
 
 ### Example
-![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/pstarHarvestScenario_03.png "Harvest Scenario Table")
+![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/harvest_pstar_01.png "Harvest Scenario Table")
 
 In the above example, the user has provided an initial guess of total removals of 20,000 MT (`15000` for Fleet-1  + `7500` for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.
 
@@ -796,20 +790,21 @@ Year       Average        StdDev
 2014       18.6135       15.1005
 ```
 
-```
+
 Combined Catch Distribution
-Year       1 %        5 %        10 %       25 %       50 %       75 %       90 %       95 %       99 %   
-2005    23.0242    23.1791    23.2748    23.4553    23.7168    24.0544    24.4621    24.7863    25.6062
-2006    20.5261    25.7774    29.6497    38.0500    50.1961    68.2416    92.9632   115.6090   189.9173
-2007    24.7738    32.7074    38.7986    51.2893    71.8312   104.0114   160.1893   209.6707   356.1510
-2008    24.5674    32.3727    38.1408    49.9449    68.0199    96.3123   145.6537   188.8369   303.7527
-2009    23.2500    30.2112    35.0125    45.1508    60.0323    81.9444   112.9818   140.4948   217.4582
-2010    19.9632    25.9880    29.9054    37.6155    49.3528    67.7771    95.3417   118.0018   174.5042
-2011    18.4318    23.2325    26.2634    32.7304    42.4053    57.6223    80.5782    98.1937   152.4862
-2012    40.3401    40.3401    40.3401    40.3401    40.3401    40.3401    40.3401    40.3401    40.3401
-2013    10.0895    15.3514    18.2694    24.3797    32.6471    45.5232    63.8322    78.3229   113.7047
-2014     2.9045     4.6582     6.0500     9.2075    14.5876    23.0587    35.2707    45.9843    75.4379
-```
+
+|Year |      1 %|        5 %|       10 %|       25 %|       50 %|       75 %|       90 %|       95 %|       99 %|
+|----:|--------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|
+| 2005|  23.0242|    23.1791|    23.2748|    23.4553|    23.7168|    24.0544|    24.4621|    24.7863|    25.6062|
+| 2006|  20.5261|    25.7774|    29.6497|    38.0500|    50.1961|    68.2416|    92.9632|   115.6090|   189.9173|
+| 2007|  24.7738|    32.7074|    38.7986|    51.2893|    71.8312|   104.0114|   160.1893|   209.6707|   356.1510|
+| 2008|  24.5674|    32.3727|    38.1408|    49.9449|    68.0199|    96.3123|   145.6537|   188.8369|   303.7527|
+| 2009|  23.2500|    30.2112|    35.0125|    45.1508|    60.0323|    81.9444|   112.9818|   140.4948|   217.4582|
+| 2010|  19.9632|    25.9880|    29.9054|    37.6155|    49.3528|    67.7771|    95.3417|   118.0018|   174.5042|
+| 2011|  18.4318|    23.2325|    26.2634|    32.7304|    42.4053|    57.6223|    80.5782|    98.1937|   152.4862|
+| 2012|  40.3401|    40.3401|    40.3401|    40.3401|    40.3401|    40.3401|    40.3401|    40.3401|    40.3401|
+| 2013|  10.0895|    15.3514|    18.2694|    24.3797|    32.6471|    45.5232|    63.8322|    78.3229|   113.7047|
+| 2014|   2.9045|     4.6582|     6.0500|     9.2075|    14.5876|    23.0587|    35.2707|    45.9843|    75.4379|
 
 ---
 
@@ -826,7 +821,7 @@ In the following auxiliary files the number of columns is equal to the number of
 
 The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.  
 
-The **units used in the auxiliary files are not affected by the [summary report scaling factors](#/scaling-option-in-output-report)** optionally applied to the report file.
+The **units used in the auxiliary files are not affected by the [summary report scaling factors](#scaling-option-in-output-report)** optionally applied to the report file.
 
 File Extension | Model Items
 :--------------| :-----------------------------------------------------
@@ -894,7 +889,7 @@ The [Summary Report](#summary-report-of-stock-numbers-of-age) provides tables of
 
 To create the Percentile Report in the Output File, check the  **Reqest Percentile Report** checkbox option in *Output Options* Section in the **Misc. Options** panel. Then, enter a percentile value between `0.0` and `100.0` in the **Report Percentile** spinbox.
 
-The [summary report scaling units](#/scaling-option-in-output-report) are the same as were are used in the output report with a standard distribution.
+The [summary report scaling units](#scaling-option-in-output-report) are the same as were are used in the output report with a standard distribution.
 
 ### Example
 The Output Report will supply values for each year in the time horizon for the calculated results:
@@ -902,26 +897,29 @@ The Output Report will supply values for each year in the time horizon for the c
 ```
 Requested Percentile Report
 Percentile =    60.00 %
-                                 2005       2006       2007       2008       2009       2010       2011       2012       2013       2014
-Recruits                      61.4121    61.5496    61.4263    61.5560    61.7028    61.5476    61.6189    61.5289    61.6729    61.7721
-Spawning Stock Biomass       107.2980   659.3243   683.8850   591.5898   502.6594   444.8396   393.4123   354.1344   314.3024   289.2476
-Jan-1 Stock Biomass          438.4464   727.1282   790.1585   703.2796   598.7040   535.7083   478.7315   432.9380   387.1672   360.1825
-Mean Biomass                 387.3808   634.6203   663.1946   573.3694   493.5514   441.9435   396.9153   359.6175   322.4296   300.5405
-Combined Catch Biomass        23.0890    54.3665   114.6540   134.2215   101.8851    89.4593    76.8770    67.2651    58.7692    53.3587
-Landings                      22.5330    52.7181   113.5268   132.7871   100.7810    88.4612    75.9868    66.4783    58.0849    52.7141
-Discards                       0.5560     1.6155     1.1014     1.3975     1.0788     0.9637     0.8638     0.7737     0.6854     0.6333
-FMort                          0.1869     0.2600     0.2600     0.2600     0.2400     0.2400     0.2400     0.2400     0.2400     0.2400
-Stock Numbers at Age
-Age 1                         12.3924    61.4121    61.5496    61.4263    61.5560    61.7028    61.5476    61.6189    61.5289    61.6729
-Age 2                        723.4452    10.1231    50.1152    50.2031    50.1283    50.2243    50.3180    50.1996    50.2535    50.2007
-Age 3                          0.9338   582.7218     8.1089    40.1317    40.2213    40.2209    40.2942    40.3655    40.2727    40.3275
-Age 4                          3.0425     0.7365   451.5521     6.2816    31.1053    31.3186    31.3142    31.3677    31.4161    31.3529
-Age 5                         37.3769     2.2338     0.5131   314.5587     4.3710    21.9489    22.0933    22.0963    22.1299    22.1605
-Age 6                          6.0544    25.7380     1.4098     0.3240   198.6922     2.8168    14.1379    14.2306    14.2335    14.2576
-Age 7                          7.7116     4.1326    16.2468     0.8896     0.2044   127.9874     1.8151     9.1085     9.1620     9.1677
-Age 8                          1.2546     5.2943     2.6091    10.2540     0.5615     0.1316    82.4348     1.1680     5.8667     5.9029
-Age 9                          4.4207     3.8955     5.7163     5.2276     9.6713     6.5808     4.3209    55.6507    36.6454    28.0549
 ```
+
+|                          |       2005|       2006|       2007|       2008|       2009|       2010|       2011|       2012|       2013|       2014|
+|--------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|                    
+|Recruits|                      61.4121|    61.5496|    61.4263|    61.5560|    61.7028|    61.5476|    61.6189|    61.5289|    61.6729|    61.7721|
+|Spawning Stock Biomass|       107.2980|   659.3243|   683.8850|   591.5898|   502.6594|   444.8396|   393.4123|   354.1344|   314.3024|   289.2476|
+|Jan-1 Stock Biomass|          438.4464|   727.1282|   790.1585|   703.2796|   598.7040|   535.7083|   478.7315|   432.9380|   387.1672|   360.1825|
+|Mean Biomass|                 387.3808|   634.6203|   663.1946|   573.3694|   493.5514|   441.9435|   396.9153|   359.6175|   322.4296|   300.5405|
+|Combined Catch Biomass|        23.0890|    54.3665|   114.6540|   134.2215|   101.8851|    89.4593|    76.8770|    67.2651|    58.7692|    53.3587|
+|Landings|                      22.5330|    52.7181|   113.5268|   132.7871|   100.7810|    88.4612|    75.9868|    66.4783|    58.0849|    52.7141|
+|Discards|                       0.5560|     1.6155|     1.1014|     1.3975|     1.0788|     0.9637|     0.8638|     0.7737|     0.6854|     0.6333|
+|FMort|                          0.1869|     0.2600|     0.2600|     0.2600|     0.2400|     0.2400|     0.2400|     0.2400|     0.2400|     0.2400|
+|Stock Numbers at Age|
+|Age 1|                         12.3924|    61.4121|    61.5496|    61.4263|    61.5560|    61.7028|    61.5476|    61.6189|    61.5289|    61.6729|
+|Age 2|                        723.4452|    10.1231|    50.1152|    50.2031|    50.1283|    50.2243|    50.3180|    50.1996|    50.2535|    50.2007|
+|Age 3|                          0.9338|   582.7218|     8.1089|    40.1317|    40.2213|    40.2209|    40.2942|    40.3655|    40.2727|    40.3275|
+|Age 4|                          3.0425|     0.7365|   451.5521|     6.2816|    31.1053|    31.3186|    31.3142|    31.3677|    31.4161|    31.3529|
+|Age 5|                         37.3769|     2.2338|     0.5131|   314.5587|     4.3710|    21.9489|    22.0933|    22.0963|    22.1299|    22.1605|
+|Age 6|                          6.0544|    25.7380|     1.4098|     0.3240|   198.6922|     2.8168|    14.1379|    14.2306|    14.2335|    14.2576|
+|Age 7|                          7.7116|     4.1326|    16.2468|     0.8896|     0.2044|   127.9874|     1.8151|     9.1085|     9.1620|     9.1677|
+|Age 8|                          1.2546|     5.2943|     2.6091|    10.2540|     0.5615|     0.1316|    82.4348|     1.1680|     5.8667|     5.9029|
+|Age 9|                          4.4207|     3.8955|     5.7163|     5.2276|     9.6713|     6.5808|     4.3209|    55.6507|    36.6454|    28.0549|
+
 
 
 ## Reference Point Threshold Report
@@ -994,6 +992,6 @@ Choose which program to view AGEPRO Output Data (`*.out`) files. This program wi
 
 If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
 
-![](img/outFile_Assiocation_01.png "File assoication")
+![](img/outFile_association_01.png "File association")
 
 To bypass viewing AGEPRO Output data files after a model run, select **None**.
