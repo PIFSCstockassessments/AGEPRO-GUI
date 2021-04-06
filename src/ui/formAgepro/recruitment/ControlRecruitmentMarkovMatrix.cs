@@ -14,7 +14,7 @@ namespace Nmfs.Agepro.Gui
     public partial class ControlRecruitmentMarkovMatrix : UserControl
     {
 
-        public List<RecruitmentModel> collectionAgeproRecruitModels { get; set; }
+        public List<RecruitmentModelProperty> collectionAgeproRecruitModels { get; set; }
         public int collectionSelectedIndex { get; set; }
 
         public ControlRecruitmentMarkovMatrix()

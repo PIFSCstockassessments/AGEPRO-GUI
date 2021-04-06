@@ -13,7 +13,7 @@ namespace Nmfs.Agepro.Gui
 {
     public partial class ControlRecruitmentPredictor : UserControl
     {
-        public List<RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+        public List<RecruitmentModelProperty> collectionAgeproRecruitmentModels { get; set; }
         public int collectionSelectedIndex { get; set; }
         public string[] seqYears { get; set; }
 

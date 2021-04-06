@@ -13,7 +13,7 @@ namespace Nmfs.Agepro.Gui
 {
     public partial class ControlRecruitmentParametricBase : UserControl
     {
-        public List<RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+        public List<RecruitmentModelProperty> collectionAgeproRecruitmentModels { get; set; }
         public int collectionSelectedIndex { get; set; }
         public bool isAutocorrelated { get; set; }
         protected ParametricType typeOfParmetric { get; set; }

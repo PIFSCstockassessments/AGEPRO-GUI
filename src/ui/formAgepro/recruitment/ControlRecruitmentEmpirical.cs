@@ -14,7 +14,7 @@ namespace Nmfs.Agepro.Gui
     public partial class ControlRecruitmentEmpirical : UserControl
     {
         protected int maxNumObservations { get; set; }
-        public List<RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+        public List<RecruitmentModelProperty> collectionAgeproRecruitmentModels { get; set; }
         public int collectionSelectedIndex { get; set; }
         private EmpiricalType empiricalSubtype { get; set; }
 

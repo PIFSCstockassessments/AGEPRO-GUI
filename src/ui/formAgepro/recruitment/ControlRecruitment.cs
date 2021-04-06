@@ -17,7 +17,7 @@ namespace Nmfs.Agepro.Gui
         public int[] recruitModelSelection { get; set; }
         public string[] seqRecruitYears { get; set; }
 
-        public List<Nmfs.Agepro.CoreLib.RecruitmentModel> collectionAgeproRecruitmentModels { get; set; }
+        public List<RecruitmentModelProperty> CollectionAgeproRecruitmentModels { get; set; }
 
         private DataGridViewComboBoxColumn columnRecruitModelSelection;
         public bool populateDGV { get; set; }
@@ -75,15 +75,15 @@ namespace Nmfs.Agepro.Gui
             this.textBoxRecruitngScalingFactor.PrevValidValue = recruitingScalingFactor.ToString();
             this.textBoxSSBScalingFactor.PrevValidValue = SSBScalingFactor.ToString();
 
-            if (collectionAgeproRecruitmentModels.Count == 0)
+            if (CollectionAgeproRecruitmentModels.Count == 0)
             {
                 //if AgeproRecruitmentModel Colletction list is empty, intialize it
-                List<RecruitmentModel> userSpecRecruitList = new List<RecruitmentModel>();
+                List<RecruitmentModelProperty> userSpecRecruitList = new List<RecruitmentModelProperty>();
                 for (int i = 0; i < numRecruitModels; i++)
                 {
                     userSpecRecruitList.Add(new NullSelectRecruitment());
                 }
-                collectionAgeproRecruitmentModels = userSpecRecruitList;
+                CollectionAgeproRecruitmentModels = userSpecRecruitList;
             }
 
             base.OnLoad(e);
@@ -116,7 +116,7 @@ namespace Nmfs.Agepro.Gui
             this.numRecruitModels = nrecruits;
 
             //collectionAgeproRecruitmentModels
-            this.collectionAgeproRecruitmentModels = objRecruitment.recruitList;
+            this.CollectionAgeproRecruitmentModels = objRecruitment.recruitList;
 
             //seqRecruitYears
             this.seqRecruitYears = Array.ConvertAll(objRecruitment.observationYears, element => element.ToString());
@@ -265,13 +265,13 @@ namespace Nmfs.Agepro.Gui
 
         private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.collectionAgeproRecruitmentModels != null)
+            if (this.CollectionAgeproRecruitmentModels != null)
             {
                 ComboBox modelSelectionCbx = sender as ComboBox;
 
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
 
-                RecruitmentModel currentRecruitSelection = this.collectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
+                RecruitmentModelProperty currentRecruitSelection = this.CollectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
 
                 LoadRecruitModelParameterControls(currentRecruitSelection);
             }
@@ -279,7 +279,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         //TODO:REFACTOR 
-        private void LoadRecruitModelParameterControls(RecruitmentModel currentRecruitSelection)
+        private void LoadRecruitModelParameterControls(RecruitmentModelProperty currentRecruitSelection)
         {
             if (currentRecruitSelection is EmpiricalRecruitment)
             {
@@ -290,7 +290,7 @@ namespace Nmfs.Agepro.Gui
                     ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
                     
                     empiricalParameterControls.SetEmpiricalRecruitmentControls(currentEmpiricalRecruitSelection, panelRecruitModelParameter);
-                    empiricalParameterControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    empiricalParameterControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
                     empiricalParameterControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                     
                 }
@@ -303,7 +303,7 @@ namespace Nmfs.Agepro.Gui
                     ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage();
                     twoStageControls.SetTwoStageEmpiricalRecruitmentControls(currentTwoStageEmpiricalRecruitSelection, 
                         panelRecruitModelParameter);
-                    twoStageControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    twoStageControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
                     twoStageControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                 }
                 else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.CDFZero)
@@ -314,7 +314,7 @@ namespace Nmfs.Agepro.Gui
 
                     empiricalCDFZeroControls.SetEmpiricalCDFZeroRecruitmentControls(
                         currentEmpiricalCDFZeroRecruitmentSelection, panelRecruitModelParameter);
-                    empiricalCDFZeroControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    empiricalCDFZeroControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
                     empiricalCDFZeroControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
 
                     
@@ -326,7 +326,7 @@ namespace Nmfs.Agepro.Gui
                     ControlRecruitmentFixed fixedRecruitmentControls = new ControlRecruitmentFixed();
                     fixedRecruitmentControls.seqYears = this.seqRecruitYears;
                     fixedRecruitmentControls.SetFixedRecruitmentControls(currentFixedRecruitmentSelection, panelRecruitModelParameter);
-                    fixedRecruitmentControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    fixedRecruitmentControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
                     fixedRecruitmentControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                 }
                 
@@ -339,7 +339,7 @@ namespace Nmfs.Agepro.Gui
 
                     ControlRecruitmentParametricCurve parametricCurveControls = new ControlRecruitmentParametricCurve();
 
-                    parametricCurveControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    parametricCurveControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
                     parametricCurveControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                     parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
 
@@ -351,7 +351,7 @@ namespace Nmfs.Agepro.Gui
                     ControlRecruitmentParametricLognormal lognormalControls = new ControlRecruitmentParametricLognormal();
 
                     lognormalControls.SetParametricRecruitmentControls(currentParametricLognormalRecruit, panelRecruitModelParameter);
-                    lognormalControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                    lognormalControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
                     lognormalControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                 }
             }
@@ -363,7 +363,7 @@ namespace Nmfs.Agepro.Gui
 
                 predictorParameterControls.seqYears = this.seqRecruitYears;
                 predictorParameterControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
-                predictorParameterControls.collectionAgeproRecruitmentModels = this.collectionAgeproRecruitmentModels;
+                predictorParameterControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
                 predictorParameterControls.SetPredictorRecruitmentcontrols(currentPredictorRecruitSelection, panelRecruitModelParameter);
             }
             else if(currentRecruitSelection is MarkovMatrixRecruitment)
@@ -373,7 +373,7 @@ namespace Nmfs.Agepro.Gui
                 ControlRecruitmentMarkovMatrix markovControls = new ControlRecruitmentMarkovMatrix();
 
                 markovControls.SetRecruitmentControls(currentRecruit,panelRecruitModelParameter);
-                markovControls.collectionAgeproRecruitModels = this.collectionAgeproRecruitmentModels;
+                markovControls.collectionAgeproRecruitModels = this.CollectionAgeproRecruitmentModels;
                 markovControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
             }
             else
@@ -413,9 +413,9 @@ namespace Nmfs.Agepro.Gui
                 labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
                 //Catch for nulls
-                if (collectionAgeproRecruitmentModels.Count != 0)
+                if (CollectionAgeproRecruitmentModels.Count != 0)
                 {
-                    RecruitmentModel selectedRecruitModel = collectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
+                    RecruitmentModelProperty selectedRecruitModel = CollectionAgeproRecruitmentModels[comboBoxRecruitSelection.SelectedIndex];
                     //Load the appropriate panel
                     LoadRecruitModelParameterControls(selectedRecruitModel);
                 }
@@ -507,9 +507,9 @@ namespace Nmfs.Agepro.Gui
                         this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
 
                         int selectedModelNum = Convert.ToInt32(kvpKey);
-                        if (this.collectionAgeproRecruitmentModels[currentModel] != null)
+                        if (this.CollectionAgeproRecruitmentModels[currentModel] != null)
                         {
-                            this.collectionAgeproRecruitmentModels[currentModel] = 
+                            this.CollectionAgeproRecruitmentModels[currentModel] = 
                                 AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
                                 
                         }
@@ -592,9 +592,9 @@ namespace Nmfs.Agepro.Gui
             //Recruit Models
             Nmfs.Agepro.CoreLib.ValidationResult vaildRecruitmentModelResult;
 
-            foreach (RecruitmentModel rmodelSelection in this.collectionAgeproRecruitmentModels)
+            foreach (RecruitmentModelProperty rmodelSelection in this.CollectionAgeproRecruitmentModels)
             {
-                int rmodelIndex = this.collectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
+                int rmodelIndex = this.CollectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
                 
                 vaildRecruitmentModelResult = rmodelSelection.ValidationCheck();
 
