@@ -247,7 +247,7 @@ namespace Nmfs.Agepro.Gui
 
             //For Discard weight, if "Discards are Present" is not selected, exit the function
             //(to prevent fallback data table to be generated.)
-            if (this.weightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.hasDiscards == false)
+            if (this.weightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.HasDiscards == false)
             {
                 return;
             }

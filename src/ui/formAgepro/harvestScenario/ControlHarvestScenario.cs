@@ -77,14 +77,14 @@ namespace Nmfs.Agepro.Gui
                     if (PStar == null)
                     {
                         PStar = new PStarCalculation();
-                        PStar.pStarLevels = 1;
-                        PStar.pStarF = 0;
-                        PStar.targetYear = 0;
+                        PStar.PStarLevels = 1;
+                        PStar.PStarF = 0;
+                        PStar.TargetYear = 0;
                         PStar.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                         //Create PStar Table
-                        PStar.pStarTable = PStar.CreateNewPStarTable();
-                        PStar.pStarTable.Rows.Add();
-                        Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.pStarTable);
+                        PStar.PStarTable = PStar.CreateNewPStarTable();
+                        PStar.PStarTable.Rows.Add();
+                        Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.PStarTable);
                     }
                     this.calcType = HarvestScenarioAnalysis.PStar;
                     controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
@@ -108,10 +108,10 @@ namespace Nmfs.Agepro.Gui
                     if (this.Rebuilder == null)
                     {
                         Rebuilder = new RebuilderTargetCalculation();
-                        Rebuilder.targetYear = 0;
-                        Rebuilder.targetValue = 0;
-                        Rebuilder.targetType = 0;
-                        Rebuilder.targetPercent = 0;
+                        Rebuilder.TargetYear = 0;
+                        Rebuilder.TargetValue = 0;
+                        Rebuilder.TargetType = 0;
+                        Rebuilder.TargetPercent = 0;
                         Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
                     }
                     this.calcType = HarvestScenarioAnalysis.Rebuilder;
@@ -162,7 +162,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="inputData"></param>
         public void SetHarvestScenarioCalcControls(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
         {
-            this.calcType = inpData.harvestScenario.analysisType;
+            this.calcType = inpData.harvestScenario.AnalysisType;
 
             //Clean out any previous instances of pstar and/or rebuilder. 
             if (this.PStar != null)
@@ -277,11 +277,11 @@ namespace Nmfs.Agepro.Gui
                 }
                 //Check Harvest Scenario Table to see Harvest Specification is "REMOVALS" on 
                 //the target year.
-                int indexTargetYr = Array.IndexOf(this.seqYears, this.PStar.targetYear.ToString());
+                int indexTargetYr = Array.IndexOf(this.seqYears, this.PStar.TargetYear.ToString());
                 if (this.HarvestScenarioTable.Rows[indexTargetYr][0].Equals("REMOVALS") == false)
                 {
                     MessageBox.Show("Invalid Harvest Scenario Specification for P-Star Target Year "
-                        + this.PStar.targetYear +".",
+                        + this.PStar.TargetYear +".",
                         "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     validPStar = false;
                 }

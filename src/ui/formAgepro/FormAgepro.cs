@@ -73,7 +73,7 @@ namespace Nmfs.Agepro.Gui
             //Set General Options Controls (to handle "New Cases")
             controlGeneralOptions.generalInputFile = "";
             controlGeneralOptions.generalModelId = "untitled";
-            this.inputData.general.inputFile = "";
+            this.inputData.general.InputFile = "";
             this.inputData.caseID = controlGeneralOptions.generalModelId;
 
             //initially set Number of Ages
@@ -169,15 +169,15 @@ namespace Nmfs.Agepro.Gui
                 inputData.version = "AGEPRO VERSION 4.0";
 
                 //Save General Options input to CoreLib Input Data Object
-                inputData.general.projYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
-                inputData.general.projYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
-                inputData.general.ageBegin = controlGeneralOptions.generalFirstAgeClass;
-                inputData.general.ageEnd = controlGeneralOptions.generalLastAgeClass;
-                inputData.general.numFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-                inputData.general.numRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                inputData.general.numPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
-                inputData.general.seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
-                inputData.general.hasDiscards = controlGeneralOptions.generalDiscardsPresent;
+                inputData.general.ProjYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+                inputData.general.ProjYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
+                inputData.general.AgeBegin = controlGeneralOptions.generalFirstAgeClass;
+                inputData.general.AgeEnd = controlGeneralOptions.generalLastAgeClass;
+                inputData.general.NumFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+                inputData.general.NumRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                inputData.general.NumPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
+                inputData.general.Seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
+                inputData.general.HasDiscards = controlGeneralOptions.generalDiscardsPresent;
                 //Store CASEID to input data object
                 inputData.caseID = controlGeneralOptions.generalModelId;
 
@@ -249,13 +249,13 @@ namespace Nmfs.Agepro.Gui
                 //Harvest Scenario
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
-                inputData.harvestScenario.analysisType = HarvestScenarioAnalysis.HarvestScenario;
+                inputData.harvestScenario.AnalysisType = HarvestScenarioAnalysis.HarvestScenario;
                 controlHarvestScenario.SetHarvestScenarioCalcControls(inputData);
                 DataTable userGenBasedHarvestScenarioTable = AgeproHarvestScenario.NewHarvestTable(
                     controlHarvestScenario.seqYears.Count(), 
                     Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
                 controlHarvestScenario.SetHarvestScenarioInputDataTable(userGenBasedHarvestScenarioTable);
-                inputData.harvestScenario.harvestScenarioTable = userGenBasedHarvestScenarioTable;
+                inputData.harvestScenario.HarvestScenarioTable = userGenBasedHarvestScenarioTable;
 
                 //Bootstrap
                 controlBootstrap.SetBootstrapControls(inputData.bootstrap);
@@ -361,7 +361,7 @@ namespace Nmfs.Agepro.Gui
                     controlFisherySelectivity.bindStochasticAgeData(this.inputData.fishery);
                     controlNaturalMortality.bindStochasticAgeData(this.inputData.naturalMortality);
 
-                    if(this.inputData.general.hasDiscards == true)
+                    if(this.inputData.general.HasDiscards == true)
                     {
                         controlDiscardWeight.bindStochasticAgeData(this.inputData.discardWeight);
                         controlDiscardFraction.bindStochasticAgeData(this.inputData.discardFraction);     
@@ -370,20 +370,20 @@ namespace Nmfs.Agepro.Gui
                     //Harvest Scenario: Rebuilder/PStar
                     if (controlHarvestScenario.calcType == HarvestScenarioAnalysis.PStar)
                     {
-                        this.inputData.harvestScenario.analysisType = controlHarvestScenario.calcType;
-                        this.inputData.pstar.analysisType = controlHarvestScenario.calcType;
-                        this.inputData.pstar.pStarLevels = controlHarvestScenario.PStar.pStarLevels;
-                        this.inputData.pstar.pStarF = controlHarvestScenario.PStar.pStarF;
-                        this.inputData.pstar.targetYear = controlHarvestScenario.PStar.targetYear;
-                        this.inputData.pstar.pStarTable = controlHarvestScenario.PStar.pStarTable;
+                        this.inputData.harvestScenario.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.pstar.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.pstar.PStarLevels = controlHarvestScenario.PStar.PStarLevels;
+                        this.inputData.pstar.PStarF = controlHarvestScenario.PStar.PStarF;
+                        this.inputData.pstar.TargetYear = controlHarvestScenario.PStar.TargetYear;
+                        this.inputData.pstar.PStarTable = controlHarvestScenario.PStar.PStarTable;
                     }
                     else if (controlHarvestScenario.calcType == HarvestScenarioAnalysis.Rebuilder)
                     {
-                        this.inputData.harvestScenario.analysisType = controlHarvestScenario.calcType;
-                        this.inputData.rebuild.analysisType = controlHarvestScenario.calcType;
-                        this.inputData.rebuild.targetYear = controlHarvestScenario.Rebuilder.targetYear;
-                        this.inputData.rebuild.targetPercent = controlHarvestScenario.Rebuilder.targetPercent;
-                        this.inputData.rebuild.targetType = controlHarvestScenario.Rebuilder.targetType;
+                        this.inputData.harvestScenario.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.rebuild.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.rebuild.TargetYear = controlHarvestScenario.Rebuilder.TargetYear;
+                        this.inputData.rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
+                        this.inputData.rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
                     }
 
                     //Misc options
@@ -435,15 +435,15 @@ namespace Nmfs.Agepro.Gui
         {
             //General Options
             controlGeneralOptions.generalModelId = inpFile.caseID;
-            controlGeneralOptions.generalFirstYearProjection = inpFile.general.projYearStart.ToString();
-            controlGeneralOptions.generalLastYearProjection = inpFile.general.projYearEnd.ToString();
-            controlGeneralOptions.generalFirstAgeClass = inpFile.general.ageBegin;
-            controlGeneralOptions.generalLastAgeClass = inpFile.general.ageEnd;
-            controlGeneralOptions.generalNumberFleets = inpFile.general.numFleets.ToString();
-            controlGeneralOptions.generalNumberRecruitModels = inpFile.general.numRecModels.ToString();
-            controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.numPopSims.ToString();
-            controlGeneralOptions.generalRandomSeed = inpFile.general.seed.ToString();
-            controlGeneralOptions.generalDiscardsPresent = inpFile.general.hasDiscards;
+            controlGeneralOptions.generalFirstYearProjection = inpFile.general.ProjYearStart.ToString();
+            controlGeneralOptions.generalLastYearProjection = inpFile.general.ProjYearEnd.ToString();
+            controlGeneralOptions.generalFirstAgeClass = inpFile.general.AgeBegin;
+            controlGeneralOptions.generalLastAgeClass = inpFile.general.AgeEnd;
+            controlGeneralOptions.generalNumberFleets = inpFile.general.NumFleets.ToString();
+            controlGeneralOptions.generalNumberRecruitModels = inpFile.general.NumRecModels.ToString();
+            controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.NumPopSims.ToString();
+            controlGeneralOptions.generalRandomSeed = inpFile.general.Seed.ToString();
+            controlGeneralOptions.generalDiscardsPresent = inpFile.general.HasDiscards;
 
             //JAN-1
             controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
@@ -461,7 +461,7 @@ namespace Nmfs.Agepro.Gui
             controlDiscardWeight.LoadStochasticWeightAgeInputData(inpFile.discardWeight, inpFile.general);
 
             //Recruitment
-            controlRecruitment.SetupControlRecruitment(inpFile.general.numRecModels, inpFile.recruitment);
+            controlRecruitment.SetupControlRecruitment(inpFile.general.NumRecModels, inpFile.recruitment);
 
             //Fishery Selectivity
             controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.fishery, inpFile.general);
@@ -483,23 +483,23 @@ namespace Nmfs.Agepro.Gui
             controlBiological.readFractionMortalityState = false;
 
             //Harvest Scenario
-            if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.Rebuilder)
+            if (inpFile.harvestScenario.AnalysisType == HarvestScenarioAnalysis.Rebuilder)
             {
                 controlHarvestScenario.Rebuilder = inpFile.rebuild;
             }
-            else if (inpFile.harvestScenario.analysisType == HarvestScenarioAnalysis.PStar)
+            else if (inpFile.harvestScenario.AnalysisType == HarvestScenarioAnalysis.PStar)
             {
                 controlHarvestScenario.PStar = inpFile.pstar;
             }
             controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
-            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.harvestScenarioTable);
+            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.HarvestScenarioTable);
             controlHarvestScenario.SetHarvestScenarioCalcControls(inpFile);
 
 
             //Bootstrapping
-            controlBootstrap.bootstrapFilename = inpFile.bootstrap.bootstrapFile;
-            controlBootstrap.bootstrapIterations = inpFile.bootstrap.numBootstraps.ToString();
-            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.popScaleFactor.ToString();
+            controlBootstrap.bootstrapFilename = inpFile.bootstrap.BootstrapFile;
+            controlBootstrap.bootstrapIterations = inpFile.bootstrap.NumBootstraps.ToString();
+            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.PopScaleFactor.ToString();
 
             //Misc Options
             controlMiscOptions.miscOptionsEnableSummaryReport = inpFile.options.enableSummaryReport;
@@ -525,7 +525,7 @@ namespace Nmfs.Agepro.Gui
 
             controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.options.enableRetroAdjustmentFactors;
             controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
-            controlMiscOptions.miscOptionsFirstAge = inpFile.general.ageBegin;
+            controlMiscOptions.miscOptionsFirstAge = inpFile.general.AgeBegin;
 
             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable =
                 Util.GetAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable,
@@ -630,14 +630,14 @@ namespace Nmfs.Agepro.Gui
 
       //check for bootstrap file
       //1. File Exists from the bootstrap parameter
-      if (File.Exists(inputData.bootstrap.bootstrapFile))
+      if (File.Exists(inputData.bootstrap.BootstrapFile))
       {
-        File.Copy(inputData.bootstrap.bootstrapFile, bsnFile, true);
+        File.Copy(inputData.bootstrap.BootstrapFile, bsnFile, true);
       }
       //2. If not, in the same directory as the AGEPRO Input File
-      else if (File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
+      else if (File.Exists(Path.GetDirectoryName(inputData.general.InputFile) + "\\" + Path.GetFileName(inputData.bootstrap.BootstrapFile)))
       {
-        File.Copy(Path.GetDirectoryName(inputData.general.inputFile) + "\\" + Path.GetFileName(inputData.bootstrap.bootstrapFile),
+        File.Copy(Path.GetDirectoryName(inputData.general.InputFile) + "\\" + Path.GetFileName(inputData.bootstrap.BootstrapFile),
             bsnFile, true);
       }
       //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
@@ -657,12 +657,12 @@ namespace Nmfs.Agepro.Gui
         }
       }
       //Store original bootstrap filename in case of error
-      string originalBSNFile = inputData.bootstrap.bootstrapFile;
+      string originalBSNFile = inputData.bootstrap.BootstrapFile;
 
       try
       {
         //Set bootstrap filename to copied workDir version
-        inputData.bootstrap.bootstrapFile = bsnFile;
+        inputData.bootstrap.BootstrapFile = bsnFile;
 
         //Write Interface Inputs to file
         inputData.WriteInputFile(inpFile);
@@ -686,7 +686,7 @@ namespace Nmfs.Agepro.Gui
       finally
       {
         //reset original bootstrap filename 
-        inputData.bootstrap.bootstrapFile = originalBSNFile;
+        inputData.bootstrap.BootstrapFile = originalBSNFile;
       }
     }
 
@@ -920,11 +920,11 @@ namespace Nmfs.Agepro.Gui
             //Tell? user that they will have to supply bootstrap file.
             if (!File.Exists(this.controlBootstrap.bootstrapFilename))
             {
-                if (File.Exists(Path.GetDirectoryName(inputData.general.inputFile) + "\\"
-                    + Path.GetFileName(inputData.bootstrap.bootstrapFile)))
+                if (File.Exists(Path.GetDirectoryName(inputData.general.InputFile) + "\\"
+                    + Path.GetFileName(inputData.bootstrap.BootstrapFile)))
                 {
-                    string inpFileDir = Path.GetDirectoryName(inputData.general.inputFile);
-                    string bsnFileName = Path.GetFileName(inputData.bootstrap.bootstrapFile);
+                    string inpFileDir = Path.GetDirectoryName(inputData.general.InputFile);
+                    string bsnFileName = Path.GetFileName(inputData.bootstrap.BootstrapFile);
                     bootstrapChoice = MessageBox.Show(
                         "Bootstrap filename was not found." + Environment.NewLine +
                         "However, a bootstap file " + bsnFileName + " was found at " + inpFileDir +

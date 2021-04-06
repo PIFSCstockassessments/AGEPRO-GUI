@@ -136,7 +136,7 @@ namespace Nmfs.Agepro.Gui
         {
             this.readInputFileState = true;
             this.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
-            this.numFleets = generalOpt.numFleets;
+            this.numFleets = generalOpt.NumFleets;
             this.timeVarying = inp.timeVarying;
             this.stochasticDataFile = inp.dataFile;
             this.stochasticAgeTable = Util.GetAgeproInputDataTable(this.stochasticAgeTable, inp.byAgeData);
@@ -210,7 +210,7 @@ namespace Nmfs.Agepro.Gui
             Nmfs.Agepro.CoreLib.AgeproGeneral genOpt,
             StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
         {
-            this.numFleets = Convert.ToInt32(genOpt.numFleets);
+            this.numFleets = Convert.ToInt32(genOpt.NumFleets);
             this.seqYears = Array.ConvertAll(genOpt.SeqYears(), element => element.ToString());
             this.readInputFileState = true;
             //Reset Tables if they were used before
