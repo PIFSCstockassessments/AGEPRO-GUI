@@ -116,19 +116,19 @@ namespace Nmfs.Agepro.Gui
             this.numRecruitModels = nrecruits;
 
             //collectionAgeproRecruitmentModels
-            this.CollectionAgeproRecruitmentModels = objRecruitment.recruitList;
+            this.CollectionAgeproRecruitmentModels = objRecruitment.RecruitCollection;
 
             //seqRecruitYears
-            this.seqRecruitYears = Array.ConvertAll(objRecruitment.observationYears, element => element.ToString());
+            this.seqRecruitYears = Array.ConvertAll(objRecruitment.ObservationYears, element => element.ToString());
 
             //recruitModelSelection
             this.recruitModelSelection = new int[nrecruits];
-            //recruitModelSelection from recruitList
-            if (objRecruitment.observationYears.Count() > 0)
+            //recruitModelSelection from RecruitCollection
+            if (objRecruitment.ObservationYears.Count() > 0)
             {
-                for (int rmodel = 0; rmodel < objRecruitment.recruitList.Count; rmodel++)
+                for (int rmodel = 0; rmodel < objRecruitment.RecruitCollection.Count; rmodel++)
                 {
-                    this.recruitModelSelection[rmodel] = objRecruitment.recruitList[rmodel].recruitModelNum;
+                    this.recruitModelSelection[rmodel] = objRecruitment.RecruitCollection[rmodel].recruitModelNum;
                 }
             }
 
@@ -139,10 +139,10 @@ namespace Nmfs.Agepro.Gui
             this.SetDataGridComboBoxSelectRecruitModels(nrecruits);
 
             //recruitmentProb
-            this.recruitmentProb = objRecruitment.recruitProb;
+            this.recruitmentProb = objRecruitment.RecruitProb;
             
             //recruitmentScalingfactor
-            this.recruitingScalingFactor = objRecruitment.recruitScalingFactor;
+            this.recruitingScalingFactor = objRecruitment.RecruitScalingFactor;
             //SSBScalingFactor
             this.SSBScalingFactor = objRecruitment.SSBScalingFactor;
         } 
@@ -510,7 +510,7 @@ namespace Nmfs.Agepro.Gui
                         if (this.CollectionAgeproRecruitmentModels[currentModel] != null)
                         {
                             this.CollectionAgeproRecruitmentModels[currentModel] = 
-                                AgeproRecruitment.GetNewRecruitModel(selectedModelNum);
+                                AgeproRecruitment.GetRecruitmentModel(selectedModelNum);
                                 
                         }
                             

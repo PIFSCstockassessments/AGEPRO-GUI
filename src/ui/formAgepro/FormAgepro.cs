@@ -242,7 +242,7 @@ namespace Nmfs.Agepro.Gui
 
                 //Recruitment
                 int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                inputData.recruitment.newCaseRecruitment(nrecruit, controlGeneralOptions.SeqYears());
+                inputData.recruitment.NewCaseRecruitment(nrecruit, controlGeneralOptions.SeqYears());
                 controlRecruitment.SetupControlRecruitment(nrecruit, inputData.recruitment);
                 
 
@@ -491,7 +491,7 @@ namespace Nmfs.Agepro.Gui
             {
                 controlHarvestScenario.PStar = inpFile.pstar;
             }
-            controlHarvestScenario.seqYears = inpFile.recruitment.observationYears.Select(x => x.ToString()).ToArray();
+            controlHarvestScenario.seqYears = inpFile.recruitment.ObservationYears.Select(x => x.ToString()).ToArray();
             controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.HarvestScenarioTable);
             controlHarvestScenario.SetHarvestScenarioCalcControls(inpFile);
 
