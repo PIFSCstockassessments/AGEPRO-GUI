@@ -283,7 +283,7 @@ namespace Nmfs.Agepro.Gui
         {
             if (currentRecruitSelection is EmpiricalRecruitment)
             {
-                if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Empirical)
+                if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.Empirical)
                 {
                     EmpiricalRecruitment currentEmpiricalRecruitSelection = (EmpiricalRecruitment)currentRecruitSelection;
                     
@@ -294,10 +294,10 @@ namespace Nmfs.Agepro.Gui
                     empiricalParameterControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                     
                 }
-                else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.TwoStage)
+                else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.TwoStage)
                 {
-                    TwoStageEmpiricalRecruitment currentTwoStageEmpiricalRecruitSelection =
-                        (TwoStageEmpiricalRecruitment)currentRecruitSelection;
+                    EmpiricalTwoStageRecruitment currentTwoStageEmpiricalRecruitSelection =
+                        (EmpiricalTwoStageRecruitment)currentRecruitSelection;
 
                     //Load TwoStage Controls
                     ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage();
@@ -306,7 +306,7 @@ namespace Nmfs.Agepro.Gui
                     twoStageControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
                     twoStageControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
                 }
-                else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.CDFZero)
+                else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.CDFZero)
                 {
                     EmpiricalCDFZero currentEmpiricalCDFZeroRecruitmentSelection = (EmpiricalCDFZero)currentRecruitSelection;
 
@@ -319,9 +319,9 @@ namespace Nmfs.Agepro.Gui
 
                     
                 }
-                else if (((EmpiricalRecruitment)currentRecruitSelection).subType == EmpiricalType.Fixed)
+                else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.Fixed)
                 {
-                    FixedEmpiricalRecruitment currentFixedRecruitmentSelection = (FixedEmpiricalRecruitment)currentRecruitSelection;
+                    EmpiricalFixedRecruitment currentFixedRecruitmentSelection = (EmpiricalFixedRecruitment)currentRecruitSelection;
 
                     ControlRecruitmentFixed fixedRecruitmentControls = new ControlRecruitmentFixed();
                     fixedRecruitmentControls.seqYears = this.seqRecruitYears;
@@ -333,7 +333,7 @@ namespace Nmfs.Agepro.Gui
             }
             else if (currentRecruitSelection is ParametricRecruitment)
             {
-                if (((ParametricRecruitment)currentRecruitSelection).subtype == ParametricType.Curve)
+                if (((ParametricRecruitment)currentRecruitSelection).Subtype == ParametricType.Curve)
                 {
                     ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruitSelection;
 
@@ -344,7 +344,7 @@ namespace Nmfs.Agepro.Gui
                     parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
 
                 }
-                else if (((ParametricRecruitment)currentRecruitSelection).subtype == ParametricType.Lognormal)
+                else if (((ParametricRecruitment)currentRecruitSelection).Subtype == ParametricType.Lognormal)
                 {
                     ParametricLognormal currentParametricLognormalRecruit = (ParametricLognormal)currentRecruitSelection;
 

@@ -58,7 +58,7 @@ namespace Nmfs.Agepro.Gui
                 }
                 observationTable = ControlRecruitment.ResizeDataGridTable(observationTable, newNumObservationsValue);
                 numObservations = newNumObservationsValue;
-                ((EmpiricalRecruitment)this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).numObs
+                ((EmpiricalRecruitment)this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).NumObs
                     = newNumObservationsValue;
                 if (this.empiricalSubtype == EmpiricalType.CDFZero)
                 {
@@ -78,15 +78,15 @@ namespace Nmfs.Agepro.Gui
             Panel panelRecruitModelParameter)
         {
             //create empty obsTable if null
-            if (!(currentEmpiricalRecruitSelection.obsTable != null))
+            if (!(currentEmpiricalRecruitSelection.ObsTable != null))
             {
-                currentEmpiricalRecruitSelection.obsTable = currentEmpiricalRecruitSelection.SetNewObsTable(0);
+                currentEmpiricalRecruitSelection.ObsTable = currentEmpiricalRecruitSelection.SetNewObsTable(0);
             }
 
             //Load control in panelRecruitModelParameter
             this.spinBoxNumObservations.DataBindings.Add("value", currentEmpiricalRecruitSelection, "numObs",
                 true, DataSourceUpdateMode.OnPropertyChanged);
-            this.observationTable = currentEmpiricalRecruitSelection.obsTable;
+            this.observationTable = currentEmpiricalRecruitSelection.ObsTable;
             
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;

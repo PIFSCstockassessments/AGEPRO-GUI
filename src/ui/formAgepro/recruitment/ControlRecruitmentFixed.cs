@@ -31,28 +31,28 @@ namespace Nmfs.Agepro.Gui
         public void SetFixedRecruitmentControls(EmpiricalRecruitment currentRecruit, Panel panelRecruitModelParameter)
         {
             //create empty obsTable if null
-            if (!(currentRecruit.obsTable != null))
+            if (!(currentRecruit.ObsTable != null))
             {
                 if (!(seqYears != null))
                 {
-                    currentRecruit.obsTable = currentRecruit.SetNewObsTable(0);
+                    currentRecruit.ObsTable = currentRecruit.SetNewObsTable(0);
                 }
                 else
                 {
-                    currentRecruit.obsTable = currentRecruit.SetNewObsTable(seqYears.Count()-1);
+                    currentRecruit.ObsTable = currentRecruit.SetNewObsTable(seqYears.Count()-1);
                 }
             }
             else
             {
                 //If recruitModel has more rows then resize  
-                if (currentRecruit.numObs > (this.seqYears.Count() - 1))
+                if (currentRecruit.NumObs > (this.seqYears.Count() - 1))
                 {
-                    currentRecruit.obsTable = 
-                        ControlRecruitment.ResizeDataGridTable(currentRecruit.obsTable, this.seqYears.Count()-1);
+                    currentRecruit.ObsTable = 
+                        ControlRecruitment.ResizeDataGridTable(currentRecruit.ObsTable, this.seqYears.Count()-1);
                 }
             }
 
-            this.fixedRecruitTable = currentRecruit.obsTable;
+            this.fixedRecruitTable = currentRecruit.ObsTable;
 
             panelRecruitModelParameter.Controls.Clear();
             this.Dock = DockStyle.Fill;

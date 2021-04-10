@@ -48,19 +48,19 @@ namespace Nmfs.Agepro.Gui
             DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
             DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
 
-            this.textBoxAlpha.PrevValidValue = currentParametricCurveRecruit.alpha.ToString();
-            this.textBoxBeta.PrevValidValue = currentParametricCurveRecruit.beta.ToString();
-            this.textBoxVariance.PrevValidValue = currentParametricCurveRecruit.variance.ToString();
+            this.textBoxAlpha.PrevValidValue = currentParametricCurveRecruit.Alpha.ToString();
+            this.textBoxBeta.PrevValidValue = currentParametricCurveRecruit.Beta.ToString();
+            this.textBoxVariance.PrevValidValue = currentParametricCurveRecruit.Variance.ToString();
             
             if(currentParametricCurveRecruit.GetType() == typeof(ParametricShepherdCurve))
             {
                 this.labelKparm.Visible = true;
                 this.textBoxKParm.Visible = true;
                 DataBindTextBox(this.textBoxKParm, currentParametricCurveRecruit, "kParm");
-                this.textBoxKParm.PrevValidValue = ((ParametricShepherdCurve)currentParametricCurveRecruit).kParm.ToString();
+                this.textBoxKParm.PrevValidValue = ((ParametricShepherdCurve)currentParametricCurveRecruit).KParm.ToString();
             }
             
-            if (currentParametricCurveRecruit.autocorrelated)
+            if (currentParametricCurveRecruit.Autocorrelated)
             {
                 this.labelPhi.Enabled = true;
                 this.labelLastResidual.Enabled = true;
@@ -69,8 +69,8 @@ namespace Nmfs.Agepro.Gui
 
                 DataBindTextBox(this.textBoxPhi, currentParametricCurveRecruit, "phi");
                 DataBindTextBox(this.textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
-                this.textBoxPhi.PrevValidValue = currentParametricCurveRecruit.phi.Value.ToString();
-                this.textBoxLastResidual.PrevValidValue = currentParametricCurveRecruit.lastResidual.Value.ToString();
+                this.textBoxPhi.PrevValidValue = currentParametricCurveRecruit.Phi.Value.ToString();
+                this.textBoxLastResidual.PrevValidValue = currentParametricCurveRecruit.LastResidual.Value.ToString();
 
             }
 

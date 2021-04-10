@@ -125,13 +125,13 @@ namespace Nmfs.Agepro.Gui
         public void SetPredictorRecruitmentcontrols(PredictorRecruitment recruitSelection, Panel panelRecruitModelParameter)
         {
             //Create a new coefficient and/or table if they are null
-            if (recruitSelection.coefficientTable == null)
+            if (recruitSelection.CoefficientTable == null)
             {
-                recruitSelection.coefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
+                recruitSelection.CoefficientTable = PredictorRecruitment.SetNewCoefficientTable(0);
             }
-            if (recruitSelection.observationTable == null)
+            if (recruitSelection.ObservationTable == null)
             {
-                recruitSelection.observationTable = PredictorRecruitment.SetNewObsTable(0, this.seqYears);
+                recruitSelection.ObservationTable = PredictorRecruitment.SetNewObsTable(0, this.seqYears);
             }
 
             //Set Data Bindings
@@ -143,8 +143,8 @@ namespace Nmfs.Agepro.Gui
                 DataSourceUpdateMode.OnPropertyChanged);
 
             //
-            this.coefficientTable = recruitSelection.coefficientTable;
-            this.observationTable = recruitSelection.observationTable;
+            this.coefficientTable = recruitSelection.CoefficientTable;
+            this.observationTable = recruitSelection.ObservationTable;
 
             //Set panel
             panelRecruitModelParameter.Controls.Clear();

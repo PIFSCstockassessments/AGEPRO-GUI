@@ -40,10 +40,10 @@ namespace Nmfs.Agepro.Gui
             DataBindTextBox(this.textBoxMean, currentLognormalRecruit, "mean");
             DataBindTextBox(this.textBoxStdDeviation, currentLognormalRecruit, "stdDev");
 
-            this.textBoxMean.PrevValidValue = currentLognormalRecruit.mean.ToString();
-            this.textBoxStdDeviation.PrevValidValue = currentLognormalRecruit.mean.ToString();
+            this.textBoxMean.PrevValidValue = currentLognormalRecruit.Mean.ToString();
+            this.textBoxStdDeviation.PrevValidValue = currentLognormalRecruit.Mean.ToString();
 
-            if (currentLognormalRecruit.autocorrelated)
+            if (currentLognormalRecruit.Autocorrelated)
             {
                 this.labelPhi.Enabled = true;
                 this.labelLastResidual.Enabled = true;

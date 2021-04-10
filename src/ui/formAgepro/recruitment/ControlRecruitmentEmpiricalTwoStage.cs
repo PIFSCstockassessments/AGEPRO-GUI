@@ -216,11 +216,11 @@ namespace Nmfs.Agepro.Gui
                 lv1Observations = ControlRecruitment.ResizeDataGridTable(lv1Observations, newNumLv1Obs);
                 lv2Observations = ControlRecruitment.ResizeDataGridTable(lv2Observations, newNumLv2Obs);
 
-                ((Nmfs.Agepro.CoreLib.TwoStageEmpiricalRecruitment)
-                    this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv1NumObs = newNumLv1Obs;
-                ((Nmfs.Agepro.CoreLib.TwoStageEmpiricalRecruitment)
-                    this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).lv2NumObs = newNumLv2Obs;
-                ((Nmfs.Agepro.CoreLib.TwoStageEmpiricalRecruitment)
+                ((Nmfs.Agepro.CoreLib.EmpiricalTwoStageRecruitment)
+                    this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).Lv1NumObs = newNumLv1Obs;
+                ((Nmfs.Agepro.CoreLib.EmpiricalTwoStageRecruitment)
+                    this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).Lv2NumObs = newNumLv2Obs;
+                ((Nmfs.Agepro.CoreLib.EmpiricalTwoStageRecruitment)
                     this.collectionAgeproRecruitmentModels[this.collectionSelectedIndex]).SSBBreakVal 
                     = Convert.ToInt32(this.textBoxSSBBreakValue.Text);
             }
@@ -231,7 +231,7 @@ namespace Nmfs.Agepro.Gui
             }
         }
 
-        public void SetTwoStageEmpiricalRecruitmentControls(TwoStageEmpiricalRecruitment currentRecruit, 
+        public void SetTwoStageEmpiricalRecruitmentControls(EmpiricalTwoStageRecruitment currentRecruit, 
             Panel panelRecruitModelParameter)
         {
             if (!(currentRecruit.lv1Obs != null))
