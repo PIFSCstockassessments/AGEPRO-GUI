@@ -357,7 +357,7 @@ namespace Nmfs.Agepro.Gui
                     controlMidYearWeight.bindStochasticAgeData(this.inputData.meanWeight);
                     controlCatchWeight.bindStochasticAgeData(this.inputData.catchWeight);
                     controlBiological.maturityAge.bindStochasticAgeData(this.inputData.maturity);
-                    this.inputData.biological.timeVarying = controlBiological.fractionMortalityTimeVarying;
+                    this.inputData.biological.TimeVarying = controlBiological.fractionMortalityTimeVarying;
                     controlFisherySelectivity.bindStochasticAgeData(this.inputData.fishery);
                     controlNaturalMortality.bindStochasticAgeData(this.inputData.naturalMortality);
 
@@ -479,7 +479,7 @@ namespace Nmfs.Agepro.Gui
             controlBiological.readFractionMortalityState = true;
             controlBiological.fractionMortality =
                 Util.GetAgeproInputDataTable(controlBiological.fractionMortality, inpFile.biological.TSpawn);
-            controlBiological.fractionMortalityTimeVarying = inpFile.biological.timeVarying;
+            controlBiological.fractionMortalityTimeVarying = inpFile.biological.TimeVarying;
             controlBiological.readFractionMortalityState = false;
 
             //Harvest Scenario
