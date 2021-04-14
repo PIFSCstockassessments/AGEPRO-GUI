@@ -154,7 +154,7 @@ namespace Nmfs.Agepro.Gui
         /// Data Binding setup for Reference Point Options Controls
         /// </summary>
         /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
-        public void SetupRefpointDataBindings(Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOpt)
+        public void SetupRefpointDataBindings(Nmfs.Agepro.CoreLib.AgeproOptionsProperty miscOpt)
         {
             SetControlDataBindings(this.textBoxRefSpawnBiomass, miscOpt, "refSpawnBio");
             SetControlDataBindings(this.textBoxRefJan1Biomass, miscOpt, "refJan1Bio");
@@ -184,7 +184,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         private void SetControlDataBindings(NftTextBox ctl, 
-            Nmfs.Agepro.CoreLib.MiscOptionsParameter miscOptSrc, string miscOptField,
+            Nmfs.Agepro.CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
             bool decimalZeroFormat = false)
         {
             //Clear any existing (if any) bindings before creating new ones.
