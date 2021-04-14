@@ -194,18 +194,18 @@ namespace Nmfs.Agepro.Gui
 
                 if (this.indexWeightOption == 0 )
                 {
-                    inpWeight.fromFile = false;
-                    inpWeight.timeVarying = this.timeVarying;
-                    inpWeight.byAgeData = this.stochasticAgeTable;
-                    inpWeight.byAgeCV = this.stochasticCV; 
+                    inpWeight.FromFile = false;
+                    inpWeight.TimeVarying = this.timeVarying;
+                    inpWeight.ByAgeData = this.stochasticAgeTable;
+                    inpWeight.ByAgeCV = this.stochasticCV; 
                     
                 }
                 else if (this.indexWeightOption == 1)
                 {
-                    inpWeight.fromFile = true;
-                    inpWeight.timeVarying = this.timeVarying;
-                    inpWeight.byAgeData.Clear();
-                    inpWeight.byAgeCV.Clear();
+                    inpWeight.FromFile = true;
+                    inpWeight.TimeVarying = this.timeVarying;
+                    inpWeight.ByAgeData.Clear();
+                    inpWeight.ByAgeCV.Clear();
                 }
 
                 

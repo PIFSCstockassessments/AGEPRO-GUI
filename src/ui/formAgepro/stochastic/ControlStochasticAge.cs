@@ -137,10 +137,10 @@ namespace Nmfs.Agepro.Gui
             this.readInputFileState = true;
             this.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
             this.numFleets = generalOpt.NumFleets;
-            this.timeVarying = inp.timeVarying;
-            this.stochasticDataFile = inp.dataFile;
-            this.stochasticAgeTable = Util.GetAgeproInputDataTable(this.stochasticAgeTable, inp.byAgeData);
-            this.stochasticCV = Util.GetAgeproInputDataTable(this.stochasticCV, inp.byAgeCV);
+            this.timeVarying = inp.TimeVarying;
+            this.stochasticDataFile = inp.DataFile;
+            this.stochasticAgeTable = Util.GetAgeproInputDataTable(this.stochasticAgeTable, inp.ByAgeData);
+            this.stochasticCV = Util.GetAgeproInputDataTable(this.stochasticCV, inp.ByAgeCV);
             if (this.stochasticAgeTable == null)
             {
                 this.enableTimeVaryingCheckBox = false;
@@ -179,17 +179,17 @@ namespace Nmfs.Agepro.Gui
         {
             if (readInputFileState == false)
             {
-                inp.fromFile = false;
-                inp.timeVarying = this.timeVarying;
-                inp.byAgeData = this.stochasticAgeTable;
-                inp.byAgeCV = this.stochasticCV;
+                inp.FromFile = false;
+                inp.TimeVarying = this.timeVarying;
+                inp.ByAgeData = this.stochasticAgeTable;
+                inp.ByAgeCV = this.stochasticCV;
             }
             else if (readInputFileState == true)
             {
-                inp.fromFile = true;
-                inp.timeVarying = this.timeVarying;
-                inp.byAgeData.Clear();
-                inp.byAgeCV.Clear();
+                inp.FromFile = true;
+                inp.TimeVarying = this.timeVarying;
+                inp.ByAgeData.Clear();
+                inp.ByAgeCV.Clear();
 
             }
             else
@@ -240,8 +240,8 @@ namespace Nmfs.Agepro.Gui
 
             }
 
-            objNT.byAgeData = this.stochasticAgeTable;
-            objNT.byAgeCV = this.stochasticCV;
+            objNT.ByAgeData = this.stochasticAgeTable;
+            objNT.ByAgeCV = this.stochasticCV;
 
             this.readInputFileState = false;
 
