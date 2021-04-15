@@ -581,9 +581,9 @@ namespace Nmfs.Agepro.Gui
             Nmfs.Agepro.CoreLib.ValidationResult vaildGeneralRecruitParameters = 
                 this.ValidateGeneralRecruitmentParameters();
 
-            if(vaildGeneralRecruitParameters.isValid == false)
+            if(vaildGeneralRecruitParameters.IsValid == false)
             {
-                MessageBox.Show(vaildGeneralRecruitParameters.message,
+                MessageBox.Show(vaildGeneralRecruitParameters.Message,
                     "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false;
@@ -598,11 +598,11 @@ namespace Nmfs.Agepro.Gui
                 
                 vaildRecruitmentModelResult = rmodelSelection.ValidationCheck();
 
-                if (vaildRecruitmentModelResult.isValid == false)
+                if (vaildRecruitmentModelResult.IsValid == false)
                 {
                     MessageBox.Show("In Recruitment Selection " + (rmodelIndex+1) + " - " 
                         + "\"" + getSelectedRecruitmentModelName(rmodelIndex) + "\" : "
-                        + Environment.NewLine + vaildRecruitmentModelResult.message,
+                        + Environment.NewLine + vaildRecruitmentModelResult.Message,
                         "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }

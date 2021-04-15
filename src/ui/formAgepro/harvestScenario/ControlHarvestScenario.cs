@@ -225,9 +225,9 @@ namespace Nmfs.Agepro.Gui
             }
             var results = invalidRowList.EnumerateValidationResults();
                 
-            if (results.isValid == false)
+            if (results.IsValid == false)
             {
-                string rowResults = results.message.Replace(Environment.NewLine, ", ");
+                string rowResults = results.Message.Replace(Environment.NewLine, ", ");
 
 
                 MessageBox.Show("Invalid Harvest Specification for Rebuilder Range at row(s) "
@@ -256,10 +256,10 @@ namespace Nmfs.Agepro.Gui
                 bool validRebuilder = true;
                 ValidationResult rebuilderCheck = this.Rebuilder.ValidationCheck();
                 
-                if (rebuilderCheck.isValid == false)
+                if (rebuilderCheck.IsValid == false)
                 {
                     MessageBox.Show("Invalid Rebuilder target parameters: " + Environment.NewLine + 
-                        rebuilderCheck.message, "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        rebuilderCheck.Message, "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     validRebuilder = false;
                 }
                 
@@ -269,9 +269,9 @@ namespace Nmfs.Agepro.Gui
             {
                 bool validPStar = true;
                 ValidationResult pstarCheck = this.PStar.ValidationCheck();
-                if (pstarCheck.isValid == false)
+                if (pstarCheck.IsValid == false)
                 {
-                    MessageBox.Show("Invalid P-Star parameters: " + Environment.NewLine + pstarCheck.message,
+                    MessageBox.Show("Invalid P-Star parameters: " + Environment.NewLine + pstarCheck.Message,
                         "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     validPStar = false;
                 }

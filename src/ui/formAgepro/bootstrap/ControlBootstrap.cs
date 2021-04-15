@@ -101,10 +101,10 @@ namespace Nmfs.Agepro.Gui
 
             var results = Nmfs.Agepro.CoreLib.ValidatableExtensions.EnumerateValidationResults(errorMsgList);
                        
-            if (results.isValid == false)
+            if (results.IsValid == false)
             {
                 MessageBox.Show("Invalid Bootstrap values found: " + Environment.NewLine 
-                    + results.message, "AGEPRO Bootstrap", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    + results.Message, "AGEPRO Bootstrap", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
