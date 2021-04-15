@@ -396,16 +396,16 @@ namespace Nmfs.Agepro.Gui
                     this.inputData.options.EnableBounds = controlMiscOptions.miscOptionsBounds;
                     this.inputData.options.EnableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
 
-                    this.inputData.refpoint.refSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
-                    this.inputData.refpoint.refJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
-                    this.inputData.refpoint.refMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
-                    this.inputData.refpoint.refFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
+                    this.inputData.refpoint.RefSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
+                    this.inputData.refpoint.RefJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
+                    this.inputData.refpoint.RefMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
+                    this.inputData.refpoint.RefFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
 
-                    this.inputData.reportPercentile.percentile = controlMiscOptions.miscOptionsReportPercentile;
+                    this.inputData.reportPercentile.Percentile = controlMiscOptions.miscOptionsReportPercentile;
 
-                    this.inputData.scale.scaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
-                    this.inputData.scale.scaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
-                    this.inputData.scale.scaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
+                    this.inputData.scale.ScaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
+                    this.inputData.scale.ScaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
+                    this.inputData.scale.ScaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
 
                     this.inputData.retroAdjustOption.retroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
 
@@ -506,22 +506,22 @@ namespace Nmfs.Agepro.Gui
             controlMiscOptions.miscOptionsEnableAuxStochasticFiles = inpFile.options.EnableAuxStochasticFiles;
             controlMiscOptions.miscOptionsEnableExportR = inpFile.options.EnableExportR;
             controlMiscOptions.miscOptionsEnablePercentileReport = inpFile.options.EnablePercentileReport;
-            controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.percentile);
+            controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.Percentile);
 
             controlMiscOptions.miscOptionsEnableRefpointsReport = inpFile.options.EnableRefpoint;
-            controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.refpoint.refSpawnBio.ToString();
-            controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.refpoint.refJan1Bio.ToString();
-            controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.refpoint.refMeanBio.ToString();
-            controlMiscOptions.miscOptionsRefFishingMortality = inpFile.refpoint.refFMort.ToString();
+            controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.refpoint.RefSpawnBio.ToString();
+            controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.refpoint.RefJan1Bio.ToString();
+            controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.refpoint.RefMeanBio.ToString();
+            controlMiscOptions.miscOptionsRefFishingMortality = inpFile.refpoint.RefFMort.ToString();
 
             controlMiscOptions.miscOptionsEnableScaleFactors = inpFile.options.EnableScaleFactors;
-            controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.scaleBio.ToString();
-            controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.scaleRec.ToString();
-            controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.scale.scaleStockNum.ToString();
+            controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.ScaleBio.ToString();
+            controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.ScaleRec.ToString();
+            controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.scale.ScaleStockNum.ToString();
 
             controlMiscOptions.miscOptionsBounds = inpFile.options.EnableBounds;
-            controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.maxWeight.ToString();
-            controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.maxNatMort.ToString();
+            controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.MaxWeight.ToString();
+            controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.MaxNatMort.ToString();
 
             controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.options.EnableRetroAdjustmentFactors;
             controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
