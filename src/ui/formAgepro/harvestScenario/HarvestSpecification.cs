@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -27,11 +23,11 @@ namespace Nmfs.Agepro.Gui
     }
 
     private static readonly List<HarvestSpecification> harvestSpec = new List<HarvestSpecification>
-        {
-            { new HarvestSpecification(0, "F-MULT") },
-            { new HarvestSpecification(1, "LANDINGS") },
-            { new HarvestSpecification(2, "REMOVALS") }
-        };
+    {
+      { new HarvestSpecification(0, "F-MULT") },
+      { new HarvestSpecification(1, "LANDINGS") },
+      { new HarvestSpecification(2, "REMOVALS") }
+    };
 
     public static List<HarvestSpecification> GetHarvestSpec()
     {
