@@ -19,9 +19,9 @@ namespace Nmfs.Agepro.Gui
     {
       InitializeComponent();
 
-      typeList.Add(new RebuilderTargetType { index = 0, rebuilderTargetTypeName = "Spawning Stock Biomass" });
-      typeList.Add(new RebuilderTargetType { index = 1, rebuilderTargetTypeName = "JAN-1 Biomass " });
-      typeList.Add(new RebuilderTargetType { index = 2, rebuilderTargetTypeName = "Mid-Year Biomass" });
+      typeList.Add(new RebuilderTargetType { Index = 0, RebuilderTargetTypeName = "Spawning Stock Biomass" });
+      typeList.Add(new RebuilderTargetType { Index = 1, RebuilderTargetTypeName = "JAN-1 Biomass " });
+      typeList.Add(new RebuilderTargetType { Index = 2, RebuilderTargetTypeName = "Mid-Year Biomass" });
 
       comboBoxRebuilderTargetType.ValueMember = "index";
       comboBoxRebuilderTargetType.DisplayMember = "rebuilderTargetTypeName";

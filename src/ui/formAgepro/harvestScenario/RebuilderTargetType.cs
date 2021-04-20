@@ -6,12 +6,13 @@
   class RebuilderTargetType : AgeproPropertyChanged
   {
 
-    public int index { get; set; }
-    private string _rebuilderTargetTypename;
-    public string rebuilderTargetTypeName
+    private string _RebuilderTargetTypename;
+
+    public int Index { get; set; }
+    public string RebuilderTargetTypeName
     {
-      get { return _rebuilderTargetTypename; }
-      set { SetProperty(ref _rebuilderTargetTypename, value); }
+      get => _RebuilderTargetTypename;
+      set => SetProperty(ref _RebuilderTargetTypename, value);
     }
 
   }
