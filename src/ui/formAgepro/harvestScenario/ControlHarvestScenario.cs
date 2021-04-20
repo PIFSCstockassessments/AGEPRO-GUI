@@ -38,10 +38,10 @@ namespace Nmfs.Agepro.Gui
       //Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(this.controlHarvestPStar.pstarLevelsTable);
 
       //Rebuilder Defaults
-      this.controlHarvestRebuilder.rebuilderTargetYear = "0";
-      this.controlHarvestRebuilder.rebuilderBiomass = "0.0";
-      this.controlHarvestRebuilder.rebuilderPercentConfidence = "0.0";
-      this.controlHarvestRebuilder.rebuilderType = 0;
+      this.controlHarvestRebuilder.RebuilderTargetYear = "0";
+      this.controlHarvestRebuilder.RebuilderBiomass = "0.0";
+      this.controlHarvestRebuilder.RebuilderPercentConfidence = "0.0";
+      this.controlHarvestRebuilder.RebuilderType = 0;
     }
 
     public DataTable HarvestScenarioTable

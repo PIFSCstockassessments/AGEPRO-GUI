@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
@@ -29,44 +22,44 @@ namespace Nmfs.Agepro.Gui
 
     }
 
-    public string rebuilderTargetYear
+    public string RebuilderTargetYear
     {
-      get { return textBoxRebuilderTargetYear.Text; }
-      set { textBoxRebuilderTargetYear.Text = value; }
+      get => textBoxRebuilderTargetYear.Text;
+      set => textBoxRebuilderTargetYear.Text = value;
     }
 
-    public string rebuilderBiomass
+    public string RebuilderBiomass
     {
-      get { return textBoxRebuilderTargetBiomass.Text; }
-      set { textBoxRebuilderTargetBiomass.Text = value; }
+      get => textBoxRebuilderTargetBiomass.Text;
+      set => textBoxRebuilderTargetBiomass.Text = value;
     }
-    public string rebuilderPercentConfidence
+    public string RebuilderPercentConfidence
     {
-      get { return textBoxRebuilderTargetPercent.Text; }
-      set { textBoxRebuilderTargetPercent.Text = value; }
+      get => textBoxRebuilderTargetPercent.Text;
+      set => textBoxRebuilderTargetPercent.Text = value;
     }
-    public int rebuilderType
+    public int RebuilderType
     {
-      get { return comboBoxRebuilderTargetType.SelectedIndex; }
-      set { comboBoxRebuilderTargetType.SelectedIndex = value; }
+      get => comboBoxRebuilderTargetType.SelectedIndex;
+      set => comboBoxRebuilderTargetType.SelectedIndex = value;
     }
 
     public void SetHarvestCalcRebuilderControls
-        (Nmfs.Agepro.CoreLib.RebuilderTargetCalculation rebuilderTarget, Panel panelHarvestCalcParam)
+        (CoreLib.RebuilderTargetCalculation rebuilderTarget, Panel panelHarvestCalcParam)
     {
       //Clear Previous Data Bindings
-      this.textBoxRebuilderTargetYear.DataBindings.Clear();
-      this.textBoxRebuilderTargetBiomass.DataBindings.Clear();
-      this.textBoxRebuilderTargetPercent.DataBindings.Clear();
-      this.comboBoxRebuilderTargetType.DataBindings.Clear();
+      textBoxRebuilderTargetYear.DataBindings.Clear();
+      textBoxRebuilderTargetBiomass.DataBindings.Clear();
+      textBoxRebuilderTargetPercent.DataBindings.Clear();
+      comboBoxRebuilderTargetType.DataBindings.Clear();
       //Set Data Bindings 
-      this.textBoxRebuilderTargetYear.DataBindings.Add("text", rebuilderTarget, "targetYear", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxRebuilderTargetBiomass.DataBindings.Add("text", rebuilderTarget, "targetValue", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxRebuilderTargetPercent.DataBindings.Add("text", rebuilderTarget, "targetPercent", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.comboBoxRebuilderTargetType.DataBindings.Add("SelectedIndex", rebuilderTarget, "targetType", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = textBoxRebuilderTargetYear.DataBindings.Add("text", rebuilderTarget, "targetYear", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = textBoxRebuilderTargetBiomass.DataBindings.Add("text", rebuilderTarget, "targetValue", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = textBoxRebuilderTargetPercent.DataBindings.Add("text", rebuilderTarget, "targetPercent", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = comboBoxRebuilderTargetType.DataBindings.Add("SelectedIndex", rebuilderTarget, "targetType", true, DataSourceUpdateMode.OnPropertyChanged);
 
       panelHarvestCalcParam.Controls.Clear();
-      this.Dock = DockStyle.Fill;
+      Dock = DockStyle.Fill;
       panelHarvestCalcParam.Controls.Add(this);
     }
 
