@@ -9,104 +9,104 @@ using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
-    public partial class ControlRecruitmentParametricCurve : Nmfs.Agepro.Gui.ControlRecruitmentParametricBase
+  public partial class ControlRecruitmentParametricCurve : Nmfs.Agepro.Gui.ControlRecruitmentParametricBase
+  {
+    public ControlRecruitmentParametricCurve()
     {
-        public ControlRecruitmentParametricCurve()
-        {
-            InitializeComponent();
-            this.typeOfParmetric = ParametricType.Curve;
-            
-            this.textBoxAlpha.Text = "0";
-            this.textBoxBeta.Text = "0";
-            this.textBoxKParm.Text = "0";
-            this.textBoxVariance.Text = "0";
-            this.textBoxPhi.Text = "0";
-            this.textBoxLastResidual.Text = "0";
+      InitializeComponent();
+      this.typeOfParmetric = ParametricType.Curve;
 
-            this.textBoxAlpha.PrevValidValue = this.textBoxAlpha.Text;
-            this.textBoxBeta.PrevValidValue = this.textBoxBeta.Text;
-            this.textBoxKParm.PrevValidValue = this.textBoxKParm.Text;
-            this.textBoxVariance.PrevValidValue = this.textBoxVariance.Text;
-            this.textBoxPhi.PrevValidValue = this.textBoxPhi.Text;
-            this.textBoxLastResidual.PrevValidValue = this.textBoxLastResidual.Text;
+      this.textBoxAlpha.Text = "0";
+      this.textBoxBeta.Text = "0";
+      this.textBoxKParm.Text = "0";
+      this.textBoxVariance.Text = "0";
+      this.textBoxPhi.Text = "0";
+      this.textBoxLastResidual.Text = "0";
 
-            //By default, K-Parm is invisible
-            this.labelKparm.Visible = false;
-            this.textBoxKParm.Visible = false;
+      this.textBoxAlpha.PrevValidValue = this.textBoxAlpha.Text;
+      this.textBoxBeta.PrevValidValue = this.textBoxBeta.Text;
+      this.textBoxKParm.PrevValidValue = this.textBoxKParm.Text;
+      this.textBoxVariance.PrevValidValue = this.textBoxVariance.Text;
+      this.textBoxPhi.PrevValidValue = this.textBoxPhi.Text;
+      this.textBoxLastResidual.PrevValidValue = this.textBoxLastResidual.Text;
 
-            //By Default, autocorrected vaules is seen as disabled
-            this.labelPhi.Enabled = false;
-            this.labelLastResidual.Enabled = false;
-            this.textBoxPhi.Enabled = false;
-            this.textBoxLastResidual.Enabled = false;
-        }
+      //By default, K-Parm is invisible
+      this.labelKparm.Visible = false;
+      this.textBoxKParm.Visible = false;
 
-        public override void SetParametricRecruitmentControls(ParametricRecruitment currentRecruit, Panel panelRecruitModelParameter)
-        {
-            ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruit;
-            DataBindTextBox(this.textBoxAlpha, currentParametricCurveRecruit, "alpha");
-            DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
-            DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
-
-            this.textBoxAlpha.PrevValidValue = currentParametricCurveRecruit.Alpha.ToString();
-            this.textBoxBeta.PrevValidValue = currentParametricCurveRecruit.Beta.ToString();
-            this.textBoxVariance.PrevValidValue = currentParametricCurveRecruit.Variance.ToString();
-            
-            if(currentParametricCurveRecruit.GetType() == typeof(ParametricShepherdCurve))
-            {
-                this.labelKparm.Visible = true;
-                this.textBoxKParm.Visible = true;
-                DataBindTextBox(this.textBoxKParm, currentParametricCurveRecruit, "kParm");
-                this.textBoxKParm.PrevValidValue = ((ParametricShepherdCurve)currentParametricCurveRecruit).KParm.ToString();
-            }
-            
-            if (currentParametricCurveRecruit.Autocorrelated)
-            {
-                this.labelPhi.Enabled = true;
-                this.labelLastResidual.Enabled = true;
-                this.textBoxPhi.Enabled = true;
-                this.textBoxLastResidual.Enabled = true;
-
-                DataBindTextBox(this.textBoxPhi, currentParametricCurveRecruit, "phi");
-                DataBindTextBox(this.textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
-                this.textBoxPhi.PrevValidValue = currentParametricCurveRecruit.Phi.Value.ToString();
-                this.textBoxLastResidual.PrevValidValue = currentParametricCurveRecruit.LastResidual.Value.ToString();
-
-            }
-
-            base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
-        }
-
-        private void textBoxAlpha_Validating(object sender, CancelEventArgs e)
-        {
-            ValidateParamerticParameter(sender as NftTextBox, e);
-        }
-
-        private void textBoxBeta_Validating(object sender, CancelEventArgs e)
-        {
-            ValidateParamerticParameter(sender as NftTextBox, e);
-        }
-
-        private void textBoxVariance_Validating(object sender, CancelEventArgs e)
-        {
-            ValidateParamerticParameter(sender as NftTextBox, e);
-        }
-
-        private void textBoxKParm_Validating(object sender, CancelEventArgs e)
-        {
-            ValidateParamerticParameter(sender as NftTextBox, e);
-        }
-
-        private void textBoxPhi_Validating(object sender, CancelEventArgs e)
-        {
-            ValidateParamerticParameter(sender as NftTextBox, e);
-        }
-
-        private void textBoxLastResidual_Validating(object sender, CancelEventArgs e)
-        {
-            ValidateParamerticParameter(sender as NftTextBox, e);
-        }
-
-
+      //By Default, autocorrected vaules is seen as disabled
+      this.labelPhi.Enabled = false;
+      this.labelLastResidual.Enabled = false;
+      this.textBoxPhi.Enabled = false;
+      this.textBoxLastResidual.Enabled = false;
     }
+
+    public override void SetParametricRecruitmentControls(ParametricRecruitment currentRecruit, Panel panelRecruitModelParameter)
+    {
+      ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruit;
+      DataBindTextBox(this.textBoxAlpha, currentParametricCurveRecruit, "alpha");
+      DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
+      DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
+
+      this.textBoxAlpha.PrevValidValue = currentParametricCurveRecruit.Alpha.ToString();
+      this.textBoxBeta.PrevValidValue = currentParametricCurveRecruit.Beta.ToString();
+      this.textBoxVariance.PrevValidValue = currentParametricCurveRecruit.Variance.ToString();
+
+      if (currentParametricCurveRecruit.GetType() == typeof(ParametricShepherdCurve))
+      {
+        this.labelKparm.Visible = true;
+        this.textBoxKParm.Visible = true;
+        DataBindTextBox(this.textBoxKParm, currentParametricCurveRecruit, "kParm");
+        this.textBoxKParm.PrevValidValue = ((ParametricShepherdCurve)currentParametricCurveRecruit).KParm.ToString();
+      }
+
+      if (currentParametricCurveRecruit.Autocorrelated)
+      {
+        this.labelPhi.Enabled = true;
+        this.labelLastResidual.Enabled = true;
+        this.textBoxPhi.Enabled = true;
+        this.textBoxLastResidual.Enabled = true;
+
+        DataBindTextBox(this.textBoxPhi, currentParametricCurveRecruit, "phi");
+        DataBindTextBox(this.textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
+        this.textBoxPhi.PrevValidValue = currentParametricCurveRecruit.Phi.Value.ToString();
+        this.textBoxLastResidual.PrevValidValue = currentParametricCurveRecruit.LastResidual.Value.ToString();
+
+      }
+
+      base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
+    }
+
+    private void textBoxAlpha_Validating(object sender, CancelEventArgs e)
+    {
+      ValidateParamerticParameter(sender as NftTextBox, e);
+    }
+
+    private void textBoxBeta_Validating(object sender, CancelEventArgs e)
+    {
+      ValidateParamerticParameter(sender as NftTextBox, e);
+    }
+
+    private void textBoxVariance_Validating(object sender, CancelEventArgs e)
+    {
+      ValidateParamerticParameter(sender as NftTextBox, e);
+    }
+
+    private void textBoxKParm_Validating(object sender, CancelEventArgs e)
+    {
+      ValidateParamerticParameter(sender as NftTextBox, e);
+    }
+
+    private void textBoxPhi_Validating(object sender, CancelEventArgs e)
+    {
+      ValidateParamerticParameter(sender as NftTextBox, e);
+    }
+
+    private void textBoxLastResidual_Validating(object sender, CancelEventArgs e)
+    {
+      ValidateParamerticParameter(sender as NftTextBox, e);
+    }
+
+
+  }
 }

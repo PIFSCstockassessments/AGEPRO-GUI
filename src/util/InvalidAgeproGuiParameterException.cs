@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace Nmfs.Agepro.Gui
 {
-    [Serializable]
-    public class InvalidAgeproGuiParameterException : Exception
+  [Serializable]
+  public class InvalidAgeproGuiParameterException : Exception
+  {
+    public InvalidAgeproGuiParameterException()
     {
-        public InvalidAgeproGuiParameterException()
-        {
 
-        }
-        public InvalidAgeproGuiParameterException(string message)
-            : base(message)
-        {
-
-        }
-        public InvalidAgeproGuiParameterException(string message, Exception innerException) 
-            : base(message, innerException)
-        {
-
-        }
-        protected InvalidAgeproGuiParameterException(SerializationInfo info, StreamingContext c)
-            : base(info, c)
-        {
-
-        } 
     }
+    public InvalidAgeproGuiParameterException(string message)
+        : base(message)
+    {
+
+    }
+    public InvalidAgeproGuiParameterException(string message, Exception innerException)
+        : base(message, innerException)
+    {
+
+    }
+    protected InvalidAgeproGuiParameterException(SerializationInfo info, StreamingContext c)
+        : base(info, c)
+    {
+
+    }
+  }
 }
