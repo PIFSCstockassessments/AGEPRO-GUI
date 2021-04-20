@@ -162,7 +162,7 @@ namespace Nmfs.Agepro.Gui
         /// <param name="inputData"></param>
         public void SetHarvestScenarioCalcControls(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
         {
-            this.calcType = inpData.harvestScenario.AnalysisType;
+            this.calcType = inpData.HarvestScenario.AnalysisType;
 
             //Clean out any previous instances of pstar and/or rebuilder. 
             if (this.PStar != null)
@@ -181,21 +181,21 @@ namespace Nmfs.Agepro.Gui
             }
             else if (calcType == HarvestScenarioAnalysis.PStar)
             {
-                this.PStar = inpData.pstar;
+                this.PStar = inpData.PStar;
                 radioPStar.Checked = true;
 
                 //Create Defaluts if Pstar is null
                 if (PStar == null)
                 {
                     PStar = new PStarCalculation();
-                    this.PStar.obsYears = inpData.general.SeqYears();
+                    this.PStar.obsYears = inpData.General.SeqYears();
                 }
 
                 controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
             }
             else if (calcType == HarvestScenarioAnalysis.Rebuilder)
             {
-                this.Rebuilder = inpData.rebuild;
+                this.Rebuilder = inpData.Rebuild;
                 radioRebuilderTarget.Checked = true;
                 this.Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
 
@@ -203,7 +203,7 @@ namespace Nmfs.Agepro.Gui
                 if (this.Rebuilder == null)
                 {
                     this.Rebuilder = new RebuilderTargetCalculation();
-                    this.Rebuilder.obsYears = inpData.general.SeqYears();
+                    this.Rebuilder.obsYears = inpData.General.SeqYears();
                 }
 
                 controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);

@@ -73,8 +73,8 @@ namespace Nmfs.Agepro.Gui
             //Set General Options Controls (to handle "New Cases")
             controlGeneralOptions.generalInputFile = "";
             controlGeneralOptions.generalModelId = "untitled";
-            this.inputData.general.InputFile = "";
-            this.inputData.caseID = controlGeneralOptions.generalModelId;
+            this.inputData.General.InputFile = "";
+            this.inputData.CaseID = controlGeneralOptions.generalModelId;
 
             //initially set Number of Ages
             int initalNumAges = controlGeneralOptions.generalFirstAgeClass; //Spinbox Value
@@ -166,20 +166,20 @@ namespace Nmfs.Agepro.Gui
                 controlGeneralOptions.ValidateGeneralOptionsParameters();
 
                 //New Cases references version included in AGEPRO Reference Manual
-                inputData.version = "AGEPRO VERSION 4.0";
+                inputData.Version = "AGEPRO VERSION 4.0";
 
                 //Save General Options input to CoreLib Input Data Object
-                inputData.general.ProjYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
-                inputData.general.ProjYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
-                inputData.general.AgeBegin = controlGeneralOptions.generalFirstAgeClass;
-                inputData.general.AgeEnd = controlGeneralOptions.generalLastAgeClass;
-                inputData.general.NumFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-                inputData.general.NumRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                inputData.general.NumPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
-                inputData.general.Seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
-                inputData.general.HasDiscards = controlGeneralOptions.generalDiscardsPresent;
+                inputData.General.ProjYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
+                inputData.General.ProjYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
+                inputData.General.AgeBegin = controlGeneralOptions.generalFirstAgeClass;
+                inputData.General.AgeEnd = controlGeneralOptions.generalLastAgeClass;
+                inputData.General.NumFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
+                inputData.General.NumRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+                inputData.General.NumPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
+                inputData.General.Seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
+                inputData.General.HasDiscards = controlGeneralOptions.generalDiscardsPresent;
                 //Store CASEID to input data object
-                inputData.caseID = controlGeneralOptions.generalModelId;
+                inputData.CaseID = controlGeneralOptions.generalModelId;
 
                 //Check for AGEPRO parameter data that has already been loaded/set 
                 controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
@@ -203,23 +203,23 @@ namespace Nmfs.Agepro.Gui
                 }
 
                 //Set Stochastic Paramaeter DataGrids           
-                controlJan1Weight.CreateStochasticParameterFallbackDataTable(inputData.jan1Weight, inputData.general, StochasticAgeFleetDependency.independent);
-                controlSSBWeight.CreateStochasticParameterFallbackDataTable(inputData.SSBWeight, inputData.general, StochasticAgeFleetDependency.independent);
-                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(inputData.meanWeight, inputData.general, StochasticAgeFleetDependency.independent);
-                controlCatchWeight.CreateStochasticParameterFallbackDataTable(inputData.catchWeight, inputData.general,
+                controlJan1Weight.CreateStochasticParameterFallbackDataTable(inputData.Jan1StockWeight, inputData.General, StochasticAgeFleetDependency.independent);
+                controlSSBWeight.CreateStochasticParameterFallbackDataTable(inputData.SSBWeight, inputData.General, StochasticAgeFleetDependency.independent);
+                controlMidYearWeight.CreateStochasticParameterFallbackDataTable(inputData.MeanWeight, inputData.General, StochasticAgeFleetDependency.independent);
+                controlCatchWeight.CreateStochasticParameterFallbackDataTable(inputData.CatchWeight, inputData.General,
                     StochasticAgeFleetDependency.dependent);
-                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(inputData.fishery, inputData.general,
+                controlFisherySelectivity.CreateStochasticParameterFallbackDataTable(inputData.Fishery, inputData.General,
                     StochasticAgeFleetDependency.dependent);
                 
-                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(inputData.naturalMortality, inputData.general, StochasticAgeFleetDependency.independent);
-                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(inputData.maturity, inputData.general, StochasticAgeFleetDependency.independent);
+                controlNaturalMortality.CreateStochasticParameterFallbackDataTable(inputData.NaturalMortality, inputData.General, StochasticAgeFleetDependency.independent);
+                controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(inputData.BiologicalMaturity, inputData.General, StochasticAgeFleetDependency.independent);
                 
                 //Show Discard DataTables if Discards options is checked
                 if (controlGeneralOptions.generalDiscardsPresent == true)
                 {
-                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.discardFraction, inputData.general,
+                    controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.DiscardFraction, inputData.General,
                         StochasticAgeFleetDependency.dependent);
-                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(inputData.discardWeight, inputData.general, StochasticAgeFleetDependency.independent);
+                    controlDiscardWeight.CreateStochasticParameterFallbackDataTable(inputData.DiscardWeight, inputData.General, StochasticAgeFleetDependency.independent);
                 
                 }
                 else
@@ -237,28 +237,28 @@ namespace Nmfs.Agepro.Gui
                 }
                 
                 //(Biological) Fraction Mortality
-                inputData.biological.CreateFallbackTSpawnTable(controlGeneralOptions.SeqYears());
-                controlBiological.fractionMortality = inputData.biological.TSpawn;
+                inputData.BiologicalTSpawn.CreateFallbackTSpawnTable(controlGeneralOptions.SeqYears());
+                controlBiological.fractionMortality = inputData.BiologicalTSpawn.TSpawn;
 
                 //Recruitment
                 int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-                inputData.recruitment.NewCaseRecruitment(nrecruit, controlGeneralOptions.SeqYears());
-                controlRecruitment.SetupControlRecruitment(nrecruit, inputData.recruitment);
+                inputData.Recruitment.NewCaseRecruitment(nrecruit, controlGeneralOptions.SeqYears());
+                controlRecruitment.SetupControlRecruitment(nrecruit, inputData.Recruitment);
                 
 
                 //Harvest Scenario
                 //Set harvest calculations to "Harvest Scenario"/None by Default
                 controlHarvestScenario.seqYears = controlGeneralOptions.SeqYears();
-                inputData.harvestScenario.AnalysisType = HarvestScenarioAnalysis.HarvestScenario;
+                inputData.HarvestScenario.AnalysisType = HarvestScenarioAnalysis.HarvestScenario;
                 controlHarvestScenario.SetHarvestScenarioCalcControls(inputData);
                 DataTable userGenBasedHarvestScenarioTable = AgeproHarvestScenario.NewHarvestTable(
                     controlHarvestScenario.seqYears.Count(), 
                     Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
                 controlHarvestScenario.SetHarvestScenarioInputDataTable(userGenBasedHarvestScenarioTable);
-                inputData.harvestScenario.HarvestScenarioTable = userGenBasedHarvestScenarioTable;
+                inputData.HarvestScenario.HarvestScenarioTable = userGenBasedHarvestScenarioTable;
 
                 //Bootstrap
-                controlBootstrap.SetBootstrapControls(inputData.bootstrap);
+                controlBootstrap.SetBootstrapControls(inputData.Bootstrap);
 
                 //Activate Naivagation Panel if in first-run/startup state.
                 //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
@@ -349,65 +349,65 @@ namespace Nmfs.Agepro.Gui
                     }
 
                     //Case Id
-                    this.inputData.caseID = controlGeneralOptions.generalModelId;
+                    this.inputData.CaseID = controlGeneralOptions.generalModelId;
 
                     //Natural Mortality
-                    controlJan1Weight.bindStochasticAgeData(this.inputData.jan1Weight);
+                    controlJan1Weight.bindStochasticAgeData(this.inputData.Jan1StockWeight);
                     controlSSBWeight.bindStochasticAgeData(this.inputData.SSBWeight);
-                    controlMidYearWeight.bindStochasticAgeData(this.inputData.meanWeight);
-                    controlCatchWeight.bindStochasticAgeData(this.inputData.catchWeight);
-                    controlBiological.maturityAge.bindStochasticAgeData(this.inputData.maturity);
-                    this.inputData.biological.TimeVarying = controlBiological.fractionMortalityTimeVarying;
-                    controlFisherySelectivity.bindStochasticAgeData(this.inputData.fishery);
-                    controlNaturalMortality.bindStochasticAgeData(this.inputData.naturalMortality);
+                    controlMidYearWeight.bindStochasticAgeData(this.inputData.MeanWeight);
+                    controlCatchWeight.bindStochasticAgeData(this.inputData.CatchWeight);
+                    controlBiological.maturityAge.bindStochasticAgeData(this.inputData.BiologicalMaturity);
+                    this.inputData.BiologicalTSpawn.TimeVarying = controlBiological.fractionMortalityTimeVarying;
+                    controlFisherySelectivity.bindStochasticAgeData(this.inputData.Fishery);
+                    controlNaturalMortality.bindStochasticAgeData(this.inputData.NaturalMortality);
 
-                    if(this.inputData.general.HasDiscards == true)
+                    if(this.inputData.General.HasDiscards == true)
                     {
-                        controlDiscardWeight.bindStochasticAgeData(this.inputData.discardWeight);
-                        controlDiscardFraction.bindStochasticAgeData(this.inputData.discardFraction);     
+                        controlDiscardWeight.bindStochasticAgeData(this.inputData.DiscardWeight);
+                        controlDiscardFraction.bindStochasticAgeData(this.inputData.DiscardFraction);     
                     }
 
                     //Harvest Scenario: Rebuilder/PStar
                     if (controlHarvestScenario.calcType == HarvestScenarioAnalysis.PStar)
                     {
-                        this.inputData.harvestScenario.AnalysisType = controlHarvestScenario.calcType;
-                        this.inputData.pstar.AnalysisType = controlHarvestScenario.calcType;
-                        this.inputData.pstar.PStarLevels = controlHarvestScenario.PStar.PStarLevels;
-                        this.inputData.pstar.PStarF = controlHarvestScenario.PStar.PStarF;
-                        this.inputData.pstar.TargetYear = controlHarvestScenario.PStar.TargetYear;
-                        this.inputData.pstar.PStarTable = controlHarvestScenario.PStar.PStarTable;
+                        this.inputData.HarvestScenario.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.PStar.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.PStar.PStarLevels = controlHarvestScenario.PStar.PStarLevels;
+                        this.inputData.PStar.PStarF = controlHarvestScenario.PStar.PStarF;
+                        this.inputData.PStar.TargetYear = controlHarvestScenario.PStar.TargetYear;
+                        this.inputData.PStar.PStarTable = controlHarvestScenario.PStar.PStarTable;
                     }
                     else if (controlHarvestScenario.calcType == HarvestScenarioAnalysis.Rebuilder)
                     {
-                        this.inputData.harvestScenario.AnalysisType = controlHarvestScenario.calcType;
-                        this.inputData.rebuild.AnalysisType = controlHarvestScenario.calcType;
-                        this.inputData.rebuild.TargetYear = controlHarvestScenario.Rebuilder.TargetYear;
-                        this.inputData.rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
-                        this.inputData.rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
+                        this.inputData.HarvestScenario.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.Rebuild.AnalysisType = controlHarvestScenario.calcType;
+                        this.inputData.Rebuild.TargetYear = controlHarvestScenario.Rebuilder.TargetYear;
+                        this.inputData.Rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
+                        this.inputData.Rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
                     }
 
                     //Misc options
-                    this.inputData.options.EnableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
-                    this.inputData.options.EnableExportR = controlMiscOptions.miscOptionsEnableExportR;
-                    this.inputData.options.EnableAuxStochasticFiles = controlMiscOptions.miscOptionsEnableAuxStochasticFiles;
-                    this.inputData.options.EnablePercentileReport = controlMiscOptions.miscOptionsEnablePercentileReport;
-                    this.inputData.options.EnableRefpoint = controlMiscOptions.miscOptionsEnableRefpointsReport;
-                    this.inputData.options.EnableScaleFactors = controlMiscOptions.miscOptionsEnableScaleFactors;
-                    this.inputData.options.EnableBounds = controlMiscOptions.miscOptionsBounds;
-                    this.inputData.options.EnableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
+                    this.inputData.Options.EnableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
+                    this.inputData.Options.EnableExportR = controlMiscOptions.miscOptionsEnableExportR;
+                    this.inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.miscOptionsEnableAuxStochasticFiles;
+                    this.inputData.Options.EnablePercentileReport = controlMiscOptions.miscOptionsEnablePercentileReport;
+                    this.inputData.Options.EnableRefpoint = controlMiscOptions.miscOptionsEnableRefpointsReport;
+                    this.inputData.Options.EnableScaleFactors = controlMiscOptions.miscOptionsEnableScaleFactors;
+                    this.inputData.Options.EnableBounds = controlMiscOptions.miscOptionsBounds;
+                    this.inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
 
-                    this.inputData.refpoint.RefSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
-                    this.inputData.refpoint.RefJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
-                    this.inputData.refpoint.RefMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
-                    this.inputData.refpoint.RefFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
+                    this.inputData.Refpoint.RefSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
+                    this.inputData.Refpoint.RefJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
+                    this.inputData.Refpoint.RefMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
+                    this.inputData.Refpoint.RefFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
 
-                    this.inputData.reportPercentile.Percentile = controlMiscOptions.miscOptionsReportPercentile;
+                    this.inputData.ReportPercentile.Percentile = controlMiscOptions.miscOptionsReportPercentile;
 
-                    this.inputData.scale.ScaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
-                    this.inputData.scale.ScaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
-                    this.inputData.scale.ScaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
+                    this.inputData.Scale.ScaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
+                    this.inputData.Scale.ScaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
+                    this.inputData.Scale.ScaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
 
-                    this.inputData.retroAdjustOption.retroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
+                    this.inputData.RetroAdjustments.RetroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
 
                     this.inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
@@ -434,102 +434,102 @@ namespace Nmfs.Agepro.Gui
         private void LoadAgeproInputParameters(AgeproInputFile inpFile)
         {
             //General Options
-            controlGeneralOptions.generalModelId = inpFile.caseID;
-            controlGeneralOptions.generalFirstYearProjection = inpFile.general.ProjYearStart.ToString();
-            controlGeneralOptions.generalLastYearProjection = inpFile.general.ProjYearEnd.ToString();
-            controlGeneralOptions.generalFirstAgeClass = inpFile.general.AgeBegin;
-            controlGeneralOptions.generalLastAgeClass = inpFile.general.AgeEnd;
-            controlGeneralOptions.generalNumberFleets = inpFile.general.NumFleets.ToString();
-            controlGeneralOptions.generalNumberRecruitModels = inpFile.general.NumRecModels.ToString();
-            controlGeneralOptions.generalNumberPopulationSimuations = inpFile.general.NumPopSims.ToString();
-            controlGeneralOptions.generalRandomSeed = inpFile.general.Seed.ToString();
-            controlGeneralOptions.generalDiscardsPresent = inpFile.general.HasDiscards;
+            controlGeneralOptions.generalModelId = inpFile.CaseID;
+            controlGeneralOptions.generalFirstYearProjection = inpFile.General.ProjYearStart.ToString();
+            controlGeneralOptions.generalLastYearProjection = inpFile.General.ProjYearEnd.ToString();
+            controlGeneralOptions.generalFirstAgeClass = inpFile.General.AgeBegin;
+            controlGeneralOptions.generalLastAgeClass = inpFile.General.AgeEnd;
+            controlGeneralOptions.generalNumberFleets = inpFile.General.NumFleets.ToString();
+            controlGeneralOptions.generalNumberRecruitModels = inpFile.General.NumRecModels.ToString();
+            controlGeneralOptions.generalNumberPopulationSimuations = inpFile.General.NumPopSims.ToString();
+            controlGeneralOptions.generalRandomSeed = inpFile.General.Seed.ToString();
+            controlGeneralOptions.generalDiscardsPresent = inpFile.General.HasDiscards;
 
             //JAN-1
-            controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.jan1Weight, inpFile.general);
+            controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.Jan1StockWeight, inpFile.General);
 
             //SSB
-            controlSSBWeight.LoadStochasticWeightAgeInputData(inpFile.SSBWeight, inpFile.general);
+            controlSSBWeight.LoadStochasticWeightAgeInputData(inpFile.SSBWeight, inpFile.General);
 
             //Mid-Year (Mean)
-            controlMidYearWeight.LoadStochasticWeightAgeInputData(inpFile.meanWeight, inpFile.general);
+            controlMidYearWeight.LoadStochasticWeightAgeInputData(inpFile.MeanWeight, inpFile.General);
 
             //Catch Weight
-            controlCatchWeight.LoadStochasticWeightAgeInputData(inpFile.catchWeight, inpFile.general);
+            controlCatchWeight.LoadStochasticWeightAgeInputData(inpFile.CatchWeight, inpFile.General);
 
             //Discard Weight
-            controlDiscardWeight.LoadStochasticWeightAgeInputData(inpFile.discardWeight, inpFile.general);
+            controlDiscardWeight.LoadStochasticWeightAgeInputData(inpFile.DiscardWeight, inpFile.General);
 
             //Recruitment
-            controlRecruitment.SetupControlRecruitment(inpFile.general.NumRecModels, inpFile.recruitment);
+            controlRecruitment.SetupControlRecruitment(inpFile.General.NumRecModels, inpFile.Recruitment);
 
             //Fishery Selectivity
-            controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.fishery, inpFile.general);
+            controlFisherySelectivity.LoadStochasticAgeInputData(inpFile.Fishery, inpFile.General);
 
             //Discard Fraction
-            controlDiscardFraction.LoadStochasticAgeInputData(inpFile.discardFraction, inpFile.general);
+            controlDiscardFraction.LoadStochasticAgeInputData(inpFile.DiscardFraction, inpFile.General);
 
             //Natural Mortality
-            controlNaturalMortality.LoadStochasticAgeInputData(inpFile.naturalMortality, inpFile.general);
+            controlNaturalMortality.LoadStochasticAgeInputData(inpFile.NaturalMortality, inpFile.General);
 
             //Maturity (Biological)
-            controlBiological.maturityAge.LoadStochasticAgeInputData(inpFile.maturity, inpFile.general);
+            controlBiological.maturityAge.LoadStochasticAgeInputData(inpFile.BiologicalMaturity, inpFile.General);
 
             //Fraction Mortality Prior To Spawning (Biological)
             controlBiological.readFractionMortalityState = true;
             controlBiological.fractionMortality =
-                Util.GetAgeproInputDataTable(controlBiological.fractionMortality, inpFile.biological.TSpawn);
-            controlBiological.fractionMortalityTimeVarying = inpFile.biological.TimeVarying;
+                Util.GetAgeproInputDataTable(controlBiological.fractionMortality, inpFile.BiologicalTSpawn.TSpawn);
+            controlBiological.fractionMortalityTimeVarying = inpFile.BiologicalTSpawn.TimeVarying;
             controlBiological.readFractionMortalityState = false;
 
             //Harvest Scenario
-            if (inpFile.harvestScenario.AnalysisType == HarvestScenarioAnalysis.Rebuilder)
+            if (inpFile.HarvestScenario.AnalysisType == HarvestScenarioAnalysis.Rebuilder)
             {
-                controlHarvestScenario.Rebuilder = inpFile.rebuild;
+                controlHarvestScenario.Rebuilder = inpFile.Rebuild;
             }
-            else if (inpFile.harvestScenario.AnalysisType == HarvestScenarioAnalysis.PStar)
+            else if (inpFile.HarvestScenario.AnalysisType == HarvestScenarioAnalysis.PStar)
             {
-                controlHarvestScenario.PStar = inpFile.pstar;
+                controlHarvestScenario.PStar = inpFile.PStar;
             }
-            controlHarvestScenario.seqYears = inpFile.recruitment.ObservationYears.Select(x => x.ToString()).ToArray();
-            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.harvestScenario.HarvestScenarioTable);
+            controlHarvestScenario.seqYears = inpFile.Recruitment.ObservationYears.Select(x => x.ToString()).ToArray();
+            controlHarvestScenario.SetHarvestScenarioInputDataTable(inpFile.HarvestScenario.HarvestScenarioTable);
             controlHarvestScenario.SetHarvestScenarioCalcControls(inpFile);
 
 
             //Bootstrapping
-            controlBootstrap.bootstrapFilename = inpFile.bootstrap.BootstrapFile;
-            controlBootstrap.bootstrapIterations = inpFile.bootstrap.NumBootstraps.ToString();
-            controlBootstrap.bootstrapScaleFactors = inpFile.bootstrap.PopScaleFactor.ToString();
+            controlBootstrap.bootstrapFilename = inpFile.Bootstrap.BootstrapFile;
+            controlBootstrap.bootstrapIterations = inpFile.Bootstrap.NumBootstraps.ToString();
+            controlBootstrap.bootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
             //Misc Options
-            controlMiscOptions.miscOptionsEnableSummaryReport = inpFile.options.EnableSummaryReport;
-            controlMiscOptions.miscOptionsEnableAuxStochasticFiles = inpFile.options.EnableAuxStochasticFiles;
-            controlMiscOptions.miscOptionsEnableExportR = inpFile.options.EnableExportR;
-            controlMiscOptions.miscOptionsEnablePercentileReport = inpFile.options.EnablePercentileReport;
-            controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.reportPercentile.Percentile);
+            controlMiscOptions.miscOptionsEnableSummaryReport = inpFile.Options.EnableSummaryReport;
+            controlMiscOptions.miscOptionsEnableAuxStochasticFiles = inpFile.Options.EnableAuxStochasticFiles;
+            controlMiscOptions.miscOptionsEnableExportR = inpFile.Options.EnableExportR;
+            controlMiscOptions.miscOptionsEnablePercentileReport = inpFile.Options.EnablePercentileReport;
+            controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.ReportPercentile.Percentile);
 
-            controlMiscOptions.miscOptionsEnableRefpointsReport = inpFile.options.EnableRefpoint;
-            controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.refpoint.RefSpawnBio.ToString();
-            controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.refpoint.RefJan1Bio.ToString();
-            controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.refpoint.RefMeanBio.ToString();
-            controlMiscOptions.miscOptionsRefFishingMortality = inpFile.refpoint.RefFMort.ToString();
+            controlMiscOptions.miscOptionsEnableRefpointsReport = inpFile.Options.EnableRefpoint;
+            controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.Refpoint.RefSpawnBio.ToString();
+            controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.Refpoint.RefJan1Bio.ToString();
+            controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.Refpoint.RefMeanBio.ToString();
+            controlMiscOptions.miscOptionsRefFishingMortality = inpFile.Refpoint.RefFMort.ToString();
 
-            controlMiscOptions.miscOptionsEnableScaleFactors = inpFile.options.EnableScaleFactors;
-            controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.scale.ScaleBio.ToString();
-            controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.scale.ScaleRec.ToString();
-            controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.scale.ScaleStockNum.ToString();
+            controlMiscOptions.miscOptionsEnableScaleFactors = inpFile.Options.EnableScaleFactors;
+            controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.Scale.ScaleBio.ToString();
+            controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.Scale.ScaleRec.ToString();
+            controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.Scale.ScaleStockNum.ToString();
 
-            controlMiscOptions.miscOptionsBounds = inpFile.options.EnableBounds;
-            controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.bounds.MaxWeight.ToString();
-            controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.bounds.MaxNatMort.ToString();
+            controlMiscOptions.miscOptionsBounds = inpFile.Options.EnableBounds;
+            controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.Bounds.MaxWeight.ToString();
+            controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.Bounds.MaxNatMort.ToString();
 
-            controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.options.EnableRetroAdjustmentFactors;
-            controlMiscOptions.miscOptionsNAges = inpFile.general.NumAges();
-            controlMiscOptions.miscOptionsFirstAge = inpFile.general.AgeBegin;
+            controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.Options.EnableRetroAdjustmentFactors;
+            controlMiscOptions.miscOptionsNAges = inpFile.General.NumAges();
+            controlMiscOptions.miscOptionsFirstAge = inpFile.General.AgeBegin;
 
             controlMiscOptions.miscOptionsRetroAdjustmentFactorTable =
                 Util.GetAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable,
-                inpFile.retroAdjustOption.retroAdjust);
+                inpFile.RetroAdjustments.RetroAdjust);
 
             if (controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors == true)
             {
@@ -630,14 +630,14 @@ namespace Nmfs.Agepro.Gui
 
       //check for bootstrap file
       //1. File Exists from the bootstrap parameter
-      if (File.Exists(inputData.bootstrap.BootstrapFile))
+      if (File.Exists(inputData.Bootstrap.BootstrapFile))
       {
-        File.Copy(inputData.bootstrap.BootstrapFile, bsnFile, true);
+        File.Copy(inputData.Bootstrap.BootstrapFile, bsnFile, true);
       }
       //2. If not, in the same directory as the AGEPRO Input File
-      else if (File.Exists(Path.GetDirectoryName(inputData.general.InputFile) + "\\" + Path.GetFileName(inputData.bootstrap.BootstrapFile)))
+      else if (File.Exists(Path.GetDirectoryName(inputData.General.InputFile) + "\\" + Path.GetFileName(inputData.Bootstrap.BootstrapFile)))
       {
-        File.Copy(Path.GetDirectoryName(inputData.general.InputFile) + "\\" + Path.GetFileName(inputData.bootstrap.BootstrapFile),
+        File.Copy(Path.GetDirectoryName(inputData.General.InputFile) + "\\" + Path.GetFileName(inputData.Bootstrap.BootstrapFile),
             bsnFile, true);
       }
       //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
@@ -657,12 +657,12 @@ namespace Nmfs.Agepro.Gui
         }
       }
       //Store original bootstrap filename in case of error
-      string originalBSNFile = inputData.bootstrap.BootstrapFile;
+      string originalBSNFile = inputData.Bootstrap.BootstrapFile;
 
       try
       {
         //Set bootstrap filename to copied workDir version
-        inputData.bootstrap.BootstrapFile = bsnFile;
+        inputData.Bootstrap.BootstrapFile = bsnFile;
 
         //Write Interface Inputs to file
         inputData.WriteInputFile(inpFile);
@@ -686,7 +686,7 @@ namespace Nmfs.Agepro.Gui
       finally
       {
         //reset original bootstrap filename 
-        inputData.bootstrap.BootstrapFile = originalBSNFile;
+        inputData.Bootstrap.BootstrapFile = originalBSNFile;
       }
     }
 
@@ -920,11 +920,11 @@ namespace Nmfs.Agepro.Gui
             //Tell? user that they will have to supply bootstrap file.
             if (!File.Exists(this.controlBootstrap.bootstrapFilename))
             {
-                if (File.Exists(Path.GetDirectoryName(inputData.general.InputFile) + "\\"
-                    + Path.GetFileName(inputData.bootstrap.BootstrapFile)))
+                if (File.Exists(Path.GetDirectoryName(inputData.General.InputFile) + "\\"
+                    + Path.GetFileName(inputData.Bootstrap.BootstrapFile)))
                 {
-                    string inpFileDir = Path.GetDirectoryName(inputData.general.InputFile);
-                    string bsnFileName = Path.GetFileName(inputData.bootstrap.BootstrapFile);
+                    string inpFileDir = Path.GetDirectoryName(inputData.General.InputFile);
+                    string bsnFileName = Path.GetFileName(inputData.Bootstrap.BootstrapFile);
                     bootstrapChoice = MessageBox.Show(
                         "Bootstrap filename was not found." + Environment.NewLine +
                         "However, a bootstap file " + bsnFileName + " was found at " + inpFileDir +
@@ -984,10 +984,10 @@ namespace Nmfs.Agepro.Gui
             //Setup Data Binding for Parameter Controls  
             if (inputData != null)
             {
-                controlBootstrap.SetBootstrapControls(inputData.bootstrap);
-                controlMiscOptions.SetupRefpointDataBindings(inputData.refpoint);
-                controlMiscOptions.SetupScaleFactorsDataBindings(inputData.scale);
-                controlMiscOptions.SetupBoundsDataBindings(inputData.bounds);
+                controlBootstrap.SetBootstrapControls(inputData.Bootstrap);
+                controlMiscOptions.SetupRefpointDataBindings(inputData.Refpoint);
+                controlMiscOptions.SetupScaleFactorsDataBindings(inputData.Scale);
+                controlMiscOptions.SetupBoundsDataBindings(inputData.Bounds);
             }
             
         }
