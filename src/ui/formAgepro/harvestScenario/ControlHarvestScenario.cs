@@ -32,9 +32,9 @@ namespace Nmfs.Agepro.Gui
       this.seqYears = new string[1] { "1" };
 
       //PStar Defaults
-      this.controlHarvestPStar.pstarLevels = 1;
-      this.controlHarvestPStar.targetYear = "0";
-      this.controlHarvestPStar.overfishingF = "0.0";
+      this.controlHarvestPStar.PstarLevels = 1;
+      this.controlHarvestPStar.TargetYear = "0";
+      this.controlHarvestPStar.OverfishingF = "0.0";
       //Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(this.controlHarvestPStar.pstarLevelsTable);
 
       //Rebuilder Defaults

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
@@ -13,7 +7,7 @@ namespace Nmfs.Agepro.Gui
   public partial class ControlHarvestCalcPStar : UserControl
   {
     private bool setControlValues;
-    public DataTable pstarLevelsTable { get; set; }
+    public DataTable PstarLevelsTable { get; set; }
 
     public ControlHarvestCalcPStar()
     {
@@ -21,20 +15,20 @@ namespace Nmfs.Agepro.Gui
       setControlValues = false;
     }
 
-    public int pstarLevels
+    public int PstarLevels
     {
-      get { return Decimal.ToInt32(spinBoxNumPStarLevels.Value); }
-      set { spinBoxNumPStarLevels.Value = value; }
+      get => decimal.ToInt32(spinBoxNumPStarLevels.Value);
+      set => spinBoxNumPStarLevels.Value = value;
     }
-    public string targetYear
+    public string TargetYear
     {
-      get { return textBoxPStarTargetYear.Text; }
-      set { textBoxPStarTargetYear.Text = value; }
+      get => textBoxPStarTargetYear.Text;
+      set => textBoxPStarTargetYear.Text = value;
     }
-    public string overfishingF
+    public string OverfishingF
     {
-      get { return textBoxOverfishingF.Text; }
-      set { textBoxOverfishingF.Text = value; }
+      get => textBoxOverfishingF.Text;
+      set => textBoxOverfishingF.Text = value;
     }
 
 
@@ -45,28 +39,28 @@ namespace Nmfs.Agepro.Gui
       setControlValues = false;
     }
 
-    public void SetHarvestCalcPStarControls(Nmfs.Agepro.CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam)
+    public void SetHarvestCalcPStarControls(CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam)
     {
       setControlValues = true;
 
       //Clear any previous Data Bindings
-      this.spinBoxNumPStarLevels.DataBindings.Clear();
-      this.textBoxOverfishingF.DataBindings.Clear();
-      this.textBoxPStarTargetYear.DataBindings.Clear();
-      this.dataGridPStarLevelValues.DataBindings.Clear();
+      spinBoxNumPStarLevels.DataBindings.Clear();
+      textBoxOverfishingF.DataBindings.Clear();
+      textBoxPStarTargetYear.DataBindings.Clear();
+      dataGridPStarLevelValues.DataBindings.Clear();
       //Set up new Data Bindings
-      this.spinBoxNumPStarLevels.DataBindings.Add("value", pstar, "pStarLevels", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxOverfishingF.DataBindings.Add("text", pstar, "pStarF", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxPStarTargetYear.DataBindings.Add("text", pstar, "targetYear", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.dataGridPStarLevelValues.DataBindings.Add("dataSource", pstar, "pStarTable", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = spinBoxNumPStarLevels.DataBindings.Add("value", pstar, "pStarLevels", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = textBoxOverfishingF.DataBindings.Add("text", pstar, "pStarF", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = textBoxPStarTargetYear.DataBindings.Add("text", pstar, "targetYear", true, DataSourceUpdateMode.OnPropertyChanged);
+      _ = dataGridPStarLevelValues.DataBindings.Add("dataSource", pstar, "pStarTable", true, DataSourceUpdateMode.OnPropertyChanged);
 
       panelHarvestCalcParam.Controls.Clear();
-      this.Dock = DockStyle.Fill;
+      Dock = DockStyle.Fill;
       panelHarvestCalcParam.Controls.Add(this);
 
       //If the PStar controls did not load for the first time, do not set setControlsValues to false.
       //Otherwise, allow it. 
-      if (this.Created)
+      if (Created)
       {
         setControlValues = false;
       }
@@ -84,17 +78,17 @@ namespace Nmfs.Agepro.Gui
       {
         NumericUpDown newPStarLevel = sender as NumericUpDown;
         ControlRecruitment.ResizeDataGridTable(
-            (DataTable)this.dataGridPStarLevelValues.DataSource, 1, Convert.ToInt32(newPStarLevel.Value));
+            (DataTable)dataGridPStarLevelValues.DataSource, 1, Convert.ToInt32(newPStarLevel.Value));
 
         //Rename Columns
-        for (int colNum = 0; colNum < this.dataGridPStarLevelValues.Columns.Count; colNum++)
+        for (int colNum = 0; colNum < dataGridPStarLevelValues.Columns.Count; colNum++)
         {
-          this.dataGridPStarLevelValues.Columns[colNum].HeaderText = "Level " + (colNum + 1);
+          dataGridPStarLevelValues.Columns[colNum].HeaderText = "Level " + (colNum + 1);
 
           //Set blank cells to 0
-          if (string.IsNullOrEmpty(this.dataGridPStarLevelValues.Rows[0].Cells[colNum].Value.ToString()))
+          if (string.IsNullOrEmpty(dataGridPStarLevelValues.Rows[0].Cells[colNum].Value.ToString()))
           {
-            this.dataGridPStarLevelValues.Rows[0].Cells[colNum].Value = 0;
+            dataGridPStarLevelValues.Rows[0].Cells[colNum].Value = 0;
           }
         }
       }
