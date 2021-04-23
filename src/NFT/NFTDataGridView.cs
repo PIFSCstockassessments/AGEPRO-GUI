@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
@@ -70,13 +67,13 @@ namespace Nmfs.Agepro.Gui
             this.menuSeparator2,
             this.menuFillWithZero});
       this.dgvMenuStrip.Name = "dgvMenuStrip";
-      this.dgvMenuStrip.Size = new System.Drawing.Size(157, 148);
+      this.dgvMenuStrip.Size = new System.Drawing.Size(165, 148);
       // 
       // menuCut
       // 
       this.menuCut.Name = "menuCut";
       this.menuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-      this.menuCut.Size = new System.Drawing.Size(156, 22);
+      this.menuCut.Size = new System.Drawing.Size(164, 22);
       this.menuCut.Text = "Cut";
       this.menuCut.Click += new System.EventHandler(this.menuCut_Click);
       // 
@@ -84,7 +81,7 @@ namespace Nmfs.Agepro.Gui
       // 
       this.menuCopy.Name = "menuCopy";
       this.menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-      this.menuCopy.Size = new System.Drawing.Size(156, 22);
+      this.menuCopy.Size = new System.Drawing.Size(164, 22);
       this.menuCopy.Text = "Copy";
       this.menuCopy.Click += new System.EventHandler(this.menuCopy_Click);
       // 
@@ -92,7 +89,7 @@ namespace Nmfs.Agepro.Gui
       // 
       this.menuPaste.Name = "menuPaste";
       this.menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-      this.menuPaste.Size = new System.Drawing.Size(156, 22);
+      this.menuPaste.Size = new System.Drawing.Size(164, 22);
       this.menuPaste.Text = "Paste";
       this.menuPaste.Click += new System.EventHandler(this.menuPaste_Click);
       // 
@@ -100,32 +97,32 @@ namespace Nmfs.Agepro.Gui
       // 
       this.menuDelete.Name = "menuDelete";
       this.menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-      this.menuDelete.Size = new System.Drawing.Size(156, 22);
+      this.menuDelete.Size = new System.Drawing.Size(164, 22);
       this.menuDelete.Text = "Delete";
       this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
       // 
       // menuSeparator1
       // 
       this.menuSeparator1.Name = "menuSeparator1";
-      this.menuSeparator1.Size = new System.Drawing.Size(153, 6);
+      this.menuSeparator1.Size = new System.Drawing.Size(161, 6);
       // 
       // menuSelectAll
       // 
       this.menuSelectAll.Name = "menuSelectAll";
       this.menuSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-      this.menuSelectAll.Size = new System.Drawing.Size(156, 22);
+      this.menuSelectAll.Size = new System.Drawing.Size(164, 22);
       this.menuSelectAll.Text = "Select All";
       this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
       // 
       // menuSeparator2
       // 
       this.menuSeparator2.Name = "menuSeparator2";
-      this.menuSeparator2.Size = new System.Drawing.Size(153, 6);
+      this.menuSeparator2.Size = new System.Drawing.Size(161, 6);
       // 
       // menuFillWithZero
       // 
       this.menuFillWithZero.Name = "menuFillWithZero";
-      this.menuFillWithZero.Size = new System.Drawing.Size(156, 22);
+      this.menuFillWithZero.Size = new System.Drawing.Size(164, 22);
       this.menuFillWithZero.Text = "Fill Blank Cells";
       this.menuFillWithZero.Click += new System.EventHandler(this.menuFillWithZero_Click);
       // 
