@@ -25,17 +25,7 @@ namespace Nmfs.Agepro.Gui
       PStar = new PStarCalculation();
       SeqYears = new string[1] { "1" };
 
-      //PStar Defaults
-      ControlHarvestPStar.PstarLevels = 1;
-      ControlHarvestPStar.TargetYear = "0";
-      ControlHarvestPStar.OverfishingF = "0.0";
-      //Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(this.controlHarvestPStar.pstarLevelsTable);
 
-      //Rebuilder Defaults
-      ControlHarvestRebuilder.RebuilderTargetYear = "0";
-      ControlHarvestRebuilder.RebuilderBiomass = "0.0";
-      ControlHarvestRebuilder.RebuilderPercentConfidence = "0.0";
-      ControlHarvestRebuilder.RebuilderType = 0;
     }
 
     public DataTable HarvestScenarioTable

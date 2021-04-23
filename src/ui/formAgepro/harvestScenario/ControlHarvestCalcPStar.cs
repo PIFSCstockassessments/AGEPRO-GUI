@@ -13,6 +13,12 @@ namespace Nmfs.Agepro.Gui
     {
       InitializeComponent();
       setControlValues = false;
+
+      //PStar Defaults
+      PstarLevels = 1;
+      TargetYear = "0";
+      OverfishingF = "0.0";
+      //Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(this.controlHarvestPStar.pstarLevelsTable);
     }
 
     public int PstarLevels

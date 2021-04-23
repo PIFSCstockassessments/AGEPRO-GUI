@@ -20,6 +20,12 @@ namespace Nmfs.Agepro.Gui
       comboBoxRebuilderTargetType.DisplayMember = "rebuilderTargetTypeName";
       comboBoxRebuilderTargetType.DataSource = typeList;
 
+      //Rebuilder Defaults
+      RebuilderTargetYear = "0";
+      RebuilderBiomass = "0.0";
+      RebuilderPercentConfidence = "0.0";
+      RebuilderType = 0;
+
     }
 
     public string RebuilderTargetYear
