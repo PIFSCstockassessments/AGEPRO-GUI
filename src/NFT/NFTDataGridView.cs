@@ -126,11 +126,12 @@ namespace Nmfs.Agepro.Gui
       this.menuFillWithZero.Text = "Fill Blank Cells";
       this.menuFillWithZero.Click += new System.EventHandler(this.menuFillWithZero_Click);
       // 
-      // NFTDataGridView
+      // NftDataGridView
       // 
       this.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.NFTDataGridView_CellContextMenuStripNeeded);
       this.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseClick);
       this.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseDown);
+      this.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.NFTDataGridView_CellValidating);
       this.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.NFTDataGridView_ColumnAdded);
       this.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.NFTDataGridView_DataError);
       this.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.NFTDataGridView_EditingControlShowing);
@@ -504,5 +505,9 @@ namespace Nmfs.Agepro.Gui
       return blankNullsExist;
     }
 
+    private void NFTDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+    {
+
+    }
   }
 }
