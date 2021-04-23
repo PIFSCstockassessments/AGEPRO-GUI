@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -276,19 +274,18 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
-      using (DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell)
-      {
-        if (!(header.Value != null))
-        {
-          //set HarvestScenarioTable RowHeaders
-          int iyear = 0;
-          foreach (DataGridViewRow yearRow in dataGridHarvestScenarioTable.Rows)
-          {
-            yearRow.HeaderCell.Value = SeqYears[iyear];
-            iyear++;
-          }
+      DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;
 
+      if (!(header.Value != null))
+      {
+        //set HarvestScenarioTable RowHeaders
+        int iyear = 0;
+        foreach (DataGridViewRow yearRow in dataGridHarvestScenarioTable.Rows)
+        {
+          yearRow.HeaderCell.Value = SeqYears[iyear];
+          iyear++;
         }
+
       }
     }
 
