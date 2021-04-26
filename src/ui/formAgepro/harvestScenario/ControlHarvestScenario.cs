@@ -25,7 +25,6 @@ namespace Nmfs.Agepro.Gui
       PStar = new PStarCalculation();
       SeqYears = new string[1] { "1" };
 
-
     }
 
     public DataTable HarvestScenarioTable
@@ -63,7 +62,7 @@ namespace Nmfs.Agepro.Gui
       {
         if (PStar == null)
         {
-          CreateNewPStarTable(Array.ConvertAll(SeqYears, int.Parse));
+          CreateNewPStarSpecs(Array.ConvertAll(SeqYears, int.Parse));
         }
         CalcType = HarvestScenarioAnalysis.PStar;
         ControlHarvestPStar.SetHarvestCalcPStarControls(PStar, panelAltCalcParameters);
@@ -71,15 +70,15 @@ namespace Nmfs.Agepro.Gui
 
 
     }
-
-    private void CreateNewPStarTable(int[] yrArray)
+    public void CreateNewPStarSpecs(int[] yrArray)
     {
+
       PStar = new PStarCalculation
       {
         PStarLevels = 1,
         PStarF = 0,
         TargetYear = 0,
-        obsYears = yrArray
+        ObsYears = yrArray
       };
       //Create PStar Table
       PStar.PStarTable = PStar.CreateNewPStarTable();
@@ -118,7 +117,7 @@ namespace Nmfs.Agepro.Gui
         TargetValue = 0,
         TargetType = 0,
         TargetPercent = 0,
-        obsYears = yrArray
+        ObsYears = yrArray
       };
     }
 
@@ -178,7 +177,7 @@ namespace Nmfs.Agepro.Gui
         //Create Defaluts if Pstar is null
         if (PStar == null)
         {
-          CreateNewPStarTable(inpData.General.SeqYears());
+          CreateNewPStarSpecs(inpData.General.SeqYears());
         }
         else
         {
@@ -199,7 +198,7 @@ namespace Nmfs.Agepro.Gui
         {
           Rebuilder = inpData.Rebuild;
           radioRebuilderTarget.Checked = true;
-          Rebuilder.obsYears = Array.ConvertAll(SeqYears, int.Parse);
+          Rebuilder.ObsYears = Array.ConvertAll(SeqYears, int.Parse);
         }
 
         ControlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, panelAltCalcParameters);

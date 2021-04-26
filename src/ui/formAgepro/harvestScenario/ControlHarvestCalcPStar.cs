@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nmfs.Agepro.CoreLib;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -44,6 +45,7 @@ namespace Nmfs.Agepro.Gui
       //Ensure setControlValues bool flag to false after controls is setup.
       setControlValues = false;
     }
+    
 
     public void SetHarvestCalcPStarControls(CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam)
     {
@@ -71,6 +73,8 @@ namespace Nmfs.Agepro.Gui
         setControlValues = false;
       }
     }
+
+
 
     /// <summary>
     /// Resizes the PStar Levels Data Grid View Table when the spinBoxNumPStarLevels value has been
