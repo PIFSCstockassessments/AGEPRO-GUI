@@ -7,6 +7,8 @@ namespace Nmfs.Agepro.Gui
 {
   partial class AboutAgepro : Form
   {
+    public string NmfsLicense { get; set; }
+    
     public AboutAgepro()
     {
       InitializeComponent();
@@ -19,23 +21,17 @@ namespace Nmfs.Agepro.Gui
 
       //NMFS Licensing
       string nmfsLicenseFile =
-          Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "LICENSE.md");
+          Path.Combine(Path.GetDirectoryName(Application.ExecutablePath),
+                       "LICENSE.md");
 
-      if (!File.Exists(nmfsLicenseFile))
-      {
-        nmfsLicense = null;
-      }
-      else
-      {
-        nmfsLicense = string.Join(" ", File.ReadAllLines(nmfsLicenseFile));
-      }
+      NmfsLicense = File.Exists(nmfsLicenseFile) ? string.Join(" ", File.ReadAllLines(nmfsLicenseFile)) : null;
     }
 
-    private string _nmfsLicense;
-
-
     #region Assembly Attribute Accessors
-
+    
+    /// <summary>
+    /// Attribute used for About dialog title.
+    /// </summary>
     public string AssemblyTitle
     {
       get
@@ -49,10 +45,13 @@ namespace Nmfs.Agepro.Gui
             return titleAttribute.Title;
           }
         }
-        return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+        return Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
       }
     }
 
+    /// <summary>
+    /// Attribute for AGEPRO version
+    /// </summary>
     public string AssemblyVersion
     {
       get
@@ -61,6 +60,9 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
+    /// <summary>
+    /// Attribute to get AGEPRO descripton
+    /// </summary>
     public string AssemblyDescription
     {
       get
@@ -74,6 +76,9 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
+    /// <summary>
+    /// Attribute to get product name AGEPRO
+    /// </summary>
     public string AssemblyProduct
     {
       get
@@ -87,6 +92,9 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
+    /// <summary>
+    /// Copyright/Attribution 
+    /// </summary>
     public string AssemblyCopyright
     {
       get
@@ -100,6 +108,9 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
+    /// <summary>
+    /// Org/Company
+    /// </summary>
     public string AssemblyCompany
     {
       get
@@ -113,7 +124,6 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    public string nmfsLicense { get => _nmfsLicense; set => _nmfsLicense = value; }
     #endregion
 
     /// <summary>
@@ -126,7 +136,7 @@ namespace Nmfs.Agepro.Gui
       //textBoxDescription: Override AssemblyDescription with this text.
       textBoxDescription.Text = "Interface Version: " + AssemblyVersion + Environment.NewLine +
           "Calcuation Engine Version: 4.0" + Environment.NewLine + Environment.NewLine +
-          nmfsLicense;
+          NmfsLicense;
     }
   }
 }
