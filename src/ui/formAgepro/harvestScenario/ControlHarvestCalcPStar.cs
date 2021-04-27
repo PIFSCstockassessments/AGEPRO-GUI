@@ -47,7 +47,7 @@ namespace Nmfs.Agepro.Gui
     }
     
 
-    public void SetHarvestCalcPStarControls(CoreLib.PStarCalculation pstar, Panel panelHarvestCalcParam)
+    public void SetHarvestCalcPStarControls(PStarCalculation pstar, Panel panelHarvestCalcParam)
     {
       setControlValues = true;
 
@@ -68,10 +68,7 @@ namespace Nmfs.Agepro.Gui
 
       //If the PStar controls did not load for the first time, do not set setControlsValues to false.
       //Otherwise, allow it. 
-      if (Created)
-      {
-        setControlValues = false;
-      }
+      //
     }
 
 
@@ -82,7 +79,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void spinBoxNumPStarLevels_ValueChanged(object sender, EventArgs e)
+    private void SpinBoxNumPStarLevels_ValueChanged(object sender, EventArgs e)
     {
       if (setControlValues == false)
       {

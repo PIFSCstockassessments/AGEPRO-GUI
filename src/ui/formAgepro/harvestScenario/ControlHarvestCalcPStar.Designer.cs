@@ -94,7 +94,7 @@
             0,
             0,
             0});
-            this.spinBoxNumPStarLevels.ValueChanged += new System.EventHandler(this.spinBoxNumPStarLevels_ValueChanged);
+            this.spinBoxNumPStarLevels.ValueChanged += new System.EventHandler(this.SpinBoxNumPStarLevels_ValueChanged);
             // 
             // dataGridPStarLevelValues
             // 
