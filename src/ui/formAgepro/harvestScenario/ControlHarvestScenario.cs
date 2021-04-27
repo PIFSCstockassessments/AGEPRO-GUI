@@ -62,29 +62,17 @@ namespace Nmfs.Agepro.Gui
       {
         if (PStar == null)
         {
-          CreateNewPStarSpecs(Array.ConvertAll(SeqYears, int.Parse));
+          PStar = new PStarCalculation
+          {
+            //Retain Model's Observed Years
+            ObsYears = Array.ConvertAll(SeqYears, int.Parse)
+          };
         }
-        CalcType = HarvestScenarioAnalysis.PStar;
         ControlHarvestPStar.SetHarvestCalcPStarControls(PStar, panelAltCalcParameters);
       }
 
-
     }
-    public void CreateNewPStarSpecs(int[] yrArray)
-    {
-
-      PStar = new PStarCalculation
-      {
-        PStarLevels = 1,
-        PStarF = 0,
-        TargetYear = 0,
-        ObsYears = yrArray
-      };
-      //Create PStar Table
-      PStar.PStarTable = PStar.CreateNewPStarTable();
-      _ = PStar.PStarTable.Rows.Add();
-      _ = Extensions.FillDBNullCellsWithZero(PStar.PStarTable);
-    }
+    
 
     /// <summary>
     /// 
@@ -101,24 +89,16 @@ namespace Nmfs.Agepro.Gui
       {
         if (Rebuilder == null)
         {
-          CreateNewRebuilderScenario(Array.ConvertAll(SeqYears, int.Parse));
+          //Retain Model's Observed Years
+          Rebuilder = new RebuilderTargetCalculation
+          {
+            ObsYears = Array.ConvertAll(SeqYears, int.Parse)
+          };
         }
         CalcType = HarvestScenarioAnalysis.Rebuilder;
         ControlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, panelAltCalcParameters);
       }
       
-    }
-
-    private void CreateNewRebuilderScenario(int[] yrArray)
-    {
-      Rebuilder = new RebuilderTargetCalculation
-      {
-        TargetYear = 0,
-        TargetValue = 0,
-        TargetType = 0,
-        TargetPercent = 0,
-        ObsYears = yrArray
-      };
     }
 
     public void SetHarvestSpecificationColumn()
@@ -177,7 +157,12 @@ namespace Nmfs.Agepro.Gui
         //Create Defaluts if Pstar is null
         if (PStar == null)
         {
-          CreateNewPStarSpecs(inpData.General.SeqYears());
+          //CreateNewPStarSpecs(inpData.General.SeqYears());
+          PStar = new PStarCalculation
+          {
+            //Retain Input Data's Observed Years 
+            ObsYears = inpData.General.SeqYears()
+          };
         }
         else
         {
@@ -192,7 +177,11 @@ namespace Nmfs.Agepro.Gui
         //If Rebuilder has no data, create an empty/default set. 
         if (Rebuilder == null)
         {
-          CreateNewRebuilderScenario(inpData.General.SeqYears());
+          //Retain Input Data's Observed Years
+          Rebuilder = new RebuilderTargetCalculation
+          {
+            ObsYears = inpData.General.SeqYears()
+          };
         }
         else
         {
