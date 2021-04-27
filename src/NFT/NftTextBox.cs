@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
@@ -15,11 +11,9 @@ namespace Nmfs.Agepro.Gui
 
     public NftTextBox()
     {
-      this.PrevValidValue = string.Empty;
-      this.CausesValidation = true;
+      PrevValidValue = string.Empty;
+      CausesValidation = true;
     }
-
-
 
     protected override void OnValidating(System.ComponentModel.CancelEventArgs e)
     {
@@ -28,7 +22,7 @@ namespace Nmfs.Agepro.Gui
 
     protected override void OnValidated(EventArgs e)
     {
-      this.PrevValidValue = this.Text;
+      PrevValidValue = Text;
       base.OnValidated(e);
     }
 
