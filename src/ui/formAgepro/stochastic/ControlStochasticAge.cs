@@ -11,11 +11,6 @@ using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
-  public enum StochasticAgeFleetDependency
-  {
-    dependent,
-    independent
-  };
 
   public partial class ControlStochasticAge : UserControl
   {
