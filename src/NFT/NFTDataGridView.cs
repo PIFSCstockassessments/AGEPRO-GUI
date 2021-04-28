@@ -28,9 +28,9 @@ namespace Nmfs.Agepro.Gui
       InitializeComponent(); //Component Designer generated Code
 
       nftReadOnly = false; //False by default
-      this.AllowUserToAddRows = false;
-      this.AllowUserToResizeRows = false;
-      this.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+      AllowUserToAddRows = false;
+      AllowUserToResizeRows = false;
+      ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
     }
 
     #region Component Designer generated code (InitializeComponent)
@@ -41,103 +41,103 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     private void InitializeComponent()
     {
-      this.components = new System.ComponentModel.Container();
-      this.dgvMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-      this.menuCut = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuCopy = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuPaste = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-      this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-      this.menuFillWithZero = new System.Windows.Forms.ToolStripMenuItem();
-      this.dgvMenuStrip.SuspendLayout();
+      components = new System.ComponentModel.Container();
+      dgvMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
+      menuCut = new System.Windows.Forms.ToolStripMenuItem();
+      menuCopy = new System.Windows.Forms.ToolStripMenuItem();
+      menuPaste = new System.Windows.Forms.ToolStripMenuItem();
+      menuDelete = new System.Windows.Forms.ToolStripMenuItem();
+      menuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+      menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+      menuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+      menuFillWithZero = new System.Windows.Forms.ToolStripMenuItem();
+      dgvMenuStrip.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-      this.SuspendLayout();
+      SuspendLayout();
       // 
       // dgvMenuStrip
       // 
-      this.dgvMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuCut,
-            this.menuCopy,
-            this.menuPaste,
-            this.menuDelete,
-            this.menuSeparator1,
-            this.menuSelectAll,
-            this.menuSeparator2,
-            this.menuFillWithZero});
-      this.dgvMenuStrip.Name = "dgvMenuStrip";
-      this.dgvMenuStrip.Size = new System.Drawing.Size(165, 148);
+      dgvMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            menuCut,
+            menuCopy,
+            menuPaste,
+            menuDelete,
+            menuSeparator1,
+            menuSelectAll,
+            menuSeparator2,
+            menuFillWithZero});
+      dgvMenuStrip.Name = "dgvMenuStrip";
+      dgvMenuStrip.Size = new System.Drawing.Size(165, 148);
       // 
       // menuCut
       // 
-      this.menuCut.Name = "menuCut";
-      this.menuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-      this.menuCut.Size = new System.Drawing.Size(164, 22);
-      this.menuCut.Text = "Cut";
-      this.menuCut.Click += new System.EventHandler(this.menuCut_Click);
+      menuCut.Name = "menuCut";
+      menuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+      menuCut.Size = new System.Drawing.Size(164, 22);
+      menuCut.Text = "Cut";
+      menuCut.Click += new System.EventHandler(MenuCut_Click);
       // 
       // menuCopy
       // 
-      this.menuCopy.Name = "menuCopy";
-      this.menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-      this.menuCopy.Size = new System.Drawing.Size(164, 22);
-      this.menuCopy.Text = "Copy";
-      this.menuCopy.Click += new System.EventHandler(this.menuCopy_Click);
+      menuCopy.Name = "menuCopy";
+      menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+      menuCopy.Size = new System.Drawing.Size(164, 22);
+      menuCopy.Text = "Copy";
+      menuCopy.Click += new System.EventHandler(MenuCopy_Click);
       // 
       // menuPaste
       // 
-      this.menuPaste.Name = "menuPaste";
-      this.menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-      this.menuPaste.Size = new System.Drawing.Size(164, 22);
-      this.menuPaste.Text = "Paste";
-      this.menuPaste.Click += new System.EventHandler(this.menuPaste_Click);
+      menuPaste.Name = "menuPaste";
+      menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+      menuPaste.Size = new System.Drawing.Size(164, 22);
+      menuPaste.Text = "Paste";
+      menuPaste.Click += new System.EventHandler(MenuPaste_Click);
       // 
       // menuDelete
       // 
-      this.menuDelete.Name = "menuDelete";
-      this.menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-      this.menuDelete.Size = new System.Drawing.Size(164, 22);
-      this.menuDelete.Text = "Delete";
-      this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
+      menuDelete.Name = "menuDelete";
+      menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+      menuDelete.Size = new System.Drawing.Size(164, 22);
+      menuDelete.Text = "Delete";
+      menuDelete.Click += new System.EventHandler(MenuDelete_Click);
       // 
       // menuSeparator1
       // 
-      this.menuSeparator1.Name = "menuSeparator1";
-      this.menuSeparator1.Size = new System.Drawing.Size(161, 6);
+      menuSeparator1.Name = "menuSeparator1";
+      menuSeparator1.Size = new System.Drawing.Size(161, 6);
       // 
       // menuSelectAll
       // 
-      this.menuSelectAll.Name = "menuSelectAll";
-      this.menuSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-      this.menuSelectAll.Size = new System.Drawing.Size(164, 22);
-      this.menuSelectAll.Text = "Select All";
-      this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
+      menuSelectAll.Name = "menuSelectAll";
+      menuSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+      menuSelectAll.Size = new System.Drawing.Size(164, 22);
+      menuSelectAll.Text = "Select All";
+      menuSelectAll.Click += new System.EventHandler(MenuSelectAll_Click);
       // 
       // menuSeparator2
       // 
-      this.menuSeparator2.Name = "menuSeparator2";
-      this.menuSeparator2.Size = new System.Drawing.Size(161, 6);
+      menuSeparator2.Name = "menuSeparator2";
+      menuSeparator2.Size = new System.Drawing.Size(161, 6);
       // 
       // menuFillWithZero
       // 
-      this.menuFillWithZero.Name = "menuFillWithZero";
-      this.menuFillWithZero.Size = new System.Drawing.Size(164, 22);
-      this.menuFillWithZero.Text = "Fill Blank Cells";
-      this.menuFillWithZero.Click += new System.EventHandler(this.menuFillWithZero_Click);
+      menuFillWithZero.Name = "menuFillWithZero";
+      menuFillWithZero.Size = new System.Drawing.Size(164, 22);
+      menuFillWithZero.Text = "Fill Blank Cells";
+      menuFillWithZero.Click += new System.EventHandler(MenuFillWithZero_Click);
       // 
       // NftDataGridView
       // 
-      this.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.NFTDataGridView_CellContextMenuStripNeeded);
-      this.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseClick);
-      this.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NFTDataGridView_CellMouseDown);
-      this.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.NFTDataGridView_CellValidating);
-      this.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.NFTDataGridView_ColumnAdded);
-      this.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.NFTDataGridView_DataError);
-      this.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.NFTDataGridView_EditingControlShowing);
-      this.dgvMenuStrip.ResumeLayout(false);
+      CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(NFTDataGridView_CellContextMenuStripNeeded);
+      CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(NFTDataGridView_CellMouseClick);
+      CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(NFTDataGridView_CellMouseDown);
+      CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(NFTDataGridView_CellValidating);
+      ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(NFTDataGridView_ColumnAdded);
+      DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(NFTDataGridView_DataError);
+      EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(NFTDataGridView_EditingControlShowing);
+      dgvMenuStrip.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
-      this.ResumeLayout(false);
+      ResumeLayout(false);
 
     }
 
@@ -149,13 +149,13 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     public bool nftReadOnly
     {
-      get { return this._nftReadOnly; }
+      get { return _nftReadOnly; }
       set
       {
-        this._nftReadOnly = value;
-        if (this._nftReadOnly == true)
+        _nftReadOnly = value;
+        if (_nftReadOnly)
         {
-          this.EditMode = DataGridViewEditMode.EditProgrammatically;
+          EditMode = DataGridViewEditMode.EditProgrammatically;
           menuCut.Enabled = false;
           menuPaste.Enabled = false;
           menuDelete.Enabled = false;
@@ -163,7 +163,7 @@ namespace Nmfs.Agepro.Gui
         }
         else //nftReadOnly is False
         {
-          this.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+          EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
           menuCut.Enabled = true;
           menuPaste.Enabled = true;
           menuDelete.Enabled = true;
@@ -180,7 +180,7 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     private void NFTDataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
     {
-      this.ContextMenuStrip = dgvMenuStrip;
+      ContextMenuStrip = dgvMenuStrip;
     }
 
     /// <summary>
@@ -192,16 +192,17 @@ namespace Nmfs.Agepro.Gui
     {
       //'right-click-context-menu-for-datagridview'        
       //Check if the user has right-clicked on the any cell of this Data Grid
-      if (e.ColumnIndex != -1 && e.RowIndex != -1 && e.Button == System.Windows.Forms.MouseButtons.Right)
+      if (e.ColumnIndex != -1 && e.RowIndex != -1 && e.Button == MouseButtons.Right)
       {
         DataGridViewCell dgvCell = (sender as DataGridView)[e.ColumnIndex, e.RowIndex];
 
-        if (!dgvCell.Selected)
+        if (dgvCell.Selected)
         {
-          dgvCell.DataGridView.ClearSelection();
-          dgvCell.DataGridView.CurrentCell = dgvCell;
-          dgvCell.Selected = true;
+          return;
         }
+        dgvCell.DataGridView.ClearSelection();
+        dgvCell.DataGridView.CurrentCell = dgvCell;
+        dgvCell.Selected = true;
 
       }
     }
@@ -213,11 +214,11 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     public void NFTDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
     {
-      if (e.Button == System.Windows.Forms.MouseButtons.Right)
+      if (e.Button == MouseButtons.Right)
       {
-        if (this.SelectedCells.Count > 0)
+        if (SelectedCells.Count > 0)
         {
-          this.ContextMenuStrip = dgvMenuStrip;
+          ContextMenuStrip = dgvMenuStrip;
         }
       }
     }
@@ -238,18 +239,19 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void menuCut_Click(object sender, EventArgs e)
+    private void MenuCut_Click(object sender, EventArgs e)
     {
       try
       {
         OnCopy();
         OnDelete();
-        this.ClearSelection();
+        ClearSelection();
       }
       catch (Exception ex)
       {
-        MessageBox.Show("An error occured." + Environment.NewLine + Environment.NewLine +
-        ex.Message.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        _ = MessageBox.Show(
+          "An error occured." + Environment.NewLine + Environment.NewLine + ex.Message.ToString(), "",
+          MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -259,7 +261,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void menuCopy_Click(object sender, EventArgs e)
+    private void MenuCopy_Click(object sender, EventArgs e)
     {
       OnCopy();
     }
@@ -270,17 +272,18 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void menuPaste_Click(object sender, EventArgs e)
+    private void MenuPaste_Click(object sender, EventArgs e)
     {
       try
       {
         OnPaste();
-        this.ClearSelection();
+        ClearSelection();
       }
       catch (Exception ex)
       {
-        MessageBox.Show("An error occured." + Environment.NewLine + Environment.NewLine +
-        ex.Message.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        _ = MessageBox.Show(
+          "An error occured." + Environment.NewLine + Environment.NewLine + ex.Message.ToString(), "",
+          MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -289,10 +292,10 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void menuDelete_Click(object sender, EventArgs e)
+    private void MenuDelete_Click(object sender, EventArgs e)
     {
       OnDelete();
-      this.ClearSelection();
+      ClearSelection();
     }
 
     /// <summary>
@@ -300,7 +303,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void menuSelectAll_Click(object sender, EventArgs e)
+    private void MenuSelectAll_Click(object sender, EventArgs e)
     {
       OnSelectAll();
     }
@@ -310,10 +313,10 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void menuFillWithZero_Click(object sender, EventArgs e)
+    private void MenuFillWithZero_Click(object sender, EventArgs e)
     {
       FillDBNullsWithZero();
-      this.ClearSelection();
+      ClearSelection();
     }
 
 
@@ -324,10 +327,9 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     private void NFTDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
     {
-      MessageBox.Show("An error occured." +
-          Environment.NewLine + Environment.NewLine +
-          e.Exception.Message.ToString(),
-          "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      _ = MessageBox.Show(
+        "An error occured." + Environment.NewLine + Environment.NewLine + e.Exception.Message.ToString(), "",
+        MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 
     /// <summary>
@@ -348,9 +350,9 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     public void OnCopy()
     {
-      if (this.CurrentCell.IsInEditMode)
+      if (CurrentCell.IsInEditMode)
       {
-        DataObject cellsToCopy = this.GetClipboardContent();
+        DataObject cellsToCopy = GetClipboardContent();
         if (cellsToCopy != null)
         {
           //There may be instances where a cell is in edit mode and part
@@ -359,13 +361,13 @@ namespace Nmfs.Agepro.Gui
         }
         else
         {
-          Clipboard.SetDataObject(this.CurrentCell.EditedFormattedValue);
+          Clipboard.SetDataObject(CurrentCell.EditedFormattedValue);
         }
 
       }
       else
       {
-        Clipboard.SetDataObject(this.GetClipboardContent());
+        Clipboard.SetDataObject(GetClipboardContent());
       }
 
     }
@@ -377,17 +379,17 @@ namespace Nmfs.Agepro.Gui
     public void OnPaste()
     {
       //throw error if no cells are selected
-      if (this.SelectedCells.Count == 0)
+      if (SelectedCells.Count == 0)
       {
-        MessageBox.Show("No cells selected. Please select a cell", "Paste",
-            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        _ = MessageBox.Show("No cells selected. Please select a cell", "Paste", MessageBoxButtons.OK,
+          MessageBoxIcon.Warning);
         return;
       }
 
       string clipboardString = Clipboard.GetText();
       string[] clipboardLines = clipboardString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-      int irow = this.CurrentCell.RowIndex;
-      int icol = this.CurrentCell.ColumnIndex;
+      int irow = CurrentCell.RowIndex;
+      int icol = CurrentCell.ColumnIndex;
       DataGridViewCell oCell;
 
       //'copy-and-paste-multiple-cells-within-datagridview'
@@ -395,18 +397,19 @@ namespace Nmfs.Agepro.Gui
       {
         string[] cellsToPaste = line.Split('\t');
         int numCellsSelected = cellsToPaste.Length;
-        if (irow < this.Rows.Count)
+        if (irow < Rows.Count)
         {
           for (int x = 0; x < numCellsSelected; x++)
           {
-            if (icol + x < this.Columns.Count)
+            if (icol + x < Columns.Count)
             {
               oCell = this[icol + x, irow];
               if (oCell is DataGridViewComboBoxCell)
               {
-                MessageBox.Show("At Row Index " + oCell.RowIndex + ", Column Index " + oCell.ColumnIndex + ":" +
-                    Environment.NewLine + "Pasting any values to this type of cell is not allowed.",
-                     "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _ = MessageBox.Show(
+                  $"At Row {oCell.RowIndex}, Column {oCell.ColumnIndex}:" +
+                  $"{Environment.NewLine}Pasting any values to this type of cell is not allowed.",
+                  "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
               }
               else
               {
@@ -436,7 +439,7 @@ namespace Nmfs.Agepro.Gui
       ///DataGridViewSelectedCellCollection (selectedCells) doesn't implement a generic 
       ///IEnumerable<DataGridViewCell>, just IEnumerable.
       ///To enumerate the values when they are of type 'Object', .Cast<DataGridViewCell>
-      var selected = this.SelectedCells.Cast<DataGridViewCell>().ToList();
+      var selected = SelectedCells.Cast<DataGridViewCell>().ToList();
       //LINQ method to get start and end indexes
       int startRow = selected.Min(x => x.RowIndex);
       int startCol = selected.Min(x => x.ColumnIndex);
@@ -448,7 +451,7 @@ namespace Nmfs.Agepro.Gui
       {
         for (int jcol = startCol; jcol < (endCol + 1); jcol++)
         {
-          this.Rows[irow].Cells[jcol].Value = DBNull.Value;
+          Rows[irow].Cells[jcol].Value = DBNull.Value;
         }
       }
 
@@ -459,7 +462,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     public void OnSelectAll()
     {
-      this.SelectAll();
+      SelectAll();
     }
 
 
@@ -468,13 +471,13 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     private void FillDBNullsWithZero()
     {
-      for (int irow = 0; irow < this.Rows.Count; irow++)
+      for (int irow = 0; irow < Rows.Count; irow++)
       {
-        for (int jcol = 0; jcol < this.Columns.Count; jcol++)
+        for (int jcol = 0; jcol < Columns.Count; jcol++)
         {
-          if (this.Rows[irow].Cells[jcol].Value is DBNull)
+          if (Rows[irow].Cells[jcol].Value is DBNull)
           {
-            this.Rows[irow].Cells[jcol].Value = 0;
+            Rows[irow].Cells[jcol].Value = 0;
           }
         }
       }
@@ -491,7 +494,7 @@ namespace Nmfs.Agepro.Gui
     {
       bool blankNullsExist = false;
 
-      foreach (DataGridViewRow dgvRow in this.Rows)
+      foreach (DataGridViewRow dgvRow in Rows)
       {
         for (int i = 0; i < dgvRow.Cells.Count; i++)
         {
