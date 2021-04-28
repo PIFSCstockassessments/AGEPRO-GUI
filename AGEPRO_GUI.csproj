@@ -241,6 +241,7 @@
       <DependentUpon>ControlStochasticWeightAge.cs</DependentUpon>
     </Compile>
     <Compile Include="src\ui\formAgepro\stochastic\StochasticAgeFleetDependency.cs" />
+    <Compile Include="src\ui\formAgepro\stochastic\StochasticWeightOfAge.cs" />
     <Compile Include="src\util\AgeproBinding.cs" />
     <Compile Include="src\util\AgeproPropertyChanged.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />

@@ -10,14 +10,6 @@ using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
-  public enum StochasticWeightOfAge
-  {
-    Jan1Weight,
-    SSBWeight,
-    MidYearWeight,
-    CatchWeight,
-    DiscardWeight
-  }
 
   public partial class ControlStochasticWeightAge : Nmfs.Agepro.Gui.ControlStochasticAge
   {
