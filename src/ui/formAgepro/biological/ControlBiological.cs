@@ -20,8 +20,8 @@ namespace Nmfs.Agepro.Gui
       InitializeComponent();
 
       maturityAge = new ControlStochasticAge();
-      maturityAge.stochasticParameterLabel = "Maturity";
-      maturityAge.isMultiFleet = false;
+      maturityAge.StochasticParameterLabel = "Maturity";
+      maturityAge.IsMultiFleet = false;
       maturityAge.Dock = DockStyle.Fill;
 
       tabMaturity.Controls.Add(maturityAge);
@@ -73,9 +73,9 @@ namespace Nmfs.Agepro.Gui
       {
         //Time Varying Fraction Mortality Data Table share the same time horizion as the
         //Maturity Data Table (since it is coming from the General Options parameters)
-        for (int iyear = 0; iyear < maturityAge.seqYears.Count(); iyear++)
+        for (int iyear = 0; iyear < maturityAge.SeqYears.Count(); iyear++)
         {
-          string colNameYear = maturityAge.seqYears[iyear];
+          string colNameYear = maturityAge.SeqYears[iyear];
           fractionMortality.Columns.Add(colNameYear);
           foreach (DataRow irow in fractionMortality.Rows)
           {

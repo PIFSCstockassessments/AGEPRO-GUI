@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -16,8 +11,8 @@ namespace Nmfs.Agepro.Gui
   {
     protected ControlStochasticAgeDataGridTable controlStochasticParamAgeFromUser;
     protected ControlStochasticAgeFromFile controlStochasticParamAgeFromFile;
-    protected bool settingParameterForControl { get; set; }
-    public string stochasticParameterLabel { get; set; }
+    protected bool SettingParameterForControl { get; set; }
+    public string StochasticParameterLabel { get; set; }
 
     public ControlStochasticAge()
     {
@@ -25,76 +20,76 @@ namespace Nmfs.Agepro.Gui
       controlStochasticParamAgeFromUser = new ControlStochasticAgeDataGridTable();
       controlStochasticParamAgeFromFile = new ControlStochasticAgeFromFile();
       radioParameterFromUser.Checked = true; //User Specfied Option Selected by Default
-      stochasticParameterLabel = "Stochastic Parameters"; //Default Fallback Text
-      settingParameterForControl = false;
+      StochasticParameterLabel = "Stochastic Parameters"; //Default Fallback Text
+      SettingParameterForControl = false;
 
       //By Default, Stochastic Parameters are fleet independent.
-      fleetDependency = StochasticAgeFleetDependency.independent;
+      FleetDependency = StochasticAgeFleetDependency.independent;
 
       controlStochasticParamAgeFromFile.timeVaryingFileChecked +=
-          new EventHandler(linkTimeVaryingUserSpecAndFromFile);
+          new EventHandler(LinkTimeVaryingUserSpecAndFromFile);
       controlStochasticParamAgeFromUser.timeVaryingCheckedChangedEvent +=
-          new EventHandler(linkTimeVaryingUserSpecAndFromFile);
+          new EventHandler(LinkTimeVaryingUserSpecAndFromFile);
     }
 
-    public bool timeVarying
+    public bool TimeVarying
     {
-      get { return controlStochasticParamAgeFromUser.timeVarying; }
-      set { controlStochasticParamAgeFromUser.timeVarying = value; }
+      get => controlStochasticParamAgeFromUser.timeVarying;
+      set => controlStochasticParamAgeFromUser.timeVarying = value;
     }
-    public bool readInputFileState
+    public bool ReadInputFileState
     {
-      get { return controlStochasticParamAgeFromUser.readInputFileState; }
-      set { controlStochasticParamAgeFromUser.readInputFileState = value; }
+      get => controlStochasticParamAgeFromUser.readInputFileState;
+      set => controlStochasticParamAgeFromUser.readInputFileState = value;
     }
-    public DataTable stochasticAgeTable
+    public DataTable StochasticAgeTable
     {
-      get { return controlStochasticParamAgeFromUser.stochasticAgeTable; }
-      set { controlStochasticParamAgeFromUser.stochasticAgeTable = value; }
+      get => controlStochasticParamAgeFromUser.stochasticAgeTable;
+      set => controlStochasticParamAgeFromUser.stochasticAgeTable = value;
     }
-    public DataTable stochasticCV
+    public DataTable StochasticCV
     {
-      get { return controlStochasticParamAgeFromUser.stochasticCV; }
-      set { controlStochasticParamAgeFromUser.stochasticCV = value; }
+      get => controlStochasticParamAgeFromUser.stochasticCV;
+      set => controlStochasticParamAgeFromUser.stochasticCV = value;
     }
-    public string[] seqYears
+    public string[] SeqYears
     {
-      get { return controlStochasticParamAgeFromUser.seqYears; }
-      set { controlStochasticParamAgeFromUser.seqYears = value; }
+      get => controlStochasticParamAgeFromUser.seqYears;
+      set => controlStochasticParamAgeFromUser.seqYears = value;
     }
-    public int numFleets
+    public int NumFleets
     {
-      get { return controlStochasticParamAgeFromUser.numFleets; }
-      set { controlStochasticParamAgeFromUser.numFleets = value; }
+      get => controlStochasticParamAgeFromUser.numFleets;
+      set => controlStochasticParamAgeFromUser.numFleets = value;
     }
-    public string stochasticDataFile
+    public string StochasticDataFile
     {
-      get { return controlStochasticParamAgeFromFile.stochasticDataFile; }
-      set { controlStochasticParamAgeFromFile.stochasticDataFile = value; }
+      get => controlStochasticParamAgeFromFile.stochasticDataFile;
+      set => controlStochasticParamAgeFromFile.stochasticDataFile = value;
     }
-    public bool isMultiFleet
+    public bool IsMultiFleet
     {
-      get { return controlStochasticParamAgeFromUser.multiFleetTable; }
-      set { controlStochasticParamAgeFromUser.multiFleetTable = value; }
+      get => controlStochasticParamAgeFromUser.multiFleetTable;
+      set => controlStochasticParamAgeFromUser.multiFleetTable = value;
     }
-    public bool enableTimeVaryingCheckBox
+    public bool EnableTimeVaryingCheckBox
     {
-      get { return controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox; }
-      set { controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value; }
+      get => controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox;
+      set => controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value;
     }
-    public StochasticAgeFleetDependency fleetDependency
+    public StochasticAgeFleetDependency FleetDependency
     {
-      get { return controlStochasticParamAgeFromUser.fleetDependent; }
-      set { controlStochasticParamAgeFromUser.fleetDependent = value; }
+      get => controlStochasticParamAgeFromUser.fleetDependent;
+      set => controlStochasticParamAgeFromUser.fleetDependent = value;
     }
 
 
-    protected void linkTimeVaryingUserSpecAndFromFile(object sender, EventArgs e)
+    protected void LinkTimeVaryingUserSpecAndFromFile(object sender, EventArgs e)
     {
-      var timeVaryingControl = sender as CheckBox;
+      CheckBox timeVaryingControl = sender as CheckBox;
       if (timeVaryingControl.Name == "checkBoxTimeVaryingFile")
       {
-        timeVarying = timeVaryingControl.Checked;
+        TimeVarying = timeVaryingControl.Checked;
       }
       else if (timeVaryingControl.Name == "checkBoxTimeVarying")
       {
@@ -106,17 +101,17 @@ namespace Nmfs.Agepro.Gui
     protected override void OnLoad(EventArgs e)
     {
       //(Re)Set Stochastic Parameter Label/Options text 
-      radioParameterFromUser.Text = "User Specified " + this.stochasticParameterLabel + " At Age";
-      radioParameterFromFile.Text = "Read " + this.stochasticParameterLabel + " From File";
-      controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = this.stochasticParameterLabel + " Of Age";
-      controlStochasticParamAgeFromFile.stochasticParameterFileLabel = this.stochasticParameterLabel;
+      radioParameterFromUser.Text = "User Specified " + StochasticParameterLabel + " At Age";
+      radioParameterFromFile.Text = "Read " + StochasticParameterLabel + " From File";
+      controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = StochasticParameterLabel + " Of Age";
+      controlStochasticParamAgeFromFile.stochasticParameterFileLabel = StochasticParameterLabel;
 
       //enforce 'Time Varying' value inbetween the 'User Specifed DataGrid Tables' & 'File Dialog' panels
-      controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Checked = timeVarying;
-      controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Enabled = enableTimeVaryingCheckBox;
+      controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Checked = TimeVarying;
+      controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Enabled = EnableTimeVaryingCheckBox;
       //In cases where Stochastic Parameters has null data source (where the 'time varying' check box should 
       //be disabled), use that disabled state for the 'from file' panel.
-      controlStochasticParamAgeFromFile.Enabled = enableTimeVaryingCheckBox;
+      controlStochasticParamAgeFromFile.Enabled = EnableTimeVaryingCheckBox;
 
       base.OnLoad(e);
     }
@@ -126,71 +121,67 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="inp">AGEPRO InputFile StochasticAge Parameters </param>
     /// <param name="generalOpt">AGEPRO InputFile General Options values</param>
-    public void LoadStochasticAgeInputData(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp,
-        Nmfs.Agepro.CoreLib.AgeproGeneral generalOpt)
+    public void LoadStochasticAgeInputData(AgeproStochasticAgeTable inp,
+        AgeproGeneral generalOpt)
     {
-      this.readInputFileState = true;
-      this.seqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
-      this.numFleets = generalOpt.NumFleets;
-      this.timeVarying = inp.TimeVarying;
-      this.stochasticDataFile = inp.DataFile;
-      this.stochasticAgeTable = Util.GetAgeproInputDataTable(this.stochasticAgeTable, inp.ByAgeData);
-      this.stochasticCV = Util.GetAgeproInputDataTable(this.stochasticCV, inp.ByAgeCV);
-      if (this.stochasticAgeTable == null)
-      {
-        this.enableTimeVaryingCheckBox = false;
-      }
-      else
-      {
-        this.enableTimeVaryingCheckBox = true;
-      }
-      this.readInputFileState = false;
+      ReadInputFileState = true;
+      SeqYears = Array.ConvertAll(generalOpt.SeqYears(), element => element.ToString());
+      NumFleets = generalOpt.NumFleets;
+      TimeVarying = inp.TimeVarying;
+      StochasticDataFile = inp.DataFile;
+      StochasticAgeTable = Util.GetAgeproInputDataTable(StochasticAgeTable, inp.ByAgeData);
+      StochasticCV = Util.GetAgeproInputDataTable(StochasticCV, inp.ByAgeCV);
+      
+      EnableTimeVaryingCheckBox = StochasticAgeTable != null;
+      ReadInputFileState = false;
     }
 
-    protected virtual void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
+    protected virtual void RadioParameterFromUser_CheckedChanged(object sender, EventArgs e)
     {
-      if (settingParameterForControl == false)
+      if (SettingParameterForControl)
       {
-        panelStochasticParameterAge.Controls.Clear();
-        controlStochasticParamAgeFromUser.Dock = DockStyle.Fill;
-        panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromUser);
+        return;
       }
+      panelStochasticParameterAge.Controls.Clear();
+      controlStochasticParamAgeFromUser.Dock = DockStyle.Fill;
+      panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromUser);
 
     }
 
-    protected virtual void radioParameterFromFile_CheckedChanged(object sender, EventArgs e)
+    protected virtual void RadioParameterFromFile_CheckedChanged(object sender, EventArgs e)
     {
-      if (settingParameterForControl == false)
+      if (SettingParameterForControl)
       {
-        panelStochasticParameterAge.Controls.Clear();
-        controlStochasticParamAgeFromFile.Dock = DockStyle.Fill;
-        panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
-
+        return;
       }
+      panelStochasticParameterAge.Controls.Clear();
+      controlStochasticParamAgeFromFile.Dock = DockStyle.Fill;
+      panelStochasticParameterAge.Controls.Add(controlStochasticParamAgeFromFile);
 
     }
 
-    public virtual void bindStochasticAgeData(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable inp)
+    public virtual void bindStochasticAgeData(AgeproStochasticAgeTable inp)
     {
-      if (readInputFileState == false)
+      if (inp is null)
       {
-        inp.FromFile = false;
-        inp.TimeVarying = this.timeVarying;
-        inp.ByAgeData = this.stochasticAgeTable;
-        inp.ByAgeCV = this.stochasticCV;
+        throw new ArgumentNullException(nameof(inp));
       }
-      else if (readInputFileState == true)
+
+      if (ReadInputFileState)
       {
         inp.FromFile = true;
-        inp.TimeVarying = this.timeVarying;
+        inp.TimeVarying = TimeVarying;
         inp.ByAgeData.Clear();
         inp.ByAgeCV.Clear();
-
       }
       else
       {
-        throw new InvalidAgeproParameterException("readInputFileState is NULL");
+        inp.FromFile = false;
+        inp.TimeVarying = TimeVarying;
+        inp.ByAgeData = StochasticAgeTable;
+        inp.ByAgeCV = StochasticCV;
       }
+
     }
 
     /// <summary>
@@ -201,44 +192,49 @@ namespace Nmfs.Agepro.Gui
     /// <param name="genOpt">Paramters from the General Options Control</param>
     /// <param name="fleetDependent">Is this Stochastic Parameter dependent on the 
     /// nubmber of fleets? Default is false.</param>
-    public void CreateStochasticParameterFallbackDataTable(Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable objNT,
-        Nmfs.Agepro.CoreLib.AgeproGeneral genOpt,
-        StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
+    public void CreateStochasticParameterFallbackDataTable(
+      AgeproStochasticAgeTable objNT,
+      AgeproGeneral genOpt,
+      StochasticAgeFleetDependency fleetDependent = StochasticAgeFleetDependency.independent)
     {
-      this.numFleets = Convert.ToInt32(genOpt.NumFleets);
-      this.seqYears = Array.ConvertAll(genOpt.SeqYears(), element => element.ToString());
-      this.readInputFileState = true;
+      NumFleets = Convert.ToInt32(genOpt.NumFleets);
+      SeqYears = Array.ConvertAll(genOpt.SeqYears(), element => element.ToString());
+
+      ReadInputFileState = true;
+
       //Reset Tables if they were used before
-      if (this.stochasticAgeTable != null)
+      if (StochasticAgeTable != null)
       {
-        this.stochasticAgeTable.Reset();
-        this.stochasticCV.Reset();
+        StochasticAgeTable.Reset();
+        StochasticCV.Reset();
       }
 
-      if (this.timeVarying == true)
+      if (TimeVarying)
       {
-        this.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(),
-            genOpt.SeqYears().Count(), this.numFleets);
+        StochasticAgeTable = CreateFallbackAgeDataTable(
+          genOpt.NumAges(),
+          genOpt.SeqYears().Count(),
+          NumFleets);
       }
       else
       {
         if (fleetDependent == StochasticAgeFleetDependency.dependent)
         {
-          this.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, this.numFleets);
-          this.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, this.numFleets);
+          StochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, NumFleets);
+          StochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, NumFleets);
         }
         else
         {
-          this.stochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
-          this.stochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
+          StochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
+          StochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
         }
 
       }
 
-      objNT.ByAgeData = this.stochasticAgeTable;
-      objNT.ByAgeCV = this.stochasticCV;
+      objNT.ByAgeData = StochasticAgeTable;
+      objNT.ByAgeCV = StochasticCV;
 
-      this.readInputFileState = false;
+      ReadInputFileState = false;
 
     }
 
@@ -258,13 +254,13 @@ namespace Nmfs.Agepro.Gui
 
       for (int icol = 0; icol < numAges; icol++)
       {
-        fallbackTable.Columns.Add("Age" + " " + (icol + 1));
+        _ = fallbackTable.Columns.Add("Age" + " " + (icol + 1));
       }
       for (int row = 0; row < numFleetYears; row++)
       {
-        fallbackTable.Rows.Add();
+        _ = fallbackTable.Rows.Add();
       }
-      Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(fallbackTable);
+      _ = Extensions.FillDBNullCellsWithZero(fallbackTable);
 
       return fallbackTable;
     }
@@ -273,20 +269,17 @@ namespace Nmfs.Agepro.Gui
 
     public virtual bool ValidateStochasticParameter(int numAges)
     {
-      bool isVaildParameter = false;
-      if (this.radioParameterFromUser.Checked)
+      if (radioParameterFromUser.Checked)
       {
         //check if Data Grid has Blank or Null Cells 
         if (controlStochasticParamAgeFromUser.StochasticAgeDataGridTableContainMissingData())
         {
-          MessageBox.Show(this.stochasticParameterLabel + " At Age Data Table has " +
-              "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          _ = MessageBox.Show(StochasticParameterLabel + " At Age Data Table has " + "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
           return false;
         }
         if (controlStochasticParamAgeFromUser.StochasticCVDataGridTableContainMissingData())
         {
-          MessageBox.Show(this.stochasticParameterLabel + " CV Data Table has" +
-              "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          _ = MessageBox.Show(StochasticParameterLabel + " CV Data Table has" + "blank or missing values.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
           return false;
         }
 
@@ -294,16 +287,14 @@ namespace Nmfs.Agepro.Gui
       else
       {
         //If the Stochastic Table Data File Doesn't Exist
-        if (!(System.IO.File.Exists(stochasticDataFile)))
+        if (!System.IO.File.Exists(StochasticDataFile))
         {
-          MessageBox.Show(this.stochasticParameterLabel + " stochastic table file does not exist",
-              "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          _ = MessageBox.Show(StochasticParameterLabel + " stochastic table file does not exist", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
           return false;
         }
 
       }
-      isVaildParameter = true;
-      return isVaildParameter;
+      return true;
     }
 
     public virtual bool ValidateStochasticParameter(int numAges, double upperBounds)
@@ -315,28 +306,25 @@ namespace Nmfs.Agepro.Gui
 
       //Get DataTables
       DataTable stochasticTableToCheckBounds;
-      if (this.radioParameterFromUser.Checked)
+      if (radioParameterFromUser.Checked)
       {
-        stochasticTableToCheckBounds = this.stochasticAgeTable;
+        stochasticTableToCheckBounds = StochasticAgeTable;
       }
       else
       {
         //Read in stochastic table file for validation.
         stochasticTableToCheckBounds =
-            Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable.ReadStochasticTableFile(stochasticDataFile, numAges);
+            AgeproStochasticAgeTable.ReadStochasticTableFile(StochasticDataFile, numAges);
       }
 
       //Check if a cell/item has excceded the upper bound.     
       foreach (DataRow rowLines in stochasticTableToCheckBounds.Rows)
       {
-        foreach (var item in rowLines.ItemArray)
+        foreach (object item in rowLines.ItemArray)
         {
           if (Convert.ToDouble(item) > upperBounds)
           {
-            MessageBox.Show(this.stochasticParameterLabel + " at Age excceds the Upper Bound of " +
-            upperBounds + Environment.NewLine +
-            "Upper bounds limit for " + this.stochasticParameterLabel + " can be set in 'Misc. Options' panel.",
-            "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _ = MessageBox.Show(StochasticParameterLabel + " at Age excceds the Upper Bound of " + upperBounds + Environment.NewLine + "Upper bounds limit for " + StochasticParameterLabel + " can be set in 'Misc. Options' panel.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
           }
         }

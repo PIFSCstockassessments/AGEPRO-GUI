@@ -91,7 +91,7 @@
             this.radioParameterFromFile.TabStop = true;
             this.radioParameterFromFile.Text = "Read Stochtastic Parameter From File";
             this.radioParameterFromFile.UseVisualStyleBackColor = true;
-            this.radioParameterFromFile.CheckedChanged += new System.EventHandler(this.radioParameterFromFile_CheckedChanged);
+            this.radioParameterFromFile.CheckedChanged += new System.EventHandler(this.RadioParameterFromFile_CheckedChanged);
             // 
             // radioParameterFromUser
             // 
@@ -103,7 +103,7 @@
             this.radioParameterFromUser.TabStop = true;
             this.radioParameterFromUser.Text = "User Specified Stochastic Parameter at Age";
             this.radioParameterFromUser.UseVisualStyleBackColor = true;
-            this.radioParameterFromUser.CheckedChanged += new System.EventHandler(this.radioParameterFromUser_CheckedChanged);
+            this.radioParameterFromUser.CheckedChanged += new System.EventHandler(this.RadioParameterFromUser_CheckedChanged);
             // 
             // ControlStochasticAge
             // 

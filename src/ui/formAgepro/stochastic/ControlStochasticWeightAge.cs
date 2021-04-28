@@ -35,7 +35,7 @@ namespace Nmfs.Agepro.Gui
     {
       InitializeComponent();
 
-      this.stochasticParameterLabel = "Weights";
+      this.StochasticParameterLabel = "Weights";
       this.validWeightAgeOpt = weightAgeOptions;
 
       //Add Controls to Layout Programmically 
@@ -146,16 +146,16 @@ namespace Nmfs.Agepro.Gui
       base.OnLoad(e);
     }
 
-    protected override void radioParameterFromUser_CheckedChanged(object sender, EventArgs e)
+    protected override void RadioParameterFromUser_CheckedChanged(object sender, EventArgs e)
     {
       this.indexWeightOption = 0;
-      base.radioParameterFromUser_CheckedChanged(sender, e);
+      base.RadioParameterFromUser_CheckedChanged(sender, e);
     }
 
-    protected override void radioParameterFromFile_CheckedChanged(object sender, EventArgs e)
+    protected override void RadioParameterFromFile_CheckedChanged(object sender, EventArgs e)
     {
       this.indexWeightOption = 1;
-      base.radioParameterFromFile_CheckedChanged(sender, e);
+      base.RadioParameterFromFile_CheckedChanged(sender, e);
     }
 
     private void radioWeightsFromJan1_CheckedChanged(object sender, EventArgs e)
@@ -195,15 +195,15 @@ namespace Nmfs.Agepro.Gui
         if (this.indexWeightOption == 0)
         {
           inpWeight.FromFile = false;
-          inpWeight.TimeVarying = this.timeVarying;
-          inpWeight.ByAgeData = this.stochasticAgeTable;
-          inpWeight.ByAgeCV = this.stochasticCV;
+          inpWeight.TimeVarying = this.TimeVarying;
+          inpWeight.ByAgeData = this.StochasticAgeTable;
+          inpWeight.ByAgeCV = this.StochasticCV;
 
         }
         else if (this.indexWeightOption == 1)
         {
           inpWeight.FromFile = true;
-          inpWeight.TimeVarying = this.timeVarying;
+          inpWeight.TimeVarying = this.TimeVarying;
           inpWeight.ByAgeData.Clear();
           inpWeight.ByAgeCV.Clear();
         }
@@ -255,9 +255,9 @@ namespace Nmfs.Agepro.Gui
       //Create a empty DataTable if there input file DataTable (for 
       //weightAgeTable CVtable is Null)
       //if fallbackNullDataTable is true
-      if (this.stochasticAgeTable == null && this.indexWeightOption == 0)
+      if (this.StochasticAgeTable == null && this.indexWeightOption == 0)
       {
-        this.CreateStochasticParameterFallbackDataTable((AgeproStochasticAgeTable)inp, generalOpt, this.fleetDependency);
+        this.CreateStochasticParameterFallbackDataTable((AgeproStochasticAgeTable)inp, generalOpt, this.FleetDependency);
       }
 
     }

@@ -80,29 +80,29 @@ namespace Nmfs.Agepro.Gui
       int initalNumAges = controlGeneralOptions.generalFirstAgeClass; //Spinbox Value
 
       //Biological Stochastic Options
-      controlFisherySelectivity.stochasticParameterLabel = "Fishery Selectivity";
-      controlFisherySelectivity.isMultiFleet = true;
-      controlFisherySelectivity.fleetDependency = StochasticAgeFleetDependency.dependent;
-      controlDiscardFraction.stochasticParameterLabel = "Discard Fraction";
-      controlDiscardFraction.isMultiFleet = true;
-      controlDiscardFraction.fleetDependency = StochasticAgeFleetDependency.dependent;
-      controlNaturalMortality.stochasticParameterLabel = "Natural Mortality";
-      controlNaturalMortality.isMultiFleet = false;
-      controlNaturalMortality.fleetDependency = StochasticAgeFleetDependency.independent;
+      controlFisherySelectivity.StochasticParameterLabel = "Fishery Selectivity";
+      controlFisherySelectivity.IsMultiFleet = true;
+      controlFisherySelectivity.FleetDependency = StochasticAgeFleetDependency.dependent;
+      controlDiscardFraction.StochasticParameterLabel = "Discard Fraction";
+      controlDiscardFraction.IsMultiFleet = true;
+      controlDiscardFraction.FleetDependency = StochasticAgeFleetDependency.dependent;
+      controlNaturalMortality.StochasticParameterLabel = "Natural Mortality";
+      controlNaturalMortality.IsMultiFleet = false;
+      controlNaturalMortality.FleetDependency = StochasticAgeFleetDependency.independent;
 
 
 
       //Weight Age Options
-      controlJan1Weight.isMultiFleet = false;
-      controlJan1Weight.fleetDependency = StochasticAgeFleetDependency.independent;
-      controlSSBWeight.isMultiFleet = false;
-      controlSSBWeight.fleetDependency = StochasticAgeFleetDependency.independent;
-      controlMidYearWeight.isMultiFleet = false;
-      controlMidYearWeight.fleetDependency = StochasticAgeFleetDependency.independent;
-      controlCatchWeight.isMultiFleet = true;
-      controlCatchWeight.fleetDependency = StochasticAgeFleetDependency.dependent;
-      controlDiscardWeight.isMultiFleet = true;
-      controlDiscardWeight.fleetDependency = StochasticAgeFleetDependency.dependent;
+      controlJan1Weight.IsMultiFleet = false;
+      controlJan1Weight.FleetDependency = StochasticAgeFleetDependency.independent;
+      controlSSBWeight.IsMultiFleet = false;
+      controlSSBWeight.FleetDependency = StochasticAgeFleetDependency.independent;
+      controlMidYearWeight.IsMultiFleet = false;
+      controlMidYearWeight.FleetDependency = StochasticAgeFleetDependency.independent;
+      controlCatchWeight.IsMultiFleet = true;
+      controlCatchWeight.FleetDependency = StochasticAgeFleetDependency.dependent;
+      controlDiscardWeight.IsMultiFleet = true;
+      controlDiscardWeight.FleetDependency = StochasticAgeFleetDependency.dependent;
 
       controlJan1Weight.weightAgeType = StochasticWeightOfAge.Jan1Weight;
       controlSSBWeight.weightAgeType = StochasticWeightOfAge.SSBWeight;
@@ -224,15 +224,15 @@ namespace Nmfs.Agepro.Gui
         }
         else
         {   //Otherwise remove ("reset") any dataGridView existing data. 
-          if (controlDiscardFraction.stochasticAgeTable != null)
+          if (controlDiscardFraction.StochasticAgeTable != null)
           {
-            controlDiscardFraction.stochasticAgeTable.Reset();
-            controlDiscardFraction.stochasticCV.Reset();
+            controlDiscardFraction.StochasticAgeTable.Reset();
+            controlDiscardFraction.StochasticCV.Reset();
           }
-          if (controlDiscardWeight.stochasticAgeTable != null)
+          if (controlDiscardWeight.StochasticAgeTable != null)
           {
-            controlDiscardWeight.stochasticAgeTable.Reset();
-            controlDiscardWeight.stochasticCV.Reset();
+            controlDiscardWeight.StochasticAgeTable.Reset();
+            controlDiscardWeight.StochasticCV.Reset();
           }
         }
 
