@@ -104,22 +104,22 @@ namespace Nmfs.Agepro.Gui
       controlDiscardWeight.IsMultiFleet = true;
       controlDiscardWeight.FleetDependency = StochasticAgeFleetDependency.dependent;
 
-      controlJan1Weight.weightAgeType = StochasticWeightOfAge.Jan1Weight;
-      controlSSBWeight.weightAgeType = StochasticWeightOfAge.SSBWeight;
-      controlMidYearWeight.weightAgeType = StochasticWeightOfAge.MidYearWeight;
-      controlCatchWeight.weightAgeType = StochasticWeightOfAge.CatchWeight;
-      controlDiscardWeight.weightAgeType = StochasticWeightOfAge.DiscardWeight;
+      controlJan1Weight.WeightAgeType = StochasticWeightOfAge.Jan1Weight;
+      controlSSBWeight.WeightAgeType = StochasticWeightOfAge.SSBWeight;
+      controlMidYearWeight.WeightAgeType = StochasticWeightOfAge.MidYearWeight;
+      controlCatchWeight.WeightAgeType = StochasticWeightOfAge.CatchWeight;
+      controlDiscardWeight.WeightAgeType = StochasticWeightOfAge.DiscardWeight;
 
-      controlJan1Weight.showJan1WeightsOption = false;
-      controlJan1Weight.showSSBWeightsOption = false;
+      controlJan1Weight.ShowJan1WeightsOption = false;
+      controlJan1Weight.ShowSSBWeightsOption = false;
       controlJan1Weight.showMidYearWeightsOption = false;
-      controlJan1Weight.showCatchWeightsOption = false;
-      controlSSBWeight.showSSBWeightsOption = false;
+      controlJan1Weight.ShowCatchWeightsOption = false;
+      controlSSBWeight.ShowSSBWeightsOption = false;
       controlSSBWeight.showMidYearWeightsOption = false;
-      controlSSBWeight.showCatchWeightsOption = false;
+      controlSSBWeight.ShowCatchWeightsOption = false;
       controlMidYearWeight.showMidYearWeightsOption = false;
-      controlMidYearWeight.showCatchWeightsOption = false;
-      controlCatchWeight.showCatchWeightsOption = false;
+      controlMidYearWeight.ShowCatchWeightsOption = false;
+      controlCatchWeight.ShowCatchWeightsOption = false;
 
       //Instatiate Startup State:
       //Disable Navigation Tree Panel, AGEPRO run options, etc...
@@ -352,19 +352,19 @@ namespace Nmfs.Agepro.Gui
           this.inputData.CaseID = controlGeneralOptions.generalModelId;
 
           //Natural Mortality
-          controlJan1Weight.bindStochasticAgeData(this.inputData.Jan1StockWeight);
-          controlSSBWeight.bindStochasticAgeData(this.inputData.SSBWeight);
-          controlMidYearWeight.bindStochasticAgeData(this.inputData.MeanWeight);
-          controlCatchWeight.bindStochasticAgeData(this.inputData.CatchWeight);
-          controlBiological.maturityAge.bindStochasticAgeData(this.inputData.BiologicalMaturity);
+          controlJan1Weight.BindStochasticAgeData(this.inputData.Jan1StockWeight);
+          controlSSBWeight.BindStochasticAgeData(this.inputData.SSBWeight);
+          controlMidYearWeight.BindStochasticAgeData(this.inputData.MeanWeight);
+          controlCatchWeight.BindStochasticAgeData(this.inputData.CatchWeight);
+          controlBiological.maturityAge.BindStochasticAgeData(this.inputData.BiologicalMaturity);
           this.inputData.BiologicalTSpawn.TimeVarying = controlBiological.fractionMortalityTimeVarying;
-          controlFisherySelectivity.bindStochasticAgeData(this.inputData.Fishery);
-          controlNaturalMortality.bindStochasticAgeData(this.inputData.NaturalMortality);
+          controlFisherySelectivity.BindStochasticAgeData(this.inputData.Fishery);
+          controlNaturalMortality.BindStochasticAgeData(this.inputData.NaturalMortality);
 
           if (this.inputData.General.HasDiscards == true)
           {
-            controlDiscardWeight.bindStochasticAgeData(this.inputData.DiscardWeight);
-            controlDiscardFraction.bindStochasticAgeData(this.inputData.DiscardFraction);
+            controlDiscardWeight.BindStochasticAgeData(this.inputData.DiscardWeight);
+            controlDiscardFraction.BindStochasticAgeData(this.inputData.DiscardFraction);
           }
 
           //Harvest Scenario: Rebuilder/PStar

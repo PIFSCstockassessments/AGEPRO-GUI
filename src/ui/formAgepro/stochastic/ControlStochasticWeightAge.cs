@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using Nmfs.Agepro.CoreLib;
@@ -11,128 +8,133 @@ using Nmfs.Agepro.CoreLib;
 namespace Nmfs.Agepro.Gui
 {
 
-  public partial class ControlStochasticWeightAge : Nmfs.Agepro.Gui.ControlStochasticAge
+  public partial class ControlStochasticWeightAge : ControlStochasticAge
   {
-    private System.Windows.Forms.RadioButton radioWeightsFromCatch;
-    private System.Windows.Forms.RadioButton radioWeightsFromMidYear;
-    private System.Windows.Forms.RadioButton radioWeightsFromSSB;
-    private System.Windows.Forms.RadioButton radioWeightsFromJan1;
+    public int IndexWeightOption { get; set; }
+    public StochasticWeightOfAge WeightAgeType { get; set; }
+    public RadioButton RadioWeightsFromCatch { get; set; }
+    public RadioButton RadioWeightsFromMidYear { get; set; }
+    public RadioButton RadioWeightsFromSSB { get; set; }
+    public RadioButton RadioWeightsFromJan1 { get; set; }
+    public int[] ValidWeightAgeOpt { get; set; }
+    public Dictionary<int, RadioButton> WeightOptionDictionary { get; set; }
 
-    public int indexWeightOption { get; set; }
-    public Dictionary<int, RadioButton> weightOptionDictionary;
-    public StochasticWeightOfAge weightAgeType { get; set; }
-    public int[] validWeightAgeOpt;
+    public bool ShowJan1WeightsOption
+    {
+      get => RadioWeightsFromJan1.Visible;
+      set => RadioWeightsFromJan1.Visible = value;
+    }
+    public bool ShowSSBWeightsOption
+    {
+      get => RadioWeightsFromSSB.Visible;
+      set => RadioWeightsFromSSB.Visible = value;
+    }
+    public bool showMidYearWeightsOption
+    {
+      get => RadioWeightsFromMidYear.Visible;
+      set => RadioWeightsFromMidYear.Visible = value;
+    }
+    public bool ShowCatchWeightsOption
+    {
+      get => RadioWeightsFromCatch.Visible;
+      set => RadioWeightsFromCatch.Visible = value;
+    }
 
     public ControlStochasticWeightAge(int[] weightAgeOptions)
     {
       InitializeComponent();
 
-      this.StochasticParameterLabel = "Weights";
-      this.validWeightAgeOpt = weightAgeOptions;
+      StochasticParameterLabel = "Weights";
+      ValidWeightAgeOpt = weightAgeOptions;
 
       //Add Controls to Layout Programmically 
-      this.SuspendLayout();
+      SuspendLayout();
       tableLayoutStochasticAgePanel.RowStyles[1].SizeType = SizeType.Percent;
       tableLayoutStochasticAgePanel.RowStyles[1].Height = 19;
       tableLayoutStochasticAgePanel.RowStyles[2].SizeType = SizeType.Percent;
       tableLayoutStochasticAgePanel.RowStyles[2].Height = 81;
 
-      this.radioWeightsFromJan1 = new System.Windows.Forms.RadioButton();
-      this.radioWeightsFromSSB = new System.Windows.Forms.RadioButton();
-      this.radioWeightsFromMidYear = new System.Windows.Forms.RadioButton();
-      this.radioWeightsFromCatch = new System.Windows.Forms.RadioButton();
+      RadioWeightsFromJan1 = new RadioButton();
+      RadioWeightsFromSSB = new RadioButton();
+      RadioWeightsFromMidYear = new RadioButton();
+      RadioWeightsFromCatch = new RadioButton();
 
       groupOptions.Size = new Size(733, 89);
 
       // 
       // radioWeightsFromJan1
       // 
-      this.radioWeightsFromJan1.AutoSize = true;
-      this.radioWeightsFromJan1.Location = new System.Drawing.Point(25, 44);
-      this.radioWeightsFromJan1.Name = "radioWeightsFromJan1";
-      this.radioWeightsFromJan1.Size = new System.Drawing.Size(154, 17);
-      this.radioWeightsFromJan1.TabIndex = 2;
-      this.radioWeightsFromJan1.TabStop = true;
-      this.radioWeightsFromJan1.Text = "Use JAN-1 Weights At Age";
-      this.radioWeightsFromJan1.UseVisualStyleBackColor = true;
-      this.radioWeightsFromJan1.CheckedChanged += new System.EventHandler(this.radioWeightsFromJan1_CheckedChanged);
+      RadioWeightsFromJan1.AutoSize = true;
+      RadioWeightsFromJan1.Location = new Point(25, 44);
+      RadioWeightsFromJan1.Name = "radioWeightsFromJan1";
+      RadioWeightsFromJan1.Size = new Size(154, 17);
+      RadioWeightsFromJan1.TabIndex = 2;
+      RadioWeightsFromJan1.TabStop = true;
+      RadioWeightsFromJan1.Text = "Use JAN-1 Weights At Age";
+      RadioWeightsFromJan1.UseVisualStyleBackColor = true;
+      RadioWeightsFromJan1.CheckedChanged += new EventHandler(RadioWeightsFromJan1_CheckedChanged);
       // 
       // radioWeightsFromSSB
       // 
-      this.radioWeightsFromSSB.AutoSize = true;
-      this.radioWeightsFromSSB.Location = new System.Drawing.Point(301, 44);
-      this.radioWeightsFromSSB.Name = "radioWeightsFromSSB";
-      this.radioWeightsFromSSB.Size = new System.Drawing.Size(146, 17);
-      this.radioWeightsFromSSB.TabIndex = 3;
-      this.radioWeightsFromSSB.TabStop = true;
-      this.radioWeightsFromSSB.Text = "Use SSB Weights At Age";
-      this.radioWeightsFromSSB.UseVisualStyleBackColor = true;
-      this.radioWeightsFromSSB.CheckedChanged += new System.EventHandler(this.radioWeightsFromSSB_CheckedChanged);
+      RadioWeightsFromSSB.AutoSize = true;
+      RadioWeightsFromSSB.Location = new Point(301, 44);
+      RadioWeightsFromSSB.Name = "radioWeightsFromSSB";
+      RadioWeightsFromSSB.Size = new Size(146, 17);
+      RadioWeightsFromSSB.TabIndex = 3;
+      RadioWeightsFromSSB.TabStop = true;
+      RadioWeightsFromSSB.Text = "Use SSB Weights At Age";
+      RadioWeightsFromSSB.UseVisualStyleBackColor = true;
+      RadioWeightsFromSSB.CheckedChanged += new EventHandler(RadioWeightsFromSSB_CheckedChanged);
       // 
       // radioWeightsFromMidYear
       // 
-      this.radioWeightsFromMidYear.AutoSize = true;
-      this.radioWeightsFromMidYear.Location = new System.Drawing.Point(25, 68);
-      this.radioWeightsFromMidYear.Name = "radioWeightsFromMidYear";
-      this.radioWeightsFromMidYear.Size = new System.Drawing.Size(166, 17);
-      this.radioWeightsFromMidYear.TabIndex = 4;
-      this.radioWeightsFromMidYear.TabStop = true;
-      this.radioWeightsFromMidYear.Text = "Use Mid-Year Weights At Age";
-      this.radioWeightsFromMidYear.UseVisualStyleBackColor = true;
-      this.radioWeightsFromMidYear.CheckedChanged += new System.EventHandler(this.radioWeightsFromMidYear_CheckedChanged);
+      RadioWeightsFromMidYear.AutoSize = true;
+      RadioWeightsFromMidYear.Location = new Point(25, 68);
+      RadioWeightsFromMidYear.Name = "radioWeightsFromMidYear";
+      RadioWeightsFromMidYear.Size = new Size(166, 17);
+      RadioWeightsFromMidYear.TabIndex = 4;
+      RadioWeightsFromMidYear.TabStop = true;
+      RadioWeightsFromMidYear.Text = "Use Mid-Year Weights At Age";
+      RadioWeightsFromMidYear.UseVisualStyleBackColor = true;
+      RadioWeightsFromMidYear.CheckedChanged += new EventHandler(RadioWeightsFromMidYear_CheckedChanged);
       // 
       // radioWeightsFromCatch
       // 
-      this.radioWeightsFromCatch.AutoSize = true;
-      this.radioWeightsFromCatch.Location = new System.Drawing.Point(301, 68);
-      this.radioWeightsFromCatch.Name = "radioWeightsFromCatch";
-      this.radioWeightsFromCatch.Size = new System.Drawing.Size(152, 17);
-      this.radioWeightsFromCatch.TabIndex = 5;
-      this.radioWeightsFromCatch.TabStop = true;
-      this.radioWeightsFromCatch.Text = "Use Catch Weights At Age";
-      this.radioWeightsFromCatch.UseVisualStyleBackColor = true;
-      this.radioWeightsFromCatch.CheckedChanged += new System.EventHandler(this.radioWeightsFromCatch_CheckedChanged);
+      RadioWeightsFromCatch.AutoSize = true;
+      RadioWeightsFromCatch.Location = new Point(301, 68);
+      RadioWeightsFromCatch.Name = "radioWeightsFromCatch";
+      RadioWeightsFromCatch.Size = new Size(152, 17);
+      RadioWeightsFromCatch.TabIndex = 5;
+      RadioWeightsFromCatch.TabStop = true;
+      RadioWeightsFromCatch.Text = "Use Catch Weights At Age";
+      RadioWeightsFromCatch.UseVisualStyleBackColor = true;
+      RadioWeightsFromCatch.CheckedChanged += new EventHandler(RadioWeightsFromCatch_CheckedChanged);
 
 
       //Add to optionsGroupBox
-      this.groupOptions.Controls.Add(this.radioWeightsFromJan1);
-      this.groupOptions.Controls.Add(this.radioWeightsFromSSB);
-      this.groupOptions.Controls.Add(this.radioWeightsFromMidYear);
-      this.groupOptions.Controls.Add(this.radioWeightsFromCatch);
+      groupOptions.Controls.Add(RadioWeightsFromJan1);
+      groupOptions.Controls.Add(RadioWeightsFromSSB);
+      groupOptions.Controls.Add(RadioWeightsFromMidYear);
+      groupOptions.Controls.Add(RadioWeightsFromCatch);
 
-      this.ResumeLayout();
+      ResumeLayout();
 
-      SetWeightOptionDictionary();
-
-
-    }
-
-    public bool showJan1WeightsOption
-    {
-      get { return radioWeightsFromJan1.Visible; }
-      set { radioWeightsFromJan1.Visible = value; }
-    }
-    public bool showSSBWeightsOption
-    {
-      get { return radioWeightsFromSSB.Visible; }
-      set { radioWeightsFromSSB.Visible = value; }
-    }
-    public bool showMidYearWeightsOption
-    {
-      get { return radioWeightsFromMidYear.Visible; }
-      set { radioWeightsFromMidYear.Visible = value; }
-    }
-    public bool showCatchWeightsOption
-    {
-      get { return radioWeightsFromCatch.Visible; }
-      set { radioWeightsFromCatch.Visible = value; }
+      WeightOptionDictionary = new Dictionary<int, RadioButton>
+      {
+        { 0, radioParameterFromUser },
+        { 1, radioParameterFromFile },
+        { -1, RadioWeightsFromJan1 },
+        { -2, RadioWeightsFromSSB },
+        { -3, RadioWeightsFromMidYear },
+        { -4, RadioWeightsFromCatch }
+      };
     }
 
     protected override void OnLoad(EventArgs e)
     {
-      if (weightOptionDictionary.ContainsKey(indexWeightOption))
+      if (WeightOptionDictionary.ContainsKey(IndexWeightOption))
       {
-        weightOptionDictionary[indexWeightOption].Checked = true;
+        WeightOptionDictionary[IndexWeightOption].Checked = true;
       }
 
       base.OnLoad(e);
@@ -140,90 +142,78 @@ namespace Nmfs.Agepro.Gui
 
     protected override void RadioParameterFromUser_CheckedChanged(object sender, EventArgs e)
     {
-      this.indexWeightOption = 0;
+      IndexWeightOption = 0;
       base.RadioParameterFromUser_CheckedChanged(sender, e);
     }
 
     protected override void RadioParameterFromFile_CheckedChanged(object sender, EventArgs e)
     {
-      this.indexWeightOption = 1;
+      IndexWeightOption = 1;
       base.RadioParameterFromFile_CheckedChanged(sender, e);
     }
 
-    private void radioWeightsFromJan1_CheckedChanged(object sender, EventArgs e)
+    private void RadioWeightsFromJan1_CheckedChanged(object sender, EventArgs e)
     {
-      this.indexWeightOption = -1;
+      IndexWeightOption = -1;
       panelStochasticParameterAge.Controls.Clear();
     }
 
-    private void radioWeightsFromSSB_CheckedChanged(object sender, EventArgs e)
+    private void RadioWeightsFromSSB_CheckedChanged(object sender, EventArgs e)
     {
-      this.indexWeightOption = -2;
+      IndexWeightOption = -2;
       panelStochasticParameterAge.Controls.Clear();
     }
 
-    private void radioWeightsFromMidYear_CheckedChanged(object sender, EventArgs e)
+    private void RadioWeightsFromMidYear_CheckedChanged(object sender, EventArgs e)
     {
-      this.indexWeightOption = -3;
+      IndexWeightOption = -3;
       panelStochasticParameterAge.Controls.Clear();
     }
 
-    private void radioWeightsFromCatch_CheckedChanged(object sender, EventArgs e)
+    private void RadioWeightsFromCatch_CheckedChanged(object sender, EventArgs e)
     {
-      this.indexWeightOption = -4;
+      IndexWeightOption = -4;
       panelStochasticParameterAge.Controls.Clear();
     }
 
-
-    public override void bindStochasticAgeData(CoreLib.AgeproStochasticAgeTable inp)
+    /// <summary>
+    /// Bind Stochastic Data Object data to interface values. Other (negative) weight age 
+    /// </summary>
+    /// <param name="inp"></param>
+    public override void BindStochasticAgeData(AgeproStochasticAgeTable inp)
     {
-      if (validWeightAgeOpt.Contains(indexWeightOption))
+      if (inp is null)
       {
-
-        Nmfs.Agepro.CoreLib.AgeproWeightAgeTable inpWeight = inp as CoreLib.AgeproWeightAgeTable;
-        inpWeight.weightOpt = this.indexWeightOption;
-        inpWeight.validOpt = this.validWeightAgeOpt;
-
-        if (this.indexWeightOption == 0)
-        {
-          inpWeight.FromFile = false;
-          inpWeight.TimeVarying = this.TimeVarying;
-          inpWeight.ByAgeData = this.StochasticAgeTable;
-          inpWeight.ByAgeCV = this.StochasticCV;
-
-        }
-        else if (this.indexWeightOption == 1)
-        {
-          inpWeight.FromFile = true;
-          inpWeight.TimeVarying = this.TimeVarying;
-          inpWeight.ByAgeData.Clear();
-          inpWeight.ByAgeCV.Clear();
-        }
-
-
+        throw new ArgumentNullException(nameof(inp));
       }
-      else
+
+      AgeproWeightAgeTable inpWeight = inp as AgeproWeightAgeTable;
+      inpWeight.weightOpt = IndexWeightOption;
+      inpWeight.validOpt = ValidWeightAgeOpt;
+
+      if (!ValidWeightAgeOpt.Contains(IndexWeightOption))
       {
         throw new InvalidAgeproGuiParameterException("Invalid weight of at Age option.");
       }
 
+      if (IndexWeightOption == 0)
+      {
+        inpWeight.FromFile = false;
+        inpWeight.TimeVarying = TimeVarying;
+        inpWeight.ByAgeData = StochasticAgeTable;
+        inpWeight.ByAgeCV = StochasticCV;
+
+      }
+      else if (IndexWeightOption == 1)
+      {
+        inpWeight.FromFile = true;
+        inpWeight.TimeVarying = TimeVarying;
+        inpWeight.ByAgeData.Clear();
+        inpWeight.ByAgeCV.Clear();
+      }
+
+
     }
-    /// <summary>
-    /// Creates the Stochastic Weights of Option Dictionary Object.
-    /// </summary>
-    private void SetWeightOptionDictionary()
-    {
-      weightOptionDictionary = new Dictionary<int, RadioButton>();
-
-      weightOptionDictionary.Add(0, this.radioParameterFromUser);
-      weightOptionDictionary.Add(1, this.radioParameterFromFile);
-      weightOptionDictionary.Add(-1, this.radioWeightsFromJan1);
-      weightOptionDictionary.Add(-2, this.radioWeightsFromSSB);
-      weightOptionDictionary.Add(-3, this.radioWeightsFromMidYear);
-      weightOptionDictionary.Add(-4, this.radioWeightsFromCatch);
-
-    }
-
 
     /// <summary>
     /// Generalized method to load Stochastic Weight of Age Parameters from AGEPRO Input Data Files.
@@ -233,13 +223,13 @@ namespace Nmfs.Agepro.Gui
     public void LoadStochasticWeightAgeInputData(AgeproWeightAgeTable inp, AgeproGeneral generalOpt)
     {
 
-      this.indexWeightOption = inp.weightOpt;
+      IndexWeightOption = inp.weightOpt;
       //Call StochasticAgeInputData 
-      base.LoadStochasticAgeInputData((Nmfs.Agepro.CoreLib.AgeproStochasticAgeTable)inp, generalOpt);
+      LoadStochasticAgeInputData(inp, generalOpt);
 
       //For Discard weight, if "Discards are Present" is not selected, exit the function
       //(to prevent fallback data table to be generated.)
-      if (this.weightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.HasDiscards == false)
+      if (WeightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.HasDiscards == false)
       {
         return;
       }
@@ -247,9 +237,9 @@ namespace Nmfs.Agepro.Gui
       //Create a empty DataTable if there input file DataTable (for 
       //weightAgeTable CVtable is Null)
       //if fallbackNullDataTable is true
-      if (this.StochasticAgeTable == null && this.indexWeightOption == 0)
+      if (StochasticAgeTable == null && IndexWeightOption == 0)
       {
-        this.CreateStochasticParameterFallbackDataTable((AgeproStochasticAgeTable)inp, generalOpt, this.FleetDependency);
+        CreateStochasticParameterFallbackDataTable(inp, generalOpt, FleetDependency);
       }
 
     }
@@ -260,24 +250,20 @@ namespace Nmfs.Agepro.Gui
     public override bool ValidateStochasticParameter(int numAges, double upperBounds)
     {
       //if (weightOptionDictionary.ContainsKey(indexWeightOption))
-      if (validWeightAgeOpt.Contains(indexWeightOption))
+      if (!ValidWeightAgeOpt.Contains(IndexWeightOption))
       {
-        if (this.indexWeightOption == 0 || this.indexWeightOption == 1)
-        {
-          return base.ValidateStochasticParameter(numAges, upperBounds);
-        }
-        else
-        {
-          return true;
-        }
-      }
-      else
-      {
-        MessageBox.Show("Invalid weight of at Age option.",
+        _ = MessageBox.Show("Invalid weight of at Age option.",
             "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         return false;
       }
+     
+      if (IndexWeightOption == 0 || IndexWeightOption == 1)
+      {
+        return base.ValidateStochasticParameter(numAges, upperBounds);
+      }
 
+      //Valid "Use Stochastic weight age"
+      return true;
     }
 
 

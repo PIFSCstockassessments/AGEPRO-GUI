@@ -160,7 +160,11 @@ namespace Nmfs.Agepro.Gui
 
     }
 
-    public virtual void bindStochasticAgeData(AgeproStochasticAgeTable inp)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="inp"></param>
+    public virtual void BindStochasticAgeData(AgeproStochasticAgeTable inp)
     {
       if (inp is null)
       {
