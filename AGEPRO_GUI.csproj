@@ -452,7 +452,10 @@
     <Content Include="doc\img\weightAge_jan1_03.png" />
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\ui\formAgepro\io\" />
+    <Folder Include="src\ui\formAgepro\navigation\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AGEPRO-CoreLib\AGEPRO_CoreLib.csproj">
       <Project>{b1bdccf1-78c4-4c2d-ae11-5c8d336758fc}</Project>
