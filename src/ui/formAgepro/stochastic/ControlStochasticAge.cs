@@ -26,7 +26,7 @@ namespace Nmfs.Agepro.Gui
       //By Default, Stochastic Parameters are fleet independent.
       FleetDependency = StochasticAgeFleetDependency.independent;
 
-      controlStochasticParamAgeFromFile.timeVaryingFileChecked +=
+      controlStochasticParamAgeFromFile.TimeVaryingFileChecked +=
           new EventHandler(LinkTimeVaryingUserSpecAndFromFile);
       controlStochasticParamAgeFromUser.TimeVaryingCheckedChangedEvent +=
           new EventHandler(LinkTimeVaryingUserSpecAndFromFile);
@@ -64,8 +64,8 @@ namespace Nmfs.Agepro.Gui
     }
     public string StochasticDataFile
     {
-      get => controlStochasticParamAgeFromFile.stochasticDataFile;
-      set => controlStochasticParamAgeFromFile.stochasticDataFile = value;
+      get => controlStochasticParamAgeFromFile.StochasticDataFile;
+      set => controlStochasticParamAgeFromFile.StochasticDataFile = value;
     }
     public bool IsMultiFleet
     {

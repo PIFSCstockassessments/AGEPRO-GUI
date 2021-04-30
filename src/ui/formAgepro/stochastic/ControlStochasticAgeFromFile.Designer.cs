@@ -61,7 +61,7 @@
             this.buttonLoadDataFile.TabIndex = 2;
             this.buttonLoadDataFile.Text = "Browse";
             this.buttonLoadDataFile.UseVisualStyleBackColor = true;
-            this.buttonLoadDataFile.Click += new System.EventHandler(this.buttonLoadDataFile_Click);
+            this.buttonLoadDataFile.Click += new System.EventHandler(this.ButtonLoadDataFile_Click);
             // 
             // checkBoxTimeVaryingFile
             // 
@@ -72,7 +72,7 @@
             this.checkBoxTimeVaryingFile.TabIndex = 3;
             this.checkBoxTimeVaryingFile.Text = "Data File is Time Varying";
             this.checkBoxTimeVaryingFile.UseVisualStyleBackColor = true;
-            this.checkBoxTimeVaryingFile.CheckedChanged += new System.EventHandler(this.checkBoxTimeVaryingFile_CheckedChanged);
+            this.checkBoxTimeVaryingFile.CheckedChanged += new System.EventHandler(this.CheckBoxTimeVaryingFile_CheckedChanged);
             // 
             // ControlStochasticAgeFromFile
             // 
