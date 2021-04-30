@@ -234,10 +234,16 @@ namespace Nmfs.Agepro.Gui
         return;
       }
 
+      if (!ValidWeightAgeOpt.Contains(IndexWeightOption))
+      {
+        _ = MessageBox.Show("Invalid weight of at Age option.",
+            "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        
+      }
+
       //Create a empty DataTable if there input file DataTable (for 
       //weightAgeTable CVtable is Null)
-      //if fallbackNullDataTable is true
-      if (StochasticAgeTable == null && IndexWeightOption == 0)
+      if (StochasticAgeTable == null)// && IndexWeightOption == 0)
       {
         CreateStochasticParameterFallbackDataTable(inp, generalOpt, FleetDependency);
       }
