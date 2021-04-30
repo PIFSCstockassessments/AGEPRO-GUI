@@ -61,7 +61,7 @@
             this.dataGridStochasticAgeTable.RowHeadersWidth = 100;
             this.dataGridStochasticAgeTable.Size = new System.Drawing.Size(864, 213);
             this.dataGridStochasticAgeTable.TabIndex = 1;
-            this.dataGridStochasticAgeTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridStochasticAgeTable_CellFormatting);
+            this.dataGridStochasticAgeTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridStochasticAgeTable_CellFormatting);
             // 
             // labelCVTable
             // 
@@ -86,7 +86,7 @@
             this.dataGridCVTable.RowHeadersWidth = 100;
             this.dataGridCVTable.Size = new System.Drawing.Size(864, 79);
             this.dataGridCVTable.TabIndex = 3;
-            this.dataGridCVTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridCVTable_CellFormatting);
+            this.dataGridCVTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridCVTable_CellFormatting);
             // 
             // checkBoxTimeVarying
             // 
@@ -98,7 +98,7 @@
             this.checkBoxTimeVarying.TabIndex = 4;
             this.checkBoxTimeVarying.Text = "Time Varying";
             this.checkBoxTimeVarying.UseVisualStyleBackColor = true;
-            this.checkBoxTimeVarying.CheckedChanged += new System.EventHandler(this.checkBoxTimeVarying_CheckedChanged);
+            this.checkBoxTimeVarying.CheckedChanged += new System.EventHandler(this.CheckBoxTimeVarying_CheckedChanged);
             // 
             // ControlStochasticAgeDataGridTable
             // 

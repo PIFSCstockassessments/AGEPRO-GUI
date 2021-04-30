@@ -1,55 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
   public partial class ControlStochasticAgeDataGridTable : UserControl
   {
-    public bool multiFleetTable { get; set; }
-    public string[] seqYears { get; set; }
-    public int numFleets { get; set; }
-    public double defaultCellValue { get; set; }
-    public bool readInputFileState { get; set; }
-    public event EventHandler timeVaryingCheckedChangedEvent;
-    public StochasticAgeFleetDependency fleetDependent { get; set; }
+    public bool MultiFleetTable { get; set; }
+    public string[] SeqYears { get; set; }
+    public int NumFleets { get; set; }
+    public double DefaultCellValue { get; set; }
+    public bool ReadInputFileState { get; set; }
+    public event EventHandler TimeVaryingCheckedChangedEvent;
+    public StochasticAgeFleetDependency FleetDependent { get; set; }
 
     public ControlStochasticAgeDataGridTable()
     {
       InitializeComponent();
-      readInputFileState = false;
-      defaultCellValue = 0;
+      ReadInputFileState = false;
+      DefaultCellValue = 0;
     }
-    public string stochasticParamAgeDataGridLabel
+    public string StochasticParamAgeDataGridLabel
     {
-      get { return labelStochasticAgeTable.Text; }
-      set { labelStochasticAgeTable.Text = value; }
+      get => labelStochasticAgeTable.Text;
+      set => labelStochasticAgeTable.Text = value;
     }
-    public bool timeVarying
+    public bool TimeVarying
     {
-      get { return checkBoxTimeVarying.Checked; }
-      set { checkBoxTimeVarying.Checked = value; }
+      get => checkBoxTimeVarying.Checked;
+      set => checkBoxTimeVarying.Checked = value;
     }
-    public DataTable stochasticAgeTable
+    public DataTable StochasticAgeTable
     {
-      get { return (DataTable)dataGridStochasticAgeTable.DataSource; }
-      set { dataGridStochasticAgeTable.DataSource = value; }
+      get => (DataTable)dataGridStochasticAgeTable.DataSource;
+      set => dataGridStochasticAgeTable.DataSource = value;
     }
-    public DataTable stochasticCV
+    public DataTable StochasticCV
     {
-      get { return (DataTable)dataGridCVTable.DataSource; }
-      set { dataGridCVTable.DataSource = value; }
+      get => (DataTable)dataGridCVTable.DataSource;
+      set => dataGridCVTable.DataSource = value;
     }
-    public bool enableTimeVaryingCheckBox
+    public bool EnableTimeVaryingCheckBox
     {
-      get { return checkBoxTimeVarying.Enabled; }
-      set { checkBoxTimeVarying.Enabled = value; }
+      get => checkBoxTimeVarying.Enabled;
+      set => checkBoxTimeVarying.Enabled = value;
     }
 
     /// <summary>
@@ -57,10 +52,10 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="yearArray">String array year sequence from first to last year of projection</param>
     /// <param name="nfleets">Number of Fleets</param>
-    private void setStochasticAgeTableRowHeaders(string[] yearArray, int nfleets)
+    private void SetStochasticAgeTableRowHeaders(string[] yearArray, int nfleets)
     {
 
-      if (multiFleetTable == true)
+      if (MultiFleetTable)
       {
         int countFleetYears = yearArray.Count() * nfleets;
         if (countFleetYears != dataGridStochasticAgeTable.RowCount)
@@ -74,33 +69,26 @@ namespace Nmfs.Agepro.Gui
         {
           for (int kyear = 0; kyear < yearArray.Count(); kyear++)
           {
-            if (timeVarying)
-            {
-              stochasticRowHeaders[irowHeader] = "Fleet-" + (jfleet + 1) + "-" + yearArray[kyear];
-            }
-            else
-            {
-              stochasticRowHeaders[irowHeader] = "Fleet-" + (jfleet + 1);
-            }
-            irowHeader = irowHeader + 1;
+            stochasticRowHeaders[irowHeader] = TimeVarying ? $"Fleet-{jfleet + 1}-{yearArray[kyear]}" : $"Fleet-{jfleet + 1}";
+            irowHeader++;
           }
         }
         int iyear = 0;
         foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
         {
           stochasticRow.HeaderCell.Value = stochasticRowHeaders[iyear];
-          iyear = iyear + 1;
+          iyear++;
         }
       }
       else
       {
-        if (timeVarying)
+        if (TimeVarying)
         {
           int iyear = 0;
           foreach (DataGridViewRow stochasticRow in dataGridStochasticAgeTable.Rows)
           {
             stochasticRow.HeaderCell.Value = yearArray[iyear];
-            iyear = iyear + 1;
+            iyear++;
           }
         }
         else
@@ -119,13 +107,13 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     private void setCVTableRowHeaders()
     {
-      if (multiFleetTable)
+      if (MultiFleetTable)
       {
         int ifleet = 1;
         foreach (DataGridViewRow CVTableRow in dataGridCVTable.Rows)
         {
           CVTableRow.HeaderCell.Value = "Fleet-" + ifleet;
-          ifleet = ifleet + 1;
+          ifleet++;
         }
       }
       else
@@ -141,9 +129,6 @@ namespace Nmfs.Agepro.Gui
 
       }
 
-
-
-
     }
 
     /// <summary>
@@ -153,99 +138,90 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void checkBoxTimeVarying_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxTimeVarying_CheckedChanged(object sender, EventArgs e)
     {
 
-      if (this.readInputFileState == false)
+      if (ReadInputFileState != false)
       {
-        //Bubble this event for ControlStochasticAgeFromFile to read
-        if (this.timeVaryingCheckedChangedEvent != null)
+        return;
+      }// end if readInputFileState is false
+
+      //Bubble this event for ControlStochasticAgeFromFile to read
+      TimeVaryingCheckedChangedEvent?.Invoke(sender, e);
+
+      //TODO: Handle cases where stochasticAgeTable is Null    
+      //Clear all rows and draw a new stochasatic data table
+      StochasticAgeTable.Clear();
+      if (checkBoxTimeVarying.Checked)
+      {
+        int countFleetYears = FleetDependent == StochasticAgeFleetDependency.dependent ? SeqYears.Count() * NumFleets : SeqYears.Count();
+        for (int i = 0; i < countFleetYears; i++)
         {
-          this.timeVaryingCheckedChangedEvent(sender, e);
+          _ = StochasticAgeTable.Rows.Add();
         }
 
-        //TODO: Handle cases where stochasticAgeTable is Null    
-        //Clear all rows and draw a new stochasatic data table
-        stochasticAgeTable.Clear();
-        if (checkBoxTimeVarying.Checked)
+      }
+      else
+      {
+        if (FleetDependent == StochasticAgeFleetDependency.dependent)
         {
-          int countFleetYears;
-          if (this.fleetDependent == StochasticAgeFleetDependency.dependent)
+          for (int i = 0; i < NumFleets; i++)
           {
-            countFleetYears = seqYears.Count() * this.numFleets;
-          }
-          else //Fleet-indpendent Stochastic Parameters 
-          {
-            countFleetYears = seqYears.Count();
-          }
-
-          for (int i = 0; i < countFleetYears; i++)
-          {
-            stochasticAgeTable.Rows.Add();
+            _ = StochasticAgeTable.Rows.Add();
+            dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "Fleet-" + (i + 1);
           }
 
         }
         else
         {
-          if (this.fleetDependent == StochasticAgeFleetDependency.dependent)
-          {
-            for (int i = 0; i < numFleets; i++)
-            {
-              stochasticAgeTable.Rows.Add();
-              dataGridStochasticAgeTable.Rows[i].HeaderCell.Value = "Fleet-" + (i + 1);
-            }
-
-          }
-          else
-          {
-            stochasticAgeTable.Rows.Add();
-            dataGridStochasticAgeTable.Rows[0].HeaderCell.Value = "All Years";
-          }
-
+          _ = StochasticAgeTable.Rows.Add();
+          dataGridStochasticAgeTable.Rows[0].HeaderCell.Value = "All Years";
         }
 
-        //Fills in blank cells with the defalutCellValue
-        var rowDefaults =
-            Enumerable.Repeat(defaultCellValue.ToString(), this.stochasticAgeTable.Columns.Count).ToArray();
-        foreach (DataRow dr in this.stochasticAgeTable.Rows)
-        {
-          dr.ItemArray = rowDefaults;
-        }
+      }
 
-      }// end if readInputFileState is false
+      //Fills in blank cells with the defalutCellValue
+      string[] rowDefaults =
+          Enumerable.Repeat(DefaultCellValue.ToString(), StochasticAgeTable.Columns.Count).ToArray();
+
+      foreach (DataRow dr in StochasticAgeTable.Rows)
+      {
+        dr.ItemArray = rowDefaults;
+      }
     }
 
     /// <summary>
-    /// 
+    /// Stochastic Age Data Grid View Cell Formattin Event
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void dataGridStochasticAgeTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridStochasticAgeTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridStochasticAgeTable.Rows[e.RowIndex].HeaderCell;
 
-      if (header.Value == null)
+      if (header.Value != null)
       {
-        if (timeVarying == true)
+        return;
+      }
+
+      if (TimeVarying)
+      {
+        string[] stochasticAgeTableRowHeaders = SeqYears;
+        SetStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, NumFleets);
+      }
+      else
+      {
+
+        if (MultiFleetTable)
         {
-          string[] stochasticAgeTableRowHeaders = this.seqYears;
-          setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
+          //Pass in one empty string since setStochasticAgeTableRowHeaders sets the header string
+          string[] stochasticAgeTableRowHeaders = { string.Empty };
+          SetStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, NumFleets);
         }
         else
         {
-
-          if (multiFleetTable == true)
-          {
-            //Pass in one empty string since setStochasticAgeTableRowHeaders sets the header string
-            string[] stochasticAgeTableRowHeaders = { string.Empty };
-            setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, numFleets);
-          }
-          else
-          {
-            string[] stochasticAgeTableRowHeaders = { "All Years" };
-            setStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, 1);
-          }
-
+          string[] stochasticAgeTableRowHeaders = { "All Years" };
+          SetStochasticAgeTableRowHeaders(stochasticAgeTableRowHeaders, 1);
         }
 
       }
@@ -254,11 +230,11 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// 
+    /// Stochastic CV Data Grid View Cell Formatting Event
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void dataGridCVTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridCVTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridCVTable.Rows[e.RowIndex].HeaderCell;
       //header value is null
@@ -274,7 +250,7 @@ namespace Nmfs.Agepro.Gui
     /// <returns></returns>
     public bool StochasticAgeDataGridTableContainMissingData()
     {
-      return this.dataGridStochasticAgeTable.HasBlankOrNullCells();
+      return dataGridStochasticAgeTable.HasBlankOrNullCells();
     }
     /// <summary>
     /// Checks if this Coefficient of Variation Data Grid has Blank or Null Cells
@@ -282,7 +258,7 @@ namespace Nmfs.Agepro.Gui
     /// <returns></returns>
     public bool StochasticCVDataGridTableContainMissingData()
     {
-      return this.dataGridCVTable.HasBlankOrNullCells();
+      return dataGridCVTable.HasBlankOrNullCells();
     }
 
   }

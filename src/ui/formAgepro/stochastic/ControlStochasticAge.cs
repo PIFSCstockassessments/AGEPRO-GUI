@@ -28,39 +28,39 @@ namespace Nmfs.Agepro.Gui
 
       controlStochasticParamAgeFromFile.timeVaryingFileChecked +=
           new EventHandler(LinkTimeVaryingUserSpecAndFromFile);
-      controlStochasticParamAgeFromUser.timeVaryingCheckedChangedEvent +=
+      controlStochasticParamAgeFromUser.TimeVaryingCheckedChangedEvent +=
           new EventHandler(LinkTimeVaryingUserSpecAndFromFile);
     }
 
     public bool TimeVarying
     {
-      get => controlStochasticParamAgeFromUser.timeVarying;
-      set => controlStochasticParamAgeFromUser.timeVarying = value;
+      get => controlStochasticParamAgeFromUser.TimeVarying;
+      set => controlStochasticParamAgeFromUser.TimeVarying = value;
     }
     public bool ReadInputFileState
     {
-      get => controlStochasticParamAgeFromUser.readInputFileState;
-      set => controlStochasticParamAgeFromUser.readInputFileState = value;
+      get => controlStochasticParamAgeFromUser.ReadInputFileState;
+      set => controlStochasticParamAgeFromUser.ReadInputFileState = value;
     }
     public DataTable StochasticAgeTable
     {
-      get => controlStochasticParamAgeFromUser.stochasticAgeTable;
-      set => controlStochasticParamAgeFromUser.stochasticAgeTable = value;
+      get => controlStochasticParamAgeFromUser.StochasticAgeTable;
+      set => controlStochasticParamAgeFromUser.StochasticAgeTable = value;
     }
     public DataTable StochasticCV
     {
-      get => controlStochasticParamAgeFromUser.stochasticCV;
-      set => controlStochasticParamAgeFromUser.stochasticCV = value;
+      get => controlStochasticParamAgeFromUser.StochasticCV;
+      set => controlStochasticParamAgeFromUser.StochasticCV = value;
     }
     public string[] SeqYears
     {
-      get => controlStochasticParamAgeFromUser.seqYears;
-      set => controlStochasticParamAgeFromUser.seqYears = value;
+      get => controlStochasticParamAgeFromUser.SeqYears;
+      set => controlStochasticParamAgeFromUser.SeqYears = value;
     }
     public int NumFleets
     {
-      get => controlStochasticParamAgeFromUser.numFleets;
-      set => controlStochasticParamAgeFromUser.numFleets = value;
+      get => controlStochasticParamAgeFromUser.NumFleets;
+      set => controlStochasticParamAgeFromUser.NumFleets = value;
     }
     public string StochasticDataFile
     {
@@ -69,18 +69,18 @@ namespace Nmfs.Agepro.Gui
     }
     public bool IsMultiFleet
     {
-      get => controlStochasticParamAgeFromUser.multiFleetTable;
-      set => controlStochasticParamAgeFromUser.multiFleetTable = value;
+      get => controlStochasticParamAgeFromUser.MultiFleetTable;
+      set => controlStochasticParamAgeFromUser.MultiFleetTable = value;
     }
     public bool EnableTimeVaryingCheckBox
     {
-      get => controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox;
-      set => controlStochasticParamAgeFromUser.enableTimeVaryingCheckBox = value;
+      get => controlStochasticParamAgeFromUser.EnableTimeVaryingCheckBox;
+      set => controlStochasticParamAgeFromUser.EnableTimeVaryingCheckBox = value;
     }
     public StochasticAgeFleetDependency FleetDependency
     {
-      get => controlStochasticParamAgeFromUser.fleetDependent;
-      set => controlStochasticParamAgeFromUser.fleetDependent = value;
+      get => controlStochasticParamAgeFromUser.FleetDependent;
+      set => controlStochasticParamAgeFromUser.FleetDependent = value;
     }
 
 
@@ -103,7 +103,7 @@ namespace Nmfs.Agepro.Gui
       //(Re)Set Stochastic Parameter Label/Options text 
       radioParameterFromUser.Text = "User Specified " + StochasticParameterLabel + " At Age";
       radioParameterFromFile.Text = "Read " + StochasticParameterLabel + " From File";
-      controlStochasticParamAgeFromUser.stochasticParamAgeDataGridLabel = StochasticParameterLabel + " Of Age";
+      controlStochasticParamAgeFromUser.StochasticParamAgeDataGridLabel = StochasticParameterLabel + " Of Age";
       controlStochasticParamAgeFromFile.stochasticParameterFileLabel = StochasticParameterLabel;
 
       //enforce 'Time Varying' value inbetween the 'User Specifed DataGrid Tables' & 'File Dialog' panels
