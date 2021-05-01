@@ -72,7 +72,7 @@ namespace Nmfs.Agepro.Gui
       get => controlStochasticParamAgeFromUser.MultiFleetTable;
       set => controlStochasticParamAgeFromUser.MultiFleetTable = value;
     }
-    public bool EnableTimeVaryingCheckBox
+    public bool EnableFromFilePanel
     {
       get => controlStochasticParamAgeFromUser.EnableTimeVaryingCheckBox;
       set => controlStochasticParamAgeFromUser.EnableTimeVaryingCheckBox = value;
@@ -108,10 +108,10 @@ namespace Nmfs.Agepro.Gui
 
       //enforce 'Time Varying' value inbetween the 'User Specifed DataGrid Tables' & 'File Dialog' panels
       controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Checked = TimeVarying;
-      controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Enabled = EnableTimeVaryingCheckBox;
+      controlStochasticParamAgeFromFile.checkBoxTimeVaryingFile.Enabled = EnableFromFilePanel;
       //In cases where Stochastic Parameters has null data source (where the 'time varying' check box should 
       //be disabled), use that disabled state for the 'from file' panel.
-      controlStochasticParamAgeFromFile.Enabled = EnableTimeVaryingCheckBox;
+      controlStochasticParamAgeFromFile.Enabled = EnableFromFilePanel;
 
       base.OnLoad(e);
     }
@@ -132,7 +132,7 @@ namespace Nmfs.Agepro.Gui
       StochasticAgeTable = inp.ByAgeData;
       StochasticCV = inp.ByAgeCV;
 
-      EnableTimeVaryingCheckBox = StochasticAgeTable != null;
+      EnableFromFilePanel = StochasticAgeTable != null;
       ReadInputFileState = false;
     }
 

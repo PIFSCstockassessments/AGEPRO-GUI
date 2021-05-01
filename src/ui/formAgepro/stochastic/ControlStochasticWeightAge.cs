@@ -247,7 +247,7 @@ namespace Nmfs.Agepro.Gui
       if (StochasticAgeTable == null)
       {
         CreateStochasticParameterFallbackDataTable(inp, generalOpt, FleetDependency);
-        EnableTimeVaryingCheckBox = true;
+        EnableFromFilePanel = true;
       }
     }
 
