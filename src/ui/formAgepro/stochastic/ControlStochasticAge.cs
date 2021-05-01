@@ -129,9 +129,9 @@ namespace Nmfs.Agepro.Gui
       NumFleets = generalOpt.NumFleets;
       TimeVarying = inp.TimeVarying;
       StochasticDataFile = inp.DataFile;
-      StochasticAgeTable = Util.GetAgeproInputDataTable(StochasticAgeTable, inp.ByAgeData);
-      StochasticCV = Util.GetAgeproInputDataTable(StochasticCV, inp.ByAgeCV);
-      
+      StochasticAgeTable = inp.ByAgeData;
+      StochasticCV = inp.ByAgeCV;
+
       EnableTimeVaryingCheckBox = StochasticAgeTable != null;
       ReadInputFileState = false;
     }

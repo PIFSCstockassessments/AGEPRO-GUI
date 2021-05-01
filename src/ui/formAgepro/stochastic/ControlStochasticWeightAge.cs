@@ -227,6 +227,7 @@ namespace Nmfs.Agepro.Gui
       //Call StochasticAgeInputData 
       LoadStochasticAgeInputData(inp, generalOpt);
 
+
       //For Discard weight, if "Discards are Present" is not selected, exit the function
       //(to prevent fallback data table to be generated.)
       if (WeightAgeType == StochasticWeightOfAge.DiscardWeight && generalOpt.HasDiscards == false)
@@ -234,20 +235,20 @@ namespace Nmfs.Agepro.Gui
         return;
       }
 
+      //Check for Valid Weight Ooption
       if (!ValidWeightAgeOpt.Contains(IndexWeightOption))
       {
         _ = MessageBox.Show("Invalid weight of at Age option.",
             "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        
+        return;
       }
 
-      //Create a empty DataTable if there input file DataTable (for 
-      //weightAgeTable CVtable is Null)
-      if (StochasticAgeTable == null)// && IndexWeightOption == 0)
+      //Create a empty DataTable (& CV table) if input file DataTable is Null 
+      if (StochasticAgeTable == null)
       {
         CreateStochasticParameterFallbackDataTable(inp, generalOpt, FleetDependency);
+        EnableTimeVaryingCheckBox = true;
       }
-
     }
 
 
