@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
@@ -14,33 +9,36 @@ namespace Nmfs.Agepro.Gui
   {
     public bool readFractionMortalityState;
     public ControlStochasticAge maturityAge;
-    public double defaultCellValue { get; set; }
+
+    public double DefaultCellValue { get; set; }
     public ControlBiological()
     {
       InitializeComponent();
 
-      maturityAge = new ControlStochasticAge();
-      maturityAge.StochasticParameterLabel = "Maturity";
-      maturityAge.IsMultiFleet = false;
-      maturityAge.Dock = DockStyle.Fill;
+      maturityAge = new ControlStochasticAge
+      {
+        StochasticParameterLabel = "Maturity",
+        IsMultiFleet = false,
+        Dock = DockStyle.Fill
+      };
 
       tabMaturity.Controls.Add(maturityAge);
-      defaultCellValue = 0;
+      DefaultCellValue = 0;
 
 
     }
-    public DataTable fractionMortality
+    public DataTable FractionMortality
     {
-      get { return (DataTable)dataGridFractionMortality.DataSource; }
-      set { dataGridFractionMortality.DataSource = value; }
+      get => (DataTable)dataGridFractionMortality.DataSource;
+      set => dataGridFractionMortality.DataSource = value;
     }
-    public bool fractionMortalityTimeVarying
+    public bool FractionMortalityTimeVarying
     {
-      get { return checkBoxFractionMortalityTimeVarying.Checked; }
-      set { checkBoxFractionMortalityTimeVarying.Checked = value; }
+      get => checkBoxFractionMortalityTimeVarying.Checked;
+      set => checkBoxFractionMortalityTimeVarying.Checked = value;
     }
 
-    private void dataGridFractionMortality_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridFractionMortality_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridFractionMortality.Rows[e.RowIndex].HeaderCell;
 
@@ -57,16 +55,16 @@ namespace Nmfs.Agepro.Gui
     public void CreateFractionMortalityColumns()
     {
 
-      if (fractionMortality != null)
+      if (FractionMortality != null)
       {
-        fractionMortality.Columns.Clear(); //Clear all Columns
+        FractionMortality.Columns.Clear(); //Clear all Columns
       }
       else
       {
         //If null, instantiate a empty Data Table /w two Rows
-        fractionMortality = new DataTable();
-        fractionMortality.Rows.Add();
-        fractionMortality.Rows.Add();
+        FractionMortality = new DataTable();
+        _ = FractionMortality.Rows.Add();
+        _ = FractionMortality.Rows.Add();
       }
 
       if (checkBoxFractionMortalityTimeVarying.Checked)
@@ -76,10 +74,10 @@ namespace Nmfs.Agepro.Gui
         for (int iyear = 0; iyear < maturityAge.SeqYears.Count(); iyear++)
         {
           string colNameYear = maturityAge.SeqYears[iyear];
-          fractionMortality.Columns.Add(colNameYear);
-          foreach (DataRow irow in fractionMortality.Rows)
+          _ = FractionMortality.Columns.Add(colNameYear);
+          foreach (DataRow irow in FractionMortality.Rows)
           {
-            irow[colNameYear] = defaultCellValue;
+            irow[colNameYear] = DefaultCellValue;
           }
         }
 
@@ -87,11 +85,11 @@ namespace Nmfs.Agepro.Gui
       else
       {
         string colNameYear = "All Years";
-        fractionMortality.Columns.Add(colNameYear);
+        _ = FractionMortality.Columns.Add(colNameYear);
 
-        foreach (DataRow irow in fractionMortality.Rows)
+        foreach (DataRow irow in FractionMortality.Rows)
         {
-          irow["All Years"] = defaultCellValue;
+          irow["All Years"] = DefaultCellValue;
         }
       }
     }
@@ -102,9 +100,9 @@ namespace Nmfs.Agepro.Gui
     /// <returns></returns>
     public bool ValidateFractionMortalityDataGrid()
     {
-      if (this.dataGridFractionMortality.HasBlankOrNullCells() == true)
+      if (dataGridFractionMortality.HasBlankOrNullCells())
       {
-        MessageBox.Show("Data Fraction Mortality Prior to Spawning Table has blank or missing values.",
+        _ = MessageBox.Show("Data Fraction Mortality Prior to Spawning Table has blank or missing values.",
             "AGEPRO Biological", MessageBoxButtons.OK, MessageBoxIcon.Error);
         return false;
       }
@@ -121,7 +119,7 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     private void checkBoxFractionMortalityTimeVarying_CheckedChanged(object sender, EventArgs e)
     {
-      if (this.readFractionMortalityState == false)
+      if (readFractionMortalityState == false)
       {
         CreateFractionMortalityColumns();
       }

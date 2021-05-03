@@ -100,7 +100,7 @@
             this.dataGridFractionMortality.RowHeadersWidth = 180;
             this.dataGridFractionMortality.Size = new System.Drawing.Size(832, 89);
             this.dataGridFractionMortality.TabIndex = 1;
-            this.dataGridFractionMortality.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridFractionMortality_CellFormatting);
+            this.dataGridFractionMortality.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridFractionMortality_CellFormatting);
             // 
             // labelFractionMortality
             // 

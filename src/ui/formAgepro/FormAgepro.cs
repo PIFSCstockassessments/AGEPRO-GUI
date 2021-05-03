@@ -238,7 +238,7 @@ namespace Nmfs.Agepro.Gui
 
         //(Biological) Fraction Mortality
         inputData.BiologicalTSpawn.CreateFallbackTSpawnTable(controlGeneralOptions.SeqYears());
-        controlBiological.fractionMortality = inputData.BiologicalTSpawn.TSpawn;
+        controlBiological.FractionMortality = inputData.BiologicalTSpawn.TSpawn;
 
         //Recruitment
         int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
@@ -357,7 +357,7 @@ namespace Nmfs.Agepro.Gui
           controlMidYearWeight.BindStochasticAgeData(this.inputData.MeanWeight);
           controlCatchWeight.BindStochasticAgeData(this.inputData.CatchWeight);
           controlBiological.maturityAge.BindStochasticAgeData(this.inputData.BiologicalMaturity);
-          this.inputData.BiologicalTSpawn.TimeVarying = controlBiological.fractionMortalityTimeVarying;
+          this.inputData.BiologicalTSpawn.TimeVarying = controlBiological.FractionMortalityTimeVarying;
           controlFisherySelectivity.BindStochasticAgeData(this.inputData.Fishery);
           controlNaturalMortality.BindStochasticAgeData(this.inputData.NaturalMortality);
 
@@ -477,9 +477,9 @@ namespace Nmfs.Agepro.Gui
 
       //Fraction Mortality Prior To Spawning (Biological)
       controlBiological.readFractionMortalityState = true;
-      controlBiological.fractionMortality =
-          Util.GetAgeproInputDataTable(controlBiological.fractionMortality, inpFile.BiologicalTSpawn.TSpawn);
-      controlBiological.fractionMortalityTimeVarying = inpFile.BiologicalTSpawn.TimeVarying;
+      controlBiological.FractionMortality =
+          Util.GetAgeproInputDataTable(controlBiological.FractionMortality, inpFile.BiologicalTSpawn.TSpawn);
+      controlBiological.FractionMortalityTimeVarying = inpFile.BiologicalTSpawn.TimeVarying;
       controlBiological.readFractionMortalityState = false;
 
       //Harvest Scenario
