@@ -141,7 +141,7 @@ namespace Nmfs.Agepro.Gui
     private void CheckBoxTimeVarying_CheckedChanged(object sender, EventArgs e)
     {
 
-      if (ReadInputFileState != false)
+      if (ReadInputFileState)
       {
         return;
       }// end if readInputFileState is false
