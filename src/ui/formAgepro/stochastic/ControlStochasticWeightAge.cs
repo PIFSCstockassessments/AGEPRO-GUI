@@ -188,8 +188,8 @@ namespace Nmfs.Agepro.Gui
       }
 
       AgeproWeightAgeTable inpWeight = inp as AgeproWeightAgeTable;
-      inpWeight.weightOpt = IndexWeightOption;
-      inpWeight.validOpt = ValidWeightAgeOpt;
+      inpWeight.WeightOpt = IndexWeightOption;
+      inpWeight.ValidOpt = ValidWeightAgeOpt;
 
       if (!ValidWeightAgeOpt.Contains(IndexWeightOption))
       {
@@ -223,7 +223,7 @@ namespace Nmfs.Agepro.Gui
     public void LoadStochasticWeightAgeInputData(AgeproWeightAgeTable inp, AgeproGeneral generalOpt)
     {
 
-      IndexWeightOption = inp.weightOpt;
+      IndexWeightOption = inp.WeightOpt;
       //Call StochasticAgeInputData 
       LoadStochasticAgeInputData(inp, generalOpt);
 
