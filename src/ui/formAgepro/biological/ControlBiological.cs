@@ -9,6 +9,7 @@ namespace Nmfs.Agepro.Gui
   {
     public bool readFractionMortalityState;
     public ControlStochasticAge maturityAge;
+    public ControlTSpawnPanel TSpawnPanel;
 
     public double DefaultCellValue { get; set; }
     public ControlBiological()
@@ -21,6 +22,7 @@ namespace Nmfs.Agepro.Gui
         IsMultiFleet = false,
         Dock = DockStyle.Fill
       };
+
 
       tabMaturity.Controls.Add(maturityAge);
       DefaultCellValue = 0;

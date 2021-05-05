@@ -117,16 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bio_TSpawn_TextLabel" xml:space="preserve">
-    <value>Fraction Mortality Prior to Spawning</value>
-  </data>
-  <data name="CalcEnginePath" xml:space="preserve">
-    <value />
-  </data>
-  <data name="CalcEngineVer" xml:space="preserve">
-    <value>4.0.0</value>
-  </data>
-  <data name="ProgramName" xml:space="preserve">
-    <value>AGEPRO</value>
-  </data>
 </root>

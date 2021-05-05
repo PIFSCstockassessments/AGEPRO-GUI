@@ -61,6 +61,15 @@ namespace Nmfs.Agepro.Gui.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fraction Mortality Prior to Spawning.
+        /// </summary>
+        internal static string Bio_TSpawn_TextLabel {
+            get {
+                return ResourceManager.GetString("Bio_TSpawn_TextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string CalcEnginePath {

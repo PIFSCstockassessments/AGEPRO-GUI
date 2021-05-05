@@ -118,6 +118,12 @@
     <Compile Include="src\ui\formAgepro\biological\ControlBiological.Designer.cs">
       <DependentUpon>ControlBiological.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\ui\formAgepro\biological\ControlTSpawnPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\biological\ControlTSpawnPanel.Designer.cs">
+      <DependentUpon>ControlTSpawnPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\biological\ControlBiological.resx">
       <DependentUpon>ControlBiological.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\biological\ControlTSpawnPanel.resx">
+      <DependentUpon>ControlTSpawnPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\bootstrap\ControlBootstrap.resx">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
