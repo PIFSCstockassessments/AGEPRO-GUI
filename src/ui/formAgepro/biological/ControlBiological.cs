@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -11,7 +8,6 @@ namespace Nmfs.Agepro.Gui
     public ControlStochasticAge maturityAge;
     public ControlTSpawnPanel TSpawnPanel;
 
-    public double DefaultCellValue { get; set; }
     public ControlBiological(string[] obsYears)
     {
       InitializeComponent();
@@ -27,10 +23,9 @@ namespace Nmfs.Agepro.Gui
       {
         SeqYears = obsYears
       };
-      
+
       tabMaturity.Controls.Add(maturityAge);
       tabTSpawn.Controls.Add(TSpawnPanel);
-      DefaultCellValue = 0;
 
     }
 
