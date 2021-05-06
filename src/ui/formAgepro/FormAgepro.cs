@@ -32,6 +32,7 @@ namespace Nmfs.Agepro.Gui
     private ControlHarvestScenario controlHarvestScenario;
     private ControlRecruitment controlRecruitment;
 
+
     public FormAgepro()
     {
       InitializeComponent();
@@ -53,7 +54,7 @@ namespace Nmfs.Agepro.Gui
       controlFisherySelectivity = new ControlStochasticAge();
       controlDiscardFraction = new ControlStochasticAge();
       controlNaturalMortality = new ControlStochasticAge();
-      controlBiological = new ControlBiological();
+      controlBiological = new ControlBiological(new string[] { string.Empty });
       controlJan1Weight = new ControlStochasticWeightAge(new int[] { 0, 1 });
       controlSSBWeight = new ControlStochasticWeightAge(new int[] { 0, 1, -1 });
       controlMidYearWeight = new ControlStochasticWeightAge(new int[] { 0, 1, -1, -2 });
@@ -61,6 +62,7 @@ namespace Nmfs.Agepro.Gui
       controlDiscardWeight = new ControlStochasticWeightAge(new int[] { 0, 1, -1, -2, -3, -4 });
       controlRecruitment = new ControlRecruitment();
       controlHarvestScenario = new ControlHarvestScenario();
+   
 
       //Unsubcribe event handler in case previous one exists, before subcribing a new one
       controlGeneralOptions.SetGeneral -= new EventHandler(EventSetButton_CreateNewCase);
@@ -238,7 +240,9 @@ namespace Nmfs.Agepro.Gui
 
         //(Biological) Fraction Mortality
         inputData.BiologicalTSpawn.CreateFallbackTSpawnTable(controlGeneralOptions.SeqYears());
-        controlBiological.FractionMortality = inputData.BiologicalTSpawn.TSpawn;
+        controlBiological.TSpawnPanel.SeqYears = Array.ConvertAll(inputData.General.SeqYears(), element => element.ToString());
+        controlBiological.TSpawnPanel.TSpawnTable = inputData.BiologicalTSpawn.TSpawn;
+        controlBiological.TSpawnPanel.TimeVarying = inputData.BiologicalTSpawn.TimeVarying;
 
         //Recruitment
         int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
@@ -357,9 +361,10 @@ namespace Nmfs.Agepro.Gui
           controlMidYearWeight.BindStochasticAgeData(this.inputData.MeanWeight);
           controlCatchWeight.BindStochasticAgeData(this.inputData.CatchWeight);
           controlBiological.maturityAge.BindStochasticAgeData(this.inputData.BiologicalMaturity);
-          this.inputData.BiologicalTSpawn.TimeVarying = controlBiological.FractionMortalityTimeVarying;
           controlFisherySelectivity.BindStochasticAgeData(this.inputData.Fishery);
           controlNaturalMortality.BindStochasticAgeData(this.inputData.NaturalMortality);
+
+          inputData.BiologicalTSpawn.TimeVarying = controlBiological.TSpawnPanel.TSpawnTableTimeVarying;
 
           if (this.inputData.General.HasDiscards == true)
           {
@@ -471,16 +476,14 @@ namespace Nmfs.Agepro.Gui
 
       //Natural Mortality
       controlNaturalMortality.LoadStochasticAgeInputData(inpFile.NaturalMortality, inpFile.General);
+ 
+      //Fraction Mortality Prior To Spawning (Biological)
+      controlBiological = new ControlBiological(controlGeneralOptions.SeqYears());
+      controlBiological.TSpawnPanel.TSpawnTableTimeVarying = inpFile.BiologicalTSpawn.TimeVarying;
+      controlBiological.TSpawnPanel.TSpawnTable = inpFile.BiologicalTSpawn.TSpawn;
 
       //Maturity (Biological)
       controlBiological.maturityAge.LoadStochasticAgeInputData(inpFile.BiologicalMaturity, inpFile.General);
-
-      //Fraction Mortality Prior To Spawning (Biological)
-      controlBiological.readFractionMortalityState = true;
-      controlBiological.FractionMortality =
-          Util.GetAgeproInputDataTable(controlBiological.FractionMortality, inpFile.BiologicalTSpawn.TSpawn);
-      controlBiological.FractionMortalityTimeVarying = inpFile.BiologicalTSpawn.TimeVarying;
-      controlBiological.readFractionMortalityState = false;
 
       //Harvest Scenario
       if (inpFile.HarvestScenario.AnalysisType == HarvestScenarioAnalysis.Rebuilder)
@@ -832,8 +835,8 @@ namespace Nmfs.Agepro.Gui
         {
           return false;
         }
-        //(Biological) Fraction Mortality Prior to Spawning (Biological)
-        if (controlBiological.ValidateFractionMortalityDataGrid() == false)
+        //(Biological) Fraction Mortality (TSpawn) Prior to Spawning 
+        if (controlBiological.TSpawnPanel.ValidateTSpawnDataGrid() == false)
         {
           return false;
         }

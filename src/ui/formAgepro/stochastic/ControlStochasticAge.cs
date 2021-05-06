@@ -161,7 +161,7 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// 
+    /// Binds interface inuput to AgeproStochasticAgeTable Input Data
     /// </summary>
     /// <param name="inp"></param>
     public virtual void BindStochasticAgeData(AgeproStochasticAgeTable inp)

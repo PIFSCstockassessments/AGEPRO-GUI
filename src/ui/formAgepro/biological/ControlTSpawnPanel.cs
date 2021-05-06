@@ -9,14 +9,15 @@ namespace Nmfs.Agepro.Gui
   public partial class ControlTSpawnPanel : UserControl
   {
 
+    
     public string[] SeqYears { get; set; }
     public bool TimeVarying { get; set; }
     public double DefaultCellValue { get; set; }
 
-    public ControlTSpawnPanel(string[] seqYears)
+    public ControlTSpawnPanel()
     {
       InitializeComponent();
-      SeqYears = seqYears;
+      CreateTSpawnColumns();
     }
 
 
@@ -57,16 +58,16 @@ namespace Nmfs.Agepro.Gui
       }
 
       inp.TimeVarying = TimeVarying;
-      if (TSpawnTable == null)
-      {
-        
-      }
       inp.TSpawn = TSpawnTable;
-
 
     }
     //Use CoreLib CreateTSpawnFallbackTable
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void DataGridTSpawn_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridTSpawn.Rows[e.RowIndex].HeaderCell;
@@ -84,6 +85,10 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     public void CreateTSpawnColumns()
     {
+      if(SeqYears == null)
+      {
+        SeqYears = new string[] { "1" };
+      }
 
       if (TSpawnTable != null)
       {
@@ -111,6 +116,7 @@ namespace Nmfs.Agepro.Gui
           }
         }
 
+        TSpawnTableTimeVarying = true;
       }
       else
       {
@@ -121,6 +127,8 @@ namespace Nmfs.Agepro.Gui
         {
           irow["All Years"] = DefaultCellValue;
         }
+
+        TSpawnTableTimeVarying = false;
       }
     }
 
@@ -149,6 +157,7 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     private void CheckBoxTSpawnTimeVarying_CheckedChanged(object sender, EventArgs e)
     {      
+
       CreateTSpawnColumns();
     }
 

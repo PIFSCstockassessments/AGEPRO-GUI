@@ -48,7 +48,7 @@ namespace Nmfs.Agepro.Gui
       this.dataGridTSpawn.Name = "dataGridTSpawn";
       this.dataGridTSpawn.nftReadOnly = false;
       this.dataGridTSpawn.RowHeadersWidth = 180;
-      this.dataGridTSpawn.Size = new System.Drawing.Size(832, 89);
+      this.dataGridTSpawn.Size = new System.Drawing.Size(840, 85);
       this.dataGridTSpawn.TabIndex = 2;
       this.dataGridTSpawn.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridTSpawn_CellFormatting);
       // 
@@ -70,9 +70,9 @@ namespace Nmfs.Agepro.Gui
       this.LabelTSpawn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.LabelTSpawn.Location = new System.Drawing.Point(24, 51);
       this.LabelTSpawn.Name = "LabelTSpawn";
-      this.LabelTSpawn.Size = new System.Drawing.Size(209, 13);
+      this.LabelTSpawn.Size = new System.Drawing.Size(261, 13);
       this.LabelTSpawn.TabIndex = 4;
-      this.LabelTSpawn.Text = "Fraction Mortality Prior to Spawning";
+      this.LabelTSpawn.Text = "Fraction Mortality Prior to Spawning (tspawn)";
       // 
       // ControlTSpawnPanel
       // 
