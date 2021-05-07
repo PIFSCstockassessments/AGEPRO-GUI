@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nmfs.Agepro.CoreLib;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -416,6 +417,15 @@ namespace Nmfs.Agepro.Gui
         }
       }
       return true;
+    }
+
+    public void LoadRetroAdjustmentsFactorTable(AgeproInputFile inputFile)
+    {
+      if (MiscOptionsRetroAdjustmentFactorTable != null)
+      {
+        MiscOptionsRetroAdjustmentFactorTable.Reset();
+      }
+      MiscOptionsRetroAdjustmentFactorTable = inputFile.RetroAdjustments.RetroAdjust;
     }
 
     /// <summary>

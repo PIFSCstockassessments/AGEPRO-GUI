@@ -476,7 +476,7 @@ namespace Nmfs.Agepro.Gui
 
       //Natural Mortality
       controlNaturalMortality.LoadStochasticAgeInputData(inpFile.NaturalMortality, inpFile.General);
- 
+
       //Fraction Mortality Prior To Spawning (Biological)
       controlBiological = new ControlBiological(controlGeneralOptions.SeqYears());
       controlBiological.TSpawnPanel.TSpawnTableTimeVarying = inpFile.BiologicalTSpawn.TimeVarying;
@@ -530,9 +530,7 @@ namespace Nmfs.Agepro.Gui
       controlMiscOptions.miscOptionsNAges = inpFile.General.NumAges();
       controlMiscOptions.miscOptionsFirstAge = inpFile.General.AgeBegin;
 
-      controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable =
-          Util.GetAgeproInputDataTable(controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable,
-          inpFile.RetroAdjustments.RetroAdjust);
+      controlMiscOptions.LoadRetroAdjustmentsFactorTable(inpFile);
 
       if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors == true)
       {
@@ -541,6 +539,7 @@ namespace Nmfs.Agepro.Gui
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
     }
+
 
     /*****************************************************************************************
      *  LAUNCH TO AGEPRO CALCULATION ENGINE
