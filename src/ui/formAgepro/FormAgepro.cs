@@ -188,18 +188,18 @@ namespace Nmfs.Agepro.Gui
         controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
 
         //Retro Adjustment Factors
-        if (controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors)
+        if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
         {
-          if (controlMiscOptions.miscOptionsRetroAdjustmentFactorTable != null)
+          if (controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable != null)
           {
             //In case NumAges is larger than previous row count, "reset" dataGridView 
             if (controlGeneralOptions.NumAges() >
-                controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Rows.Count)
+                controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable.Rows.Count)
             {
-              controlMiscOptions.miscOptionsRetroAdjustmentFactorTable.Reset();
+              controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable.Reset();
             }
           }
-          controlMiscOptions.miscOptionsRetroAdjustmentFactorTable =
+          controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable =
               controlMiscOptions.GetRetroAdjustmentFallbackTable(controlMiscOptions.miscOptionsNAges);
           controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
         }
@@ -392,27 +392,27 @@ namespace Nmfs.Agepro.Gui
           }
 
           //Misc options
-          this.inputData.Options.EnableSummaryReport = controlMiscOptions.miscOptionsEnableSummaryReport;
-          this.inputData.Options.EnableExportR = controlMiscOptions.miscOptionsEnableExportR;
-          this.inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.miscOptionsEnableAuxStochasticFiles;
-          this.inputData.Options.EnablePercentileReport = controlMiscOptions.miscOptionsEnablePercentileReport;
-          this.inputData.Options.EnableRefpoint = controlMiscOptions.miscOptionsEnableRefpointsReport;
-          this.inputData.Options.EnableScaleFactors = controlMiscOptions.miscOptionsEnableScaleFactors;
-          this.inputData.Options.EnableBounds = controlMiscOptions.miscOptionsBounds;
-          this.inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors;
+          this.inputData.Options.EnableSummaryReport = controlMiscOptions.MiscOptionsEnableSummaryReport;
+          this.inputData.Options.EnableExportR = controlMiscOptions.MiscOptionsEnableExportR;
+          this.inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.MiscOptionsEnableAuxStochasticFiles;
+          this.inputData.Options.EnablePercentileReport = controlMiscOptions.MiscOptionsEnablePercentileReport;
+          this.inputData.Options.EnableRefpoint = controlMiscOptions.MiscOptionsEnableRefpointsReport;
+          this.inputData.Options.EnableScaleFactors = controlMiscOptions.MiscOptionsEnableScaleFactors;
+          this.inputData.Options.EnableBounds = controlMiscOptions.MiscOptionsBounds;
+          this.inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors;
 
-          this.inputData.Refpoint.RefSpawnBio = Double.Parse(controlMiscOptions.miscOptionsRefSpawnBiomass);
-          this.inputData.Refpoint.RefJan1Bio = Double.Parse(controlMiscOptions.miscOptionsRefJan1Biomass);
-          this.inputData.Refpoint.RefMeanBio = Double.Parse(controlMiscOptions.miscOptionsRefMeanBiomass);
-          this.inputData.Refpoint.RefFMort = Double.Parse(controlMiscOptions.miscOptionsRefFishingMortality);
+          this.inputData.Refpoint.RefSpawnBio = Double.Parse(controlMiscOptions.MiscOptionsRefSpawnBiomass);
+          this.inputData.Refpoint.RefJan1Bio = Double.Parse(controlMiscOptions.MiscOptionsRefJan1Biomass);
+          this.inputData.Refpoint.RefMeanBio = Double.Parse(controlMiscOptions.MiscOptionsRefMeanBiomass);
+          this.inputData.Refpoint.RefFMort = Double.Parse(controlMiscOptions.MiscOptionsRefFishingMortality);
 
-          this.inputData.ReportPercentile.Percentile = controlMiscOptions.miscOptionsReportPercentile;
+          this.inputData.ReportPercentile.Percentile = controlMiscOptions.MiscOptionsReportPercentile;
 
-          this.inputData.Scale.ScaleBio = Double.Parse(controlMiscOptions.miscOptionsScaleFactorBiomass);
-          this.inputData.Scale.ScaleRec = Double.Parse(controlMiscOptions.miscOptionsScaleFactorRecruits);
-          this.inputData.Scale.ScaleStockNum = Double.Parse(controlMiscOptions.miscOptionsScaleFactorStockNumbers);
+          this.inputData.Scale.ScaleBio = Double.Parse(controlMiscOptions.MiscOptionsScaleFactorBiomass);
+          this.inputData.Scale.ScaleRec = Double.Parse(controlMiscOptions.MiscOptionsScaleFactorRecruits);
+          this.inputData.Scale.ScaleStockNum = Double.Parse(controlMiscOptions.MiscOptionsScaleFactorStockNumbers);
 
-          this.inputData.RetroAdjustments.RetroAdjust = controlMiscOptions.miscOptionsRetroAdjustmentFactorTable;
+          this.inputData.RetroAdjustments.RetroAdjust = controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable;
 
           this.inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
@@ -505,36 +505,36 @@ namespace Nmfs.Agepro.Gui
       controlBootstrap.bootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
       //Misc Options
-      controlMiscOptions.miscOptionsEnableSummaryReport = inpFile.Options.EnableSummaryReport;
-      controlMiscOptions.miscOptionsEnableAuxStochasticFiles = inpFile.Options.EnableAuxStochasticFiles;
-      controlMiscOptions.miscOptionsEnableExportR = inpFile.Options.EnableExportR;
-      controlMiscOptions.miscOptionsEnablePercentileReport = inpFile.Options.EnablePercentileReport;
-      controlMiscOptions.miscOptionsReportPercentile = Convert.ToDouble(inpFile.ReportPercentile.Percentile);
+      controlMiscOptions.MiscOptionsEnableSummaryReport = inpFile.Options.EnableSummaryReport;
+      controlMiscOptions.MiscOptionsEnableAuxStochasticFiles = inpFile.Options.EnableAuxStochasticFiles;
+      controlMiscOptions.MiscOptionsEnableExportR = inpFile.Options.EnableExportR;
+      controlMiscOptions.MiscOptionsEnablePercentileReport = inpFile.Options.EnablePercentileReport;
+      controlMiscOptions.MiscOptionsReportPercentile = Convert.ToDouble(inpFile.ReportPercentile.Percentile);
 
-      controlMiscOptions.miscOptionsEnableRefpointsReport = inpFile.Options.EnableRefpoint;
-      controlMiscOptions.miscOptionsRefSpawnBiomass = inpFile.Refpoint.RefSpawnBio.ToString();
-      controlMiscOptions.miscOptionsRefJan1Biomass = inpFile.Refpoint.RefJan1Bio.ToString();
-      controlMiscOptions.miscOptionsRefMeanBiomass = inpFile.Refpoint.RefMeanBio.ToString();
-      controlMiscOptions.miscOptionsRefFishingMortality = inpFile.Refpoint.RefFMort.ToString();
+      controlMiscOptions.MiscOptionsEnableRefpointsReport = inpFile.Options.EnableRefpoint;
+      controlMiscOptions.MiscOptionsRefSpawnBiomass = inpFile.Refpoint.RefSpawnBio.ToString();
+      controlMiscOptions.MiscOptionsRefJan1Biomass = inpFile.Refpoint.RefJan1Bio.ToString();
+      controlMiscOptions.MiscOptionsRefMeanBiomass = inpFile.Refpoint.RefMeanBio.ToString();
+      controlMiscOptions.MiscOptionsRefFishingMortality = inpFile.Refpoint.RefFMort.ToString();
 
-      controlMiscOptions.miscOptionsEnableScaleFactors = inpFile.Options.EnableScaleFactors;
-      controlMiscOptions.miscOptionsScaleFactorBiomass = inpFile.Scale.ScaleBio.ToString();
-      controlMiscOptions.miscOptionsScaleFactorRecruits = inpFile.Scale.ScaleRec.ToString();
-      controlMiscOptions.miscOptionsScaleFactorStockNumbers = inpFile.Scale.ScaleStockNum.ToString();
+      controlMiscOptions.MiscOptionsEnableScaleFactors = inpFile.Options.EnableScaleFactors;
+      controlMiscOptions.MiscOptionsScaleFactorBiomass = inpFile.Scale.ScaleBio.ToString();
+      controlMiscOptions.MiscOptionsScaleFactorRecruits = inpFile.Scale.ScaleRec.ToString();
+      controlMiscOptions.MiscOptionsScaleFactorStockNumbers = inpFile.Scale.ScaleStockNum.ToString();
 
-      controlMiscOptions.miscOptionsBounds = inpFile.Options.EnableBounds;
-      controlMiscOptions.miscOptionsBoundsMaxWeight = inpFile.Bounds.MaxWeight.ToString();
-      controlMiscOptions.miscOptionsBoundsNaturalMortality = inpFile.Bounds.MaxNatMort.ToString();
+      controlMiscOptions.MiscOptionsBounds = inpFile.Options.EnableBounds;
+      controlMiscOptions.MiscOptionsBoundsMaxWeight = inpFile.Bounds.MaxWeight.ToString();
+      controlMiscOptions.MiscOptionsBoundsNaturalMortality = inpFile.Bounds.MaxNatMort.ToString();
 
-      controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors = inpFile.Options.EnableRetroAdjustmentFactors;
+      controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors = inpFile.Options.EnableRetroAdjustmentFactors;
       controlMiscOptions.miscOptionsNAges = inpFile.General.NumAges();
       controlMiscOptions.miscOptionsFirstAge = inpFile.General.AgeBegin;
 
-      controlMiscOptions.miscOptionsRetroAdjustmentFactorTable =
-          Util.GetAgeproInputDataTable(controlMiscOptions.miscOptionsRetroAdjustmentFactorTable,
+      controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable =
+          Util.GetAgeproInputDataTable(controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable,
           inpFile.RetroAdjustments.RetroAdjust);
 
-      if (controlMiscOptions.miscOptionsEnableRetroAdjustmentFactors == true)
+      if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors == true)
       {
         controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
       }
@@ -732,13 +732,13 @@ namespace Nmfs.Agepro.Gui
     /// <param name="outputOptions"></param>
     static void LaunchOutputViewerProgram(string outfile, ControlMiscOptions outputOptions)
     {
-      if (outputOptions.ageproOutputViewer == "System Default")
+      if (outputOptions.AgeproOutputViewer == "System Default")
       {
         //open a program that is associated by its file type.
         //If no association exists, system will ask user for a program. 
         Process.Start(outfile);
       }
-      else if (outputOptions.ageproOutputViewer == "Notepad")
+      else if (outputOptions.AgeproOutputViewer == "Notepad")
       {
         Process.Start("notepad.exe", outfile);
       }
@@ -771,7 +771,7 @@ namespace Nmfs.Agepro.Gui
         double defaultNatualMortalityBound = 1.0;
 
         //Enforce Bounds defaults if option is unchecked
-        switch (controlMiscOptions.miscOptionsBounds)
+        switch (controlMiscOptions.MiscOptionsBounds)
         {
           case false:
             boundsMaxWeight = defaultMaxWeightBound;
@@ -779,7 +779,7 @@ namespace Nmfs.Agepro.Gui
             break;
           default:
             //Check Bounds text if they are empty. If so, use default value and inform the user about this.
-            if (string.IsNullOrWhiteSpace(controlMiscOptions.miscOptionsBoundsMaxWeight))
+            if (string.IsNullOrWhiteSpace(controlMiscOptions.MiscOptionsBoundsMaxWeight))
             {
               MessageBox.Show("Missing max weight bound. Using default value of " + defaultMaxWeightBound
                   + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -787,10 +787,10 @@ namespace Nmfs.Agepro.Gui
             }
             else
             {
-              boundsMaxWeight = Convert.ToDouble(controlMiscOptions.miscOptionsBoundsMaxWeight);
+              boundsMaxWeight = Convert.ToDouble(controlMiscOptions.MiscOptionsBoundsMaxWeight);
             }
 
-            if (string.IsNullOrWhiteSpace(controlMiscOptions.miscOptionsBoundsNaturalMortality))
+            if (string.IsNullOrWhiteSpace(controlMiscOptions.MiscOptionsBoundsNaturalMortality))
             {
               MessageBox.Show("Missing max natural mortality Bound. Using default value of " +
                   defaultNatualMortalityBound + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -799,7 +799,7 @@ namespace Nmfs.Agepro.Gui
             else
             {
               boundsNaturalMortality = Convert.ToDouble(
-                  controlMiscOptions.miscOptionsBoundsNaturalMortality);
+                  controlMiscOptions.MiscOptionsBoundsNaturalMortality);
             }
 
             break;

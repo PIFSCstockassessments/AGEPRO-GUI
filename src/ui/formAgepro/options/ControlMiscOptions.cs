@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
@@ -24,129 +20,126 @@ namespace Nmfs.Agepro.Gui
       comboBoxOutputViewerProgram.SelectedIndex = 0;
 
       //Set Bounds defaults
-      miscOptionsBoundsMaxWeight = "10.0";
-      miscOptionsBoundsNaturalMortality = "1.0";
+      MiscOptionsBoundsMaxWeight = "10.0";
+      MiscOptionsBoundsNaturalMortality = "1.0";
 
-      miscOptionsRefJan1Biomass = "0.0";
-      miscOptionsRefMeanBiomass = "0.0";
-      miscOptionsRefSpawnBiomass = "0.0";
-      miscOptionsRefFishingMortality = "0.0";
+      MiscOptionsRefJan1Biomass = "0.0";
+      MiscOptionsRefMeanBiomass = "0.0";
+      MiscOptionsRefSpawnBiomass = "0.0";
+      MiscOptionsRefFishingMortality = "0.0";
 
-      miscOptionsScaleFactorBiomass = "0.0";
-      miscOptionsScaleFactorRecruits = "0.0";
-      miscOptionsScaleFactorStockNumbers = "0.0";
+      MiscOptionsScaleFactorBiomass = "0.0";
+      MiscOptionsScaleFactorRecruits = "0.0";
+      MiscOptionsScaleFactorStockNumbers = "0.0";
 
-      miscOptionsReportPercentile = 0;
+      MiscOptionsReportPercentile = 0;
     }
 
-    public bool miscOptionsEnableSummaryReport
+    public bool MiscOptionsEnableSummaryReport
     {
-      get { return checkBoxEnableSummaryReport.Checked; }
-      set { checkBoxEnableSummaryReport.Checked = value; }
+      get => checkBoxEnableSummaryReport.Checked;
+      set => checkBoxEnableSummaryReport.Checked = value;
     }
-    public bool miscOptionsEnableAuxStochasticFiles
+    public bool MiscOptionsEnableAuxStochasticFiles
     {
-      get { return checkBoxEnableAuxStochasticFiles.Checked; }
-      set { checkBoxEnableAuxStochasticFiles.Checked = value; }
+      get => checkBoxEnableAuxStochasticFiles.Checked;
+      set => checkBoxEnableAuxStochasticFiles.Checked = value;
     }
-    public bool miscOptionsEnableExportR
+    public bool MiscOptionsEnableExportR
     {
-      get { return checkBoxEnableExportR.Checked; }
-      set { checkBoxEnableExportR.Checked = value; }
+      get => checkBoxEnableExportR.Checked;
+      set => checkBoxEnableExportR.Checked = value;
     }
-    public bool miscOptionsEnablePercentileReport
+    public bool MiscOptionsEnablePercentileReport
     {
-      get { return checkBoxEnablePercentileReport.Checked; }
-      set { checkBoxEnablePercentileReport.Checked = value; }
+      get => checkBoxEnablePercentileReport.Checked;
+      set => checkBoxEnablePercentileReport.Checked = value;
     }
-    public double miscOptionsReportPercentile
+    public double MiscOptionsReportPercentile
     {
-      get { return Convert.ToDouble(spinBoxReportPercentile.Value); }
-      set { spinBoxReportPercentile.Value = Convert.ToDecimal(value); }
+      get => Convert.ToDouble(spinBoxReportPercentile.Value);
+      set => spinBoxReportPercentile.Value = Convert.ToDecimal(value);
     }
-    public bool miscOptionsEnableRefpointsReport
+    public bool MiscOptionsEnableRefpointsReport
     {
-      get { return checkBoxEnableRefpoints.Checked; }
-      set { checkBoxEnableRefpoints.Checked = value; }
+      get => checkBoxEnableRefpoints.Checked;
+      set => checkBoxEnableRefpoints.Checked = value;
     }
-    public string miscOptionsRefSpawnBiomass
+    public string MiscOptionsRefSpawnBiomass
     {
-      get { return textBoxRefSpawnBiomass.Text; }
-      set { textBoxRefSpawnBiomass.Text = value; }
+      get => textBoxRefSpawnBiomass.Text;
+      set => textBoxRefSpawnBiomass.Text = value;
     }
-    public string miscOptionsRefJan1Biomass
+    public string MiscOptionsRefJan1Biomass
     {
-      get { return textBoxRefJan1Biomass.Text; }
-      set { textBoxRefJan1Biomass.Text = value; }
+      get => textBoxRefJan1Biomass.Text;
+      set => textBoxRefJan1Biomass.Text = value;
     }
-    public string miscOptionsRefMeanBiomass
+    public string MiscOptionsRefMeanBiomass
     {
-      get { return textBoxRefMeanBiomass.Text; }
-      set { textBoxRefMeanBiomass.Text = value; }
+      get => textBoxRefMeanBiomass.Text;
+      set => textBoxRefMeanBiomass.Text = value;
     }
-    public string miscOptionsRefFishingMortality
+    public string MiscOptionsRefFishingMortality
     {
-      get { return textBoxRefFishMortality.Text; }
-      set { textBoxRefFishMortality.Text = value; }
+      get => textBoxRefFishMortality.Text;
+      set => textBoxRefFishMortality.Text = value;
     }
-    public bool miscOptionsEnableScaleFactors
+    public bool MiscOptionsEnableScaleFactors
     {
-      get { return checkBoxEnableScaleFactors.Checked; }
-      set { checkBoxEnableScaleFactors.Checked = value; }
+      get => checkBoxEnableScaleFactors.Checked;
+      set => checkBoxEnableScaleFactors.Checked = value;
     }
-    public string miscOptionsScaleFactorBiomass
+    public string MiscOptionsScaleFactorBiomass
     {
-      get { return textBoxScaleFactorBiomass.Text; }
-      set { textBoxScaleFactorBiomass.Text = value; }
+      get => textBoxScaleFactorBiomass.Text;
+      set => textBoxScaleFactorBiomass.Text = value;
     }
-    public string miscOptionsScaleFactorRecruits
+    public string MiscOptionsScaleFactorRecruits
     {
-      get { return textBoxScaleFactorRecruits.Text; }
-      set { textBoxScaleFactorRecruits.Text = value; }
+      get => textBoxScaleFactorRecruits.Text;
+      set => textBoxScaleFactorRecruits.Text = value;
     }
-    public string miscOptionsScaleFactorStockNumbers
+    public string MiscOptionsScaleFactorStockNumbers
     {
-      get { return textBoxScaleFactorsStockNum.Text; }
-      set { textBoxScaleFactorsStockNum.Text = value; }
+      get => textBoxScaleFactorsStockNum.Text;
+      set => textBoxScaleFactorsStockNum.Text = value;
     }
-    public bool miscOptionsBounds
+    public bool MiscOptionsBounds
     {
-      get { return checkBoxBounds.Checked; }
-      set { checkBoxBounds.Checked = value; }
+      get => checkBoxBounds.Checked;
+      set => checkBoxBounds.Checked = value;
     }
-    public string miscOptionsBoundsMaxWeight
+    public string MiscOptionsBoundsMaxWeight
     {
-      get { return textBoxBoundsMaxWeight.Text; }
-      set { textBoxBoundsMaxWeight.Text = value; }
+      get => textBoxBoundsMaxWeight.Text;
+      set => textBoxBoundsMaxWeight.Text = value;
     }
-    public string miscOptionsBoundsNaturalMortality
+    public string MiscOptionsBoundsNaturalMortality
     {
-      get { return textBoxBoundsNatMortality.Text; }
-      set { textBoxBoundsNatMortality.Text = value; }
+      get => textBoxBoundsNatMortality.Text;
+      set => textBoxBoundsNatMortality.Text = value;
     }
-    public bool miscOptionsEnableRetroAdjustmentFactors
+    public bool MiscOptionsEnableRetroAdjustmentFactors
     {
-      get { return checkBoxEnableRetroAdjustment.Checked; }
-      set { checkBoxEnableRetroAdjustment.Checked = value; }
+      get => checkBoxEnableRetroAdjustment.Checked;
+      set => checkBoxEnableRetroAdjustment.Checked = value;
     }
-    public DataTable miscOptionsRetroAdjustmentFactorTable
+    public DataTable MiscOptionsRetroAdjustmentFactorTable
     {
-      get { return (DataTable)dataGridRetroAdjustment.DataSource; }
-      set { dataGridRetroAdjustment.DataSource = value; }
+      get => (DataTable)dataGridRetroAdjustment.DataSource;
+      set => dataGridRetroAdjustment.DataSource = value;
     }
-    public string ageproOutputViewer
-    {
-      get { return comboBoxOutputViewerProgram.SelectedItem.ToString(); }
-    }
+    public string AgeproOutputViewer => comboBoxOutputViewerProgram.SelectedItem.ToString();
 
     public void SetRetroAdjustmentFactorRowHeaders()
     {
-      this.dataGridRetroAdjustment.RowHeadersVisible = true;
-      for (int iage = 0; iage < this.miscOptionsNAges; iage++)
+      dataGridRetroAdjustment.RowHeadersVisible = true;
+      for (int iage = 0; iage < miscOptionsNAges; iage++)
       {
         //Accomidate 0-based or 1-based First Age Models
-        int iageForHeader = iage + this.miscOptionsFirstAge;
-        this.dataGridRetroAdjustment.Rows[iage].HeaderCell.Value = ("Age " + iageForHeader);
+        int iageForHeader = iage + miscOptionsFirstAge;
+        dataGridRetroAdjustment.Rows[iage].HeaderCell.Value = "Age " + iageForHeader;
       }
     }
 
@@ -154,41 +147,48 @@ namespace Nmfs.Agepro.Gui
     /// Data Binding setup for Reference Point Options Controls
     /// </summary>
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
-    public void SetupRefpointDataBindings(Nmfs.Agepro.CoreLib.AgeproOptionsProperty miscOpt)
+    public void SetupRefpointDataBindings(CoreLib.AgeproOptionsProperty miscOpt)
     {
-      SetControlDataBindings(this.textBoxRefSpawnBiomass, miscOpt, "refSpawnBio");
-      SetControlDataBindings(this.textBoxRefJan1Biomass, miscOpt, "refJan1Bio");
-      SetControlDataBindings(this.textBoxRefMeanBiomass, miscOpt, "refMeanBio");
-      SetControlDataBindings(this.textBoxRefFishMortality, miscOpt, "refFMort");
+      SetControlDataBindings(textBoxRefSpawnBiomass, miscOpt, "refSpawnBio");
+      SetControlDataBindings(textBoxRefJan1Biomass, miscOpt, "refJan1Bio");
+      SetControlDataBindings(textBoxRefMeanBiomass, miscOpt, "refMeanBio");
+      SetControlDataBindings(textBoxRefFishMortality, miscOpt, "refFMort");
     }
 
     /// <summary>
     /// Data Binding setup for Scale Factor Controls
     /// </summary>
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
-    public void SetupScaleFactorsDataBindings(Nmfs.Agepro.CoreLib.ScaleFactors miscOpt)
+    public void SetupScaleFactorsDataBindings(CoreLib.ScaleFactors miscOpt)
     {
-      SetControlDataBindings(this.textBoxScaleFactorBiomass, miscOpt, "scaleBio");
-      SetControlDataBindings(this.textBoxScaleFactorRecruits, miscOpt, "scaleRec");
-      SetControlDataBindings(this.textBoxScaleFactorsStockNum, miscOpt, "scaleStockNum");
+      SetControlDataBindings(textBoxScaleFactorBiomass, miscOpt, "scaleBio");
+      SetControlDataBindings(textBoxScaleFactorRecruits, miscOpt, "scaleRec");
+      SetControlDataBindings(textBoxScaleFactorsStockNum, miscOpt, "scaleStockNum");
     }
 
     /// <summary>
     /// Data Binding setup for Bounds Controls
     /// </summary>
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
-    public void SetupBoundsDataBindings(Nmfs.Agepro.CoreLib.Bounds miscOpt)
+    public void SetupBoundsDataBindings(CoreLib.Bounds miscOpt)
     {
-      SetControlDataBindings(this.textBoxBoundsMaxWeight, miscOpt, "maxWeight", true);
-      SetControlDataBindings(this.textBoxBoundsNatMortality, miscOpt, "maxNatMort", true);
+      SetControlDataBindings(textBoxBoundsMaxWeight, miscOpt, "maxWeight", true);
+      SetControlDataBindings(textBoxBoundsNatMortality, miscOpt, "maxNatMort", true);
     }
 
-    private void SetControlDataBindings(NftTextBox ctl,
-        Nmfs.Agepro.CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
-        bool decimalZeroFormat = false)
+    /// <summary>
+    /// Textbox data bindings
+    /// </summary>
+    /// <param name="ctl"></param>
+    /// <param name="miscOptSrc"></param>
+    /// <param name="miscOptField"></param>
+    /// <param name="decimalZeroFormat"></param>
+    private void SetControlDataBindings(NftTextBox ctl, CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
+      bool decimalZeroFormat = false)
     {
       //Clear any existing (if any) bindings before creating new ones.
       ctl.DataBindings.Clear();
+
       Binding b = new Binding("Text", miscOptSrc, miscOptField, true, DataSourceUpdateMode.OnPropertyChanged);
       if (decimalZeroFormat)
       {
@@ -203,16 +203,28 @@ namespace Nmfs.Agepro.Gui
 
     }
 
-
+    /// <summary>
+    /// Double to String
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="sevent"></param>
     private void DoubleToString(object sender, ConvertEventArgs sevent)
     {
       // The method converts only to string type. Test this using the DesiredType.
-      if (sevent.DesiredType != typeof(string)) return;
+      if (sevent.DesiredType != typeof(string))
+      {
+        return;
+      }
 
       // Use the ToString method to format the value.
       sevent.Value = ((double)sevent.Value).ToString("#.0");
     }
 
+    /// <summary>
+    /// String to Double
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="sevent"></param>
     private void StringToDouble(object sender, ConvertEventArgs sevent)
     {
       // ' The method converts only to decimal type. 
@@ -222,108 +234,141 @@ namespace Nmfs.Agepro.Gui
       sevent.Value = Convert.ToDouble(sevent.Value.ToString());
     }
 
-
-    private void checkBoxPercentileReport_CheckStateChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Actions when "Request Percentile Report" check Box is changed.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBoxPercentileReport_CheckStateChanged(object sender, EventArgs e)
     {
-      bool enabledPercentileReport = this.checkBoxEnablePercentileReport.Checked;
+      bool enabledPercentileReport = checkBoxEnablePercentileReport.Checked;
       Console.WriteLine(enabledPercentileReport);
-      this.labelReportPercentile.Enabled = enabledPercentileReport;
-      this.spinBoxReportPercentile.Enabled = enabledPercentileReport;
+      labelReportPercentile.Enabled = enabledPercentileReport;
+      spinBoxReportPercentile.Enabled = enabledPercentileReport;
     }
 
-    private void checkBoxPercentileReport_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBoxPercentileReport_CheckedChanged(object sender, EventArgs e)
     {
-      this.labelReportPercentile.Enabled = this.checkBoxEnablePercentileReport.Checked;
-      this.spinBoxReportPercentile.Enabled = this.checkBoxEnablePercentileReport.Checked;
+      labelReportPercentile.Enabled = checkBoxEnablePercentileReport.Checked;
+      spinBoxReportPercentile.Enabled = checkBoxEnablePercentileReport.Checked;
     }
 
-    private void checkBoxRefpoints_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Actions when "Enable Reference Point Threshold Report" check Box is changed.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBoxRefpoints_CheckedChanged(object sender, EventArgs e)
     {
-      this.labelSpawnBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
-      this.textBoxRefSpawnBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
-      this.labelJan1Biomass.Enabled = this.checkBoxEnableRefpoints.Checked;
-      this.textBoxRefJan1Biomass.Enabled = this.checkBoxEnableRefpoints.Checked;
-      this.labelMeanBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
-      this.textBoxRefMeanBiomass.Enabled = this.checkBoxEnableRefpoints.Checked;
-      this.labelFishMortality.Enabled = this.checkBoxEnableRefpoints.Checked;
-      this.textBoxRefFishMortality.Enabled = this.checkBoxEnableRefpoints.Checked;
+      labelSpawnBiomass.Enabled = checkBoxEnableRefpoints.Checked;
+      textBoxRefSpawnBiomass.Enabled = checkBoxEnableRefpoints.Checked;
+      labelJan1Biomass.Enabled = checkBoxEnableRefpoints.Checked;
+      textBoxRefJan1Biomass.Enabled = checkBoxEnableRefpoints.Checked;
+      labelMeanBiomass.Enabled = checkBoxEnableRefpoints.Checked;
+      textBoxRefMeanBiomass.Enabled = checkBoxEnableRefpoints.Checked;
+      labelFishMortality.Enabled = checkBoxEnableRefpoints.Checked;
+      textBoxRefFishMortality.Enabled = checkBoxEnableRefpoints.Checked;
     }
 
-    private void checkBoxScaleFactors_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Actions when "Specify Scale Factors for Output Report" check Box is changed.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBoxScaleFactors_CheckedChanged(object sender, EventArgs e)
     {
-      this.labelScaleFactorBiomass.Enabled = this.checkBoxEnableScaleFactors.Checked;
-      this.textBoxScaleFactorBiomass.Enabled = this.checkBoxEnableScaleFactors.Checked;
-      this.labelScaleFactorRecruits.Enabled = this.checkBoxEnableScaleFactors.Checked;
-      this.textBoxScaleFactorRecruits.Enabled = this.checkBoxEnableScaleFactors.Checked;
-      this.labelScaleFactorStockNum.Enabled = this.checkBoxEnableScaleFactors.Checked;
-      this.textBoxScaleFactorsStockNum.Enabled = this.checkBoxEnableScaleFactors.Checked;
+      labelScaleFactorBiomass.Enabled = checkBoxEnableScaleFactors.Checked;
+      textBoxScaleFactorBiomass.Enabled = checkBoxEnableScaleFactors.Checked;
+      labelScaleFactorRecruits.Enabled = checkBoxEnableScaleFactors.Checked;
+      textBoxScaleFactorRecruits.Enabled = checkBoxEnableScaleFactors.Checked;
+      labelScaleFactorStockNum.Enabled = checkBoxEnableScaleFactors.Checked;
+      textBoxScaleFactorsStockNum.Enabled = checkBoxEnableScaleFactors.Checked;
 
     }
 
-    private void checkBoxBounds_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Actions when "Specify Bounds" check Box is changed.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBoxBounds_CheckedChanged(object sender, EventArgs e)
     {
-      this.labelBoundsMaxWeight.Enabled = this.checkBoxBounds.Checked;
-      this.textBoxBoundsMaxWeight.Enabled = this.checkBoxBounds.Checked;
-      this.labelBoundsNatMortality.Enabled = this.checkBoxBounds.Checked;
-      this.textBoxBoundsNatMortality.Enabled = this.checkBoxBounds.Checked;
+      labelBoundsMaxWeight.Enabled = checkBoxBounds.Checked;
+      textBoxBoundsMaxWeight.Enabled = checkBoxBounds.Checked;
+      labelBoundsNatMortality.Enabled = checkBoxBounds.Checked;
+      textBoxBoundsNatMortality.Enabled = checkBoxBounds.Checked;
     }
 
-    private void checkBoxRetroAdjustment_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Actions when "Specify Retro Adjustment Factors" check Box is changed.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void CheckBoxRetroAdjustment_CheckedChanged(object sender, EventArgs e)
     {
-      //this.dataGridRetroAdjustment.Enabled = this.checkBoxEnableRetroAdjustment.Checked;
 
-      if (this.checkBoxEnableRetroAdjustment.Checked == false)
+      if (checkBoxEnableRetroAdjustment.Checked == false)
       {
-        this.dataGridRetroAdjustment.DataSource = null;
+        dataGridRetroAdjustment.DataSource = null;
       }
       else
       {
-        this.dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(this.miscOptionsNAges);
+        //If Checked, create fallback defualt data table.
+        dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(miscOptionsNAges);
 
         SetRetroAdjustmentFactorRowHeaders();
 
       }
     }
 
+    /// <summary>
+    /// Input Validation
+    /// </summary>
+    /// <returns></returns>
     public bool ValidateMiscOptions()
     {
       List<string> errorMsgList = new List<string>();
       //Reference Points
-      if (this.miscOptionsEnableRefpointsReport)
+      if (MiscOptionsEnableRefpointsReport)
       {
-        if (string.IsNullOrWhiteSpace(this.miscOptionsRefJan1Biomass))
+        if (string.IsNullOrWhiteSpace(MiscOptionsRefJan1Biomass))
         {
-          this.miscOptionsRefJan1Biomass = "0.0";
+          MiscOptionsRefJan1Biomass = "0.0";
         }
-        if (string.IsNullOrWhiteSpace(this.miscOptionsRefMeanBiomass))
+        if (string.IsNullOrWhiteSpace(MiscOptionsRefMeanBiomass))
         {
-          this.miscOptionsRefMeanBiomass = "0.0";
+          MiscOptionsRefMeanBiomass = "0.0";
         }
-        if (string.IsNullOrWhiteSpace(this.miscOptionsRefSpawnBiomass))
+        if (string.IsNullOrWhiteSpace(MiscOptionsRefSpawnBiomass))
         {
-          this.miscOptionsRefSpawnBiomass = "0.0";
+          MiscOptionsRefSpawnBiomass = "0.0";
         }
-        if (string.IsNullOrWhiteSpace(this.miscOptionsRefFishingMortality))
+        if (string.IsNullOrWhiteSpace(MiscOptionsRefFishingMortality))
         {
-          this.miscOptionsRefFishingMortality = "0.0";
+          MiscOptionsRefFishingMortality = "0.0";
         }
       }
       //Retrospective Adjustment Factors
-      if (this.dataGridRetroAdjustment.HasBlankOrNullCells())
+      if (dataGridRetroAdjustment.HasBlankOrNullCells())
       {
         errorMsgList.Add("Retro Adjustment Factors data grid has missing data.");
       }
 
       //Report Percentile
-      if (this.miscOptionsEnablePercentileReport)
+      if (MiscOptionsEnablePercentileReport)
       {
         //todo: spinbox text issue
-        if (string.IsNullOrWhiteSpace(this.miscOptionsReportPercentile.ToString()))
+        if (string.IsNullOrWhiteSpace(MiscOptionsReportPercentile.ToString()))
         {
           errorMsgList.Add("Missing Report Percentile");
         }
 
-        if (this.miscOptionsReportPercentile < 0.0 || this.miscOptionsReportPercentile > 100)
+        if (MiscOptionsReportPercentile < 0.0 || MiscOptionsReportPercentile > 100)
         {
           errorMsgList.Add("Invalid Report Percent value.");
         }
@@ -343,10 +388,11 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// 
+    /// Row-count based auxilary stochastic file checker. Throws an warning dialog if row count is over the
+    /// large file aize row count. 
     /// </summary>
     /// <param name="auxFileRowSize"></param>
-    /// <param name="largeFileRowCount">Defaul to 1000000 </param>
+    /// <param name="largeFileRowCount">Default to 1000000 </param>
     /// <returns></returns>
     public bool CheckOutputFileRowSize(int auxFileRowSize, int largeFileRowCount = 1000000)
     {
@@ -354,22 +400,20 @@ namespace Nmfs.Agepro.Gui
       {
         DialogResult outputFileSizePrompt;
 
-        if (this.miscOptionsEnableSummaryReport || this.miscOptionsEnableAuxStochasticFiles)
+        if (MiscOptionsEnableSummaryReport || MiscOptionsEnableAuxStochasticFiles)
         {
           outputFileSizePrompt = MessageBox.Show(
-              "The number of realizations times the number of projected years is greater than " +
-              largeFileRowCount + ". This will produce large auxiliary output files. " +
-              "This will affect the performance of calculation engine." +
-              Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
-              "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            "The number of realizations times the number of projected years is greater than " +
+            largeFileRowCount + ". This will produce large auxiliary output files. " +
+            "This will affect the performance of calculation engine." +
+            Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
+            "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
           if (outputFileSizePrompt == DialogResult.No)
           {
             return false;
           }
         }
-
-
       }
       return true;
     }
@@ -384,10 +428,10 @@ namespace Nmfs.Agepro.Gui
     {
       //Create a Single Column Table for the data grid view. Each row represents an age.
       DataTable fallbackTable = new DataTable();
-      fallbackTable.Columns.Add("factor");
+      _ = fallbackTable.Columns.Add("factor");
       for (int i = 0; i < numAges; i++)
       {
-        fallbackTable.Rows.Add(0);
+        _ = fallbackTable.Rows.Add(0);
       }
       return fallbackTable;
     }
@@ -399,7 +443,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void dataGridRetroAdjustment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridRetroAdjustment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       //header value is null
       if (e.ColumnIndex == 0)
