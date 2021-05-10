@@ -249,7 +249,6 @@
     <Compile Include="src\ui\formAgepro\stochastic\StochasticAgeFleetDependency.cs" />
     <Compile Include="src\ui\formAgepro\stochastic\StochasticWeightOfAge.cs" />
     <Compile Include="src\util\AgeproBinding.cs" />
-    <Compile Include="src\util\AgeproPropertyChanged.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />
     <None Include="Resources\noaa_fisheries_pictureBoxImage.png" />

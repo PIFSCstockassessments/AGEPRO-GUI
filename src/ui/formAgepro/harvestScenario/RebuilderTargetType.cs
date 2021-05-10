@@ -3,9 +3,8 @@
   /// <summary>
   /// A BindingList object to populate the "Rebulider Target Type" Combo Box. 
   /// </summary>
-  class RebuilderTargetType : AgeproPropertyChanged
+  public class RebuilderTargetType : CoreLib.AgeproCoreLibProperty
   {
-
     private string _RebuilderTargetTypename;
 
     public int Index { get; set; }
