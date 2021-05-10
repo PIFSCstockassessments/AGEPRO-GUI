@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
@@ -30,21 +26,21 @@ namespace Nmfs.Agepro.Gui
     public AgeproBinding(string propertyName, object dataSource, string dataMember, IValueConverter valueConverter, CultureInfo culture, object converterParameter = null)
         : base(propertyName, dataSource, dataMember, true)
     {
-      this._converter = valueConverter;
-      this._converterCulture = culture;
-      this._converterParameter = converterParameter;
+      _converter = valueConverter;
+      _converterCulture = culture;
+      _converterParameter = converterParameter;
     }
 
     protected override void OnFormat(ConvertEventArgs cevent)
     {
-      if (this._converter != null)
+      if (_converter == null)
       {
-        var convertedValue = this._converter.Convert(cevent.Value, cevent.DesiredType, this._converterParameter, this._converterCulture);
-        cevent.Value = convertedValue;
+        base.OnFormat(cevent);
       }
       else
       {
-        base.OnFormat(cevent);
+        object convertedValue = _converter.Convert(cevent.Value, cevent.DesiredType, _converterParameter, _converterCulture);
+        cevent.Value = convertedValue;
       }
 
     }
@@ -52,14 +48,14 @@ namespace Nmfs.Agepro.Gui
 
     protected override void OnParse(ConvertEventArgs cevent)
     {
-      if (this._converter != null)
+      if (_converter == null)
       {
-        var valueFromCtl = this._converter.ConvertBack(cevent.Value, cevent.DesiredType, this._converterParameter, this._converterCulture);
-        cevent.Value = valueFromCtl;
+        base.OnParse(cevent);
       }
       else
       {
-        base.OnParse(cevent);
+        object valueFromCtl = _converter.ConvertBack(cevent.Value, cevent.DesiredType, _converterParameter, _converterCulture);
+        cevent.Value = valueFromCtl;
       }
 
     }
