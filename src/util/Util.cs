@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -20,7 +16,7 @@ namespace Nmfs.Agepro.Gui
       if (!System.IO.Directory.Exists(appDir))
       {
         //TODO: ASK USER TO CREATE DIRECTORY
-        System.IO.Directory.CreateDirectory(appDir);
+        _ = System.IO.Directory.CreateDirectory(appDir);
       }
       return appDir;
     }
