@@ -178,7 +178,7 @@ namespace Nmfs.Agepro.Gui
     /// <returns>Integer</returns>
     public int NumAges()
     {
-      return (GeneralLastAgeClass - GeneralFirstAgeClass + 1);
+      return GeneralLastAgeClass - GeneralFirstAgeClass + 1;
     }
 
   }
