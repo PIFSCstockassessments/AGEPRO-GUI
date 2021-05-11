@@ -104,7 +104,7 @@ namespace Nmfs.Agepro.Gui
         {
           throw new InvalidAgeproGuiParameterException($"{param.Key} value must be specfied.");
         }
-        if (IsNumeric(param.Value) == false)
+        if (int.TryParse(param.Value, out _) == false)
         {
           throw new InvalidAgeproGuiParameterException($"In {param.Key}: '{param.Value}' is not a whole number");
         }
@@ -147,12 +147,6 @@ namespace Nmfs.Agepro.Gui
         throw new InvalidAgeproGuiParameterException(exMessage);
       }
 
-    }
-
-
-    private bool IsNumeric(string s)
-    {
-      return int.TryParse(s, out _);
     }
 
     private void ButtonSetGeneral_Click(object sender, EventArgs e)
