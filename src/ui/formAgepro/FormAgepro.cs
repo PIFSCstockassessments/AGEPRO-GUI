@@ -500,9 +500,9 @@ namespace Nmfs.Agepro.Gui
 
 
       //Bootstrapping
-      controlBootstrap.bootstrapFilename = inpFile.Bootstrap.BootstrapFile;
-      controlBootstrap.bootstrapIterations = inpFile.Bootstrap.NumBootstraps.ToString();
-      controlBootstrap.bootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
+      controlBootstrap.BootstrapFilename = inpFile.Bootstrap.BootstrapFile;
+      controlBootstrap.BootstrapIterations = inpFile.Bootstrap.NumBootstraps.ToString();
+      controlBootstrap.BootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
       //Misc Options
       controlMiscOptions.MiscOptionsEnableSummaryReport = inpFile.Options.EnableSummaryReport;
@@ -885,7 +885,7 @@ namespace Nmfs.Agepro.Gui
         }
 
         //Aux Stochastic Output File Size Check 
-        int numBootstraps = Convert.ToInt32(this.controlBootstrap.bootstrapIterations);
+        int numBootstraps = Convert.ToInt32(this.controlBootstrap.BootstrapIterations);
         int numSims = Convert.ToInt32(this.controlGeneralOptions.generalNumberPopulationSimuations);
         int numYears = this.controlGeneralOptions.SeqYears().Count();
         //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
@@ -920,7 +920,7 @@ namespace Nmfs.Agepro.Gui
 
       //Check Bootstrap File, but if value in textbox does not match, do not exit validation
       //Tell? user that they will have to supply bootstrap file.
-      if (!File.Exists(this.controlBootstrap.bootstrapFilename))
+      if (!File.Exists(this.controlBootstrap.BootstrapFilename))
       {
         if (File.Exists(Path.GetDirectoryName(inputData.General.InputFile) + "\\"
             + Path.GetFileName(inputData.Bootstrap.BootstrapFile)))
