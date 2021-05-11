@@ -136,10 +136,10 @@
     <Compile Include="src\ui\formAgepro\FormAgepro.Designer.cs">
       <DependentUpon>FormAgepro.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\formAgepro\home\ControlGeneral.cs">
+    <Compile Include="src\ui\formAgepro\general-startup\ControlGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\formAgepro\home\ControlGeneral.Designer.cs">
+    <Compile Include="src\ui\formAgepro\general-startup\ControlGeneral.Designer.cs">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </Compile>
     <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.cs">
@@ -275,7 +275,7 @@
       <DependentUpon>FormAgepro.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\formAgepro\home\ControlGeneral.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\general-startup\ControlGeneral.resx">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.resx">
