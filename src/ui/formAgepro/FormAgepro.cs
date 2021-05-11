@@ -73,13 +73,13 @@ namespace Nmfs.Agepro.Gui
       controlGeneralOptions.Dock = DockStyle.Fill;
       this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
       //Set General Options Controls (to handle "New Cases")
-      controlGeneralOptions.generalInputFile = "";
-      controlGeneralOptions.generalModelId = "untitled";
+      controlGeneralOptions.GeneralInputFile = "";
+      controlGeneralOptions.GeneralModelId = "untitled";
       this.inputData.General.InputFile = "";
-      this.inputData.CaseID = controlGeneralOptions.generalModelId;
+      this.inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
       //initially set Number of Ages
-      int initalNumAges = controlGeneralOptions.generalFirstAgeClass; //Spinbox Value
+      int initalNumAges = controlGeneralOptions.GeneralFirstAgeClass; //Spinbox Value
 
       //Biological Stochastic Options
       controlFisherySelectivity.StochasticParameterLabel = "Fishery Selectivity";
@@ -171,21 +171,21 @@ namespace Nmfs.Agepro.Gui
         inputData.Version = "AGEPRO VERSION 4.0";
 
         //Save General Options input to CoreLib Input Data Object
-        inputData.General.ProjYearStart = Convert.ToInt32(controlGeneralOptions.generalFirstYearProjection);
-        inputData.General.ProjYearEnd = Convert.ToInt32(controlGeneralOptions.generalLastYearProjection);
-        inputData.General.AgeBegin = controlGeneralOptions.generalFirstAgeClass;
-        inputData.General.AgeEnd = controlGeneralOptions.generalLastAgeClass;
-        inputData.General.NumFleets = Convert.ToInt32(controlGeneralOptions.generalNumberFleets);
-        inputData.General.NumRecModels = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
-        inputData.General.NumPopSims = Convert.ToInt32(controlGeneralOptions.generalNumberPopulationSimuations);
-        inputData.General.Seed = Convert.ToInt32(controlGeneralOptions.generalRandomSeed);
-        inputData.General.HasDiscards = controlGeneralOptions.generalDiscardsPresent;
+        inputData.General.ProjYearStart = Convert.ToInt32(controlGeneralOptions.GeneralFirstYearProjection);
+        inputData.General.ProjYearEnd = Convert.ToInt32(controlGeneralOptions.GeneralLastYearProjection);
+        inputData.General.AgeBegin = controlGeneralOptions.GeneralFirstAgeClass;
+        inputData.General.AgeEnd = controlGeneralOptions.GeneralLastAgeClass;
+        inputData.General.NumFleets = Convert.ToInt32(controlGeneralOptions.GeneralNumberFleets);
+        inputData.General.NumRecModels = Convert.ToInt32(controlGeneralOptions.GeneralNumberRecruitModels);
+        inputData.General.NumPopSims = Convert.ToInt32(controlGeneralOptions.GeneralNumberPopulationSimuations);
+        inputData.General.Seed = Convert.ToInt32(controlGeneralOptions.GeneralRandomSeed);
+        inputData.General.HasDiscards = controlGeneralOptions.GeneralDiscardsPresent;
         //Store CASEID to input data object
-        inputData.CaseID = controlGeneralOptions.generalModelId;
+        inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
         //Check for AGEPRO parameter data that has already been loaded/set 
         controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
-        controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.generalFirstAgeClass;
+        controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.GeneralFirstAgeClass;
 
         //Retro Adjustment Factors
         if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
@@ -217,7 +217,7 @@ namespace Nmfs.Agepro.Gui
         controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(inputData.BiologicalMaturity, inputData.General, StochasticAgeFleetDependency.independent);
 
         //Show Discard DataTables if Discards options is checked
-        if (controlGeneralOptions.generalDiscardsPresent == true)
+        if (controlGeneralOptions.GeneralDiscardsPresent == true)
         {
           controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.DiscardFraction, inputData.General,
               StochasticAgeFleetDependency.dependent);
@@ -245,7 +245,7 @@ namespace Nmfs.Agepro.Gui
         controlBiological.TSpawnPanel.TimeVarying = inputData.BiologicalTSpawn.TimeVarying;
 
         //Recruitment
-        int nrecruit = Convert.ToInt32(controlGeneralOptions.generalNumberRecruitModels);
+        int nrecruit = Convert.ToInt32(controlGeneralOptions.GeneralNumberRecruitModels);
         inputData.Recruitment.NewCaseRecruitment(nrecruit, controlGeneralOptions.SeqYears());
         controlRecruitment.SetupControlRecruitment(nrecruit, inputData.Recruitment);
 
@@ -257,7 +257,7 @@ namespace Nmfs.Agepro.Gui
         controlHarvestScenario.SetHarvestScenarioCalcControls(inputData);
         DataTable userGenBasedHarvestScenarioTable = AgeproHarvestScenario.NewHarvestTable(
             controlHarvestScenario.SeqYears.Count(),
-            Convert.ToInt32(controlGeneralOptions.generalNumberFleets));
+            Convert.ToInt32(controlGeneralOptions.GeneralNumberFleets));
         controlHarvestScenario.SetHarvestScenarioInputDataTable(userGenBasedHarvestScenarioTable);
         inputData.HarvestScenario.HarvestScenarioTable = userGenBasedHarvestScenarioTable;
 
@@ -305,7 +305,7 @@ namespace Nmfs.Agepro.Gui
           inputData = new AgeproInputFile();
           inputData.ReadInputFile(openAgeproInputFile.FileName);
 
-          controlGeneralOptions.generalInputFile = openAgeproInputFile.FileName;
+          controlGeneralOptions.GeneralInputFile = openAgeproInputFile.FileName;
 
           LoadAgeproInputParameters(this.inputData);
 
@@ -353,7 +353,7 @@ namespace Nmfs.Agepro.Gui
           }
 
           //Case Id
-          this.inputData.CaseID = controlGeneralOptions.generalModelId;
+          this.inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
           //Natural Mortality
           controlJan1Weight.BindStochasticAgeData(this.inputData.Jan1StockWeight);
@@ -417,7 +417,7 @@ namespace Nmfs.Agepro.Gui
           this.inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
           //Set filename to generalOptions Input File textbox
-          this.controlGeneralOptions.generalInputFile = saveAgeproInputFile.FileName;
+          this.controlGeneralOptions.GeneralInputFile = saveAgeproInputFile.FileName;
 
           MessageBox.Show("AGEPRO Input Data was saved at" + Environment.NewLine + saveAgeproInputFile.FileName,
               "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -439,16 +439,16 @@ namespace Nmfs.Agepro.Gui
     private void LoadAgeproInputParameters(AgeproInputFile inpFile)
     {
       //General Options
-      controlGeneralOptions.generalModelId = inpFile.CaseID;
-      controlGeneralOptions.generalFirstYearProjection = inpFile.General.ProjYearStart.ToString();
-      controlGeneralOptions.generalLastYearProjection = inpFile.General.ProjYearEnd.ToString();
-      controlGeneralOptions.generalFirstAgeClass = inpFile.General.AgeBegin;
-      controlGeneralOptions.generalLastAgeClass = inpFile.General.AgeEnd;
-      controlGeneralOptions.generalNumberFleets = inpFile.General.NumFleets.ToString();
-      controlGeneralOptions.generalNumberRecruitModels = inpFile.General.NumRecModels.ToString();
-      controlGeneralOptions.generalNumberPopulationSimuations = inpFile.General.NumPopSims.ToString();
-      controlGeneralOptions.generalRandomSeed = inpFile.General.Seed.ToString();
-      controlGeneralOptions.generalDiscardsPresent = inpFile.General.HasDiscards;
+      controlGeneralOptions.GeneralModelId = inpFile.CaseID;
+      controlGeneralOptions.GeneralFirstYearProjection = inpFile.General.ProjYearStart.ToString();
+      controlGeneralOptions.GeneralLastYearProjection = inpFile.General.ProjYearEnd.ToString();
+      controlGeneralOptions.GeneralFirstAgeClass = inpFile.General.AgeBegin;
+      controlGeneralOptions.GeneralLastAgeClass = inpFile.General.AgeEnd;
+      controlGeneralOptions.GeneralNumberFleets = inpFile.General.NumFleets.ToString();
+      controlGeneralOptions.GeneralNumberRecruitModels = inpFile.General.NumRecModels.ToString();
+      controlGeneralOptions.GeneralNumberPopulationSimuations = inpFile.General.NumPopSims.ToString();
+      controlGeneralOptions.GeneralRandomSeed = inpFile.General.Seed.ToString();
+      controlGeneralOptions.GeneralDiscardsPresent = inpFile.General.HasDiscards;
 
       //JAN-1
       controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.Jan1StockWeight, inpFile.General);
@@ -606,14 +606,14 @@ namespace Nmfs.Agepro.Gui
       string jobDT;
 
       //Set the user data work directory  
-      if (string.IsNullOrWhiteSpace(controlGeneralOptions.generalInputFile))
+      if (string.IsNullOrWhiteSpace(controlGeneralOptions.GeneralInputFile))
       {
         ageproModelJobName = "untitled_";
         jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
       }
       else
       {
-        ageproModelJobName = Path.GetFileNameWithoutExtension(controlGeneralOptions.generalInputFile);
+        ageproModelJobName = Path.GetFileNameWithoutExtension(controlGeneralOptions.GeneralInputFile);
         //Remove potential invalid filename characters 
         foreach (char c in Path.GetInvalidFileNameChars())
         {
@@ -844,7 +844,7 @@ namespace Nmfs.Agepro.Gui
         {
           return false;
         }
-        if (this.controlGeneralOptions.generalDiscardsPresent)
+        if (this.controlGeneralOptions.GeneralDiscardsPresent)
         {
           //Discard Weight
           if (this.controlDiscardWeight.ValidateStochasticParameter(numAges) == false)
@@ -886,7 +886,7 @@ namespace Nmfs.Agepro.Gui
 
         //Aux Stochastic Output File Size Check 
         int numBootstraps = Convert.ToInt32(this.controlBootstrap.BootstrapIterations);
-        int numSims = Convert.ToInt32(this.controlGeneralOptions.generalNumberPopulationSimuations);
+        int numSims = Convert.ToInt32(this.controlGeneralOptions.GeneralNumberPopulationSimuations);
         int numYears = this.controlGeneralOptions.SeqYears().Count();
         //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
         int auxFileRowSize = numBootstraps * numSims * numYears;
@@ -980,8 +980,8 @@ namespace Nmfs.Agepro.Gui
         this.saveAGEPROInputDataAsToolStripMenuItem.Enabled = true;
       }
       //if "Discards are Present" is not checked, disable the discard parameters panels.
-      controlDiscardWeight.Enabled = controlGeneralOptions.generalDiscardsPresent;
-      controlDiscardFraction.Enabled = controlGeneralOptions.generalDiscardsPresent;
+      controlDiscardWeight.Enabled = controlGeneralOptions.GeneralDiscardsPresent;
+      controlDiscardFraction.Enabled = controlGeneralOptions.GeneralDiscardsPresent;
 
       //Setup Data Binding for Parameter Controls  
       if (inputData != null)

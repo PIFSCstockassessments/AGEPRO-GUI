@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -15,102 +9,104 @@ namespace Nmfs.Agepro.Gui
   public partial class ControlGeneral : UserControl
   {
     public event EventHandler SetGeneral;
-    private int maxRandomSeed;
-    public int maxRecruitModels { get; set; }
+    private readonly int MaxRandomSeed;
+    public int MaxRecruitModels { get; set; }
+
+    public string GeneralModelId
+    {
+      get => textBoxModelID.Text;
+      set => textBoxModelID.Text = value;
+    }
+    public string GeneralInputFile
+    {
+      get => textBoxInputFile.Text;
+      set => textBoxInputFile.Text = value;
+    }
+    public string GeneralFirstYearProjection
+    {
+      get => textBoxFirstYearProjection.Text;
+      set => textBoxFirstYearProjection.Text = value;
+    }
+    public string GeneralLastYearProjection
+    {
+      get => textBoxLastYearProjection.Text;
+      set => textBoxLastYearProjection.Text = value;
+    }
+    public int GeneralFirstAgeClass
+    {
+      get => Convert.ToInt32(spinBoxFirstAge.Value);
+      set => spinBoxFirstAge.Value = value;
+    }
+    public int GeneralLastAgeClass
+    {
+      get => Convert.ToInt32(textBoxLastAge.Text);
+      set => textBoxLastAge.Text = value.ToString();
+    }
+    public string GeneralNumberFleets
+    {
+      get => textBoxNumFleets.Text;
+      set => textBoxNumFleets.Text = value;
+    }
+    public string GeneralNumberRecruitModels
+    {
+      get => textBoxNumRecruitModels.Text;
+      set => textBoxNumRecruitModels.Text = value;
+    }
+    public string GeneralNumberPopulationSimuations
+    {
+      get => textBoxNumPopSim.Text;
+      set => textBoxNumPopSim.Text = value;
+    }
+    public string GeneralRandomSeed
+    {
+      get => textBoxRandomSeed.Text;
+      set => textBoxRandomSeed.Text = value;
+    }
+    public bool GeneralDiscardsPresent
+    {
+      get => checkBoxDiscards.Checked;
+      set => checkBoxDiscards.Checked = value;
+    }
 
     public ControlGeneral()
     {
       InitializeComponent();
 
       //Set max constant
-      maxRandomSeed = 2147483647;
+      MaxRandomSeed = 2147483647;
 
       //Set Max Constants
-      maxRecruitModels = 21;
+      MaxRecruitModels = 21;
 
     }
 
-    public string generalModelId
-    {
-      get { return textBoxModelID.Text; }
-      set { textBoxModelID.Text = value; }
-    }
-    public string generalInputFile
-    {
-      get { return textBoxInputFile.Text; }
-      set { textBoxInputFile.Text = value; }
-    }
-    public string generalFirstYearProjection
-    {
-      get { return textBoxFirstYearProjection.Text; }
-      set { textBoxFirstYearProjection.Text = value; }
-    }
-    public string generalLastYearProjection
-    {
-      get { return textBoxLastYearProjection.Text; }
-      set { textBoxLastYearProjection.Text = value; }
-    }
-    public int generalFirstAgeClass
-    {
-      get { return Convert.ToInt32(spinBoxFirstAge.Value); }
-      set { spinBoxFirstAge.Value = value; }
-    }
-    public int generalLastAgeClass
-    {
-      get { return Convert.ToInt32(textBoxLastAge.Text); }
-      set { textBoxLastAge.Text = value.ToString(); }
-    }
-    public string generalNumberFleets
-    {
-      get { return textBoxNumFleets.Text; }
-      set { textBoxNumFleets.Text = value; }
-    }
-    public string generalNumberRecruitModels
-    {
-      get { return textBoxNumRecruitModels.Text; }
-      set { textBoxNumRecruitModels.Text = value; }
-    }
-    public string generalNumberPopulationSimuations
-    {
-      get { return textBoxNumPopSim.Text; }
-      set { textBoxNumPopSim.Text = value; }
-    }
-    public string generalRandomSeed
-    {
-      get { return textBoxRandomSeed.Text; }
-      set { textBoxRandomSeed.Text = value; }
-    }
-    public bool generalDiscardsPresent
-    {
-      get { return checkBoxDiscards.Checked; }
-      set { checkBoxDiscards.Checked = value; }
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public void ValidateGeneralOptionsParameters()
     {
 
       Dictionary<string, string> generalOptionsList = new Dictionary<string, string> {
-                {"First Year Of Projection", textBoxFirstYearProjection.Text},
-                {"Last Year Of Projection", textBoxLastYearProjection.Text},
-                {"First Age Class", spinBoxFirstAge.Value.ToString()},
-                {"Last Age Class", textBoxLastAge.Text},
-                {"Number Of Fleets", textBoxNumFleets.Text},
-                {"Number Of Recruitment Models", textBoxNumRecruitModels.Text},
-                {"Number Of Population Simulations", textBoxNumPopSim.Text},
-                {"Random Number Seed", textBoxRandomSeed.Text},
-
-            };
+        {"First Year Of Projection", textBoxFirstYearProjection.Text},
+        {"Last Year Of Projection", textBoxLastYearProjection.Text},
+        {"First Age Class", spinBoxFirstAge.Value.ToString()},
+        {"Last Age Class", textBoxLastAge.Text},
+        {"Number Of Fleets", textBoxNumFleets.Text},
+        {"Number Of Recruitment Models", textBoxNumRecruitModels.Text},
+        {"Number Of Population Simulations", textBoxNumPopSim.Text},
+        {"Random Number Seed", textBoxRandomSeed.Text}
+      };
 
       //Check If Each General Param Controls (1) has a value and (2) that value is a whole (integer) number.
       foreach (KeyValuePair<string, string> param in generalOptionsList)
       {
         if (param.Value == "")
         {
-          throw new InvalidAgeproGuiParameterException(param.Key + " value must be specfied.");
+          throw new InvalidAgeproGuiParameterException($"{param.Key} value must be specfied.");
         }
         if (IsNumeric(param.Value) == false)
         {
-          throw new InvalidAgeproGuiParameterException("In " + param.Key + ": '" + param.Value + "' is not a whole number");
+          throw new InvalidAgeproGuiParameterException($"In {param.Key}: '{param.Value}' is not a whole number");
         }
 
       }
@@ -121,17 +117,17 @@ namespace Nmfs.Agepro.Gui
         throw new InvalidAgeproGuiParameterException("Invaild First Age Class Value: Should only be 0 or 1");
       }
 
-      if (Math.Abs(Convert.ToInt32(textBoxRandomSeed.Text)) > maxRandomSeed)
+      if (Math.Abs(Convert.ToInt32(textBoxRandomSeed.Text)) > MaxRandomSeed)
       {
-        throw new InvalidAgeproGuiParameterException("Random Number Seed " + textBoxRandomSeed.Text +
-            Environment.NewLine + "Exceeds limit of " + maxRandomSeed + " or -" + maxRandomSeed);
+        throw new InvalidAgeproGuiParameterException(
+          $"Random Number Seed {textBoxRandomSeed.Text}{Environment.NewLine}Exceeds limit of {MaxRandomSeed} or -{MaxRandomSeed}");
       }
 
 
       //Use general options parameters to set inputFile parameters 
       int generalNumAges = NumAges();
-      int generalNumYears = Convert.ToInt32(this.generalLastYearProjection) -
-          Convert.ToInt32(this.generalFirstYearProjection) + 1;
+      int generalNumYears = Convert.ToInt32(GeneralLastYearProjection) -
+          Convert.ToInt32(GeneralFirstYearProjection) + 1;
 
       //Validate Number of Ages and Years
       if (generalNumAges < 1)
@@ -145,30 +141,25 @@ namespace Nmfs.Agepro.Gui
         throw new InvalidAgeproGuiParameterException(exMessage);
       }
 
-      if (Convert.ToInt32(generalNumberRecruitModels) > this.maxRecruitModels)
+      if (Convert.ToInt32(GeneralNumberRecruitModels) > MaxRecruitModels)
       {
-        string exMessage = "Number of Recruitment Models exceed limit of " + this.maxRecruitModels + ".";
+        string exMessage = $"Number of Recruitment Models exceed limit of {MaxRecruitModels}.";
         throw new InvalidAgeproGuiParameterException(exMessage);
       }
 
     }
 
+
     private bool IsNumeric(string s)
     {
-      int numberForm;
-      bool isNumeric = int.TryParse(s, out numberForm);
-
-      return isNumeric;
+      return int.TryParse(s, out _);
     }
 
-    private void buttonSetGeneral_Click(object sender, EventArgs e)
+    private void ButtonSetGeneral_Click(object sender, EventArgs e)
     {
       //Transfer general option values to input file class
-      //Null check to make sure main page attached to event.
-      if (this.SetGeneral != null)
-      {
-        this.SetGeneral(sender, e);
-      }
+      //Null check to make sure main page attached to event; if not null, invoke.
+      SetGeneral?.Invoke(sender, e);
 
     }
 
@@ -193,7 +184,7 @@ namespace Nmfs.Agepro.Gui
     /// <returns>Integer</returns>
     public int NumAges()
     {
-      return (this.generalLastAgeClass - this.generalFirstAgeClass + 1);
+      return (GeneralLastAgeClass - GeneralFirstAgeClass + 1);
     }
 
   }

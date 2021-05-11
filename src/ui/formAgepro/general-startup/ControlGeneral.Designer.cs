@@ -130,7 +130,7 @@
             this.buttonSetGeneral.TabIndex = 17;
             this.buttonSetGeneral.Text = "SET";
             this.buttonSetGeneral.UseVisualStyleBackColor = true;
-            this.buttonSetGeneral.Click += new System.EventHandler(this.buttonSetGeneral_Click);
+            this.buttonSetGeneral.Click += new System.EventHandler(this.ButtonSetGeneral_Click);
             // 
             // spinBoxFirstAge
             // 
