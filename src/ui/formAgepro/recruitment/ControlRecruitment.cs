@@ -288,8 +288,8 @@ namespace Nmfs.Agepro.Gui
           ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
 
           empiricalParameterControls.SetEmpiricalRecruitmentControls(currentEmpiricalRecruitSelection, panelRecruitModelParameter);
-          empiricalParameterControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          empiricalParameterControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          empiricalParameterControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          empiricalParameterControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
 
         }
         else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.TwoStage)
@@ -312,8 +312,8 @@ namespace Nmfs.Agepro.Gui
 
           empiricalCDFZeroControls.SetEmpiricalCDFZeroRecruitmentControls(
               currentEmpiricalCDFZeroRecruitmentSelection, panelRecruitModelParameter);
-          empiricalCDFZeroControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          empiricalCDFZeroControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          empiricalCDFZeroControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          empiricalCDFZeroControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
 
 
         }

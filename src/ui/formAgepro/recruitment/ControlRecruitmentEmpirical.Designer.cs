@@ -80,7 +80,7 @@
             this.buttonSetParameters.TabIndex = 2;
             this.buttonSetParameters.Text = "SET";
             this.buttonSetParameters.UseVisualStyleBackColor = true;
-            this.buttonSetParameters.Click += new System.EventHandler(this.buttonSetParameters_Click);
+            this.buttonSetParameters.Click += new System.EventHandler(this.ButtonSetParameters_Click);
             // 
             // spinBoxNumObservations
             // 
@@ -123,7 +123,7 @@
             this.dataGridRecruitTable.RowHeadersWidth = 70;
             this.dataGridRecruitTable.Size = new System.Drawing.Size(855, 223);
             this.dataGridRecruitTable.TabIndex = 2;
-            this.dataGridRecruitTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRecruitTable_CellFormatting);
+            this.dataGridRecruitTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridRecruitTable_CellFormatting);
             // 
             // ControlRecruitmentEmpirical
             // 
