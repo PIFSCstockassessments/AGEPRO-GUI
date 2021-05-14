@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -13,31 +10,54 @@ namespace Nmfs.Agepro.Gui
 {
   public partial class ControlRecruitment : UserControl
   {
-    public int numRecruitModels { get; set; }
-    public int[] recruitModelSelection { get; set; }
-    public string[] seqRecruitYears { get; set; }
+    public int NumRecruitModels { get; set; }
+    public int[] RecruitModelSelection { get; set; }
+    public string[] SeqRecruitYears { get; set; }
+    public Dictionary <int, string> recruitmentDictionary { get; set; }
 
     public List<RecruitmentModelProperty> CollectionAgeproRecruitmentModels { get; set; }
 
     private DataGridViewComboBoxColumn columnRecruitModelSelection;
-    public bool populateDGV { get; set; }
+    public bool PopulateDGV { get; set; }
+
+    public double RecruitingScalingFactor
+    {
+      get => Convert.ToDouble(textBoxRecruitngScalingFactor.Text);
+      set => textBoxRecruitngScalingFactor.Text = value.ToString();
+    }
+    public double SSBScalingFactor
+    {
+      get => Convert.ToDouble(textBoxSSBScalingFactor.Text);
+      set => textBoxSSBScalingFactor.Text = value.ToString();
+    }
+    public DataTable RecruitmentProb
+    {
+      get => (DataTable)dataGridRecruitProb.DataSource;
+      set => dataGridRecruitProb.DataSource = value;
+    }
 
     public ControlRecruitment()
     {
-      populateDGV = true;
+      PopulateDGV = true;
       InitializeComponent();
 
-      columnRecruitModelSelection = new DataGridViewComboBoxColumn();
-      columnRecruitModelSelection.DataPropertyName = "columnRecruitModelSelect";
-      columnRecruitModelSelection.HeaderText = "Recruitment Model";
-      columnRecruitModelSelection.Width = 500;
+      columnRecruitModelSelection = new DataGridViewComboBoxColumn
+      {
+        DataPropertyName = "columnRecruitModelSelect",
+        HeaderText = "Recruitment Model",
+        Width = 500
+      };
+
+      RecruitModelDictionaryContainer modelDictionaryObject = new RecruitModelDictionaryContainer();
+      recruitmentDictionary = modelDictionaryObject.RecruitDictionary;
+      columnRecruitModelSelection.DataSource = recruitmentDictionary.ToList();
 
       //Use the RecruitDictionary object to popluate dataGridRecruitModelSelection's Combo Boxes
-      Dictionary<int, string> recuritDict = RecruitDictionary();
-      columnRecruitModelSelection.DataSource = recuritDict.ToList();
+      //Dictionary<int, string> recuritDict = RecruitDictionary();
+      //columnRecruitModelSelection.DataSource = recuritDict.ToList();
       columnRecruitModelSelection.ValueMember = "Key";
       columnRecruitModelSelection.DisplayMember = "Value";
-      dataGridComboBoxSelectRecruitModels.Columns.Add(columnRecruitModelSelection);
+      _ = dataGridComboBoxSelectRecruitModels.Columns.Add(columnRecruitModelSelection);
       dataGridComboBoxSelectRecruitModels.RowHeadersWidth = 100;
 
       //Recruitment Prob
@@ -46,40 +66,25 @@ namespace Nmfs.Agepro.Gui
       ///Select Recruitment Models: 
       ///Don't want to cut/paste these values, but still want the user to use combo boxes to
       ///select a recruitment model.
-      this.dataGridComboBoxSelectRecruitModels.nftReadOnly = true;
-      this.dataGridComboBoxSelectRecruitModels.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+      dataGridComboBoxSelectRecruitModels.nftReadOnly = true;
+      dataGridComboBoxSelectRecruitModels.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
 
-    }
-    public double recruitingScalingFactor
-    {
-      get { return Convert.ToDouble(textBoxRecruitngScalingFactor.Text); }
-      set { textBoxRecruitngScalingFactor.Text = value.ToString(); }
-    }
-    public double SSBScalingFactor
-    {
-      get { return Convert.ToDouble(textBoxSSBScalingFactor.Text); }
-      set { textBoxSSBScalingFactor.Text = value.ToString(); }
-    }
-    public DataTable recruitmentProb
-    {
-      get { return (DataTable)dataGridRecruitProb.DataSource; }
-      set { dataGridRecruitProb.DataSource = value; }
     }
 
     protected override void OnLoad(EventArgs e)
     {
-      this.populateDGV = true;
+      PopulateDGV = true;
 
-      labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
+      labelRecruitSelection.Text = GetSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
       //Set prevValidValues
-      this.textBoxRecruitngScalingFactor.PrevValidValue = recruitingScalingFactor.ToString();
-      this.textBoxSSBScalingFactor.PrevValidValue = SSBScalingFactor.ToString();
+      textBoxRecruitngScalingFactor.PrevValidValue = RecruitingScalingFactor.ToString();
+      textBoxSSBScalingFactor.PrevValidValue = SSBScalingFactor.ToString();
 
       if (CollectionAgeproRecruitmentModels.Count == 0)
       {
         //if AgeproRecruitmentModel Colletction list is empty, intialize it
         List<RecruitmentModelProperty> userSpecRecruitList = new List<RecruitmentModelProperty>();
-        for (int i = 0; i < numRecruitModels; i++)
+        for (int i = 0; i < NumRecruitModels; i++)
         {
           userSpecRecruitList.Add(new NullSelectRecruitment());
         }
@@ -87,7 +92,7 @@ namespace Nmfs.Agepro.Gui
       }
 
       base.OnLoad(e);
-      populateDGV = false;
+      PopulateDGV = false;
     }
 
     /// <summary>
@@ -97,59 +102,72 @@ namespace Nmfs.Agepro.Gui
     /// <param name="nrecruits"> Number of Recuitment Models.</param>
     /// <param name="selectedModels">AgeproRecruitment CoreLib object.</param>
     public void SetupControlRecruitment(int nrecruits,
-        Nmfs.Agepro.CoreLib.AgeproRecruitment objRecruitment)
+        AgeproRecruitment objRecruitment)
     {
       //Cleanup any previously used recruitment parameter controls.
-      this.panelRecruitModelParameter.Controls.Clear();
-      this.textBoxRecruitngScalingFactor.Clear();
-      this.textBoxSSBScalingFactor.Clear();
+      panelRecruitModelParameter.Controls.Clear();
+      textBoxRecruitngScalingFactor.Clear();
+      textBoxSSBScalingFactor.Clear();
 
       //Bindings
-      this.textBoxRecruitngScalingFactor.DataBindings.Clear();
-      this.textBoxSSBScalingFactor.DataBindings.Clear();
-      this.textBoxRecruitngScalingFactor.DataBindings.Add("Text", objRecruitment, "recruitScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxSSBScalingFactor.DataBindings.Add("Text", objRecruitment, "SSBScalingFactor", true, DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxRecruitngScalingFactor.PrevValidValue = this.textBoxRecruitngScalingFactor.Text;
-      this.textBoxSSBScalingFactor.PrevValidValue = this.textBoxSSBScalingFactor.Text;
+      textBoxRecruitngScalingFactor.DataBindings.Clear();
+      textBoxSSBScalingFactor.DataBindings.Clear();
+      _ = textBoxRecruitngScalingFactor.DataBindings.Add("Text", objRecruitment, "recruitScalingFactor", true,
+        DataSourceUpdateMode.OnPropertyChanged);
+      _ = textBoxSSBScalingFactor.DataBindings.Add("Text", objRecruitment, "SSBScalingFactor", true,
+        DataSourceUpdateMode.OnPropertyChanged);
+      textBoxRecruitngScalingFactor.PrevValidValue = textBoxRecruitngScalingFactor.Text;
+      textBoxSSBScalingFactor.PrevValidValue = textBoxSSBScalingFactor.Text;
 
       //numRecuritModels
-      this.numRecruitModels = nrecruits;
+      NumRecruitModels = nrecruits;
 
       //collectionAgeproRecruitmentModels
-      this.CollectionAgeproRecruitmentModels = objRecruitment.RecruitCollection;
+      CollectionAgeproRecruitmentModels = objRecruitment.RecruitCollection;
 
       //seqRecruitYears
-      this.seqRecruitYears = Array.ConvertAll(objRecruitment.ObservationYears, element => element.ToString());
+      SeqRecruitYears = Array.ConvertAll(objRecruitment.ObservationYears, element => element.ToString());
 
       //recruitModelSelection
-      this.recruitModelSelection = new int[nrecruits];
+      SetRecruitModelSelection(nrecruits, objRecruitment);
+
+      //setup RecruitmentSelectionComboBox in recruit models tab
+      SetRecuitmentSelectionComboBox(nrecruits);
+
+      //setup dataGridComboBoxSelectRecruitModels in recruitment tab
+      SetDataGridComboBoxSelectRecruitModels(nrecruits);
+
+      //recruitmentProb
+      RecruitmentProb = objRecruitment.RecruitProb;
+
+      //recruitmentScalingfactor
+      RecruitingScalingFactor = objRecruitment.RecruitScalingFactor;
+    
+      //SSBScalingFactor
+      SSBScalingFactor = objRecruitment.SSBScalingFactor;
+    }
+
+    /// <summary>
+    /// Sets up an array of recruit model integers. Array size based on nrecruits.
+    /// </summary>
+    /// <param name="nrecruits">Number of Recruits</param>
+    /// <param name="objRecruitment">CoreLib.AgeproRecruitment object</param>
+    private void SetRecruitModelSelection(int nrecruits, AgeproRecruitment objRecruitment)
+    {
+      RecruitModelSelection = new int[nrecruits];
       //recruitModelSelection from RecruitCollection
       if (objRecruitment.ObservationYears.Count() > 0)
       {
         for (int rmodel = 0; rmodel < objRecruitment.RecruitCollection.Count; rmodel++)
         {
-          this.recruitModelSelection[rmodel] = objRecruitment.RecruitCollection[rmodel].recruitModelNum;
+          RecruitModelSelection[rmodel] = objRecruitment.RecruitCollection[rmodel].recruitModelNum;
         }
       }
-
-      //setup RecruitmentSelectionComboBox in recruit models tab
-      this.SetRecuitmentSelectionComboBox(nrecruits);
-
-      //setup dataGridComboBoxSelectRecruitModels in recruitment tab
-      this.SetDataGridComboBoxSelectRecruitModels(nrecruits);
-
-      //recruitmentProb
-      this.recruitmentProb = objRecruitment.RecruitProb;
-
-      //recruitmentScalingfactor
-      this.recruitingScalingFactor = objRecruitment.RecruitScalingFactor;
-      //SSBScalingFactor
-      this.SSBScalingFactor = objRecruitment.SSBScalingFactor;
     }
 
 
     /// <summary>
-    /// 
+    /// Poplulates Recruitment Model Drepdown Box
     /// </summary>
     /// <param name="numRecruitModels"></param>
     public void SetDataGridComboBoxSelectRecruitModels(int numRecruitModels)
@@ -162,14 +180,14 @@ namespace Nmfs.Agepro.Gui
 
       for (int i = 0; i < numRecruitModels; i++)
       {
-        this.dataGridComboBoxSelectRecruitModels.Rows.Add(); //Add Empty Row w/ ComboBoxColumn
+        _ = dataGridComboBoxSelectRecruitModels.Rows.Add(); //Add Empty Row w/ ComboBoxColumn
       }
 
       int irecruit = 0;
-      foreach (DataGridViewRow recruitSelection in this.dataGridComboBoxSelectRecruitModels.Rows)
+      foreach (DataGridViewRow recruitSelection in dataGridComboBoxSelectRecruitModels.Rows)
       {
         //Set ComboBox Value with intended recruit model number.
-        ((DataGridViewComboBoxCell)recruitSelection.Cells[0]).Value = this.recruitModelSelection[irecruit];
+        ((DataGridViewComboBoxCell)recruitSelection.Cells[0]).Value = RecruitModelSelection[irecruit];
         irecruit++;
       }
 
@@ -196,49 +214,19 @@ namespace Nmfs.Agepro.Gui
     private void SetRecruitmentProbRowHeaders()
     {
       int iyear = 0;
-      foreach (DataGridViewRow yearRow in this.dataGridRecruitProb.Rows)
+      foreach (DataGridViewRow yearRow in dataGridRecruitProb.Rows)
       {
-        yearRow.HeaderCell.Value = seqRecruitYears[iyear];
+        yearRow.HeaderCell.Value = SeqRecruitYears[iyear];
         iyear++;
       }
     }
-
+        
     /// <summary>
-    /// Creates and sets the Recruitment Model Dictionary Object
+    /// Recruitment Probabilitity Format
     /// </summary>
-    /// <returns>Returns the Recruitment Model Dictionary</returns>
-    public Dictionary<int, string> RecruitDictionary()
-    {
-      //Future Feature: Generizse/Automate this Dictionary?
-      Dictionary<int, string> recruitModelDictionary = new Dictionary<int, string>();
-
-      recruitModelDictionary.Add(0, "None Selected");
-      recruitModelDictionary.Add(1, "Model 1: Markov Matrix");
-      recruitModelDictionary.Add(2, "Model 2: Empirical Recruits per Spawning Biomass Distribution");
-      recruitModelDictionary.Add(3, "Model 3: Empirical Recruitment Distributiion");
-      recruitModelDictionary.Add(4, "Model 4: Two-Stage Empirical Recruits per Spawning Biomass Distribution");
-      recruitModelDictionary.Add(5, "Model 5: Beverton-Holt Curve w/ Lognormal Error");
-      recruitModelDictionary.Add(6, "Model 6: Ricker Curve w/ Lognormal Error");
-      recruitModelDictionary.Add(7, "Model 7: Shepherd Curve w/ Lognormal Error");
-      recruitModelDictionary.Add(8, "Model 8: Lognormal Distribution");
-      //Model 9 was removed in AGEPRO 4.0
-      recruitModelDictionary.Add(10, "Model 10: Beverton-Holt Curve w/ Autocorrected Lognormal Error");
-      recruitModelDictionary.Add(11, "Model 11: Ricker Curve w/ Autocorrected Lognormal Error");
-      recruitModelDictionary.Add(12, "Model 12: Shepherd Curve w/ Autocorrected Lognormal Error");
-      recruitModelDictionary.Add(13, "Model 13: Autocorrected Lognormal Distribution");
-      recruitModelDictionary.Add(14, "Model 14: Empirical Cumulative Distribution Function of Recruitment");
-      recruitModelDictionary.Add(15, "Model 15: Two-Stage Empirical Cumulative Distribution Function of Recruitment");
-      recruitModelDictionary.Add(16, "Model 16: Linear Recruits per Spawning Biomass Predictor w/ Normal Error");
-      recruitModelDictionary.Add(17, "Model 17: Loglinear Recruits per Spawning Biomass Predictor w/ Lognormal Error");
-      recruitModelDictionary.Add(18, "Model 18: Linear Recruitment Predictor w/ Normal Error");
-      recruitModelDictionary.Add(19, "Model 19: Loglinear Recruitment Predictor w/ Lognormal Error");
-      recruitModelDictionary.Add(20, "Model 20: Fixed Recruitment");
-      recruitModelDictionary.Add(21, "Model 21: Empirical Cumulative Distribution Function of Recruitment w/ Linear Decline to Zero");
-
-      return recruitModelDictionary;
-    }
-
-    private void dataGridRecruitProb_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGridRecruitProb_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridRecruitProb.Rows[e.RowIndex].HeaderCell;
 
@@ -248,7 +236,12 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    private void dataGridComboBoxSelectRecruitModels_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    /// <summary>
+    /// Recruit Selection Formatting
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGridComboBoxSelectRecruitModels_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridComboBoxSelectRecruitModels.Rows[e.RowIndex].HeaderCell;
 
@@ -263,15 +256,20 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    private void comboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Model-Specfic Recriut Selection Formatting
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ComboBoxRecruitSelection_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this.CollectionAgeproRecruitmentModels != null)
+      if (CollectionAgeproRecruitmentModels != null)
       {
         ComboBox modelSelectionCbx = sender as ComboBox;
 
-        labelRecruitSelection.Text = getSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
+        labelRecruitSelection.Text = GetSelectedRecruitmentModelName(modelSelectionCbx.SelectedIndex);
 
-        RecruitmentModelProperty currentRecruitSelection = this.CollectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
+        RecruitmentModelProperty currentRecruitSelection = CollectionAgeproRecruitmentModels[modelSelectionCbx.SelectedIndex];
 
         LoadRecruitModelParameterControls(currentRecruitSelection);
       }
@@ -291,7 +289,7 @@ namespace Nmfs.Agepro.Gui
 
           empiricalParameterControls.SetEmpiricalRecruitmentControls(currentEmpiricalRecruitSelection, panelRecruitModelParameter);
           empiricalParameterControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          empiricalParameterControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+          empiricalParameterControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
 
         }
         else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.TwoStage)
@@ -303,8 +301,8 @@ namespace Nmfs.Agepro.Gui
           ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage();
           twoStageControls.SetTwoStageEmpiricalRecruitmentControls(currentTwoStageEmpiricalRecruitSelection,
               panelRecruitModelParameter);
-          twoStageControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
-          twoStageControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+          twoStageControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          twoStageControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
         }
         else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.CDFZero)
         {
@@ -314,8 +312,8 @@ namespace Nmfs.Agepro.Gui
 
           empiricalCDFZeroControls.SetEmpiricalCDFZeroRecruitmentControls(
               currentEmpiricalCDFZeroRecruitmentSelection, panelRecruitModelParameter);
-          empiricalCDFZeroControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
-          empiricalCDFZeroControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+          empiricalCDFZeroControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          empiricalCDFZeroControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
 
 
         }
@@ -324,10 +322,10 @@ namespace Nmfs.Agepro.Gui
           EmpiricalFixedRecruitment currentFixedRecruitmentSelection = (EmpiricalFixedRecruitment)currentRecruitSelection;
 
           ControlRecruitmentFixed fixedRecruitmentControls = new ControlRecruitmentFixed();
-          fixedRecruitmentControls.seqYears = this.seqRecruitYears;
+          fixedRecruitmentControls.seqYears = SeqRecruitYears;
           fixedRecruitmentControls.SetFixedRecruitmentControls(currentFixedRecruitmentSelection, panelRecruitModelParameter);
-          fixedRecruitmentControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
-          fixedRecruitmentControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+          fixedRecruitmentControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          fixedRecruitmentControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
         }
 
       }
@@ -339,8 +337,8 @@ namespace Nmfs.Agepro.Gui
 
           ControlRecruitmentParametricCurve parametricCurveControls = new ControlRecruitmentParametricCurve();
 
-          parametricCurveControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
-          parametricCurveControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+          parametricCurveControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          parametricCurveControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
           parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
 
         }
@@ -351,8 +349,8 @@ namespace Nmfs.Agepro.Gui
           ControlRecruitmentParametricLognormal lognormalControls = new ControlRecruitmentParametricLognormal();
 
           lognormalControls.SetParametricRecruitmentControls(currentParametricLognormalRecruit, panelRecruitModelParameter);
-          lognormalControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
-          lognormalControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+          lognormalControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          lognormalControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
         }
       }
       else if (currentRecruitSelection is PredictorRecruitment)
@@ -361,9 +359,9 @@ namespace Nmfs.Agepro.Gui
 
         ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
 
-        predictorParameterControls.seqYears = this.seqRecruitYears;
-        predictorParameterControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
-        predictorParameterControls.collectionAgeproRecruitmentModels = this.CollectionAgeproRecruitmentModels;
+        predictorParameterControls.seqYears = SeqRecruitYears;
+        predictorParameterControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+        predictorParameterControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
         predictorParameterControls.SetPredictorRecruitmentcontrols(currentPredictorRecruitSelection, panelRecruitModelParameter);
       }
       else if (currentRecruitSelection is MarkovMatrixRecruitment)
@@ -373,8 +371,8 @@ namespace Nmfs.Agepro.Gui
         ControlRecruitmentMarkovMatrix markovControls = new ControlRecruitmentMarkovMatrix();
 
         markovControls.SetRecruitmentControls(currentRecruit, panelRecruitModelParameter);
-        markovControls.collectionAgeproRecruitModels = this.CollectionAgeproRecruitmentModels;
-        markovControls.collectionSelectedIndex = this.comboBoxRecruitSelection.SelectedIndex;
+        markovControls.collectionAgeproRecruitModels = CollectionAgeproRecruitmentModels;
+        markovControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
       }
       else
       {
@@ -389,11 +387,10 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="index">Index of RecruitmentModelSelection Array</param>
     /// <returns>String value from RecruitDictionary</returns>
-    private string getSelectedRecruitmentModelName(int index)
+    private string GetSelectedRecruitmentModelName(int index)
     {
-      int selectedModel = this.recruitModelSelection[index];
-      string selectedRecruitModelName;
-      if (RecruitDictionary().TryGetValue(selectedModel, out selectedRecruitModelName))
+      int selectedModel = RecruitModelSelection[index];
+      if (recruitmentDictionary.TryGetValue(selectedModel, out string selectedRecruitModelName))
       {
         return selectedRecruitModelName;
       }
@@ -405,12 +402,17 @@ namespace Nmfs.Agepro.Gui
 
     }
 
-    private void tabControlRecruitment_SelectedIndexChanged(object sender, EventArgs e)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TabControlRecruitment_SelectedIndexChanged(object sender, EventArgs e)
     {
       //When switching to the "Recruit Model" Tab, set up selected model name for labelRecruitSelection
       if ((sender as TabControl).SelectedIndex == 1)
       {
-        labelRecruitSelection.Text = getSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
+        labelRecruitSelection.Text = GetSelectedRecruitmentModelName(comboBoxRecruitSelection.SelectedIndex);
 
         //Catch for nulls
         if (CollectionAgeproRecruitmentModels.Count != 0)
@@ -430,25 +432,24 @@ namespace Nmfs.Agepro.Gui
 
     // This event handler manually raises the CellValueChanged event 
     // by calling the CommitEdit method. 
-    private void dataGridComboBoxSelectRecruitModels_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+    private void DataGridComboBoxSelectRecruitModels_CurrentCellDirtyStateChanged(object sender, EventArgs e)
     {
       if (dataGridComboBoxSelectRecruitModels.IsCurrentCellDirty)
       {
-        //Store previous value in case of error
-        var senderDgv = sender as NftDataGridView;
-        var oldKey = senderDgv.CurrentCell.Value;
-        var senderCbxCell = senderDgv.EditingControl as DataGridViewComboBoxEditingControl;
-
         try
         {
           // This fires the cell value changed handler below
-          dataGridComboBoxSelectRecruitModels.CommitEdit(DataGridViewDataErrorContexts.Commit);
+          _ = dataGridComboBoxSelectRecruitModels.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
         catch (Exception ex)
         {
-          MessageBox.Show("AGEPRO Recruitment selection can not be made." + Environment.NewLine +
+          _ = MessageBox.Show("AGEPRO Recruitment selection can not be made." + Environment.NewLine +
               ex.Message, "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+          //Store previous value in case of error
+          NftDataGridView senderDgv = sender as NftDataGridView;
+          DataGridViewComboBoxEditingControl senderCbxCell = senderDgv.EditingControl as DataGridViewComboBoxEditingControl;
+          object oldKey = senderDgv.CurrentCell.Value;
           //Revert selected value 
           senderCbxCell.SelectedValue = oldKey;
         }
@@ -456,9 +457,9 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    private void dataGridComboBoxSelectRecruitModels_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+    private void DataGridComboBoxSelectRecruitModels_CellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
-      if (this.populateDGV == false)
+      if (PopulateDGV == false)
       {
         DataGridViewComboBoxCell cbxCell = (DataGridViewComboBoxCell)dataGridComboBoxSelectRecruitModels.Rows[e.RowIndex].Cells[0];
         //Should only bind to events to Recruitment Model Column
@@ -492,7 +493,7 @@ namespace Nmfs.Agepro.Gui
     {
 
       object kvpKey;
-      var selectedRecruit = modelCbx.SelectedItem;
+      object selectedRecruit = modelCbx.SelectedItem;
       if (selectedRecruit != null)
       {
         Type typeSelectedRecruit = selectedRecruit.GetType();
@@ -501,15 +502,15 @@ namespace Nmfs.Agepro.Gui
           Type baseTypeSelectedRecruit = typeSelectedRecruit.GetGenericTypeDefinition();
           if (baseTypeSelectedRecruit == typeof(KeyValuePair<,>))
           {
-            Type[] argTypes = baseTypeSelectedRecruit.GetGenericArguments();
+            _ = baseTypeSelectedRecruit.GetGenericArguments();
 
             kvpKey = typeSelectedRecruit.GetProperty("Key").GetValue(selectedRecruit, null);
-            this.recruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
+            RecruitModelSelection[currentModel] = Convert.ToInt32(kvpKey);
 
             int selectedModelNum = Convert.ToInt32(kvpKey);
-            if (this.CollectionAgeproRecruitmentModels[currentModel] != null)
+            if (CollectionAgeproRecruitmentModels[currentModel] != null)
             {
-              this.CollectionAgeproRecruitmentModels[currentModel] =
+              CollectionAgeproRecruitmentModels[currentModel] =
                   AgeproRecruitment.GetRecruitmentModel(selectedModelNum);
 
             }
@@ -521,36 +522,41 @@ namespace Nmfs.Agepro.Gui
     }
     //end OnSelectingRecruitingModel
 
-    private Nmfs.Agepro.CoreLib.ValidationResult ValidateGeneralRecruitmentParameters()
+
+    /// <summary>
+    /// Recruitment Validation
+    /// </summary>
+    /// <returns></returns>
+    private ValidationResult ValidateGeneralRecruitmentParameters()
     {
       List<string> errorMsgList = new List<string>();
       //Select Recruitment Models
-      if (this.dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells() == true)
+      if (dataGridComboBoxSelectRecruitModels.HasBlankOrNullCells())
       {
         errorMsgList.Add("Select Recruitment Model Data Grid has invalid data.");
       }
       //Recruitment Scaling Factor
-      if (string.IsNullOrWhiteSpace(this.textBoxRecruitngScalingFactor.Text))
+      if (string.IsNullOrWhiteSpace(textBoxRecruitngScalingFactor.Text))
       {
         errorMsgList.Add("Missing Recruitment Scaling Factor value.");
       }
       //SSB Scaling Factor
-      if (string.IsNullOrWhiteSpace(this.textBoxSSBScalingFactor.Text))
+      if (string.IsNullOrWhiteSpace(textBoxSSBScalingFactor.Text))
       {
         errorMsgList.Add("Missing Recruitment SSB Scaling Factor value.");
       }
 
       //Recruitment Probability
-      if (this.dataGridRecruitProb.HasBlankOrNullCells() == true)
+      if (dataGridRecruitProb.HasBlankOrNullCells())
       {
         errorMsgList.Add("Recruitment probability table has missing values.");
       }
-      foreach (DataRow drow in this.recruitmentProb.Rows)
+      foreach (DataRow drow in RecruitmentProb.Rows)
       {
         //List rows that have nulls/missing data
         if (drow.ItemArray.Any(x => string.IsNullOrWhiteSpace(x.ToString())))
         {
-          errorMsgList.Add("At row " + (this.recruitmentProb.Rows.IndexOf(drow) + 1) +
+          errorMsgList.Add("At row " + (RecruitmentProb.Rows.IndexOf(drow) + 1) +
               ": Empty or missing value found.");
         }
         else
@@ -559,7 +565,7 @@ namespace Nmfs.Agepro.Gui
           if (AgeproRecruitment.CheckRecruitProbabilitySum(recruitProbRow) == false)
           {
             double rowSumRecruitProb = Array.ConvertAll<string, double>(recruitProbRow, double.Parse).Sum();
-            errorMsgList.Add("At row " + this.recruitmentProb.Rows.IndexOf(drow) +
+            errorMsgList.Add("At row " + RecruitmentProb.Rows.IndexOf(drow) +
                 ": Recruitment probablity sum does not equal 1.0; probability sum is "
                 + rowSumRecruitProb.ToString());
           }
@@ -574,39 +580,41 @@ namespace Nmfs.Agepro.Gui
     }
 
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public bool ValidateRecruitmentData()
     {
 
-      Nmfs.Agepro.CoreLib.ValidationResult vaildGeneralRecruitParameters =
-          this.ValidateGeneralRecruitmentParameters();
+      ValidationResult vaildGeneralRecruitParameters =
+          ValidateGeneralRecruitmentParameters();
 
       if (vaildGeneralRecruitParameters.IsValid == false)
       {
-        MessageBox.Show(vaildGeneralRecruitParameters.Message,
+        _ = MessageBox.Show(vaildGeneralRecruitParameters.Message,
             "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         return false;
       }
 
       //Recruit Models
-      Nmfs.Agepro.CoreLib.ValidationResult vaildRecruitmentModelResult;
+      ValidationResult vaildRecruitmentModelResult;
 
-      foreach (RecruitmentModelProperty rmodelSelection in this.CollectionAgeproRecruitmentModels)
+      foreach (RecruitmentModelProperty rmodelSelection in CollectionAgeproRecruitmentModels)
       {
-        int rmodelIndex = this.CollectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
+        int rmodelIndex = CollectionAgeproRecruitmentModels.IndexOf(rmodelSelection);
 
         vaildRecruitmentModelResult = rmodelSelection.ValidationCheck();
 
         if (vaildRecruitmentModelResult.IsValid == false)
         {
-          MessageBox.Show("In Recruitment Selection " + (rmodelIndex + 1) + " - "
-              + "\"" + getSelectedRecruitmentModelName(rmodelIndex) + "\" : "
-              + Environment.NewLine + vaildRecruitmentModelResult.Message,
-              "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          _ = MessageBox.Show($"In Recruitment Selection {rmodelIndex + 1} - \"{GetSelectedRecruitmentModelName(rmodelIndex)}\" : " +
+            $"{Environment.NewLine}{vaildRecruitmentModelResult.Message}",
+            "AGEPRO Recruitment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          
           return false;
         }
-
       }
 
 
@@ -615,7 +623,7 @@ namespace Nmfs.Agepro.Gui
 
 
     /// <summary>
-    /// 
+    /// Resizes DataTable Object in DataGridView.
     /// </summary>
     /// <param name="dgvTable"></param>
     /// <param name="newRowCount"></param>
@@ -626,7 +634,7 @@ namespace Nmfs.Agepro.Gui
       if (dgvTable.Rows.Count > newRowCount)
       {
         List<DataRow> rowsToDelete = new List<DataRow>();
-        for (int i = 0; i < (dgvTable.Rows.Count); i++)
+        for (int i = 0; i < dgvTable.Rows.Count; i++)
         {
           if ((i + 1) > newRowCount)
           {
@@ -650,7 +658,7 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// 
+    /// Resizes the DataTable Object in DataGridView
     /// </summary>
     /// <param name="dgvTable"></param>
     /// <param name="newRowCount"></param>
@@ -688,43 +696,47 @@ namespace Nmfs.Agepro.Gui
 
     private bool ValidateScalingFactor(NftTextBox txtFactor, string paramName)
     {
-      double scaleFactor;
-      if (double.TryParse(txtFactor.Text, out scaleFactor))
+      //Validate Scaling Factor As Numerical
+      if (!double.TryParse(txtFactor.Text, out double scaleFactor))
       {
-        if (scaleFactor < 0)
-        {
-          MessageBox.Show(paramName + " must be a positive number.", "AGEPRO",
-              MessageBoxButtons.OK, MessageBoxIcon.Warning);
-          txtFactor.Text = txtFactor.PrevValidValue;
-          return false;
-        }
-      }
-      else
-      {
-        MessageBox.Show(paramName + " must be a numeric value.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        _ = MessageBox.Show(paramName + " must be a numeric value.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         txtFactor.Text = txtFactor.PrevValidValue;
         return false;
       }
+      //Validate Scaling Factor as Positive Number
+      if (scaleFactor < 0)
+      {
+        _ = MessageBox.Show(paramName + " must be a positive number.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        txtFactor.Text = txtFactor.PrevValidValue;
+        return false;
+      }
+      
       return true; // If Valid 
     }
 
 
 
-
-    private void textBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// Recruiting Scaling Factor Input Validator. Raise the cancel event flag if Scaling Factors are not valid.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxRecruitngScalingFactor_Validating(object sender, CancelEventArgs e)
     {
-      //If Scaling Factors are not valid, raise the cancel event flag.
-      if (!ValidateScalingFactor(this.textBoxRecruitngScalingFactor, "Recruitment Scaling Factor"))
+      if (!ValidateScalingFactor(textBoxRecruitngScalingFactor, "Recruitment Scaling Factor"))
       {
         e.Cancel = true;
       }
     }
 
-
-    private void textBoxSSBScalingFactor_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// SSB Scaling Factor Input Validator. Raise the cancel event flag if Scaling Factors are not valid.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxSSBScalingFactor_Validating(object sender, CancelEventArgs e)
     {
-      //If Scaling Factors are not valid, raise the cancel event flag.
-      if (!ValidateScalingFactor(this.textBoxSSBScalingFactor, "SSB Scaling Factor"))
+      if (!ValidateScalingFactor(textBoxSSBScalingFactor, "SSB Scaling Factor"))
       {
         e.Cancel = true;
       }
