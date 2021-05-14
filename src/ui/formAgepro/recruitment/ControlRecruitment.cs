@@ -301,8 +301,8 @@ namespace Nmfs.Agepro.Gui
           ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage();
           twoStageControls.SetTwoStageEmpiricalRecruitmentControls(currentTwoStageEmpiricalRecruitSelection,
               panelRecruitModelParameter);
-          twoStageControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          twoStageControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          twoStageControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          twoStageControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
         }
         else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.CDFZero)
         {

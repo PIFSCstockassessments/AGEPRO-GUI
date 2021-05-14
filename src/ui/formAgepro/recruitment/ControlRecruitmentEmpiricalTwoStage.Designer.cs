@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupEmpiricalParameters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // ControlRecruitmentEmpiricalTwoStage
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.Name = "ControlRecruitmentEmpiricalTwoStage";
-            this.groupEmpiricalParameters.ResumeLayout(false);
-            this.groupEmpiricalParameters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+      this.groupEmpiricalParameters.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).BeginInit();
+      this.SuspendLayout();
+      // 
+      // ControlRecruitmentEmpiricalTwoStage
+      // 
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.Name = "ControlRecruitmentEmpiricalTwoStage";
+      this.groupEmpiricalParameters.ResumeLayout(false);
+      this.groupEmpiricalParameters.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.spinBoxNumObservations)).EndInit();
+      this.ResumeLayout(false);
+      this.PerformLayout();
 
         }
 
