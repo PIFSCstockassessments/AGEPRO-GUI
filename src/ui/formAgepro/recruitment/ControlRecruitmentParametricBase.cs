@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -13,24 +7,29 @@ namespace Nmfs.Agepro.Gui
 {
   public partial class ControlRecruitmentParametricBase : UserControl
   {
-    public List<RecruitmentModelProperty> collectionAgeproRecruitmentModels { get; set; }
-    public int collectionSelectedIndex { get; set; }
-    public bool isAutocorrelated { get; set; }
-    protected ParametricType typeOfParmetric { get; set; }
+    public List<RecruitmentModelProperty> CollectionAgeproRecruitmentModels { get; set; }
+    public int CollectionSelectedIndex { get; set; }
+    public bool IsAutocorrelated { get; set; }
+    protected ParametricType ParametricCategory { get; set; }
 
 
     public ControlRecruitmentParametricBase()
     {
       InitializeComponent();
-      isAutocorrelated = false;
+      IsAutocorrelated = false;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="currentRecruit"></param>
+    /// <param name="panelRecruitModelParameter"></param>
     public virtual void SetParametricRecruitmentControls(ParametricRecruitment currentRecruit,
         Panel panelRecruitModelParameter)
     {
 
       panelRecruitModelParameter.Controls.Clear();
-      this.Dock = DockStyle.Fill;
+      Dock = DockStyle.Fill;
       panelRecruitModelParameter.Controls.Add(this);
     }
 
@@ -60,11 +59,10 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     protected void ValidateParamerticParameter(NftTextBox txtParam, CancelEventArgs e)
     {
-      double parametricVal;
-      if (!(double.TryParse(txtParam.Text, out parametricVal)))
+      if (!double.TryParse(txtParam.Text, out _))
       {
-        MessageBox.Show("Invalid input for " + txtParam.ParamName + ": Must be a numeric value.", "AGEPRO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        _ = MessageBox.Show($"Invalid input for {txtParam.ParamName}: Must be a numeric value.", "AGEPRO Recruitment",
+          MessageBoxButtons.OK, MessageBoxIcon.Warning);
         txtParam.Text = txtParam.PrevValidValue;
         e.Cancel = true;
         return;

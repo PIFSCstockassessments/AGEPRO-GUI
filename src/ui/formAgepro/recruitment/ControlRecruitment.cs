@@ -337,8 +337,8 @@ namespace Nmfs.Agepro.Gui
 
           ControlRecruitmentParametricCurve parametricCurveControls = new ControlRecruitmentParametricCurve();
 
-          parametricCurveControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          parametricCurveControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          parametricCurveControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          parametricCurveControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
           parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
 
         }
@@ -349,8 +349,8 @@ namespace Nmfs.Agepro.Gui
           ControlRecruitmentParametricLognormal lognormalControls = new ControlRecruitmentParametricLognormal();
 
           lognormalControls.SetParametricRecruitmentControls(currentParametricLognormalRecruit, panelRecruitModelParameter);
-          lognormalControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          lognormalControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          lognormalControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+          lognormalControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
         }
       }
       else if (currentRecruitSelection is PredictorRecruitment)

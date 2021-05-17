@@ -14,7 +14,7 @@ namespace Nmfs.Agepro.Gui
     public ControlRecruitmentParametricCurve()
     {
       InitializeComponent();
-      this.typeOfParmetric = ParametricType.Curve;
+      this.ParametricCategory = ParametricType.Curve;
 
       this.textBoxAlpha.Text = "0";
       this.textBoxBeta.Text = "0";

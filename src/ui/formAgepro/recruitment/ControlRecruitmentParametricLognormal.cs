@@ -14,7 +14,7 @@ namespace Nmfs.Agepro.Gui
     public ControlRecruitmentParametricLognormal()
     {
       InitializeComponent();
-      this.typeOfParmetric = ParametricType.Lognormal;
+      this.ParametricCategory = ParametricType.Lognormal;
 
       this.textBoxMean.Text = "0";
       this.textBoxStdDeviation.Text = "0";
