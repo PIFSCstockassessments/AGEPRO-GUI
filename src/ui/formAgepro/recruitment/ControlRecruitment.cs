@@ -371,8 +371,8 @@ namespace Nmfs.Agepro.Gui
         ControlRecruitmentMarkovMatrix markovControls = new ControlRecruitmentMarkovMatrix();
 
         markovControls.SetRecruitmentControls(currentRecruit, panelRecruitModelParameter);
-        markovControls.collectionAgeproRecruitModels = CollectionAgeproRecruitmentModels;
-        markovControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+        markovControls.CollectionAgeproRecruitModels = CollectionAgeproRecruitmentModels;
+        markovControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
       }
       else
       {

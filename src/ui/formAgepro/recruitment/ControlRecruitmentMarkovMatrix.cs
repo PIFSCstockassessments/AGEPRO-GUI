@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -14,14 +9,14 @@ namespace Nmfs.Agepro.Gui
   public partial class ControlRecruitmentMarkovMatrix : UserControl
   {
 
-    public List<RecruitmentModelProperty> collectionAgeproRecruitModels { get; set; }
-    public int collectionSelectedIndex { get; set; }
+    public List<RecruitmentModelProperty> CollectionAgeproRecruitModels { get; set; }
+    public int CollectionSelectedIndex { get; set; }
 
     public ControlRecruitmentMarkovMatrix()
     {
       InitializeComponent();
     }
-    public DataTable recruitLevelTable
+    public DataTable RecruitLevelTable
     {
       get { return (DataTable)dataGridRecruitTable.DataSource; }
       set { dataGridRecruitTable.DataSource = value; }
@@ -31,7 +26,7 @@ namespace Nmfs.Agepro.Gui
       get { return (DataTable)dataGridSSBTable.DataSource; }
       set { dataGridSSBTable.DataSource = value; }
     }
-    public DataTable probabilityTable
+    public DataTable ProbabilityTable
     {
       get { return (DataTable)dataGridProbabilityTable.DataSource; }
       set { dataGridProbabilityTable.DataSource = value; }
@@ -58,7 +53,7 @@ namespace Nmfs.Agepro.Gui
         currentRecruit.NumSSBLevels = defaultSSBLvl;
       }
 
-      if (!(currentRecruit.MarkovRecruitment != null))
+      if (currentRecruit.MarkovRecruitment == null)
       {
         currentRecruit.MarkovRecruitment = new DataSet("markovRecruitmentTables");
 
@@ -74,56 +69,56 @@ namespace Nmfs.Agepro.Gui
       {
 
         //Create Data Table if null
-        if (!(currentRecruit.MarkovRecruitment.Tables["Recruitment"] != null))
+        if (currentRecruit.MarkovRecruitment.Tables["Recruitment"] == null)
         {
           currentRecruit.MarkovRecruitment.Tables.Add(
               currentRecruit.NewRecruitLevelTable(currentRecruit.NumRecruitLevels));
         }
 
-        if (!(currentRecruit.MarkovRecruitment.Tables["SSB"] != null))
+        if (currentRecruit.MarkovRecruitment.Tables["SSB"] == null)
         {
           currentRecruit.MarkovRecruitment.Tables.Add(currentRecruit.NewSSBLevelTable(currentRecruit.NumSSBLevels));
         }
 
-        if (!(currentRecruit.MarkovRecruitment.Tables["Probability"] != null))
+        if (currentRecruit.MarkovRecruitment.Tables["Probability"] == null)
         {
           currentRecruit.MarkovRecruitment.Tables.Add(
               currentRecruit.NewProbabilityTable(currentRecruit.NumSSBLevels, currentRecruit.NumRecruitLevels));
         }
       }
       //Set data bindings
-      this.spinBoxNumRecruitLevels.DataBindings.Add("Value", currentRecruit, "numRecruitLevels",
+      _ = spinBoxNumRecruitLevels.DataBindings.Add("Value", currentRecruit, "numRecruitLevels",
           true, DataSourceUpdateMode.OnPropertyChanged);
-      this.spinBoxNumSSBLevels.DataBindings.Add("Value", currentRecruit, "numSSBlevels", true,
+      _ = spinBoxNumSSBLevels.DataBindings.Add("Value", currentRecruit, "numSSBlevels", true,
           DataSourceUpdateMode.OnPropertyChanged);
 
-      this.recruitLevelTable = currentRecruit.MarkovRecruitment.Tables["Recruitment"];
-      this.SSBLevelTable = currentRecruit.MarkovRecruitment.Tables["SSB"];
-      this.probabilityTable = currentRecruit.MarkovRecruitment.Tables["Probability"];
+      RecruitLevelTable = currentRecruit.MarkovRecruitment.Tables["Recruitment"];
+      SSBLevelTable = currentRecruit.MarkovRecruitment.Tables["SSB"];
+      ProbabilityTable = currentRecruit.MarkovRecruitment.Tables["Probability"];
 
       panelRecruitModelParameter.Controls.Clear();
-      this.Dock = DockStyle.Fill;
+      Dock = DockStyle.Fill;
       panelRecruitModelParameter.Controls.Add(this);
     }
 
-    private void buttonSetParameters_Click(object sender, EventArgs e)
+    private void ButtonSetParameters_Click(object sender, EventArgs e)
     {
       try
       {
         int newNumRecruitLevelsValue = Convert.ToInt32(spinBoxNumRecruitLevels.Value);
         int newNumSSBLevelsValue = Convert.ToInt32(spinBoxNumSSBLevels.Value);
-        bool renameProbTableCols = newNumRecruitLevelsValue > probabilityTable.Columns.Count;
+        bool renameProbTableCols = newNumRecruitLevelsValue > ProbabilityTable.Columns.Count;
 
-        recruitLevelTable = ControlRecruitment.ResizeDataGridTable(recruitLevelTable, newNumRecruitLevelsValue);
+        RecruitLevelTable = ControlRecruitment.ResizeDataGridTable(RecruitLevelTable, newNumRecruitLevelsValue);
         SSBLevelTable = ControlRecruitment.ResizeDataGridTable(SSBLevelTable, newNumSSBLevelsValue);
 
-        probabilityTable = ControlRecruitment.ResizeDataGridTable(probabilityTable, newNumSSBLevelsValue,
+        ProbabilityTable = ControlRecruitment.ResizeDataGridTable(ProbabilityTable, newNumSSBLevelsValue,
             newNumRecruitLevelsValue);
 
         if (renameProbTableCols)
         {
           int ncol = 1;
-          foreach (DataColumn dcol in probabilityTable.Columns)
+          foreach (DataColumn dcol in ProbabilityTable.Columns)
           {
             dcol.ColumnName = "PR(" + ncol + ")";
             ncol++;
@@ -133,16 +128,16 @@ namespace Nmfs.Agepro.Gui
       }
       catch (Exception ex)
       {
-        MessageBox.Show("Can not readjust markov matrix level(s)." + Environment.NewLine + ex.Message,
+        _ = MessageBox.Show("Can not readjust markov matrix level(s)." + Environment.NewLine + ex.Message,
            "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
     }
 
-    private void dataGridProbabilityTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridProbabilityTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridProbabilityTable.Rows[e.RowIndex].HeaderCell;
 
-      if (!(header.Value != null))
+      if (header.Value == null)
       {
         for (int i = 0; i < dataGridProbabilityTable.Rows.Count; i++)
         {
@@ -151,11 +146,11 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    private void dataGridRecruitTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridRecruitTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridRecruitTable.Rows[e.RowIndex].HeaderCell;
 
-      if (!(header.Value != null))
+      if (header.Value == null)
       {
         for (int i = 0; i < dataGridRecruitTable.Rows.Count; i++)
         {
@@ -164,11 +159,11 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    private void dataGridSSBTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridSSBTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridSSBTable.Rows[e.RowIndex].HeaderCell;
 
-      if (!(header.Value != null))
+      if (header.Value == null)
       {
         for (int i = 0; i < dataGridSSBTable.Rows.Count; i++)
         {

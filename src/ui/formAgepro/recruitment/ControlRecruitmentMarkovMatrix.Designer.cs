@@ -85,7 +85,7 @@
             this.buttonSetParameters.TabIndex = 2;
             this.buttonSetParameters.Text = "SET";
             this.buttonSetParameters.UseVisualStyleBackColor = true;
-            this.buttonSetParameters.Click += new System.EventHandler(this.buttonSetParameters_Click);
+            this.buttonSetParameters.Click += new System.EventHandler(this.ButtonSetParameters_Click);
             // 
             // spinBoxNumSSBLevels
             // 
@@ -142,7 +142,7 @@
             this.dataGridRecruitTable.RowHeadersWidth = 51;
             this.dataGridRecruitTable.Size = new System.Drawing.Size(202, 240);
             this.dataGridRecruitTable.TabIndex = 5;
-            this.dataGridRecruitTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRecruitTable_CellFormatting);
+            this.dataGridRecruitTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridRecruitTable_CellFormatting);
             // 
             // dataGridSSBTable
             // 
@@ -156,7 +156,7 @@
             this.dataGridSSBTable.RowHeadersWidth = 51;
             this.dataGridSSBTable.Size = new System.Drawing.Size(202, 240);
             this.dataGridSSBTable.TabIndex = 5;
-            this.dataGridSSBTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridSSBTable_CellFormatting);
+            this.dataGridSSBTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridSSBTable_CellFormatting);
             // 
             // dataGridProbabilityTable
             // 
@@ -171,7 +171,7 @@
             this.dataGridProbabilityTable.RowHeadersWidth = 110;
             this.dataGridProbabilityTable.Size = new System.Drawing.Size(398, 240);
             this.dataGridProbabilityTable.TabIndex = 6;
-            this.dataGridProbabilityTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridProbabilityTable_CellFormatting);
+            this.dataGridProbabilityTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridProbabilityTable_CellFormatting);
             // 
             // ControlRecruitmentMarkovMatrix
             // 
