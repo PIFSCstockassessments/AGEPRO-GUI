@@ -20,7 +20,7 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// 
+    /// Sets up Parameric Controls 
     /// </summary>
     /// <param name="currentRecruit"></param>
     /// <param name="panelRecruitModelParameter"></param>

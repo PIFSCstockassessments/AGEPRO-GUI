@@ -1,112 +1,146 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
-  public partial class ControlRecruitmentParametricCurve : Nmfs.Agepro.Gui.ControlRecruitmentParametricBase
+  public partial class ControlRecruitmentParametricCurve : ControlRecruitmentParametricBase
   {
     public ControlRecruitmentParametricCurve()
     {
       InitializeComponent();
-      this.ParametricCategory = ParametricType.Curve;
+      ParametricCategory = ParametricType.Curve;
 
-      this.textBoxAlpha.Text = "0";
-      this.textBoxBeta.Text = "0";
-      this.textBoxKParm.Text = "0";
-      this.textBoxVariance.Text = "0";
-      this.textBoxPhi.Text = "0";
-      this.textBoxLastResidual.Text = "0";
+      textBoxAlpha.Text = "0";
+      textBoxBeta.Text = "0";
+      textBoxKParm.Text = "0";
+      textBoxVariance.Text = "0";
+      textBoxPhi.Text = "0";
+      textBoxLastResidual.Text = "0";
 
-      this.textBoxAlpha.PrevValidValue = this.textBoxAlpha.Text;
-      this.textBoxBeta.PrevValidValue = this.textBoxBeta.Text;
-      this.textBoxKParm.PrevValidValue = this.textBoxKParm.Text;
-      this.textBoxVariance.PrevValidValue = this.textBoxVariance.Text;
-      this.textBoxPhi.PrevValidValue = this.textBoxPhi.Text;
-      this.textBoxLastResidual.PrevValidValue = this.textBoxLastResidual.Text;
+      textBoxAlpha.PrevValidValue = textBoxAlpha.Text;
+      textBoxBeta.PrevValidValue = textBoxBeta.Text;
+      textBoxKParm.PrevValidValue = textBoxKParm.Text;
+      textBoxVariance.PrevValidValue = textBoxVariance.Text;
+      textBoxPhi.PrevValidValue = textBoxPhi.Text;
+      textBoxLastResidual.PrevValidValue = textBoxLastResidual.Text;
 
       //By default, K-Parm is invisible
-      this.labelKparm.Visible = false;
-      this.textBoxKParm.Visible = false;
+      labelKparm.Visible = false;
+      textBoxKParm.Visible = false;
 
       //By Default, autocorrected vaules is seen as disabled
-      this.labelPhi.Enabled = false;
-      this.labelLastResidual.Enabled = false;
-      this.textBoxPhi.Enabled = false;
-      this.textBoxLastResidual.Enabled = false;
+      labelPhi.Enabled = false;
+      labelLastResidual.Enabled = false;
+      textBoxPhi.Enabled = false;
+      textBoxLastResidual.Enabled = false;
     }
 
+    /// <summary>
+    /// Sets up and data binds interface controls to ParametericRecruitent data.
+    /// </summary>
+    /// <param name="currentRecruit"></param>
+    /// <param name="panelRecruitModelParameter"></param>
     public override void SetParametricRecruitmentControls(ParametricRecruitment currentRecruit, Panel panelRecruitModelParameter)
     {
       ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruit;
-      DataBindTextBox(this.textBoxAlpha, currentParametricCurveRecruit, "alpha");
-      DataBindTextBox(this.textBoxBeta, currentParametricCurveRecruit, "beta");
-      DataBindTextBox(this.textBoxVariance, currentParametricCurveRecruit, "variance");
+      DataBindTextBox(textBoxAlpha, currentParametricCurveRecruit, "alpha");
+      DataBindTextBox(textBoxBeta, currentParametricCurveRecruit, "beta");
+      DataBindTextBox(textBoxVariance, currentParametricCurveRecruit, "variance");
 
-      this.textBoxAlpha.PrevValidValue = currentParametricCurveRecruit.Alpha.ToString();
-      this.textBoxBeta.PrevValidValue = currentParametricCurveRecruit.Beta.ToString();
-      this.textBoxVariance.PrevValidValue = currentParametricCurveRecruit.Variance.ToString();
+      textBoxAlpha.PrevValidValue = currentParametricCurveRecruit.Alpha.ToString();
+      textBoxBeta.PrevValidValue = currentParametricCurveRecruit.Beta.ToString();
+      textBoxVariance.PrevValidValue = currentParametricCurveRecruit.Variance.ToString();
 
       if (currentParametricCurveRecruit.GetType() == typeof(ParametricShepherdCurve))
       {
-        this.labelKparm.Visible = true;
-        this.textBoxKParm.Visible = true;
-        DataBindTextBox(this.textBoxKParm, currentParametricCurveRecruit, "kParm");
-        this.textBoxKParm.PrevValidValue = ((ParametricShepherdCurve)currentParametricCurveRecruit).KParm.ToString();
+        labelKparm.Visible = true;
+        textBoxKParm.Visible = true;
+        DataBindTextBox(textBoxKParm, currentParametricCurveRecruit, "kParm");
+        textBoxKParm.PrevValidValue = ((ParametricShepherdCurve)currentParametricCurveRecruit).KParm.ToString();
       }
 
       if (currentParametricCurveRecruit.Autocorrelated)
       {
-        this.labelPhi.Enabled = true;
-        this.labelLastResidual.Enabled = true;
-        this.textBoxPhi.Enabled = true;
-        this.textBoxLastResidual.Enabled = true;
+        labelPhi.Enabled = true;
+        labelLastResidual.Enabled = true;
+        textBoxPhi.Enabled = true;
+        textBoxLastResidual.Enabled = true;
 
-        DataBindTextBox(this.textBoxPhi, currentParametricCurveRecruit, "phi");
-        DataBindTextBox(this.textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
-        this.textBoxPhi.PrevValidValue = currentParametricCurveRecruit.Phi.Value.ToString();
-        this.textBoxLastResidual.PrevValidValue = currentParametricCurveRecruit.LastResidual.Value.ToString();
-
+        DataBindTextBox(textBoxPhi, currentParametricCurveRecruit, "phi");
+        DataBindTextBox(textBoxLastResidual, currentParametricCurveRecruit, "lastResidual");
+        textBoxPhi.PrevValidValue = currentParametricCurveRecruit.Phi.Value.ToString();
+        textBoxLastResidual.PrevValidValue = currentParametricCurveRecruit.LastResidual.Value.ToString();
       }
 
       base.SetParametricRecruitmentControls(currentRecruit, panelRecruitModelParameter);
     }
 
-    private void textBoxAlpha_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// Validate Alpha Curve text boc value as numeric. See also:
+    /// <seealso cref="ControlRecruitmentParametricBase.ValidateParamerticParameter(NftTextBox, CancelEventArgs)"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxAlpha_Validating(object sender, CancelEventArgs e)
     {
       ValidateParamerticParameter(sender as NftTextBox, e);
     }
 
-    private void textBoxBeta_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// Validate Beta Curve text box value as numeric. See also:
+    /// <seealso cref="ControlRecruitmentParametricBase.ValidateParamerticParameter(NftTextBox, CancelEventArgs)"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxBeta_Validating(object sender, CancelEventArgs e)
     {
       ValidateParamerticParameter(sender as NftTextBox, e);
     }
 
-    private void textBoxVariance_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// Validate Variance text box value as numeric. See also:
+    /// <seealso cref="ControlRecruitmentParametricBase.ValidateParamerticParameter(NftTextBox, CancelEventArgs)"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxVariance_Validating(object sender, CancelEventArgs e)
     {
       ValidateParamerticParameter(sender as NftTextBox, e);
     }
 
-    private void textBoxKParm_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// Validate KParm text box value as numeric. See also:
+    /// <seealso cref="ControlRecruitmentParametricBase.ValidateParamerticParameter(NftTextBox, CancelEventArgs)"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxKParm_Validating(object sender, CancelEventArgs e)
     {
       ValidateParamerticParameter(sender as NftTextBox, e);
     }
 
-    private void textBoxPhi_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// Validate Phi text box value as numeric. See also:
+    /// <seealso cref="ControlRecruitmentParametricBase.ValidateParamerticParameter(NftTextBox, CancelEventArgs)"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxPhi_Validating(object sender, CancelEventArgs e)
     {
       ValidateParamerticParameter(sender as NftTextBox, e);
     }
 
-    private void textBoxLastResidual_Validating(object sender, CancelEventArgs e)
+    /// <summary>
+    /// Validate Last Residual text box value as numeric. See also:
+    /// <seealso cref="ControlRecruitmentParametricBase.ValidateParamerticParameter(NftTextBox, CancelEventArgs)"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TextBoxLastResidual_Validating(object sender, CancelEventArgs e)
     {
       ValidateParamerticParameter(sender as NftTextBox, e);
     }
-
 
   }
 }
