@@ -230,7 +230,7 @@ namespace Nmfs.Agepro.Gui
     {
       DataGridViewRowHeaderCell header = dataGridRecruitProb.Rows[e.RowIndex].HeaderCell;
 
-      if (!(header.Value != null))
+      if (header.Value == null)
       {
         SetRecruitmentProbRowHeaders();
       }
@@ -245,7 +245,7 @@ namespace Nmfs.Agepro.Gui
     {
       DataGridViewRowHeaderCell header = dataGridComboBoxSelectRecruitModels.Rows[e.RowIndex].HeaderCell;
 
-      if (!(header.Value != null))
+      if (header.Value == null)
       {
 
         for (int i = 0; i < dataGridComboBoxSelectRecruitModels.Rows.Count; i++)
