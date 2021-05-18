@@ -359,9 +359,9 @@ namespace Nmfs.Agepro.Gui
 
         ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
 
-        predictorParameterControls.seqYears = SeqRecruitYears;
-        predictorParameterControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
-        predictorParameterControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
+        predictorParameterControls.SeqYears = SeqRecruitYears;
+        predictorParameterControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+        predictorParameterControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
         predictorParameterControls.SetPredictorRecruitmentcontrols(currentPredictorRecruitSelection, panelRecruitModelParameter);
       }
       else if (currentRecruitSelection is MarkovMatrixRecruitment)

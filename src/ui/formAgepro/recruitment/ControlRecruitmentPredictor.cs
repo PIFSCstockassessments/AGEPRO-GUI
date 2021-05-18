@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -13,59 +8,70 @@ namespace Nmfs.Agepro.Gui
 {
   public partial class ControlRecruitmentPredictor : UserControl
   {
-    public List<RecruitmentModelProperty> collectionAgeproRecruitmentModels { get; set; }
-    public int collectionSelectedIndex { get; set; }
-    public string[] seqYears { get; set; }
+    public List<RecruitmentModelProperty> CollectionAgeproRecruitmentModels { get; set; }
+    public int CollectionSelectedIndex { get; set; }
+    public string[] SeqYears { get; set; }
 
-    private int maxRecruitPredictors { get; set; }
+    private int MaxRecruitPredictors { get; set; }
+
+    public int NumRecruitPredictors
+    {
+      get => Convert.ToInt32(spinBoxNumRecruitPredictors.Value);
+      set => spinBoxNumRecruitPredictors.Value = value;
+    }
+    public double Variance
+    {
+      get => Convert.ToDouble(textBoxVariance.Text);
+      set => textBoxVariance.Text = value.ToString();
+    }
+    public double Intercept
+    {
+      get => Convert.ToDouble(textBoxIntercept.Text);
+      set => textBoxIntercept.Text = value.ToString();
+    }
+    public DataTable CoefficientTable
+    {
+      get => (DataTable)dataGridCoefficients.DataSource;
+      set => dataGridCoefficients.DataSource = value;
+    }
+    public DataTable ObservationTable
+    {
+      get => (DataTable)dataGridObservations.DataSource;
+      set => dataGridObservations.DataSource = value;
+    }
 
     public ControlRecruitmentPredictor()
     {
       InitializeComponent();
-      maxRecruitPredictors = 5;
-      spinBoxNumRecruitPredictors.Maximum = maxRecruitPredictors;
+      MaxRecruitPredictors = 5;
+      spinBoxNumRecruitPredictors.Maximum = MaxRecruitPredictors;
     }
 
-    public int numRecruitPredictors
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ButtonSetParameters_Click(object sender, EventArgs e)
     {
-      get { return Convert.ToInt32(spinBoxNumRecruitPredictors.Value); }
-      set { spinBoxNumRecruitPredictors.Value = value; }
-    }
-    public double variance
-    {
-      get { return Convert.ToDouble(textBoxVariance.Text); }
-      set { textBoxVariance.Text = value.ToString(); }
-    }
-    public double intercept
-    {
-      get { return Convert.ToDouble(textBoxIntercept.Text); }
-      set { textBoxIntercept.Text = value.ToString(); }
-    }
-    public DataTable coefficientTable
-    {
-      get { return (DataTable)dataGridCoefficients.DataSource; }
-      set { dataGridCoefficients.DataSource = value; }
-    }
-    public DataTable observationTable
-    {
-      get { return (DataTable)dataGridObservations.DataSource; }
-      set { dataGridObservations.DataSource = value; }
+      int newNumPredictors = Convert.ToInt32(spinBoxNumRecruitPredictors.Value);
+      CoefficientTable = ResizePredictorDataGridTables(CoefficientTable, newNumPredictors);
+      ObservationTable = ResizePredictorDataGridTables(ObservationTable, newNumPredictors);
     }
 
-    private void buttonSetParameters_Click(object sender, EventArgs e)
-    {
-      int newNumPredictors = Convert.ToInt32(this.spinBoxNumRecruitPredictors.Value);
-      coefficientTable = ResizePredictorDataGridTables(coefficientTable, newNumPredictors);
-      observationTable = ResizePredictorDataGridTables(observationTable, newNumPredictors);
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="predictorDataTable"></param>
+    /// <param name="numPredictors"></param>
+    /// <returns></returns>
     private DataTable ResizePredictorDataGridTables(DataTable predictorDataTable, int numPredictors)
     {
       //Catch if the number of Predictors exceed limit (in case control couldn't prevent it)
-      if (numPredictors > maxRecruitPredictors)
+      if (numPredictors > MaxRecruitPredictors)
       {
-        throw new Nmfs.Agepro.CoreLib.InvalidAgeproParameterException(
-            "Number of Observations exceed maximum limit of " + maxRecruitPredictors + ".");
+        throw new InvalidAgeproParameterException(
+          $"Number of Observations exceed maximum limit of {MaxRecruitPredictors}.");
       }
 
       //Delete rows if current count excceds new value
@@ -96,24 +102,38 @@ namespace Nmfs.Agepro.Gui
       return predictorDataTable;
     }
 
-    private void dataGridCoefficients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGridCoefficients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
-      DataGridViewRowHeaderCell header = this.dataGridCoefficients.Rows[e.RowIndex].HeaderCell;
-      if (!(header.Value != null))
+      DataGridViewRowHeaderCell header = dataGridCoefficients.Rows[e.RowIndex].HeaderCell;
+      if (header.Value == null)
       {
-        SetRecruitPredictorRowHeaders(this.dataGridCoefficients);
+        SetRecruitPredictorRowHeaders(dataGridCoefficients);
       }
     }
 
-    private void dataGridObservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGridObservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
-      DataGridViewRowHeaderCell header = this.dataGridObservations.Rows[e.RowIndex].HeaderCell;
-      if (!(header.Value != null))
+      DataGridViewRowHeaderCell header = dataGridObservations.Rows[e.RowIndex].HeaderCell;
+      if (header.Value == null)
       {
-        SetRecruitPredictorRowHeaders(this.dataGridObservations);
+        SetRecruitPredictorRowHeaders(dataGridObservations);
       }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="predictorDataGrid"></param>
     private void SetRecruitPredictorRowHeaders(NftDataGridView predictorDataGrid)
     {
       for (int i = 0; i < predictorDataGrid.Rows.Count; i++)
@@ -122,6 +142,11 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
+    /// <summary>
+    /// Interface controls and Data Binding Setup
+    /// </summary>
+    /// <param name="recruitSelection">Recruitment data object</param>
+    /// <param name="panelRecruitModelParameter"></param>
     public void SetPredictorRecruitmentcontrols(PredictorRecruitment recruitSelection, Panel panelRecruitModelParameter)
     {
       //Create a new coefficient and/or table if they are null
@@ -131,24 +156,24 @@ namespace Nmfs.Agepro.Gui
       }
       if (recruitSelection.ObservationTable == null)
       {
-        recruitSelection.ObservationTable = PredictorRecruitment.SetNewObsTable(0, this.seqYears);
+        recruitSelection.ObservationTable = PredictorRecruitment.SetNewObsTable(0, SeqYears);
       }
 
       //Set Data Bindings
-      this.spinBoxNumRecruitPredictors.DataBindings.Add("value", recruitSelection, "numRecruitPredictors",
+      _ = spinBoxNumRecruitPredictors.DataBindings.Add("value", recruitSelection, "NumRecruitPredictors",
           true, DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxVariance.DataBindings.Add("text", recruitSelection, "variance", false,
+      _ = textBoxVariance.DataBindings.Add("text", recruitSelection, "Variance", false,
           DataSourceUpdateMode.OnPropertyChanged);
-      this.textBoxIntercept.DataBindings.Add("text", recruitSelection, "intercept", false,
+      _ = textBoxIntercept.DataBindings.Add("text", recruitSelection, "Intercept", false,
           DataSourceUpdateMode.OnPropertyChanged);
 
-      //
-      this.coefficientTable = recruitSelection.CoefficientTable;
-      this.observationTable = recruitSelection.ObservationTable;
+      //Set DataGridView's Data Source
+      CoefficientTable = recruitSelection.CoefficientTable;
+      ObservationTable = recruitSelection.ObservationTable;
 
       //Set panel
       panelRecruitModelParameter.Controls.Clear();
-      this.Dock = DockStyle.Fill;
+      Dock = DockStyle.Fill;
       panelRecruitModelParameter.Controls.Add(this);
 
     }

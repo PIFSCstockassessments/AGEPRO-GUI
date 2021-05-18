@@ -101,7 +101,7 @@
             this.buttonSetParameters.TabIndex = 2;
             this.buttonSetParameters.Text = "SET";
             this.buttonSetParameters.UseVisualStyleBackColor = true;
-            this.buttonSetParameters.Click += new System.EventHandler(this.buttonSetParameters_Click);
+            this.buttonSetParameters.Click += new System.EventHandler(this.ButtonSetParameters_Click);
             // 
             // spinBoxNumRecruitPredictors
             // 
@@ -159,7 +159,7 @@
             this.dataGridCoefficients.RowHeadersWidth = 70;
             this.dataGridCoefficients.Size = new System.Drawing.Size(251, 219);
             this.dataGridCoefficients.TabIndex = 4;
-            this.dataGridCoefficients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridCoefficients_CellFormatting);
+            this.dataGridCoefficients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridCoefficients_CellFormatting);
             // 
             // dataGridObservations
             // 
@@ -177,7 +177,7 @@
             this.dataGridObservations.RowHeadersWidth = 70;
             this.dataGridObservations.Size = new System.Drawing.Size(565, 219);
             this.dataGridObservations.TabIndex = 5;
-            this.dataGridObservations.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridObservations_CellFormatting);
+            this.dataGridObservations.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridObservations_CellFormatting);
             // 
             // ControlRecruitmentPredictor
             // 
