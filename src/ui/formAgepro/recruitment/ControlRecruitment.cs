@@ -279,100 +279,103 @@ namespace Nmfs.Agepro.Gui
     //TODO:REFACTOR 
     private void LoadRecruitModelParameterControls(RecruitmentModelProperty currentRecruitSelection)
     {
-      if (currentRecruitSelection is EmpiricalRecruitment)
+      if (currentRecruitSelection is EmpiricalRecruitment empiricialRecruit)
       {
-        if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.Empirical)
+        if (empiricialRecruit.SubType == EmpiricalType.Empirical)
         {
-          EmpiricalRecruitment currentEmpiricalRecruitSelection = (EmpiricalRecruitment)currentRecruitSelection;
-
-          ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical();
-
-          empiricalParameterControls.SetEmpiricalRecruitmentControls(currentEmpiricalRecruitSelection, panelRecruitModelParameter);
-          empiricalParameterControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          empiricalParameterControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          ControlRecruitmentEmpirical empiricalParameterControls = new ControlRecruitmentEmpirical
+          {
+            CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels,
+            CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex
+          };
+          empiricalParameterControls.SetEmpiricalRecruitmentControls(empiricialRecruit, panelRecruitModelParameter);
 
         }
-        else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.TwoStage)
+        else if (empiricialRecruit.SubType == EmpiricalType.TwoStage)
         {
-          EmpiricalTwoStageRecruitment currentTwoStageEmpiricalRecruitSelection =
-              (EmpiricalTwoStageRecruitment)currentRecruitSelection;
+          EmpiricalTwoStageRecruitment currentTwoStageEmpiricalRecruitSelection = (EmpiricalTwoStageRecruitment)currentRecruitSelection;
 
           //Load TwoStage Controls
-          ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage();
-          twoStageControls.SetTwoStageEmpiricalRecruitmentControls(currentTwoStageEmpiricalRecruitSelection,
-              panelRecruitModelParameter);
-          twoStageControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          twoStageControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          ControlRecruitmentEmpiricalTwoStage twoStageControls = new ControlRecruitmentEmpiricalTwoStage
+          {
+            CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels,
+            CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex
+          };
+          twoStageControls.SetTwoStageEmpiricalRecruitmentControls(currentTwoStageEmpiricalRecruitSelection, panelRecruitModelParameter);
         }
-        else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.CDFZero)
+        else if (empiricialRecruit.SubType == EmpiricalType.CDFZero)
         {
           EmpiricalCDFZero currentEmpiricalCDFZeroRecruitmentSelection = (EmpiricalCDFZero)currentRecruitSelection;
 
-          ControlRecruitmentEmpirical empiricalCDFZeroControls = new ControlRecruitmentEmpirical();
-
-          empiricalCDFZeroControls.SetEmpiricalCDFZeroRecruitmentControls(
-              currentEmpiricalCDFZeroRecruitmentSelection, panelRecruitModelParameter);
-          empiricalCDFZeroControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          empiricalCDFZeroControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          ControlRecruitmentEmpirical empiricalCDFZeroControls = new ControlRecruitmentEmpirical
+          {
+            CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels,
+            CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex
+          };
+          empiricalCDFZeroControls.SetEmpiricalCDFZeroRecruitmentControls(currentEmpiricalCDFZeroRecruitmentSelection, panelRecruitModelParameter);
 
 
         }
-        else if (((EmpiricalRecruitment)currentRecruitSelection).SubType == EmpiricalType.Fixed)
+        else if (empiricialRecruit.SubType == EmpiricalType.Fixed)
         {
           EmpiricalFixedRecruitment currentFixedRecruitmentSelection = (EmpiricalFixedRecruitment)currentRecruitSelection;
 
-          ControlRecruitmentFixed fixedRecruitmentControls = new ControlRecruitmentFixed();
-          fixedRecruitmentControls.seqYears = SeqRecruitYears;
+          ControlRecruitmentFixed fixedRecruitmentControls = new ControlRecruitmentFixed
+          {
+            seqYears = SeqRecruitYears,
+            collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels,
+            collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex
+          };
           fixedRecruitmentControls.SetFixedRecruitmentControls(currentFixedRecruitmentSelection, panelRecruitModelParameter);
-          fixedRecruitmentControls.collectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          fixedRecruitmentControls.collectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+
         }
 
       }
-      else if (currentRecruitSelection is ParametricRecruitment)
+      else if (currentRecruitSelection is ParametricRecruitment parametricRecruit)
       {
-        if (((ParametricRecruitment)currentRecruitSelection).Subtype == ParametricType.Curve)
+        if (parametricRecruit.Subtype == ParametricType.Curve)
         {
           ParametricCurve currentParametricCurveRecruit = (ParametricCurve)currentRecruitSelection;
 
-          ControlRecruitmentParametricCurve parametricCurveControls = new ControlRecruitmentParametricCurve();
-
-          parametricCurveControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          parametricCurveControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          ControlRecruitmentParametricCurve parametricCurveControls = new ControlRecruitmentParametricCurve
+          {
+            CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels,
+            CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex
+          };
           parametricCurveControls.SetParametricRecruitmentControls(currentParametricCurveRecruit, panelRecruitModelParameter);
 
         }
-        else if (((ParametricRecruitment)currentRecruitSelection).Subtype == ParametricType.Lognormal)
+        else if (parametricRecruit.Subtype == ParametricType.Lognormal)
         {
           ParametricLognormal currentParametricLognormalRecruit = (ParametricLognormal)currentRecruitSelection;
 
-          ControlRecruitmentParametricLognormal lognormalControls = new ControlRecruitmentParametricLognormal();
-
+          ControlRecruitmentParametricLognormal lognormalControls = new ControlRecruitmentParametricLognormal
+          {
+            CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels,
+            CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex
+          };
           lognormalControls.SetParametricRecruitmentControls(currentParametricLognormalRecruit, panelRecruitModelParameter);
-          lognormalControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-          lognormalControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+          
         }
       }
-      else if (currentRecruitSelection is PredictorRecruitment)
+      else if (currentRecruitSelection is PredictorRecruitment predictorRecruit)
       {
-        PredictorRecruitment currentPredictorRecruitSelection = (PredictorRecruitment)currentRecruitSelection;
-
-        ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor();
-
-        predictorParameterControls.SeqYears = SeqRecruitYears;
-        predictorParameterControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
-        predictorParameterControls.CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels;
-        predictorParameterControls.SetPredictorRecruitmentcontrols(currentPredictorRecruitSelection, panelRecruitModelParameter);
+        ControlRecruitmentPredictor predictorParameterControls = new ControlRecruitmentPredictor
+        {
+          SeqYears = SeqRecruitYears,
+          CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex,
+          CollectionAgeproRecruitmentModels = CollectionAgeproRecruitmentModels
+        };
+        predictorParameterControls.SetPredictorRecruitmentcontrols(predictorRecruit, panelRecruitModelParameter);
       }
-      else if (currentRecruitSelection is MarkovMatrixRecruitment)
+      else if (currentRecruitSelection is MarkovMatrixRecruitment markovRecruit)
       {
-        MarkovMatrixRecruitment currentRecruit = (MarkovMatrixRecruitment)currentRecruitSelection;
-
-        ControlRecruitmentMarkovMatrix markovControls = new ControlRecruitmentMarkovMatrix();
-
-        markovControls.SetRecruitmentControls(currentRecruit, panelRecruitModelParameter);
-        markovControls.CollectionAgeproRecruitModels = CollectionAgeproRecruitmentModels;
-        markovControls.CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex;
+        ControlRecruitmentMarkovMatrix markovControls = new ControlRecruitmentMarkovMatrix
+        {
+          CollectionAgeproRecruitModels = CollectionAgeproRecruitmentModels,
+          CollectionSelectedIndex = comboBoxRecruitSelection.SelectedIndex
+        };
+        markovControls.SetRecruitmentControls(markovRecruit, panelRecruitModelParameter);
       }
       else
       {
