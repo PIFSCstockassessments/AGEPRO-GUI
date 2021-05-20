@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
@@ -69,14 +65,15 @@ namespace Nmfs.Agepro.Gui
       controlGeneralOptions.SetGeneral += new EventHandler(EventSetButton_CreateNewCase);
 
       //Load General Options Controls to AGEPRO Parameter panel           
-      this.panelAgeproParameter.Controls.Clear();
+      panelAgeproParameter.Controls.Clear();
       controlGeneralOptions.Dock = DockStyle.Fill;
-      this.panelAgeproParameter.Controls.Add(controlGeneralOptions);
+      panelAgeproParameter.Controls.Add(controlGeneralOptions);
+
       //Set General Options Controls (to handle "New Cases")
       controlGeneralOptions.GeneralInputFile = "";
       controlGeneralOptions.GeneralModelId = "untitled";
-      this.inputData.General.InputFile = "";
-      this.inputData.CaseID = controlGeneralOptions.GeneralModelId;
+      inputData.General.InputFile = "";
+      inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
       //initially set Number of Ages
       int initalNumAges = controlGeneralOptions.GeneralFirstAgeClass; //Spinbox Value
@@ -92,8 +89,6 @@ namespace Nmfs.Agepro.Gui
       controlNaturalMortality.IsMultiFleet = false;
       controlNaturalMortality.FleetDependency = StochasticAgeFleetDependency.independent;
 
-
-
       //Weight Age Options
       controlJan1Weight.IsMultiFleet = false;
       controlJan1Weight.FleetDependency = StochasticAgeFleetDependency.independent;
@@ -106,27 +101,32 @@ namespace Nmfs.Agepro.Gui
       controlDiscardWeight.IsMultiFleet = true;
       controlDiscardWeight.FleetDependency = StochasticAgeFleetDependency.dependent;
 
+      //Set WeightAgeType 
       controlJan1Weight.WeightAgeType = StochasticWeightOfAge.Jan1Weight;
       controlSSBWeight.WeightAgeType = StochasticWeightOfAge.SSBWeight;
       controlMidYearWeight.WeightAgeType = StochasticWeightOfAge.MidYearWeight;
       controlCatchWeight.WeightAgeType = StochasticWeightOfAge.CatchWeight;
       controlDiscardWeight.WeightAgeType = StochasticWeightOfAge.DiscardWeight;
 
+      //Weights Option
       controlJan1Weight.ShowJan1WeightsOption = false;
       controlJan1Weight.ShowSSBWeightsOption = false;
       controlJan1Weight.showMidYearWeightsOption = false;
       controlJan1Weight.ShowCatchWeightsOption = false;
+      //SSB
       controlSSBWeight.ShowSSBWeightsOption = false;
       controlSSBWeight.showMidYearWeightsOption = false;
       controlSSBWeight.ShowCatchWeightsOption = false;
+      //Mid-Year
       controlMidYearWeight.showMidYearWeightsOption = false;
       controlMidYearWeight.ShowCatchWeightsOption = false;
+      //Catch-weight
       controlCatchWeight.ShowCatchWeightsOption = false;
 
       //Instatiate Startup State:
       //Disable Navigation Tree Panel, AGEPRO run options, etc...
-      this.panelNavigation.Enabled = false;
-      this.saveAGEPROInputDataAsToolStripMenuItem.Enabled = false;
+      panelNavigation.Enabled = false;
+      saveAGEPROInputDataAsToolStripMenuItem.Enabled = false;
 
     }
 
@@ -135,12 +135,12 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void createNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
+    private void CreateNewCaseToolStripMenuItem_Click(object sender, EventArgs e)
     {
       //Dialog box to ensure that the user intends to start over and "create a new case"
-      var dlgResult = MessageBox.Show("Do you want to start over with a new case?"
-          + Environment.NewLine + "New cases will discard current input data.",
-          "Create a new Case", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+      DialogResult dlgResult = MessageBox.Show(
+        $"Do you want to start over with a new case?{Environment.NewLine}New cases will discard current input data.",
+        "Create a new Case", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
       if (dlgResult == DialogResult.No)
       {
@@ -180,6 +180,7 @@ namespace Nmfs.Agepro.Gui
         inputData.General.NumPopSims = Convert.ToInt32(controlGeneralOptions.GeneralNumberPopulationSimuations);
         inputData.General.Seed = Convert.ToInt32(controlGeneralOptions.GeneralRandomSeed);
         inputData.General.HasDiscards = controlGeneralOptions.GeneralDiscardsPresent;
+
         //Store CASEID to input data object
         inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
@@ -217,7 +218,7 @@ namespace Nmfs.Agepro.Gui
         controlBiological.maturityAge.CreateStochasticParameterFallbackDataTable(inputData.BiologicalMaturity, inputData.General, StochasticAgeFleetDependency.independent);
 
         //Show Discard DataTables if Discards options is checked
-        if (controlGeneralOptions.GeneralDiscardsPresent == true)
+        if (controlGeneralOptions.GeneralDiscardsPresent)
         {
           controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.DiscardFraction, inputData.General,
               StochasticAgeFleetDependency.dependent);
@@ -269,14 +270,15 @@ namespace Nmfs.Agepro.Gui
         //Discards are Present is not checked
         EnableNavigationPanel();
 
-        MessageBox.Show("General AGEPRO Projection Parameters set." + Environment.NewLine + Environment.NewLine +
-        "Recruitment and Bootstrap file is required to save as AGEPRO input file or " +
-        "to launch AGEPRO model.", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        _ = MessageBox.Show(
+          $"General AGEPRO Projection Parameters set.{Environment.NewLine}{Environment.NewLine}" +
+          $"Recruitment and Bootstrap file is required to save as AGEPRO input file or to launch AGEPRO model.",
+          "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       catch (Exception ex)
       {
-        MessageBox.Show("Can not set AGEPRO general paraneters." + Environment.NewLine + ex.Message,
-            "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        _ = MessageBox.Show($"Can not set AGEPRO general paraneters.{Environment.NewLine}{ex.Message}", "AGEPRO",
+          MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
 
     }
@@ -287,35 +289,35 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void openExistingAGEPROInputDataFileToolStripMenuItem_Click(object sender, EventArgs e)
+    private void OpenExistingAGEPROInputDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
 
-      OpenFileDialog openAgeproInputFile = new OpenFileDialog();
-
-      openAgeproInputFile.InitialDirectory = "~";
-      openAgeproInputFile.Filter = "AGEPRO input files (*.inp)|*.inp|All Files (*.*)|*.*";
-      openAgeproInputFile.FilterIndex = 1;
-      openAgeproInputFile.RestoreDirectory = true;
+      OpenFileDialog openAgeproInputFile = new OpenFileDialog
+      {
+        InitialDirectory = "~",
+        Filter = "AGEPRO input files (*.inp)|*.inp|All Files (*.*)|*.*",
+        FilterIndex = 1,
+        RestoreDirectory = true
+      };
 
       if (openAgeproInputFile.ShowDialog() == DialogResult.OK)
       {
         try
         {
-          //Use Nmfs.Agepro.CoreLib.AgeproInputFile.ReadInputFile
+          //CoreLib.geproInputFile's ReadInputFile
           inputData = new AgeproInputFile();
           inputData.ReadInputFile(openAgeproInputFile.FileName);
 
+          LoadAgeproInputParameters(inputData);
           controlGeneralOptions.GeneralInputFile = openAgeproInputFile.FileName;
-
-          LoadAgeproInputParameters(this.inputData);
 
           //Activate Naivagation Panel if in first-run/startup state.
           EnableNavigationPanel();
         }
         catch (Exception ex)
         {
-          MessageBox.Show("Error loading AGEPRO input file:" + Environment.NewLine + ex.Message,
-              "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          _ = MessageBox.Show($"Error loading AGEPRO input file:{Environment.NewLine}{ex.Message}",
+              "AGEPRO Input File", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
       }
     }
@@ -325,7 +327,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void saveAGEPROInputDataAsToolStripMenuItem_Click(object sender, EventArgs e)
+    private void SaveAGEPROInputDataAsToolStripMenuItem_Click(object sender, EventArgs e)
     {
       SaveAgeproInputDataFileDialog();
     }
@@ -335,11 +337,13 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     private void SaveAgeproInputDataFileDialog()
     {
-      SaveFileDialog saveAgeproInputFile = new SaveFileDialog();
-      saveAgeproInputFile.InitialDirectory = "~";
-      saveAgeproInputFile.Filter = "AGEPRO input files (*.inp)|*.inp|All Files (*.*)|*.*";
-      saveAgeproInputFile.FilterIndex = 1;
-      saveAgeproInputFile.RestoreDirectory = true;
+      SaveFileDialog saveAgeproInputFile = new SaveFileDialog
+      {
+        InitialDirectory = "~",
+        Filter = "AGEPRO input files (*.inp)|*.inp|All Files (*.*)|*.*",
+        FilterIndex = 1,
+        RestoreDirectory = true
+      };
 
       if (saveAgeproInputFile.ShowDialog() == DialogResult.OK)
       {
@@ -353,79 +357,86 @@ namespace Nmfs.Agepro.Gui
           }
 
           //Case Id
-          this.inputData.CaseID = controlGeneralOptions.GeneralModelId;
+          inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
+          //Weights of Age 
+          controlJan1Weight.BindStochasticAgeData(inputData.Jan1StockWeight);
+          controlSSBWeight.BindStochasticAgeData(inputData.SSBWeight);
+          controlMidYearWeight.BindStochasticAgeData(inputData.MeanWeight);
+          controlCatchWeight.BindStochasticAgeData(inputData.CatchWeight);
+          
+          //Fishery Selectivity
+          controlFisherySelectivity.BindStochasticAgeData(inputData.Fishery);
+          
           //Natural Mortality
-          controlJan1Weight.BindStochasticAgeData(this.inputData.Jan1StockWeight);
-          controlSSBWeight.BindStochasticAgeData(this.inputData.SSBWeight);
-          controlMidYearWeight.BindStochasticAgeData(this.inputData.MeanWeight);
-          controlCatchWeight.BindStochasticAgeData(this.inputData.CatchWeight);
-          controlBiological.maturityAge.BindStochasticAgeData(this.inputData.BiologicalMaturity);
-          controlFisherySelectivity.BindStochasticAgeData(this.inputData.Fishery);
-          controlNaturalMortality.BindStochasticAgeData(this.inputData.NaturalMortality);
-
+          controlBiological.maturityAge.BindStochasticAgeData(inputData.BiologicalMaturity);
+          controlNaturalMortality.BindStochasticAgeData(inputData.NaturalMortality);
           inputData.BiologicalTSpawn.TimeVarying = controlBiological.TSpawnPanel.TSpawnTableTimeVarying;
 
-          if (this.inputData.General.HasDiscards == true)
+          if (inputData.General.HasDiscards)
           {
-            controlDiscardWeight.BindStochasticAgeData(this.inputData.DiscardWeight);
-            controlDiscardFraction.BindStochasticAgeData(this.inputData.DiscardFraction);
+            controlDiscardWeight.BindStochasticAgeData(inputData.DiscardWeight);
+            controlDiscardFraction.BindStochasticAgeData(inputData.DiscardFraction);
           }
 
           //Harvest Scenario: Rebuilder/PStar
           if (controlHarvestScenario.CalcType == HarvestScenarioAnalysis.PStar)
           {
-            this.inputData.HarvestScenario.AnalysisType = controlHarvestScenario.CalcType;
-            this.inputData.PStar.AnalysisType = controlHarvestScenario.CalcType;
-            this.inputData.PStar.PStarLevels = controlHarvestScenario.PStar.PStarLevels;
-            this.inputData.PStar.PStarF = controlHarvestScenario.PStar.PStarF;
-            this.inputData.PStar.TargetYear = controlHarvestScenario.PStar.TargetYear;
-            this.inputData.PStar.PStarTable = controlHarvestScenario.PStar.PStarTable;
+            inputData.HarvestScenario.AnalysisType = controlHarvestScenario.CalcType;
+            inputData.PStar.AnalysisType = controlHarvestScenario.CalcType;
+            inputData.PStar.PStarLevels = controlHarvestScenario.PStar.PStarLevels;
+            inputData.PStar.PStarF = controlHarvestScenario.PStar.PStarF;
+            inputData.PStar.TargetYear = controlHarvestScenario.PStar.TargetYear;
+            inputData.PStar.PStarTable = controlHarvestScenario.PStar.PStarTable;
           }
           else if (controlHarvestScenario.CalcType == HarvestScenarioAnalysis.Rebuilder)
           {
-            this.inputData.HarvestScenario.AnalysisType = controlHarvestScenario.CalcType;
-            this.inputData.Rebuild.AnalysisType = controlHarvestScenario.CalcType;
-            this.inputData.Rebuild.TargetYear = controlHarvestScenario.Rebuilder.TargetYear;
-            this.inputData.Rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
-            this.inputData.Rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
+            inputData.HarvestScenario.AnalysisType = controlHarvestScenario.CalcType;
+            inputData.Rebuild.AnalysisType = controlHarvestScenario.CalcType;
+            inputData.Rebuild.TargetYear = controlHarvestScenario.Rebuilder.TargetYear;
+            inputData.Rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
+            inputData.Rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
           }
 
           //Misc options
-          this.inputData.Options.EnableSummaryReport = controlMiscOptions.MiscOptionsEnableSummaryReport;
-          this.inputData.Options.EnableExportR = controlMiscOptions.MiscOptionsEnableExportR;
-          this.inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.MiscOptionsEnableAuxStochasticFiles;
-          this.inputData.Options.EnablePercentileReport = controlMiscOptions.MiscOptionsEnablePercentileReport;
-          this.inputData.Options.EnableRefpoint = controlMiscOptions.MiscOptionsEnableRefpointsReport;
-          this.inputData.Options.EnableScaleFactors = controlMiscOptions.MiscOptionsEnableScaleFactors;
-          this.inputData.Options.EnableBounds = controlMiscOptions.MiscOptionsBounds;
-          this.inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors;
+          inputData.Options.EnableSummaryReport = controlMiscOptions.MiscOptionsEnableSummaryReport;
+          inputData.Options.EnableExportR = controlMiscOptions.MiscOptionsEnableExportR;
+          inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.MiscOptionsEnableAuxStochasticFiles;
+          inputData.Options.EnablePercentileReport = controlMiscOptions.MiscOptionsEnablePercentileReport;
+          inputData.Options.EnableRefpoint = controlMiscOptions.MiscOptionsEnableRefpointsReport;
+          inputData.Options.EnableScaleFactors = controlMiscOptions.MiscOptionsEnableScaleFactors;
+          inputData.Options.EnableBounds = controlMiscOptions.MiscOptionsBounds;
+          inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors;
+          
+          //Misc Options: Refpoint
+          inputData.Refpoint.RefSpawnBio = double.Parse(controlMiscOptions.MiscOptionsRefSpawnBiomass);
+          inputData.Refpoint.RefJan1Bio = double.Parse(controlMiscOptions.MiscOptionsRefJan1Biomass);
+          inputData.Refpoint.RefMeanBio = double.Parse(controlMiscOptions.MiscOptionsRefMeanBiomass);
+          inputData.Refpoint.RefFMort = double.Parse(controlMiscOptions.MiscOptionsRefFishingMortality);
 
-          this.inputData.Refpoint.RefSpawnBio = Double.Parse(controlMiscOptions.MiscOptionsRefSpawnBiomass);
-          this.inputData.Refpoint.RefJan1Bio = Double.Parse(controlMiscOptions.MiscOptionsRefJan1Biomass);
-          this.inputData.Refpoint.RefMeanBio = Double.Parse(controlMiscOptions.MiscOptionsRefMeanBiomass);
-          this.inputData.Refpoint.RefFMort = Double.Parse(controlMiscOptions.MiscOptionsRefFishingMortality);
+          //Misc Options: Report Percentile
+          inputData.ReportPercentile.Percentile = controlMiscOptions.MiscOptionsReportPercentile;
 
-          this.inputData.ReportPercentile.Percentile = controlMiscOptions.MiscOptionsReportPercentile;
+          //Misc Options: Scale Factors
+          inputData.Scale.ScaleBio = double.Parse(controlMiscOptions.MiscOptionsScaleFactorBiomass);
+          inputData.Scale.ScaleRec = double.Parse(controlMiscOptions.MiscOptionsScaleFactorRecruits);
+          inputData.Scale.ScaleStockNum = double.Parse(controlMiscOptions.MiscOptionsScaleFactorStockNumbers);
 
-          this.inputData.Scale.ScaleBio = Double.Parse(controlMiscOptions.MiscOptionsScaleFactorBiomass);
-          this.inputData.Scale.ScaleRec = Double.Parse(controlMiscOptions.MiscOptionsScaleFactorRecruits);
-          this.inputData.Scale.ScaleStockNum = Double.Parse(controlMiscOptions.MiscOptionsScaleFactorStockNumbers);
+          //Misc Options: Retro Adjustment Factors
+          inputData.RetroAdjustments.RetroAdjust = controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable;
 
-          this.inputData.RetroAdjustments.RetroAdjust = controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable;
-
-          this.inputData.WriteInputFile(saveAgeproInputFile.FileName);
+          inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
           //Set filename to generalOptions Input File textbox
-          this.controlGeneralOptions.GeneralInputFile = saveAgeproInputFile.FileName;
+          controlGeneralOptions.GeneralInputFile = saveAgeproInputFile.FileName;
 
-          MessageBox.Show("AGEPRO Input Data was saved at" + Environment.NewLine + saveAgeproInputFile.FileName,
-              "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          _ = MessageBox.Show($"AGEPRO Input Data was saved at{Environment.NewLine}{saveAgeproInputFile.FileName}", "",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         catch (Exception ex)
         {
-          MessageBox.Show("AGEPRO input file was not saved." + Environment.NewLine + ex.Message,
-              "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          _ = MessageBox.Show($"AGEPRO input file was not saved.{Environment.NewLine}{ex.Message}", "",
+            MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
       }
@@ -532,7 +543,7 @@ namespace Nmfs.Agepro.Gui
 
       controlMiscOptions.LoadRetroAdjustmentsFactorTable(inpFile);
 
-      if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors == true)
+      if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
       {
         controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
       }
@@ -548,20 +559,20 @@ namespace Nmfs.Agepro.Gui
     /// <summary>
     /// Programmicaly commit data in current active winform control.  
     /// </summary>
-    private void commitFocusedControl()
+    private void CommitFocusedControl()
     {
       //If a cell is in edit mode, commit changes and end edit mode.
-      var ctlActive = FindFocusedControl(this.ActiveControl);
-      if (ctlActive is DataGridViewTextBoxEditingControl)
+      Control ctlActive = FindFocusedControl(ActiveControl);
+      if (ctlActive is DataGridViewTextBoxEditingControl txtCell)
       {
-        ((DataGridViewTextBoxEditingControl)ctlActive).EditingControlDataGridView.EndEdit();
+        txtCell.EditingControlDataGridView.EndEdit();
       }
       else if (ctlActive is TextBox)
       {
         //Take focus away from text box to force textBox validation.
         //use naviagation Tree workaround, since focusing on menuStrip isn't working
-        this.treeViewNavigation.Focus();
-        ctlActive.Focus(); //focus back to textBox.
+        _ = treeViewNavigation.Focus();
+        _ = ctlActive.Focus(); //focus back to textBox.
 
       }
     }
@@ -575,9 +586,9 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void launchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
+    private void LaunchAGEPROModelToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      commitFocusedControl();
+      CommitFocusedControl();
 
       //Validate
       if (ValidateControlInputs == false)
@@ -627,7 +638,7 @@ namespace Nmfs.Agepro.Gui
 
       if (!Directory.Exists(ageproWorkPath))
       {
-        Directory.CreateDirectory(ageproWorkPath);
+        _ = Directory.CreateDirectory(ageproWorkPath);
       }
 
       //check for bootstrap file
@@ -637,9 +648,9 @@ namespace Nmfs.Agepro.Gui
         File.Copy(inputData.Bootstrap.BootstrapFile, bsnFile, true);
       }
       //2. If not, in the same directory as the AGEPRO Input File
-      else if (File.Exists(Path.GetDirectoryName(inputData.General.InputFile) + "\\" + Path.GetFileName(inputData.Bootstrap.BootstrapFile)))
+      else if (File.Exists($"{Path.GetDirectoryName(inputData.General.InputFile)}\\{Path.GetFileName(inputData.Bootstrap.BootstrapFile)}"))
       {
-        File.Copy(Path.GetDirectoryName(inputData.General.InputFile) + "\\" + Path.GetFileName(inputData.Bootstrap.BootstrapFile),
+        File.Copy($"{Path.GetDirectoryName(inputData.General.InputFile)}\\{Path.GetFileName(inputData.Bootstrap.BootstrapFile)}",
             bsnFile, true);
       }
       //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
@@ -678,12 +689,11 @@ namespace Nmfs.Agepro.Gui
         LaunchOutputViewerProgram(ageproOutfile, controlMiscOptions);
 
         //Open WorkPath directory for the user 
-        Process.Start(ageproWorkPath);
+        _ = Process.Start(ageproWorkPath);
       }
       catch (Exception ex)
       {
-        MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex,
-                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        _ = MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
       finally
       {
@@ -699,13 +709,15 @@ namespace Nmfs.Agepro.Gui
     /// <param name="inpFile"></param>
     static void LaunchAgeproCalcEngineProgram(string inpFile)
     {
-      string dirRoot = Path.GetPathRoot(Environment.SystemDirectory);
+      _ = Path.GetPathRoot(Environment.SystemDirectory);
 
-      ProcessStartInfo ageproEngine = new ProcessStartInfo();
-      ageproEngine.WorkingDirectory = Application.StartupPath;
-      ageproEngine.FileName = "AGEPRO40.exe";
-      ageproEngine.Arguments = "\"\"" + inpFile + "\"\"";
-      ageproEngine.WindowStyle = ProcessWindowStyle.Normal;
+      ProcessStartInfo ageproEngine = new ProcessStartInfo
+      {
+        WorkingDirectory = Application.StartupPath,
+        FileName = "AGEPRO40.exe",
+        Arguments = "\"\"" + inpFile + "\"\"",
+        WindowStyle = ProcessWindowStyle.Normal
+      };
 
       try
       {
@@ -713,13 +725,11 @@ namespace Nmfs.Agepro.Gui
         {
           exeProcess.WaitForExit();
         }
-        MessageBox.Show("AGEPRO Done. Can be Found at:" + Environment.NewLine + Path.GetDirectoryName(inpFile),
-                "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        _ = MessageBox.Show("AGEPRO Done. Can be Found at:" + Environment.NewLine + Path.GetDirectoryName(inpFile), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       catch (Exception ex)
       {
-        MessageBox.Show("An error occured when running the AGEPRO Model." + Environment.NewLine + ex.Message,
-                "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        _ = MessageBox.Show("An error occured when running the AGEPRO Model." + Environment.NewLine + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
 
     }
@@ -735,11 +745,11 @@ namespace Nmfs.Agepro.Gui
       {
         //open a program that is associated by its file type.
         //If no association exists, system will ask user for a program. 
-        Process.Start(outfile);
+        _ = Process.Start(outfile);
       }
       else if (outputOptions.AgeproOutputViewer == "Notepad")
       {
-        Process.Start("notepad.exe", outfile);
+        _ = Process.Start("notepad.exe", outfile);
       }
 
     }
@@ -780,8 +790,8 @@ namespace Nmfs.Agepro.Gui
             //Check Bounds text if they are empty. If so, use default value and inform the user about this.
             if (string.IsNullOrWhiteSpace(controlMiscOptions.MiscOptionsBoundsMaxWeight))
             {
-              MessageBox.Show("Missing max weight bound. Using default value of " + defaultMaxWeightBound
-                  + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              _ = MessageBox.Show($"Missing max weight bound. Using default value of {defaultMaxWeightBound}.", "AGEPRO",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
               boundsMaxWeight = defaultMaxWeightBound;
             }
             else
@@ -791,8 +801,8 @@ namespace Nmfs.Agepro.Gui
 
             if (string.IsNullOrWhiteSpace(controlMiscOptions.MiscOptionsBoundsNaturalMortality))
             {
-              MessageBox.Show("Missing max natural mortality Bound. Using default value of " +
-                  defaultNatualMortalityBound + ".", "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              _ = MessageBox.Show($"Missing max natural mortality Bound. Using default value of {defaultNatualMortalityBound}.",
+                "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
               boundsNaturalMortality = defaultNatualMortalityBound;
             }
             else
@@ -844,15 +854,15 @@ namespace Nmfs.Agepro.Gui
         {
           return false;
         }
-        if (this.controlGeneralOptions.GeneralDiscardsPresent)
+        if (controlGeneralOptions.GeneralDiscardsPresent)
         {
           //Discard Weight
-          if (this.controlDiscardWeight.ValidateStochasticParameter(numAges) == false)
+          if (controlDiscardWeight.ValidateStochasticParameter(numAges) == false)
           {
             return false;
           }
           //Discard Fraction
-          if (this.controlDiscardFraction.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+          if (controlDiscardFraction.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
           {
             return false;
           }
@@ -860,37 +870,37 @@ namespace Nmfs.Agepro.Gui
 
 
         //Recruitment
-        if (this.controlRecruitment.ValidateRecruitmentData() == false)
+        if (controlRecruitment.ValidateRecruitmentData() == false)
         {
           return false;
         }
 
         //Bootstrap
-        if (this.controlBootstrap.ValidateBootstrapInput() == false)
+        if (controlBootstrap.ValidateBootstrapInput() == false)
         {
           return false;
         }
         //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
 
         //Harvest Scenario (this includes Rebuilder and P-Star options)
-        if (this.controlHarvestScenario.ValidateHarvestScenario() == false)
+        if (controlHarvestScenario.ValidateHarvestScenario() == false)
         {
           return false;
         }
 
         //Misc Options: Reference Points, Retro Adjustment Factors, Bounds.
-        if (this.controlMiscOptions.ValidateMiscOptions() == false)
+        if (controlMiscOptions.ValidateMiscOptions() == false)
         {
           return false;
         }
 
         //Aux Stochastic Output File Size Check 
-        int numBootstraps = Convert.ToInt32(this.controlBootstrap.BootstrapIterations);
-        int numSims = Convert.ToInt32(this.controlGeneralOptions.GeneralNumberPopulationSimuations);
-        int numYears = this.controlGeneralOptions.SeqYears().Count();
+        int numBootstraps = Convert.ToInt32(controlBootstrap.BootstrapIterations);
+        int numSims = Convert.ToInt32(controlGeneralOptions.GeneralNumberPopulationSimuations);
+        int numYears = controlGeneralOptions.SeqYears().Count();
         //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
         int auxFileRowSize = numBootstraps * numSims * numYears;
-        if (this.controlMiscOptions.CheckOutputFileRowSize(auxFileRowSize) == false)
+        if (controlMiscOptions.CheckOutputFileRowSize(auxFileRowSize) == false)
         {
           return false;
         }
@@ -920,18 +930,15 @@ namespace Nmfs.Agepro.Gui
 
       //Check Bootstrap File, but if value in textbox does not match, do not exit validation
       //Tell? user that they will have to supply bootstrap file.
-      if (!File.Exists(this.controlBootstrap.BootstrapFilename))
+      if (!File.Exists(controlBootstrap.BootstrapFilename))
       {
-        if (File.Exists(Path.GetDirectoryName(inputData.General.InputFile) + "\\"
-            + Path.GetFileName(inputData.Bootstrap.BootstrapFile)))
+        if (File.Exists($"{Path.GetDirectoryName(inputData.General.InputFile)}\\{Path.GetFileName(inputData.Bootstrap.BootstrapFile)}"))
         {
           string inpFileDir = Path.GetDirectoryName(inputData.General.InputFile);
           string bsnFileName = Path.GetFileName(inputData.Bootstrap.BootstrapFile);
-          bootstrapChoice = MessageBox.Show(
-              "Bootstrap filename was not found." + Environment.NewLine +
-              "However, a bootstap file " + bsnFileName + " was found at " + inpFileDir +
-              Environment.NewLine + Environment.NewLine +
-              "Continue?", "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+          bootstrapChoice = MessageBox.Show($"Bootstrap filename was not found.{Environment.NewLine}" +
+            $"However, {bsnFileName} was found at {inpFileDir}{Environment.NewLine}{Environment.NewLine}Continue?",
+            "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
           if (bootstrapChoice == DialogResult.No)
           {
@@ -942,9 +949,8 @@ namespace Nmfs.Agepro.Gui
         else
         {
           bootstrapChoice = MessageBox.Show(
-              "Bootstrap filename was not found." + Environment.NewLine +
-              "However, the bootstrap file can be loaded via the open file dialog window."
-              + Environment.NewLine + Environment.NewLine + "Continue and load bootstrap file?",
+              $"Bootstrap file not found at:{Environment.NewLine}{controlBootstrap.BootstrapFilename}{Environment.NewLine}" +
+              $"Please select a new AGEPRO Bootstrap file to continue.{Environment.NewLine}{Environment.NewLine}Continue and load bootstrap file?",
               "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
           if (bootstrapChoice == DialogResult.No)
@@ -967,17 +973,17 @@ namespace Nmfs.Agepro.Gui
     private void EnableNavigationPanel()
     {
       //Activates Naivagation Panel if in first-run/startup state.
-      if (this.panelNavigation.Enabled == false)
+      if (panelNavigation.Enabled == false)
       {
-        this.panelNavigation.Enabled = true;
+        panelNavigation.Enabled = true;
       }
-      if (this.launchAGEPROModelToolStripMenuItem.Enabled == false)
+      if (launchAGEPROModelToolStripMenuItem.Enabled == false)
       {
-        this.launchAGEPROModelToolStripMenuItem.Enabled = true;
+        launchAGEPROModelToolStripMenuItem.Enabled = true;
       }
-      if (this.saveAGEPROInputDataAsToolStripMenuItem.Enabled == false)
+      if (saveAGEPROInputDataAsToolStripMenuItem.Enabled == false)
       {
-        this.saveAGEPROInputDataAsToolStripMenuItem.Enabled = true;
+        saveAGEPROInputDataAsToolStripMenuItem.Enabled = true;
       }
       //if "Discards are Present" is not checked, disable the discard parameters panels.
       controlDiscardWeight.Enabled = controlGeneralOptions.GeneralDiscardsPresent;
@@ -999,10 +1005,10 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+    private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
     {
       //Terminate
-      this.Close();
+      Close();
     }
 
     /// <summary>
@@ -1013,7 +1019,7 @@ namespace Nmfs.Agepro.Gui
     /// <returns></returns>
     private static Control FindFocusedControl(Control control)
     {
-      var container = control as IContainerControl;
+      IContainerControl container = control as IContainerControl;
       while (container != null)
       {
         control = container.ActiveControl;
@@ -1028,26 +1034,26 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+    private void CutToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      var ctlCut = FindFocusedControl(this.ActiveControl);
+      Control ctlCut = FindFocusedControl(ActiveControl);
 
-      if (ctlCut != null)
+      if (ctlCut == null)
       {
-        if (ctlCut is TextBox)
-        {
-          //Note: Text Boxes data bonded to AGEPRO_CoreLib will still retain their value 
-          //if nothing.
-          TextBox textBoxToCut = (TextBox)ctlCut;
-          textBoxToCut.Cut();
-        }
-        else if (ctlCut is NftDataGridView)
-        {
-          NftDataGridView dataCellsToCut = (NftDataGridView)ctlCut;
-          dataCellsToCut.OnCopy();
-          dataCellsToCut.OnDelete();
-          dataCellsToCut.ClearSelection();
-        }
+        return;
+      }
+
+      //Note: Text Boxes data bonded to AGEPRO_CoreLib will still retain their value 
+      //if nothing.
+      if (ctlCut is TextBox textBoxToCut)
+      {
+        textBoxToCut.Cut();
+      }
+      else if (ctlCut is NftDataGridView dataCellsToCut)
+      {
+        dataCellsToCut.OnCopy();
+        dataCellsToCut.OnDelete();
+        dataCellsToCut.ClearSelection();
       }
     }
 
@@ -1056,21 +1062,21 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+    private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      var ctlCopy = FindFocusedControl(this.ActiveControl);
-      if (ctlCopy != null)
+      Control ctlCopy = FindFocusedControl(ActiveControl);
+      if (ctlCopy == null)
       {
-        if (ctlCopy is TextBox)
-        {
-          TextBox textBoxToCopy = (TextBox)ctlCopy;
-          textBoxToCopy.Copy();
-        }
-        else if (ctlCopy is NftDataGridView)
-        {
-          NftDataGridView dataCellsToCopy = (NftDataGridView)ctlCopy;
-          dataCellsToCopy.OnCopy();
-        }
+        return;
+      }
+
+      if (ctlCopy is TextBox textBoxToCopy)
+      {
+        textBoxToCopy.Copy();
+      }
+      else if (ctlCopy is NftDataGridView dataCellsToCopy)
+      {
+        dataCellsToCopy.OnCopy();
       }
     }
 
@@ -1079,22 +1085,23 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+    private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      var ctlPaste = FindFocusedControl(this.ActiveControl);
-      if (ctlPaste != null)
+      Control ctlPaste = FindFocusedControl(ActiveControl);
+     
+      if (ctlPaste == null)
       {
-        if (ctlPaste is TextBox)
-        {
-          TextBox textBoxToPaste = (TextBox)ctlPaste;
-          textBoxToPaste.Paste();
-        }
-        else if (ctlPaste is NftDataGridView)
-        {
-          NftDataGridView dataCellsToPaste = (NftDataGridView)ctlPaste;
-          dataCellsToPaste.OnPaste();
-          dataCellsToPaste.ClearSelection();
-        }
+        return;
+      }
+
+      if (ctlPaste is TextBox textBoxToPaste)
+      {
+        textBoxToPaste.Paste();
+      }
+      else if (ctlPaste is NftDataGridView dataCellsToPaste)
+      {
+        dataCellsToPaste.OnPaste();
+        dataCellsToPaste.ClearSelection();
       }
     }
 
@@ -1103,22 +1110,23 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+    private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      var ctlDelete = FindFocusedControl(this.ActiveControl);
-      if (ctlDelete != null)
+      Control ctlDelete = FindFocusedControl(ActiveControl);
+
+      if (ctlDelete == null)
       {
-        if (ctlDelete is TextBox)
-        {
-          TextBox textBoxTextToClear = (TextBox)ctlDelete;
-          textBoxTextToClear.Clear();
-        }
-        else if (ctlDelete is NftDataGridView)
-        {
-          NftDataGridView dataCellsToClear = (NftDataGridView)ctlDelete;
-          dataCellsToClear.OnDelete();
-          dataCellsToClear.ClearSelection();
-        }
+        return;
+      }
+
+      if (ctlDelete is TextBox textBoxTextToClear)
+      {
+        textBoxTextToClear.Clear();
+      }
+      else if (ctlDelete is NftDataGridView dataCellsToClear)
+      {
+        dataCellsToClear.OnDelete();
+        dataCellsToClear.ClearSelection();
       }
     }
 
@@ -1130,7 +1138,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void treeViewNavigation_AfterSelect(object sender, TreeViewEventArgs e)
+    private void TreeViewNavigation_AfterSelect(object sender, TreeViewEventArgs e)
     {
       string selectedTreeNode = treeViewNavigation.SelectedNode.Name.ToString();
 
@@ -1138,20 +1146,20 @@ namespace Nmfs.Agepro.Gui
       Dictionary<string, Action> treeNodeDict =
           new Dictionary<string, Action> {
 
-                {"treeNodeGeneral", selectGeneralOptionsParameterPanel},
-                {"treeNodeJan1", selectJan1WeightsParameterPanel},
-                {"treeNodeSSB", selectSSBWeightsParameterPanel},
-                {"treeNodeMidYear", selectMidYearWeightsParameterPanel},
-                {"treeNodeCatchWeight", selectCatchWeightParameterPanel},
-                {"treeNodeDiscardWeight", selectDiscardWeightParameterPanel},
-                {"treeNodeRecruitment",selectRecruitmentParameterPanel},
-                {"treeNodeFisherySelectivity", selectFisherySelectivityParameterPanel},
-                {"treeNodeDiscardFraction", selectDiscardFractionParameterPanel},
-                {"treeNodeNaturalMortality", selectNaturalMortalityParameterPanel},
-                {"treeNodeBiological", selectBiologicalParameterPanel},
-                {"treeNodeBootstrapping", selectBootstrappingParameterPanel},
-                {"treeNodeHarvestScenario", selectHarvestScenarioParameterPanel},
-                {"treeNodeMiscOptions", selectMiscOptionsParameterPanel},
+                {"treeNodeGeneral", SelectGeneralOptionsParameterPanel},
+                {"treeNodeJan1", SelectJan1WeightsParameterPanel},
+                {"treeNodeSSB", SelectSSBWeightsParameterPanel},
+                {"treeNodeMidYear", SelectMidYearWeightsParameterPanel},
+                {"treeNodeCatchWeight", SelectCatchWeightParameterPanel},
+                {"treeNodeDiscardWeight", SelectDiscardWeightParameterPanel},
+                {"treeNodeRecruitment",SelectRecruitmentParameterPanel},
+                {"treeNodeFisherySelectivity", SelectFisherySelectivityParameterPanel},
+                {"treeNodeDiscardFraction", SelectDiscardFractionParameterPanel},
+                {"treeNodeNaturalMortality", SelectNaturalMortalityParameterPanel},
+                {"treeNodeBiological", SelectBiologicalParameterPanel},
+                {"treeNodeBootstrapping", SelectBootstrappingParameterPanel},
+                {"treeNodeHarvestScenario", SelectHarvestScenarioParameterPanel},
+                {"treeNodeMiscOptions", SelectMiscOptionsParameterPanel},
 
       };
 
@@ -1163,59 +1171,59 @@ namespace Nmfs.Agepro.Gui
 
     }
 
-    private void selectGeneralOptionsParameterPanel()
+    private void SelectGeneralOptionsParameterPanel()
     {
       SelectAgeproParameterPanel(controlGeneralOptions, true);
     }
-    private void selectJan1WeightsParameterPanel()
+    private void SelectJan1WeightsParameterPanel()
     {
       SelectAgeproParameterPanel(controlJan1Weight);
     }
-    private void selectSSBWeightsParameterPanel()
+    private void SelectSSBWeightsParameterPanel()
     {
       SelectAgeproParameterPanel(controlSSBWeight);
     }
-    private void selectMidYearWeightsParameterPanel()
+    private void SelectMidYearWeightsParameterPanel()
     {
       SelectAgeproParameterPanel(controlMidYearWeight);
     }
-    private void selectCatchWeightParameterPanel()
+    private void SelectCatchWeightParameterPanel()
     {
       SelectAgeproParameterPanel(controlCatchWeight);
     }
-    private void selectDiscardWeightParameterPanel()
+    private void SelectDiscardWeightParameterPanel()
     {
       SelectAgeproParameterPanel(controlDiscardWeight);
     }
-    private void selectFisherySelectivityParameterPanel()
+    private void SelectFisherySelectivityParameterPanel()
     {
       SelectAgeproParameterPanel(controlFisherySelectivity);
     }
-    private void selectDiscardFractionParameterPanel()
+    private void SelectDiscardFractionParameterPanel()
     {
       SelectAgeproParameterPanel(controlDiscardFraction);
     }
-    private void selectNaturalMortalityParameterPanel()
+    private void SelectNaturalMortalityParameterPanel()
     {
       SelectAgeproParameterPanel(controlNaturalMortality);
     }
-    private void selectBiologicalParameterPanel()
+    private void SelectBiologicalParameterPanel()
     {
       SelectAgeproParameterPanel(controlBiological);
     }
-    private void selectBootstrappingParameterPanel()
+    private void SelectBootstrappingParameterPanel()
     {
       SelectAgeproParameterPanel(controlBootstrap);
     }
-    private void selectHarvestScenarioParameterPanel()
+    private void SelectHarvestScenarioParameterPanel()
     {
       SelectAgeproParameterPanel(controlHarvestScenario);
     }
-    private void selectMiscOptionsParameterPanel()
+    private void SelectMiscOptionsParameterPanel()
     {
       SelectAgeproParameterPanel(controlMiscOptions, false);
     }
-    private void selectRecruitmentParameterPanel()
+    private void SelectRecruitmentParameterPanel()
     {
       SelectAgeproParameterPanel(controlRecruitment);
     }
@@ -1227,12 +1235,12 @@ namespace Nmfs.Agepro.Gui
     /// <param name="dockFill">Option to set Panel's Dock value to Dockstyle.Fill </param>
     private void SelectAgeproParameterPanel(UserControl ageproParameterControl, bool dockFill = true)
     {
-      this.panelAgeproParameter.Controls.Clear();
-      if (dockFill == true)
+      panelAgeproParameter.Controls.Clear();
+      if (dockFill)
       {
         ageproParameterControl.Dock = DockStyle.Fill;
       }
-      this.panelAgeproParameter.Controls.Add(ageproParameterControl);
+      panelAgeproParameter.Controls.Add(ageproParameterControl);
     }
 
     /// <summary>
@@ -1241,14 +1249,13 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void htmlHelpToolStripMenuItem_Click(object sender, EventArgs e)
+    private void HtmlHelpToolStripMenuItem_Click(object sender, EventArgs e)
     {
       //Get location of the application's path.
       var loc = Path.GetDirectoryName(Application.ExecutablePath);
 
       //Append help html file and load it
-      string helpHtmlPath = loc + @"/doc/agepro_manual.html";
-      System.Diagnostics.Process.Start(helpHtmlPath);
+      _ = Process.Start(loc + @"/doc/agepro_manual.html");
     }
 
     /// <summary>
@@ -1257,7 +1264,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void referenceManualpdfToolStripMenuItem_Click(object sender, EventArgs e)
+    private void ReferenceManualpdfToolStripMenuItem_Click(object sender, EventArgs e)
     {
       //Get Location of Application Path
       var loc = Path.GetDirectoryName(Application.ExecutablePath);
@@ -1266,10 +1273,10 @@ namespace Nmfs.Agepro.Gui
       string refManualPath = Path.Combine(loc, "doc", "AGEPRO_v4.2_Reference_Manual.pdf");
       if (!File.Exists(refManualPath))
       {
-        throw new InvalidAgeproGuiParameterException("Reference Manual was not found.");
+        throw new InvalidAgeproGuiParameterException("Reference Manual not found.");
       }
 
-      System.Diagnostics.Process.Start(refManualPath);
+      _ = Process.Start(refManualPath);
     }
 
     /// <summary>
@@ -1277,12 +1284,12 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void aboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
+    private void AboutAGEPROToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      commitFocusedControl();
+      CommitFocusedControl();
       //About Box Dialog
       AboutAgepro aboutDialog = new AboutAgepro();
-      aboutDialog.ShowDialog();
+      _ = aboutDialog.ShowDialog();
     }
 
 

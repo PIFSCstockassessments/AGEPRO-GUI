@@ -106,21 +106,21 @@
             this.createNewCaseToolStripMenuItem.Name = "createNewCaseToolStripMenuItem";
             this.createNewCaseToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.createNewCaseToolStripMenuItem.Text = "Create New Case";
-            this.createNewCaseToolStripMenuItem.Click += new System.EventHandler(this.createNewCaseToolStripMenuItem_Click);
+            this.createNewCaseToolStripMenuItem.Click += new System.EventHandler(this.CreateNewCaseToolStripMenuItem_Click);
             // 
             // openExistingAGEPROInputDataFileToolStripMenuItem
             // 
             this.openExistingAGEPROInputDataFileToolStripMenuItem.Name = "openExistingAGEPROInputDataFileToolStripMenuItem";
             this.openExistingAGEPROInputDataFileToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.openExistingAGEPROInputDataFileToolStripMenuItem.Text = "Open Existing AGEPRO Input Data File";
-            this.openExistingAGEPROInputDataFileToolStripMenuItem.Click += new System.EventHandler(this.openExistingAGEPROInputDataFileToolStripMenuItem_Click);
+            this.openExistingAGEPROInputDataFileToolStripMenuItem.Click += new System.EventHandler(this.OpenExistingAGEPROInputDataFileToolStripMenuItem_Click);
             // 
             // saveAGEPROInputDataAsToolStripMenuItem
             // 
             this.saveAGEPROInputDataAsToolStripMenuItem.Name = "saveAGEPROInputDataAsToolStripMenuItem";
             this.saveAGEPROInputDataAsToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.saveAGEPROInputDataAsToolStripMenuItem.Text = "Save AGEPRO Input Data As ...";
-            this.saveAGEPROInputDataAsToolStripMenuItem.Click += new System.EventHandler(this.saveAGEPROInputDataAsToolStripMenuItem_Click);
+            this.saveAGEPROInputDataAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAGEPROInputDataAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -132,7 +132,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -151,7 +151,7 @@
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.cutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.cutToolStripMenuItem.Text = "Cut";
-            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.CutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
@@ -159,7 +159,7 @@
             this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
@@ -167,14 +167,14 @@
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.pasteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
-            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // runToolStripMenuItem
             // 
@@ -190,7 +190,7 @@
             this.launchAGEPROModelToolStripMenuItem.Name = "launchAGEPROModelToolStripMenuItem";
             this.launchAGEPROModelToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.launchAGEPROModelToolStripMenuItem.Text = "Launch AGEPRO model ...";
-            this.launchAGEPROModelToolStripMenuItem.Click += new System.EventHandler(this.launchAGEPROModelToolStripMenuItem_Click);
+            this.launchAGEPROModelToolStripMenuItem.Click += new System.EventHandler(this.LaunchAGEPROModelToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -208,14 +208,14 @@
             this.htmlHelpToolStripMenuItem.Name = "htmlHelpToolStripMenuItem";
             this.htmlHelpToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.htmlHelpToolStripMenuItem.Text = "Html Help";
-            this.htmlHelpToolStripMenuItem.Click += new System.EventHandler(this.htmlHelpToolStripMenuItem_Click);
+            this.htmlHelpToolStripMenuItem.Click += new System.EventHandler(this.HtmlHelpToolStripMenuItem_Click);
             // 
             // referenceManualpdfToolStripMenuItem
             // 
             this.referenceManualpdfToolStripMenuItem.Name = "referenceManualpdfToolStripMenuItem";
             this.referenceManualpdfToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.referenceManualpdfToolStripMenuItem.Text = "Reference Manual (pdf)";
-            this.referenceManualpdfToolStripMenuItem.Click += new System.EventHandler(this.referenceManualpdfToolStripMenuItem_Click);
+            this.referenceManualpdfToolStripMenuItem.Click += new System.EventHandler(this.ReferenceManualpdfToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -227,7 +227,7 @@
             this.aboutAGEPROToolStripMenuItem.Name = "aboutAGEPROToolStripMenuItem";
             this.aboutAGEPROToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.aboutAGEPROToolStripMenuItem.Text = "About AGEPRO";
-            this.aboutAGEPROToolStripMenuItem.Click += new System.EventHandler(this.aboutAGEPROToolStripMenuItem_Click);
+            this.aboutAGEPROToolStripMenuItem.Click += new System.EventHandler(this.AboutAGEPROToolStripMenuItem_Click);
             // 
             // treeViewNavigation
             // 
@@ -278,7 +278,7 @@
             treeNode15});
             this.treeViewNavigation.Size = new System.Drawing.Size(200, 536);
             this.treeViewNavigation.TabIndex = 1;
-            this.treeViewNavigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewNavigation_AfterSelect);
+            this.treeViewNavigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewNavigation_AfterSelect);
             // 
             // statusStrip1
             // 
