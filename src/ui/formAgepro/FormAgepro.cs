@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Nmfs.Agepro.CoreLib;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
-using Nmfs.Agepro.CoreLib;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
@@ -601,7 +601,7 @@ namespace Nmfs.Agepro.Gui
       }
 
       //If Input Data is Valid LaunchAgeproModel() 
-      LaunchAgeproModel();
+      LaunchAgeproModel(inputData, controlGeneralOptions.GeneralInputFile);
 
     }
 
@@ -611,20 +611,20 @@ namespace Nmfs.Agepro.Gui
     /// attempt to display the AGEPRO calcuation engine output file (if requested) and the directory the
     /// outputs were written to.       
     /// </summary>
-    private void LaunchAgeproModel()
+    private void LaunchAgeproModel(AgeproInputFile ageproData, string inputFile = "")
     {
       string ageproModelJobName;
       string jobDT;
 
       //Set the user data work directory  
-      if (string.IsNullOrWhiteSpace(controlGeneralOptions.GeneralInputFile))
+      if (string.IsNullOrWhiteSpace(inputFile))
       {
         ageproModelJobName = "untitled_";
         jobDT = string.Format(ageproModelJobName + "_{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
       }
       else
       {
-        ageproModelJobName = Path.GetFileNameWithoutExtension(controlGeneralOptions.GeneralInputFile);
+        ageproModelJobName = Path.GetFileNameWithoutExtension(inputFile);
         //Remove potential invalid filename characters 
         foreach (char c in Path.GetInvalidFileNameChars())
         {
@@ -643,14 +643,14 @@ namespace Nmfs.Agepro.Gui
 
       //check for bootstrap file
       //1. File Exists from the bootstrap parameter
-      if (File.Exists(inputData.Bootstrap.BootstrapFile))
+      if (File.Exists(ageproData.Bootstrap.BootstrapFile))
       {
-        File.Copy(inputData.Bootstrap.BootstrapFile, bsnFile, true);
+        File.Copy(ageproData.Bootstrap.BootstrapFile, bsnFile, true);
       }
       //2. If not, in the same directory as the AGEPRO Input File
-      else if (File.Exists($"{Path.GetDirectoryName(inputData.General.InputFile)}\\{Path.GetFileName(inputData.Bootstrap.BootstrapFile)}"))
+      else if (File.Exists($"{Path.GetDirectoryName(ageproData.General.InputFile)}\\{Path.GetFileName(ageproData.Bootstrap.BootstrapFile)}"))
       {
-        File.Copy($"{Path.GetDirectoryName(inputData.General.InputFile)}\\{Path.GetFileName(inputData.Bootstrap.BootstrapFile)}",
+        File.Copy($"{Path.GetDirectoryName(ageproData.General.InputFile)}\\{Path.GetFileName(ageproData.Bootstrap.BootstrapFile)}",
             bsnFile, true);
       }
       //3. Else, Explictly locate the bootstrap file (via OpenFileDialog).
@@ -670,15 +670,15 @@ namespace Nmfs.Agepro.Gui
         }
       }
       //Store original bootstrap filename in case of error
-      string originalBSNFile = inputData.Bootstrap.BootstrapFile;
+      string originalBSNFile = ageproData.Bootstrap.BootstrapFile;
 
       try
       {
         //Set bootstrap filename to copied workDir version
-        inputData.Bootstrap.BootstrapFile = bsnFile;
+        ageproData.Bootstrap.BootstrapFile = bsnFile;
 
         //Write Interface Inputs to file
-        inputData.WriteInputFile(inpFile);
+        ageproData.WriteInputFile(inpFile);
 
         //use command line to open AGEPRO40.exe
         LaunchAgeproCalcEngineProgram(inpFile);
@@ -698,7 +698,7 @@ namespace Nmfs.Agepro.Gui
       finally
       {
         //reset original bootstrap filename 
-        inputData.Bootstrap.BootstrapFile = originalBSNFile;
+        ageproData.Bootstrap.BootstrapFile = originalBSNFile;
       }
     }
 
