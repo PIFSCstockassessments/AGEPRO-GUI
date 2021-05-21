@@ -622,9 +622,10 @@ namespace Nmfs.Agepro.Gui
     {
       get
       {
+        int numAges = controlGeneralOptions.NumAges();
         double boundsMaxWeight;
         double boundsNaturalMortality;
-        int numAges = controlGeneralOptions.NumAges();
+
         //Default values for bounds
         double defaultMaxWeightBound = 10.0;
         double defaultNatualMortalityBound = 1.0;
@@ -1019,64 +1020,66 @@ namespace Nmfs.Agepro.Gui
         treeNodeDict[selectedTreeNode].Invoke();
       }
 
+      //Panel naigation functions 
+      void SelectGeneralOptionsParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlGeneralOptions, true);
+      }
+      void SelectJan1WeightsParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlJan1Weight);
+      }
+      void SelectSSBWeightsParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlSSBWeight);
+      }
+      void SelectMidYearWeightsParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlMidYearWeight);
+      }
+      void SelectCatchWeightParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlCatchWeight);
+      }
+      void SelectDiscardWeightParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlDiscardWeight);
+      }
+      void SelectFisherySelectivityParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlFisherySelectivity);
+      }
+      void SelectDiscardFractionParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlDiscardFraction);
+      }
+      void SelectNaturalMortalityParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlNaturalMortality);
+      }
+      void SelectBiologicalParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlBiological);
+      }
+      void SelectBootstrappingParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlBootstrap);
+      }
+      void SelectHarvestScenarioParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlHarvestScenario);
+      }
+      void SelectMiscOptionsParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlMiscOptions, false);
+      }
+      void SelectRecruitmentParameterPanel()
+      {
+        SelectAgeproParameterPanel(controlRecruitment);
+      }
+
     }
 
-    private void SelectGeneralOptionsParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlGeneralOptions, true);
-    }
-    private void SelectJan1WeightsParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlJan1Weight);
-    }
-    private void SelectSSBWeightsParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlSSBWeight);
-    }
-    private void SelectMidYearWeightsParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlMidYearWeight);
-    }
-    private void SelectCatchWeightParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlCatchWeight);
-    }
-    private void SelectDiscardWeightParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlDiscardWeight);
-    }
-    private void SelectFisherySelectivityParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlFisherySelectivity);
-    }
-    private void SelectDiscardFractionParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlDiscardFraction);
-    }
-    private void SelectNaturalMortalityParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlNaturalMortality);
-    }
-    private void SelectBiologicalParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlBiological);
-    }
-    private void SelectBootstrappingParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlBootstrap);
-    }
-    private void SelectHarvestScenarioParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlHarvestScenario);
-    }
-    private void SelectMiscOptionsParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlMiscOptions, false);
-    }
-    private void SelectRecruitmentParameterPanel()
-    {
-      SelectAgeproParameterPanel(controlRecruitment);
-    }
 
     /// <summary>
     /// Generalized method to set an AGEPRO Parameter User Control in the AGEPRO Parameter Panel
