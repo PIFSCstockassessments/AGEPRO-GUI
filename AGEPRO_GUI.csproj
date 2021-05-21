@@ -112,6 +112,7 @@
     <Compile Include="src\NFT\NftTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\ui\formAgepro\io\AgeproCalculationLauncher.cs" />
     <Compile Include="src\ui\formAgepro\biological\ControlBiological.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -509,7 +510,6 @@
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\ui\formAgepro\io\" />
     <Folder Include="src\ui\formAgepro\navigation\" />
   </ItemGroup>
   <ItemGroup>
