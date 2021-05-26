@@ -93,6 +93,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgeproUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,6 +114,9 @@
     </Compile>
     <Compile Include="src\NFT\NftTextBox.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\FormAgeproBase.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\ui\formAgepro\io\AgeproCalculationLauncher.cs" />
     <Compile Include="src\ui\formAgepro\biological\ControlBiological.cs">
@@ -249,6 +255,7 @@
     </Compile>
     <Compile Include="src\ui\formAgepro\stochastic\StochasticAgeFleetDependency.cs" />
     <Compile Include="src\ui\formAgepro\stochastic\StochasticWeightOfAge.cs" />
+    <Compile Include="src\ui\formAgepro\validation\ControlInputValidation.cs" />
     <Compile Include="src\util\AgeproBinding.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />
