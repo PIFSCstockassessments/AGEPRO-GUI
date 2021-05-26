@@ -252,7 +252,6 @@
     </Compile>
     <Compile Include="src\ui\formAgepro\stochastic\StochasticAgeFleetDependency.cs" />
     <Compile Include="src\ui\formAgepro\stochastic\StochasticWeightOfAge.cs" />
-    <Compile Include="src\ui\formAgepro\validation\ControlInputValidation.cs" />
     <Compile Include="src\util\AgeproBinding.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />

@@ -1,4 +1,7 @@
 ﻿using Nmfs.Agepro.CoreLib;
+using System;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
@@ -20,6 +23,8 @@ namespace Nmfs.Agepro.Gui
     internal ControlStochasticWeightAge controlDiscardWeight;
     internal ControlHarvestScenario controlHarvestScenario;
     internal ControlRecruitment controlRecruitment;
+
+
 
     /// <summary>
     /// Initiates the Control's "Startup State" or the "Uninitialized Model" phase.
@@ -192,6 +197,157 @@ namespace Nmfs.Agepro.Gui
 
       //Bootstrap
       controlBootstrap.SetBootstrapControls(inputData.Bootstrap);
+    }
+
+    /*****************************************************************************************
+     * VALAIDATION
+     * ****************************************************************************************/
+    /// <summary>
+    /// AGEPRO GUI Control input validation. 
+    /// </summary>
+    /// <returns>
+    /// If all control inputs pass validation checks, a dialog message will 
+    /// verify so and return true. 
+    /// The first invaild case will exit validation, a dialog message of the type of 
+    /// invalidation, and return false.
+    /// </returns>
+    protected bool GetValidateControlInputs()
+    {
+      int numAges = controlGeneralOptions.NumAges();
+      double boundsMaxWeight;
+      double boundsNaturalMortality;
+
+      //Default values for bounds
+      double defaultMaxWeightBound = 10.0;
+      double defaultNatualMortalityBound = 1.0;
+
+      //Enforce Bounds defaults if option is unchecked
+      switch (controlMiscOptions.MiscOptionsBounds)
+      {
+        case false:
+          boundsMaxWeight = defaultMaxWeightBound;
+          boundsNaturalMortality = defaultMaxWeightBound;
+          break;
+        default:
+          //Check Bounds text if they are empty. If so, use default value and inform the user about this.
+          if (string.IsNullOrWhiteSpace(controlMiscOptions.MiscOptionsBoundsMaxWeight))
+          {
+            _ = MessageBox.Show($"Missing max weight bound. Using default value of {defaultMaxWeightBound}.", "AGEPRO",
+              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            boundsMaxWeight = defaultMaxWeightBound;
+          }
+          else
+          {
+            boundsMaxWeight = Convert.ToDouble(controlMiscOptions.MiscOptionsBoundsMaxWeight);
+          }
+
+          if (string.IsNullOrWhiteSpace(controlMiscOptions.MiscOptionsBoundsNaturalMortality))
+          {
+            _ = MessageBox.Show($"Missing max natural mortality Bound. Using default value of {defaultNatualMortalityBound}.",
+              "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            boundsNaturalMortality = defaultNatualMortalityBound;
+          }
+          else
+          {
+            boundsNaturalMortality = Convert.ToDouble(
+                controlMiscOptions.MiscOptionsBoundsNaturalMortality);
+          }
+
+          break;
+      }
+
+      //JAN-1 Weights (Stock Weights)
+      if (controlJan1Weight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+      {
+        return false;
+      }
+      //SSB Weights
+      if (controlSSBWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+      {
+        return false;
+      }
+      //Mean Weights
+      if (controlMidYearWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+      {
+        return false;
+      }
+      //Catch Weight
+      if (controlCatchWeight.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+      {
+        return false;
+      }
+      //Natural Mortality
+      if (controlNaturalMortality.ValidateStochasticParameter(numAges, boundsNaturalMortality) == false)
+      {
+        return false;
+      }
+      //(Biological) Maturity
+      if (controlBiological.maturityAge.ValidateStochasticParameter(numAges) == false)
+      {
+        return false;
+      }
+      //(Biological) Fraction Mortality (TSpawn) Prior to Spawning 
+      if (controlBiological.TSpawnPanel.ValidateTSpawnDataGrid() == false)
+      {
+        return false;
+      }
+      //Fishery Selectivity
+      if (controlFisherySelectivity.ValidateStochasticParameter(numAges) == false)
+      {
+        return false;
+      }
+      if (controlGeneralOptions.GeneralDiscardsPresent)
+      {
+        //Discard Weight
+        if (controlDiscardWeight.ValidateStochasticParameter(numAges) == false)
+        {
+          return false;
+        }
+        //Discard Fraction
+        if (controlDiscardFraction.ValidateStochasticParameter(numAges, boundsMaxWeight) == false)
+        {
+          return false;
+        }
+      }
+
+
+      //Recruitment
+      if (controlRecruitment.ValidateRecruitmentData() == false)
+      {
+        return false;
+      }
+
+      //Bootstrap
+      if (controlBootstrap.ValidateBootstrapInput() == false)
+      {
+        return false;
+      }
+      //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
+
+      //Harvest Scenario (this includes Rebuilder and P-Star options)
+      if (controlHarvestScenario.ValidateHarvestScenario() == false)
+      {
+        return false;
+      }
+
+      //Misc Options: Reference Points, Retro Adjustment Factors, Bounds.
+      if (controlMiscOptions.ValidateMiscOptions() == false)
+      {
+        return false;
+      }
+
+      //Aux Stochastic Output File Size Check 
+      int numBootstraps = Convert.ToInt32(controlBootstrap.BootstrapIterations);
+      int numSims = Convert.ToInt32(controlGeneralOptions.GeneralNumberPopulationSimuations);
+      int numYears = controlGeneralOptions.SeqYears().Count();
+      //size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims
+      int auxFileRowSize = numBootstraps * numSims * numYears;
+      if (controlMiscOptions.CheckOutputFileRowSize(auxFileRowSize) == false)
+      {
+        return false;
+      }
+
+      return true;
     }
   }
 }
