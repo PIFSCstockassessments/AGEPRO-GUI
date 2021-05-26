@@ -106,7 +106,7 @@ namespace Nmfs.Agepro.Gui
 
     }
 
-    private void CreateAgeproModel()
+    protected void CreateAgeproModel()
     {
       //New Cases references version included in AGEPRO Reference Manual
       inputData.Version = "AGEPRO VERSION 4.0";
