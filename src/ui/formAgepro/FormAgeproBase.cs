@@ -106,7 +106,10 @@ namespace Nmfs.Agepro.Gui
 
     }
 
-    protected void CreateAgeproModel()
+    /// <summary>
+    /// Generates an Agepro Model based from user inputs made from the ControlGeneral panel 
+    /// </summary>
+    protected void SetAgeproModelFromUserInput()
     {
       //New Cases references version included in AGEPRO Reference Manual
       inputData.Version = "AGEPRO VERSION 4.0";

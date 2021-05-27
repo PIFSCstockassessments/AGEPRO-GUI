@@ -78,7 +78,7 @@ namespace Nmfs.Agepro.Gui
         //Validate GeneralOption Parameters
         controlGeneralOptions.ValidateGeneralOptionsParameters();
 
-        CreateAgeproModel();
+        SetAgeproModelFromUserInput();
 
         //Activate Naivagation Panel if in first-run/startup state.
         //Disable/'Do not load' parameters to Discard Weight and Discard Fraction if 
