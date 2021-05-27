@@ -206,7 +206,7 @@ namespace Nmfs.Agepro.Gui
     /// Load AGEPRO InputFile data into AGEPRO Parameter Controls
     /// </summary>
     /// <param name="inpFile">AGEPRO CoreLib InputFile</param>
-    protected void LoadAgeproInputParameters(AgeproInputFile inpFile)
+    protected void LoadAgeproModelFromInputFile(AgeproInputFile inpFile)
     {
       //General Options
       controlGeneralOptions.GeneralModelId = inpFile.CaseID;

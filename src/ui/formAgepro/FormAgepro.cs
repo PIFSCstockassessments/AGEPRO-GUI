@@ -123,7 +123,7 @@ namespace Nmfs.Agepro.Gui
           inputData = new AgeproInputFile();
           inputData.ReadInputFile(openAgeproInputFile.FileName);
 
-          LoadAgeproInputParameters(inputData);
+          LoadAgeproModelFromInputFile(inputData);
           controlGeneralOptions.GeneralInputFile = openAgeproInputFile.FileName;
 
           //Activate Naivagation Panel if in first-run/startup state.
