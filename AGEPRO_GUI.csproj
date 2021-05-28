@@ -255,6 +255,9 @@
     <Compile Include="src\util\AgeproBinding.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />
+    <None Include="examples\example4\UKU_Example.BSN" />
+    <None Include="examples\example4\UKU_Example.INP" />
+    <None Include="examples\example4\UKU_Example.out" />
     <None Include="Resources\noaa_fisheries_pictureBoxImage.png" />
     <EmbeddedResource Include="Resources\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
