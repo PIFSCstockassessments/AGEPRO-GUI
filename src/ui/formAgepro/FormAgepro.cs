@@ -304,6 +304,16 @@ namespace Nmfs.Agepro.Gui
       //Terminate
       Close();
     }
+    /// <summary>
+    /// Clean up before closing.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void FormAgepro_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      panelAgeproParameter.Dispose();
+      panelNavigation.Dispose();
+    }
 
     /// <summary>
     /// Method to find the current Active or Focused Control.
@@ -587,7 +597,6 @@ namespace Nmfs.Agepro.Gui
       AboutAgepro aboutDialog = new AboutAgepro();
       _ = aboutDialog.ShowDialog();
     }
-
 
   }
 }
