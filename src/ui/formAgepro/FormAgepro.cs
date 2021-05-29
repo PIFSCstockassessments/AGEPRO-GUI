@@ -66,6 +66,10 @@ namespace Nmfs.Agepro.Gui
 
     }
 
+    /********************************************************************************************************
+     * "Setting" User Generated Agepro Parameter Models 
+     *******************************************************************************************************/
+
     /// <summary>
     /// Event when the "SET" button in the General options panel has been clicked.
     /// </summary>
@@ -98,6 +102,43 @@ namespace Nmfs.Agepro.Gui
 
     }
 
+    /// <summary>
+    /// Enables Navigation Panel, and menu controls that were disabled during the startup/first-run state.
+    /// Change Discard Parameter enabled state by generalDiscardPresent option.  
+    /// </summary>
+    private void EnableNavigationPanel()
+    {
+      //Activates Naivagation Panel if in first-run/startup state.
+      if (panelNavigation.Enabled == false)
+      {
+        panelNavigation.Enabled = true;
+      }
+      if (launchAGEPROModelToolStripMenuItem.Enabled == false)
+      {
+        launchAGEPROModelToolStripMenuItem.Enabled = true;
+      }
+      if (saveAGEPROInputDataAsToolStripMenuItem.Enabled == false)
+      {
+        saveAGEPROInputDataAsToolStripMenuItem.Enabled = true;
+      }
+      //if "Discards are Present" is not checked, disable the discard parameters panels.
+      controlDiscardWeight.Enabled = controlGeneralOptions.GeneralDiscardsPresent;
+      controlDiscardFraction.Enabled = controlGeneralOptions.GeneralDiscardsPresent;
+
+      //Setup Data Binding for Parameter Controls  
+      if (inputData != null)
+      {
+        controlBootstrap.SetBootstrapControls(inputData.Bootstrap);
+        controlMiscOptions.SetupRefpointDataBindings(inputData.Refpoint);
+        controlMiscOptions.SetupScaleFactorsDataBindings(inputData.Scale);
+        controlMiscOptions.SetupBoundsDataBindings(inputData.Bounds);
+      }
+
+    }
+
+    /********************************************************************************************************
+     * Open/Save
+     ********************************************************************************************************/
 
     /// <summary>
     /// Calls the OpenFileDialog Window to retrive an existing AGEPRO Input file.
@@ -147,12 +188,9 @@ namespace Nmfs.Agepro.Gui
       SaveAgeproInputDataFileDialog();
     }
 
-
-
-
-    /*****************************************************************************************
+    /********************************************************************************************************
      *  LAUNCH TO AGEPRO CALCULATION ENGINE
-     ****************************************************************************************/
+     ********************************************************************************************************/
 
     /// <summary>
     /// Programmicaly commit data in current active winform control.  
@@ -200,7 +238,6 @@ namespace Nmfs.Agepro.Gui
 
       //If Input Data is Valid LaunchAgeproModel() 
       new AgeproCalculationLauncher(controlMiscOptions).LaunchAgeproModel(inputData, controlGeneralOptions.GeneralInputFile);
-      //LaunchAgeproModel(inputData, controlGeneralOptions.GeneralInputFile);
     }
 
 
@@ -258,63 +295,6 @@ namespace Nmfs.Agepro.Gui
     }
 
 
-
-
-    /// <summary>
-    /// Enables Navigation Panel, and menu controls that were disabled during the startup/first-run state.
-    /// Change Discard Parameter enabled state by generalDiscardPresent option.  
-    /// </summary>
-    private void EnableNavigationPanel()
-    {
-      //Activates Naivagation Panel if in first-run/startup state.
-      if (panelNavigation.Enabled == false)
-      {
-        panelNavigation.Enabled = true;
-      }
-      if (launchAGEPROModelToolStripMenuItem.Enabled == false)
-      {
-        launchAGEPROModelToolStripMenuItem.Enabled = true;
-      }
-      if (saveAGEPROInputDataAsToolStripMenuItem.Enabled == false)
-      {
-        saveAGEPROInputDataAsToolStripMenuItem.Enabled = true;
-      }
-      //if "Discards are Present" is not checked, disable the discard parameters panels.
-      controlDiscardWeight.Enabled = controlGeneralOptions.GeneralDiscardsPresent;
-      controlDiscardFraction.Enabled = controlGeneralOptions.GeneralDiscardsPresent;
-
-      //Setup Data Binding for Parameter Controls  
-      if (inputData != null)
-      {
-        controlBootstrap.SetBootstrapControls(inputData.Bootstrap);
-        controlMiscOptions.SetupRefpointDataBindings(inputData.Refpoint);
-        controlMiscOptions.SetupScaleFactorsDataBindings(inputData.Scale);
-        controlMiscOptions.SetupBoundsDataBindings(inputData.Bounds);
-      }
-
-    }
-
-    /// <summary>
-    /// Closes the AGEPRO GUI
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      //Terminate
-      Close();
-    }
-    /// <summary>
-    /// Clean up before closing.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void FormAgepro_FormClosing(object sender, FormClosingEventArgs e)
-    {
-      panelAgeproParameter.Dispose();
-      panelNavigation.Dispose();
-    }
-
     /// <summary>
     /// Method to find the current Active or Focused Control.
     /// </summary>
@@ -332,6 +312,9 @@ namespace Nmfs.Agepro.Gui
       return control;
     }
 
+    /********************************************************************************************************
+     * Cut/Copy/Paste
+     ********************************************************************************************************/
 
     /// <summary>
     /// Raises the Cut clipboard function from the "Cut" edit menu option.
@@ -434,8 +417,9 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    /// TreeViewNavigation 
-
+    /********************************************************************************************************
+     * NAVIGATION: TreeViewNavigation 
+     ********************************************************************************************************/
     /// <summary>
     /// Replaces an AGEPRO parameter user control in panelAgeproParmeter when a tree node from 
     /// treeViewNavigation is selected.
@@ -531,7 +515,7 @@ namespace Nmfs.Agepro.Gui
         SelectAgeproParameterPanel(controlRecruitment);
       }
 
-    }
+    }//end TreeViewNavigation_AfterSelect
 
 
     /// <summary>
@@ -548,6 +532,10 @@ namespace Nmfs.Agepro.Gui
       }
       panelAgeproParameter.Controls.Add(ageproParameterControl);
     }
+
+    /*********************************************************************************************************
+     * Help menu item events
+     ********************************************************************************************************/
 
     /// <summary>
     /// Opens the "Age Structured Projection Model (AGEPRO)" help manual when the user
@@ -597,6 +585,32 @@ namespace Nmfs.Agepro.Gui
       AboutAgepro aboutDialog = new AboutAgepro();
       _ = aboutDialog.ShowDialog();
     }
+
+    /********************************************************************************************************
+     * Exit/Form Closing
+     ********************************************************************************************************/
+
+    /// <summary>
+    /// Closes the AGEPRO GUI
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      //Terminate
+      Close();
+    }
+    /// <summary>
+    /// Clean up before closing.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void FormAgepro_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      panelAgeproParameter.Dispose();
+      panelNavigation.Dispose();
+    }
+
 
   }
 }
