@@ -1,7 +1,10 @@
+---
+title: Age Structured Projection Model (AGEPRO) User Help Manual
+---
 Age Structured Projection Model (AGEPRO)
 ========================================
 
-Version 4.3.3
+Version 4.3.4
 
 * [Getting Started](#getting-started)
 * [Creating a New Case](#creating-a-new-case)
