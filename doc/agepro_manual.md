@@ -1,6 +1,3 @@
----
-title: Age Structured Projection Model (AGEPRO) User Help Manual
----
 Age Structured Projection Model (AGEPRO)
 ========================================
 
@@ -320,56 +317,56 @@ In the next example, *Time Varying* is not enabled. The user will supply a singl
 In this example, the user has selected to supply [data from an external file](#stochastic-data-files) with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file.  No further input is required.
 
 ## Spawning Stock Weights at Age
-When the user selects **SSB** from the navigation panel, the user can select from the following:
+When **SSB** is selected from the navigation panel, **Spawning Stocks Weights of Age** will have these following options:
 
-Label                         | Description
+Weights at Age Options        | Description
 :-----------------------------| :----------------------------------------------
-User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**. 
 
 ## Mid-Year Stock Weights at Age
-When the user selects **Mid-Year (Mean)** from the navigation panel, the user can select from the following:
+When **Mid-Year (Mean)** is selected from the navigation panel, **Mid-Year Stock Weights at Age** will have these following options:
 
-Label                         | Description
+Weights at Age Option         | Description
 :-----------------------------| :----------------------------------------------
-User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
 ## Catch Weights at Age
-When the user selects **Catch** from the navigation panel, the user can select from the following:
+When **Catch** from is selected from the navigation panel, **Catch Weights at Age** will have these following options:
 
-Label                        | Description
+Weights at Age Option        | Description
 :----------------------------|:----------------------------------------------
-User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
 Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
 ## Discard Weights at Age
-If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this weight of age will be disabled.
+If _discards_ were not included with the model case, controls from this weight of age will be disabled.
 
-When the user selects **Discard** from the navigation panel, the user *may* select from the following:
+When **Discard** is selected from the navigation panel, the user *may* select from the following:
 
-Label                        | Description
+Weights at Age Option        | Description
 :----------------------------| :----------------------------------------------
-User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
 Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
 ---
 
@@ -1004,7 +1001,7 @@ To bypass viewing AGEPRO Output data files after a model run, select **None**.
 AGEPRO Projection Samples
 =====================================================================
 
-The following descriptions for the first three examples are excerpt from the _AGEPRO Reference Manual_ (Brodziak 2018). Example 4 comes from _Stock Assessment of Uku (Aprion virescens) in Hawaii, 2020_ (Nadon et al. 2020). These examples are provided to illustrate projection options and features of AGEPRO. These projections use actual fishery data but are for the purposes for demostration only.
+The following descriptions for the first three examples are excerpt from the _AGEPRO Reference Manual_ (Brodziak 2018). Example 4 references _Stock Assessment of Uku (Aprion virescens) in Hawaii, 2020_ (Nadon et al. 2020). These examples are provided to illustrate projection options and features of AGEPRO. These projections use actual fishery data but are for the purposes for demostration only.
 
 ## Example 1
 
