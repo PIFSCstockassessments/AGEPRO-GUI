@@ -1,6 +1,24 @@
 
 # AGEPRO Changelog
 
+## 4.3.4 (2021-06-00)
+
+## Changes
+
+- AGEPRO GUI and CoreLib code refactor (Overall changes)
+  - Format public class members to Pascal Casing. (Private class members also intended to have Pascal-like Caseing)
+  - Renoved Unused Imports
+  - Simplify (reduced) usage of the `this` keyword   
+  - Replace `var` to explict types
+  - Appplied standalone discards for existing methods that returns a value.(code smell?)   
+- Added new AGEPRO example model: Uku snapper Projection Base (2019-2026)
+- 
+- Agepro user help manual
+  - Inculde missing images to binary
+  - Revert stylesheet back to basic html
+  - Added AGEPRO Projection Samples section  
+  - Edits to Weights of Age Sections  
+
 ## 4.3.3 (2021-03-22)
 
 ## Changes
