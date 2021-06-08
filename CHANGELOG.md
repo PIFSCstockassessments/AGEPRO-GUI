@@ -10,14 +10,37 @@
   - Renoved Unused Imports
   - Simplify (reduced) usage of the `this` keyword   
   - Replace `var` to explict types
-  - Appplied standalone discards for existing methods that returns a value.(code smell?)   
+  - Simplify Array Implementation
+  - Refactored conditionals (if-else, null checks) to be more readable.    
+  - Appplied standalone discards for existing methods that returns a value.
+  - Enums refactored to own file
+- Created ControlTSpawnPanel to seprate 'Fraction Mortality' methods embeded with ControlBiological;   
 - Added new AGEPRO example model: Uku snapper Projection Base (2019-2026)
-- 
-- Agepro user help manual
+- AGEPRO user help manual
   - Inculde missing images to binary
   - Revert stylesheet back to basic html
   - Added AGEPRO Projection Samples section  
-  - Edits to Weights of Age Sections  
+  - Minor updates to the Weights of Age Section
+- AgeproMiscOptions
+  - Removed Util.GetAgeproInputDataTable 
+  - ControlMiscOptions.LoadRetroAdjustmentsFactorTable is the replacement method
+  - CoreLib: Refactor Misc Option classes as indvidual "AgeproOptionProperty" subclass files
+- Pstar/Rebuider
+  - Use CoreLib to create PStar and Rebulider objects; Remove AGPERO GUI data object redundancy.
+  - PStar/Rebuilder control defaults will now instantiate from its own classes rather from the ControlHarvestScenario constructor.
+- Added Base class FormAgepro to handle ui startup, validation, load, save, create new Agepro model from user input.
+- Fixed Null Input Data Stochastic Weight of Age Import Fix
+- CoreLib: Extract RecruitDictionary as class RecruitModelDictionary.
+  - Removed AGEPRO GUI reduancy and reference usages to CoreLib object.
+- Renames to AGEPRO GUI objects:
+  - RecruitmentModel -> RecruitmentModelProperty
+  - (src/ui/formAgepro subdirectoy) hone -> general-startup 
+-Renames to AGEPRO CoreLib objects:
+  - MiscOptionsParameter -> AgeproOptionsProperty
+  - jan1Weight -> Jan1StockWeight
+  - biological -> BiologicalTSpawn
+  - maturity -> BiologicalMaturity
+  - retroAdjustOption -> RetroAdjustments 
 
 ## 4.3.3 (2021-03-22)
 
