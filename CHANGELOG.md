@@ -20,26 +20,31 @@
   - Revert stylesheet back to basic html
   - Added AGEPRO Projection Samples section  
   - Minor updates to the Weights of Age Section
+- CoreLib: Bootstrap, (Misc)Options, Recruitment, Harvest Scenario (HarvestCalcuation) uses generalized AgeproCoreLibProperty class for data binding.
 - User Interface
-  - Added Base class FormAgepro to handle ui startup, validation, load, save, create new Agepro model from user input.   
+  - Added Base class FormAgepro to handle ui startup, validation, load, save, create new Agepro model from user input.
+  - Minor menu item size adjustment for Windows 10   
 - Pstar/Rebuider
   - Use CoreLib to create PStar and Rebulider objects; Remove AGPERO GUI data object redundancy.
   - PStar/Rebuilder control defaults will now instantiate from its own classes rather from the ControlHarvestScenario constructor.
 - Recruitment
   - CoreLib: Extract RecruitDictionary as class RecruitModelDictionary.
   - Removed AGEPRO GUI reduancy and reference usages to CoreLib object.
+  - CoreLib: Invaild recruitment row coount error message claification.
 - AgeproMiscOptions
-  - Removed Util.GetAgeproInputDataTable 
-  - ControlMiscOptions.LoadRetroAdjustmentsFactorTable is the replacement method
+  - Removed Util.GetAgeproInputDataTable; ControlMiscOptions.LoadRetroAdjustmentsFactorTable is the replacement method
   - CoreLib: Refactor Misc Option classes as indvidual "AgeproOptionProperty" subclass files
 - Biological
   - Created ControlTSpawnPanel to seprate 'Fraction Mortality' methods embeded with ControlBiological;
 - Stochastic/Weights Of Age
   - Fixed Null Input Data Stochastic Weight of Age Import Fix
+- CoreLib: Moved code files into categorized src subdirectories. No changes to namespaces, new CoreLib scripts adjusted to `Nmfs.Agepro.CoreLib` namespacce
 - Renames to AGEPRO GUI objects:
-  - RecruitmentModel -> RecruitmentModelProperty
   - (src/ui/formAgepro subdirectoy) hone -> general-startup 
   - ControlStochasticAge.EnableTimeVaryingCheckBox -> ControlStochasticAge.EnableFromFilePanel
+  - FormAgepro.CreateAgeproModel -> FormAgeproBase.SetAgeproModelFromUserInput
+  - FormAgepro.LoadAgeproInputParameters -> LoadAgeproBase.LoadAgeproModelFromInputFile
+  - ControlStochasticAge.EnableVaryingCheckBox -> ControlStochasticAge.EnableFromFilePanel
 -Renames to AGEPRO CoreLib objects:
   - MiscOptionsParameter -> AgeproOptionsProperty
   - jan1Weight -> Jan1StockWeight
@@ -47,6 +52,8 @@
   - maturity -> BiologicalMaturity
   - retroAdjustOption -> RetroAdjustments 
   - RecruitmentModel -> RecruitmeentModelProperty
+  - FixedEmpiricalRecruitment -> EmpriricalFixedRecruitment
+  - TwoStageEmpiricalRecruitment -> EmpriricalTwoStageRecruitment
 
 ## 4.3.3 (2021-03-22)
 
