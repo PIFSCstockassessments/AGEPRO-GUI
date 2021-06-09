@@ -118,7 +118,7 @@
             this.dataGridHarvestScenarioTable.ShowEditingIcon = false;
             this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(360, 460);
             this.dataGridHarvestScenarioTable.TabIndex = 1;
-            this.dataGridHarvestScenarioTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridHarvestScenarioTable_CellFormatting);
+            this.dataGridHarvestScenarioTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridHarvestScenarioTable_CellFormatting);
             // 
             // ControlHarvestScenario
             // 

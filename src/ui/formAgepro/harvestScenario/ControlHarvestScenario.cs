@@ -250,11 +250,11 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    private void DataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
       DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;
 
-      if (!(header.Value != null))
+      if (header.Value == null)
       {
         //set HarvestScenarioTable RowHeaders
         int iyear = 0;
