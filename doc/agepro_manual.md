@@ -45,7 +45,7 @@ Version 4.3.4
     * [Specifying Bounds](#specifying-bounds)
     * [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
     * [Program to view AGEPRO Output files](#view-agepro-output-files)
-* **[AGEPRO Projection Samples](#agepro-projection-Samples)**
+* **[AGEPRO Projection Samples](#agepro-projection-samples)**
 
 ---
 
@@ -997,6 +997,7 @@ If **System Default** is selected, it will launch a program that AGEPRO Output d
 
 To bypass viewing AGEPRO Output data files after a model run, select **None**.
 
+---
 
 AGEPRO Projection Samples
 =====================================================================
