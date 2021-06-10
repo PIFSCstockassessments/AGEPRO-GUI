@@ -1,7 +1,7 @@
 
 # AGEPRO Changelog
 
-## 4.3.4 (2021-06-00)
+## 4.3.4 (2021-06-15)
 
 ## Changes
 
@@ -40,7 +40,7 @@
   - Fixed Null Input Data Stochastic Weight of Age Import Fix
 - CoreLib: Moved code files into categorized src subdirectories. No changes to namespaces, new CoreLib scripts adjusted to `Nmfs.Agepro.CoreLib` namespacce
 - Renames to AGEPRO GUI objects:
-  - (src/ui/formAgepro subdirectoy) hone -> general-startup 
+  - (src/ui/formAgepro subdirectory) home -> general-startup 
   - ControlStochasticAge.EnableTimeVaryingCheckBox -> ControlStochasticAge.EnableFromFilePanel
   - FormAgepro.CreateAgeproModel -> FormAgeproBase.SetAgeproModelFromUserInput
   - FormAgepro.LoadAgeproInputParameters -> LoadAgeproBase.LoadAgeproModelFromInputFile
