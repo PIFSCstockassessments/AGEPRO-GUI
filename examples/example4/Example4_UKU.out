@@ -2,9 +2,9 @@ AGEPRO VERSION 4.2
 
 Uku Projection Base (2019-2026) 
 
-Date & Time of Run: 28 May 2021  10:41
+Date & Time of Run: 09 Jun 2021  14:16
 
-Input File Name:    C:\Users\Eric.Fletcher\Documents\AGEPRO\UKU_Example_2021-05-28_10-41-19\UKU_Example.INP
+Input File Name:    C:\Users\Eric.Fletcher\Documents\AGEPRO\Example4_UKU_2021-06-09_14-16-52\Example4_UKU.INP
 
 First Age Class:                         1
 Number of Age Classes:                  32
@@ -14,7 +14,7 @@ Number of Recruitment Models:            3
 Number of Bootstraps:                  100
 Number of Simulations:                1000
 
-Bootstrap File Name:            C:\Users\Eric.Fletcher\Documents\AGEPRO\UKU_Example_2021-05-28_10-41-19\UKU_Example.BSN
+Bootstrap File Name:            C:\Users\Eric.Fletcher\Documents\AGEPRO\Example4_UKU_2021-06-09_14-16-52\Example4_UKU.BSN
 
 Number of Feasible Solutions:      99998  of     100000 Realizations
 
