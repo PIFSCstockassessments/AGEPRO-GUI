@@ -65,7 +65,7 @@
             this.tabControlRecruitment.SelectedIndex = 0;
             this.tabControlRecruitment.Size = new System.Drawing.Size(897, 491);
             this.tabControlRecruitment.TabIndex = 0;
-            this.tabControlRecruitment.SelectedIndexChanged += new System.EventHandler(this.tabControlRecruitment_SelectedIndexChanged);
+            this.tabControlRecruitment.SelectedIndexChanged += new System.EventHandler(this.TabControlRecruitment_SelectedIndexChanged);
             // 
             // tabRecruitment
             // 
@@ -119,7 +119,7 @@
             this.dataGridRecruitProb.nftReadOnly = false;
             this.dataGridRecruitProb.Size = new System.Drawing.Size(843, 154);
             this.dataGridRecruitProb.TabIndex = 4;
-            this.dataGridRecruitProb.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRecruitProb_CellFormatting);
+            this.dataGridRecruitProb.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridRecruitProb_CellFormatting);
             // 
             // dataGridComboBoxSelectRecruitModels
             // 
@@ -136,9 +136,9 @@
             this.dataGridComboBoxSelectRecruitModels.ShowEditingIcon = false;
             this.dataGridComboBoxSelectRecruitModels.Size = new System.Drawing.Size(843, 154);
             this.dataGridComboBoxSelectRecruitModels.TabIndex = 2;
-            this.dataGridComboBoxSelectRecruitModels.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridComboBoxSelectRecruitModels_CellFormatting);
-            this.dataGridComboBoxSelectRecruitModels.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridComboBoxSelectRecruitModels_CellValueChanged);
-            this.dataGridComboBoxSelectRecruitModels.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridComboBoxSelectRecruitModels_CurrentCellDirtyStateChanged);
+            this.dataGridComboBoxSelectRecruitModels.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridComboBoxSelectRecruitModels_CellFormatting);
+            this.dataGridComboBoxSelectRecruitModels.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridComboBoxSelectRecruitModels_CellValueChanged);
+            this.dataGridComboBoxSelectRecruitModels.CurrentCellDirtyStateChanged += new System.EventHandler(this.DataGridComboBoxSelectRecruitModels_CurrentCellDirtyStateChanged);
             // 
             // groupScalingFactor
             // 
@@ -162,7 +162,7 @@
             this.textBoxSSBScalingFactor.PrevValidValue = "";
             this.textBoxSSBScalingFactor.Size = new System.Drawing.Size(131, 20);
             this.textBoxSSBScalingFactor.TabIndex = 3;
-            this.textBoxSSBScalingFactor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSSBScalingFactor_Validating);
+            this.textBoxSSBScalingFactor.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxSSBScalingFactor_Validating);
             // 
             // textBoxRecruitngScalingFactor
             // 
@@ -172,7 +172,7 @@
             this.textBoxRecruitngScalingFactor.PrevValidValue = "";
             this.textBoxRecruitngScalingFactor.Size = new System.Drawing.Size(131, 20);
             this.textBoxRecruitngScalingFactor.TabIndex = 2;
-            this.textBoxRecruitngScalingFactor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxRecruitngScalingFactor_Validating);
+            this.textBoxRecruitngScalingFactor.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxRecruitngScalingFactor_Validating);
             // 
             // labelSSBScalingFactor
             // 
@@ -243,7 +243,7 @@
             this.comboBoxRecruitSelection.Name = "comboBoxRecruitSelection";
             this.comboBoxRecruitSelection.Size = new System.Drawing.Size(473, 21);
             this.comboBoxRecruitSelection.TabIndex = 0;
-            this.comboBoxRecruitSelection.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecruitSelection_SelectedIndexChanged);
+            this.comboBoxRecruitSelection.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRecruitSelection_SelectedIndexChanged);
             // 
             // ControlRecruitment
             // 

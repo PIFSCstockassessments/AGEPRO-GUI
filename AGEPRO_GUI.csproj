@@ -93,7 +93,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\ui\about\AboutAgepro.cs">
       <SubType>Form</SubType>
@@ -107,11 +112,21 @@
     <Compile Include="src\NFT\NftTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\ui\formAgepro\FormAgeproBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\io\AgeproCalculationLauncher.cs" />
     <Compile Include="src\ui\formAgepro\biological\ControlBiological.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\ui\formAgepro\biological\ControlBiological.Designer.cs">
       <DependentUpon>ControlBiological.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\biological\ControlTSpawnPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ui\formAgepro\biological\ControlTSpawnPanel.Designer.cs">
+      <DependentUpon>ControlTSpawnPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="src\ui\formAgepro\bootstrap\ControlBootstrap.cs">
       <SubType>UserControl</SubType>
@@ -125,10 +140,10 @@
     <Compile Include="src\ui\formAgepro\FormAgepro.Designer.cs">
       <DependentUpon>FormAgepro.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ui\formAgepro\home\ControlGeneral.cs">
+    <Compile Include="src\ui\formAgepro\general-startup\ControlGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ui\formAgepro\home\ControlGeneral.Designer.cs">
+    <Compile Include="src\ui\formAgepro\general-startup\ControlGeneral.Designer.cs">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </Compile>
     <Compile Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.cs">
@@ -235,11 +250,25 @@
     <Compile Include="src\ui\formAgepro\stochastic\ControlStochasticWeightAge.Designer.cs">
       <DependentUpon>ControlStochasticWeightAge.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\ui\formAgepro\stochastic\StochasticAgeFleetDependency.cs" />
+    <Compile Include="src\ui\formAgepro\stochastic\StochasticWeightOfAge.cs" />
     <Compile Include="src\util\AgeproBinding.cs" />
-    <Compile Include="src\util\AgeproPropertyChanged.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />
+    <None Include="examples\example4\Example4_UKU.BSN">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="examples\example4\Example4_UKU.INP">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="examples\example4\Example4_UKU.out">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\noaa_fisheries_pictureBoxImage.png" />
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\ui\about\AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +278,9 @@
     <EmbeddedResource Include="src\ui\formAgepro\biological\ControlBiological.resx">
       <DependentUpon>ControlBiological.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\ui\formAgepro\biological\ControlTSpawnPanel.resx">
+      <DependentUpon>ControlTSpawnPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\bootstrap\ControlBootstrap.resx">
       <DependentUpon>ControlBootstrap.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,7 +288,7 @@
       <DependentUpon>FormAgepro.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ui\formAgepro\home\ControlGeneral.resx">
+    <EmbeddedResource Include="src\ui\formAgepro\general-startup\ControlGeneral.resx">
       <DependentUpon>ControlGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\harvestScenario\ControlHarvestCalcPStar.resx">
@@ -323,6 +355,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="doc\agepro_manual.md" />
+    <Content Include="doc\agepro_manual.html">
+      <DependentUpon>agepro_manual.md</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="doc\AGEPRO_v4.2_Reference_Manual.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -397,48 +433,93 @@
     <Content Include="AGEPRO40.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\agepro_manual.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="doc\img\bio_fractionMortality_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\bio_fractionMortality_01.png" />
-    <Content Include="doc\img\bio_fractionMortality_02.png" />
-    <Content Include="doc\img\bio_maturityAge_01.png" />
-    <Content Include="doc\img\bio_maturityAge_02.png" />
-    <Content Include="doc\img\bio_maturityAge_03.png" />
-    <Content Include="doc\img\generalOptions_01.png" />
+    <Content Include="doc\img\bio_fractionMortality_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\bio_maturityAge_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\bio_maturityAge_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\bio_maturityAge_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\generalOptions_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="doc\img\generalOptions_02.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="doc\img\generalOptions_03.png" />
-    <Content Include="doc\img\harvest_pstar_01.png" />
-    <Content Include="doc\img\harvest_rebuilder_01.png" />
+    <Content Include="doc\img\harvest_pstar_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\harvest_rebuilder_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="doc\img\openExisting_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\img\outFile_association_01.png" />
+    <Content Include="doc\img\outFile_association_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="doc\img\outFile_association_02.png" />
-    <Content Include="doc\img\saveINP_01.png" />
-    <Content Include="doc\img\saveINP_invalid_01.png" />
+    <Content Include="doc\img\saveINP_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\saveINP_invalid_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="doc\img\saveINP_invalid_01a.png" />
-    <Content Include="doc\img\saveINP_invalid_02.png" />
-    <Content Include="doc\img\saveINP_vaildated_02.png" />
-    <Content Include="doc\img\stochastic_naturalMortality_01.png" />
-    <Content Include="doc\img\stochastic_naturalMortality_02.png" />
-    <Content Include="doc\img\stochastic_naturalMortality_03.png" />
-    <Content Include="doc\img\stochastic_discardFraction_00.png" />
-    <Content Include="doc\img\stochastic_discardFraction_01.png" />
+    <Content Include="doc\img\saveINP_invalid_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\saveINP_vaildated_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\stochastic_naturalMortality_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\stochastic_naturalMortality_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\stochastic_naturalMortality_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\stochastic_discardFraction_00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\stochastic_discardFraction_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="doc\img\stochastic_discardFraction_02.png" />
     <Content Include="doc\img\stochastic_discardFraction_03.png" />
-    <Content Include="doc\img\stochastic_fisherySelectivity_01.png" />
-    <Content Include="doc\img\stochastic_fisherySelectivity_02.png" />
-    <Content Include="doc\img\stochastic_fisherySelectivity_03.png" />
+    <Content Include="doc\img\stochastic_fisherySelectivity_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\stochastic_fisherySelectivity_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\stochastic_fisherySelectivity_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="doc\img\VPAExample_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\%24this.Icon.ico" />
-    <Content Include="doc\img\weightAge_jan1_01.png" />
-    <Content Include="doc\img\weightAge_jan1_02.png" />
-    <Content Include="doc\img\weightAge_jan1_03.png" />
+    <Content Include="doc\img\weightAge_jan1_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\weightAge_jan1_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\img\weightAge_jan1_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\AgeproIcon.ico" />
   </ItemGroup>
   <ItemGroup />

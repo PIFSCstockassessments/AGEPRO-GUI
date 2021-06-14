@@ -118,7 +118,7 @@
             this.checkBoxEnablePercentileReport.TabIndex = 3;
             this.checkBoxEnablePercentileReport.Text = "Request Percentile Report";
             this.checkBoxEnablePercentileReport.UseVisualStyleBackColor = true;
-            this.checkBoxEnablePercentileReport.CheckedChanged += new System.EventHandler(this.checkBoxPercentileReport_CheckedChanged);
+            this.checkBoxEnablePercentileReport.CheckedChanged += new System.EventHandler(this.CheckBoxPercentileReport_CheckedChanged);
             // 
             // checkBoxEnableExportR
             // 
@@ -203,7 +203,7 @@
             this.checkBoxEnableRefpoints.TabIndex = 0;
             this.checkBoxEnableRefpoints.Text = "Enable Reference Point Threshold Report";
             this.checkBoxEnableRefpoints.UseVisualStyleBackColor = true;
-            this.checkBoxEnableRefpoints.CheckedChanged += new System.EventHandler(this.checkBoxRefpoints_CheckedChanged);
+            this.checkBoxEnableRefpoints.CheckedChanged += new System.EventHandler(this.CheckBoxRefpoints_CheckedChanged);
             // 
             // labelMeanBiomass
             // 
@@ -312,7 +312,7 @@
             this.checkBoxBounds.TabIndex = 0;
             this.checkBoxBounds.Text = "Specify Bounds";
             this.checkBoxBounds.UseVisualStyleBackColor = true;
-            this.checkBoxBounds.CheckedChanged += new System.EventHandler(this.checkBoxBounds_CheckedChanged);
+            this.checkBoxBounds.CheckedChanged += new System.EventHandler(this.CheckBoxBounds_CheckedChanged);
             // 
             // groupScaleFactors
             // 
@@ -393,7 +393,7 @@
             this.checkBoxEnableScaleFactors.TabIndex = 0;
             this.checkBoxEnableScaleFactors.Text = "Specify Scale Factors for Output Report File";
             this.checkBoxEnableScaleFactors.UseVisualStyleBackColor = true;
-            this.checkBoxEnableScaleFactors.CheckedChanged += new System.EventHandler(this.checkBoxScaleFactors_CheckedChanged);
+            this.checkBoxEnableScaleFactors.CheckedChanged += new System.EventHandler(this.CheckBoxScaleFactors_CheckedChanged);
             // 
             // groupRetroAdjustment
             // 
@@ -415,7 +415,7 @@
             this.checkBoxEnableRetroAdjustment.TabIndex = 1;
             this.checkBoxEnableRetroAdjustment.Text = "Specify Retrospective Adjustment Factors";
             this.checkBoxEnableRetroAdjustment.UseVisualStyleBackColor = true;
-            this.checkBoxEnableRetroAdjustment.CheckedChanged += new System.EventHandler(this.checkBoxRetroAdjustment_CheckedChanged);
+            this.checkBoxEnableRetroAdjustment.CheckedChanged += new System.EventHandler(this.CheckBoxRetroAdjustment_CheckedChanged);
             // 
             // dataGridRetroAdjustment
             // 
@@ -431,7 +431,7 @@
             this.dataGridRetroAdjustment.RowHeadersWidth = 75;
             this.dataGridRetroAdjustment.Size = new System.Drawing.Size(329, 220);
             this.dataGridRetroAdjustment.TabIndex = 0;
-            this.dataGridRetroAdjustment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridRetroAdjustment_CellFormatting);
+            this.dataGridRetroAdjustment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridRetroAdjustment_CellFormatting);
             // 
             // groupOutputViewer
             // 

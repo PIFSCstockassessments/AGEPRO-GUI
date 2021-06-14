@@ -96,7 +96,7 @@
             this.textBoxAlpha.PrevValidValue = "";
             this.textBoxAlpha.Size = new System.Drawing.Size(135, 20);
             this.textBoxAlpha.TabIndex = 1;
-            this.textBoxAlpha.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAlpha_Validating);
+            this.textBoxAlpha.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxAlpha_Validating);
             // 
             // textBoxBeta
             // 
@@ -106,7 +106,7 @@
             this.textBoxBeta.PrevValidValue = "";
             this.textBoxBeta.Size = new System.Drawing.Size(135, 20);
             this.textBoxBeta.TabIndex = 3;
-            this.textBoxBeta.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxBeta_Validating);
+            this.textBoxBeta.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxBeta_Validating);
             // 
             // textBoxKParm
             // 
@@ -116,7 +116,7 @@
             this.textBoxKParm.PrevValidValue = "";
             this.textBoxKParm.Size = new System.Drawing.Size(135, 20);
             this.textBoxKParm.TabIndex = 7;
-            this.textBoxKParm.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxKParm_Validating);
+            this.textBoxKParm.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxKParm_Validating);
             // 
             // textBoxVariance
             // 
@@ -126,7 +126,7 @@
             this.textBoxVariance.PrevValidValue = "";
             this.textBoxVariance.Size = new System.Drawing.Size(135, 20);
             this.textBoxVariance.TabIndex = 5;
-            this.textBoxVariance.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxVariance_Validating);
+            this.textBoxVariance.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxVariance_Validating);
             // 
             // textBoxPhi
             // 
@@ -137,7 +137,7 @@
             this.textBoxPhi.PrevValidValue = "";
             this.textBoxPhi.Size = new System.Drawing.Size(135, 20);
             this.textBoxPhi.TabIndex = 9;
-            this.textBoxPhi.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPhi_Validating);
+            this.textBoxPhi.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxPhi_Validating);
             // 
             // textBoxLastResidual
             // 
@@ -148,7 +148,7 @@
             this.textBoxLastResidual.PrevValidValue = "";
             this.textBoxLastResidual.Size = new System.Drawing.Size(135, 20);
             this.textBoxLastResidual.TabIndex = 11;
-            this.textBoxLastResidual.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxLastResidual_Validating);
+            this.textBoxLastResidual.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxLastResidual_Validating);
             // 
             // labelLastResidual
             // 

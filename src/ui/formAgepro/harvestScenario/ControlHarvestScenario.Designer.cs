@@ -70,7 +70,7 @@
             this.radioNone.TabIndex = 2;
             this.radioNone.Text = "None (Only Harvest Scenario)";
             this.radioNone.UseVisualStyleBackColor = true;
-            this.radioNone.CheckedChanged += new System.EventHandler(this.radioNone_CheckedChanged);
+            this.radioNone.CheckedChanged += new System.EventHandler(this.RadioNone_CheckedChanged);
             // 
             // radioPStar
             // 
@@ -81,7 +81,7 @@
             this.radioPStar.TabIndex = 1;
             this.radioPStar.Text = "Perform P-Star Analysis";
             this.radioPStar.UseVisualStyleBackColor = true;
-            this.radioPStar.CheckedChanged += new System.EventHandler(this.radioPStar_CheckedChanged);
+            this.radioPStar.CheckedChanged += new System.EventHandler(this.RadioPStar_CheckedChanged);
             // 
             // radioRebuilderTarget
             // 
@@ -93,7 +93,7 @@
             this.radioRebuilderTarget.TabIndex = 0;
             this.radioRebuilderTarget.Text = "Apply Rebuilder Target";
             this.radioRebuilderTarget.UseVisualStyleBackColor = true;
-            this.radioRebuilderTarget.CheckedChanged += new System.EventHandler(this.radioRebuilderTarget_CheckedChanged);
+            this.radioRebuilderTarget.CheckedChanged += new System.EventHandler(this.RadioRebuilderTarget_CheckedChanged);
             // 
             // panelAltCalcParameters
             // 
@@ -118,7 +118,7 @@
             this.dataGridHarvestScenarioTable.ShowEditingIcon = false;
             this.dataGridHarvestScenarioTable.Size = new System.Drawing.Size(360, 460);
             this.dataGridHarvestScenarioTable.TabIndex = 1;
-            this.dataGridHarvestScenarioTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridHarvestScenarioTable_CellFormatting);
+            this.dataGridHarvestScenarioTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridHarvestScenarioTable_CellFormatting);
             // 
             // ControlHarvestScenario
             // 

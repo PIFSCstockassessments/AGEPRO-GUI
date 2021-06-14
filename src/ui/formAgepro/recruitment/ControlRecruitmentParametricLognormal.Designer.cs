@@ -57,7 +57,7 @@
             this.textBoxLastResidual.PrevValidValue = "";
             this.textBoxLastResidual.Size = new System.Drawing.Size(135, 20);
             this.textBoxLastResidual.TabIndex = 19;
-            this.textBoxLastResidual.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxLastResidual_Validating);
+            this.textBoxLastResidual.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxLastResidual_Validating);
             // 
             // textBoxPhi
             // 
@@ -68,7 +68,7 @@
             this.textBoxPhi.PrevValidValue = "";
             this.textBoxPhi.Size = new System.Drawing.Size(135, 20);
             this.textBoxPhi.TabIndex = 17;
-            this.textBoxPhi.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPhi_Validating);
+            this.textBoxPhi.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxPhi_Validating);
             // 
             // textBoxStdDeviation
             // 
@@ -78,7 +78,7 @@
             this.textBoxStdDeviation.PrevValidValue = "";
             this.textBoxStdDeviation.Size = new System.Drawing.Size(135, 20);
             this.textBoxStdDeviation.TabIndex = 15;
-            this.textBoxStdDeviation.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStdDeviation_Validating);
+            this.textBoxStdDeviation.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxStdDeviation_Validating);
             // 
             // textBoxMean
             // 
@@ -88,7 +88,7 @@
             this.textBoxMean.PrevValidValue = "";
             this.textBoxMean.Size = new System.Drawing.Size(135, 20);
             this.textBoxMean.TabIndex = 13;
-            this.textBoxMean.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMean_Validating);
+            this.textBoxMean.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxMean_Validating);
             // 
             // labelPhi
             // 

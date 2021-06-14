@@ -1,7 +1,7 @@
 Age Structured Projection Model (AGEPRO)
 ========================================
 
-Version 4.3.3
+Version 4.3.4
 
 * [Getting Started](#getting-started)
 * [Creating a New Case](#creating-a-new-case)
@@ -45,6 +45,7 @@ Version 4.3.3
     * [Specifying Bounds](#specifying-bounds)
     * [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
     * [Program to view AGEPRO Output files](#view-agepro-output-files)
+* **[AGEPRO Projection Samples](#agepro-projection-samples)**
 
 ---
 
@@ -316,56 +317,56 @@ In the next example, *Time Varying* is not enabled. The user will supply a singl
 In this example, the user has selected to supply [data from an external file](#stochastic-data-files) with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file.  No further input is required.
 
 ## Spawning Stock Weights at Age
-When the user selects **SSB** from the navigation panel, the user can select from the following:
+When **SSB** is selected from the navigation panel, **Spawning Stocks Weights of Age** will have these following options:
 
-Label                         | Description
+Weights at Age Options        | Description
 :-----------------------------| :----------------------------------------------
-User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**. 
 
 ## Mid-Year Stock Weights at Age
-When the user selects **Mid-Year (Mean)** from the navigation panel, the user can select from the following:
+When **Mid-Year (Mean)** is selected from the navigation panel, **Mid-Year Stock Weights at Age** will have these following options:
 
-Label                         | Description
+Weights at Age Option         | Description
 :-----------------------------| :----------------------------------------------
-User Specfied Weights of Age  | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
 Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
 ## Catch Weights at Age
-When the user selects **Catch** from the navigation panel, the user can select from the following:
+When **Catch** from is selected from the navigation panel, **Catch Weights at Age** will have these following options:
 
-Label                        | Description
+Weights at Age Option        | Description
 :----------------------------|:----------------------------------------------
-User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
 Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
 ## Discard Weights at Age
-If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this weight of age will be disabled.
+If _discards_ were not included with the model case, controls from this weight of age will be disabled.
 
-When the user selects **Discard** from the navigation panel, the user *may* select from the following:
+When **Discard** is selected from the navigation panel, the user *may* select from the following:
 
-Label                        | Description
+Weights at Age Option        | Description
 :----------------------------| :----------------------------------------------
-User Specfied Weights of Age | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
+User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
 Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
 Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
 Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
 Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
 
-**User Specfied Weights of Age** and **Read Weights from File** options has been described in the section [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) above.
+See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
 ---
 
@@ -900,7 +901,7 @@ Percentile =    60.00 %
 ```
 
 |                          |       2005|       2006|       2007|       2008|       2009|       2010|       2011|       2012|       2013|       2014|
-|--------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|                    
+|--------------------------|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|                    
 |Recruits|                      61.4121|    61.5496|    61.4263|    61.5560|    61.7028|    61.5476|    61.6189|    61.5289|    61.6729|    61.7721|
 |Spawning Stock Biomass|       107.2980|   659.3243|   683.8850|   591.5898|   502.6594|   444.8396|   393.4123|   354.1344|   314.3024|   289.2476|
 |Jan-1 Stock Biomass|          438.4464|   727.1282|   790.1585|   703.2796|   598.7040|   535.7083|   478.7315|   432.9380|   387.1672|   360.1825|
@@ -995,3 +996,26 @@ If **System Default** is selected, it will launch a program that AGEPRO Output d
 ![](img/outFile_association_01.png "File association")
 
 To bypass viewing AGEPRO Output data files after a model run, select **None**.
+
+---
+
+AGEPRO Projection Samples
+=====================================================================
+
+The following descriptions for the first three examples are excerpt from the _AGEPRO Reference Manual_ (Brodziak 2018). Example 4 references _Stock Assessment of Uku (Aprion virescens) in Hawaii, 2020_ (Nadon et al. 2020). These examples are provided to illustrate projection options and features of AGEPRO. These projections use actual fishery data but are for the purposes for demostration only.
+
+## Example 1
+
+The first example is a fishing mortality and landings quota projection for Acadian redfish. The time horizon is 2004-2009. The fishery is comprised of two fleets that have identical fishing mortality rates in 2004, identical quotas in 2005, and fishing mortality rates that differ by 2-fold during 2006-2009. This is standard projection analysis with 1000 bootstraps and 100 simulations per bootstrap based on an ADAPT/VPA stock assessment analysis. The model also outputs an R dataframe.
+
+## Example 2
+
+The second example is a fishing mortality and landings quota projection for Gulf of Maine haddock with a PStar analysis in 2018. The time horizon is 2014-2020. The fishery is comprised of one fleet. This is PStar projection analysis with 1000 bootstraps and 10 simulations per bootstrap based on an ASAP stock assessment analysis.The model output shows that total allowable catch amounts in 2018 to produce probabilities of overfishing of 10%, 20%, 30%, 40% and 50% at the overfishing level of `F=0.35`. The total allowable catches to produce overfishing probabilities of 10%, 20%, 30%, 40% and 50% are calculated to be 1780, 1998, 2176, 2332, and 2497 mt, respectively. The model output includes a stock summary of numbers at age and also outputs a percentile analysis for key outputs at the 90th percentile.
+
+## Example 3
+
+The third example is a fishing mortality and landings quota projection for Gulf of Maine haddock with a rebuilding analysis for 2014-2020. The fishery is comprised of one fleet with process error in fishery selectivity. This is rebuilding projection with 1000 bootstraps and 10 simulations per bootstrap based on an ASAP stock assessment analysis. The model output shows the constant fishing mortality to rebuild the stock is `F(REBUILD)=0.045`. The model output includes a stock summary of numbers at age and also outputs a percentile analysis for key outputs at the 90th percentile.
+
+## Example 4
+
+The fourth example is a fishing mortality and stock biomass projection for the uku snapper in Hawaii. The projection was conducted using results from the base-case Stock Synthesis model to evaluate the probable impacts of constant catch quotas on future spawning stock biomass and yield with a time horizon of 2019-2026. This projection includes four fishing fleets with distinct landings quotas, mean weights at age, and fishery selectivities at age as well as using three recruitment models with different probabilities of being the future state of nature. The initial condition for the stochastic projection was based on the distribution of estimated initial population size-at-age in the year 2018. A total of 1000 simulations were run for each of 100 bootstrap replicates to characterize the effects of uncertainty in initial stock size as well as process errors on the distribution of future recruitment, life history, and fishery parameters.

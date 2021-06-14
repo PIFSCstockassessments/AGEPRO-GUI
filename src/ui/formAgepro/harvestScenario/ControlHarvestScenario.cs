@@ -1,320 +1,273 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
 namespace Nmfs.Agepro.Gui
 {
-    public partial class ControlHarvestScenario : UserControl
+  public partial class ControlHarvestScenario : UserControl
+  {
+    public string[] SeqYears { get; set; }
+    public RebuilderTargetCalculation Rebuilder { get; set; }
+    public PStarCalculation PStar { get; set; }
+    public HarvestScenarioAnalysis CalcType { get; set; }
+    public ControlHarvestCalcPStar ControlHarvestPStar { get; set; }
+    public ControlHarvestCalcRebuilder ControlHarvestRebuilder { get; set; }
+    public DataGridViewComboBoxColumn ColumnHarvestSpecification { get; set; }
+
+    public ControlHarvestScenario()
     {
-        private DataGridViewComboBoxColumn columnHarvestSpecification; 
-        private ControlHarvestCalcRebuilder controlHarvestRebuilder;
-        private ControlHarvestCalcPStar controlHarvestPStar;
-        public string[] seqYears { get; set; }
-        public Nmfs.Agepro.CoreLib.RebuilderTargetCalculation Rebuilder { get; set; }
-        public Nmfs.Agepro.CoreLib.PStarCalculation PStar { get; set; }
-        public Nmfs.Agepro.CoreLib.HarvestScenarioAnalysis calcType { get; set; }
+      InitializeComponent();
+      ControlHarvestRebuilder = new ControlHarvestCalcRebuilder();
+      ControlHarvestPStar = new ControlHarvestCalcPStar();
+      CalcType = HarvestScenarioAnalysis.HarvestScenario;
+      Rebuilder = new RebuilderTargetCalculation();
+      PStar = new PStarCalculation();
+      SeqYears = new string[1] { "1" };
 
-        public ControlHarvestScenario()
+    }
+
+    public DataTable HarvestScenarioTable
+    {
+      get => (DataTable)dataGridHarvestScenarioTable.DataSource;
+      set => dataGridHarvestScenarioTable.DataSource = value;
+    }
+
+
+
+
+    /// <summary>
+    /// Action that When the 'None' radio buttion is selected.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void RadioNone_CheckedChanged(object sender, EventArgs e)
+    {
+      panelAltCalcParameters.Controls.Clear();
+      CalcType = HarvestScenarioAnalysis.HarvestScenario;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void RadioPStar_CheckedChanged(object sender, EventArgs e)
+    {
+      if (!(sender is RadioButton rb))
+      {
+        return;
+      }
+      if (rb.Checked)
+      {
+        if (PStar == null)
         {
-            InitializeComponent();
-            controlHarvestRebuilder = new ControlHarvestCalcRebuilder();
-            controlHarvestPStar = new ControlHarvestCalcPStar();
-            this.calcType = HarvestScenarioAnalysis.HarvestScenario;
-            this.Rebuilder = new Nmfs.Agepro.CoreLib.RebuilderTargetCalculation();
-            this.PStar = new Nmfs.Agepro.CoreLib.PStarCalculation();
-            this.seqYears = new string[1]{"1"};
-            
-            //PStar Defaults
-            this.controlHarvestPStar.pstarLevels = 1;
-            this.controlHarvestPStar.targetYear = "0";
-            this.controlHarvestPStar.overfishingF = "0.0";
-            //Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(this.controlHarvestPStar.pstarLevelsTable);
-
-            //Rebuilder Defaults
-            this.controlHarvestRebuilder.rebuilderTargetYear = "0";
-            this.controlHarvestRebuilder.rebuilderBiomass = "0.0";
-            this.controlHarvestRebuilder.rebuilderPercentConfidence = "0.0";
-            this.controlHarvestRebuilder.rebuilderType = 0;
+          PStar = new PStarCalculation
+          {
+            //Retain Model's Observed Years
+            ObsYears = Array.ConvertAll(SeqYears, int.Parse)
+          };
         }
+        ControlHarvestPStar.SetHarvestCalcPStarControls(PStar, panelAltCalcParameters);
+      }
 
-        public DataTable HarvestScenarioTable
+    }
+    
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void RadioRebuilderTarget_CheckedChanged(object sender, EventArgs e)
+    {
+      if (!(sender is RadioButton rb))
+      {
+        return;
+      }
+      if (rb.Checked)
+      {
+        if (Rebuilder == null)
         {
-            get { return (DataTable)dataGridHarvestScenarioTable.DataSource; }
-            set { dataGridHarvestScenarioTable.DataSource = value; }
+          //Retain Model's Observed Years
+          Rebuilder = new RebuilderTargetCalculation
+          {
+            ObsYears = Array.ConvertAll(SeqYears, int.Parse)
+          };
         }
+        CalcType = HarvestScenarioAnalysis.Rebuilder;
+        ControlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, panelAltCalcParameters);
+      }
+      
+    }
 
+    public void SetHarvestSpecificationColumn()
+    {
 
-        /// <summary>
-        /// Action that When the 'None' radio buttion is selected.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void radioNone_CheckedChanged(object sender, EventArgs e)
-        {
-            panelAltCalcParameters.Controls.Clear();
-            this.calcType = HarvestScenarioAnalysis.HarvestScenario;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void radioPStar_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null)
-            {
-                if (rb.Checked)
-                {
-                    if (PStar == null)
-                    {
-                        PStar = new PStarCalculation();
-                        PStar.pStarLevels = 1;
-                        PStar.pStarF = 0;
-                        PStar.targetYear = 0;
-                        PStar.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
-                        //Create PStar Table
-                        PStar.pStarTable = PStar.CreateNewPStarTable();
-                        PStar.pStarTable.Rows.Add();
-                        Nmfs.Agepro.CoreLib.Extensions.FillDBNullCellsWithZero(PStar.pStarTable);
-                    }
-                    this.calcType = HarvestScenarioAnalysis.PStar;
-                    controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
-                }
-            }
-            
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void radioRebuilderTarget_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null)
-            {
-                if (rb.Checked)
-                {
-                    if (this.Rebuilder == null)
-                    {
-                        Rebuilder = new RebuilderTargetCalculation();
-                        Rebuilder.targetYear = 0;
-                        Rebuilder.targetValue = 0;
-                        Rebuilder.targetType = 0;
-                        Rebuilder.targetPercent = 0;
-                        Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
-                    }
-                    this.calcType = HarvestScenarioAnalysis.Rebuilder;
-                    controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
-                }
-            }
-        }
-
-        public void SetHarvestSpecificationColumn()
-        {
-
-            columnHarvestSpecification = new DataGridViewComboBoxColumn();
-            columnHarvestSpecification.HeaderText = "Harvest Specfication";
-            //'DataPropertyName' references harvest spec column in input data's Harvest Scenario DataTable 
-            columnHarvestSpecification.DataPropertyName = "Harvest Spec";
-            columnHarvestSpecification.Width = 100;
-            //Get Data Source from List<HarvestSpecification> Class
-            columnHarvestSpecification.DataSource = HarvestSpecification.GetHarvestSpec();
-            //Do not need 'ValueMember', because 'DataPropertyNameInstead' is referenced 
-            columnHarvestSpecification.DisplayMember = "HarvestScenario";
-            dataGridHarvestScenarioTable.Columns.Add(columnHarvestSpecification);
-            dataGridHarvestScenarioTable.RowHeadersWidth = 70;
-            
-
-        }
-
-        /// <summary>
-        /// Sets up the Harvest Scenario Data Grid View Table, including the Harvest Specification combo box
-        /// column.
-        /// </summary>
-        /// <param name="inpFileTable">Harvest Scenario Data Table Source</param>
-        public void SetHarvestScenarioInputDataTable(DataTable inpFileTable)
-        {
-            if (this.HarvestScenarioTable != null)
-            {
-                this.HarvestScenarioTable.Reset();
-            }
-            SetHarvestSpecificationColumn();
-            
-            this.HarvestScenarioTable = inpFileTable;
-        }
-        
-        
-        /// <summary>
-        /// Sets Harvest Calculation option from when setting user specifed General Options or loading a 
-        /// existing AGEPRO input file. 
-        /// </summary>
-        /// <param name="inputData"></param>
-        public void SetHarvestScenarioCalcControls(Nmfs.Agepro.CoreLib.AgeproInputFile inpData)
-        {
-            this.calcType = inpData.harvestScenario.analysisType;
-
-            //Clean out any previous instances of pstar and/or rebuilder. 
-            if (this.PStar != null)
-            {
-                PStar = null;
-            }
-            if (this.Rebuilder != null)
-            {
-                Rebuilder = null; 
-            }
-
-            //SetHarvestCalculationRadioButtonOption
-            if (calcType == HarvestScenarioAnalysis.HarvestScenario)
-            {
-                radioNone.Checked = true;
-            }
-            else if (calcType == HarvestScenarioAnalysis.PStar)
-            {
-                this.PStar = inpData.pstar;
-                radioPStar.Checked = true;
-
-                //Create Defaluts if Pstar is null
-                if (PStar == null)
-                {
-                    PStar = new PStarCalculation();
-                    this.PStar.obsYears = inpData.general.SeqYears();
-                }
-
-                controlHarvestPStar.SetHarvestCalcPStarControls(this.PStar, this.panelAltCalcParameters);
-            }
-            else if (calcType == HarvestScenarioAnalysis.Rebuilder)
-            {
-                this.Rebuilder = inpData.rebuild;
-                radioRebuilderTarget.Checked = true;
-                this.Rebuilder.obsYears = Array.ConvertAll(this.seqYears, int.Parse);
-
-                //If Rebuilder has no data, create an empty/default set. 
-                if (this.Rebuilder == null)
-                {
-                    this.Rebuilder = new RebuilderTargetCalculation();
-                    this.Rebuilder.obsYears = inpData.general.SeqYears();
-                }
-
-                controlHarvestRebuilder.SetHarvestCalcRebuilderControls(this.Rebuilder, this.panelAltCalcParameters);
-            }
-        }
-
-        /// <summary>
-        /// Helper Method to emumerate invalidation errors messages .
-        /// </summary>
-        /// <param name="invalidRowList"></param>
-        /// <returns></returns>
-        private bool EnumerateInvalidRebuilderRangeRows(List<string> invalidRowList)
-        {
-            string overflowMsg = ".";
-            if (invalidRowList != null && invalidRowList.Count > 50)
-            {
-                invalidRowList = invalidRowList.Take(50).ToList();
-                overflowMsg = "... (First 50 shown).";
-            }
-            var results = invalidRowList.EnumerateValidationResults();
-                
-            if (results.isValid == false)
-            {
-                string rowResults = results.message.Replace(Environment.NewLine, ", ");
-
-
-                MessageBox.Show("Invalid Harvest Specification for Rebuilder Range at row(s) "
-                    + rowResults + overflowMsg, "AGEPRO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// Data Validation. 
-        /// </summary>
-        /// <returns></returns>
-        public bool ValidateHarvestScenario()
-        {
-            if (this.dataGridHarvestScenarioTable.HasBlankOrNullCells())
-            {
-                MessageBox.Show("Harvest Scenario Data Table has blank or missing values.", 
-                    "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (this.radioRebuilderTarget.Checked == true)
-            {
-                bool validRebuilder = true;
-                ValidationResult rebuilderCheck = this.Rebuilder.ValidationCheck();
-                
-                if (rebuilderCheck.isValid == false)
-                {
-                    MessageBox.Show("Invalid Rebuilder target parameters: " + Environment.NewLine + 
-                        rebuilderCheck.message, "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    validRebuilder = false;
-                }
-                
-                return validRebuilder;
-            }
-            else if (this.radioPStar.Checked == true)
-            {
-                bool validPStar = true;
-                ValidationResult pstarCheck = this.PStar.ValidationCheck();
-                if (pstarCheck.isValid == false)
-                {
-                    MessageBox.Show("Invalid P-Star parameters: " + Environment.NewLine + pstarCheck.message,
-                        "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    validPStar = false;
-                }
-                //Check Harvest Scenario Table to see Harvest Specification is "REMOVALS" on 
-                //the target year.
-                int indexTargetYr = Array.IndexOf(this.seqYears, this.PStar.targetYear.ToString());
-                if (this.HarvestScenarioTable.Rows[indexTargetYr][0].Equals("REMOVALS") == false)
-                {
-                    MessageBox.Show("Invalid Harvest Scenario Specification for P-Star Target Year "
-                        + this.PStar.targetYear +".",
-                        "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    validPStar = false;
-                }
-                return validPStar;
-            }
-            
-
-            return true;
-        }
-
-        /// <summary>
-        /// Cell Formmetting event event used to customise Harvest Scnario Data Grid View Headers
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;
-            
-            if (!(header.Value != null))
-            {
-                //set HarvestScenarioTable RowHeaders
-                int iyear = 0;
-                foreach (DataGridViewRow yearRow in dataGridHarvestScenarioTable.Rows)
-                {
-                    yearRow.HeaderCell.Value = seqYears[iyear];
-                    iyear++;
-                }
-
-            }
-        }
-
+      ColumnHarvestSpecification = new DataGridViewComboBoxColumn
+      {
+        HeaderText = "Harvest Specfication",
+        //'DataPropertyName' references harvest spec column in input data's Harvest Scenario DataTable 
+        DataPropertyName = "Harvest Spec",
+        Width = 100,
+        //Get Data Source from List<HarvestSpecification> Class
+        DataSource = HarvestSpecification.GetHarvestSpec(),
+        //Do not need 'ValueMember', because 'DataPropertyNameInstead' is referenced 
+        DisplayMember = "HarvestScenario"
+      };
+      _ = dataGridHarvestScenarioTable.Columns.Add(ColumnHarvestSpecification);
+      dataGridHarvestScenarioTable.RowHeadersWidth = 70;
 
 
     }
+
+    /// <summary>
+    /// Sets up the Harvest Scenario Data Grid View Table, including the Harvest Specification combo box
+    /// column.
+    /// </summary>
+    /// <param name="inpFileTable">Harvest Scenario Data Table Source</param>
+    public void SetHarvestScenarioInputDataTable(DataTable inpFileTable)
+    {
+      if (HarvestScenarioTable != null)
+      {
+        HarvestScenarioTable.Reset();
+      }
+      SetHarvestSpecificationColumn();
+
+      HarvestScenarioTable = inpFileTable;
+    }
+
+
+    /// <summary>
+    /// Sets Harvest Calculation option from when setting user specifed General Options or loading a 
+    /// existing AGEPRO input file. 
+    /// </summary>
+    /// <param name="inputData"></param>
+    public void SetHarvestScenarioCalcControls(AgeproInputFile inpData)
+    {
+      CalcType = inpData.HarvestScenario.AnalysisType;
+
+      //SetHarvestCalculationRadioButtonOption
+      if (CalcType == HarvestScenarioAnalysis.HarvestScenario)
+      {
+        radioNone.Checked = true;
+      }
+      else if (CalcType == HarvestScenarioAnalysis.PStar)
+      {
+        //Create Defaluts if Pstar is null
+        if (PStar == null)
+        {
+          //CreateNewPStarSpecs(inpData.General.SeqYears());
+          PStar = new PStarCalculation
+          {
+            //Retain Input Data's Observed Years 
+            ObsYears = inpData.General.SeqYears()
+          };
+        }
+        else
+        {
+          PStar = inpData.PStar;
+          radioPStar.Checked = true;
+        }
+
+        ControlHarvestPStar.SetHarvestCalcPStarControls(PStar, panelAltCalcParameters);
+      }
+      else if (CalcType == HarvestScenarioAnalysis.Rebuilder)
+      {
+        //If Rebuilder has no data, create an empty/default set. 
+        if (Rebuilder == null)
+        {
+          //Retain Input Data's Observed Years
+          Rebuilder = new RebuilderTargetCalculation
+          {
+            ObsYears = inpData.General.SeqYears()
+          };
+        }
+        else
+        {
+          Rebuilder = inpData.Rebuild;
+          radioRebuilderTarget.Checked = true;
+          Rebuilder.ObsYears = Array.ConvertAll(SeqYears, int.Parse);
+        }
+
+        ControlHarvestRebuilder.SetHarvestCalcRebuilderControls(Rebuilder, panelAltCalcParameters);
+      }
+    }
+
+    /// <summary>
+    /// Data Validation. 
+    /// </summary>
+    /// <returns></returns>
+    public bool ValidateHarvestScenario()
+    {
+      if (dataGridHarvestScenarioTable.HasBlankOrNullCells())
+      {
+        _ = MessageBox.Show("Harvest Scenario Data Table has blank or missing values.", "Harvest Scenario",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return false;
+      }
+
+      if (radioRebuilderTarget.Checked)
+      {
+        ValidationResult rebuilderCheck = Rebuilder.ValidationCheck();
+
+        if (rebuilderCheck.IsValid == false)
+        {
+          _ = MessageBox.Show("Invalid Rebuilder target parameters: "
+                              + Environment.NewLine
+                              + rebuilderCheck.Message, "Rebuilder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          return false;
+        }
+
+      }
+      else if (radioPStar.Checked)
+      {
+        ValidationResult pstarCheck = PStar.ValidationCheck();
+        if (pstarCheck.IsValid == false)
+        {
+          _ = MessageBox.Show("Invalid P-Star parameters: "
+                              + Environment.NewLine
+                              + pstarCheck.Message, "PStar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          return false;
+        }
+        //Check Harvest Scenario Table to see Harvest Specification is "REMOVALS" on 
+        //the target year.
+        int indexTargetYr = Array.IndexOf(SeqYears, PStar.TargetYear.ToString());
+        if (HarvestScenarioTable.Rows[indexTargetYr][0].Equals("REMOVALS") == false)
+        {
+          _ = MessageBox.Show("Invalid Harvest Scenario Specification for P-Star Target Year "
+                              + PStar.TargetYear
+                              + ".", "PStar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          return false;
+        }
+
+      }// Passed Harvest Scenario/Pstar/Rebuilder validations
+      return true;
+    }
+
+    /// <summary>
+    /// Cell Formmetting event event used to customise Harvest Scnario Data Grid View Headers
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGridHarvestScenarioTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+      DataGridViewRowHeaderCell header = dataGridHarvestScenarioTable.Rows[e.RowIndex].HeaderCell;
+
+      if (header.Value == null)
+      {
+        //set HarvestScenarioTable RowHeaders
+        int iyear = 0;
+        foreach (DataGridViewRow yearRow in dataGridHarvestScenarioTable.Rows)
+        {
+          yearRow.HeaderCell.Value = SeqYears[iyear];
+          iyear++;
+        }
+
+      }
+    }
+
+
+
+  }
 }
