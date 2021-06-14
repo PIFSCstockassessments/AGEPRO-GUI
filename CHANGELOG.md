@@ -16,8 +16,8 @@
   - Enums refactored to own file
 - Added new AGEPRO example model: Uku snapper Projection Base (2019-2026)
 - AGEPRO user help manual
-  - Inculde missing images to binary
-  - Revert stylesheet back to basic html
+  - Inculded missing images to binary
+  - Reverted stylesheet back to basic html style
   - Added AGEPRO Projection Samples section  
   - Minor updates to the Weights of Age Section
 - CoreLib: Bootstrap, (Misc)Options, Recruitment, Harvest Scenario (HarvestCalcuation) uses generalized AgeproCoreLibProperty class for data binding.
@@ -35,7 +35,7 @@
   - Removed Util.GetAgeproInputDataTable; ControlMiscOptions.LoadRetroAdjustmentsFactorTable is the replacement method
   - CoreLib: Refactor Misc Option classes as indvidual "AgeproOptionProperty" subclass files
 - Biological
-  - Created ControlTSpawnPanel to seprate 'Fraction Mortality' methods embeded with ControlBiological;
+  - Created ControlTSpawnPanel to encapsulate embeded 'Fraction Mortality' methods in ControlBiological;
 - Stochastic/Weights Of Age
   - Fixed Null Input Data Stochastic Weight of Age Import Fix
 - CoreLib: Moved code files into categorized src subdirectories. No changes to namespaces, new CoreLib scripts adjusted to `Nmfs.Agepro.CoreLib` namespacce
