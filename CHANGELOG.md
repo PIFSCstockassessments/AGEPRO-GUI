@@ -1,11 +1,11 @@
 
 # AGEPRO Changelog
 
-## 4.3.5 (2022-09-00)
+## 4.3.5 (2022-09-15)
 
 ## Changes
 
-- Includeed September 2022 revisions to AGEPRO Reference Manual.
+- Include September 2022 revisions to AGEPRO Reference Manual.
 
 ## 4.3.4 (2021-06-15)
 
