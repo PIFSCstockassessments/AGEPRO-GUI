@@ -562,7 +562,7 @@ namespace Nmfs.Agepro.Gui
       var loc = Path.GetDirectoryName(Application.ExecutablePath);
 
       //Load Reference Manual from there
-      string refManualPath = Path.Combine(loc, "doc", "AGEPRO_v4.2_Reference_Manual.pdf");
+      string refManualPath = Path.Combine(loc, "doc", "AGEPRO_v42_Reference_Manual.pdf");
       if (!File.Exists(refManualPath))
       {
         throw new InvalidAgeproGuiParameterException("Reference Manual not found.");

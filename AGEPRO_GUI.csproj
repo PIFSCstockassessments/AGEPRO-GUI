@@ -255,6 +255,9 @@
     <Compile Include="src\util\AgeproBinding.cs" />
     <Compile Include="src\util\InvalidAgeproGuiParameterException.cs" />
     <Compile Include="src\util\Util.cs" />
+    <None Include="doc\AGEPRO_V42_Reference_Manual.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="examples\example4\Example4_UKU.BSN">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -357,9 +360,6 @@
     <None Include="doc\agepro_manual.md" />
     <Content Include="doc\agepro_manual.html">
       <DependentUpon>agepro_manual.md</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\AGEPRO_v4.2_Reference_Manual.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="examples\example1\Example1.BSN">
