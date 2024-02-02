@@ -60,6 +60,11 @@ namespace Nmfs.Agepro.Gui
         //If so, Cleanup? and go to the Startup State
         SetupStartupState();
         SetupPanelState();
+
+        //Unsubcribe event handler in case previous one exists, before subcribing a new one
+        controlGeneralOptions.SetGeneral -= new EventHandler(EventSetButton_CreateNewCase);
+        controlGeneralOptions.SetGeneral += new EventHandler(EventSetButton_CreateNewCase);
+
       }
 
     }
