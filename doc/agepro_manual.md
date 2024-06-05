@@ -13,7 +13,7 @@ Version 4.3.5
 * [Saving AGEPRO Input Data into file](#saving-agepro-input-data-into-file)
 * [Launching AGEPRO Model to Calculation Engine](#launching-agepro-model-to-the-calculation-engine)
 	* [AGEPRO Model Output Run Directory](#agepro-model-output-run-directory)
-* [Using NFT Data Grids](#using-nft-data-grids)
+* [Using Data Grids](#using-data-grids)
 * [Stochastic Data Files](#stochastic-data-files)
 * [Specifying Weights at Age](#specifying-weights-at-age)
     * [JAN-1 Stock Weights at Age](#jan-1-stock-weights-at-age)
@@ -141,8 +141,8 @@ The **AGEPRO Model Output Run directory** is entitled two ways:
 
 ---
 
-# Using NFT Data Grids
-NOAA Fisheries Toolbox data grids have many functions that are similar to spreadsheet software programs. However, there are a few differences and limitations. The following topics will  describe in detail how to perform common tasks.
+# Using Data Grids
+Data grids have many functions that are similar to spreadsheet software programs. However, there are a few differences and limitations. The following topics will  describe in detail how to perform common tasks.
 
 Right-clicking on the cell to show the Cut, Copy, Paste and Delete options.
 
