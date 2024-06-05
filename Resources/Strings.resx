@@ -117,14 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AGEPRO_Version" xml:space="preserve">
+    <value>4.25</value>
+    <comment>AGEPRO Calcuation Engine Version</comment>
+  </data>
   <data name="Bio_TSpawn_TextLabel" xml:space="preserve">
     <value>Fraction Mortality Prior to Spawning</value>
   </data>
   <data name="CalcEnginePath" xml:space="preserve">
     <value />
   </data>
-  <data name="CalcEngineVer" xml:space="preserve">
-    <value>4.0.0</value>
+  <data name="GUI_Version" xml:space="preserve">
+    <value>4.25-4.3.4</value>
+  </data>
+  <data name="INPVersionString" xml:space="preserve">
+    <value>AGEPRO VERSION 4.25</value>
   </data>
   <data name="ProgramName" xml:space="preserve">
     <value>AGEPRO</value>

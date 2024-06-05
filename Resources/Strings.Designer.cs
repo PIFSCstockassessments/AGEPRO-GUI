@@ -19,7 +19,7 @@ namespace Nmfs.Agepro.Gui.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -61,6 +61,15 @@ namespace Nmfs.Agepro.Gui.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 4.25.
+        /// </summary>
+        internal static string AGEPRO_Version {
+            get {
+                return ResourceManager.GetString("AGEPRO_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fraction Mortality Prior to Spawning.
         /// </summary>
         internal static string Bio_TSpawn_TextLabel {
@@ -79,11 +88,20 @@ namespace Nmfs.Agepro.Gui.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4.0.0.
+        ///   Looks up a localized string similar to 4.25-4.3.4.
         /// </summary>
-        internal static string CalcEngineVer {
+        internal static string GUI_Version {
             get {
-                return ResourceManager.GetString("CalcEngineVer", resourceCulture);
+                return ResourceManager.GetString("GUI_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AGEPRO VERSION 4.25.
+        /// </summary>
+        internal static string INPVersionString {
+            get {
+                return ResourceManager.GetString("INPVersionString", resourceCulture);
             }
         }
         
