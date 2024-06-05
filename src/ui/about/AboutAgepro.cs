@@ -14,7 +14,7 @@ namespace Nmfs.Agepro.Gui
       InitializeComponent();
       Text = string.Format("About {0}", AssemblyTitle);
       labelProductName.Text = AssemblyProduct;
-      labelVersion.Text = string.Format("Version {0}", AssemblyVersion);
+      labelVersion.Text = string.Format("AGEPRO-GUI {0}", AssemblyVersion);
       labelCopyright.Text = AssemblyCopyright;
       labelCompanyName.Text = AssemblyCompany;
       textBoxDescription.Text = AssemblyDescription;
@@ -50,13 +50,14 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// Attribute for AGEPRO version
+    /// Attribute for AGEPRO (GUI) version
     /// </summary>
     public string AssemblyVersion
     {
       get
       {
-        return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        //return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        return Resources.AgeproStrings.GUI_Version;
       }
     }
 
@@ -134,9 +135,12 @@ namespace Nmfs.Agepro.Gui
     private void AboutAgepro_Load(object sender, EventArgs e)
     {
       //textBoxDescription: Override AssemblyDescription with this text.
-      textBoxDescription.Text = "Interface Version: " + AssemblyVersion + Environment.NewLine +
-          "Calcuation Engine Version: 4.0" + Environment.NewLine + Environment.NewLine +
-          NmfsLicense;
+      textBoxDescription.Text = $"GUI Version {AssemblyVersion}{Environment.NewLine}" +
+        $"AGEPRO Calcuation Engine Version {Resources.AgeproStrings.AGEPRO_Version}{Environment.NewLine}" +
+        $"{Environment.NewLine}" +
+        $"AGEPRO Calculation Engine is built by Jon Brodziak.{Environment.NewLine}" +
+        $"{Environment.NewLine}" +
+        $"{NmfsLicense}";
     }
   }
 }

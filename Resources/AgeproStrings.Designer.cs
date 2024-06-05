@@ -88,7 +88,7 @@ namespace Nmfs.Agepro.Gui.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4.25-4.3.4.
+        ///   Looks up a localized string similar to 4.25-4.3.5.
         /// </summary>
         internal static string GUI_Version {
             get {
