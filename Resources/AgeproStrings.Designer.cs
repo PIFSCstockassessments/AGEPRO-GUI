@@ -61,15 +61,6 @@ namespace Nmfs.Agepro.Gui.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4.25.
-        /// </summary>
-        internal static string AGEPRO_Version {
-            get {
-                return ResourceManager.GetString("AGEPRO_Version", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Fraction Mortality Prior to Spawning.
         /// </summary>
         internal static string Bio_TSpawn_TextLabel {
@@ -84,24 +75,6 @@ namespace Nmfs.Agepro.Gui.Resources {
         internal static string CalcEnginePath {
             get {
                 return ResourceManager.GetString("CalcEnginePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 4.25-4.3.5.
-        /// </summary>
-        internal static string GUI_Version {
-            get {
-                return ResourceManager.GetString("GUI_Version", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AGEPRO VERSION 4.25.
-        /// </summary>
-        internal static string INPVersionString {
-            get {
-                return ResourceManager.GetString("INPVersionString", resourceCulture);
             }
         }
         

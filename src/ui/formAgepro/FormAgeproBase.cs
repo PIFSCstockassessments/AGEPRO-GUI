@@ -112,7 +112,7 @@ namespace Nmfs.Agepro.Gui
     protected void SetAgeproModelFromUserInput()
     {
       //New Cases references version included in AGEPRO Reference Manual
-      inputData.Version = Resources.AgeproStrings.INPVersionString; // "AGEPRO VERSION 4.25"
+      inputData.Version = CoreLib.Resources.Version.INP_VersionString; // "AGEPRO VERSION 4.25"
 
       //Save General Options input to CoreLib Input Data Object
       inputData.General.ProjYearStart = Convert.ToInt32(controlGeneralOptions.GeneralFirstYearProjection);

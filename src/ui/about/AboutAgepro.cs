@@ -57,7 +57,7 @@ namespace Nmfs.Agepro.Gui
       get
       {
         //return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        return Resources.AgeproStrings.GUI_Version;
+        return CoreLib.Resources.Version.GUI_Version;
       }
     }
 
@@ -136,7 +136,7 @@ namespace Nmfs.Agepro.Gui
     {
       //textBoxDescription: Override AssemblyDescription with this text.
       textBoxDescription.Text = $"GUI Version {AssemblyVersion}{Environment.NewLine}" +
-        $"AGEPRO Calcuation Engine Version {Resources.AgeproStrings.AGEPRO_Version}{Environment.NewLine}" +
+        $"AGEPRO Calcuation Engine Version {CoreLib.Resources.Version.AGEPRO_Version}{Environment.NewLine}" +
         $"{Environment.NewLine}" +
         $"AGEPRO Calculation Engine is built by Jon Brodziak.{Environment.NewLine}" +
         $"{Environment.NewLine}" +
