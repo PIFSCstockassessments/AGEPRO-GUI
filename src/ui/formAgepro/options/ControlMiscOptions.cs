@@ -185,10 +185,10 @@ namespace Nmfs.Agepro.Gui
     /// <summary>
     /// Textbox data bindings
     /// </summary>
-    /// <param name="ctl"></param>
-    /// <param name="miscOptSrc"></param>
-    /// <param name="miscOptField"></param>
-    /// <param name="decimalZeroFormat"></param>
+    /// <param name="ctl"> <see cref="NftTextBox"/> Control </param>
+    /// <param name="miscOptSrc"> Generalized class that encapsulates AGEPRO's <see cref="CoreLib.AgeproOptionsProperty"/> Classes </param>
+    /// <param name="miscOptField"> Field names of specfic <see cref="AgeproOptionsProperty"/> class.</param>
+    /// <param name="decimalZeroFormat">Boolean flag to format to include point-decimal values.  </param>
     private void SetControlDataBindings(NftTextBox ctl, CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
       bool decimalZeroFormat = false)
     {
@@ -254,7 +254,8 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// 
+    /// Enable or Disable the Report Percentile UI elements by determining the 
+    /// "Request Perecentile Report" check box "checked" value it was was changed.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -397,7 +398,8 @@ namespace Nmfs.Agepro.Gui
     /// Row-count based auxilary stochastic file checker. Throws an warning dialog if row count is over the
     /// large file aize row count. 
     /// </summary>
-    /// <param name="auxFileRowSize"></param>
+    /// <param name="auxFileRowSize">Auxilary file row count.  
+    /// Size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims</param>
     /// <param name="largeFileRowCount">Default to 1000000 </param>
     /// <returns></returns>
     public bool CheckOutputFileRowSize(int auxFileRowSize, int largeFileRowCount = 1000000)
@@ -424,6 +426,10 @@ namespace Nmfs.Agepro.Gui
       return true;
     }
 
+    /// <summary>
+    /// Helper Function to Load The Retro Adjustments Data Grid from AGEPRO Input File
+    /// </summary>
+    /// <param name="inputFile">AGEPRO Input File Object</param>
     public void LoadRetroAdjustmentsFactorTable(AgeproInputFile inputFile)
     {
       if (MiscOptionsRetroAdjustmentFactorTable != null)
