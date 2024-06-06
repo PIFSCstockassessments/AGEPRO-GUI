@@ -18,21 +18,26 @@ namespace Nmfs.Agepro.Gui
     public ControlMiscOptions()
     {
       InitializeComponent();
+
+      //AGEPRO Ouptput Viewer Program
       comboBoxOutputViewerProgram.SelectedIndex = 0;
 
       //Set Bounds defaults
       MiscOptionsBoundsMaxWeight = "10.0";
       MiscOptionsBoundsNaturalMortality = "1.0";
 
+      //Refpoints
       MiscOptionsRefJan1Biomass = "0.0";
       MiscOptionsRefMeanBiomass = "0.0";
       MiscOptionsRefSpawnBiomass = "0.0";
       MiscOptionsRefFishingMortality = "0.0";
 
+      //Scale Factors
       MiscOptionsScaleFactorBiomass = "0.0";
       MiscOptionsScaleFactorRecruits = "0.0";
       MiscOptionsScaleFactorStockNumbers = "0.0";
 
+      //Report Percentile
       MiscOptionsReportPercentile = 0;
     }
 
