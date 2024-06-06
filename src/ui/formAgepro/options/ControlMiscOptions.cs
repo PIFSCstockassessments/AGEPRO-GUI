@@ -155,10 +155,10 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">Refrerence Points Option Object</param>
     public void SetupRefpointDataBindings(CoreLib.Refpoint miscOpt)
     {
-      SetControlDataBindings(textBoxRefSpawnBiomass, miscOpt, "refSpawnBio");
-      SetControlDataBindings(textBoxRefJan1Biomass, miscOpt, "refJan1Bio");
-      SetControlDataBindings(textBoxRefMeanBiomass, miscOpt, "refMeanBio");
-      SetControlDataBindings(textBoxRefFishMortality, miscOpt, "refFMort");
+      SetControlDataBindings(textBoxRefSpawnBiomass, miscOpt, nameof(CoreLib.Refpoint.RefSpawnBio)); // "RefSpawnBio"
+      SetControlDataBindings(textBoxRefJan1Biomass, miscOpt, nameof(CoreLib.Refpoint.RefJan1Bio)); // "RefJan1Bio"
+      SetControlDataBindings(textBoxRefMeanBiomass, miscOpt, nameof(CoreLib.Refpoint.RefMeanBio)); // "RefMeanBio"
+      SetControlDataBindings(textBoxRefFishMortality, miscOpt, nameof(CoreLib.Refpoint.RefFMort)); // "RefFMort"
     }
 
     /// <summary>
@@ -167,9 +167,9 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
     public void SetupScaleFactorsDataBindings(CoreLib.ScaleFactors miscOpt)
     {
-      SetControlDataBindings(textBoxScaleFactorBiomass, miscOpt, "scaleBio");
-      SetControlDataBindings(textBoxScaleFactorRecruits, miscOpt, "scaleRec");
-      SetControlDataBindings(textBoxScaleFactorsStockNum, miscOpt, "scaleStockNum");
+      SetControlDataBindings(textBoxScaleFactorBiomass, miscOpt, nameof(CoreLib.ScaleFactors.ScaleBio)); // "ScaleBio"
+      SetControlDataBindings(textBoxScaleFactorRecruits, miscOpt, nameof(CoreLib.ScaleFactors.ScaleRec)); // "ScaleRec"
+      SetControlDataBindings(textBoxScaleFactorsStockNum, miscOpt, nameof(CoreLib.ScaleFactors.ScaleStockNum)); // "ScaleStockNum"
     }
 
     /// <summary>
@@ -178,8 +178,8 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
     public void SetupBoundsDataBindings(CoreLib.Bounds miscOpt)
     {
-      SetControlDataBindings(textBoxBoundsMaxWeight, miscOpt, "maxWeight", true);
-      SetControlDataBindings(textBoxBoundsNatMortality, miscOpt, "maxNatMort", true);
+      SetControlDataBindings(textBoxBoundsMaxWeight, miscOpt, nameof(CoreLib.Bounds.MaxWeight), true); // "MaxWeight"
+      SetControlDataBindings(textBoxBoundsNatMortality, miscOpt, nameof(CoreLib.Bounds.MaxNatMort), true); //"MaxNatMort"
     }
 
     /// <summary>
