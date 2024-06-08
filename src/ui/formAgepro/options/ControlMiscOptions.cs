@@ -333,6 +333,47 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
+    public void SetMiscOptionsControlsFromInputFile(AgeproInputFile inputFile)
+    {
+      if (inputFile is null)
+      {
+        throw new ArgumentNullException(nameof(inputFile));
+      }
+
+      this.MiscOptionsEnableSummaryReport = inputFile.Options.EnableSummaryReport;
+      this.MiscOptionsEnableAuxStochasticFiles = inputFile.Options.EnableAuxStochasticFiles;
+      this.MiscOptionsEnableExportR = inputFile.Options.EnableExportR;
+      this.MiscOptionsEnablePercentileReport = inputFile.Options.EnablePercentileReport;
+      this.MiscOptionsReportPercentile = Convert.ToDouble(inputFile.ReportPercentile.Percentile);
+
+      this.MiscOptionsEnableRefpointsReport = inputFile.Options.EnableRefpoint;
+      this.MiscOptionsRefSpawnBiomass = inputFile.Refpoint.RefSpawnBio.ToString();
+      this.MiscOptionsRefJan1Biomass = inputFile.Refpoint.RefJan1Bio.ToString();
+      this.MiscOptionsRefMeanBiomass = inputFile.Refpoint.RefMeanBio.ToString();
+      this.MiscOptionsRefFishingMortality = inputFile.Refpoint.RefFMort.ToString();
+
+      this.MiscOptionsEnableScaleFactors = inputFile.Options.EnableScaleFactors;
+      this.MiscOptionsScaleFactorBiomass = inputFile.Scale.ScaleBio.ToString();
+      this.MiscOptionsScaleFactorRecruits = inputFile.Scale.ScaleRec.ToString();
+      this.MiscOptionsScaleFactorStockNumbers = inputFile.Scale.ScaleStockNum.ToString();
+
+      this.MiscOptionsBounds = inputFile.Options.EnableBounds;
+      this.MiscOptionsBoundsMaxWeight = inputFile.Bounds.MaxWeight.ToString();
+      this.MiscOptionsBoundsNaturalMortality = inputFile.Bounds.MaxNatMort.ToString();
+
+      this.MiscOptionsEnableRetroAdjustmentFactors = inputFile.Options.EnableRetroAdjustmentFactors;
+      this.miscOptionsNAges = inputFile.General.NumAges();
+      this.miscOptionsFirstAge = inputFile.General.AgeBegin;
+
+      this.LoadRetroAdjustmentsFactorTable(inputFile);
+
+      if (this.MiscOptionsEnableRetroAdjustmentFactors)
+      {
+        this.SetRetroAdjustmentFactorRowHeaders();
+      }
+    }
+
+
     /// <summary>
     /// Input Validation
     /// </summary>

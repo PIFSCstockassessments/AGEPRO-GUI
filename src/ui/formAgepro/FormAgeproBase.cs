@@ -275,37 +275,7 @@ namespace Nmfs.Agepro.Gui
       controlBootstrap.BootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
       //Misc Options
-      controlMiscOptions.MiscOptionsEnableSummaryReport = inpFile.Options.EnableSummaryReport;
-      controlMiscOptions.MiscOptionsEnableAuxStochasticFiles = inpFile.Options.EnableAuxStochasticFiles;
-      controlMiscOptions.MiscOptionsEnableExportR = inpFile.Options.EnableExportR;
-      controlMiscOptions.MiscOptionsEnablePercentileReport = inpFile.Options.EnablePercentileReport;
-      controlMiscOptions.MiscOptionsReportPercentile = Convert.ToDouble(inpFile.ReportPercentile.Percentile);
-
-      controlMiscOptions.MiscOptionsEnableRefpointsReport = inpFile.Options.EnableRefpoint;
-      controlMiscOptions.MiscOptionsRefSpawnBiomass = inpFile.Refpoint.RefSpawnBio.ToString();
-      controlMiscOptions.MiscOptionsRefJan1Biomass = inpFile.Refpoint.RefJan1Bio.ToString();
-      controlMiscOptions.MiscOptionsRefMeanBiomass = inpFile.Refpoint.RefMeanBio.ToString();
-      controlMiscOptions.MiscOptionsRefFishingMortality = inpFile.Refpoint.RefFMort.ToString();
-
-      controlMiscOptions.MiscOptionsEnableScaleFactors = inpFile.Options.EnableScaleFactors;
-      controlMiscOptions.MiscOptionsScaleFactorBiomass = inpFile.Scale.ScaleBio.ToString();
-      controlMiscOptions.MiscOptionsScaleFactorRecruits = inpFile.Scale.ScaleRec.ToString();
-      controlMiscOptions.MiscOptionsScaleFactorStockNumbers = inpFile.Scale.ScaleStockNum.ToString();
-
-      controlMiscOptions.MiscOptionsBounds = inpFile.Options.EnableBounds;
-      controlMiscOptions.MiscOptionsBoundsMaxWeight = inpFile.Bounds.MaxWeight.ToString();
-      controlMiscOptions.MiscOptionsBoundsNaturalMortality = inpFile.Bounds.MaxNatMort.ToString();
-
-      controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors = inpFile.Options.EnableRetroAdjustmentFactors;
-      controlMiscOptions.miscOptionsNAges = inpFile.General.NumAges();
-      controlMiscOptions.miscOptionsFirstAge = inpFile.General.AgeBegin;
-
-      controlMiscOptions.LoadRetroAdjustmentsFactorTable(inpFile);
-
-      if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
-      {
-        controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
-      }
+      controlMiscOptions.SetMiscOptionsControlsFromInputFile(inpFile);
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
     }
