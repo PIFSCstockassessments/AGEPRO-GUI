@@ -55,10 +55,10 @@
       this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
       this.labelOutputViewerProgram = new System.Windows.Forms.Label();
       this.groupBox_StockSummmaryFlag = new System.Windows.Forms.GroupBox();
-      this.radioButton_None = new System.Windows.Forms.RadioButton();
-      this.radioButton_SummaryOnly = new System.Windows.Forms.RadioButton();
-      this.radioButton_SummaryNoAux1 = new System.Windows.Forms.RadioButton();
       this.radioButton_SummaryPlusAllAux = new System.Windows.Forms.RadioButton();
+      this.radioButton_SummaryNoAux1 = new System.Windows.Forms.RadioButton();
+      this.radioButton_SummaryOnly = new System.Windows.Forms.RadioButton();
+      this.radioButton_None = new System.Windows.Forms.RadioButton();
       this.groupOutputViewer = new System.Windows.Forms.GroupBox();
       this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
       this.textBoxScaleFactorRecruits = new Nmfs.Agepro.Gui.NftTextBox();
@@ -91,7 +91,7 @@
       this.groupOuputOptions.Location = new System.Drawing.Point(29, 144);
       this.groupOuputOptions.Name = "groupOuputOptions";
       this.groupOuputOptions.Size = new System.Drawing.Size(383, 123);
-      this.groupOuputOptions.TabIndex = 0;
+      this.groupOuputOptions.TabIndex = 1;
       this.groupOuputOptions.TabStop = false;
       this.groupOuputOptions.Text = "Output Options";
       // 
@@ -141,7 +141,7 @@
       this.checkBoxEnableAuxStochasticFiles.Location = new System.Drawing.Point(17, 19);
       this.checkBoxEnableAuxStochasticFiles.Name = "checkBoxEnableAuxStochasticFiles";
       this.checkBoxEnableAuxStochasticFiles.Size = new System.Drawing.Size(214, 17);
-      this.checkBoxEnableAuxStochasticFiles.TabIndex = 1;
+      this.checkBoxEnableAuxStochasticFiles.TabIndex = 4;
       this.checkBoxEnableAuxStochasticFiles.Text = "Generate Auxiliary Stochastic Data Files";
       this.checkBoxEnableAuxStochasticFiles.UseVisualStyleBackColor = true;
       // 
@@ -151,7 +151,7 @@
       this.checkBoxEnableSummaryReport.Location = new System.Drawing.Point(418, 489);
       this.checkBoxEnableSummaryReport.Name = "checkBoxEnableSummaryReport";
       this.checkBoxEnableSummaryReport.Size = new System.Drawing.Size(262, 17);
-      this.checkBoxEnableSummaryReport.TabIndex = 0;
+      this.checkBoxEnableSummaryReport.TabIndex = 7;
       this.checkBoxEnableSummaryReport.Text = "Output Summary Report of Stock Numbers At Age";
       this.checkBoxEnableSummaryReport.UseVisualStyleBackColor = true;
       // 
@@ -169,7 +169,7 @@
       this.groupRefpoints.Location = new System.Drawing.Point(418, 191);
       this.groupRefpoints.Name = "groupRefpoints";
       this.groupRefpoints.Size = new System.Drawing.Size(390, 152);
-      this.groupRefpoints.TabIndex = 1;
+      this.groupRefpoints.TabIndex = 5;
       this.groupRefpoints.TabStop = false;
       this.groupRefpoints.Text = "Reference Points";
       // 
@@ -234,7 +234,7 @@
       this.groupBounds.Location = new System.Drawing.Point(418, 86);
       this.groupBounds.Name = "groupBounds";
       this.groupBounds.Size = new System.Drawing.Size(390, 99);
-      this.groupBounds.TabIndex = 3;
+      this.groupBounds.TabIndex = 4;
       this.groupBounds.TabStop = false;
       this.groupBounds.Text = "Bounds";
       // 
@@ -281,7 +281,7 @@
       this.groupScaleFactors.Location = new System.Drawing.Point(418, 349);
       this.groupScaleFactors.Name = "groupScaleFactors";
       this.groupScaleFactors.Size = new System.Drawing.Size(390, 134);
-      this.groupScaleFactors.TabIndex = 2;
+      this.groupScaleFactors.TabIndex = 6;
       this.groupScaleFactors.TabStop = false;
       this.groupScaleFactors.Text = "Scaling Factors for Output Report";
       // 
@@ -333,7 +333,7 @@
       this.groupRetroAdjustment.Location = new System.Drawing.Point(29, 273);
       this.groupRetroAdjustment.Name = "groupRetroAdjustment";
       this.groupRetroAdjustment.Size = new System.Drawing.Size(383, 223);
-      this.groupRetroAdjustment.TabIndex = 4;
+      this.groupRetroAdjustment.TabIndex = 2;
       this.groupRetroAdjustment.TabStop = false;
       this.groupRetroAdjustment.Text = "Retrospective Adjustment Factors";
       // 
@@ -378,42 +378,9 @@
       this.groupBox_StockSummmaryFlag.Location = new System.Drawing.Point(29, 15);
       this.groupBox_StockSummmaryFlag.Name = "groupBox_StockSummmaryFlag";
       this.groupBox_StockSummmaryFlag.Size = new System.Drawing.Size(383, 123);
-      this.groupBox_StockSummmaryFlag.TabIndex = 5;
+      this.groupBox_StockSummmaryFlag.TabIndex = 0;
       this.groupBox_StockSummmaryFlag.TabStop = false;
       this.groupBox_StockSummmaryFlag.Text = "Stock Summary Ouptut and Auxiliary Data Files";
-      // 
-      // radioButton_None
-      // 
-      this.radioButton_None.AutoSize = true;
-      this.radioButton_None.Location = new System.Drawing.Point(17, 17);
-      this.radioButton_None.Name = "radioButton_None";
-      this.radioButton_None.Size = new System.Drawing.Size(51, 17);
-      this.radioButton_None.TabIndex = 0;
-      this.radioButton_None.TabStop = true;
-      this.radioButton_None.Text = "None";
-      this.radioButton_None.UseVisualStyleBackColor = true;
-      // 
-      // radioButton_SummaryOnly
-      // 
-      this.radioButton_SummaryOnly.AutoSize = true;
-      this.radioButton_SummaryOnly.Location = new System.Drawing.Point(17, 40);
-      this.radioButton_SummaryOnly.Name = "radioButton_SummaryOnly";
-      this.radioButton_SummaryOnly.Size = new System.Drawing.Size(92, 17);
-      this.radioButton_SummaryOnly.TabIndex = 1;
-      this.radioButton_SummaryOnly.TabStop = true;
-      this.radioButton_SummaryOnly.Text = "Summary Only";
-      this.radioButton_SummaryOnly.UseVisualStyleBackColor = true;
-      // 
-      // radioButton_SummaryNoAux1
-      // 
-      this.radioButton_SummaryNoAux1.AutoSize = true;
-      this.radioButton_SummaryNoAux1.Location = new System.Drawing.Point(17, 63);
-      this.radioButton_SummaryNoAux1.Name = "radioButton_SummaryNoAux1";
-      this.radioButton_SummaryNoAux1.Size = new System.Drawing.Size(292, 17);
-      this.radioButton_SummaryNoAux1.TabIndex = 2;
-      this.radioButton_SummaryNoAux1.TabStop = true;
-      this.radioButton_SummaryNoAux1.Text = "Summary Plus Auxiliary Files EXCLUDING Stock Aux File";
-      this.radioButton_SummaryNoAux1.UseVisualStyleBackColor = true;
       // 
       // radioButton_SummaryPlusAllAux
       // 
@@ -426,6 +393,39 @@
       this.radioButton_SummaryPlusAllAux.Text = "Summary Plus All Auxiliary Files";
       this.radioButton_SummaryPlusAllAux.UseVisualStyleBackColor = true;
       // 
+      // radioButton_SummaryNoAux1
+      // 
+      this.radioButton_SummaryNoAux1.AutoSize = true;
+      this.radioButton_SummaryNoAux1.Location = new System.Drawing.Point(17, 63);
+      this.radioButton_SummaryNoAux1.Name = "radioButton_SummaryNoAux1";
+      this.radioButton_SummaryNoAux1.Size = new System.Drawing.Size(292, 17);
+      this.radioButton_SummaryNoAux1.TabIndex = 2;
+      this.radioButton_SummaryNoAux1.TabStop = true;
+      this.radioButton_SummaryNoAux1.Text = "Summary Plus Auxiliary Files EXCLUDING Stock Aux File";
+      this.radioButton_SummaryNoAux1.UseVisualStyleBackColor = true;
+      // 
+      // radioButton_SummaryOnly
+      // 
+      this.radioButton_SummaryOnly.AutoSize = true;
+      this.radioButton_SummaryOnly.Location = new System.Drawing.Point(17, 40);
+      this.radioButton_SummaryOnly.Name = "radioButton_SummaryOnly";
+      this.radioButton_SummaryOnly.Size = new System.Drawing.Size(92, 17);
+      this.radioButton_SummaryOnly.TabIndex = 1;
+      this.radioButton_SummaryOnly.TabStop = true;
+      this.radioButton_SummaryOnly.Text = "Summary Only";
+      this.radioButton_SummaryOnly.UseVisualStyleBackColor = true;
+      // 
+      // radioButton_None
+      // 
+      this.radioButton_None.AutoSize = true;
+      this.radioButton_None.Location = new System.Drawing.Point(17, 17);
+      this.radioButton_None.Name = "radioButton_None";
+      this.radioButton_None.Size = new System.Drawing.Size(51, 17);
+      this.radioButton_None.TabIndex = 0;
+      this.radioButton_None.TabStop = true;
+      this.radioButton_None.Text = "None";
+      this.radioButton_None.UseVisualStyleBackColor = true;
+      // 
       // groupOutputViewer
       // 
       this.groupOutputViewer.Controls.Add(this.comboBoxOutputViewerProgram);
@@ -433,7 +433,7 @@
       this.groupOutputViewer.Location = new System.Drawing.Point(418, 15);
       this.groupOutputViewer.Name = "groupOutputViewer";
       this.groupOutputViewer.Size = new System.Drawing.Size(390, 65);
-      this.groupOutputViewer.TabIndex = 6;
+      this.groupOutputViewer.TabIndex = 3;
       this.groupOutputViewer.TabStop = false;
       this.groupOutputViewer.Text = "Output File Viewer";
       // 
