@@ -8,7 +8,17 @@ using System.Windows.Forms;
 namespace Nmfs.Agepro.Gui
 {
   /// <summary>
-  /// Settings for AGEPRO output and optional parameters.
+  /// 
+  /// <para>
+  /// Settings for AGEPRO's output options (OPTIONS) and its additional optional options:
+  /// <list type="bullet">
+  ///   <item> PERC - User Percentile Summary </item>
+  ///   <item> REFPOINT - Reference Points </item>
+  ///   <item> SCALE - Scaling Factors </item>
+  ///   <item> BOUNDS - Max Bounds </item>
+  ///   <item> RETROADJUST - Retrospective Adjustmentment Factors </item>
+  /// </list>
+  /// </para>
   /// </summary>
   public partial class ControlMiscOptions : UserControl
   {
@@ -333,6 +343,12 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
+    /// <summary>
+    /// Sets Misc Options values from AGEPRO Input File.
+    /// 
+    /// </summary>
+    /// <param name="inputFile"> AGEPRO Input File </param>
+    /// <exception cref="ArgumentNullException"></exception>
     public void SetMiscOptionsControlsFromInputFile(AgeproInputFile inputFile)
     {
       if (inputFile is null)
