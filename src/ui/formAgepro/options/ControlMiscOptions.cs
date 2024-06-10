@@ -1,4 +1,5 @@
 ﻿using Nmfs.Agepro.CoreLib;
+using Nmfs.Agepro.CoreLib.src.coreLib.options;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,6 +31,7 @@ namespace Nmfs.Agepro.Gui
 
     public int miscOptionsNAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
+    public StockSummaryFlag SummaryAuxFileOutput { get; set; }
 
     public ControlMiscOptions()
     {
@@ -528,7 +530,5 @@ namespace Nmfs.Agepro.Gui
         SetRetroAdjustmentFactorRowHeaders();
       }
     }
-
-
   }
 }
