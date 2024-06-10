@@ -57,6 +57,9 @@ namespace Nmfs.Agepro.Gui
 
       //Report Percentile
       MiscOptionsReportPercentile = 0;
+
+      SummaryAuxFileOutput = StockSummaryFlag.None;
+
     }
 
     public bool MiscOptionsEnableSummaryReport
@@ -529,6 +532,31 @@ namespace Nmfs.Agepro.Gui
       {
         SetRetroAdjustmentFactorRowHeaders();
       }
+    }
+
+    private void RadioButtonNone_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutput = StockSummaryFlag.None;
+    }
+
+    private void RadioButtonSummaryOnly_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutput = StockSummaryFlag.SummaryOnly;
+    }
+
+    private void RadioButtonSummaryNoAux1_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutput = StockSummaryFlag.SummaryPlusAux2_10;
+    }
+
+    private void RadioButtonSummaryPlusAllAux_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutput = StockSummaryFlag.SummaryPlusAllAux;
+    }
+
+    private void CheckBoxEnableSummaryReport_CheckedChanged(object sender, EventArgs e)
+    {
+
     }
   }
 }

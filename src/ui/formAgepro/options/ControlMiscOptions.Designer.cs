@@ -154,6 +154,7 @@
       this.checkBoxEnableSummaryReport.TabIndex = 7;
       this.checkBoxEnableSummaryReport.Text = "Output Summary Report of Stock Numbers At Age";
       this.checkBoxEnableSummaryReport.UseVisualStyleBackColor = true;
+      this.checkBoxEnableSummaryReport.CheckedChanged += new System.EventHandler(this.CheckBoxEnableSummaryReport_CheckedChanged);
       // 
       // groupRefpoints
       // 
@@ -392,6 +393,7 @@
       this.radioButtonSummaryPlusAllAux.TabStop = true;
       this.radioButtonSummaryPlusAllAux.Text = "Summary Plus All Auxiliary Files";
       this.radioButtonSummaryPlusAllAux.UseVisualStyleBackColor = true;
+      this.radioButtonSummaryPlusAllAux.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryPlusAllAux_CheckedChanged);
       // 
       // radioButtonSummaryNoAux1
       // 
@@ -403,6 +405,7 @@
       this.radioButtonSummaryNoAux1.TabStop = true;
       this.radioButtonSummaryNoAux1.Text = "Summary Plus Auxiliary Files EXCLUDING Stock Aux File";
       this.radioButtonSummaryNoAux1.UseVisualStyleBackColor = true;
+      this.radioButtonSummaryNoAux1.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryNoAux1_CheckedChanged);
       // 
       // radioButtonSummaryOnly
       // 
@@ -414,6 +417,7 @@
       this.radioButtonSummaryOnly.TabStop = true;
       this.radioButtonSummaryOnly.Text = "Summary Only";
       this.radioButtonSummaryOnly.UseVisualStyleBackColor = true;
+      this.radioButtonSummaryOnly.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryOnly_CheckedChanged);
       // 
       // radioButtonNone
       // 
@@ -425,6 +429,7 @@
       this.radioButtonNone.TabStop = true;
       this.radioButtonNone.Text = "None";
       this.radioButtonNone.UseVisualStyleBackColor = true;
+      this.radioButtonNone.CheckedChanged += new System.EventHandler(this.RadioButtonNone_CheckedChanged);
       // 
       // groupOutputViewer
       // 
