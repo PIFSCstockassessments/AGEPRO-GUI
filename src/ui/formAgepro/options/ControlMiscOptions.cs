@@ -22,6 +22,11 @@ namespace Nmfs.Agepro.Gui
   /// </summary>
   public partial class ControlMiscOptions : UserControl
   {
+    private const string DefaultRefJan1Biomass = "0.0";
+    private const string DefaultRefMeanBiomass = "0.0";
+    private const string DefaultRefSpawnBiomass = "0.0";
+    private const string DefaultRefFishingMortality = "0.0";
+
     public int miscOptionsNAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
 
@@ -37,10 +42,10 @@ namespace Nmfs.Agepro.Gui
       MiscOptionsBoundsNaturalMortality = "1.0";
 
       //Refpoints
-      MiscOptionsRefJan1Biomass = "0.0";
-      MiscOptionsRefMeanBiomass = "0.0";
-      MiscOptionsRefSpawnBiomass = "0.0";
-      MiscOptionsRefFishingMortality = "0.0";
+      MiscOptionsRefJan1Biomass = DefaultRefJan1Biomass;
+      MiscOptionsRefMeanBiomass = DefaultRefMeanBiomass;
+      MiscOptionsRefSpawnBiomass = DefaultRefSpawnBiomass;
+      MiscOptionsRefFishingMortality = DefaultRefFishingMortality;
 
       //Scale Factors
       MiscOptionsScaleFactorBiomass = "0.0";
@@ -396,27 +401,18 @@ namespace Nmfs.Agepro.Gui
     /// <returns></returns>
     public bool ValidateMiscOptions()
     {
-      List<string> errorMsgList = new List<string>();
-      //Reference Points
       if (MiscOptionsEnableRefpointsReport)
       {
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefJan1Biomass))
-        {
-          MiscOptionsRefJan1Biomass = "0.0";
-        }
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefMeanBiomass))
-        {
-          MiscOptionsRefMeanBiomass = "0.0";
-        }
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefSpawnBiomass))
-        {
-          MiscOptionsRefSpawnBiomass = "0.0";
-        }
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefFishingMortality))
-        {
-          MiscOptionsRefFishingMortality = "0.0";
-        }
+        //Reference Points: Replace null/empty(whitespace) values to default
+        MiscOptionsRefJan1Biomass = string.IsNullOrWhiteSpace(MiscOptionsRefJan1Biomass) ? DefaultRefJan1Biomass : MiscOptionsRefJan1Biomass;
+        MiscOptionsRefMeanBiomass = string.IsNullOrWhiteSpace(MiscOptionsRefMeanBiomass) ? DefaultRefMeanBiomass : MiscOptionsRefMeanBiomass;
+        MiscOptionsRefSpawnBiomass = string.IsNullOrWhiteSpace(MiscOptionsRefSpawnBiomass) ? DefaultRefSpawnBiomass : MiscOptionsRefSpawnBiomass;
+        MiscOptionsRefFishingMortality = string.IsNullOrWhiteSpace(MiscOptionsRefFishingMortality) ? DefaultRefFishingMortality : MiscOptionsRefFishingMortality;
       }
+      
+      //Log Errors
+      List<string> errorMsgList = new List<string>();
+      
       //Retrospective Adjustment Factors
       if (dataGridRetroAdjustment.HasBlankOrNullCells())
       {
