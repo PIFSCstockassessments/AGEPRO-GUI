@@ -26,6 +26,7 @@ namespace Nmfs.Agepro.Gui
     private const string DefaultRefMeanBiomass = "0.0";
     private const string DefaultRefSpawnBiomass = "0.0";
     private const string DefaultRefFishingMortality = "0.0";
+    private const int DefaultLargeFileLineCount = 1000000;
 
     public int miscOptionsNAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
@@ -455,25 +456,27 @@ namespace Nmfs.Agepro.Gui
     /// Size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims</param>
     /// <param name="largeFileRowCount">Default to 1000000 </param>
     /// <returns></returns>
-    public bool CheckOutputFileRowSize(int auxFileRowSize, int largeFileRowCount = 1000000)
+    public bool CheckOutputFileRowSize(int auxFileRowSize, int largeFileRowCount = DefaultLargeFileLineCount)
     {
-      if (auxFileRowSize > largeFileRowCount)
+      if (auxFileRowSize <= largeFileRowCount)
       {
-        DialogResult outputFileSizePrompt;
+        return true;
+      }
 
-        if (MiscOptionsEnableSummaryReport || MiscOptionsEnableAuxStochasticFiles)
+      DialogResult outputFileSizePrompt;
+
+      if (MiscOptionsEnableSummaryReport || MiscOptionsEnableAuxStochasticFiles)
+      {
+        outputFileSizePrompt = MessageBox.Show(
+          "The number of realizations times the number of projected years is greater than " +
+          largeFileRowCount + ". This will produce large auxiliary output files. " +
+          "This will affect the performance of calculation engine." +
+          Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
+          "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+        if (outputFileSizePrompt == DialogResult.No)
         {
-          outputFileSizePrompt = MessageBox.Show(
-            "The number of realizations times the number of projected years is greater than " +
-            largeFileRowCount + ". This will produce large auxiliary output files. " +
-            "This will affect the performance of calculation engine." +
-            Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
-            "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-          if (outputFileSizePrompt == DialogResult.No)
-          {
-            return false;
-          }
+          return false;
         }
       }
       return true;
