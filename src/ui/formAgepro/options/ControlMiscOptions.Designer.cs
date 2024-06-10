@@ -55,10 +55,10 @@
       this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
       this.labelOutputViewerProgram = new System.Windows.Forms.Label();
       this.groupBox_StockSummmaryFlag = new System.Windows.Forms.GroupBox();
-      this.radioButton_SummaryPlusAllAux = new System.Windows.Forms.RadioButton();
-      this.radioButton_SummaryNoAux1 = new System.Windows.Forms.RadioButton();
-      this.radioButton_SummaryOnly = new System.Windows.Forms.RadioButton();
-      this.radioButton_None = new System.Windows.Forms.RadioButton();
+      this.radioButtonSummaryPlusAllAux = new System.Windows.Forms.RadioButton();
+      this.radioButtonSummaryNoAux1 = new System.Windows.Forms.RadioButton();
+      this.radioButtonSummaryOnly = new System.Windows.Forms.RadioButton();
+      this.radioButtonNone = new System.Windows.Forms.RadioButton();
       this.groupOutputViewer = new System.Windows.Forms.GroupBox();
       this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
       this.textBoxScaleFactorRecruits = new Nmfs.Agepro.Gui.NftTextBox();
@@ -371,10 +371,10 @@
       // 
       // groupBox_StockSummmaryFlag
       // 
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButton_SummaryPlusAllAux);
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButton_SummaryNoAux1);
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButton_SummaryOnly);
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButton_None);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonSummaryPlusAllAux);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonSummaryNoAux1);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonSummaryOnly);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonNone);
       this.groupBox_StockSummmaryFlag.Location = new System.Drawing.Point(29, 15);
       this.groupBox_StockSummmaryFlag.Name = "groupBox_StockSummmaryFlag";
       this.groupBox_StockSummmaryFlag.Size = new System.Drawing.Size(383, 123);
@@ -382,49 +382,49 @@
       this.groupBox_StockSummmaryFlag.TabStop = false;
       this.groupBox_StockSummmaryFlag.Text = "Stock Summary Ouptut and Auxiliary Data Files";
       // 
-      // radioButton_SummaryPlusAllAux
+      // radioButtonSummaryPlusAllAux
       // 
-      this.radioButton_SummaryPlusAllAux.AutoSize = true;
-      this.radioButton_SummaryPlusAllAux.Location = new System.Drawing.Point(17, 86);
-      this.radioButton_SummaryPlusAllAux.Name = "radioButton_SummaryPlusAllAux";
-      this.radioButton_SummaryPlusAllAux.Size = new System.Drawing.Size(170, 17);
-      this.radioButton_SummaryPlusAllAux.TabIndex = 3;
-      this.radioButton_SummaryPlusAllAux.TabStop = true;
-      this.radioButton_SummaryPlusAllAux.Text = "Summary Plus All Auxiliary Files";
-      this.radioButton_SummaryPlusAllAux.UseVisualStyleBackColor = true;
+      this.radioButtonSummaryPlusAllAux.AutoSize = true;
+      this.radioButtonSummaryPlusAllAux.Location = new System.Drawing.Point(17, 86);
+      this.radioButtonSummaryPlusAllAux.Name = "radioButtonSummaryPlusAllAux";
+      this.radioButtonSummaryPlusAllAux.Size = new System.Drawing.Size(170, 17);
+      this.radioButtonSummaryPlusAllAux.TabIndex = 3;
+      this.radioButtonSummaryPlusAllAux.TabStop = true;
+      this.radioButtonSummaryPlusAllAux.Text = "Summary Plus All Auxiliary Files";
+      this.radioButtonSummaryPlusAllAux.UseVisualStyleBackColor = true;
       // 
-      // radioButton_SummaryNoAux1
+      // radioButtonSummaryNoAux1
       // 
-      this.radioButton_SummaryNoAux1.AutoSize = true;
-      this.radioButton_SummaryNoAux1.Location = new System.Drawing.Point(17, 63);
-      this.radioButton_SummaryNoAux1.Name = "radioButton_SummaryNoAux1";
-      this.radioButton_SummaryNoAux1.Size = new System.Drawing.Size(292, 17);
-      this.radioButton_SummaryNoAux1.TabIndex = 2;
-      this.radioButton_SummaryNoAux1.TabStop = true;
-      this.radioButton_SummaryNoAux1.Text = "Summary Plus Auxiliary Files EXCLUDING Stock Aux File";
-      this.radioButton_SummaryNoAux1.UseVisualStyleBackColor = true;
+      this.radioButtonSummaryNoAux1.AutoSize = true;
+      this.radioButtonSummaryNoAux1.Location = new System.Drawing.Point(17, 63);
+      this.radioButtonSummaryNoAux1.Name = "radioButtonSummaryNoAux1";
+      this.radioButtonSummaryNoAux1.Size = new System.Drawing.Size(292, 17);
+      this.radioButtonSummaryNoAux1.TabIndex = 2;
+      this.radioButtonSummaryNoAux1.TabStop = true;
+      this.radioButtonSummaryNoAux1.Text = "Summary Plus Auxiliary Files EXCLUDING Stock Aux File";
+      this.radioButtonSummaryNoAux1.UseVisualStyleBackColor = true;
       // 
-      // radioButton_SummaryOnly
+      // radioButtonSummaryOnly
       // 
-      this.radioButton_SummaryOnly.AutoSize = true;
-      this.radioButton_SummaryOnly.Location = new System.Drawing.Point(17, 40);
-      this.radioButton_SummaryOnly.Name = "radioButton_SummaryOnly";
-      this.radioButton_SummaryOnly.Size = new System.Drawing.Size(92, 17);
-      this.radioButton_SummaryOnly.TabIndex = 1;
-      this.radioButton_SummaryOnly.TabStop = true;
-      this.radioButton_SummaryOnly.Text = "Summary Only";
-      this.radioButton_SummaryOnly.UseVisualStyleBackColor = true;
+      this.radioButtonSummaryOnly.AutoSize = true;
+      this.radioButtonSummaryOnly.Location = new System.Drawing.Point(17, 40);
+      this.radioButtonSummaryOnly.Name = "radioButtonSummaryOnly";
+      this.radioButtonSummaryOnly.Size = new System.Drawing.Size(92, 17);
+      this.radioButtonSummaryOnly.TabIndex = 1;
+      this.radioButtonSummaryOnly.TabStop = true;
+      this.radioButtonSummaryOnly.Text = "Summary Only";
+      this.radioButtonSummaryOnly.UseVisualStyleBackColor = true;
       // 
-      // radioButton_None
+      // radioButtonNone
       // 
-      this.radioButton_None.AutoSize = true;
-      this.radioButton_None.Location = new System.Drawing.Point(17, 17);
-      this.radioButton_None.Name = "radioButton_None";
-      this.radioButton_None.Size = new System.Drawing.Size(51, 17);
-      this.radioButton_None.TabIndex = 0;
-      this.radioButton_None.TabStop = true;
-      this.radioButton_None.Text = "None";
-      this.radioButton_None.UseVisualStyleBackColor = true;
+      this.radioButtonNone.AutoSize = true;
+      this.radioButtonNone.Location = new System.Drawing.Point(17, 17);
+      this.radioButtonNone.Name = "radioButtonNone";
+      this.radioButtonNone.Size = new System.Drawing.Size(51, 17);
+      this.radioButtonNone.TabIndex = 0;
+      this.radioButtonNone.TabStop = true;
+      this.radioButtonNone.Text = "None";
+      this.radioButtonNone.UseVisualStyleBackColor = true;
       // 
       // groupOutputViewer
       // 
@@ -619,10 +619,10 @@
         private System.Windows.Forms.ComboBox comboBoxOutputViewerProgram;
         private System.Windows.Forms.Label labelOutputViewerProgram;
     private System.Windows.Forms.GroupBox groupBox_StockSummmaryFlag;
-    private System.Windows.Forms.RadioButton radioButton_None;
-    private System.Windows.Forms.RadioButton radioButton_SummaryNoAux1;
-    private System.Windows.Forms.RadioButton radioButton_SummaryOnly;
-    private System.Windows.Forms.RadioButton radioButton_SummaryPlusAllAux;
+    private System.Windows.Forms.RadioButton radioButtonNone;
+    private System.Windows.Forms.RadioButton radioButtonSummaryNoAux1;
+    private System.Windows.Forms.RadioButton radioButtonSummaryOnly;
+    private System.Windows.Forms.RadioButton radioButtonSummaryPlusAllAux;
     private System.Windows.Forms.GroupBox groupOutputViewer;
   }
 }
