@@ -252,6 +252,43 @@ namespace Nmfs.Agepro.Gui
       sevent.Value = Convert.ToDouble(sevent.Value.ToString());
     }
 
+
+    /// <summary>
+    /// Exports the values that are stored in AgeproMiscOptions Gui Elements and 
+    /// Transfers them to the AGEPRO CoreLib InputFile class values. Typically used
+    /// before AGEPRO Input File Data is written.
+    /// </summary>
+    /// <param name="inputFile">AGEPRO CoreLib Input File Class</param>
+    public void BindMiscOptionsControlValuesToCoreLib(AgeproInputFile inputFile)
+    {
+      //Misc options
+      inputFile.Options.EnableSummaryReport = MiscOptionsEnableSummaryReport;
+      inputFile.Options.EnableExportR = MiscOptionsEnableExportR;
+      inputFile.Options.EnableAuxStochasticFiles = MiscOptionsEnableAuxStochasticFiles;
+      inputFile.Options.EnablePercentileReport = MiscOptionsEnablePercentileReport;
+      inputFile.Options.EnableRefpoint = MiscOptionsEnableRefpointsReport;
+      inputFile.Options.EnableScaleFactors = MiscOptionsEnableScaleFactors;
+      inputFile.Options.EnableBounds = MiscOptionsBounds;
+      inputFile.Options.EnableRetroAdjustmentFactors = MiscOptionsEnableRetroAdjustmentFactors;
+
+      //Misc Options: Refpoint
+      inputFile.Refpoint.RefSpawnBio = double.Parse(MiscOptionsRefSpawnBiomass);
+      inputFile.Refpoint.RefJan1Bio = double.Parse(MiscOptionsRefJan1Biomass);
+      inputFile.Refpoint.RefMeanBio = double.Parse(MiscOptionsRefMeanBiomass);
+      inputFile.Refpoint.RefFMort = double.Parse(MiscOptionsRefFishingMortality);
+
+      //Misc Options: Report Percentile
+      inputFile.ReportPercentile.Percentile = MiscOptionsReportPercentile;
+
+      //Misc Options: Scale Factors
+      inputFile.Scale.ScaleBio = double.Parse(MiscOptionsScaleFactorBiomass);
+      inputFile.Scale.ScaleRec = double.Parse(MiscOptionsScaleFactorRecruits);
+      inputFile.Scale.ScaleStockNum = double.Parse(MiscOptionsScaleFactorStockNumbers);
+
+      //Misc Options: Retro Adjustment Factors
+      inputFile.RetroAdjustments.RetroAdjust = MiscOptionsRetroAdjustmentFactorTable;
+    }
+
     #endregion
 
 
