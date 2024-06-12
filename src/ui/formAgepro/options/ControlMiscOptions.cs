@@ -31,7 +31,7 @@ namespace Nmfs.Agepro.Gui
 
     public int miscOptionsNAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
-    public StockSummaryFlag SummaryAuxFileOutput { get; set; }
+    public StockSummaryFlag SummaryAuxFileOutputFlag { get; set; }
 
     public ControlMiscOptions()
     {
@@ -58,7 +58,7 @@ namespace Nmfs.Agepro.Gui
       //Report Percentile
       MiscOptionsReportPercentile = 0;
 
-      SummaryAuxFileOutput = StockSummaryFlag.None;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.None;
 
     }
 
@@ -307,7 +307,9 @@ namespace Nmfs.Agepro.Gui
       }
 
       this.MiscOptionsEnableSummaryReport = inputFile.Options.EnableSummaryReport;
+      
       this.MiscOptionsEnableAuxStochasticFiles = inputFile.Options.EnableAuxStochasticFiles;
+      this.SummaryAuxFileOutputFlag = (StockSummaryFlag)inputFile.Options.OutputSummaryReport;
       this.MiscOptionsEnableExportR = inputFile.Options.EnableExportR;
       this.MiscOptionsEnablePercentileReport = inputFile.Options.EnablePercentileReport;
       this.MiscOptionsReportPercentile = Convert.ToDouble(inputFile.ReportPercentile.Percentile);
@@ -599,22 +601,22 @@ namespace Nmfs.Agepro.Gui
 
     private void RadioButtonNone_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutput = StockSummaryFlag.None;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.None;
     }
 
     private void RadioButtonSummaryOnly_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutput = StockSummaryFlag.SummaryOnly;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.SummaryOnly;
     }
 
     private void RadioButtonSummaryNoAux1_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutput = StockSummaryFlag.SummaryPlusAux2_10;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.SummaryPlusAux2_10;
     }
 
     private void RadioButtonSummaryPlusAllAux_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutput = StockSummaryFlag.SummaryPlusAllAux;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.SummaryPlusAllAux;
     }
 
     private void CheckBoxEnableSummaryReport_CheckedChanged(object sender, EventArgs e)
