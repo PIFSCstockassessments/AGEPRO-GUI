@@ -62,12 +62,13 @@ namespace Nmfs.Agepro.Gui
       {
         if (PStar == null)
         {
+          //Create new instance of PStar with AGEPRO Model's Observed Years
           PStar = new PStarCalculation
           {
-            //Retain Model's Observed Years
             ObsYears = Array.ConvertAll(SeqYears, int.Parse)
           };
         }
+        CalcType = HarvestScenarioAnalysis.PStar;
         ControlHarvestPStar.SetHarvestCalcPStarControls(PStar, panelAltCalcParameters);
       }
 
@@ -89,7 +90,7 @@ namespace Nmfs.Agepro.Gui
       {
         if (Rebuilder == null)
         {
-          //Retain Model's Observed Years
+          //Create new instance of Rebuilder with AGEPRO Model's Observed Years
           Rebuilder = new RebuilderTargetCalculation
           {
             ObsYears = Array.ConvertAll(SeqYears, int.Parse)
