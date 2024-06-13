@@ -306,6 +306,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\options\ControlMiscOptions.resx">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitment.resx">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>

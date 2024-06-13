@@ -20,7 +20,7 @@ namespace Nmfs.Agepro.Gui
   /// </list>
   /// </para>
   /// </summary>
-  public partial class ControlMiscOptions : UserControl
+  public partial class ControlMiscOptions : UserControl, IStockSummary
   {
     private const string DefaultRefJan1Biomass = "0.0";
     private const string DefaultRefMeanBiomass = "0.0";
@@ -31,7 +31,7 @@ namespace Nmfs.Agepro.Gui
     public int miscOptionsNAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
     public StockSummaryFlag SummaryAuxFileOutputFlag { get; set; }
-
+    
     public ControlMiscOptions()
     {
       InitializeComponent();
