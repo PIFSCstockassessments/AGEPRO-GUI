@@ -381,7 +381,7 @@ namespace Nmfs.Agepro.Gui
       
       if (MiscOptionsEnableRetroAdjustmentFactors)
       {
-        SetRetroAdjustmentFactorRowHeaders();
+        SetupRetroAdjustmentsFactorRowHeaders();
       }
 
       //OuputSummaryFlag Radio Buttons
@@ -498,13 +498,13 @@ namespace Nmfs.Agepro.Gui
       }
       MiscOptionsRetroAdjustmentFactorTable =
           GetRetroAdjustmentFallbackTable(miscOptionsNumAges);
-      SetRetroAdjustmentFactorRowHeaders();
+      SetupRetroAdjustmentsFactorRowHeaders();
     }
 
     /// <summary>
     /// Sets Up Row Headers For the Retro Adujustment Data Grid Table
     /// </summary>
-    public void SetRetroAdjustmentFactorRowHeaders()
+    public void SetupRetroAdjustmentsFactorRowHeaders()
     {
       dataGridRetroAdjustment.RowHeadersVisible = true;
       for (int iage = 0; iage < miscOptionsNumAges; iage++)
@@ -642,7 +642,7 @@ namespace Nmfs.Agepro.Gui
         //If Checked, create fallback defualt data table.
         dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(miscOptionsNumAges);
 
-        SetRetroAdjustmentFactorRowHeaders();
+        SetupRetroAdjustmentsFactorRowHeaders();
 
       }
     }
@@ -659,7 +659,7 @@ namespace Nmfs.Agepro.Gui
       //header value is null
       if (e.ColumnIndex == 0)
       {
-        SetRetroAdjustmentFactorRowHeaders();
+        SetupRetroAdjustmentsFactorRowHeaders();
       }
     }
 
