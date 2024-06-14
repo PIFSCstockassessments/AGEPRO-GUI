@@ -343,39 +343,49 @@ namespace Nmfs.Agepro.Gui
         throw new ArgumentNullException(nameof(inputFile));
       }
 
-      this.MiscOptionsEnableSummaryReport = inputFile.Options.EnableSummaryReport;
+      miscOptionsNAges = inputFile.General.NumAges();
+      miscOptionsFirstAge = inputFile.General.AgeBegin;
+
+      // Options (w/ OutputSummaryFlag)
+      MiscOptionsEnableSummaryReport = inputFile.Options.EnableSummaryReport; 
+      SummaryAuxFileOutputFlag = (StockSummaryFlag)inputFile.Options.OutputSummaryReport;
       
-      this.MiscOptionsEnableAuxStochasticFiles = inputFile.Options.EnableAuxStochasticFiles;
-      this.SummaryAuxFileOutputFlag = (StockSummaryFlag)inputFile.Options.OutputSummaryReport;
-      this.MiscOptionsEnableExportR = inputFile.Options.EnableExportR;
-      this.MiscOptionsEnablePercentileReport = inputFile.Options.EnablePercentileReport;
-      this.MiscOptionsReportPercentile = Convert.ToDouble(inputFile.ReportPercentile.Percentile);
+      MiscOptionsEnableAuxStochasticFiles = inputFile.Options.EnableAuxStochasticFiles;
+      MiscOptionsEnableExportR = inputFile.Options.EnableExportR;
 
-      this.MiscOptionsEnableRefpointsReport = inputFile.Options.EnableRefpoint;
-      this.MiscOptionsRefSpawnBiomass = inputFile.Refpoint.RefSpawnBio.ToString();
-      this.MiscOptionsRefJan1Biomass = inputFile.Refpoint.RefJan1Bio.ToString();
-      this.MiscOptionsRefMeanBiomass = inputFile.Refpoint.RefMeanBio.ToString();
-      this.MiscOptionsRefFishingMortality = inputFile.Refpoint.RefFMort.ToString();
+      // Percentile Report
+      MiscOptionsEnablePercentileReport = inputFile.Options.EnablePercentileReport;
+      MiscOptionsReportPercentile = Convert.ToDouble(inputFile.ReportPercentile.Percentile);
 
-      this.MiscOptionsEnableScaleFactors = inputFile.Options.EnableScaleFactors;
-      this.MiscOptionsScaleFactorBiomass = inputFile.Scale.ScaleBio.ToString();
-      this.MiscOptionsScaleFactorRecruits = inputFile.Scale.ScaleRec.ToString();
-      this.MiscOptionsScaleFactorStockNumbers = inputFile.Scale.ScaleStockNum.ToString();
+      // Biological Reference Points
+      MiscOptionsEnableRefpointsReport = inputFile.Options.EnableRefpoint;
+      MiscOptionsRefSpawnBiomass = inputFile.Refpoint.RefSpawnBio.ToString();
+      MiscOptionsRefJan1Biomass = inputFile.Refpoint.RefJan1Bio.ToString();
+      MiscOptionsRefMeanBiomass = inputFile.Refpoint.RefMeanBio.ToString();
+      MiscOptionsRefFishingMortality = inputFile.Refpoint.RefFMort.ToString();
 
-      this.MiscOptionsBounds = inputFile.Options.EnableBounds;
-      this.MiscOptionsBoundsMaxWeight = inputFile.Bounds.MaxWeight.ToString();
-      this.MiscOptionsBoundsNaturalMortality = inputFile.Bounds.MaxNatMort.ToString();
+      // Scale Factors
+      MiscOptionsEnableScaleFactors = inputFile.Options.EnableScaleFactors;
+      MiscOptionsScaleFactorBiomass = inputFile.Scale.ScaleBio.ToString();
+      MiscOptionsScaleFactorRecruits = inputFile.Scale.ScaleRec.ToString();
+      MiscOptionsScaleFactorStockNumbers = inputFile.Scale.ScaleStockNum.ToString();
 
-      this.MiscOptionsEnableRetroAdjustmentFactors = inputFile.Options.EnableRetroAdjustmentFactors;
-      this.miscOptionsNAges = inputFile.General.NumAges();
-      this.miscOptionsFirstAge = inputFile.General.AgeBegin;
+      // Max Bounds
+      MiscOptionsBounds = inputFile.Options.EnableBounds;
+      MiscOptionsBoundsMaxWeight = inputFile.Bounds.MaxWeight.ToString();
+      MiscOptionsBoundsNaturalMortality = inputFile.Bounds.MaxNatMort.ToString();
 
-      this.LoadRetroAdjustmentsFactorTable(inputFile);
-
-      if (this.MiscOptionsEnableRetroAdjustmentFactors)
+      // Retro Adjustment Factors 
+      MiscOptionsEnableRetroAdjustmentFactors = inputFile.Options.EnableRetroAdjustmentFactors;
+      LoadRetroAdjustmentsFactorTable(inputFile);
+      
+      if (MiscOptionsEnableRetroAdjustmentFactors)
       {
-        this.SetRetroAdjustmentFactorRowHeaders();
+        SetRetroAdjustmentFactorRowHeaders();
       }
+
+      //OuputSummaryFlag Radio Buttons
+      SetupSummaryStockFlagRadioButtons(inputFile.Options);
     }
 
     #endregion

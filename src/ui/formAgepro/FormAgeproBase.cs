@@ -269,7 +269,6 @@ namespace Nmfs.Agepro.Gui
 
       //Misc Options
       controlMiscOptions.SetMiscOptionsControlsFromInputFile(inpFile);
-      controlMiscOptions.SetupSummaryStockFlagRadioButtons(inpFile.Options);
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
     }
