@@ -61,6 +61,8 @@ namespace Nmfs.Agepro.Gui
 
     }
 
+    #region Getters/Setters
+
     public bool MiscOptionsEnableSummaryReport
     {
       get => checkBoxEnableSummaryReport.Checked;
@@ -157,6 +159,40 @@ namespace Nmfs.Agepro.Gui
       set => dataGridRetroAdjustment.DataSource = value;
     }
     public string AgeproOutputViewer => comboBoxOutputViewerProgram.SelectedItem.ToString();
+
+    #endregion
+
+    #region Controls Setup
+
+    public void SetupSummaryStockFlagRadioButtons(AgeproMiscOptions inpData)
+    {
+      SummaryAuxFileOutputFlag = (StockSummaryFlag)inpData.OutputSummaryReport;
+
+      if (SummaryAuxFileOutputFlag == StockSummaryFlag.None)
+      {
+        radioButtonNone.Checked = true;
+      }
+      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.SummaryOnly)
+      {
+        radioButtonSummaryOnly.Checked = true;
+      }
+      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.SummaryPlusAux2_10)
+      {
+        radioButtonSummaryNoAux1.Checked = true;
+      }
+      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.SummaryPlusAllAux)
+      {
+        radioButtonSummaryPlusAllAux.Checked = true;
+      }
+      else 
+      {
+        throw new Exception("Invaild");
+      }
+
+    }
+
+
+    #endregion
 
     #region Setup Data Binding
 

@@ -131,6 +131,7 @@ namespace Nmfs.Agepro.Gui
       //Check for AGEPRO parameter data that has already been loaded/set 
       controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
       controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.GeneralFirstAgeClass;
+      controlMiscOptions.SetupSummaryStockFlagRadioButtons(inputData.Options);
 
       //Retro Adjustment Factors
       if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
@@ -276,6 +277,7 @@ namespace Nmfs.Agepro.Gui
 
       //Misc Options
       controlMiscOptions.SetMiscOptionsControlsFromInputFile(inpFile);
+      controlMiscOptions.SetupSummaryStockFlagRadioButtons(inpFile.Options);
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
     }
