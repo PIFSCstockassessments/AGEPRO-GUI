@@ -488,7 +488,7 @@ namespace Nmfs.Agepro.Gui
     /// Sets up Retro Adjustment Factors in Misc Options Panel when a new Agepro Model is created via interface.
     /// </summary>
     /// <param name="general">AGEPRO Genereal Parameters Control used to pass the Number of Ages</param>
-    public void SetupRetroAdjustmentFactorsControlFromUserInput(ControlGeneral general)
+    public void SetupRetroAdjustmentsFactorControl(ControlGeneral general)
     {  
       //In case NumAges is larger than previous row count, "reset" dataGridView 
       if (MiscOptionsRetroAdjustmentFactorTable != null
