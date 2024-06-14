@@ -129,7 +129,7 @@ namespace Nmfs.Agepro.Gui
       inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
       //Check for AGEPRO parameter data that has already been loaded/set 
-      controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
+      controlMiscOptions.miscOptionsNumAges = controlGeneralOptions.NumAges();
       controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.GeneralFirstAgeClass;
       controlMiscOptions.SetupSummaryStockFlagRadioButtons(inputData.Options);
 

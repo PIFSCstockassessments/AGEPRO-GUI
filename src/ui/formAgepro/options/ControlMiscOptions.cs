@@ -28,7 +28,7 @@ namespace Nmfs.Agepro.Gui
     private const string DefaultRefFishingMortality = "0.0";
     private const int DefaultLargeFileLineCount = 1000000;
 
-    public int miscOptionsNAges { get; set; }
+    public int miscOptionsNumAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
     public StockSummaryFlag SummaryAuxFileOutputFlag { get; set; }
     
@@ -343,7 +343,7 @@ namespace Nmfs.Agepro.Gui
         throw new ArgumentNullException(nameof(inputFile));
       }
 
-      miscOptionsNAges = inputFile.General.NumAges();
+      miscOptionsNumAges = inputFile.General.NumAges();
       miscOptionsFirstAge = inputFile.General.AgeBegin;
 
       // Options (w/ OutputSummaryFlag)
@@ -497,7 +497,7 @@ namespace Nmfs.Agepro.Gui
         MiscOptionsRetroAdjustmentFactorTable.Reset();
       }
       MiscOptionsRetroAdjustmentFactorTable =
-          GetRetroAdjustmentFallbackTable(miscOptionsNAges);
+          GetRetroAdjustmentFallbackTable(miscOptionsNumAges);
       SetRetroAdjustmentFactorRowHeaders();
     }
 
@@ -507,7 +507,7 @@ namespace Nmfs.Agepro.Gui
     public void SetRetroAdjustmentFactorRowHeaders()
     {
       dataGridRetroAdjustment.RowHeadersVisible = true;
-      for (int iage = 0; iage < miscOptionsNAges; iage++)
+      for (int iage = 0; iage < miscOptionsNumAges; iage++)
       {
         //Accomidate 0-based or 1-based First Age Models
         int iageForHeader = iage + miscOptionsFirstAge;
@@ -640,7 +640,7 @@ namespace Nmfs.Agepro.Gui
       else
       {
         //If Checked, create fallback defualt data table.
-        dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(miscOptionsNAges);
+        dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(miscOptionsNumAges);
 
         SetRetroAdjustmentFactorRowHeaders();
 
