@@ -136,15 +136,7 @@ namespace Nmfs.Agepro.Gui
       //Retro Adjustment Factors
       if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
       {
-        //In case NumAges is larger than previous row count, "reset" dataGridView 
-        if (controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable != null
-          && controlGeneralOptions.NumAges() > controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable.Rows.Count)
-        {
-          controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable.Reset();
-        }
-        controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable =
-            controlMiscOptions.GetRetroAdjustmentFallbackTable(controlMiscOptions.miscOptionsNAges);
-        controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
+        controlMiscOptions.SetupRetroAdjustmentFactorsControlFromUserInput(controlGeneralOptions);
       }
 
       //Set Stochastic Paramaeter DataGrids           

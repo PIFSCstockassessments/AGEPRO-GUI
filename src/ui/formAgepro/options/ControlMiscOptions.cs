@@ -192,6 +192,7 @@ namespace Nmfs.Agepro.Gui
     }
 
 
+
     #endregion
 
     #region Setup Data Binding
@@ -472,6 +473,23 @@ namespace Nmfs.Agepro.Gui
     /*
      * Retro Adjustment Factor Data Table Interface
      */
+
+    /// <summary>
+    /// Sets up Retro Adjustment Factors in Misc Options Panel when a new Agepro Model is created via interface.
+    /// </summary>
+    /// <param name="general">AGEPRO Genereal Parameters Control used to pass the Number of Ages</param>
+    public void SetupRetroAdjustmentFactorsControlFromUserInput(ControlGeneral general)
+    {  
+      //In case NumAges is larger than previous row count, "reset" dataGridView 
+      if (MiscOptionsRetroAdjustmentFactorTable != null
+        && general.NumAges() > MiscOptionsRetroAdjustmentFactorTable.Rows.Count)
+      {
+        MiscOptionsRetroAdjustmentFactorTable.Reset();
+      }
+      MiscOptionsRetroAdjustmentFactorTable =
+          GetRetroAdjustmentFallbackTable(miscOptionsNAges);
+      SetRetroAdjustmentFactorRowHeaders();
+    }
 
     /// <summary>
     /// Sets Up Row Headers For the Retro Adujustment Data Grid Table
