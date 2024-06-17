@@ -340,7 +340,7 @@ namespace Nmfs.Agepro.Gui
           }
 
           //Misc Options
-          controlMiscOptions.BindMiscOptionsControlValuesToCoreLib(inputData);
+          controlMiscOptions.ControlMiscOptionsDataBindings(inputData);
 
           inputData.WriteInputFile(saveAgeproInputFile.FileName);
 

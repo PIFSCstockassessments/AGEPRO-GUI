@@ -295,7 +295,7 @@ namespace Nmfs.Agepro.Gui
     /// before AGEPRO Input File Data is written.
     /// </summary>
     /// <param name="inputFile">AGEPRO CoreLib Input File Class</param>
-    public void BindMiscOptionsControlValuesToCoreLib(AgeproInputFile inputFile)
+    public void ControlMiscOptionsDataBindings(AgeproInputFile inputFile)
     {
       //Misc options
       inputFile.Options.EnableSummaryReport = MiscOptionsEnableSummaryReport;
