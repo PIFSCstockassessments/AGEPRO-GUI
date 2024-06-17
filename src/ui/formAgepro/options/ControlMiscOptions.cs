@@ -323,7 +323,7 @@ namespace Nmfs.Agepro.Gui
       inputFile.Scale.ScaleStockNum = double.Parse(MiscOptionsScaleFactorStockNumbers);
 
       //Misc Options: Retro Adjustment Factors
-      inputFile.RetroAdjustments.RetroAdjust = MiscOptionsRetroAdjustmentFactorTable;
+      inputFile.RetroAdjustment.RetroAdjust = MiscOptionsRetroAdjustmentFactorTable;
     }
 
     #endregion
@@ -377,11 +377,11 @@ namespace Nmfs.Agepro.Gui
 
       // Retro Adjustment Factors 
       MiscOptionsEnableRetroAdjustmentFactors = inputFile.Options.EnableRetroAdjustmentFactors;
-      LoadRetroAdjustmentsFactorTable(inputFile);
+      LoadRetroAdjustment(inputFile);
       
       if (MiscOptionsEnableRetroAdjustmentFactors)
       {
-        SetupRetroAdjustmentsFactorRowHeaders();
+        SetupRetroAdjustmentRowHeader();
       }
 
       //OuputSummaryFlag Radio Buttons
@@ -479,7 +479,7 @@ namespace Nmfs.Agepro.Gui
     }
     #endregion
 
-    #region RetroAdjustmentsFactorTable
+    #region RetroAdjustmentFactorTable
     /*
      * Retro Adjustment Factor Data Table Interface
      */
@@ -488,7 +488,7 @@ namespace Nmfs.Agepro.Gui
     /// Sets up Retro Adjustment Factors in Misc Options Panel when a new Agepro Model is created via interface.
     /// </summary>
     /// <param name="general">AGEPRO Genereal Parameters Control used to pass the Number of Ages</param>
-    public void SetupRetroAdjustmentsFactorControl(ControlGeneral general)
+    public void SetupRetroAdjustmentControl(ControlGeneral general)
     {  
       //In case NumAges is larger than previous row count, "reset" dataGridView 
       if (MiscOptionsRetroAdjustmentFactorTable != null
@@ -497,14 +497,14 @@ namespace Nmfs.Agepro.Gui
         MiscOptionsRetroAdjustmentFactorTable.Reset();
       }
       MiscOptionsRetroAdjustmentFactorTable =
-          GetRetroAdjustmentFallbackTable(miscOptionsNumAges);
-      SetupRetroAdjustmentsFactorRowHeaders();
+          FallbackRetroAdjustmentTable(miscOptionsNumAges);
+      SetupRetroAdjustmentRowHeader();
     }
 
     /// <summary>
     /// Sets Up Row Headers For the Retro Adujustment Data Grid Table
     /// </summary>
-    public void SetupRetroAdjustmentsFactorRowHeaders()
+    public void SetupRetroAdjustmentRowHeader()
     {
       dataGridRetroAdjustment.RowHeadersVisible = true;
       for (int iage = 0; iage < miscOptionsNumAges; iage++)
@@ -520,13 +520,13 @@ namespace Nmfs.Agepro.Gui
     /// Helper Function to Load The Retro Adjustments Data Grid from AGEPRO Input File
     /// </summary>
     /// <param name="inputFile">AGEPRO Input File Object</param>
-    public void LoadRetroAdjustmentsFactorTable(AgeproInputFile inputFile)
+    public void LoadRetroAdjustment(AgeproInputFile inputFile)
     {
       if (MiscOptionsRetroAdjustmentFactorTable != null)
       {
         MiscOptionsRetroAdjustmentFactorTable.Reset();
       }
-      MiscOptionsRetroAdjustmentFactorTable = inputFile.RetroAdjustments.RetroAdjust;
+      MiscOptionsRetroAdjustmentFactorTable = inputFile.RetroAdjustment.RetroAdjust;
     }
 
     /// <summary>
@@ -535,7 +535,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="numAges">Number of age rows. Each row represents an age.</param>
     /// <returns>Returns a single column Data Table populated with 0.</returns>
-    public DataTable GetRetroAdjustmentFallbackTable(int numAges)
+    public DataTable FallbackRetroAdjustmentTable(int numAges)
     {
       //Create a Single Column Table for the data grid view. Each row represents an age.
       DataTable fallbackTable = new DataTable();
@@ -640,9 +640,9 @@ namespace Nmfs.Agepro.Gui
       else
       {
         //If Checked, create fallback defualt data table.
-        dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(miscOptionsNumAges);
+        dataGridRetroAdjustment.DataSource = FallbackRetroAdjustmentTable(miscOptionsNumAges);
 
-        SetupRetroAdjustmentsFactorRowHeaders();
+        SetupRetroAdjustmentRowHeader();
 
       }
     }
@@ -659,7 +659,7 @@ namespace Nmfs.Agepro.Gui
       //header value is null
       if (e.ColumnIndex == 0)
       {
-        SetupRetroAdjustmentsFactorRowHeaders();
+        SetupRetroAdjustmentRowHeader();
       }
     }
 

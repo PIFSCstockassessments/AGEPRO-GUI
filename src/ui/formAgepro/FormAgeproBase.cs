@@ -136,7 +136,7 @@ namespace Nmfs.Agepro.Gui
       //Retro Adjustment Factors
       if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
       {
-        controlMiscOptions.SetupRetroAdjustmentsFactorControl(controlGeneralOptions);
+        controlMiscOptions.SetupRetroAdjustmentControl(controlGeneralOptions);
       }
 
       //Set Stochastic Paramaeter DataGrids           
