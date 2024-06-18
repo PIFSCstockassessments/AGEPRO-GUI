@@ -164,7 +164,7 @@ namespace Nmfs.Agepro.Gui
 
     #region Controls Setup
 
-    public void SetupSummaryStockFlagRadioButtons(AgeproMiscOptions inpData)
+    public void SetupGroupSummaryStockFlag(AgeproMiscOptions inpData)
     {
       SummaryAuxFileOutputFlag = (StockSummaryFlag)inpData.OutputSummaryReport;
 
@@ -385,7 +385,7 @@ namespace Nmfs.Agepro.Gui
       }
 
       //OuputSummaryFlag Radio Buttons
-      SetupSummaryStockFlagRadioButtons(inputFile.Options);
+      SetupGroupSummaryStockFlag(inputFile.Options);
     }
 
     #endregion
