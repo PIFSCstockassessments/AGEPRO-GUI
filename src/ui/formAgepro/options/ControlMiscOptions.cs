@@ -203,10 +203,10 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">Refrerence Points Option Object</param>
     public void SetupRefpointDataBindings(CoreLib.Refpoint miscOpt)
     {
-      SetControlDataBindings(textBoxRefSpawnBiomass, miscOpt, nameof(CoreLib.Refpoint.RefSpawnBio)); // "RefSpawnBio"
-      SetControlDataBindings(textBoxRefJan1Biomass, miscOpt, nameof(CoreLib.Refpoint.RefJan1Bio)); // "RefJan1Bio"
-      SetControlDataBindings(textBoxRefMeanBiomass, miscOpt, nameof(CoreLib.Refpoint.RefMeanBio)); // "RefMeanBio"
-      SetControlDataBindings(textBoxRefFishMortality, miscOpt, nameof(CoreLib.Refpoint.RefFMort)); // "RefFMort"
+      SetupTextBoxDataBindings(textBoxRefSpawnBiomass, miscOpt, nameof(CoreLib.Refpoint.RefSpawnBio)); // "RefSpawnBio"
+      SetupTextBoxDataBindings(textBoxRefJan1Biomass, miscOpt, nameof(CoreLib.Refpoint.RefJan1Bio)); // "RefJan1Bio"
+      SetupTextBoxDataBindings(textBoxRefMeanBiomass, miscOpt, nameof(CoreLib.Refpoint.RefMeanBio)); // "RefMeanBio"
+      SetupTextBoxDataBindings(textBoxRefFishMortality, miscOpt, nameof(CoreLib.Refpoint.RefFMort)); // "RefFMort"
     }
 
     /// <summary>
@@ -215,9 +215,9 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
     public void SetupScaleFactorsDataBindings(CoreLib.ScaleFactors miscOpt)
     {
-      SetControlDataBindings(textBoxScaleFactorBiomass, miscOpt, nameof(CoreLib.ScaleFactors.ScaleBio)); // "ScaleBio"
-      SetControlDataBindings(textBoxScaleFactorRecruits, miscOpt, nameof(CoreLib.ScaleFactors.ScaleRec)); // "ScaleRec"
-      SetControlDataBindings(textBoxScaleFactorsStockNum, miscOpt, nameof(CoreLib.ScaleFactors.ScaleStockNum)); // "ScaleStockNum"
+      SetupTextBoxDataBindings(textBoxScaleFactorBiomass, miscOpt, nameof(CoreLib.ScaleFactors.ScaleBio)); // "ScaleBio"
+      SetupTextBoxDataBindings(textBoxScaleFactorRecruits, miscOpt, nameof(CoreLib.ScaleFactors.ScaleRec)); // "ScaleRec"
+      SetupTextBoxDataBindings(textBoxScaleFactorsStockNum, miscOpt, nameof(CoreLib.ScaleFactors.ScaleStockNum)); // "ScaleStockNum"
     }
 
     /// <summary>
@@ -226,8 +226,8 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
     public void SetupBoundsDataBindings(CoreLib.Bounds miscOpt)
     {
-      SetControlDataBindings(textBoxBoundsMaxWeight, miscOpt, nameof(CoreLib.Bounds.MaxWeight), true); // "MaxWeight"
-      SetControlDataBindings(textBoxBoundsNatMortality, miscOpt, nameof(CoreLib.Bounds.MaxNatMort), true); //"MaxNatMort"
+      SetupTextBoxDataBindings(textBoxBoundsMaxWeight, miscOpt, nameof(CoreLib.Bounds.MaxWeight), true); // "MaxWeight"
+      SetupTextBoxDataBindings(textBoxBoundsNatMortality, miscOpt, nameof(CoreLib.Bounds.MaxNatMort), true); //"MaxNatMort"
     }
 
     /// <summary>
@@ -237,7 +237,7 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOptSrc"> Generalized class that encapsulates AGEPRO's <see cref="CoreLib.AgeproOptionsProperty"/> Classes </param>
     /// <param name="miscOptField"> Field names of specfic <see cref="AgeproOptionsProperty"/> class.</param>
     /// <param name="decimalZeroFormat">Boolean flag to format to include point-decimal values.  </param>
-    private void SetControlDataBindings(NftTextBox ctl, CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
+    private void SetupTextBoxDataBindings(NftTextBox ctl, CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
       bool decimalZeroFormat = false)
     {
       //Clear any existing (if any) bindings before creating new ones.
