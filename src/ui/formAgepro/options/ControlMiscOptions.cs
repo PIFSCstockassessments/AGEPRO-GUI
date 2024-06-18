@@ -336,7 +336,7 @@ namespace Nmfs.Agepro.Gui
     /// </summary>
     /// <param name="inputFile"> AGEPRO Input File </param>
     /// <exception cref="ArgumentNullException"></exception>
-    public void SetMiscOptionsControlsFromInputFile(AgeproInputFile inputFile)
+    public void SetupControlFromFile(AgeproInputFile inputFile)
     {
       if (inputFile is null)
       {

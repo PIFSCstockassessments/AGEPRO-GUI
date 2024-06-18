@@ -268,7 +268,7 @@ namespace Nmfs.Agepro.Gui
       controlBootstrap.BootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
       //Misc Options
-      controlMiscOptions.SetMiscOptionsControlsFromInputFile(inpFile);
+      controlMiscOptions.SetupControlFromFile(inpFile);
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
     }
