@@ -1,6 +1,7 @@
 ﻿using Nmfs.Agepro.CoreLib;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -164,6 +165,13 @@ namespace Nmfs.Agepro.Gui
 
     #region Controls Setup
 
+    /// <summary>
+    /// Sets which Stock Summary Flag RadioBoxes to based on AGEPRO Input 
+    /// File's StockSummaryFlag Value.
+    /// </summary>
+    /// <param name="inpData">Parameter data for OPTIONS Keywrod parameter 
+    /// from the AGEPRO Input File</param>
+    /// <exception cref="InvalidEnumArgumentException"></exception>
     public void SetupGroupSummaryStockFlag(AgeproMiscOptions inpData)
     {
       SummaryAuxFileOutputFlag = (StockSummaryFlag)inpData.OutputSummaryReport;
@@ -186,7 +194,7 @@ namespace Nmfs.Agepro.Gui
       }
       else 
       {
-        throw new Exception("Invaild");
+        throw new InvalidEnumArgumentException();
       }
 
     }
