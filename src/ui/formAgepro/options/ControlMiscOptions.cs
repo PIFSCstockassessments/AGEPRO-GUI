@@ -58,7 +58,7 @@ namespace Nmfs.Agepro.Gui
       //Report Percentile
       MiscOptionsReportPercentile = 0;
 
-      SummaryAuxFileOutputFlag = StockSummaryFlag.None;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.NoStockDistAllAux;
 
     }
 
@@ -176,21 +176,21 @@ namespace Nmfs.Agepro.Gui
     {
       SummaryAuxFileOutputFlag = (StockSummaryFlag)inpData.OutputSummaryReport;
 
-      if (SummaryAuxFileOutputFlag == StockSummaryFlag.None)
+      if (SummaryAuxFileOutputFlag == StockSummaryFlag.NoStockDistAllAux)
       {
-        radioButtonNone.Checked = true;
+        radioButtonNoStockDistAllAux.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.SummaryOnly)
+      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.StockDistAllAux)
       {
-        radioButtonSummaryOnly.Checked = true;
+        radioButtonStockDistAllAux.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.SummaryPlusAux2_10)
+      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.StockDistNoAux)
       {
-        radioButtonSummaryNoAux1.Checked = true;
+        radioButtonSummaryStockDistNoAux.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.SummaryPlusAllAux)
+      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.StockDistExceptAuxStockVector)
       {
-        radioButtonSummaryPlusAllAux.Checked = true;
+        radioButtonStockDistExceptAuxStockVector.Checked = true;
       }
       else 
       {
@@ -673,22 +673,22 @@ namespace Nmfs.Agepro.Gui
 
     private void RadioButtonNone_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.None;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.NoStockDistAllAux;
     }
 
     private void RadioButtonSummaryOnly_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.SummaryOnly;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.StockDistAllAux;
     }
 
     private void RadioButtonSummaryNoAux1_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.SummaryPlusAux2_10;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.StockDistNoAux;
     }
 
     private void RadioButtonSummaryPlusAllAux_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.SummaryPlusAllAux;
+      SummaryAuxFileOutputFlag = StockSummaryFlag.StockDistExceptAuxStockVector;
     }
 
     private void CheckBoxEnableSummaryReport_CheckedChanged(object sender, EventArgs e)
