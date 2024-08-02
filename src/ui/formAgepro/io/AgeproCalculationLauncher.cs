@@ -146,6 +146,8 @@ namespace Nmfs.Agepro.Gui
 
       try
       {
+        //TODO:Split TryCatch to accomdate (pre) launch AGEPRO and (post) output proccessing errors.
+
         //Set bootstrap filename to copied workDir version
         ageproData.Bootstrap.BootstrapFile = bsnFile;
 
@@ -155,17 +157,30 @@ namespace Nmfs.Agepro.Gui
         //use command line to open AGEPRO40.exe
         LaunchAgeproCalcEngineProgram(inpFile);
 
-        //crude method to search for AGEPRO output file
-        string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
+        //crude method to search for AGEPRO output file 
+        Console.WriteLine("Getting path of: " + inpFile);
+        string targetOutputPath = Path.GetDirectoryName(inpFile);
+        Console.WriteLine(Directory.GetFiles(targetOutputPath, ".out").Length);
+      
+        if (Directory.GetFiles(targetOutputPath, ".out").Length == 0)
+        {
+          throw new Exception("No AGEPRO output file (*.out) found on target output path: " + Environment.NewLine 
+            + targetOutputPath + Environment.NewLine);
+          
+        }
+        string outFilePath = Directory.EnumerateFiles(targetOutputPath, "*.out").First();
+        Console.WriteLine("Viewing " + outFilePath);
+        //string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
 
-        LaunchOutputViewerProgram(ageproOutfile, AgeproUserOptions);
+        LaunchOutputViewerProgram(outFilePath, AgeproUserOptions);
 
         //Open WorkPath directory for the user 
         _ = Process.Start(ageproWorkPath);
       }
       catch (Exception ex)
       {
-        _ = MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        _ = MessageBox.Show("An error occured when processing AGEPRO Model to the Calcuation Engine:" + Environment.NewLine 
+          + Environment.NewLine + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
       finally
       {
