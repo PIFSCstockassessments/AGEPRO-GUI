@@ -55,11 +55,12 @@
       this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
       this.labelOutputViewerProgram = new System.Windows.Forms.Label();
       this.groupBox_StockSummmaryFlag = new System.Windows.Forms.GroupBox();
-      this.radioButtonStockDistExceptAuxStockVector = new System.Windows.Forms.RadioButton();
-      this.radioButtonSummaryStockDistNoAux = new System.Windows.Forms.RadioButton();
-      this.radioButtonStockDistAllAux = new System.Windows.Forms.RadioButton();
-      this.radioButtonNoStockDistAllAux = new System.Windows.Forms.RadioButton();
+      this.radioButtonOnlyOutfileAppendStock = new System.Windows.Forms.RadioButton();
+      this.radioButtonOnlyOutfileNoStock = new System.Windows.Forms.RadioButton();
+      this.radioButtonOutfileAppendStockAllAux = new System.Windows.Forms.RadioButton();
+      this.radioButtonOutfileNoStockExcludeStockAux = new System.Windows.Forms.RadioButton();
       this.groupOutputViewer = new System.Windows.Forms.GroupBox();
+      this.radioButtonOutfileAppendStockExcludeStockAux = new System.Windows.Forms.RadioButton();
       this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
       this.textBoxScaleFactorRecruits = new Nmfs.Agepro.Gui.NftTextBox();
       this.textBoxScaleFactorsStockNum = new Nmfs.Agepro.Gui.NftTextBox();
@@ -88,9 +89,9 @@
       this.groupOuputOptions.Controls.Add(this.checkBoxEnablePercentileReport);
       this.groupOuputOptions.Controls.Add(this.checkBoxEnableExportR);
       this.groupOuputOptions.Controls.Add(this.checkBoxEnableAuxStochasticFiles);
-      this.groupOuputOptions.Location = new System.Drawing.Point(29, 144);
+      this.groupOuputOptions.Location = new System.Drawing.Point(29, 154);
       this.groupOuputOptions.Name = "groupOuputOptions";
-      this.groupOuputOptions.Size = new System.Drawing.Size(383, 123);
+      this.groupOuputOptions.Size = new System.Drawing.Size(406, 123);
       this.groupOuputOptions.TabIndex = 1;
       this.groupOuputOptions.TabStop = false;
       this.groupOuputOptions.Text = "Output Options";
@@ -99,7 +100,7 @@
       // 
       this.spinBoxReportPercentile.DecimalPlaces = 1;
       this.spinBoxReportPercentile.Enabled = false;
-      this.spinBoxReportPercentile.Location = new System.Drawing.Point(159, 87);
+      this.spinBoxReportPercentile.Location = new System.Drawing.Point(159, 88);
       this.spinBoxReportPercentile.Name = "spinBoxReportPercentile";
       this.spinBoxReportPercentile.Size = new System.Drawing.Size(107, 20);
       this.spinBoxReportPercentile.TabIndex = 5;
@@ -108,7 +109,7 @@
       // 
       this.labelReportPercentile.AutoSize = true;
       this.labelReportPercentile.Enabled = false;
-      this.labelReportPercentile.Location = new System.Drawing.Point(64, 89);
+      this.labelReportPercentile.Location = new System.Drawing.Point(64, 90);
       this.labelReportPercentile.Name = "labelReportPercentile";
       this.labelReportPercentile.Size = new System.Drawing.Size(89, 13);
       this.labelReportPercentile.TabIndex = 4;
@@ -117,7 +118,7 @@
       // checkBoxEnablePercentileReport
       // 
       this.checkBoxEnablePercentileReport.AutoSize = true;
-      this.checkBoxEnablePercentileReport.Location = new System.Drawing.Point(17, 65);
+      this.checkBoxEnablePercentileReport.Location = new System.Drawing.Point(17, 66);
       this.checkBoxEnablePercentileReport.Name = "checkBoxEnablePercentileReport";
       this.checkBoxEnablePercentileReport.Size = new System.Drawing.Size(151, 17);
       this.checkBoxEnablePercentileReport.TabIndex = 3;
@@ -128,7 +129,7 @@
       // checkBoxEnableExportR
       // 
       this.checkBoxEnableExportR.AutoSize = true;
-      this.checkBoxEnableExportR.Location = new System.Drawing.Point(17, 42);
+      this.checkBoxEnableExportR.Location = new System.Drawing.Point(17, 43);
       this.checkBoxEnableExportR.Name = "checkBoxEnableExportR";
       this.checkBoxEnableExportR.Size = new System.Drawing.Size(117, 17);
       this.checkBoxEnableExportR.TabIndex = 2;
@@ -138,7 +139,7 @@
       // checkBoxEnableAuxStochasticFiles
       // 
       this.checkBoxEnableAuxStochasticFiles.AutoSize = true;
-      this.checkBoxEnableAuxStochasticFiles.Location = new System.Drawing.Point(17, 19);
+      this.checkBoxEnableAuxStochasticFiles.Location = new System.Drawing.Point(17, 20);
       this.checkBoxEnableAuxStochasticFiles.Name = "checkBoxEnableAuxStochasticFiles";
       this.checkBoxEnableAuxStochasticFiles.Size = new System.Drawing.Size(214, 17);
       this.checkBoxEnableAuxStochasticFiles.TabIndex = 4;
@@ -148,7 +149,7 @@
       // checkBoxEnableSummaryReport
       // 
       this.checkBoxEnableSummaryReport.AutoSize = true;
-      this.checkBoxEnableSummaryReport.Location = new System.Drawing.Point(418, 489);
+      this.checkBoxEnableSummaryReport.Location = new System.Drawing.Point(441, 489);
       this.checkBoxEnableSummaryReport.Name = "checkBoxEnableSummaryReport";
       this.checkBoxEnableSummaryReport.Size = new System.Drawing.Size(262, 17);
       this.checkBoxEnableSummaryReport.TabIndex = 7;
@@ -167,7 +168,7 @@
       this.groupRefpoints.Controls.Add(this.labelJan1Biomass);
       this.groupRefpoints.Controls.Add(this.textBoxRefSpawnBiomass);
       this.groupRefpoints.Controls.Add(this.labelSpawnBiomass);
-      this.groupRefpoints.Location = new System.Drawing.Point(418, 191);
+      this.groupRefpoints.Location = new System.Drawing.Point(441, 191);
       this.groupRefpoints.Name = "groupRefpoints";
       this.groupRefpoints.Size = new System.Drawing.Size(390, 152);
       this.groupRefpoints.TabIndex = 5;
@@ -232,7 +233,7 @@
       this.groupBounds.Controls.Add(this.textBoxBoundsMaxWeight);
       this.groupBounds.Controls.Add(this.labelBoundsMaxWeight);
       this.groupBounds.Controls.Add(this.checkBoxBounds);
-      this.groupBounds.Location = new System.Drawing.Point(418, 86);
+      this.groupBounds.Location = new System.Drawing.Point(441, 86);
       this.groupBounds.Name = "groupBounds";
       this.groupBounds.Size = new System.Drawing.Size(390, 99);
       this.groupBounds.TabIndex = 4;
@@ -279,7 +280,7 @@
       this.groupScaleFactors.Controls.Add(this.textBoxScaleFactorBiomass);
       this.groupScaleFactors.Controls.Add(this.labelScaleFactorBiomass);
       this.groupScaleFactors.Controls.Add(this.checkBoxEnableScaleFactors);
-      this.groupScaleFactors.Location = new System.Drawing.Point(418, 349);
+      this.groupScaleFactors.Location = new System.Drawing.Point(441, 349);
       this.groupScaleFactors.Name = "groupScaleFactors";
       this.groupScaleFactors.Size = new System.Drawing.Size(390, 134);
       this.groupScaleFactors.TabIndex = 6;
@@ -331,9 +332,9 @@
       // 
       this.groupRetroAdjustment.Controls.Add(this.checkBoxEnableRetroAdjustment);
       this.groupRetroAdjustment.Controls.Add(this.dataGridRetroAdjustment);
-      this.groupRetroAdjustment.Location = new System.Drawing.Point(29, 273);
+      this.groupRetroAdjustment.Location = new System.Drawing.Point(29, 283);
       this.groupRetroAdjustment.Name = "groupRetroAdjustment";
-      this.groupRetroAdjustment.Size = new System.Drawing.Size(383, 223);
+      this.groupRetroAdjustment.Size = new System.Drawing.Size(406, 223);
       this.groupRetroAdjustment.TabIndex = 2;
       this.groupRetroAdjustment.TabStop = false;
       this.groupRetroAdjustment.Text = "Retrospective Adjustment Factors";
@@ -372,75 +373,88 @@
       // 
       // groupBox_StockSummmaryFlag
       // 
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonStockDistExceptAuxStockVector);
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonSummaryStockDistNoAux);
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonStockDistAllAux);
-      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonNoStockDistAllAux);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonOutfileAppendStockExcludeStockAux);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonOnlyOutfileAppendStock);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonOnlyOutfileNoStock);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonOutfileAppendStockAllAux);
+      this.groupBox_StockSummmaryFlag.Controls.Add(this.radioButtonOutfileNoStockExcludeStockAux);
       this.groupBox_StockSummmaryFlag.Location = new System.Drawing.Point(29, 15);
       this.groupBox_StockSummmaryFlag.Name = "groupBox_StockSummmaryFlag";
-      this.groupBox_StockSummmaryFlag.Size = new System.Drawing.Size(383, 123);
+      this.groupBox_StockSummmaryFlag.Size = new System.Drawing.Size(406, 133);
       this.groupBox_StockSummmaryFlag.TabIndex = 0;
       this.groupBox_StockSummmaryFlag.TabStop = false;
       this.groupBox_StockSummmaryFlag.Text = "Stock Distribution Summary and Auxiliary Data Files";
       // 
-      // radioButtonStockDistExceptAuxStockVector
+      // radioButtonOnlyOutfileAppendStock
       // 
-      this.radioButtonStockDistExceptAuxStockVector.AutoSize = true;
-      this.radioButtonStockDistExceptAuxStockVector.Location = new System.Drawing.Point(17, 86);
-      this.radioButtonStockDistExceptAuxStockVector.Name = "radioButtonStockDistExceptAuxStockVector";
-      this.radioButtonStockDistExceptAuxStockVector.Size = new System.Drawing.Size(330, 17);
-      this.radioButtonStockDistExceptAuxStockVector.TabIndex = 3;
-      this.radioButtonStockDistExceptAuxStockVector.TabStop = true;
-      this.radioButtonStockDistExceptAuxStockVector.Text = "Stock Distribution and Auxiliary Files EXCEPT Auxiliary Stock File";
-      this.radioButtonStockDistExceptAuxStockVector.UseVisualStyleBackColor = true;
-      this.radioButtonStockDistExceptAuxStockVector.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryPlusAllAux_CheckedChanged);
+      this.radioButtonOnlyOutfileAppendStock.AutoSize = true;
+      this.radioButtonOnlyOutfileAppendStock.Location = new System.Drawing.Point(17, 86);
+      this.radioButtonOnlyOutfileAppendStock.Name = "radioButtonOnlyOutfileAppendStock";
+      this.radioButtonOnlyOutfileAppendStock.Size = new System.Drawing.Size(221, 17);
+      this.radioButtonOnlyOutfileAppendStock.TabIndex = 3;
+      this.radioButtonOnlyOutfileAppendStock.TabStop = true;
+      this.radioButtonOnlyOutfileAppendStock.Text = "ONLY Output File with Stock Distributions";
+      this.radioButtonOnlyOutfileAppendStock.UseVisualStyleBackColor = true;
+      this.radioButtonOnlyOutfileAppendStock.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryPlusAllAux_CheckedChanged);
       // 
-      // radioButtonSummaryStockDistNoAux
+      // radioButtonOnlyOutfileNoStock
       // 
-      this.radioButtonSummaryStockDistNoAux.AutoSize = true;
-      this.radioButtonSummaryStockDistNoAux.Location = new System.Drawing.Point(17, 63);
-      this.radioButtonSummaryStockDistNoAux.Name = "radioButtonSummaryStockDistNoAux";
-      this.radioButtonSummaryStockDistNoAux.Size = new System.Drawing.Size(220, 17);
-      this.radioButtonSummaryStockDistNoAux.TabIndex = 2;
-      this.radioButtonSummaryStockDistNoAux.TabStop = true;
-      this.radioButtonSummaryStockDistNoAux.Text = "Stock Distribution Only (No Auxiliary Files)";
-      this.radioButtonSummaryStockDistNoAux.UseVisualStyleBackColor = true;
-      this.radioButtonSummaryStockDistNoAux.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryNoAux1_CheckedChanged);
+      this.radioButtonOnlyOutfileNoStock.AutoSize = true;
+      this.radioButtonOnlyOutfileNoStock.Location = new System.Drawing.Point(17, 63);
+      this.radioButtonOnlyOutfileNoStock.Name = "radioButtonOnlyOutfileNoStock";
+      this.radioButtonOnlyOutfileNoStock.Size = new System.Drawing.Size(224, 17);
+      this.radioButtonOnlyOutfileNoStock.TabIndex = 2;
+      this.radioButtonOnlyOutfileNoStock.TabStop = true;
+      this.radioButtonOnlyOutfileNoStock.Text = "ONLY Output File (NO Stock Distributions)";
+      this.radioButtonOnlyOutfileNoStock.UseVisualStyleBackColor = true;
+      this.radioButtonOnlyOutfileNoStock.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryNoAux1_CheckedChanged);
       // 
-      // radioButtonStockDistAllAux
+      // radioButtonOutfileAppendStockAllAux
       // 
-      this.radioButtonStockDistAllAux.AutoSize = true;
-      this.radioButtonStockDistAllAux.Location = new System.Drawing.Point(17, 40);
-      this.radioButtonStockDistAllAux.Name = "radioButtonStockDistAllAux";
-      this.radioButtonStockDistAllAux.Size = new System.Drawing.Size(197, 17);
-      this.radioButtonStockDistAllAux.TabIndex = 1;
-      this.radioButtonStockDistAllAux.TabStop = true;
-      this.radioButtonStockDistAllAux.Text = "Auxiliary Files and Stock Distribution ";
-      this.radioButtonStockDistAllAux.UseVisualStyleBackColor = true;
-      this.radioButtonStockDistAllAux.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryOnly_CheckedChanged);
+      this.radioButtonOutfileAppendStockAllAux.AutoSize = true;
+      this.radioButtonOutfileAppendStockAllAux.Location = new System.Drawing.Point(17, 40);
+      this.radioButtonOutfileAppendStockAllAux.Name = "radioButtonOutfileAppendStockAllAux";
+      this.radioButtonOutfileAppendStockAllAux.Size = new System.Drawing.Size(273, 17);
+      this.radioButtonOutfileAppendStockAllAux.TabIndex = 1;
+      this.radioButtonOutfileAppendStockAllAux.TabStop = true;
+      this.radioButtonOutfileAppendStockAllAux.Text = "Output file with Stock Distributions, ALL Auxiliary files";
+      this.radioButtonOutfileAppendStockAllAux.UseVisualStyleBackColor = true;
+      this.radioButtonOutfileAppendStockAllAux.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryOnly_CheckedChanged);
       // 
-      // radioButtonNoStockDistAllAux
+      // radioButtonOutfileNoStockExcludeStockAux
       // 
-      this.radioButtonNoStockDistAllAux.AutoSize = true;
-      this.radioButtonNoStockDistAllAux.Location = new System.Drawing.Point(17, 17);
-      this.radioButtonNoStockDistAllAux.Name = "radioButtonNoStockDistAllAux";
-      this.radioButtonNoStockDistAllAux.Size = new System.Drawing.Size(220, 17);
-      this.radioButtonNoStockDistAllAux.TabIndex = 0;
-      this.radioButtonNoStockDistAllAux.TabStop = true;
-      this.radioButtonNoStockDistAllAux.Text = "Auxiliary Files Only (No Stock Distribution)";
-      this.radioButtonNoStockDistAllAux.UseVisualStyleBackColor = true;
-      this.radioButtonNoStockDistAllAux.CheckedChanged += new System.EventHandler(this.RadioButtonNone_CheckedChanged);
+      this.radioButtonOutfileNoStockExcludeStockAux.AutoSize = true;
+      this.radioButtonOutfileNoStockExcludeStockAux.Location = new System.Drawing.Point(17, 17);
+      this.radioButtonOutfileNoStockExcludeStockAux.Name = "radioButtonOutfileNoStockExcludeStockAux";
+      this.radioButtonOutfileNoStockExcludeStockAux.Size = new System.Drawing.Size(376, 17);
+      this.radioButtonOutfileNoStockExcludeStockAux.TabIndex = 0;
+      this.radioButtonOutfileNoStockExcludeStockAux.TabStop = true;
+      this.radioButtonOutfileNoStockExcludeStockAux.Text = "Output file without Stock Distributions, Auxiliary files EXCEPT Stock of Age";
+      this.radioButtonOutfileNoStockExcludeStockAux.UseVisualStyleBackColor = true;
+      this.radioButtonOutfileNoStockExcludeStockAux.CheckedChanged += new System.EventHandler(this.RadioButtonNone_CheckedChanged);
       // 
       // groupOutputViewer
       // 
       this.groupOutputViewer.Controls.Add(this.comboBoxOutputViewerProgram);
       this.groupOutputViewer.Controls.Add(this.labelOutputViewerProgram);
-      this.groupOutputViewer.Location = new System.Drawing.Point(418, 15);
+      this.groupOutputViewer.Location = new System.Drawing.Point(441, 15);
       this.groupOutputViewer.Name = "groupOutputViewer";
       this.groupOutputViewer.Size = new System.Drawing.Size(390, 65);
       this.groupOutputViewer.TabIndex = 3;
       this.groupOutputViewer.TabStop = false;
       this.groupOutputViewer.Text = "Output File Viewer";
+      // 
+      // radioButtonOutfileAppendStockExcludeStockAux
+      // 
+      this.radioButtonOutfileAppendStockExcludeStockAux.AutoSize = true;
+      this.radioButtonOutfileAppendStockExcludeStockAux.Location = new System.Drawing.Point(17, 109);
+      this.radioButtonOutfileAppendStockExcludeStockAux.Name = "radioButtonOutfileAppendStockExcludeStockAux";
+      this.radioButtonOutfileAppendStockExcludeStockAux.Size = new System.Drawing.Size(367, 17);
+      this.radioButtonOutfileAppendStockExcludeStockAux.TabIndex = 4;
+      this.radioButtonOutfileAppendStockExcludeStockAux.TabStop = true;
+      this.radioButtonOutfileAppendStockExcludeStockAux.Text = "Output File with Stock Distributions, Auxiliary Files EXCEPT Stock of Age";
+      this.radioButtonOutfileAppendStockExcludeStockAux.UseVisualStyleBackColor = true;
+      this.radioButtonOutfileAppendStockExcludeStockAux.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryPlusAllAux_CheckedChanged);
       // 
       // dataGridRetroAdjustment
       // 
@@ -624,10 +638,11 @@
         private System.Windows.Forms.ComboBox comboBoxOutputViewerProgram;
         private System.Windows.Forms.Label labelOutputViewerProgram;
     private System.Windows.Forms.GroupBox groupBox_StockSummmaryFlag;
-    private System.Windows.Forms.RadioButton radioButtonNoStockDistAllAux;
-    private System.Windows.Forms.RadioButton radioButtonSummaryStockDistNoAux;
-    private System.Windows.Forms.RadioButton radioButtonStockDistAllAux;
-    private System.Windows.Forms.RadioButton radioButtonStockDistExceptAuxStockVector;
+    private System.Windows.Forms.RadioButton radioButtonOutfileNoStockExcludeStockAux;
+    private System.Windows.Forms.RadioButton radioButtonOnlyOutfileNoStock;
+    private System.Windows.Forms.RadioButton radioButtonOutfileAppendStockAllAux;
+    private System.Windows.Forms.RadioButton radioButtonOnlyOutfileAppendStock;
     private System.Windows.Forms.GroupBox groupOutputViewer;
+    private System.Windows.Forms.RadioButton radioButtonOutfileAppendStockExcludeStockAux;
   }
 }

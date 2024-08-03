@@ -31,7 +31,7 @@ namespace Nmfs.Agepro.Gui
 
     public int miscOptionsNumAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
-    public StockSummaryFlag SummaryAuxFileOutputFlag { get; set; }
+    public AuxiliaryOutputFlag SummaryAuxFileOutputFlag { get; set; }
     
     public ControlMiscOptions()
     {
@@ -58,7 +58,7 @@ namespace Nmfs.Agepro.Gui
       //Report Percentile
       MiscOptionsReportPercentile = 0;
 
-      SummaryAuxFileOutputFlag = StockSummaryFlag.NoStockDistAllAux;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileNoStockExcludeStockAux;
 
     }
 
@@ -174,23 +174,23 @@ namespace Nmfs.Agepro.Gui
     /// <exception cref="InvalidEnumArgumentException"></exception>
     public void SetupGroupSummaryStockFlag(AgeproMiscOptions inpData)
     {
-      SummaryAuxFileOutputFlag = (StockSummaryFlag)inpData.OutputSummaryReport;
+      SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inpData.OutputSummaryReport;
 
-      if (SummaryAuxFileOutputFlag == StockSummaryFlag.NoStockDistAllAux)
+      if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OutfileNoStockExcludeStockAux)
       {
-        radioButtonNoStockDistAllAux.Checked = true;
+        radioButtonOutfileNoStockExcludeStockAux.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.StockDistAllAux)
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OutfileAppendStockAllAux)
       {
-        radioButtonStockDistAllAux.Checked = true;
+        radioButtonOutfileAppendStockAllAux.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.StockDistNoAux)
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OnlyOutfileNoStock)
       {
-        radioButtonSummaryStockDistNoAux.Checked = true;
+        radioButtonOnlyOutfileNoStock.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == StockSummaryFlag.StockDistExceptAuxStockVector)
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OnlyOutfileAppendStock)
       {
-        radioButtonStockDistExceptAuxStockVector.Checked = true;
+        radioButtonOnlyOutfileAppendStock.Checked = true;
       }
       else 
       {
@@ -356,7 +356,7 @@ namespace Nmfs.Agepro.Gui
 
       // Options (w/ OutputSummaryFlag)
       MiscOptionsEnableSummaryReport = inputFile.Options.EnableSummaryReport; 
-      SummaryAuxFileOutputFlag = (StockSummaryFlag)inputFile.Options.OutputSummaryReport;
+      SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inputFile.Options.OutputSummaryReport;
       
       MiscOptionsEnableAuxStochasticFiles = inputFile.Options.EnableAuxStochasticFiles;
       MiscOptionsEnableExportR = inputFile.Options.EnableExportR;
@@ -673,27 +673,27 @@ namespace Nmfs.Agepro.Gui
 
     private void RadioButtonNone_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.NoStockDistAllAux;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileNoStockExcludeStockAux;
     }
 
     private void RadioButtonSummaryOnly_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.StockDistAllAux;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileAppendStockAllAux;
     }
 
     private void RadioButtonSummaryNoAux1_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.StockDistNoAux;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OnlyOutfileNoStock;
     }
 
     private void RadioButtonSummaryPlusAllAux_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = StockSummaryFlag.StockDistExceptAuxStockVector;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OnlyOutfileAppendStock;
     }
 
     private void CheckBoxEnableSummaryReport_CheckedChanged(object sender, EventArgs e)
     {
-
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileAppendStockExcludeStockAux;
     }
 
     #endregion
