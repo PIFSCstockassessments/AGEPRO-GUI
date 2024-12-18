@@ -425,7 +425,7 @@ namespace Nmfs.Agepro.Gui
       {
         MiscOptionsRetroAdjustmentFactorTable.Reset();
       }
-      MiscOptionsRetroAdjustmentFactorTable = inputFile.RetroAdjustments.RetroAdjust;
+      MiscOptionsRetroAdjustmentFactorTable = inputFile.RetroAdjustment.RetroAdjust;
     }
 
     /// <summary>

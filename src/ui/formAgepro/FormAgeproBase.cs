@@ -401,7 +401,7 @@ namespace Nmfs.Agepro.Gui
           inputData.Scale.ScaleStockNum = double.Parse(controlMiscOptions.MiscOptionsScaleFactorStockNumbers);
 
           //Misc Options: Retro Adjustment Factors
-          inputData.RetroAdjustments.RetroAdjust = controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable;
+          inputData.RetroAdjustment.RetroAdjust = controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable;
 
           inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
