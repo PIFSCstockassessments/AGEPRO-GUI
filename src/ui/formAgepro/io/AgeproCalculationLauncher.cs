@@ -1,5 +1,6 @@
 ﻿using Nmfs.Agepro.CoreLib;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -155,8 +156,8 @@ namespace Nmfs.Agepro.Gui
         //use command line to open AGEPRO40.exe
         LaunchAgeproCalcEngineProgram(inpFile);
 
-        //crude method to search for AGEPRO output file
-        string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
+        //crude method to create AGEPRO Calcuation Engine output file
+        string ageproOutfile = Path.ChangeExtension(inpFile,".out");
 
         LaunchOutputViewerProgram(ageproOutfile, AgeproUserOptions);
 
@@ -165,7 +166,7 @@ namespace Nmfs.Agepro.Gui
       }
       catch (Exception ex)
       {
-        _ = MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        _ = MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
       finally
       {
