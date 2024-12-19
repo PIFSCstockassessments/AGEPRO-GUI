@@ -1,5 +1,6 @@
 ﻿using Nmfs.Agepro.CoreLib;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -157,20 +158,8 @@ namespace Nmfs.Agepro.Gui
         //use command line to open AGEPRO40.exe
         LaunchAgeproCalcEngineProgram(inpFile);
 
-        //crude method to search for AGEPRO output file 
-        Console.WriteLine("Getting path of: " + inpFile);
-        string targetOutputPath = Path.GetDirectoryName(inpFile);
-        Console.WriteLine(Directory.GetFiles(targetOutputPath, ".out").Length);
-      
-        if (Directory.GetFiles(targetOutputPath, ".out").Length == 0)
-        {
-          throw new Exception("No AGEPRO output file (*.out) found on target output path: " + Environment.NewLine 
-            + targetOutputPath + Environment.NewLine);
-          
-        }
-        string outFilePath = Directory.EnumerateFiles(targetOutputPath, "*.out").First();
-        Console.WriteLine("Viewing " + outFilePath);
-        //string ageproOutfile = Directory.GetFiles(Path.GetDirectoryName(inpFile), "*.out").First();
+        //crude method to create AGEPRO Calcuation Engine output file
+        string ageproOutfile = Path.ChangeExtension(inpFile,".out");
 
         LaunchOutputViewerProgram(outFilePath, AgeproUserOptions);
 
@@ -179,8 +168,7 @@ namespace Nmfs.Agepro.Gui
       }
       catch (Exception ex)
       {
-        _ = MessageBox.Show("An error occured when processing AGEPRO Model to the Calcuation Engine:" + Environment.NewLine 
-          + Environment.NewLine + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        _ = MessageBox.Show("An error occured when Launching the AGEPRO Model." + Environment.NewLine + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
       finally
       {

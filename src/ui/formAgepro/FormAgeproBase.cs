@@ -339,8 +339,32 @@ namespace Nmfs.Agepro.Gui
             inputData.Rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
           }
 
-          //Misc Options
-          controlMiscOptions.ControlMiscOptionsDataBindings(inputData);
+          //Misc options
+          inputData.Options.EnableSummaryReport = controlMiscOptions.MiscOptionsEnableSummaryReport;
+          inputData.Options.EnableExportR = controlMiscOptions.MiscOptionsEnableExportR;
+          inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.MiscOptionsEnableAuxStochasticFiles;
+          inputData.Options.EnablePercentileReport = controlMiscOptions.MiscOptionsEnablePercentileReport;
+          inputData.Options.EnableRefpoint = controlMiscOptions.MiscOptionsEnableRefpointsReport;
+          inputData.Options.EnableScaleFactors = controlMiscOptions.MiscOptionsEnableScaleFactors;
+          inputData.Options.EnableBounds = controlMiscOptions.MiscOptionsBounds;
+          inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors;
+
+          //Misc Options: Refpoint
+          inputData.Refpoint.RefSpawnBio = double.Parse(controlMiscOptions.MiscOptionsRefSpawnBiomass);
+          inputData.Refpoint.RefJan1Bio = double.Parse(controlMiscOptions.MiscOptionsRefJan1Biomass);
+          inputData.Refpoint.RefMeanBio = double.Parse(controlMiscOptions.MiscOptionsRefMeanBiomass);
+          inputData.Refpoint.RefFMort = double.Parse(controlMiscOptions.MiscOptionsRefFishingMortality);
+
+          //Misc Options: Report Percentile
+          inputData.ReportPercentile.Percentile = controlMiscOptions.MiscOptionsReportPercentile;
+
+          //Misc Options: Scale Factors
+          inputData.Scale.ScaleBio = double.Parse(controlMiscOptions.MiscOptionsScaleFactorBiomass);
+          inputData.Scale.ScaleRec = double.Parse(controlMiscOptions.MiscOptionsScaleFactorRecruits);
+          inputData.Scale.ScaleStockNum = double.Parse(controlMiscOptions.MiscOptionsScaleFactorStockNumbers);
+
+          //Misc Options: Retro Adjustment Factors
+          inputData.RetroAdjustment.RetroAdjust = controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable;
 
           inputData.WriteInputFile(saveAgeproInputFile.FileName);
 
