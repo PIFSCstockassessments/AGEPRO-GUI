@@ -161,7 +161,7 @@ namespace Nmfs.Agepro.Gui
         //crude method to create AGEPRO Calcuation Engine output file
         string ageproOutfile = Path.ChangeExtension(inpFile,".out");
 
-        LaunchOutputViewerProgram(outFilePath, AgeproUserOptions);
+        LaunchOutputViewerProgram(ageproOutfile, AgeproUserOptions);
 
         //Open WorkPath directory for the user 
         _ = Process.Start(ageproWorkPath);
