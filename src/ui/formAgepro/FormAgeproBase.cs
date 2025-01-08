@@ -340,7 +340,6 @@ namespace Nmfs.Agepro.Gui
           }
 
           //Misc options
-          inputData.Options.EnableSummaryReport = controlMiscOptions.MiscOptionsEnableSummaryReport;
           inputData.Options.EnableExportR = controlMiscOptions.MiscOptionsEnableExportR;
           inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.MiscOptionsEnableAuxStochasticFiles;
           inputData.Options.EnablePercentileReport = controlMiscOptions.MiscOptionsEnablePercentileReport;

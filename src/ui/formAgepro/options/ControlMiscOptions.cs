@@ -64,11 +64,7 @@ namespace Nmfs.Agepro.Gui
 
     #region Getters/Setters
 
-    public bool MiscOptionsEnableSummaryReport
-    {
-      get => checkBoxEnableSummaryReport.Checked;
-      set => checkBoxEnableSummaryReport.Checked = value;
-    }
+
     public bool MiscOptionsEnableAuxStochasticFiles
     {
       get => checkBoxEnableAuxStochasticFiles.Checked;
@@ -306,7 +302,6 @@ namespace Nmfs.Agepro.Gui
     public void ControlMiscOptionsDataBindings(AgeproInputFile inputFile)
     {
       //Misc options
-      inputFile.Options.EnableSummaryReport = MiscOptionsEnableSummaryReport;
       inputFile.Options.OutputSummaryReport = (int)SummaryAuxFileOutputFlag;
       inputFile.Options.EnableExportR = MiscOptionsEnableExportR;
       inputFile.Options.EnableAuxStochasticFiles = MiscOptionsEnableAuxStochasticFiles;
@@ -355,7 +350,6 @@ namespace Nmfs.Agepro.Gui
       miscOptionsFirstAge = inputFile.General.AgeBegin;
 
       // Options (w/ OutputSummaryFlag)
-      MiscOptionsEnableSummaryReport = inputFile.Options.EnableSummaryReport; 
       SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inputFile.Options.OutputSummaryReport;
       
       MiscOptionsEnableAuxStochasticFiles = inputFile.Options.EnableAuxStochasticFiles;
@@ -469,7 +463,7 @@ namespace Nmfs.Agepro.Gui
 
       DialogResult outputFileSizePrompt;
 
-      if (MiscOptionsEnableSummaryReport || MiscOptionsEnableAuxStochasticFiles)
+      if (MiscOptionsEnableAuxStochasticFiles)
       {
         outputFileSizePrompt = MessageBox.Show(
           "The number of realizations times the number of projected years is greater than " +

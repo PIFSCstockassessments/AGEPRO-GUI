@@ -34,52 +34,52 @@
       this.checkBoxEnablePercentileReport = new System.Windows.Forms.CheckBox();
       this.checkBoxEnableExportR = new System.Windows.Forms.CheckBox();
       this.checkBoxEnableAuxStochasticFiles = new System.Windows.Forms.CheckBox();
-      this.checkBoxEnableSummaryReport = new System.Windows.Forms.CheckBox();
       this.groupRefpoints = new System.Windows.Forms.GroupBox();
+      this.textBoxRefFishMortality = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelFishMortality = new System.Windows.Forms.Label();
+      this.textBoxRefMeanBiomass = new Nmfs.Agepro.Gui.NftTextBox();
       this.checkBoxEnableRefpoints = new System.Windows.Forms.CheckBox();
       this.labelMeanBiomass = new System.Windows.Forms.Label();
+      this.textBoxRefJan1Biomass = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelJan1Biomass = new System.Windows.Forms.Label();
+      this.textBoxRefSpawnBiomass = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelSpawnBiomass = new System.Windows.Forms.Label();
       this.groupBounds = new System.Windows.Forms.GroupBox();
+      this.textBoxBoundsNatMortality = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelBoundsNatMortality = new System.Windows.Forms.Label();
+      this.textBoxBoundsMaxWeight = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelBoundsMaxWeight = new System.Windows.Forms.Label();
       this.checkBoxBounds = new System.Windows.Forms.CheckBox();
       this.groupScaleFactors = new System.Windows.Forms.GroupBox();
+      this.textBoxScaleFactorRecruits = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelScaleFactorRecruits = new System.Windows.Forms.Label();
+      this.textBoxScaleFactorsStockNum = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelScaleFactorStockNum = new System.Windows.Forms.Label();
+      this.textBoxScaleFactorBiomass = new Nmfs.Agepro.Gui.NftTextBox();
       this.labelScaleFactorBiomass = new System.Windows.Forms.Label();
       this.checkBoxEnableScaleFactors = new System.Windows.Forms.CheckBox();
       this.groupRetroAdjustment = new System.Windows.Forms.GroupBox();
       this.checkBoxEnableRetroAdjustment = new System.Windows.Forms.CheckBox();
+      this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
       this.comboBoxOutputViewerProgram = new System.Windows.Forms.ComboBox();
       this.labelOutputViewerProgram = new System.Windows.Forms.Label();
       this.groupBox_StockSummmaryFlag = new System.Windows.Forms.GroupBox();
+      this.radioButtonOutfileAppendStockExcludeStockAux = new System.Windows.Forms.RadioButton();
       this.radioButtonOnlyOutfileAppendStock = new System.Windows.Forms.RadioButton();
       this.radioButtonOnlyOutfileNoStock = new System.Windows.Forms.RadioButton();
       this.radioButtonOutfileAppendStockAllAux = new System.Windows.Forms.RadioButton();
       this.radioButtonOutfileNoStockExcludeStockAux = new System.Windows.Forms.RadioButton();
       this.groupOutputViewer = new System.Windows.Forms.GroupBox();
-      this.radioButtonOutfileAppendStockExcludeStockAux = new System.Windows.Forms.RadioButton();
-      this.dataGridRetroAdjustment = new Nmfs.Agepro.Gui.NftDataGridView();
-      this.textBoxScaleFactorRecruits = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxScaleFactorsStockNum = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxScaleFactorBiomass = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxBoundsNatMortality = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxBoundsMaxWeight = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxRefFishMortality = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxRefMeanBiomass = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxRefJan1Biomass = new Nmfs.Agepro.Gui.NftTextBox();
-      this.textBoxRefSpawnBiomass = new Nmfs.Agepro.Gui.NftTextBox();
+      this.checkBoxEnableSummaryReport = new System.Windows.Forms.CheckBox();
       this.groupOuputOptions.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.spinBoxReportPercentile)).BeginInit();
       this.groupRefpoints.SuspendLayout();
       this.groupBounds.SuspendLayout();
       this.groupScaleFactors.SuspendLayout();
       this.groupRetroAdjustment.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).BeginInit();
       this.groupBox_StockSummmaryFlag.SuspendLayout();
       this.groupOutputViewer.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).BeginInit();
       this.SuspendLayout();
       // 
       // groupOuputOptions
@@ -146,17 +146,6 @@
       this.checkBoxEnableAuxStochasticFiles.Text = "Generate Auxiliary Stochastic Data Files";
       this.checkBoxEnableAuxStochasticFiles.UseVisualStyleBackColor = true;
       // 
-      // checkBoxEnableSummaryReport
-      // 
-      this.checkBoxEnableSummaryReport.AutoSize = true;
-      this.checkBoxEnableSummaryReport.Location = new System.Drawing.Point(441, 489);
-      this.checkBoxEnableSummaryReport.Name = "checkBoxEnableSummaryReport";
-      this.checkBoxEnableSummaryReport.Size = new System.Drawing.Size(262, 17);
-      this.checkBoxEnableSummaryReport.TabIndex = 7;
-      this.checkBoxEnableSummaryReport.Text = "Output Summary Report of Stock Numbers At Age";
-      this.checkBoxEnableSummaryReport.UseVisualStyleBackColor = true;
-      this.checkBoxEnableSummaryReport.CheckedChanged += new System.EventHandler(this.CheckBoxEnableSummaryReport_CheckedChanged);
-      // 
       // groupRefpoints
       // 
       this.groupRefpoints.Controls.Add(this.textBoxRefFishMortality);
@@ -175,6 +164,16 @@
       this.groupRefpoints.TabStop = false;
       this.groupRefpoints.Text = "Reference Points";
       // 
+      // textBoxRefFishMortality
+      // 
+      this.textBoxRefFishMortality.Enabled = false;
+      this.textBoxRefFishMortality.Location = new System.Drawing.Point(189, 120);
+      this.textBoxRefFishMortality.Name = "textBoxRefFishMortality";
+      this.textBoxRefFishMortality.ParamName = null;
+      this.textBoxRefFishMortality.PrevValidValue = "";
+      this.textBoxRefFishMortality.Size = new System.Drawing.Size(117, 20);
+      this.textBoxRefFishMortality.TabIndex = 8;
+      // 
       // labelFishMortality
       // 
       this.labelFishMortality.AutoSize = true;
@@ -184,6 +183,16 @@
       this.labelFishMortality.Size = new System.Drawing.Size(82, 13);
       this.labelFishMortality.TabIndex = 7;
       this.labelFishMortality.Text = "Fishing Mortality";
+      // 
+      // textBoxRefMeanBiomass
+      // 
+      this.textBoxRefMeanBiomass.Enabled = false;
+      this.textBoxRefMeanBiomass.Location = new System.Drawing.Point(189, 94);
+      this.textBoxRefMeanBiomass.Name = "textBoxRefMeanBiomass";
+      this.textBoxRefMeanBiomass.ParamName = null;
+      this.textBoxRefMeanBiomass.PrevValidValue = "";
+      this.textBoxRefMeanBiomass.Size = new System.Drawing.Size(117, 20);
+      this.textBoxRefMeanBiomass.TabIndex = 6;
       // 
       // checkBoxEnableRefpoints
       // 
@@ -206,6 +215,16 @@
       this.labelMeanBiomass.TabIndex = 5;
       this.labelMeanBiomass.Text = "Mean Biomass (MT)";
       // 
+      // textBoxRefJan1Biomass
+      // 
+      this.textBoxRefJan1Biomass.Enabled = false;
+      this.textBoxRefJan1Biomass.Location = new System.Drawing.Point(189, 68);
+      this.textBoxRefJan1Biomass.Name = "textBoxRefJan1Biomass";
+      this.textBoxRefJan1Biomass.ParamName = null;
+      this.textBoxRefJan1Biomass.PrevValidValue = "";
+      this.textBoxRefJan1Biomass.Size = new System.Drawing.Size(117, 20);
+      this.textBoxRefJan1Biomass.TabIndex = 4;
+      // 
       // labelJan1Biomass
       // 
       this.labelJan1Biomass.AutoSize = true;
@@ -215,6 +234,16 @@
       this.labelJan1Biomass.Size = new System.Drawing.Size(131, 13);
       this.labelJan1Biomass.TabIndex = 3;
       this.labelJan1Biomass.Text = "Jan-1 Stock Biomass (MT)";
+      // 
+      // textBoxRefSpawnBiomass
+      // 
+      this.textBoxRefSpawnBiomass.Enabled = false;
+      this.textBoxRefSpawnBiomass.Location = new System.Drawing.Point(189, 42);
+      this.textBoxRefSpawnBiomass.Name = "textBoxRefSpawnBiomass";
+      this.textBoxRefSpawnBiomass.ParamName = null;
+      this.textBoxRefSpawnBiomass.PrevValidValue = "";
+      this.textBoxRefSpawnBiomass.Size = new System.Drawing.Size(117, 20);
+      this.textBoxRefSpawnBiomass.TabIndex = 2;
       // 
       // labelSpawnBiomass
       // 
@@ -240,6 +269,17 @@
       this.groupBounds.TabStop = false;
       this.groupBounds.Text = "Bounds";
       // 
+      // textBoxBoundsNatMortality
+      // 
+      this.textBoxBoundsNatMortality.Enabled = false;
+      this.textBoxBoundsNatMortality.Location = new System.Drawing.Point(158, 68);
+      this.textBoxBoundsNatMortality.Name = "textBoxBoundsNatMortality";
+      this.textBoxBoundsNatMortality.ParamName = null;
+      this.textBoxBoundsNatMortality.PrevValidValue = "";
+      this.textBoxBoundsNatMortality.Size = new System.Drawing.Size(100, 20);
+      this.textBoxBoundsNatMortality.TabIndex = 4;
+      this.textBoxBoundsNatMortality.Text = "1.0";
+      // 
       // labelBoundsNatMortality
       // 
       this.labelBoundsNatMortality.AutoSize = true;
@@ -249,6 +289,17 @@
       this.labelBoundsNatMortality.Size = new System.Drawing.Size(130, 13);
       this.labelBoundsNatMortality.TabIndex = 3;
       this.labelBoundsNatMortality.Text = "Maximum Natural Mortality";
+      // 
+      // textBoxBoundsMaxWeight
+      // 
+      this.textBoxBoundsMaxWeight.Enabled = false;
+      this.textBoxBoundsMaxWeight.Location = new System.Drawing.Point(158, 42);
+      this.textBoxBoundsMaxWeight.Name = "textBoxBoundsMaxWeight";
+      this.textBoxBoundsMaxWeight.ParamName = null;
+      this.textBoxBoundsMaxWeight.PrevValidValue = "";
+      this.textBoxBoundsMaxWeight.Size = new System.Drawing.Size(100, 20);
+      this.textBoxBoundsMaxWeight.TabIndex = 2;
+      this.textBoxBoundsMaxWeight.Text = "10.0";
       // 
       // labelBoundsMaxWeight
       // 
@@ -287,6 +338,16 @@
       this.groupScaleFactors.TabStop = false;
       this.groupScaleFactors.Text = "Scaling Factors for Output Report";
       // 
+      // textBoxScaleFactorRecruits
+      // 
+      this.textBoxScaleFactorRecruits.Enabled = false;
+      this.textBoxScaleFactorRecruits.Location = new System.Drawing.Point(144, 74);
+      this.textBoxScaleFactorRecruits.Name = "textBoxScaleFactorRecruits";
+      this.textBoxScaleFactorRecruits.ParamName = null;
+      this.textBoxScaleFactorRecruits.PrevValidValue = "";
+      this.textBoxScaleFactorRecruits.Size = new System.Drawing.Size(100, 20);
+      this.textBoxScaleFactorRecruits.TabIndex = 4;
+      // 
       // labelScaleFactorRecruits
       // 
       this.labelScaleFactorRecruits.AutoSize = true;
@@ -297,6 +358,16 @@
       this.labelScaleFactorRecruits.TabIndex = 3;
       this.labelScaleFactorRecruits.Text = "Recruits";
       // 
+      // textBoxScaleFactorsStockNum
+      // 
+      this.textBoxScaleFactorsStockNum.Enabled = false;
+      this.textBoxScaleFactorsStockNum.Location = new System.Drawing.Point(144, 100);
+      this.textBoxScaleFactorsStockNum.Name = "textBoxScaleFactorsStockNum";
+      this.textBoxScaleFactorsStockNum.ParamName = null;
+      this.textBoxScaleFactorsStockNum.PrevValidValue = "";
+      this.textBoxScaleFactorsStockNum.Size = new System.Drawing.Size(100, 20);
+      this.textBoxScaleFactorsStockNum.TabIndex = 6;
+      // 
       // labelScaleFactorStockNum
       // 
       this.labelScaleFactorStockNum.AutoSize = true;
@@ -306,6 +377,16 @@
       this.labelScaleFactorStockNum.Size = new System.Drawing.Size(80, 13);
       this.labelScaleFactorStockNum.TabIndex = 5;
       this.labelScaleFactorStockNum.Text = "Stock Numbers";
+      // 
+      // textBoxScaleFactorBiomass
+      // 
+      this.textBoxScaleFactorBiomass.Enabled = false;
+      this.textBoxScaleFactorBiomass.Location = new System.Drawing.Point(144, 48);
+      this.textBoxScaleFactorBiomass.Name = "textBoxScaleFactorBiomass";
+      this.textBoxScaleFactorBiomass.ParamName = null;
+      this.textBoxScaleFactorBiomass.PrevValidValue = "";
+      this.textBoxScaleFactorBiomass.Size = new System.Drawing.Size(100, 20);
+      this.textBoxScaleFactorBiomass.TabIndex = 2;
       // 
       // labelScaleFactorBiomass
       // 
@@ -350,6 +431,22 @@
       this.checkBoxEnableRetroAdjustment.UseVisualStyleBackColor = true;
       this.checkBoxEnableRetroAdjustment.CheckedChanged += new System.EventHandler(this.CheckBoxRetroAdjustment_CheckedChanged);
       // 
+      // dataGridRetroAdjustment
+      // 
+      this.dataGridRetroAdjustment.AllowUserToAddRows = false;
+      this.dataGridRetroAdjustment.AllowUserToDeleteRows = false;
+      this.dataGridRetroAdjustment.AllowUserToResizeRows = false;
+      this.dataGridRetroAdjustment.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+      this.dataGridRetroAdjustment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridRetroAdjustment.ColumnHeadersVisible = false;
+      this.dataGridRetroAdjustment.Location = new System.Drawing.Point(17, 40);
+      this.dataGridRetroAdjustment.Name = "dataGridRetroAdjustment";
+      this.dataGridRetroAdjustment.nftReadOnly = false;
+      this.dataGridRetroAdjustment.RowHeadersWidth = 75;
+      this.dataGridRetroAdjustment.Size = new System.Drawing.Size(356, 171);
+      this.dataGridRetroAdjustment.TabIndex = 0;
+      this.dataGridRetroAdjustment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridRetroAdjustment_CellFormatting);
+      // 
       // comboBoxOutputViewerProgram
       // 
       this.comboBoxOutputViewerProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -384,6 +481,18 @@
       this.groupBox_StockSummmaryFlag.TabIndex = 0;
       this.groupBox_StockSummmaryFlag.TabStop = false;
       this.groupBox_StockSummmaryFlag.Text = "Stock Distribution Summary and Auxiliary Data Files";
+      // 
+      // radioButtonOutfileAppendStockExcludeStockAux
+      // 
+      this.radioButtonOutfileAppendStockExcludeStockAux.AutoSize = true;
+      this.radioButtonOutfileAppendStockExcludeStockAux.Location = new System.Drawing.Point(17, 109);
+      this.radioButtonOutfileAppendStockExcludeStockAux.Name = "radioButtonOutfileAppendStockExcludeStockAux";
+      this.radioButtonOutfileAppendStockExcludeStockAux.Size = new System.Drawing.Size(367, 17);
+      this.radioButtonOutfileAppendStockExcludeStockAux.TabIndex = 4;
+      this.radioButtonOutfileAppendStockExcludeStockAux.TabStop = true;
+      this.radioButtonOutfileAppendStockExcludeStockAux.Text = "Output File with Stock Distributions, Auxiliary Files EXCEPT Stock of Age";
+      this.radioButtonOutfileAppendStockExcludeStockAux.UseVisualStyleBackColor = true;
+      this.radioButtonOutfileAppendStockExcludeStockAux.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryPlusAllAux_CheckedChanged);
       // 
       // radioButtonOnlyOutfileAppendStock
       // 
@@ -443,126 +552,7 @@
       this.groupOutputViewer.TabIndex = 3;
       this.groupOutputViewer.TabStop = false;
       this.groupOutputViewer.Text = "Output File Viewer";
-      // 
-      // radioButtonOutfileAppendStockExcludeStockAux
-      // 
-      this.radioButtonOutfileAppendStockExcludeStockAux.AutoSize = true;
-      this.radioButtonOutfileAppendStockExcludeStockAux.Location = new System.Drawing.Point(17, 109);
-      this.radioButtonOutfileAppendStockExcludeStockAux.Name = "radioButtonOutfileAppendStockExcludeStockAux";
-      this.radioButtonOutfileAppendStockExcludeStockAux.Size = new System.Drawing.Size(367, 17);
-      this.radioButtonOutfileAppendStockExcludeStockAux.TabIndex = 4;
-      this.radioButtonOutfileAppendStockExcludeStockAux.TabStop = true;
-      this.radioButtonOutfileAppendStockExcludeStockAux.Text = "Output File with Stock Distributions, Auxiliary Files EXCEPT Stock of Age";
-      this.radioButtonOutfileAppendStockExcludeStockAux.UseVisualStyleBackColor = true;
-      this.radioButtonOutfileAppendStockExcludeStockAux.CheckedChanged += new System.EventHandler(this.RadioButtonSummaryPlusAllAux_CheckedChanged);
-      // 
-      // dataGridRetroAdjustment
-      // 
-      this.dataGridRetroAdjustment.AllowUserToAddRows = false;
-      this.dataGridRetroAdjustment.AllowUserToDeleteRows = false;
-      this.dataGridRetroAdjustment.AllowUserToResizeRows = false;
-      this.dataGridRetroAdjustment.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-      this.dataGridRetroAdjustment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridRetroAdjustment.ColumnHeadersVisible = false;
-      this.dataGridRetroAdjustment.Location = new System.Drawing.Point(17, 40);
-      this.dataGridRetroAdjustment.Name = "dataGridRetroAdjustment";
-      this.dataGridRetroAdjustment.nftReadOnly = false;
-      this.dataGridRetroAdjustment.RowHeadersWidth = 75;
-      this.dataGridRetroAdjustment.Size = new System.Drawing.Size(356, 171);
-      this.dataGridRetroAdjustment.TabIndex = 0;
-      this.dataGridRetroAdjustment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridRetroAdjustment_CellFormatting);
-      // 
-      // textBoxScaleFactorRecruits
-      // 
-      this.textBoxScaleFactorRecruits.Enabled = false;
-      this.textBoxScaleFactorRecruits.Location = new System.Drawing.Point(144, 74);
-      this.textBoxScaleFactorRecruits.Name = "textBoxScaleFactorRecruits";
-      this.textBoxScaleFactorRecruits.ParamName = null;
-      this.textBoxScaleFactorRecruits.PrevValidValue = "";
-      this.textBoxScaleFactorRecruits.Size = new System.Drawing.Size(100, 20);
-      this.textBoxScaleFactorRecruits.TabIndex = 4;
-      // 
-      // textBoxScaleFactorsStockNum
-      // 
-      this.textBoxScaleFactorsStockNum.Enabled = false;
-      this.textBoxScaleFactorsStockNum.Location = new System.Drawing.Point(144, 100);
-      this.textBoxScaleFactorsStockNum.Name = "textBoxScaleFactorsStockNum";
-      this.textBoxScaleFactorsStockNum.ParamName = null;
-      this.textBoxScaleFactorsStockNum.PrevValidValue = "";
-      this.textBoxScaleFactorsStockNum.Size = new System.Drawing.Size(100, 20);
-      this.textBoxScaleFactorsStockNum.TabIndex = 6;
-      // 
-      // textBoxScaleFactorBiomass
-      // 
-      this.textBoxScaleFactorBiomass.Enabled = false;
-      this.textBoxScaleFactorBiomass.Location = new System.Drawing.Point(144, 48);
-      this.textBoxScaleFactorBiomass.Name = "textBoxScaleFactorBiomass";
-      this.textBoxScaleFactorBiomass.ParamName = null;
-      this.textBoxScaleFactorBiomass.PrevValidValue = "";
-      this.textBoxScaleFactorBiomass.Size = new System.Drawing.Size(100, 20);
-      this.textBoxScaleFactorBiomass.TabIndex = 2;
-      // 
-      // textBoxBoundsNatMortality
-      // 
-      this.textBoxBoundsNatMortality.Enabled = false;
-      this.textBoxBoundsNatMortality.Location = new System.Drawing.Point(158, 68);
-      this.textBoxBoundsNatMortality.Name = "textBoxBoundsNatMortality";
-      this.textBoxBoundsNatMortality.ParamName = null;
-      this.textBoxBoundsNatMortality.PrevValidValue = "";
-      this.textBoxBoundsNatMortality.Size = new System.Drawing.Size(100, 20);
-      this.textBoxBoundsNatMortality.TabIndex = 4;
-      this.textBoxBoundsNatMortality.Text = "1.0";
-      // 
-      // textBoxBoundsMaxWeight
-      // 
-      this.textBoxBoundsMaxWeight.Enabled = false;
-      this.textBoxBoundsMaxWeight.Location = new System.Drawing.Point(158, 42);
-      this.textBoxBoundsMaxWeight.Name = "textBoxBoundsMaxWeight";
-      this.textBoxBoundsMaxWeight.ParamName = null;
-      this.textBoxBoundsMaxWeight.PrevValidValue = "";
-      this.textBoxBoundsMaxWeight.Size = new System.Drawing.Size(100, 20);
-      this.textBoxBoundsMaxWeight.TabIndex = 2;
-      this.textBoxBoundsMaxWeight.Text = "10.0";
-      // 
-      // textBoxRefFishMortality
-      // 
-      this.textBoxRefFishMortality.Enabled = false;
-      this.textBoxRefFishMortality.Location = new System.Drawing.Point(189, 120);
-      this.textBoxRefFishMortality.Name = "textBoxRefFishMortality";
-      this.textBoxRefFishMortality.ParamName = null;
-      this.textBoxRefFishMortality.PrevValidValue = "";
-      this.textBoxRefFishMortality.Size = new System.Drawing.Size(117, 20);
-      this.textBoxRefFishMortality.TabIndex = 8;
-      // 
-      // textBoxRefMeanBiomass
-      // 
-      this.textBoxRefMeanBiomass.Enabled = false;
-      this.textBoxRefMeanBiomass.Location = new System.Drawing.Point(189, 94);
-      this.textBoxRefMeanBiomass.Name = "textBoxRefMeanBiomass";
-      this.textBoxRefMeanBiomass.ParamName = null;
-      this.textBoxRefMeanBiomass.PrevValidValue = "";
-      this.textBoxRefMeanBiomass.Size = new System.Drawing.Size(117, 20);
-      this.textBoxRefMeanBiomass.TabIndex = 6;
-      // 
-      // textBoxRefJan1Biomass
-      // 
-      this.textBoxRefJan1Biomass.Enabled = false;
-      this.textBoxRefJan1Biomass.Location = new System.Drawing.Point(189, 68);
-      this.textBoxRefJan1Biomass.Name = "textBoxRefJan1Biomass";
-      this.textBoxRefJan1Biomass.ParamName = null;
-      this.textBoxRefJan1Biomass.PrevValidValue = "";
-      this.textBoxRefJan1Biomass.Size = new System.Drawing.Size(117, 20);
-      this.textBoxRefJan1Biomass.TabIndex = 4;
-      // 
-      // textBoxRefSpawnBiomass
-      // 
-      this.textBoxRefSpawnBiomass.Enabled = false;
-      this.textBoxRefSpawnBiomass.Location = new System.Drawing.Point(189, 42);
-      this.textBoxRefSpawnBiomass.Name = "textBoxRefSpawnBiomass";
-      this.textBoxRefSpawnBiomass.ParamName = null;
-      this.textBoxRefSpawnBiomass.PrevValidValue = "";
-      this.textBoxRefSpawnBiomass.Size = new System.Drawing.Size(117, 20);
-      this.textBoxRefSpawnBiomass.TabIndex = 2;
+
       // 
       // ControlMiscOptions
       // 
@@ -589,11 +579,11 @@
       this.groupScaleFactors.PerformLayout();
       this.groupRetroAdjustment.ResumeLayout(false);
       this.groupRetroAdjustment.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).EndInit();
       this.groupBox_StockSummmaryFlag.ResumeLayout(false);
       this.groupBox_StockSummmaryFlag.PerformLayout();
       this.groupOutputViewer.ResumeLayout(false);
       this.groupOutputViewer.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridRetroAdjustment)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -606,7 +596,6 @@
         private System.Windows.Forms.CheckBox checkBoxEnablePercentileReport;
         private System.Windows.Forms.CheckBox checkBoxEnableExportR;
         private System.Windows.Forms.CheckBox checkBoxEnableAuxStochasticFiles;
-        private System.Windows.Forms.CheckBox checkBoxEnableSummaryReport;
         private System.Windows.Forms.GroupBox groupRefpoints;
         private Nmfs.Agepro.Gui.NftTextBox textBoxRefFishMortality;
         private System.Windows.Forms.Label labelFishMortality;
@@ -644,5 +633,6 @@
     private System.Windows.Forms.RadioButton radioButtonOnlyOutfileAppendStock;
     private System.Windows.Forms.GroupBox groupOutputViewer;
     private System.Windows.Forms.RadioButton radioButtonOutfileAppendStockExcludeStockAux;
+    private System.Windows.Forms.CheckBox checkBoxEnableSummaryReport;
   }
 }
