@@ -212,6 +212,7 @@ namespace Nmfs.Agepro.Gui
       controlGeneralOptions.GeneralNumberPopulationSimuations = inpFile.General.NumPopSims.ToString();
       controlGeneralOptions.GeneralRandomSeed = inpFile.General.Seed.ToString();
       controlGeneralOptions.GeneralDiscardsPresent = inpFile.General.HasDiscards;
+      controlGeneralOptions.GeneralInputFile = inpFile.General.InputFile;
 
       //JAN-1
       controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.Jan1StockWeight, inpFile.General);
