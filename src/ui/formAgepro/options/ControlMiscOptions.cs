@@ -31,7 +31,6 @@ namespace Nmfs.Agepro.Gui
 
     public int miscOptionsNumAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
-    public AuxiliaryOutputFlag SummaryAuxFileOutputFlag { get; set; }
     
     public ControlMiscOptions()
     {
@@ -64,6 +63,7 @@ namespace Nmfs.Agepro.Gui
 
     #region Getters/Setters
 
+    public AuxiliaryOutputFlag SummaryAuxFileOutputFlag { get; set; }
 
     public bool MiscOptionsEnableAuxStochasticFiles
     {
