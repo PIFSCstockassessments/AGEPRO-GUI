@@ -57,7 +57,7 @@ namespace Nmfs.Agepro.Gui
       //Report Percentile
       MiscOptionsReportPercentile = 0;
 
-      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileNoStockExcludeStockAux;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
 
     }
 
@@ -172,19 +172,19 @@ namespace Nmfs.Agepro.Gui
     {
       SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inpData.OutputSummaryReport;
 
-      if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OutfileNoStockExcludeStockAux)
+      if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile)
       {
         radioButtonOutfileNoStockExcludeStockAux.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OutfileAppendStockAllAux)
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.StockAge_AllAuxFiles)
       {
         radioButtonOutfileAppendStockAllAux.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OnlyOutfileNoStock)
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.NoStockAge_NoAuxFiles)
       {
         radioButtonOnlyOutfileNoStock.Checked = true;
       }
-      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.OnlyOutfileAppendStock)
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.StockAge_NoAuxFiles)
       {
         radioButtonOnlyOutfileAppendStock.Checked = true;
       }
@@ -667,27 +667,29 @@ namespace Nmfs.Agepro.Gui
 
     private void RadioButtonNone_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileNoStockExcludeStockAux;
+      //TODO: Set
+      //SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inpData.OutputSummaryReport
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
     }
 
     private void RadioButtonSummaryOnly_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileAppendStockAllAux;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_AllAuxFiles;
     }
 
     private void RadioButtonSummaryNoAux1_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OnlyOutfileNoStock;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_NoAuxFiles;
     }
 
     private void RadioButtonSummaryPlusAllAux_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OnlyOutfileAppendStock;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_NoAuxFiles;
     }
 
     private void CheckBoxEnableSummaryReport_CheckedChanged(object sender, EventArgs e)
     {
-      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.OutfileAppendStockExcludeStockAux;
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_ExcludeStockNumAuxFile;
     }
 
     #endregion
