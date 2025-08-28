@@ -408,6 +408,14 @@ namespace Nmfs.Agepro.Gui
       double defaultMaxWeightBound = 10.0;
       double defaultNatualMortalityBound = 1.0;
 
+      //ObsYears
+      controlHarvestScenario.SeqYears = controlGeneralOptions.SeqYears();
+      int[] ObsYears = controlGeneralOptions.SeqYears()
+                                            .Where(s => int.TryParse(s, out _))
+                                            .Select(int.Parse)
+                                            .ToArray();
+      
+
       //Enforce Bounds defaults if option is unchecked
       switch (controlMiscOptions.MiscOptionsBounds)
       {
@@ -512,7 +520,7 @@ namespace Nmfs.Agepro.Gui
       //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
 
       //Harvest Scenario (this includes Rebuilder and P-Star options)
-      if (controlHarvestScenario.ValidateHarvestScenario() == false)
+      if (controlHarvestScenario.ValidateHarvestScenario(ObsYears) == false)
       {
         return false;
       }

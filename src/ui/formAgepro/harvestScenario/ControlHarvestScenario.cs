@@ -199,7 +199,7 @@ namespace Nmfs.Agepro.Gui
     /// Data Validation. 
     /// </summary>
     /// <returns></returns>
-    public bool ValidateHarvestScenario()
+    public bool ValidateHarvestScenario(int[] ObsYears)
     {
       if (dataGridHarvestScenarioTable.HasBlankOrNullCells())
       {
@@ -210,6 +210,7 @@ namespace Nmfs.Agepro.Gui
 
       if (radioRebuilderTarget.Checked)
       {
+        Rebuilder.ObsYears = ObsYears;
         ValidationResult rebuilderCheck = Rebuilder.ValidationCheck();
 
         if (rebuilderCheck.IsValid == false)
@@ -223,6 +224,7 @@ namespace Nmfs.Agepro.Gui
       }
       else if (radioPStar.Checked)
       {
+        PStar.ObsYears = ObsYears;
         ValidationResult pstarCheck = PStar.ValidationCheck();
         if (pstarCheck.IsValid == false)
         {
