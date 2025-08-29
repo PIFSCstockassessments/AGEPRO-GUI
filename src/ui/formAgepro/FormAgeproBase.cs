@@ -336,8 +336,9 @@ namespace Nmfs.Agepro.Gui
             inputData.HarvestScenario.AnalysisType = controlHarvestScenario.CalcType;
             inputData.Rebuild.AnalysisType = controlHarvestScenario.CalcType;
             inputData.Rebuild.TargetYear = controlHarvestScenario.Rebuilder.TargetYear;
-            inputData.Rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
+            inputData.Rebuild.TargetValue = controlHarvestScenario.Rebuilder.TargetValue;
             inputData.Rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
+            inputData.Rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
           }
 
           //Misc options
