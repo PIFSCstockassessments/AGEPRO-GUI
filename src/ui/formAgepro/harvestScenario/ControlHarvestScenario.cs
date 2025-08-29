@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -199,8 +200,14 @@ namespace Nmfs.Agepro.Gui
     /// Data Validation. 
     /// </summary>
     /// <returns></returns>
-    public bool ValidateHarvestScenario(int[] ObsYears)
+    public bool ValidateHarvestScenario(ControlGeneral controlGeneral)
     {
+      //ObsYears
+      int[] ObsYears = controlGeneral.SeqYears()
+                                     .Where(s => int.TryParse(s, out _))
+                                     .Select(int.Parse)
+                                     .ToArray();
+
       if (dataGridHarvestScenarioTable.HasBlankOrNullCells())
       {
         _ = MessageBox.Show("Harvest Scenario Data Table has blank or missing values.", "Harvest Scenario",
