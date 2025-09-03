@@ -197,11 +197,14 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// Load AGEPRO InputFile data into AGEPRO Parameter Controls
+    /// Load AGEPRO InputFile data into AGEPRO Parameter Controls. 
+    /// 
+    /// Input version format check is done previously by "ReadInputFile"
     /// </summary>
     /// <param name="inpFile">AGEPRO CoreLib InputFile</param>
     protected void LoadAgeproModelFromInputFile(AgeproInputFile inpFile)
     {
+
       //General Options
       controlGeneralOptions.GeneralModelId = inpFile.CaseID;
       controlGeneralOptions.GeneralFirstYearProjection = inpFile.General.ProjYearStart.ToString();
