@@ -162,11 +162,15 @@ namespace Nmfs.Agepro.Gui
     #region Controls Setup
 
     /// <summary>
-    /// Sets which Stock Summary Flag RadioBoxes to based on AGEPRO Input 
+    /// Sets which Auxilary Output/Stock Summary Flag RadioBoxes to based on AGEPRO Input 
     /// File's StockSummaryFlag Value.
+    /// 
+    /// Values are bases on the input numeric paramenter "inpData", referenced as AuxiliaryOutputFlag
+    /// Enum.
+    /// 
     /// </summary>
-    /// <param name="inpData">Parameter data for OPTIONS Keywrod parameter 
-    /// from the AGEPRO Input File</param>
+    /// <param name="inpData"> Misc OPTIONS Keyword parameter input data object containing the  
+    /// OutputSummaryFlag/AuxillaryOutputReport numeric value. </param>
     /// <exception cref="InvalidEnumArgumentException"></exception>
     public void SetupGroupSummaryStockFlag(AgeproMiscOptions inpData)
     {
