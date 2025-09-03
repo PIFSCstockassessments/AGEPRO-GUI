@@ -168,7 +168,7 @@ namespace Nmfs.Agepro.Gui
 
     /// <summary>
     /// Sets which Auxilary Output/Stock Summary Flag RadioBoxes to based on AGEPRO Input 
-    /// File's StockSummaryFlag Value.
+    /// File's StockSummaryFlag Value. 
     /// 
     /// Values are bases on the input numeric paramenter "inpData", referenced as AuxiliaryOutputFlag
     /// Enum.
@@ -183,19 +183,19 @@ namespace Nmfs.Agepro.Gui
 
       if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile)
       {
-        radioButtonOutfileNoStockExcludeStockAux.Checked = true;
+        radioButtonNoStockAge_ExcludeStockNumAux.Checked = true;
       }
       else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.StockAge_AllAuxFiles)
       {
-        radioButtonOutfileAppendStockAllAux.Checked = true;
+        radioButtonStockAge_AllAux.Checked = true;
       }
       else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.NoStockAge_NoAuxFiles)
       {
-        radioButtonOnlyOutfileNoStock.Checked = true;
+        radioButtonNoStockAge_NoAux.Checked = true;
       }
       else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.StockAge_NoAuxFiles)
       {
-        radioButtonOnlyOutfileAppendStock.Checked = true;
+        radioButtonStockAge_NoAux.Checked = true;
       }
       else 
       {
@@ -677,33 +677,62 @@ namespace Nmfs.Agepro.Gui
       }
     }
 
-    private void RadioButtonNone_CheckedChanged(object sender, EventArgs e)
+
+    #endregion
+
+    private void checkBoxVer40Format_CheckedChanged(object sender, EventArgs e)
     {
-      //TODO: Set
-      //SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inpData.OutputSummaryReport
-      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
+      radioButtonNoStockAge_NoAux.Enabled = !checkBoxVer40Format.Checked;
+      radioButtonStockAge_NoAux.Enabled = !checkBoxVer40Format.Checked;
+      radioButtonStockAge_ExcludeStockNumAux.Enabled = !checkBoxVer40Format.Checked;
     }
 
-    private void RadioButtonSummaryOnly_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Radio Button button event to handkle when First option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonNoStockAge_ExcludeStockNumAux_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
+    }
+    /// <summary>
+    /// Radio Button button event to handkle when Second option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonStockAge_AllAux_CheckedChanged(object sender, EventArgs e)
     {
       SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_AllAuxFiles;
     }
-
-    private void RadioButtonSummaryNoAux1_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Radio Button button event to handkle when Third option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonNoStockAge_NoAux_CheckedChanged(object sender, EventArgs e)
     {
       SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_NoAuxFiles;
     }
-
-    private void RadioButtonSummaryPlusAllAux_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Radio Button button event to handkle when Fourth option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonStockAge_NoAux_CheckedChanged(object sender, EventArgs e)
     {
       SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_NoAuxFiles;
     }
-
-    private void CheckBoxEnableSummaryReport_CheckedChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Radio Button button event to handkle when Fifth option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonStockAge_ExcludeStockNumAux_CheckedChanged(object sender, EventArgs e)
     {
       SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_ExcludeStockNumAuxFile;
     }
 
-    #endregion
+
   }
 }
