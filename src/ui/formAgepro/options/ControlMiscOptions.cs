@@ -31,6 +31,8 @@ namespace Nmfs.Agepro.Gui
 
     public int miscOptionsNumAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
+    //Local Variable to set inpfile format
+    public string inpfileFormat { get; set; }
     
     public ControlMiscOptions()
     {
@@ -58,6 +60,9 @@ namespace Nmfs.Agepro.Gui
       MiscOptionsReportPercentile = 0;
 
       SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
+
+      //By Default, Set inpfile format to version string
+      inpfileFormat = Nmfs.Agepro.CoreLib.Resources.Version.INP_VersionString;
 
     }
 
@@ -349,6 +354,9 @@ namespace Nmfs.Agepro.Gui
       {
         throw new ArgumentNullException(nameof(inputFile));
       }
+
+      //Input File Format
+      inpfileFormat = inputFile.Version;
 
       miscOptionsNumAges = inputFile.General.NumAges();
       miscOptionsFirstAge = inputFile.General.AgeBegin;

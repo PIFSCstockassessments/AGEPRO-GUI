@@ -130,6 +130,7 @@ namespace Nmfs.Agepro.Gui
 
       //Check for AGEPRO parameter data that has already been loaded/set 
       controlMiscOptions.miscOptionsNumAges = controlGeneralOptions.NumAges();
+      controlMiscOptions.inpfileFormat = inputData.Version;
       controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.GeneralFirstAgeClass;
       controlMiscOptions.SetupGroupSummaryStockFlag(inputData.Options);
 
