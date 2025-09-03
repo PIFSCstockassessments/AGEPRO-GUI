@@ -160,6 +160,15 @@ namespace Nmfs.Agepro.Gui
       get => (DataTable)dataGridRetroAdjustment.DataSource;
       set => dataGridRetroAdjustment.DataSource = value;
     }
+    //Check Box for "AGEPRO VERSION 4.0" format.
+    //If (valid and compatable) version string isn't "AGEPRO VERSION 4.0" set to FALSE
+    public bool MiscOptionsEnableVer40Format
+    {
+      get => checkBoxEnableVer40Format.Checked;
+      set => checkBoxEnableVer40Format.Checked = value;
+
+    }
+
     public string AgeproOutputViewer => comboBoxOutputViewerProgram.SelectedItem.ToString();
 
     #endregion
@@ -679,12 +688,11 @@ namespace Nmfs.Agepro.Gui
 
 
     #endregion
-
-    private void checkBoxVer40Format_CheckedChanged(object sender, EventArgs e)
+    private void checkBoxEnableVer40Format_CheckedChanged(object sender, EventArgs e)
     {
-      radioButtonNoStockAge_NoAux.Enabled = !checkBoxVer40Format.Checked;
-      radioButtonStockAge_NoAux.Enabled = !checkBoxVer40Format.Checked;
-      radioButtonStockAge_ExcludeStockNumAux.Enabled = !checkBoxVer40Format.Checked;
+      radioButtonNoStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
+      radioButtonStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
+      radioButtonStockAge_ExcludeStockNumAux.Enabled = !checkBoxEnableVer40Format.Checked;
     }
 
     /// <summary>
