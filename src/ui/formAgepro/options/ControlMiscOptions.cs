@@ -690,6 +690,7 @@ namespace Nmfs.Agepro.Gui
     #endregion
     private void checkBoxEnableVer40Format_CheckedChanged(object sender, EventArgs e)
     {
+      MiscOptionsEnableVer40Format = checkBoxEnableVer40Format.Checked;
       radioButtonNoStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
       radioButtonStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
       radioButtonStockAge_ExcludeStockNumAux.Enabled = !checkBoxEnableVer40Format.Checked;

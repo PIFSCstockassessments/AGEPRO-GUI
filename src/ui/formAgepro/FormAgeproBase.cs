@@ -273,6 +273,7 @@ namespace Nmfs.Agepro.Gui
       controlBootstrap.BootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
       //Misc Options
+      controlMiscOptions.inpfileFormat = inpFile.Version;
       controlMiscOptions.SetupControlFromFile(inpFile);
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
@@ -353,6 +354,23 @@ namespace Nmfs.Agepro.Gui
           inputData.Options.EnableScaleFactors = controlMiscOptions.MiscOptionsEnableScaleFactors;
           inputData.Options.EnableBounds = controlMiscOptions.MiscOptionsBounds;
           inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors;
+
+
+          if (controlMiscOptions.MiscOptionsEnableVer40Format)
+          {
+            //Misc Options: Enable Summary Report (AGEPRO VERSION 4.0)
+            inputData.Options.EnableSummaryReport = Convert.ToBoolean((int)controlMiscOptions.SummaryAuxFileOutputFlag);
+            inputData.Version = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
+          }
+          else
+          {
+            //Misc Options: Auxilary Output Flag (AGEPRO VERSION 4.25+)
+            inputData.Options.OutputSummaryReport = (int)controlMiscOptions.SummaryAuxFileOutputFlag;
+            //Points to the current Input file format version string in INP_VersionString
+            inputData.Version = CoreLib.Resources.Version.INP_VersionString; 
+          }
+
+            
 
           //Misc Options: Refpoint
           inputData.Refpoint.RefSpawnBio = double.Parse(controlMiscOptions.MiscOptionsRefSpawnBiomass);
