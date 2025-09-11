@@ -55,6 +55,7 @@ namespace Nmfs.Agepro.Gui
       controlGeneralOptions.GeneralModelId = "untitled";
       inputData.General.InputFile = "";
       inputData.CaseID = controlGeneralOptions.GeneralModelId;
+      controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
 
       //initially set Number of Ages
       _ = controlGeneralOptions.GeneralFirstAgeClass; //Spinbox Value
@@ -130,7 +131,7 @@ namespace Nmfs.Agepro.Gui
 
       //Check for AGEPRO parameter data that has already been loaded/set 
       controlMiscOptions.miscOptionsNumAges = controlGeneralOptions.NumAges();
-      controlMiscOptions.inpfileFormat = inputData.Version;
+      controlMiscOptions.MiscOptionsInpfileFormat = inputData.Version;
       controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.GeneralFirstAgeClass;
       controlMiscOptions.SetupGroupSummaryStockFlag(inputData.Options);
 
@@ -194,6 +195,7 @@ namespace Nmfs.Agepro.Gui
 
       //Bootstrap
       controlBootstrap.SetBootstrapControls(inputData.Bootstrap);
+      controlGeneralOptions.SetupInpfileFormatTextBoxDataBindings(inputData);
     }
 
     /// <summary>
@@ -217,6 +219,7 @@ namespace Nmfs.Agepro.Gui
       controlGeneralOptions.GeneralRandomSeed = inpFile.General.Seed.ToString();
       controlGeneralOptions.GeneralDiscardsPresent = inpFile.General.HasDiscards;
       controlGeneralOptions.GeneralInputFile = inpFile.General.InputFile;
+      controlGeneralOptions.GeneralInpfileFormatTextBoxString = inpFile.Version;
 
       //JAN-1
       controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.Jan1StockWeight, inpFile.General);
@@ -273,7 +276,7 @@ namespace Nmfs.Agepro.Gui
       controlBootstrap.BootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
       //Misc Options
-      controlMiscOptions.inpfileFormat = inpFile.Version;
+      controlMiscOptions.MiscOptionsInpfileFormat = inpFile.Version;
       controlMiscOptions.SetupControlFromFile(inpFile);
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
@@ -361,13 +364,15 @@ namespace Nmfs.Agepro.Gui
             //Misc Options: Enable Summary Report (AGEPRO VERSION 4.0)
             inputData.Options.EnableSummaryReport = Convert.ToBoolean((int)controlMiscOptions.SummaryAuxFileOutputFlag);
             inputData.Version = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
+            controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
           }
           else
           {
             //Misc Options: Auxilary Output Flag (AGEPRO VERSION 4.25+)
             inputData.Options.OutputSummaryReport = (int)controlMiscOptions.SummaryAuxFileOutputFlag;
             //Points to the current Input file format version string in INP_VersionString
-            inputData.Version = CoreLib.Resources.Version.INP_VersionString; 
+            inputData.Version = CoreLib.Resources.Version.INP_VersionString;
+            controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
           }
 
             

@@ -136,6 +136,7 @@ namespace Nmfs.Agepro.Gui
         controlMiscOptions.SetupRefpointDataBindings(inputData.Refpoint);
         controlMiscOptions.SetupScaleFactorsDataBindings(inputData.Scale);
         controlMiscOptions.SetupBoundsDataBindings(inputData.Bounds);
+        controlGeneralOptions.SetupInpfileFormatTextBoxDataBindings(inputData);
       }
 
     }

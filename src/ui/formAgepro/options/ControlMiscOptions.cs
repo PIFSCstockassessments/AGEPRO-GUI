@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -31,8 +32,7 @@ namespace Nmfs.Agepro.Gui
 
     public int miscOptionsNumAges { get; set; }
     public int miscOptionsFirstAge { get; set; }
-    //Local Variable to set inpfile format
-    public string inpfileFormat { get; set; }
+    
     
     public ControlMiscOptions()
     {
@@ -62,13 +62,15 @@ namespace Nmfs.Agepro.Gui
       SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
 
       //By Default, Set inpfile format to version string
-      inpfileFormat = Nmfs.Agepro.CoreLib.Resources.Version.INP_VersionString;
+      MiscOptionsInpfileFormat = CoreLib.Resources.Version.INP_VersionString;
 
     }
 
     #region Getters/Setters
 
     public AuxiliaryOutputFlag SummaryAuxFileOutputFlag { get; set; }
+
+    public string MiscOptionsInpfileFormat { get; set; }
 
     public bool MiscOptionsEnableAuxStochasticFiles
     {
@@ -165,8 +167,20 @@ namespace Nmfs.Agepro.Gui
     public bool MiscOptionsEnableVer40Format
     {
       get => checkBoxEnableVer40Format.Checked;
-      set => checkBoxEnableVer40Format.Checked = value;
+      set
+      {
+        checkBoxEnableVer40Format.Checked = value;
+        if (MiscOptionsEnableVer40Format)
+        {
+          MiscOptionsInpfileFormat = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
+          
+        }
+        else
+        {
+          MiscOptionsInpfileFormat = CoreLib.Resources.Version.INP_VersionString;
+        }
 
+      }
     }
 
     public string AgeproOutputViewer => comboBoxOutputViewerProgram.SelectedItem.ToString();
@@ -365,7 +379,8 @@ namespace Nmfs.Agepro.Gui
       }
 
       //Input File Format
-      inpfileFormat = inputFile.Version;
+      MiscOptionsInpfileFormat = inputFile.Version;
+      MiscOptionsEnableVer40Format = MiscOptionsInpfileFormat.Equals(CoreLib.Resources.Version.INP_AGEPRO40_VersionString);
 
       miscOptionsNumAges = inputFile.General.NumAges();
       miscOptionsFirstAge = inputFile.General.AgeBegin;
@@ -694,6 +709,7 @@ namespace Nmfs.Agepro.Gui
       radioButtonNoStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
       radioButtonStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
       radioButtonStockAge_ExcludeStockNumAux.Enabled = !checkBoxEnableVer40Format.Checked;
+     
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nmfs.Agepro.CoreLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -68,6 +69,12 @@ namespace Nmfs.Agepro.Gui
       set => checkBoxDiscards.Checked = value;
     }
 
+    public string GeneralInpfileFormatTextBoxString
+    {
+      get => textBoxInpfileFormat.Text;
+      set => textBoxInpfileFormat.Text = value;
+    }
+
     public ControlGeneral()
     {
       InitializeComponent();
@@ -80,12 +87,31 @@ namespace Nmfs.Agepro.Gui
 
     }
 
+
+    #region Version Textbox DataBindings
+    /// <summary>
+    /// Intializes the control's values and data bindings to the Version Textbox  object
+    /// </summary>
+    /// <param name="inpfileVer">AGEPRO CoreLib Bootstrap object</param>
+    public void SetupInpfileFormatTextBoxDataBindings(CoreLib.AgeproInputFile inpData)
+    {
+
+      //Clear any existing bindings before creating new ones.
+      textBoxInpfileFormat.DataBindings.Clear();
+
+      //Data Binding
+      _ = textBoxInpfileFormat.DataBindings.Add("Text", inpData, nameof(CoreLib.AgeproInputFile.Version),
+                                                formattingEnabled: true, DataSourceUpdateMode.OnPropertyChanged);
+    }
+
+    #endregion
+
     /// <summary>
     /// 
     /// </summary>
     public void ValidateGeneralOptionsParameters()
     {
-
+      //This is used for prompts
       Dictionary<string, string> generalOptionsList = new Dictionary<string, string> {
         {"First Year Of Projection", textBoxFirstYearProjection.Text},
         {"Last Year Of Projection", textBoxLastYearProjection.Text},
