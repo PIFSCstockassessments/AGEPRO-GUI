@@ -166,21 +166,8 @@ namespace Nmfs.Agepro.Gui
     //If (valid and compatable) version string isn't "AGEPRO VERSION 4.0" set to FALSE
     public bool MiscOptionsEnableVer40Format
     {
-      get => checkBoxEnableVer40Format.Checked;
-      set
-      {
-        checkBoxEnableVer40Format.Checked = value;
-        if (MiscOptionsEnableVer40Format)
-        {
-          MiscOptionsInpfileFormat = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
-          
-        }
-        else
-        {
-          MiscOptionsInpfileFormat = CoreLib.Resources.Version.INP_VersionString;
-        }
-
-      }
+      get => checkBoxEnableVer40Format.Checked; 
+      set => checkBoxEnableVer40Format.Checked = value;
     }
 
     public string AgeproOutputViewer => comboBoxOutputViewerProgram.SelectedItem.ToString();
@@ -264,6 +251,13 @@ namespace Nmfs.Agepro.Gui
     {
       SetupTextBoxDataBindings(textBoxBoundsMaxWeight, miscOpt, nameof(CoreLib.Bounds.MaxWeight), true); // "MaxWeight"
       SetupTextBoxDataBindings(textBoxBoundsNatMortality, miscOpt, nameof(CoreLib.Bounds.MaxNatMort), true); //"MaxNatMort"
+    }
+
+    public void SetupMiscOptionsInpfileVerStringDataBindings(CoreLib.AgeproInputFile inpfile)
+    {
+      textBoxMiscOptionsInpfileVerString.DataBindings.Clear();
+      _ = textBoxMiscOptionsInpfileVerString.DataBindings.Add("Text", inpfile, nameof(AgeproInputFile.Version), true,
+                                                              DataSourceUpdateMode.OnPropertyChanged);
     }
 
     /// <summary>
@@ -359,6 +353,9 @@ namespace Nmfs.Agepro.Gui
 
       //Misc Options: Retro Adjustment Factors
       inputFile.RetroAdjustment.RetroAdjust = MiscOptionsRetroAdjustmentFactorTable;
+
+      //AGEPRO Input File Format Version
+      inputFile.Version = MiscOptionsInpfileFormat;
     }
 
     #endregion
@@ -709,7 +706,17 @@ namespace Nmfs.Agepro.Gui
       radioButtonNoStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
       radioButtonStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
       radioButtonStockAge_ExcludeStockNumAux.Enabled = !checkBoxEnableVer40Format.Checked;
-     
+      if (MiscOptionsEnableVer40Format)
+      {
+        textBoxMiscOptionsInpfileVerString.Text = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
+
+      }
+      else
+      {
+        textBoxMiscOptionsInpfileVerString.Text = CoreLib.Resources.Version.INP_VersionString;
+      }
+
+
     }
 
     /// <summary>

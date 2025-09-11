@@ -137,6 +137,7 @@ namespace Nmfs.Agepro.Gui
         controlMiscOptions.SetupScaleFactorsDataBindings(inputData.Scale);
         controlMiscOptions.SetupBoundsDataBindings(inputData.Bounds);
         controlGeneralOptions.SetupInpfileFormatTextBoxDataBindings(inputData);
+        controlMiscOptions.SetupMiscOptionsInpfileVerStringDataBindings(inputData);
       }
 
     }
@@ -490,6 +491,7 @@ namespace Nmfs.Agepro.Gui
       //Panel naigation functions 
       void SelectGeneralOptionsParameterPanel()
       {
+        controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
         SelectAgeproParameterPanel(controlGeneralOptions, true);
       }
       void SelectJan1WeightsParameterPanel()

@@ -51,8 +51,9 @@
       this.labelModelID = new System.Windows.Forms.Label();
       this.labelInputFile = new System.Windows.Forms.Label();
       this.textBoxModelID = new System.Windows.Forms.TextBox();
-      this.textBoxInputFile = new Nmfs.Agepro.Gui.NftTextBox();
+      this.labelInpflieFormat = new System.Windows.Forms.Label();
       this.textBoxInpfileFormat = new Nmfs.Agepro.Gui.NftTextBox();
+      this.textBoxInputFile = new Nmfs.Agepro.Gui.NftTextBox();
       this.groupGeneralOptions.SuspendLayout();
       this.tableLayoutPanelGeneralOptions.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.spinBoxFirstAge)).BeginInit();
@@ -305,7 +306,7 @@
       // 
       this.labelModelID.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.labelModelID.AutoSize = true;
-      this.labelModelID.Location = new System.Drawing.Point(76, 149);
+      this.labelModelID.Location = new System.Drawing.Point(73, 130);
       this.labelModelID.Name = "labelModelID";
       this.labelModelID.Size = new System.Drawing.Size(50, 13);
       this.labelModelID.TabIndex = 0;
@@ -315,7 +316,7 @@
       // 
       this.labelInputFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.labelInputFile.AutoSize = true;
-      this.labelInputFile.Location = new System.Drawing.Point(76, 191);
+      this.labelInputFile.Location = new System.Drawing.Point(73, 172);
       this.labelInputFile.Name = "labelInputFile";
       this.labelInputFile.Size = new System.Drawing.Size(50, 13);
       this.labelInputFile.TabIndex = 2;
@@ -324,15 +325,36 @@
       // textBoxModelID
       // 
       this.textBoxModelID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.textBoxModelID.Location = new System.Drawing.Point(148, 146);
+      this.textBoxModelID.Location = new System.Drawing.Point(145, 127);
       this.textBoxModelID.Name = "textBoxModelID";
       this.textBoxModelID.Size = new System.Drawing.Size(658, 20);
       this.textBoxModelID.TabIndex = 1;
       // 
+      // labelInpflieFormat
+      // 
+      this.labelInpflieFormat.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.labelInpflieFormat.AutoSize = true;
+      this.labelInpflieFormat.Location = new System.Drawing.Point(73, 215);
+      this.labelInpflieFormat.Name = "labelInpflieFormat";
+      this.labelInpflieFormat.Size = new System.Drawing.Size(123, 13);
+      this.labelInpflieFormat.TabIndex = 6;
+      this.labelInpflieFormat.Text = "Input File Version Format";
+      // 
+      // textBoxInpfileFormat
+      // 
+      this.textBoxInpfileFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.textBoxInpfileFormat.Location = new System.Drawing.Point(219, 212);
+      this.textBoxInpfileFormat.Name = "textBoxInpfileFormat";
+      this.textBoxInpfileFormat.ParamName = null;
+      this.textBoxInpfileFormat.PrevValidValue = "";
+      this.textBoxInpfileFormat.ReadOnly = true;
+      this.textBoxInpfileFormat.Size = new System.Drawing.Size(182, 20);
+      this.textBoxInpfileFormat.TabIndex = 3;
+      // 
       // textBoxInputFile
       // 
       this.textBoxInputFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.textBoxInputFile.Location = new System.Drawing.Point(148, 188);
+      this.textBoxInputFile.Location = new System.Drawing.Point(145, 169);
       this.textBoxInputFile.Name = "textBoxInputFile";
       this.textBoxInputFile.ParamName = null;
       this.textBoxInputFile.PrevValidValue = "";
@@ -340,21 +362,11 @@
       this.textBoxInputFile.Size = new System.Drawing.Size(658, 20);
       this.textBoxInputFile.TabIndex = 3;
       // 
-      // textBoxInpfileFormat
-      // 
-      this.textBoxInpfileFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.textBoxInpfileFormat.Location = new System.Drawing.Point(148, 226);
-      this.textBoxInpfileFormat.Name = "textBoxInpfileFormat";
-      this.textBoxInpfileFormat.ParamName = null;
-      this.textBoxInpfileFormat.PrevValidValue = "";
-      this.textBoxInpfileFormat.ReadOnly = true;
-      this.textBoxInpfileFormat.Size = new System.Drawing.Size(253, 20);
-      this.textBoxInpfileFormat.TabIndex = 3;
-      // 
       // ControlGeneral
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.labelInpflieFormat);
       this.Controls.Add(this.textBoxInpfileFormat);
       this.Controls.Add(this.textBoxInputFile);
       this.Controls.Add(this.textBoxModelID);
@@ -400,5 +412,6 @@
         private System.Windows.Forms.Label labelLastYearProjection;
         private System.Windows.Forms.TextBox textBoxLastYearProjection;
     private NftTextBox textBoxInpfileFormat;
+    private System.Windows.Forms.Label labelInpflieFormat;
   }
 }
