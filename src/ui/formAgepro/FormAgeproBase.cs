@@ -363,6 +363,7 @@ namespace Nmfs.Agepro.Gui
           {
             //Misc Options: Enable Summary Report (AGEPRO VERSION 4.0)
             inputData.Options.EnableSummaryReport = Convert.ToBoolean((int)controlMiscOptions.SummaryAuxFileOutputFlag);
+            inputData.Options.OutputSummaryReport = (int)controlMiscOptions.SummaryAuxFileOutputFlag; //catch non-compat values
             inputData.Version = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
             controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
           }

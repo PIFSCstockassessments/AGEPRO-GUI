@@ -328,7 +328,6 @@ namespace Nmfs.Agepro.Gui
     public void ControlMiscOptionsDataBindings(AgeproInputFile inputFile)
     {
       //Misc options
-      inputFile.Options.OutputSummaryReport = (int)SummaryAuxFileOutputFlag;
       inputFile.Options.EnableExportR = MiscOptionsEnableExportR;
       inputFile.Options.EnableAuxStochasticFiles = MiscOptionsEnableAuxStochasticFiles;
       inputFile.Options.EnablePercentileReport = MiscOptionsEnablePercentileReport;
@@ -336,6 +335,10 @@ namespace Nmfs.Agepro.Gui
       inputFile.Options.EnableScaleFactors = MiscOptionsEnableScaleFactors;
       inputFile.Options.EnableBounds = MiscOptionsBounds;
       inputFile.Options.EnableRetroAdjustmentFactors = MiscOptionsEnableRetroAdjustmentFactors;
+
+      //Misc options: Auxiliary Output Flag/Summary Output Report
+      inputFile.Options.OutputSummaryReport = (int)SummaryAuxFileOutputFlag;
+      inputFile.Options.EnableSummaryReport = Convert.ToBoolean((int)SummaryAuxFileOutputFlag);
 
       //Misc Options: Refpoint
       inputFile.Refpoint.RefSpawnBio = double.Parse(MiscOptionsRefSpawnBiomass);
