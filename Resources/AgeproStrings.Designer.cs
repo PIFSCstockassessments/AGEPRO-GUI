@@ -19,17 +19,17 @@ namespace Nmfs.Agepro.Gui.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    internal class AgeproStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings() {
+        internal AgeproStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Nmfs.Agepro.Gui.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Nmfs.Agepro.Gui.Resources.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Nmfs.Agepro.Gui.Resources.AgeproStrings", typeof(AgeproStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,15 +75,6 @@ namespace Nmfs.Agepro.Gui.Resources {
         internal static string CalcEnginePath {
             get {
                 return ResourceManager.GetString("CalcEnginePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 4.0.0.
-        /// </summary>
-        internal static string CalcEngineVer {
-            get {
-                return ResourceManager.GetString("CalcEngineVer", resourceCulture);
             }
         }
         

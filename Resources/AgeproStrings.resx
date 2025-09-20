@@ -123,9 +123,6 @@
   <data name="CalcEnginePath" xml:space="preserve">
     <value />
   </data>
-  <data name="CalcEngineVer" xml:space="preserve">
-    <value>4.0.0</value>
-  </data>
   <data name="ProgramName" xml:space="preserve">
     <value>AGEPRO</value>
   </data>

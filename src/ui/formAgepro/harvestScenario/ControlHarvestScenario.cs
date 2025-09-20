@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using Nmfs.Agepro.CoreLib;
 
@@ -62,12 +63,13 @@ namespace Nmfs.Agepro.Gui
       {
         if (PStar == null)
         {
+          //Create new instance of PStar with AGEPRO Model's Observed Years
           PStar = new PStarCalculation
           {
-            //Retain Model's Observed Years
             ObsYears = Array.ConvertAll(SeqYears, int.Parse)
           };
         }
+        CalcType = HarvestScenarioAnalysis.PStar;
         ControlHarvestPStar.SetHarvestCalcPStarControls(PStar, panelAltCalcParameters);
       }
 
@@ -89,7 +91,7 @@ namespace Nmfs.Agepro.Gui
       {
         if (Rebuilder == null)
         {
-          //Retain Model's Observed Years
+          //Create new instance of Rebuilder with AGEPRO Model's Observed Years
           Rebuilder = new RebuilderTargetCalculation
           {
             ObsYears = Array.ConvertAll(SeqYears, int.Parse)
@@ -198,8 +200,14 @@ namespace Nmfs.Agepro.Gui
     /// Data Validation. 
     /// </summary>
     /// <returns></returns>
-    public bool ValidateHarvestScenario()
+    public bool ValidateHarvestScenario(ControlGeneral controlGeneral)
     {
+      //ObsYears
+      int[] ObsYears = controlGeneral.SeqYears()
+                                     .Where(s => int.TryParse(s, out _))
+                                     .Select(int.Parse)
+                                     .ToArray();
+
       if (dataGridHarvestScenarioTable.HasBlankOrNullCells())
       {
         _ = MessageBox.Show("Harvest Scenario Data Table has blank or missing values.", "Harvest Scenario",
@@ -209,6 +217,7 @@ namespace Nmfs.Agepro.Gui
 
       if (radioRebuilderTarget.Checked)
       {
+        Rebuilder.ObsYears = ObsYears;
         ValidationResult rebuilderCheck = Rebuilder.ValidationCheck();
 
         if (rebuilderCheck.IsValid == false)
@@ -222,6 +231,7 @@ namespace Nmfs.Agepro.Gui
       }
       else if (radioPStar.Checked)
       {
+        PStar.ObsYears = ObsYears;
         ValidationResult pstarCheck = PStar.ValidationCheck();
         if (pstarCheck.IsValid == false)
         {

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nmfs.Agepro.Gui</RootNamespace>
     <AssemblyName>AGEPRO</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -28,6 +28,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -93,10 +94,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\Strings.Designer.cs">
+    <Compile Include="Resources\AgeproStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
+      <DependentUpon>AgeproStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,6 +167,7 @@
     </Compile>
     <Compile Include="src\ui\formAgepro\harvestScenario\HarvestSpecification.cs" />
     <Compile Include="src\ui\formAgepro\harvestScenario\RebuilderTargetType.cs" />
+    <Compile Include="src\ui\formAgepro\options\StockSummaryFlag.cs" />
     <Compile Include="src\ui\formAgepro\options\ControlMiscOptions.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -268,9 +270,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\noaa_fisheries_pictureBoxImage.png" />
-    <EmbeddedResource Include="Resources\Strings.resx">
+    <EmbeddedResource Include="Resources\AgeproStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <LastGenOutput>AgeproStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\about\AboutAgepro.resx">
       <DependentUpon>AboutAgepro.cs</DependentUpon>
@@ -305,6 +307,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\options\ControlMiscOptions.resx">
       <DependentUpon>ControlMiscOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ui\formAgepro\recruitment\ControlRecruitment.resx">
       <DependentUpon>ControlRecruitment.cs</DependentUpon>

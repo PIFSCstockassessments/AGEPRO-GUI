@@ -1,46 +1,77 @@
 ﻿using Nmfs.Agepro.CoreLib;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
   /// <summary>
-  /// Settings for AGEPRO output and optional parameters.
+  /// 
+  /// <para>
+  /// Settings for AGEPRO's output options (OPTIONS) and its additional optional options:
+  /// <list type="bullet">
+  ///   <item> PERC - User Percentile Summary </item>
+  ///   <item> REFPOINT - Reference Points </item>
+  ///   <item> SCALE - Scaling Factors </item>
+  ///   <item> BOUNDS - Max Bounds </item>
+  ///   <item> RETROADJUST - Retrospective Adjustmentment Factors </item>
+  /// </list>
+  /// </para>
   /// </summary>
-  public partial class ControlMiscOptions : UserControl
+  public partial class ControlMiscOptions : UserControl, IStockSummary
   {
-    public int miscOptionsNAges { get; set; }
-    public int miscOptionsFirstAge { get; set; }
+    private const string DefaultRefJan1Biomass = "0.0";
+    private const string DefaultRefMeanBiomass = "0.0";
+    private const string DefaultRefSpawnBiomass = "0.0";
+    private const string DefaultRefFishingMortality = "0.0";
+    private const int DefaultLargeFileLineCount = 1000000;
 
+    public int miscOptionsNumAges { get; set; }
+    public int miscOptionsFirstAge { get; set; }
+    
+    
     public ControlMiscOptions()
     {
       InitializeComponent();
+
+      //AGEPRO Ouptput Viewer Program
       comboBoxOutputViewerProgram.SelectedIndex = 0;
 
       //Set Bounds defaults
       MiscOptionsBoundsMaxWeight = "10.0";
       MiscOptionsBoundsNaturalMortality = "1.0";
 
-      MiscOptionsRefJan1Biomass = "0.0";
-      MiscOptionsRefMeanBiomass = "0.0";
-      MiscOptionsRefSpawnBiomass = "0.0";
-      MiscOptionsRefFishingMortality = "0.0";
+      //Refpoints
+      MiscOptionsRefJan1Biomass = DefaultRefJan1Biomass;
+      MiscOptionsRefMeanBiomass = DefaultRefMeanBiomass;
+      MiscOptionsRefSpawnBiomass = DefaultRefSpawnBiomass;
+      MiscOptionsRefFishingMortality = DefaultRefFishingMortality;
 
+      //Scale Factors
       MiscOptionsScaleFactorBiomass = "0.0";
       MiscOptionsScaleFactorRecruits = "0.0";
       MiscOptionsScaleFactorStockNumbers = "0.0";
 
+      //Report Percentile
       MiscOptionsReportPercentile = 0;
+
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
+
+      //By Default, Set inpfile format to version string
+      MiscOptionsInpfileFormat = CoreLib.Resources.Version.INP_VersionString;
+
     }
 
-    public bool MiscOptionsEnableSummaryReport
-    {
-      get => checkBoxEnableSummaryReport.Checked;
-      set => checkBoxEnableSummaryReport.Checked = value;
-    }
+    #region Getters/Setters
+
+    public AuxiliaryOutputFlag SummaryAuxFileOutputFlag { get; set; }
+
+    public string MiscOptionsInpfileFormat { get; set; }
+
     public bool MiscOptionsEnableAuxStochasticFiles
     {
       get => checkBoxEnableAuxStochasticFiles.Checked;
@@ -131,29 +162,74 @@ namespace Nmfs.Agepro.Gui
       get => (DataTable)dataGridRetroAdjustment.DataSource;
       set => dataGridRetroAdjustment.DataSource = value;
     }
+    //Check Box for "AGEPRO VERSION 4.0" format.
+    //If (valid and compatable) version string isn't "AGEPRO VERSION 4.0" set to FALSE
+    public bool MiscOptionsEnableVer40Format
+    {
+      get => checkBoxEnableVer40Format.Checked; 
+      set => checkBoxEnableVer40Format.Checked = value;
+    }
+
     public string AgeproOutputViewer => comboBoxOutputViewerProgram.SelectedItem.ToString();
 
-    public void SetRetroAdjustmentFactorRowHeaders()
+    #endregion
+
+    #region Controls Setup
+
+    /// <summary>
+    /// Sets which Auxilary Output/Stock Summary Flag RadioBoxes to based on AGEPRO Input 
+    /// File's StockSummaryFlag Value. 
+    /// 
+    /// Values are bases on the input numeric paramenter "inpData", referenced as AuxiliaryOutputFlag
+    /// Enum.
+    /// 
+    /// </summary>
+    /// <param name="inpData"> Misc OPTIONS Keyword parameter input data object containing the  
+    /// OutputSummaryFlag/AuxillaryOutputReport numeric value. </param>
+    /// <exception cref="InvalidEnumArgumentException"></exception>
+    public void SetupGroupSummaryStockFlag(AgeproMiscOptions inpData)
     {
-      dataGridRetroAdjustment.RowHeadersVisible = true;
-      for (int iage = 0; iage < miscOptionsNAges; iage++)
+      SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inpData.OutputSummaryReport;
+
+      if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile)
       {
-        //Accomidate 0-based or 1-based First Age Models
-        int iageForHeader = iage + miscOptionsFirstAge;
-        dataGridRetroAdjustment.Rows[iage].HeaderCell.Value = "Age " + iageForHeader;
+        radioButtonNoStockAge_ExcludeStockNumAux.Checked = true;
       }
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.StockAge_AllAuxFiles)
+      {
+        radioButtonStockAge_AllAux.Checked = true;
+      }
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.NoStockAge_NoAuxFiles)
+      {
+        radioButtonNoStockAge_NoAux.Checked = true;
+      }
+      else if (SummaryAuxFileOutputFlag == AuxiliaryOutputFlag.StockAge_NoAuxFiles)
+      {
+        radioButtonStockAge_NoAux.Checked = true;
+      }
+      else 
+      {
+        throw new InvalidEnumArgumentException();
+      }
+
     }
+
+
+
+    #endregion
+
+    #region Setup Data Binding
 
     /// <summary>
     /// Data Binding setup for Reference Point Options Controls
     /// </summary>
-    /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
-    public void SetupRefpointDataBindings(CoreLib.AgeproOptionsProperty miscOpt)
+    /// <param name="miscOpt">Refrerence Points Option Object</param>
+    public void SetupRefpointDataBindings(CoreLib.Refpoint miscOpt)
     {
-      SetControlDataBindings(textBoxRefSpawnBiomass, miscOpt, "refSpawnBio");
-      SetControlDataBindings(textBoxRefJan1Biomass, miscOpt, "refJan1Bio");
-      SetControlDataBindings(textBoxRefMeanBiomass, miscOpt, "refMeanBio");
-      SetControlDataBindings(textBoxRefFishMortality, miscOpt, "refFMort");
+      SetupTextBoxDataBindings(textBoxRefSpawnBiomass, miscOpt, nameof(CoreLib.Refpoint.RefSpawnBio)); // "RefSpawnBio"
+      SetupTextBoxDataBindings(textBoxRefJan1Biomass, miscOpt, nameof(CoreLib.Refpoint.RefJan1Bio)); // "RefJan1Bio"
+      SetupTextBoxDataBindings(textBoxRefMeanBiomass, miscOpt, nameof(CoreLib.Refpoint.RefMeanBio)); // "RefMeanBio"
+      SetupTextBoxDataBindings(textBoxRefFishMortality, miscOpt, nameof(CoreLib.Refpoint.RefFMort)); // "RefFMort"
     }
 
     /// <summary>
@@ -162,9 +238,9 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
     public void SetupScaleFactorsDataBindings(CoreLib.ScaleFactors miscOpt)
     {
-      SetControlDataBindings(textBoxScaleFactorBiomass, miscOpt, "scaleBio");
-      SetControlDataBindings(textBoxScaleFactorRecruits, miscOpt, "scaleRec");
-      SetControlDataBindings(textBoxScaleFactorsStockNum, miscOpt, "scaleStockNum");
+      SetupTextBoxDataBindings(textBoxScaleFactorBiomass, miscOpt, nameof(CoreLib.ScaleFactors.ScaleBio)); // "ScaleBio"
+      SetupTextBoxDataBindings(textBoxScaleFactorRecruits, miscOpt, nameof(CoreLib.ScaleFactors.ScaleRec)); // "ScaleRec"
+      SetupTextBoxDataBindings(textBoxScaleFactorsStockNum, miscOpt, nameof(CoreLib.ScaleFactors.ScaleStockNum)); // "ScaleStockNum"
     }
 
     /// <summary>
@@ -173,18 +249,25 @@ namespace Nmfs.Agepro.Gui
     /// <param name="miscOpt">AGEPRO CoreLib Misc Options Object</param>
     public void SetupBoundsDataBindings(CoreLib.Bounds miscOpt)
     {
-      SetControlDataBindings(textBoxBoundsMaxWeight, miscOpt, "maxWeight", true);
-      SetControlDataBindings(textBoxBoundsNatMortality, miscOpt, "maxNatMort", true);
+      SetupTextBoxDataBindings(textBoxBoundsMaxWeight, miscOpt, nameof(CoreLib.Bounds.MaxWeight), true); // "MaxWeight"
+      SetupTextBoxDataBindings(textBoxBoundsNatMortality, miscOpt, nameof(CoreLib.Bounds.MaxNatMort), true); //"MaxNatMort"
+    }
+
+    public void SetupMiscOptionsInpfileVerStringDataBindings(CoreLib.AgeproInputFile inpfile)
+    {
+      textBoxMiscOptionsInpfileVerString.DataBindings.Clear();
+      _ = textBoxMiscOptionsInpfileVerString.DataBindings.Add("Text", inpfile, nameof(AgeproInputFile.Version), true,
+                                                              DataSourceUpdateMode.OnPropertyChanged);
     }
 
     /// <summary>
     /// Textbox data bindings
     /// </summary>
-    /// <param name="ctl"></param>
-    /// <param name="miscOptSrc"></param>
-    /// <param name="miscOptField"></param>
-    /// <param name="decimalZeroFormat"></param>
-    private void SetControlDataBindings(NftTextBox ctl, CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
+    /// <param name="ctl"> <see cref="NftTextBox"/> Control </param>
+    /// <param name="miscOptSrc"> Generalized class that encapsulates AGEPRO's <see cref="CoreLib.AgeproOptionsProperty"/> Classes </param>
+    /// <param name="miscOptField"> Field names of specfic <see cref="AgeproOptionsProperty"/> class.</param>
+    /// <param name="decimalZeroFormat">Boolean flag to format to include point-decimal values.  </param>
+    private void SetupTextBoxDataBindings(NftTextBox ctl, CoreLib.AgeproOptionsProperty miscOptSrc, string miscOptField,
       bool decimalZeroFormat = false)
     {
       //Clear any existing (if any) bindings before creating new ones.
@@ -235,6 +318,280 @@ namespace Nmfs.Agepro.Gui
       sevent.Value = Convert.ToDouble(sevent.Value.ToString());
     }
 
+
+    /// <summary>
+    /// Exports the values that are stored in AgeproMiscOptions Gui Elements and 
+    /// Transfers them to the AGEPRO CoreLib InputFile class values. Typically used
+    /// before AGEPRO Input File Data is written.
+    /// </summary>
+    /// <param name="inputFile">AGEPRO CoreLib Input File Class</param>
+    public void ControlMiscOptionsDataBindings(AgeproInputFile inputFile)
+    {
+      //Misc options
+      inputFile.Options.EnableExportR = MiscOptionsEnableExportR;
+      inputFile.Options.EnableAuxStochasticFiles = MiscOptionsEnableAuxStochasticFiles;
+      inputFile.Options.EnablePercentileReport = MiscOptionsEnablePercentileReport;
+      inputFile.Options.EnableRefpoint = MiscOptionsEnableRefpointsReport;
+      inputFile.Options.EnableScaleFactors = MiscOptionsEnableScaleFactors;
+      inputFile.Options.EnableBounds = MiscOptionsBounds;
+      inputFile.Options.EnableRetroAdjustmentFactors = MiscOptionsEnableRetroAdjustmentFactors;
+
+      //Misc options: Auxiliary Output Flag/Summary Output Report
+      inputFile.Options.OutputSummaryReport = (int)SummaryAuxFileOutputFlag;
+      inputFile.Options.EnableSummaryReport = Convert.ToBoolean((int)SummaryAuxFileOutputFlag);
+
+      //Misc Options: Refpoint
+      inputFile.Refpoint.RefSpawnBio = double.Parse(MiscOptionsRefSpawnBiomass);
+      inputFile.Refpoint.RefJan1Bio = double.Parse(MiscOptionsRefJan1Biomass);
+      inputFile.Refpoint.RefMeanBio = double.Parse(MiscOptionsRefMeanBiomass);
+      inputFile.Refpoint.RefFMort = double.Parse(MiscOptionsRefFishingMortality);
+
+      //Misc Options: Report Percentile
+      inputFile.ReportPercentile.Percentile = MiscOptionsReportPercentile;
+
+      //Misc Options: Scale Factors
+      inputFile.Scale.ScaleBio = double.Parse(MiscOptionsScaleFactorBiomass);
+      inputFile.Scale.ScaleRec = double.Parse(MiscOptionsScaleFactorRecruits);
+      inputFile.Scale.ScaleStockNum = double.Parse(MiscOptionsScaleFactorStockNumbers);
+
+      //Misc Options: Retro Adjustment Factors
+      inputFile.RetroAdjustment.RetroAdjust = MiscOptionsRetroAdjustmentFactorTable;
+
+      //AGEPRO Input File Format Version
+      inputFile.Version = MiscOptionsInpfileFormat;
+    }
+
+    #endregion
+
+
+    #region Import From AGEPRO Input File
+    /// <summary>
+    /// Sets Misc Options values from AGEPRO Input File.
+    /// 
+    /// </summary>
+    /// <param name="inputFile"> AGEPRO Input File </param>
+    /// <exception cref="ArgumentNullException"></exception>
+    public void SetupControlFromFile(AgeproInputFile inputFile)
+    {
+      if (inputFile is null)
+      {
+        throw new ArgumentNullException(nameof(inputFile));
+      }
+
+      //Input File Format
+      MiscOptionsInpfileFormat = inputFile.Version;
+      MiscOptionsEnableVer40Format = MiscOptionsInpfileFormat.Equals(CoreLib.Resources.Version.INP_AGEPRO40_VersionString);
+
+      miscOptionsNumAges = inputFile.General.NumAges();
+      miscOptionsFirstAge = inputFile.General.AgeBegin;
+
+      // Options (w/ OutputSummaryFlag)
+      SummaryAuxFileOutputFlag = (AuxiliaryOutputFlag)inputFile.Options.OutputSummaryReport;
+      
+      MiscOptionsEnableAuxStochasticFiles = inputFile.Options.EnableAuxStochasticFiles;
+      MiscOptionsEnableExportR = inputFile.Options.EnableExportR;
+
+      // Percentile Report
+      MiscOptionsEnablePercentileReport = inputFile.Options.EnablePercentileReport;
+      MiscOptionsReportPercentile = Convert.ToDouble(inputFile.ReportPercentile.Percentile);
+
+      // Biological Reference Points
+      MiscOptionsEnableRefpointsReport = inputFile.Options.EnableRefpoint;
+      MiscOptionsRefSpawnBiomass = inputFile.Refpoint.RefSpawnBio.ToString();
+      MiscOptionsRefJan1Biomass = inputFile.Refpoint.RefJan1Bio.ToString();
+      MiscOptionsRefMeanBiomass = inputFile.Refpoint.RefMeanBio.ToString();
+      MiscOptionsRefFishingMortality = inputFile.Refpoint.RefFMort.ToString();
+
+      // Scale Factors
+      MiscOptionsEnableScaleFactors = inputFile.Options.EnableScaleFactors;
+      MiscOptionsScaleFactorBiomass = inputFile.Scale.ScaleBio.ToString();
+      MiscOptionsScaleFactorRecruits = inputFile.Scale.ScaleRec.ToString();
+      MiscOptionsScaleFactorStockNumbers = inputFile.Scale.ScaleStockNum.ToString();
+
+      // Max Bounds
+      MiscOptionsBounds = inputFile.Options.EnableBounds;
+      MiscOptionsBoundsMaxWeight = inputFile.Bounds.MaxWeight.ToString();
+      MiscOptionsBoundsNaturalMortality = inputFile.Bounds.MaxNatMort.ToString();
+
+      // Retro Adjustment Factors 
+      MiscOptionsEnableRetroAdjustmentFactors = inputFile.Options.EnableRetroAdjustmentFactors;
+      LoadRetroAdjustment(inputFile);
+      
+      if (MiscOptionsEnableRetroAdjustmentFactors)
+      {
+        SetupRetroAdjustmentRowHeader();
+      }
+
+      //OuputSummaryFlag Radio Buttons
+      SetupGroupSummaryStockFlag(inputFile.Options);
+    }
+
+    #endregion
+
+    #region Validation
+
+    /// <summary>
+    /// Input Validation
+    /// </summary>
+    /// <returns></returns>
+    public bool ValidateMiscOptions()
+    {
+      if (MiscOptionsEnableRefpointsReport)
+      {
+        //Reference Points: Replace null/empty(whitespace) values to default
+        MiscOptionsRefJan1Biomass = string.IsNullOrWhiteSpace(MiscOptionsRefJan1Biomass) ? DefaultRefJan1Biomass : MiscOptionsRefJan1Biomass;
+        MiscOptionsRefMeanBiomass = string.IsNullOrWhiteSpace(MiscOptionsRefMeanBiomass) ? DefaultRefMeanBiomass : MiscOptionsRefMeanBiomass;
+        MiscOptionsRefSpawnBiomass = string.IsNullOrWhiteSpace(MiscOptionsRefSpawnBiomass) ? DefaultRefSpawnBiomass : MiscOptionsRefSpawnBiomass;
+        MiscOptionsRefFishingMortality = string.IsNullOrWhiteSpace(MiscOptionsRefFishingMortality) ? DefaultRefFishingMortality : MiscOptionsRefFishingMortality;
+      }
+      
+      //Log Errors
+      List<string> errorMsgList = new List<string>();
+      
+      //Retrospective Adjustment Factors
+      if (dataGridRetroAdjustment.HasBlankOrNullCells())
+      {
+        errorMsgList.Add("Retro Adjustment Factors data grid has missing data.");
+      }
+
+      //Report Percentile
+      if (MiscOptionsEnablePercentileReport)
+      {
+        //todo: spinbox text issue
+        if (string.IsNullOrWhiteSpace(MiscOptionsReportPercentile.ToString()))
+        {
+          errorMsgList.Add("Missing Report Percentile");
+        }
+
+        if (MiscOptionsReportPercentile < 0.0 || MiscOptionsReportPercentile > 100)
+        {
+          errorMsgList.Add("Invalid Report Percent value.");
+        }
+
+      }
+
+      if (errorMsgList.Any())
+      {
+        MessageBox.Show("Invalid values found in Misc. Options: " + Environment.NewLine +
+            string.Join(Environment.NewLine, errorMsgList),
+            "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        return false;
+      }
+
+      return true;
+    }
+
+    /// <summary>
+    /// Row-count based auxilary stochastic file checker. Throws an warning dialog if row count is over the
+    /// large file aize row count. 
+    /// </summary>
+    /// <param name="auxFileRowSize">Auxilary file row count.  
+    /// Size equals timeHorizon * numRealizations, which numRealizations is numBootstraps * numSims</param>
+    /// <param name="largeFileRowCount">Default to 1000000 </param>
+    /// <returns></returns>
+    public bool CheckOutputFileRowSize(int auxFileRowSize, int largeFileRowCount = DefaultLargeFileLineCount)
+    {
+      if (auxFileRowSize <= largeFileRowCount)
+      {
+        return true;
+      }
+
+      DialogResult outputFileSizePrompt;
+
+      if (MiscOptionsEnableAuxStochasticFiles)
+      {
+        outputFileSizePrompt = MessageBox.Show(
+          "The number of realizations times the number of projected years is greater than " +
+          largeFileRowCount + ". This will produce large auxiliary output files. " +
+          "This will affect the performance of calculation engine." +
+          Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
+          "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+        if (outputFileSizePrompt == DialogResult.No)
+        {
+          return false;
+        }
+      }
+      return true;
+    }
+    #endregion
+
+    #region RetroAdjustmentFactorTable
+    /*
+     * Retro Adjustment Factor Data Table Interface
+     */
+
+    /// <summary>
+    /// Sets up Retro Adjustment Factors in Misc Options Panel when a new Agepro Model is created via interface.
+    /// </summary>
+    /// <param name="general">AGEPRO Genereal Parameters Control used to pass the Number of Ages</param>
+    public void SetupRetroAdjustmentControl(ControlGeneral general)
+    {  
+      //In case NumAges is larger than previous row count, "reset" dataGridView 
+      if (MiscOptionsRetroAdjustmentFactorTable != null
+        && general.NumAges() > MiscOptionsRetroAdjustmentFactorTable.Rows.Count)
+      {
+        MiscOptionsRetroAdjustmentFactorTable.Reset();
+      }
+      MiscOptionsRetroAdjustmentFactorTable =
+          FallbackRetroAdjustmentTable(miscOptionsNumAges);
+      SetupRetroAdjustmentRowHeader();
+    }
+
+    /// <summary>
+    /// Sets Up Row Headers For the Retro Adujustment Data Grid Table
+    /// </summary>
+    public void SetupRetroAdjustmentRowHeader()
+    {
+      dataGridRetroAdjustment.RowHeadersVisible = true;
+      for (int iage = 0; iage < miscOptionsNumAges; iage++)
+      {
+        //Accomidate 0-based or 1-based First Age Models
+        int iageForHeader = iage + miscOptionsFirstAge;
+        dataGridRetroAdjustment.Rows[iage].HeaderCell.Value = "Age " + iageForHeader;
+      }
+    }
+
+
+    /// <summary>
+    /// Helper Function to Load The Retro Adjustments Data Grid from AGEPRO Input File
+    /// </summary>
+    /// <param name="inputFile">AGEPRO Input File Object</param>
+    public void LoadRetroAdjustment(AgeproInputFile inputFile)
+    {
+      if (MiscOptionsRetroAdjustmentFactorTable != null)
+      {
+        MiscOptionsRetroAdjustmentFactorTable.Reset();
+      }
+      MiscOptionsRetroAdjustmentFactorTable = inputFile.RetroAdjustment.RetroAdjust;
+    }
+
+    /// <summary>
+    /// Creates a fallback Data Table source that the Retro Adjustment Factors Data Grid 
+    /// can use.
+    /// </summary>
+    /// <param name="numAges">Number of age rows. Each row represents an age.</param>
+    /// <returns>Returns a single column Data Table populated with 0.</returns>
+    public DataTable FallbackRetroAdjustmentTable(int numAges)
+    {
+      //Create a Single Column Table for the data grid view. Each row represents an age.
+      DataTable fallbackTable = new DataTable();
+      _ = fallbackTable.Columns.Add("factor");
+      for (int i = 0; i < numAges; i++)
+      {
+        _ = fallbackTable.Rows.Add(0);
+      }
+      return fallbackTable;
+    }
+
+    #endregion
+
+    #region ControlMiscOptions GUI Event Handlers 
+    /*
+     * ControlMiscOptions Event Handlers
+     */
+
     /// <summary>
     /// Actions when "Request Percentile Report" check Box is changed.
     /// </summary>
@@ -249,7 +606,8 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// 
+    /// Enable or Disable the Report Percentile UI elements by determining the 
+    /// "Request Perecentile Report" check box "checked" value it was was changed.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -320,130 +678,11 @@ namespace Nmfs.Agepro.Gui
       else
       {
         //If Checked, create fallback defualt data table.
-        dataGridRetroAdjustment.DataSource = GetRetroAdjustmentFallbackTable(miscOptionsNAges);
+        dataGridRetroAdjustment.DataSource = FallbackRetroAdjustmentTable(miscOptionsNumAges);
 
-        SetRetroAdjustmentFactorRowHeaders();
-
-      }
-    }
-
-    /// <summary>
-    /// Input Validation
-    /// </summary>
-    /// <returns></returns>
-    public bool ValidateMiscOptions()
-    {
-      List<string> errorMsgList = new List<string>();
-      //Reference Points
-      if (MiscOptionsEnableRefpointsReport)
-      {
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefJan1Biomass))
-        {
-          MiscOptionsRefJan1Biomass = "0.0";
-        }
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefMeanBiomass))
-        {
-          MiscOptionsRefMeanBiomass = "0.0";
-        }
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefSpawnBiomass))
-        {
-          MiscOptionsRefSpawnBiomass = "0.0";
-        }
-        if (string.IsNullOrWhiteSpace(MiscOptionsRefFishingMortality))
-        {
-          MiscOptionsRefFishingMortality = "0.0";
-        }
-      }
-      //Retrospective Adjustment Factors
-      if (dataGridRetroAdjustment.HasBlankOrNullCells())
-      {
-        errorMsgList.Add("Retro Adjustment Factors data grid has missing data.");
-      }
-
-      //Report Percentile
-      if (MiscOptionsEnablePercentileReport)
-      {
-        //todo: spinbox text issue
-        if (string.IsNullOrWhiteSpace(MiscOptionsReportPercentile.ToString()))
-        {
-          errorMsgList.Add("Missing Report Percentile");
-        }
-
-        if (MiscOptionsReportPercentile < 0.0 || MiscOptionsReportPercentile > 100)
-        {
-          errorMsgList.Add("Invalid Report Percent value.");
-        }
+        SetupRetroAdjustmentRowHeader();
 
       }
-
-      if (errorMsgList.Any())
-      {
-        MessageBox.Show("Invalid values found in Misc. Options: " + Environment.NewLine +
-            string.Join(Environment.NewLine, errorMsgList),
-            "AGEPRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-        return false;
-      }
-
-      return true;
-    }
-
-    /// <summary>
-    /// Row-count based auxilary stochastic file checker. Throws an warning dialog if row count is over the
-    /// large file aize row count. 
-    /// </summary>
-    /// <param name="auxFileRowSize"></param>
-    /// <param name="largeFileRowCount">Default to 1000000 </param>
-    /// <returns></returns>
-    public bool CheckOutputFileRowSize(int auxFileRowSize, int largeFileRowCount = 1000000)
-    {
-      if (auxFileRowSize > largeFileRowCount)
-      {
-        DialogResult outputFileSizePrompt;
-
-        if (MiscOptionsEnableSummaryReport || MiscOptionsEnableAuxStochasticFiles)
-        {
-          outputFileSizePrompt = MessageBox.Show(
-            "The number of realizations times the number of projected years is greater than " +
-            largeFileRowCount + ". This will produce large auxiliary output files. " +
-            "This will affect the performance of calculation engine." +
-            Environment.NewLine + Environment.NewLine + "Do you wish to procced?",
-            "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-          if (outputFileSizePrompt == DialogResult.No)
-          {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-
-    public void LoadRetroAdjustmentsFactorTable(AgeproInputFile inputFile)
-    {
-      if (MiscOptionsRetroAdjustmentFactorTable != null)
-      {
-        MiscOptionsRetroAdjustmentFactorTable.Reset();
-      }
-      MiscOptionsRetroAdjustmentFactorTable = inputFile.RetroAdjustment.RetroAdjust;
-    }
-
-    /// <summary>
-    /// Creates a fallback Data Table source that the Retro Adjustment Factors Data Grid 
-    /// can use.
-    /// </summary>
-    /// <param name="numAges">Number of age rows. Each row represents an age.</param>
-    /// <returns>Returns a single column Data Table populated with 0.</returns>
-    public DataTable GetRetroAdjustmentFallbackTable(int numAges)
-    {
-      //Create a Single Column Table for the data grid view. Each row represents an age.
-      DataTable fallbackTable = new DataTable();
-      _ = fallbackTable.Columns.Add("factor");
-      for (int i = 0; i < numAges; i++)
-      {
-        _ = fallbackTable.Rows.Add(0);
-      }
-      return fallbackTable;
     }
 
     /// <summary>
@@ -458,8 +697,75 @@ namespace Nmfs.Agepro.Gui
       //header value is null
       if (e.ColumnIndex == 0)
       {
-        SetRetroAdjustmentFactorRowHeaders();
+        SetupRetroAdjustmentRowHeader();
       }
+    }
+
+
+    #endregion
+    private void checkBoxEnableVer40Format_CheckedChanged(object sender, EventArgs e)
+    {
+      MiscOptionsEnableVer40Format = checkBoxEnableVer40Format.Checked;
+      radioButtonNoStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
+      radioButtonStockAge_NoAux.Enabled = !checkBoxEnableVer40Format.Checked;
+      radioButtonStockAge_ExcludeStockNumAux.Enabled = !checkBoxEnableVer40Format.Checked;
+      if (MiscOptionsEnableVer40Format)
+      {
+        textBoxMiscOptionsInpfileVerString.Text = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
+
+      }
+      else
+      {
+        textBoxMiscOptionsInpfileVerString.Text = CoreLib.Resources.Version.INP_VersionString;
+      }
+
+
+    }
+
+    /// <summary>
+    /// Radio Button button event to handkle when First option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonNoStockAge_ExcludeStockNumAux_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_ExcludeStockNumAuxFile;
+    }
+    /// <summary>
+    /// Radio Button button event to handkle when Second option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonStockAge_AllAux_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_AllAuxFiles;
+    }
+    /// <summary>
+    /// Radio Button button event to handkle when Third option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonNoStockAge_NoAux_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.NoStockAge_NoAuxFiles;
+    }
+    /// <summary>
+    /// Radio Button button event to handkle when Fourth option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonStockAge_NoAux_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_NoAuxFiles;
+    }
+    /// <summary>
+    /// Radio Button button event to handkle when Fifth option of "Stock Distribution Summary and Auxiliary Data Files" is Checked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonStockAge_ExcludeStockNumAux_CheckedChanged(object sender, EventArgs e)
+    {
+      SummaryAuxFileOutputFlag = AuxiliaryOutputFlag.StockAge_ExcludeStockNumAuxFile;
     }
 
 

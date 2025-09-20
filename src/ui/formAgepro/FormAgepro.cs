@@ -1,6 +1,7 @@
 ﻿using Nmfs.Agepro.CoreLib;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -135,6 +136,8 @@ namespace Nmfs.Agepro.Gui
         controlMiscOptions.SetupRefpointDataBindings(inputData.Refpoint);
         controlMiscOptions.SetupScaleFactorsDataBindings(inputData.Scale);
         controlMiscOptions.SetupBoundsDataBindings(inputData.Bounds);
+        controlGeneralOptions.SetupInpfileFormatTextBoxDataBindings(inputData);
+        controlMiscOptions.SetupMiscOptionsInpfileVerStringDataBindings(inputData);
       }
 
     }
@@ -260,41 +263,66 @@ namespace Nmfs.Agepro.Gui
     /// <returns></returns>
     private bool ValidateBootstrapFilename()
     {
+      DialogResult launchDialog;
       DialogResult bootstrapChoice;
 
       //Check Bootstrap File, but if value in textbox does not match, do not exit validation
       //Tell? user that they will have to supply bootstrap file.
-      if (!File.Exists(controlBootstrap.BootstrapFilename))
+
+      //Typically, AGEPRO model directories will contain a AGEPRO Input file, Bootstrap File, and Ouptut.
+      //This may used to check for Relative Paths for Bootstrap file paths in AGEPRO Input Files. 
+
+      //Conformation Dialog
+      launchDialog = MessageBox.Show($"Launching AGEPRO model with bootstrap file: {Environment.NewLine}"+
+        $"{inputData.Bootstrap.BootstrapFile}", 
+        "AGEPRO", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+      if (launchDialog == DialogResult.Cancel)
       {
-        if (File.Exists($"{Path.GetDirectoryName(inputData.General.InputFile)}\\{Path.GetFileName(inputData.Bootstrap.BootstrapFile)}"))
+        return false;
+      }
+      
+      //Validation
+      if (File.Exists(inputData.Bootstrap.BootstrapFile))
+      {
+        return true;
+      }
+
+      if (File.Exists($"{Path.GetDirectoryName(inputData.General.InputFile)}\\{Path.GetFileName(inputData.Bootstrap.BootstrapFile)}"))
+      {
+        string inpFileDir = Path.GetDirectoryName(inputData.General.InputFile);
+        string bsnFileName = Path.GetFileName(inputData.Bootstrap.BootstrapFile);
+        bootstrapChoice = MessageBox.Show($"Bootstrap file was not found.{Environment.NewLine}" +
+          $"However, bootsrap file was found in the same directory of input file:{Environment.NewLine}" +
+          $"{Path.Combine(inpFileDir, bsnFileName)}{Environment.NewLine}{Environment.NewLine}"+
+          $"Set bootstap file to this path?",
+          "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+        if (bootstrapChoice == DialogResult.Yes)
         {
-          string inpFileDir = Path.GetDirectoryName(inputData.General.InputFile);
-          string bsnFileName = Path.GetFileName(inputData.Bootstrap.BootstrapFile);
-          bootstrapChoice = MessageBox.Show($"Bootstrap filename was not found.{Environment.NewLine}" +
-            $"However, {bsnFileName} was found at {inpFileDir}{Environment.NewLine}{Environment.NewLine}Continue?",
+          //Set Bootsrapfile
+          controlBootstrap.BootstrapFilename = Path.Combine(inpFileDir, bsnFileName);
+
+          return true;
+        }
+
+      }
+      else
+      {
+        bootstrapChoice = MessageBox.Show(
+            $"Bootstrap file not found at:{Environment.NewLine}{controlBootstrap.BootstrapFilename}{Environment.NewLine}" +
+            $"Please select a new AGEPRO Bootstrap file to continue.{Environment.NewLine}{Environment.NewLine}Continue and load bootstrap file?",
             "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-          if (bootstrapChoice == DialogResult.No)
-          {
-            return false;
-          }
-
-        }
-        else
+        if (bootstrapChoice == DialogResult.Yes)
         {
-          bootstrapChoice = MessageBox.Show(
-              $"Bootstrap file not found at:{Environment.NewLine}{controlBootstrap.BootstrapFilename}{Environment.NewLine}" +
-              $"Please select a new AGEPRO Bootstrap file to continue.{Environment.NewLine}{Environment.NewLine}Continue and load bootstrap file?",
-              "AGEPRO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-          if (bootstrapChoice == DialogResult.No)
-          {
-            return false;
-          }
+          return true;
         }
       }
 
-      return true;
+      return false;
+
+      
     }
 
 
@@ -463,6 +491,7 @@ namespace Nmfs.Agepro.Gui
       //Panel naigation functions 
       void SelectGeneralOptionsParameterPanel()
       {
+        controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
         SelectAgeproParameterPanel(controlGeneralOptions, true);
       }
       void SelectJan1WeightsParameterPanel()

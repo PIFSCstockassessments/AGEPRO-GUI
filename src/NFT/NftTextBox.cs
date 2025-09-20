@@ -3,6 +3,10 @@ using System.Windows.Forms;
 
 namespace Nmfs.Agepro.Gui
 {
+  /// <summary>
+  /// This is an extension class of <see cref="System.Windows.Forms.TextBox"/> 
+  /// This includes basic validation and previous valid value. 
+  /// </summary>
   public class NftTextBox : TextBox
   {
 

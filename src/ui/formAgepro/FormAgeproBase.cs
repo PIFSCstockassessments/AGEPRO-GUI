@@ -55,6 +55,7 @@ namespace Nmfs.Agepro.Gui
       controlGeneralOptions.GeneralModelId = "untitled";
       inputData.General.InputFile = "";
       inputData.CaseID = controlGeneralOptions.GeneralModelId;
+      controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
 
       //initially set Number of Ages
       _ = controlGeneralOptions.GeneralFirstAgeClass; //Spinbox Value
@@ -112,7 +113,7 @@ namespace Nmfs.Agepro.Gui
     protected void SetAgeproModelFromUserInput()
     {
       //New Cases references version included in AGEPRO Reference Manual
-      inputData.Version = "AGEPRO VERSION 4.0";
+      inputData.Version = CoreLib.Resources.Version.INP_VersionString; // "AGEPRO VERSION 4.25"
 
       //Save General Options input to CoreLib Input Data Object
       inputData.General.ProjYearStart = Convert.ToInt32(controlGeneralOptions.GeneralFirstYearProjection);
@@ -129,21 +130,15 @@ namespace Nmfs.Agepro.Gui
       inputData.CaseID = controlGeneralOptions.GeneralModelId;
 
       //Check for AGEPRO parameter data that has already been loaded/set 
-      controlMiscOptions.miscOptionsNAges = controlGeneralOptions.NumAges();
+      controlMiscOptions.miscOptionsNumAges = controlGeneralOptions.NumAges();
+      controlMiscOptions.MiscOptionsInpfileFormat = inputData.Version;
       controlMiscOptions.miscOptionsFirstAge = controlGeneralOptions.GeneralFirstAgeClass;
+      controlMiscOptions.SetupGroupSummaryStockFlag(inputData.Options);
 
       //Retro Adjustment Factors
       if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
       {
-        //In case NumAges is larger than previous row count, "reset" dataGridView 
-        if (controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable != null
-          && controlGeneralOptions.NumAges() > controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable.Rows.Count)
-        {
-          controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable.Reset();
-        }
-        controlMiscOptions.MiscOptionsRetroAdjustmentFactorTable =
-            controlMiscOptions.GetRetroAdjustmentFallbackTable(controlMiscOptions.miscOptionsNAges);
-        controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
+        controlMiscOptions.SetupRetroAdjustmentControl(controlGeneralOptions);
       }
 
       //Set Stochastic Paramaeter DataGrids           
@@ -200,14 +195,18 @@ namespace Nmfs.Agepro.Gui
 
       //Bootstrap
       controlBootstrap.SetBootstrapControls(inputData.Bootstrap);
+      controlGeneralOptions.SetupInpfileFormatTextBoxDataBindings(inputData);
     }
 
     /// <summary>
-    /// Load AGEPRO InputFile data into AGEPRO Parameter Controls
+    /// Load AGEPRO InputFile data into AGEPRO Parameter Controls. 
+    /// 
+    /// Input version format check is done previously by "ReadInputFile"
     /// </summary>
     /// <param name="inpFile">AGEPRO CoreLib InputFile</param>
     protected void LoadAgeproModelFromInputFile(AgeproInputFile inpFile)
     {
+
       //General Options
       controlGeneralOptions.GeneralModelId = inpFile.CaseID;
       controlGeneralOptions.GeneralFirstYearProjection = inpFile.General.ProjYearStart.ToString();
@@ -219,6 +218,8 @@ namespace Nmfs.Agepro.Gui
       controlGeneralOptions.GeneralNumberPopulationSimuations = inpFile.General.NumPopSims.ToString();
       controlGeneralOptions.GeneralRandomSeed = inpFile.General.Seed.ToString();
       controlGeneralOptions.GeneralDiscardsPresent = inpFile.General.HasDiscards;
+      controlGeneralOptions.GeneralInputFile = inpFile.General.InputFile;
+      controlGeneralOptions.GeneralInpfileFormatTextBoxString = inpFile.Version;
 
       //JAN-1
       controlJan1Weight.LoadStochasticWeightAgeInputData(inpFile.Jan1StockWeight, inpFile.General);
@@ -275,37 +276,8 @@ namespace Nmfs.Agepro.Gui
       controlBootstrap.BootstrapScaleFactors = inpFile.Bootstrap.PopScaleFactor.ToString();
 
       //Misc Options
-      controlMiscOptions.MiscOptionsEnableSummaryReport = inpFile.Options.EnableSummaryReport;
-      controlMiscOptions.MiscOptionsEnableAuxStochasticFiles = inpFile.Options.EnableAuxStochasticFiles;
-      controlMiscOptions.MiscOptionsEnableExportR = inpFile.Options.EnableExportR;
-      controlMiscOptions.MiscOptionsEnablePercentileReport = inpFile.Options.EnablePercentileReport;
-      controlMiscOptions.MiscOptionsReportPercentile = Convert.ToDouble(inpFile.ReportPercentile.Percentile);
-
-      controlMiscOptions.MiscOptionsEnableRefpointsReport = inpFile.Options.EnableRefpoint;
-      controlMiscOptions.MiscOptionsRefSpawnBiomass = inpFile.Refpoint.RefSpawnBio.ToString();
-      controlMiscOptions.MiscOptionsRefJan1Biomass = inpFile.Refpoint.RefJan1Bio.ToString();
-      controlMiscOptions.MiscOptionsRefMeanBiomass = inpFile.Refpoint.RefMeanBio.ToString();
-      controlMiscOptions.MiscOptionsRefFishingMortality = inpFile.Refpoint.RefFMort.ToString();
-
-      controlMiscOptions.MiscOptionsEnableScaleFactors = inpFile.Options.EnableScaleFactors;
-      controlMiscOptions.MiscOptionsScaleFactorBiomass = inpFile.Scale.ScaleBio.ToString();
-      controlMiscOptions.MiscOptionsScaleFactorRecruits = inpFile.Scale.ScaleRec.ToString();
-      controlMiscOptions.MiscOptionsScaleFactorStockNumbers = inpFile.Scale.ScaleStockNum.ToString();
-
-      controlMiscOptions.MiscOptionsBounds = inpFile.Options.EnableBounds;
-      controlMiscOptions.MiscOptionsBoundsMaxWeight = inpFile.Bounds.MaxWeight.ToString();
-      controlMiscOptions.MiscOptionsBoundsNaturalMortality = inpFile.Bounds.MaxNatMort.ToString();
-
-      controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors = inpFile.Options.EnableRetroAdjustmentFactors;
-      controlMiscOptions.miscOptionsNAges = inpFile.General.NumAges();
-      controlMiscOptions.miscOptionsFirstAge = inpFile.General.AgeBegin;
-
-      controlMiscOptions.LoadRetroAdjustmentsFactorTable(inpFile);
-
-      if (controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors)
-      {
-        controlMiscOptions.SetRetroAdjustmentFactorRowHeaders();
-      }
+      controlMiscOptions.MiscOptionsInpfileFormat = inpFile.Version;
+      controlMiscOptions.SetupControlFromFile(inpFile);
 
       Console.WriteLine("Loaded AGEPRO Parameters ..");
     }
@@ -372,12 +344,12 @@ namespace Nmfs.Agepro.Gui
             inputData.HarvestScenario.AnalysisType = controlHarvestScenario.CalcType;
             inputData.Rebuild.AnalysisType = controlHarvestScenario.CalcType;
             inputData.Rebuild.TargetYear = controlHarvestScenario.Rebuilder.TargetYear;
-            inputData.Rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
+            inputData.Rebuild.TargetValue = controlHarvestScenario.Rebuilder.TargetValue;
             inputData.Rebuild.TargetType = controlHarvestScenario.Rebuilder.TargetType;
+            inputData.Rebuild.TargetPercent = controlHarvestScenario.Rebuilder.TargetPercent;
           }
 
           //Misc options
-          inputData.Options.EnableSummaryReport = controlMiscOptions.MiscOptionsEnableSummaryReport;
           inputData.Options.EnableExportR = controlMiscOptions.MiscOptionsEnableExportR;
           inputData.Options.EnableAuxStochasticFiles = controlMiscOptions.MiscOptionsEnableAuxStochasticFiles;
           inputData.Options.EnablePercentileReport = controlMiscOptions.MiscOptionsEnablePercentileReport;
@@ -385,6 +357,26 @@ namespace Nmfs.Agepro.Gui
           inputData.Options.EnableScaleFactors = controlMiscOptions.MiscOptionsEnableScaleFactors;
           inputData.Options.EnableBounds = controlMiscOptions.MiscOptionsBounds;
           inputData.Options.EnableRetroAdjustmentFactors = controlMiscOptions.MiscOptionsEnableRetroAdjustmentFactors;
+
+
+          if (controlMiscOptions.MiscOptionsEnableVer40Format)
+          {
+            //Misc Options: Enable Summary Report (AGEPRO VERSION 4.0)
+            inputData.Options.EnableSummaryReport = Convert.ToBoolean((int)controlMiscOptions.SummaryAuxFileOutputFlag);
+            inputData.Options.OutputSummaryReport = (int)controlMiscOptions.SummaryAuxFileOutputFlag; //catch non-compat values
+            inputData.Version = CoreLib.Resources.Version.INP_AGEPRO40_VersionString;
+            controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
+          }
+          else
+          {
+            //Misc Options: Auxilary Output Flag (AGEPRO VERSION 4.25+)
+            inputData.Options.OutputSummaryReport = (int)controlMiscOptions.SummaryAuxFileOutputFlag;
+            //Points to the current Input file format version string in INP_VersionString
+            inputData.Version = CoreLib.Resources.Version.INP_VersionString;
+            controlGeneralOptions.GeneralInpfileFormatTextBoxString = inputData.Version;
+          }
+
+            
 
           //Misc Options: Refpoint
           inputData.Refpoint.RefSpawnBio = double.Parse(controlMiscOptions.MiscOptionsRefSpawnBiomass);
@@ -421,6 +413,8 @@ namespace Nmfs.Agepro.Gui
 
     }
 
+
+
     /*****************************************************************************************
      * VALAIDATION
      * ****************************************************************************************/
@@ -442,6 +436,8 @@ namespace Nmfs.Agepro.Gui
       //Default values for bounds
       double defaultMaxWeightBound = 10.0;
       double defaultNatualMortalityBound = 1.0;
+
+      controlHarvestScenario.SeqYears = controlGeneralOptions.SeqYears();
 
       //Enforce Bounds defaults if option is unchecked
       switch (controlMiscOptions.MiscOptionsBounds)
@@ -547,7 +543,7 @@ namespace Nmfs.Agepro.Gui
       //Bootstrap Filename validtion via this.ValidateBootstrapFilename()
 
       //Harvest Scenario (this includes Rebuilder and P-Star options)
-      if (controlHarvestScenario.ValidateHarvestScenario() == false)
+      if (controlHarvestScenario.ValidateHarvestScenario(controlGeneralOptions) == false)
       {
         return false;
       }

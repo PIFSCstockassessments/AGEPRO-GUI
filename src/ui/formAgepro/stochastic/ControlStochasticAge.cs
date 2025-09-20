@@ -321,6 +321,11 @@ namespace Nmfs.Agepro.Gui
             AgeproStochasticAgeTable.ReadStochasticTableFile(StochasticDataFile, numAges);
       }
 
+      // Invalidate if stochasticTableToCheckBounds is still null
+      if(stochasticTableToCheckBounds == null) { 
+        return false; 
+      }
+
       //Check if a cell/item has excceded the upper bound.     
       foreach (DataRow rowLines in stochasticTableToCheckBounds.Rows)
       {

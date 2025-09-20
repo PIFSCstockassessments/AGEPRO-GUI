@@ -147,6 +147,8 @@ namespace Nmfs.Agepro.Gui
 
       try
       {
+        //TODO:Split TryCatch to accomdate (pre) launch AGEPRO and (post) output proccessing errors.
+
         //Set bootstrap filename to copied workDir version
         ageproData.Bootstrap.BootstrapFile = bsnFile;
 
