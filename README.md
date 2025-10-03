@@ -1,6 +1,8 @@
 ﻿# AGEPRO
 
-This is a Windows-based Grahical interface of Jon Brodziak's AGEPRO (Age Structured Projection Model), which is designed to evaluate the likely population consequences of complex harvest scenarios under alternative hypotheses about the stock-recruitment relationship. Uncertainty in initial population size at age is incorporated into the model. This GUI is a revamp of the the original NOAA Fisheries National Fisheries Toolbox interface designed by Alan Seaver.
+This is a Windows-based Grahical interface of [AGEPRO (Age Structured Projection Model)](https://nmfs-ost.github.io/noaa-fit/AGEPRO), designed to evaluate the likely population consequences of complex harvest scenarios under alternative hypotheses about the stock-recruitment relationship. Uncertainty in initial population size at age is incorporated into the model. This GUI is a revamp of the the original NOAA Fisheries National Fisheries Toolbox interface designed by Alan Seaver. 
+
+To run AGEPRO models using the original command line based version of AGEPRO, the Calculation Engine source code repository can be found here: [AGEPRO (Calculation Engine Source Code Repo)](https://github.com/PIFSCstockassessments/AGEPRO).
 
 > [!NOTE]
 > AGEPRO-GUI is compatable with `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` Input file format.  
