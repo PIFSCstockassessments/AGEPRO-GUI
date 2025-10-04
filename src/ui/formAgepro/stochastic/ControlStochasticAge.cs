@@ -213,12 +213,19 @@ namespace Nmfs.Agepro.Gui
         StochasticCV.Reset();
       }
 
+      //Create new Default DataTables
       if (TimeVarying)
       {
-        StochasticAgeTable = CreateFallbackAgeDataTable(
-          genOpt.NumAges(),
-          genOpt.SeqYears().Count(),
-          NumFleets);
+        if(fleetDependent == StochasticAgeFleetDependency.dependent)
+        {
+          StochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), genOpt.SeqYears().Count(), NumFleets);
+          StochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, NumFleets);
+        }
+        else
+        {
+          StochasticAgeTable = CreateFallbackAgeDataTable(genOpt.NumAges(), genOpt.SeqYears().Count(), 1);
+          StochasticCV = CreateFallbackAgeDataTable(genOpt.NumAges(), 1, 1);
+        }
       }
       else
       {
