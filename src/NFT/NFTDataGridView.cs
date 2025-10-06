@@ -440,6 +440,9 @@ namespace Nmfs.Agepro.Gui
       ///IEnumerable<DataGridViewCell>, just IEnumerable.
       ///To enumerate the values when they are of type 'Object', .Cast<DataGridViewCell>
       var selected = SelectedCells.Cast<DataGridViewCell>().ToList();
+      if (selected.Count == 0)
+        return; // Or show a warning message
+
       //LINQ method to get start and end indexes
       int startRow = selected.Min(x => x.RowIndex);
       int startCol = selected.Min(x => x.ColumnIndex);
