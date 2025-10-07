@@ -175,6 +175,14 @@ namespace Nmfs.Agepro.Gui
 
     }
 
+    /// <summary>
+    /// Event handler for <paramref name="buttonSetGeneral"/> click event. Once clicked, invokes
+    /// the function <see cref="FormAgepro.EventSetButton_CreateNewCase"/> to "set" an AGEPRO Model with
+    /// user defined general model parameters.
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ButtonSetGeneral_Click(object sender, EventArgs e)
     {
       //Transfer general option values to input file class
