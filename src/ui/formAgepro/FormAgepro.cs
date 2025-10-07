@@ -70,6 +70,7 @@ namespace Nmfs.Agepro.Gui
 
     }
 
+    #region Enable GUI by "Setting" AGERPO model general parameters
     /********************************************************************************************************
      * "Setting" User Generated Agepro Parameter Models 
      *******************************************************************************************************/
@@ -141,7 +142,9 @@ namespace Nmfs.Agepro.Gui
       }
 
     }
+    #endregion
 
+    #region Open/Save *.INP Files
     /********************************************************************************************************
      * Open/Save
      ********************************************************************************************************/
@@ -193,7 +196,9 @@ namespace Nmfs.Agepro.Gui
     {
       SaveAgeproInputDataFileDialog();
     }
+    #endregion
 
+    #region Launch AGEPRO Calcuation Engine
     /********************************************************************************************************
      *  LAUNCH TO AGEPRO CALCULATION ENGINE
      ********************************************************************************************************/
@@ -324,8 +329,7 @@ namespace Nmfs.Agepro.Gui
 
       
     }
-
-
+   
     /// <summary>
     /// Method to find the current Active or Focused Control.
     /// </summary>
@@ -342,7 +346,9 @@ namespace Nmfs.Agepro.Gui
       }
       return control;
     }
+    #endregion
 
+    #region Cut/Copy/Paste/Delete Menu Items
     /********************************************************************************************************
      * Cut/Copy/Paste
      ********************************************************************************************************/
@@ -447,7 +453,9 @@ namespace Nmfs.Agepro.Gui
         dataCellsToClear.ClearSelection();
       }
     }
+    #endregion
 
+    #region AGERPO-GUI Navigation: TreeViewNavigation
     /********************************************************************************************************
      * NAVIGATION: TreeViewNavigation 
      ********************************************************************************************************/
@@ -564,7 +572,9 @@ namespace Nmfs.Agepro.Gui
       }
       panelAgeproParameter.Controls.Add(ageproParameterControl);
     }
+    #endregion
 
+    #region Help Menu Items
     /*********************************************************************************************************
      * Help menu item events
      ********************************************************************************************************/
@@ -617,7 +627,9 @@ namespace Nmfs.Agepro.Gui
       AboutAgepro aboutDialog = new AboutAgepro();
       _ = aboutDialog.ShowDialog();
     }
+    #endregion
 
+    #region Exit/Form Closing
     /********************************************************************************************************
      * Exit/Form Closing
      ********************************************************************************************************/
@@ -643,6 +655,6 @@ namespace Nmfs.Agepro.Gui
       panelNavigation.Dispose();
     }
 
-
+    #endregion
   }
 }
