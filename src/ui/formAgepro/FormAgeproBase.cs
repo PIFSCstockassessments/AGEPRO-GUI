@@ -155,7 +155,7 @@ namespace Nmfs.Agepro.Gui
       if (controlGeneralOptions.GeneralDiscardsPresent)
       {
         controlDiscardFraction.CreateStochasticParameterFallbackDataTable(inputData.DiscardFraction, inputData.General, StochasticAgeFleetDependency.dependent);
-        controlDiscardWeight.CreateStochasticParameterFallbackDataTable(inputData.DiscardWeight, inputData.General, StochasticAgeFleetDependency.independent);
+        controlDiscardWeight.CreateStochasticParameterFallbackDataTable(inputData.DiscardWeight, inputData.General, StochasticAgeFleetDependency.dependent);
       }
       else //Otherwise remove ("reset") any dataGridView existing data. 
       {
