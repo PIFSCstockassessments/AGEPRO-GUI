@@ -213,6 +213,12 @@ namespace Nmfs.Agepro.Gui
         StochasticCV.Reset();
       }
 
+      if (genOpt.HasDiscards)
+      {
+        //If Discards are present, disable timeVarying Check Box
+        controlStochasticParamAgeFromUser.EnableTimeVaryingCheckBox = true;
+      }
+
       //Create new Default DataTables
       if (TimeVarying)
       {
