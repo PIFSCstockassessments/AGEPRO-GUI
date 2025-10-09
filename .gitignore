@@ -197,3 +197,9 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+# Quarto Generated Files
+doc/_site/
+doc/_site_preview/
+.quarto/
+doc/*_files/
