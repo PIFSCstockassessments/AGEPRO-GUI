@@ -1,5 +1,116 @@
-<h1 id="age-structured-projection-model-agepro">Age Structured Projection Model (AGEPRO)</h1>
-<p>Version 4.3.5</p>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>AGEPRO-GUI for the Age Structured Projection Model (AGEPRO)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="agepro_manual_files/libs/clipboard/clipboard.min.js"></script>
+<script src="agepro_manual_files/libs/quarto-html/quarto.js"></script>
+<script src="agepro_manual_files/libs/quarto-html/popper.min.js"></script>
+<script src="agepro_manual_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="agepro_manual_files/libs/quarto-html/anchor.min.js"></script>
+<link href="agepro_manual_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="agepro_manual_files/libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="agepro_manual_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="agepro_manual_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="agepro_manual_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">AGEPRO-GUI for the Age Structured Projection Model (AGEPRO)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>AGEPRO-GUI version 4.3.6</p>
+<p>Compatible with <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> Input Files</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For techinical details about the AGEPRO calculation engine or the AGEPRO Input File Format itself, please refer to the <a href="./AGEPRO_V42_Reference_Manual.pdf">AGEPRO Reference Manual</a>.</p>
+</div>
+</div>
 <ul>
 <li><a href="#getting-started">Getting Started</a></li>
 <li><a href="#creating-a-new-case">Creating a New Case</a></li>
@@ -44,7 +155,7 @@
 <li><a href="#misc-options">Misc Options</a>
 <ul>
 <li><a href="#auxiliary-output-files">Auxiliary Output Files</a></li>
-<li><a href="#multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File</a><br />
+<li><a href="#multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File</a><br>
 </li>
 <li><a href="#generating-auxiliary-stochastic-data-files">Generating Auxiliary Stochastic Data Files</a></li>
 <li><a href="#summary-report-of-stock-numbers-of-age">Summary Report of Stock Numbers of Age</a></li>
@@ -58,13 +169,16 @@
 </ul></li>
 <li><strong><a href="#agepro-projection-samples">AGEPRO Projection Samples</a></strong></li>
 </ul>
-<hr />
-<h1 id="getting-started">Getting Started</h1>
+<hr>
+<section id="getting-started" class="level1">
+<h1>Getting Started</h1>
 <p>To begin, either <a href="#opening-an-existing-agepro-input-data-file">open an existing AGEPRO Input Data file</a>, or <a href="#creating-a-new-case">create a new case</a> in <strong>General options</strong>.</p>
-<hr />
-<h1 id="creating-a-new-case">Creating a new Case</h1>
+<hr>
+</section>
+<section id="creating-a-new-case" class="level1">
+<h1>Creating a new Case</h1>
 <p>An new input data set can be set from scratch. Click on <strong>Create New Case</strong> in the File menu. A dialog window will pop up to confirm. If so, all existing input and output data will be discarded.</p>
-<p><img src="img/generalOptions_02.png" /></p>
+<p><img src="img/generalOptions_02.png" class="img-fluid"></p>
 <p>For new cases, the user must supply the following input:</p>
 <ul>
 <li>First year in Projection</li>
@@ -77,45 +191,69 @@
 <li>Random Number Seed</li>
 <li>Discards are Present (optional)</li>
 </ul>
-<p><img src="img/generalOptions_01.png" title="General Options" /></p>
+<p><img src="img/generalOptions_01.png" title="General Options" class="img-fluid"></p>
 <p>Click <strong>SET</strong> button to proceed.</p>
-<p><strong>Note</strong>: To run a new case in the calcuation engine, a bootstrap population data file is required. Supply the file with Bootstrap population data on the <strong>Bootstrap</strong> panel. See the <a href="#bootstrap">Bootstrap</a> section for more information.</p>
-<hr />
-<h1 id="opening-an-existing-agepro-input-data-file">Opening an Existing AGEPRO Input Data File</h1>
+<hr>
+</section>
+<section id="opening-an-existing-agepro-input-data-file" class="level1">
+<h1>Opening an Existing AGEPRO Input Data File</h1>
+<p><em><strong>Note</strong>: AGEPRO-GUI is only compatible with AGEPRO input files in the <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> format.</em></p>
 <p>In the File menu, click on the <strong>Open Existing AGERPO Input Data File</strong> option.</p>
 <p>Use the Windows Open File Dialog to locate the desired input file to the interface.</p>
-<p><img src="img/openExisting_01.png" /></p>
-<p>AGEPRO Version 4.0 input files have a file extension <code>INP</code>. Older versions had a file extension <code>IN</code>.</p>
-<p><strong>Note</strong>: AGEPRO version 4.3.0 is not compatible with input files prior to version 4.0. The user must review input from earlier versions before running for AGEPRO version 4.3.0 and above.</p>
-<hr />
-<h1 id="saving-agepro-input-data-into-file">Saving AGEPRO input data into file</h1>
+<p><img src="img/openExisting_01.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="saving-agepro-input-data-into-file" class="level1">
+<h1>Saving AGEPRO input data into file</h1>
 <p>To save your inputs, click on the <strong>Save AGEPRO Input Data As..</strong> option in the File menu. Save the file as a <strong><code>*.INP</code></strong> file to your desired path as shown below:</p>
-<p><img src="img/saveINP_01.png" /></p>
-<h2 id="validation">Validation</h2>
+<p><img src="img/saveINP_01.png" class="img-fluid"></p>
+<section id="validation" class="level2">
+<h2 class="anchored" data-anchor-id="validation">Validation</h2>
 <p>The program performs a series of data validation steps before it saves to file. If validated, the following dialog will confrim the location the AGEPRO input data file was saved:</p>
-<p><img src="img/saveINP_vaildated_02.png" /></p>
+<p><img src="img/saveINP_vaildated_02.png" class="img-fluid"></p>
 <p>If the validator cathches an error or finds invalid input, it will stop, prevent the input data to be saved, and present the validation error in a dialog box, for example:</p>
-<p><img src="img/saveINP_invalid_01.png" /></p>
-<p><img src="img/saveINP_invalid_02.png" /></p>
+<p><img src="img/saveINP_invalid_01.png" class="img-fluid"></p>
+<p><img src="img/saveINP_invalid_02.png" class="img-fluid"></p>
 <p><strong>All invalid input has be resolved before the data may be saved.</strong></p>
-<hr />
-<h1 id="launching-agepro-model-to-the-calculation-engine">Launching AGEPRO Model to the Calculation Engine</h1>
+<hr>
+</section>
+</section>
+<section id="launching-agepro-model-to-the-calculation-engine" class="level1">
+<h1>Launching AGEPRO Model to the Calculation Engine</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To run an AGEPRO model in the calcuation engine, a bootstrap population data file is required. Supply the file with Bootstrap population data on the <strong>Bootstrap</strong> panel. See the <a href="#bootstrap">Bootstrap</a> section for more information.</p>
+</div>
+</div>
 <p>In the <strong>Run</strong> menu, clicking <strong>Launch AGEPRO Model</strong> gathers and verifies GUI input and <strong>Bootstrap</strong> data to pass to the calculation engine to execute.</p>
 <p>AGEPRO will check if the GUI inputs are valid. If they are, it will create a new <strong>AGEPRO Model Output Run directory</strong>. GUI input gets written to file in the <strong>AGEPRO Model Output Run directory</strong> before the AGEPRO calcuation engine launches.</p>
 <p>There are three methods AGEPRO collects the bootstrap filepath: The filepath string from the bootstrap parameter. If that is invalid, then it will assume that the bootsrap file (<code>*.BSN</code>) is in the same directory as the AGEPRO Input File. It that is also invalid, then the program allow the user to explictly locate the bootstrap file via the Open File Dialog. If the user cancels from the open file dialog, this will terminate the launch to the calcuation engine and GUI input will be <em>not</em> be written to the <strong>AGEPRO Model Output Run directory</strong>.</p>
 <p>Output files generated by the calcuation engine run is stored in the <strong>AGEPRO Model Output Run directory</strong>. After the calcuation engine is done, a new window at this location will pop up. Output files may be displayed on an external program, depending on <a href="#view-agepro-output-files">Output File Viewer</a> options in <strong>Misc Options</strong>.</p>
-<h2 id="agepro-model-output-run-directory">AGEPRO Model Output Run Directory</h2>
+<section id="agepro-model-output-run-directory" class="level2">
+<h2 class="anchored" data-anchor-id="agepro-model-output-run-directory">AGEPRO Model Output Run Directory</h2>
 <p>Activating the <strong>Launch AGEPRO Model</strong> menu option creates a new <strong>AGEPRO Model Output Run directory</strong>. This directory is written into the <code>AGEPRO</code> directory, located under the user’s <code>HOME</code> or documents directory (<code>documents</code> or <code>My Documents</code>). If the <code>AGEPRO</code> directory doesn’t exist, one will be created.</p>
 <p>The <strong>AGEPRO Model Output Run directory</strong> is entitled two ways:</p>
 <ul>
 <li>The base path name in <strong>input file</strong> from <strong>general options</strong> (without file extensions) appended with a date-time stamp when the model was launched.</li>
 <li>If <strong>input file</strong> in <strong>general options</strong> is blank, then it will have <code>untitled</code> and the date-time stamp this model launched.</li>
 </ul>
-<hr />
-<h1 id="using-data-grids">Using Data Grids</h1>
+<hr>
+</section>
+</section>
+<section id="using-data-grids" class="level1">
+<h1>Using Data Grids</h1>
 <p>Data grids have many functions that are similar to spreadsheet software programs. However, there are a few differences and limitations. The following topics will describe in detail how to perform common tasks.</p>
 <p>Right-clicking on the cell to show the Cut, Copy, Paste and Delete options.</p>
-<h3 id="selecting-cells">Selecting Cells</h3>
+<section id="selecting-cells" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-cells">Selecting Cells</h3>
 <p>To select a single cell: Click the cell, or press one of the Arrow keys to move to the cell.</p>
 <p>To select more than one cell: Click the on the cell, and while holding the mouse button drag the pointer to the cell in the range of cells you are interested in.</p>
 <p>To select an entire row, click on the row heading.</p>
@@ -125,7 +263,9 @@
 <li>Press CTRL+A.</li>
 <li>Click the top left grid cell.</li>
 </ul>
-<h3 id="edit-cell-contents">Edit Cell Contents</h3>
+</section>
+<section id="edit-cell-contents" class="level3">
+<h3 class="anchored" data-anchor-id="edit-cell-contents">Edit Cell Contents</h3>
 <p>You can edit the contents of a cell directly in the cell.</p>
 <p>To place the contents of a cell in editing mode:</p>
 <ul>
@@ -141,9 +281,13 @@
 <li>If you are at the last character, hitting the <strong>Right</strong> Arrow key will commit the edit and move the cell selection one cell to the right.</li>
 <li>If you are at the first character, hit the <strong>Left</strong> Arrow key will commit the edit and move the cell selection one cell to the left.</li>
 </ul>
-<h3 id="copy-grid-data">Copy Grid Data</h3>
+</section>
+<section id="copy-grid-data" class="level3">
+<h3 class="anchored" data-anchor-id="copy-grid-data">Copy Grid Data</h3>
 <p>Select a cell or range of cells. Either <strong>Right-Click</strong> on the grid and select Copy from the context menu, or use <strong>CTRL+C</strong>.</p>
-<h3 id="paste-grid-data">Paste Grid Data</h3>
+</section>
+<section id="paste-grid-data" class="level3">
+<h3 class="anchored" data-anchor-id="paste-grid-data">Paste Grid Data</h3>
 <p>If you want to paste data from a spreadsheet program, select and copy the range of cells within the spreadsheet program. The copied cells will be stored to the clipboard. You can also paste data from a text file. Data in a text file should be tab-delimited, rows are line-delimited.</p>
 <p>To select where you want the data to be pasted, do one of the following:</p>
 <ul>
@@ -151,19 +295,30 @@
 <li>If you have more than one cell of data to paste, click on the cell you want to be the topmost and leftmost cell of the pasted data. Pasted data will automatically be filled in to the right of and below the cell you select.</li>
 </ul>
 <p>To paste the data, either <strong>Right-Click</strong> on the grid and select Copy from the context menu, or use <strong>CTRL+V</strong>.</p>
-<h3 id="cut-grid-data">Cut Grid Data</h3>
+</section>
+<section id="cut-grid-data" class="level3">
+<h3 class="anchored" data-anchor-id="cut-grid-data">Cut Grid Data</h3>
 <p>Select a cell or range of cells. Either <strong>Right-Click</strong> on the grid and select Cut from the context menu, or use <strong>CTRL+X</strong>.</p>
 <p>The selected cells will be cleared and will be sent to the Windows clipboard.</p>
-<h3 id="delete-grid-data">Delete Grid Data</h3>
+</section>
+<section id="delete-grid-data" class="level3">
+<h3 class="anchored" data-anchor-id="delete-grid-data">Delete Grid Data</h3>
 <p>The Delete function clears all data in the selected cells. Unlike Cut, It does <em>not</em> copy the grid cells to the Windows clipboard.</p>
 <p>Select a cell or range of cells. Either <strong>Right-Click</strong> on the grid and select Delete from the context menu, or use the <strong>Delete</strong> key.</p>
-<h3 id="fill-data-in-grid-cells">Fill Data in Grid Cells</h3>
+</section>
+<section id="fill-data-in-grid-cells" class="level3">
+<h3 class="anchored" data-anchor-id="fill-data-in-grid-cells">Fill Data in Grid Cells</h3>
 <p>Select Fill Blank Cells from the context menu. This will populate any blanks cell from the data grid with “0”.</p>
-<hr />
-<h1 id="stochastic-data-files">Stochastic Data Files</h1>
+<hr>
+</section>
+</section>
+<section id="stochastic-data-files" class="level1">
+<h1>Stochastic Data Files</h1>
 <p>AGEPRO allows the user to supply stochastic data at age. In addition, the data at age may also vary through the projection time horizon and vary by fleet where applicable.</p>
 <p>The user may create a file with stochastic data at age using R or any statistical tool of choice.</p>
-<h1 id="stochastic-data-file-format-layout">Stochastic data file format layout</h1>
+</section>
+<section id="stochastic-data-file-format-layout" class="level1">
+<h1>Stochastic data file format layout</h1>
 <p>In order to create a succesful Stochastic Data File, please follow the following data file layout.</p>
 <p>The data categories for which this option applies are:</p>
 <ul>
@@ -180,32 +335,39 @@
 <p>For each stochastic observed value, the data consists of a number of <strong>space delimited data items</strong> on each line of the file. Each line is terminated by newline character (a carriage return or carriage return-line feed combination).</p>
 <p>In AGEPRO, the user specifies the number of bootstrap iterations on the <strong>Bootstrap</strong> panel. The user also specifies the number of simulations on the <strong>General Options</strong> panel.</p>
 <p>The Number of Observed Values is equal to: &gt; Number of Bootstraps x Number of Simulations</p>
-<h2 id="time-variance">Time variance</h2>
+<section id="time-variance" class="level2">
+<h2 class="anchored" data-anchor-id="time-variance">Time variance</h2>
 <p>If the user has specified that the data is <em><strong>not time varying</strong></em>: &gt; Number of Data Lines = Number of Observed Values</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Number of Data Columns = Number of Age Classes</p>
 </blockquote>
 <p>However, if the user has specified that the data is <em><strong>time varying</strong></em>, then the data layout is:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Number of Data Lines = Number of Observed Values x Number of Years</p>
 </blockquote>
-<blockquote>
+<blockquote class="blockquote">
 <p>Number of Data Columns = Number of Age Classes</p>
 </blockquote>
-<h3 id="example-1">Example 1:</h3>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example 1:</h3>
 <pre><code>Number of Age Classes = 9
 Number of Bootstrap Iterations = 1000
 Number of Simulations on each Bootstrap iteration = 100
 Not Time Variant</code></pre>
 <p>The data file for the above input would consist of 100,000 lines of data each with <strong>9</strong> space delimited data values. For each observed value, a single line of data is read in and used in all years in the time horizon.</p>
-<h3 id="example-2">Example 2:</h3>
+</section>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example 2:</h3>
 <pre><code>Number of Age Classes = 9
 Number of Bootstrap Iterations = 1000
 Number of Simulations on each Bootstrap iteration = 100
 Number of Years in Projection Horizon = 10
 Time Variant</code></pre>
 <p>The data file for the above input would consist of 1,000,000 lines of data each with <strong>9</strong> space delimited data values. For each of 100,000 observed values the data is read in for all 10 years.</p>
-<h2 id="stochastic-data-file-format-layout-with-multi-fleets">Stochastic data file format layout with multi-fleets</h2>
+</section>
+</section>
+<section id="stochastic-data-file-format-layout-with-multi-fleets" class="level2">
+<h2 class="anchored" data-anchor-id="stochastic-data-file-format-layout-with-multi-fleets">Stochastic data file format layout with multi-fleets</h2>
 <p>The following considerations apply to:</p>
 <ul>
 <li>Catch Weights</li>
@@ -214,12 +376,15 @@ Time Variant</code></pre>
 <li>Discard Fraction</li>
 </ul>
 <p>If the user has specified more than one fleet, then the data layout differs only in the number of data columns:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Number of Data Columns = Number of Age Classes x Number of Fleets</p>
 </blockquote>
 <p>On each line the program reads the values at age for the first fleet followed by the values at age for the second fleet, etc.</p>
-<hr />
-<h1 id="specifying-weights-at-age">Specifying Weights at Age</h1>
+<hr>
+</section>
+</section>
+<section id="specifying-weights-at-age" class="level1">
+<h1>Specifying Weights at Age</h1>
 <p>AGEPRO allows users to input stochastic weights at age.</p>
 <p>From the navigation panel, expand the <strong>Weights if Age</strong> node to set the following stochastic weights of age:</p>
 <ul>
@@ -230,7 +395,8 @@ Time Variant</code></pre>
 <li>Discard</li>
 </ul>
 <p>If <em>Discards are present</em> in <strong>General Options</strong> was unchecked or disabled, controls from <em>Discard</em> will be disabled.</p>
-<h2 id="jan-1-stock-weights-at-age">JAN-1 Stock Weights at Age</h2>
+<section id="jan-1-stock-weights-at-age" class="level2">
+<h2 class="anchored" data-anchor-id="jan-1-stock-weights-at-age">JAN-1 Stock Weights at Age</h2>
 <p>On the JAN-1 Weights panel, the user can select a data preference:</p>
 <ul>
 <li>User Specfied Weights of Age</li>
@@ -238,28 +404,45 @@ Time Variant</code></pre>
 </ul>
 <p>The user may select to input mean weights at age and apply log-normal error on each observed value, or to read in <a href="#stochastic-data-files">stochastic data from a file</a>.</p>
 <p>Furthermore, the user specifies whether the data supplied by either method will be supplied for each year in the time horizon as <em>time varying</em>. Otherwise, the data or to use a single set of weights at age for all years.</p>
-<h3 id="example-time-varying">Example: Time Varying</h3>
-<figure>
-<img src="img/weightAge_jan1_01.png" title="JAN-1 Time Varying" alt="JAN-1 Time Varying" /><figcaption aria-hidden="true">JAN-1 Time Varying</figcaption>
+<section id="example-time-varying" class="level3">
+<h3 class="anchored" data-anchor-id="example-time-varying">Example: Time Varying</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/weightAge_jan1_01.png" title="JAN-1 Time Varying" class="img-fluid figure-img"></p>
+<figcaption>JAN-1 Time Varying</figcaption>
 </figure>
+</div>
 <p>In this first example, <em>Time Varying</em> is enabled. The user supplies mean weights at age for each year in the time horizon. In addition, the user also specifies a coefficient of variation for each age.</p>
 <p>Log-Normal error with bias correction will be calculated and applied on each observed value for each year in the time horizon</p>
-<h3 id="example-non-time-varying">Example: Non Time Varying</h3>
-<figure>
-<img src="img/weightAge_jan1_02.png" title="JAN-1 Non Time-Varying" alt="JAN-1 Non Time-Varying" /><figcaption aria-hidden="true">JAN-1 Non Time-Varying</figcaption>
+</section>
+<section id="example-non-time-varying" class="level3">
+<h3 class="anchored" data-anchor-id="example-non-time-varying">Example: Non Time Varying</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/weightAge_jan1_02.png" title="JAN-1 Non Time-Varying" class="img-fluid figure-img"></p>
+<figcaption>JAN-1 Non Time-Varying</figcaption>
 </figure>
+</div>
 <p>In the next example, <em>Time Varying</em> is not enabled. The user will supply a single vector of mean values for weights at age. The program will apply error on to he data supplied as above, but the data with error will not vary through the time horizon.</p>
-<h3 id="example-from-file-option">Example: From File Option</h3>
-<figure>
-<img src="img/weightAge_jan1_03.png" title="JAN-1 Read Weights From File" alt="JAN-1 Read Weights From File" /><figcaption aria-hidden="true">JAN-1 Read Weights From File</figcaption>
+</section>
+<section id="example-from-file-option" class="level3">
+<h3 class="anchored" data-anchor-id="example-from-file-option">Example: From File Option</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/weightAge_jan1_03.png" title="JAN-1 Read Weights From File" class="img-fluid figure-img"></p>
+<figcaption>JAN-1 Read Weights From File</figcaption>
 </figure>
+</div>
 <p>In this example, the user has selected to supply <a href="#stochastic-data-files">data from an external file</a> with data for each observed value. Use the browse button to bring up a Windows File Dialog from which the user may select the source data file. No further input is required.</p>
-<h2 id="spawning-stock-weights-at-age">Spawning Stock Weights at Age</h2>
+</section>
+</section>
+<section id="spawning-stock-weights-at-age" class="level2">
+<h2 class="anchored" data-anchor-id="spawning-stock-weights-at-age">Spawning Stock Weights at Age</h2>
 <p>When <strong>SSB</strong> is selected from the navigation panel, <strong>Spawning Stocks Weights of Age</strong> will have these following options:</p>
-<table>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 38%" />
-<col style="width: 61%" />
+<col style="width: 38%">
+<col style="width: 61%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -269,7 +452,7 @@ Time Variant</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">User Specfied Weights of Age     </td>
+<td style="text-align: left;">User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp;</td>
 <td style="text-align: left;">Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not</td>
 </tr>
 <tr class="even">
@@ -283,12 +466,14 @@ Time Variant</code></pre>
 </tbody>
 </table>
 <p>See <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> for more information about <strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong>.</p>
-<h2 id="mid-year-stock-weights-at-age">Mid-Year Stock Weights at Age</h2>
+</section>
+<section id="mid-year-stock-weights-at-age" class="level2">
+<h2 class="anchored" data-anchor-id="mid-year-stock-weights-at-age">Mid-Year Stock Weights at Age</h2>
 <p>When <strong>Mid-Year (Mean)</strong> is selected from the navigation panel, <strong>Mid-Year Stock Weights at Age</strong> will have these following options:</p>
-<table>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 38%" />
-<col style="width: 61%" />
+<col style="width: 38%">
+<col style="width: 61%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -298,7 +483,7 @@ Time Variant</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">User Specfied Weights of Age     </td>
+<td style="text-align: left;">User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp;</td>
 <td style="text-align: left;">Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not</td>
 </tr>
 <tr class="even">
@@ -316,12 +501,14 @@ Time Variant</code></pre>
 </tbody>
 </table>
 <p>See <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> for more information about <strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong>.</p>
-<h2 id="catch-weights-at-age">Catch Weights at Age</h2>
+</section>
+<section id="catch-weights-at-age" class="level2">
+<h2 class="anchored" data-anchor-id="catch-weights-at-age">Catch Weights at Age</h2>
 <p>When <strong>Catch</strong> from is selected from the navigation panel, <strong>Catch Weights at Age</strong> will have these following options:</p>
-<table>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 38%" />
-<col style="width: 61%" />
+<col style="width: 38%">
+<col style="width: 61%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -331,7 +518,7 @@ Time Variant</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">User Specfied Weights of Age     </td>
+<td style="text-align: left;">User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp;</td>
 <td style="text-align: left;">Input Mean Weights at Age for <strong>each fleet</strong> and apply Log-Normal error for <strong>each fleet</strong> to the data either time varying or not</td>
 </tr>
 <tr class="even">
@@ -353,13 +540,15 @@ Time Variant</code></pre>
 </tbody>
 </table>
 <p>See <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> for more information about <strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong>.</p>
-<h2 id="discard-weights-at-age">Discard Weights at Age</h2>
+</section>
+<section id="discard-weights-at-age" class="level2">
+<h2 class="anchored" data-anchor-id="discard-weights-at-age">Discard Weights at Age</h2>
 <p>If <em>discards</em> were not included with the model case, controls from this weight of age will be disabled.</p>
 <p>When <strong>Discard</strong> is selected from the navigation panel, the user <em>may</em> select from the following:</p>
-<table>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 38%" />
-<col style="width: 61%" />
+<col style="width: 38%">
+<col style="width: 61%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -369,7 +558,7 @@ Time Variant</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">User Specfied Weights of Age     </td>
+<td style="text-align: left;">User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp;</td>
 <td style="text-align: left;">Input Mean Weights at Age for <strong>each fleet</strong> and apply Log-Normal error for <strong>each fleet</strong> to the data either time varying or not</td>
 </tr>
 <tr class="even">
@@ -395,106 +584,153 @@ Time Variant</code></pre>
 </tbody>
 </table>
 <p>See <a href="#jan-1-stock-weights-at-age"><em>JAN-1 Stock Weights at Age</em></a> for more information about <strong>User Specfied Weights of Age</strong> and <strong>Read Weights from File</strong>.</p>
-<hr />
-<h1 id="natural-mortality">Natural Mortality</h1>
+<hr>
+</section>
+</section>
+<section id="natural-mortality" class="level1">
+<h1>Natural Mortality</h1>
 <p>AGEPRO allows users to input stochastic Natural Mortality.</p>
 <p>On the <strong>Natural Mortality</strong> panel, the user selects from:</p>
 <ul>
 <li>User Specfied Natural Mortality of Age</li>
 <li>Read Natural Mortality from File</li>
 </ul>
-<h3 id="example-time-varying-1">Example: Time Varying</h3>
-<p><img src="img/stochastic_naturalMortality_01.png" /></p>
+<section id="example-time-varying-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-time-varying-1">Example: Time Varying</h3>
+<p><img src="img/stochastic_naturalMortality_01.png" class="img-fluid"></p>
 <p>In the above example, <em>Time Varying</em> is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.</p>
 <p>On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.</p>
-<h3 id="example-non-time-varying-1">Example: Non Time Varying</h3>
-<p><img src="img/stochastic_naturalMortality_02.png" /></p>
+</section>
+<section id="example-non-time-varying-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-non-time-varying-1">Example: Non Time Varying</h3>
+<p><img src="img/stochastic_naturalMortality_02.png" class="img-fluid"></p>
 <p>In the above example, <em>Time Varying</em> is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.</p>
-<h3 id="example-from-file-option-1">Example: From File Option</h3>
-<p><img src="img/stochastic_naturalMortality_03.png" /></p>
+</section>
+<section id="example-from-file-option-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-from-file-option-1">Example: From File Option</h3>
+<p><img src="img/stochastic_naturalMortality_03.png" class="img-fluid"></p>
 <p>In this example, the user has specified that <a href="#stochastic-data-files">natural mortality at age with error data will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
-<hr />
-<h1 id="biological">Biological</h1>
+<hr>
+</section>
+</section>
+<section id="biological" class="level1">
+<h1>Biological</h1>
 <p>The <strong>Biological</strong> panel allows the user the following parameters:</p>
 <ul>
 <li><a href="#maturity">Maturity</a></li>
 <li><a href="#fraction-mortality-prior-to-spawning">Fraction Mortality Prior to Spawning (or Fraction Mortality)</a></li>
 </ul>
-<h2 id="maturity">Maturity</h2>
+<section id="maturity" class="level2">
+<h2 class="anchored" data-anchor-id="maturity">Maturity</h2>
 <p>AGEPRO allows users to input stochastic Maturity at Age.</p>
 <p>On the <strong>Maturity</strong> tab on the <strong>Biological</strong> panel, the user selects from: * User Specfied Maturity of Age * Read Maturity from File</p>
-<h3 id="example-time-varying-2">Example: Time Varying</h3>
-<p><img src="img/bio_maturityAge_01.png" /></p>
+<section id="example-time-varying-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-time-varying-2">Example: Time Varying</h3>
+<p><img src="img/bio_maturityAge_01.png" class="img-fluid"></p>
 <p>In the above example, <em>Time Varying</em> is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.</p>
 <p>On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.</p>
-<h3 id="example-non-time-varying-2">Example: Non Time Varying</h3>
-<p><img src="img/bio_maturityAge_02.png" /></p>
+</section>
+<section id="example-non-time-varying-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-non-time-varying-2">Example: Non Time Varying</h3>
+<p><img src="img/bio_maturityAge_02.png" class="img-fluid"></p>
 <p>In the above example, <em>Time Varying</em> is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.</p>
-<h3 id="example-from-file-option-2">Example: From File Option</h3>
-<p><img src="img/bio_maturityAge_03.png" /></p>
+</section>
+<section id="example-from-file-option-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-from-file-option-2">Example: From File Option</h3>
+<p><img src="img/bio_maturityAge_03.png" class="img-fluid"></p>
 <p>In this example, the user has specified that <a href="#stochastic-data-files">maturity at age with error data will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
-<h2 id="fraction-mortality-prior-to-spawning">Fraction Mortality Prior to Spawning</h2>
+</section>
+</section>
+<section id="fraction-mortality-prior-to-spawning" class="level2">
+<h2 class="anchored" data-anchor-id="fraction-mortality-prior-to-spawning">Fraction Mortality Prior to Spawning</h2>
 <p>On the <strong>Fraction Mortality</strong> tab in the <strong>Biological</strong> panel, the user will input the fraction of mortality prior to spawning to be applied independently to Natural and Fishing Mortality.</p>
-<p><img src="img/bio_fractionMortality_01.png" /></p>
+<p><img src="img/bio_fractionMortality_01.png" class="img-fluid"></p>
 <p>In the above example, the user applies the same constant value to all years in the projection horizon.</p>
-<p><img src="img/bio_fractionMortality_02.png" /></p>
+<p><img src="img/bio_fractionMortality_02.png" class="img-fluid"></p>
 <p>In the above example, <em>time varying</em> is enabled, and the user has selected to input different values through the time horizon.</p>
-<hr />
-<h1 id="fishery-selectivity">Fishery Selectivity</h1>
+<hr>
+</section>
+</section>
+<section id="fishery-selectivity" class="level1">
+<h1>Fishery Selectivity</h1>
 <p>AGEPRO allows users to input stochastic Fishery Selectivity at Age.</p>
 <p>On the <strong>Fishery Selectivity</strong> panel, the user may select:</p>
 <ul>
 <li>User Specfied Fishery Selectivity of Age</li>
 <li>Read Fishery Selectivity from File</li>
 </ul>
-<h3 id="example-time-varying-3">Example: Time Varying</h3>
-<p><img src="img/stochastic_fisherySelectivity_01.png" /></p>
+<section id="example-time-varying-3" class="level3">
+<h3 class="anchored" data-anchor-id="example-time-varying-3">Example: Time Varying</h3>
+<p><img src="img/stochastic_fisherySelectivity_01.png" class="img-fluid"></p>
 <p>In the above example, <em>time varying</em> is eanbled, and the user has selected to input the mean fishery selectivity for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will apply bias corrected log-normal error to the mean fishery selectivity values at age for all fleets.</p>
-<h3 id="example-non-time-varying-3">Example: Non Time Varying</h3>
-<p><img src="img/stochastic_fisherySelectivity_02.png" /></p>
+</section>
+<section id="example-non-time-varying-3" class="level3">
+<h3 class="anchored" data-anchor-id="example-non-time-varying-3">Example: Non Time Varying</h3>
+<p><img src="img/stochastic_fisherySelectivity_02.png" class="img-fluid"></p>
 <p>In the above case, the user has selected to input a vector of mean fishery selectivity values at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will generate stochastic fishery selectivity values for each fleet. The same values will be applied in all years of the time horizon.</p>
-<h3 id="example-from-file-option-3">Example: From File Option</h3>
-<p><img src="img/stochastic_fisherySelectivity_03.png" /></p>
+</section>
+<section id="example-from-file-option-3" class="level3">
+<h3 class="anchored" data-anchor-id="example-from-file-option-3">Example: From File Option</h3>
+<p><img src="img/stochastic_fisherySelectivity_03.png" class="img-fluid"></p>
 <p>In this example, the user specified that <a href="#stochastic-data-files">stochastic data for fishery selectivity will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
-<hr />
-<h1 id="discard-fraction">Discard Fraction</h1>
+<hr>
+</section>
+</section>
+<section id="discard-fraction" class="level1">
+<h1>Discard Fraction</h1>
 <p>AGEPRO allows users to input stochastic Discard Fraction</p>
 <p>If a model case didn’t include a discard option (<em>Discards are present</em> in <strong>General Options</strong>), controls from this stochastic parameter will be disabled.</p>
-<p><img src="img/stochastic_discardFraction_00.png" /></p>
+<p><img src="img/stochastic_discardFraction_00.png" class="img-fluid"></p>
 <p>On the <strong>Discard Fraction</strong> panel the user can select:</p>
 <ul>
 <li>User Specfied Discard Fraction at Age</li>
 <li>Read Discard Fraction from File</li>
 </ul>
-<h3 id="example-time-varying-4">Example: Time Varying</h3>
-<p><img src="img/stochastic_discardFraction_01.png" /></p>
+<section id="example-time-varying-4" class="level3">
+<h3 class="anchored" data-anchor-id="example-time-varying-4">Example: Time Varying</h3>
+<p><img src="img/stochastic_discardFraction_01.png" class="img-fluid"></p>
 <p>In the above example, <em>time varying</em> is eanbled, and the user has selected to input the mean discard fraction for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will apply bias corrected log-normal error to the mean discard fraction values at age for all fleets.</p>
-<h3 id="example-non-time-varying-4">Example: Non Time Varying</h3>
-<p><img src="img/stochastic_discardFraction_02.png" /></p>
+</section>
+<section id="example-non-time-varying-4" class="level3">
+<h3 class="anchored" data-anchor-id="example-non-time-varying-4">Example: Non Time Varying</h3>
+<p><img src="img/stochastic_discardFraction_02.png" class="img-fluid"></p>
 <p>In the above case, the user has selected to input a vector of mean discard fraction at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.</p>
 <p>On each observed value, the program will generate stochastic discard fraction values for each fleet. The same values will be applied in all years of the time horizon.</p>
-<h3 id="example-from-file-option-4">Example: From File Option</h3>
-<p><img src="img/stochastic_discardFraction_03.png" /></p>
+</section>
+<section id="example-from-file-option-4" class="level3">
+<h3 class="anchored" data-anchor-id="example-from-file-option-4">Example: From File Option</h3>
+<p><img src="img/stochastic_discardFraction_03.png" class="img-fluid"></p>
 <p>In this example, the user specified that <a href="#stochastic-data-files">stochastic data for discard fraction will be read from an external file</a>. Use the <strong>Browse</strong> button to bring up a Windows File Dialog to select the external data file.</p>
-<hr />
-<h1 id="bootstrap">Bootstrap</h1>
+<hr>
+</section>
+</section>
+<section id="bootstrap" class="level1">
+<h1>Bootstrap</h1>
 <p>Bootstrapping input and options is located on the <strong>Bootstrapping</strong> panel.</p>
 <p>The user must input the <strong>Number of Bootstrap iterations</strong>. Each line in the Bootstrap file represents a bootstrap iteration, consisting of space delimited stock values at age as double precision numeric values. The number of data values on each row line must be equal to the number of age classes.</p>
 <p>The number of rows in the bootstrap file must be at least equal to the <strong>number of bootstrap iterations</strong>. Since it contains the population of the first year in the projection.</p>
 <p>AGEPRO, will ignore additional iterations or bootstrap data intended for addtional projection years.</p>
 <p>For each bootstrap iteration the stock values at age in the file will be multiplied by the <strong>Population Scaling Factor</strong>. For example, a population scale factor of <code>1000</code> means that a bootstrap file contains stock values at age equal to thousands of fish.</p>
-<p>AGEPRO versions 3.4 and later do not support recruitment ages beyond age 1, therefore the second bootstrap file with Bootstrap F’s in earlier versions is no longer used.</p>
-<h3 id="scaling-factors-with-vpavirtual-population-analysis">Scaling factors with VPA(Virtual Population Analysis)</h3>
+<p>The AGEPRO Calculation Engine does not support recruitment ages beyond age 1. If you are using earlier versions of AGEPRO Calcuation Engine prior to Version 3.4, use a second bootstrap file with Bootstrap F’s.</p>
+<!-- AGEPRO versions 3.4 and later do not support recruitment ages beyond age 1, therefore the second bootstrap file with Bootstrap F's in earlier versions is no longer used.  -->
+<section id="scaling-factors-with-vpavirtual-population-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="scaling-factors-with-vpavirtual-population-analysis">Scaling factors with VPA(Virtual Population Analysis)</h3>
 <p>Typically, bootstrap files are generated by the <strong>VPA(Virtual Population Analysis)</strong> or <strong>ASAP(Age Structured Assessment Program)</strong> Models. It is imperative that the user be consistent between VPA or ASAP runs and AGEPRO.</p>
 <p>In the following example, the <strong>VPA program input</strong> generates a bootstrap population file which uses a scaling factor of <code>1</code>. Thus, if this were the <strong>VPA</strong> file used to create for <strong>AGEPRO</strong> input, with AGEPRO’s <strong>Population Scaling Factor</strong> of <code>1000</code>, then it will imply that the <strong>VPA Catch data</strong> was in <strong>thousands</strong> of fish.</p>
-<figure>
-<img src="img/VPAExample_01.png" title="VPA Bootstrapping Output Options" alt="VPA Bootstraping Output Options" /><figcaption aria-hidden="true">VPA Bootstraping Output Options</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/VPAExample_01.png" title="VPA Bootstrapping Output Options" class="img-fluid figure-img"></p>
+<figcaption>VPA Bootstraping Output Options</figcaption>
 </figure>
-<hr />
-<h1 id="recruitment">Recruitment</h1>
+</div>
+<hr>
+</section>
+</section>
+<section id="recruitment" class="level1">
+<h1>Recruitment</h1>
 <p>AGEPRO supports multiple recruitment methods. The number of recruitment methods can be specified in the <strong>General Options</strong> panel.</p>
 <p>Under <strong>Select Recruitment Models</strong> is a DataGrid object with combo box(es). The number of recruitment methods determines the number of combobox selections.</p>
 <p>The combobox will be populated with the following models:</p>
@@ -521,22 +757,42 @@ Time Variant</code></pre>
 <li>Model 21: Empirical Cumulative Distribution Function of Recruitment w/ Linear Decline to Zero</li>
 </ul>
 <p>The user can choose multiple instances of a Recruitment Model (example: All 3 Recruitment Models can be a Beverton-Holt Curve Model). <strong>However, Only a single instance of the Markov Matrix model is allowed.</strong></p>
-<p>Note: Model 9: Time-Varying Empirical Recruitment Distribution is not supported in AGEPRO version 4.0 and later. This model can be reimplemented by specifying multiple instances of Model 3.</p>
-<h2 id="recruitment-probability">Recruitment Probability</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Model 9: Time-Varying Empirical Recruitment Distribution is not supported in AGEPRO version 4.0 and later. This model can be reimplemented by specifying multiple instances of Model 3.</p>
+</div>
+</div>
+<section id="recruitment-probability" class="level2">
+<h2 class="anchored" data-anchor-id="recruitment-probability">Recruitment Probability</h2>
 <p>Each model selection is given a probability in each year of the projection time horizon. In each realization, and each year in the projection time horizon, a single recruitment method is randomly selected from a multinomial distribution.</p>
 <p>For each year (row), the Recruitment Probably selections (columns) must sum up to 1.0.</p>
-<h2 id="specifying-scaling-factors-for-recruitment-and-ssb">Specifying Scaling Factors for Recruitment and SSB</h2>
+</section>
+<section id="specifying-scaling-factors-for-recruitment-and-ssb" class="level2">
+<h2 class="anchored" data-anchor-id="specifying-scaling-factors-for-recruitment-and-ssb">Specifying Scaling Factors for Recruitment and SSB</h2>
 <p><strong>Recruitment Scaling Factor</strong> and <strong>SSB Scaling Factor</strong> are explicit scaling factors that is applied to recruitment models. The calculated recruitment from the model will be <em>multiplied by the Recruitment Scaling Factor</em> before it is outputted to the user. The calculated Spawning Stock Biomass will be <em>divided by the SSB Scaling Factor</em> for use within recruitment model calculations.</p>
 <p>Recruitment Scaling Factor scales in number of fish (for recruit values in Recruitment Model parameters). SSB Scaling Factor scales in Metric Tons (for SSB/biomass values in Recruitment Model parameters).</p>
-<h2 id="specifying-the-first-recruitment-age-class">Specifying the First Recruitment Age class</h2>
+</section>
+<section id="specifying-the-first-recruitment-age-class" class="level2">
+<h2 class="anchored" data-anchor-id="specifying-the-first-recruitment-age-class">Specifying the First Recruitment Age class</h2>
 <p>The user has the option to select either <strong>Age 0</strong> or <strong>Age 1</strong> as the first recruitment age class in General options panel. The default is <strong>Age 1</strong> recruitment.</p>
 <p>For <strong>Age 1 Recruitment</strong>, the calculated recruitment is introduced into the first Age Class in the subsequent year.</p>
 <p>In those methods in which Recruitment is a function of Spawning <strong>Stock Biomass, the stock numbers in the first Age class in Year T+1 will be equal to the predicted recruitment based on SSB in Year T</strong>.</p>
 <p>If <strong>Age 0 Recruitment</strong> is selected, the calculated recruitment is introduced into the first Age Class in the current year for all years except the first year in the time horizon.</p>
 <p>For those recruitment methods in which Recruitment is a function of Spawning Stock Biomass, the <strong>stock numbers for Age 0 in Year T will be equal to The predicted recruitment based on SSB in the same Year.</strong> This rule applies to all years <strong>except the first year</strong> in the time horizon.</p>
 <p>AGEPRO does not support first recruitment ages classes beyond 1. </p>
-<hr />
-<h1 id="empirical-recruitment-models">Empirical Recruitment Models</h1>
+<hr>
+</section>
+</section>
+<section id="empirical-recruitment-models" class="level1">
+<h1>Empirical Recruitment Models</h1>
 <p>When an Empirical Recruitment model type is selected in the the recruitment selection drop down list in the <em>Recruit Model</em> tab of the <strong>Recruitment</strong> panel, input parameters for this type of recruitment will appear below.</p>
 <p>Empirical Recruitment Models include:</p>
 <ul>
@@ -552,10 +808,14 @@ Time Variant</code></pre>
 <p>Only numeric data is allowed for Empirical Recruitment models..</p>
 <p><strong>Note</strong>: <a href="#specifying-scaling-factors-for-recruitment-and-ssb">The Recruitment Scale Factor</a> in the Recruitment tab should be consistent with empirical observations entered. For example, if the data shown above are empirical observations in millions of fish then the Recruitment Scale Factor must be input as 1,000,000</p>
 <p>Enter a new value for the number of observations and click on the SET button to resize the observation tables.</p>
-<h2 id="fixed-recruitment-method">Fixed Recruitment Method</h2>
+<section id="fixed-recruitment-method" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-recruitment-method">Fixed Recruitment Method</h2>
 <p>In the datagrid, the user inputs fixed recruitment values for the projection time horizon <strong>beginning with the 2nd Year.</strong> Recruitment in the 1st year of the projection time horizon is the value supplied in the bootstrap file for the first age class.</p>
-<hr />
-<h1 id="parametric-recruitment-models">Parametric Recruitment Models</h1>
+<hr>
+</section>
+</section>
+<section id="parametric-recruitment-models" class="level1">
+<h1>Parametric Recruitment Models</h1>
 <p>When a Parametric Recruitment model type is selected in the the recruitment selection drop down list in the <em>Recruit Model</em> tab of the <strong>Recruitment</strong> panel, input parameters for this type of recruitment will appear below.</p>
 <p>Parametric Recruitment Models Include:</p>
 <ul>
@@ -570,8 +830,10 @@ Time Variant</code></pre>
 </ul>
 <p>Multiple instances of the same parametric model are allowed. This would allow the user to, for example, set up multiple Beverton Holt models with different parameters. Use the recruitment selection drop down list to toggle between input sets.</p>
 <p><strong>Note:</strong> Make sure that the scaling of the parametric parameters is consistent with the <a href="#specifying-scaling-factors-for-recruitment-and-ssb">SSB and Recruitment Scaling Factors</a> on the <strong>Recruitment</strong> tab.</p>
-<hr />
-<h1 id="predictor-recruitment-models">Predictor Recruitment Models</h1>
+<hr>
+</section>
+<section id="predictor-recruitment-models" class="level1">
+<h1>Predictor Recruitment Models</h1>
 <p>When a predictor recruitment model type is selected in the the recruitment selection drop down list in the <em>Recruit Model</em> tab of the <strong>Recruitment</strong> panel, input parameters for this type of recruitment will appear below.</p>
 <p>The Predictor Models Include:</p>
 <ul>
@@ -582,23 +844,30 @@ Time Variant</code></pre>
 </ul>
 <p>Multiple Instances of the same predictor model are allowed. Use the recruitment selection drop down list to toggle between input sets.</p>
 <p>To change the number of predictors, set the value of the <em>number of recruitment predictors</em> parameter by typing the value in or using spinbox arrows, and then click on the SET button. The valid number of predictors range from 0-5.</p>
-<hr />
-<h1 id="markov-matrix-recruitment">Markov Matrix Recruitment</h1>
+<hr>
+</section>
+<section id="markov-matrix-recruitment" class="level1">
+<h1>Markov Matrix Recruitment</h1>
 <p>When <strong>Model 1: Markov Matrix</strong> is selected in the the recruitment selection drop down list in the <em>Recruit Model</em> tab of the <strong>Recruitment</strong> panel, input parameters for this type of recruitment will appear below. Only one instance of Markov Matrix recruitment is allowed.</p>
 <p>Use the SET button to change the number of levels.</p>
 <p><strong>Note:</strong> The probabilities of each SSB level row in the Probability table must sum up to <strong>1.0</strong></p>
 <p><strong>Note:</strong> Make sure that the scaling of Recruitment and SSB cutpoint inputs is consistent with the <a href="#specifying-scaling-factors-for-recruitment-and-ssb">SSB and Recruitment Scaling Factors</a> on the <strong>Recruitment</strong> tab.</p>
-<hr />
-<h1 id="harvest-scenario">Harvest Scenario</h1>
+<hr>
+</section>
+<section id="harvest-scenario" class="level1">
+<h1>Harvest Scenario</h1>
 <p>The <strong>Harvest Scenario</strong> panel includes a data grid used to determine the level of population harvest for each year in the projection horizon.</p>
 <p>In addition, the user may use this data grid for additional harvest calculations such as the <strong>P-Star Analysis</strong>, or Stock <strong>Rebuilder Target</strong>. By default, <strong>None (only Harvest Scenario)</strong> is selected.</p>
-<h2 id="harvest-scenario-table">Harvest Scenario Table</h2>
+<section id="harvest-scenario-table" class="level2">
+<h2 class="anchored" data-anchor-id="harvest-scenario-table">Harvest Scenario Table</h2>
 <p>In the Harvest Scenario data grid table, the user must specify the <em>Harvest Specfication</em> for each year in the projection time horizon. The choices are: * Landings (MT) * Removals (Landings and Discards) (MT) * Total Fishing Mortality or “F-MULT”</p>
-<p>For single fleet models, apply the <em>Harvrest Specfication</em> values under the <em>HARVEST VALUE</em> column. For multiple fleet models, input the values for the intended fleet (e.g. <em>F-MULT</em> specfic values for <em>FLEET-2</em>). In either case, harvest specification values must be <em>numeric</em>.</p>
-<h2 id="rebuilder-target-option">Rebuilder Target Option</h2>
+<p>For single fleet models, apply the <em>Harvrest Specfication</em> values under the <em>HARVEST VALUE</em> column. For multiple fleet models, input the values for the intended fleet (e.g.&nbsp;<em>F-MULT</em> specfic values for <em>FLEET-2</em>). In either case, harvest specification values must be <em>numeric</em>.</p>
+</section>
+<section id="rebuilder-target-option" class="level2">
+<h2 class="anchored" data-anchor-id="rebuilder-target-option">Rebuilder Target Option</h2>
 <p>AGEPRO allows an option for the user to specify a Rebuilder target and calculate the Fishing Mortality level required to meet this target to a specified confidence level.</p>
 <p>Select the <strong>Apply Rebuilder Target</strong> option for <em>Additional calculations</em> box in the <strong>Harvest Scenario</strong> panel. <strong>Rebuilder Specification</strong> will appear directly below.</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>For the Harvest Scenario Table, the <em>Harvest Specification</em> from the second year (row 2) in the time horizon to the <strong>Rebuild Target Year</strong> must be set to <strong>F-MULT</strong></p>
 </blockquote>
 <p>For <strong>Rebuilder Target Type</strong>, the user may set the rebuilder target as:</p>
@@ -608,10 +877,14 @@ Time Variant</code></pre>
 <li>Mean Biomass</li>
 </ul>
 <p>If there is more than one fleet then the input estimates will be used to set the proportion of Fishing Mortality in each fleet. This proportion will be held constant as the F-Mult level changes to meet the target.</p>
-<h3 id="example">Example</h3>
-<figure>
-<img src="img/harvest_rebuilder_01.png" title="Harvest Scenario Table" alt="Single Fleet Harvest Scenario Table with a rebuild target" /><figcaption aria-hidden="true">Single Fleet Harvest Scenario Table with a rebuild target</figcaption>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/harvest_rebuilder_01.png" title="Harvest Scenario Table" class="img-fluid figure-img"></p>
+<figcaption>Single Fleet Harvest Scenario Table with a rebuild target</figcaption>
 </figure>
+</div>
 <p>In the example shown above the user has set a Landings Harvest Quota in the first year of <strong>2,100 MT</strong>.</p>
 <p>The Rebuilder range begins with the second year in the time horizon and ends at the target year <strong>2019</strong>.</p>
 <p>The user has also set the Harvest F-Mult in the Rebuilder Range at an initial guess.</p>
@@ -647,17 +920,24 @@ Year    Probability
 2019    0.749960
 2020    0.761440
 Probability Threshold Exceeded at Least Once =     0.9063</code></pre>
-<h2 id="p-star-analysis">P-Star Analysis</h2>
+</section>
+</section>
+<section id="p-star-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="p-star-analysis">P-Star Analysis</h2>
 <p><strong>P-Star Analysis</strong> determines <em>P-Star</em> (risk of overfishing) at multiple levels.</p>
 <p>Select the <strong>Peform P-Star Analysis</strong> option for <em>Additional calculations</em> box in the <strong>Harvest Scenario</strong> panel. This will show the <strong>P-Star Specfication</strong> directly below. The <strong>P-Star Specification</strong> allows the user to specify the number and values of P-Star levels, Overfishing F criteria, and P-Star Target Year. P-Star levels in should be entered in ascending order.</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>For the Harvest Scenario Table, the user must set the column <em>Harvest Specification</em> to <strong>REMOVALS</strong> (landings and discards) <em>on the year (row) that</em> <strong>P-Star Target Year</strong> is set to.</p>
 </blockquote>
 <p>For the multiple fleets scenario, the proportion of removals per fleet will be set by the initial guess and this proportion will be held constant as total removal values are varied to meet the P-Star criteria.</p>
-<h3 id="example-3">Example</h3>
-<figure>
-<img src="img/harvest_pstar_01.png" title="Harvest Scenario Table" alt="Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario" /><figcaption aria-hidden="true">Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario</figcaption>
+<section id="example-3" class="level3">
+<h3 class="anchored" data-anchor-id="example-3">Example</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/harvest_pstar_01.png" title="Harvest Scenario Table" class="img-fluid figure-img"></p>
+<figcaption>Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario</figcaption>
 </figure>
+</div>
 <p>In the above example, the user has provided an initial guess of total removals of 20,000 MT (<code>15000</code> for Fleet-1 + <code>7500</code> for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.</p>
 <p>The Overfishing F is 0.3. The program will vary the levels of total removals to determine the level of removals required to exceed a Total F of 0.3 with 10%, 25%, and 50% levels of confidence.</p>
 <p>A table of results is reported for all levels</p>
@@ -695,7 +975,19 @@ Year       Average        StdDev
 2013       37.9428       21.5088
 2014       18.6135       15.1005</code></pre>
 <p>Combined Catch Distribution</p>
-<table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Year</th>
@@ -833,20 +1125,21 @@ Year       Average        StdDev
 </tr>
 </tbody>
 </table>
-<hr />
-<h1 id="misc-options">Misc options</h1>
-<h2 id="auxiliary-output-files">Auxiliary Output Files</h2>
+<hr>
+</section>
+</section>
+</section>
+<section id="misc-options" class="level1">
+<h1>Misc options</h1>
+<section id="auxiliary-output-files" class="level2">
+<h2 class="anchored" data-anchor-id="auxiliary-output-files">Auxiliary Output Files</h2>
 <p>AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted <strong>AGEPRO Model Output Run directory</strong>.</p>
 <p>The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.</p>
 <p>All auxiliary file data items are space delimited double precision real numbers in scientific notation.</p>
 <p>In the following auxiliary files the number of columns is equal to the number of years in the time horizon and the number of rows is equal to the number of observed values. These files are created in all cases.</p>
 <p>The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.</p>
 <p>The <strong>units used in the auxiliary files are not affected by the <a href="#scaling-option-in-output-report">summary report scaling factors</a></strong> optionally applied to the report file.</p>
-<table>
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 78%" />
-</colgroup>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">File Extension</th>
@@ -894,14 +1187,17 @@ Year       Average        StdDev
 </table>
 <p>If the option <strong>Output Summary Report for Stock Numbers at Age</strong> is enabled, auxiliary file XX1 will be created. This file has stock numbers at age. The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.</p>
 <p><strong>Please Note</strong>: The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.</p>
-<h3 id="multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File (<code>*.XX10</code>)</h3>
+<section id="multi-fleet-auxiliary-data-file-.xx10" class="level3">
+<h3 class="anchored" data-anchor-id="multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File (<code>*.XX10</code>)</h3>
 <p>If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created. The number of columns will be equal to the number of years in the time horizon.</p>
 <p>The number of data sections will be equal to the number of observed values multiplied by the number of fleets.</p>
 <p>There are four rows in each section by fleet: * Fishing Mortality * Combined Catch Biomass * Landings * Discards</p>
-<h3 id="generating-auxiliary-stochastic-data-files">Generating Auxiliary Stochastic Data Files</h3>
+</section>
+<section id="generating-auxiliary-stochastic-data-files" class="level3">
+<h3 class="anchored" data-anchor-id="generating-auxiliary-stochastic-data-files">Generating Auxiliary Stochastic Data Files</h3>
 <p>The user may request that stochastic data at age be saved to auxiliary files on the Options tab.</p>
 <p>These stochasitic data files may be read in to subsequent model runs</p>
-<table>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">File Extension</th>
@@ -947,293 +1243,59 @@ Year       Average        StdDev
 </tr>
 </tbody>
 </table>
-<h2 id="summary-report-of-stock-numbers-of-age">Summary Report of Stock Numbers of Age</h2>
+</section>
+</section>
+<section id="summary-report-of-stock-numbers-of-age" class="level2">
+<h2 class="anchored" data-anchor-id="summary-report-of-stock-numbers-of-age">Summary Report of Stock Numbers of Age</h2>
 <p>To request an summry report, check the option <strong>Ouput Summary Report for Stock Numbers at Age</strong>. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.</p>
 <p>Generating a summary report with a large time horizon and/or large number of age classes is not recommended, since it can affect completeion of the AGEPRO model run.</p>
-<h2 id="export-to-r">Export to R</h2>
+</section>
+<section id="export-to-r" class="level2">
+<h2 class="anchored" data-anchor-id="export-to-r">Export to R</h2>
 <p>If <strong>Export Results to R</strong> is enabled, a file will be created in the same directory as the input file, with a name based on the name of the input file except with an <code>.RDAT</code> extension. The data in the file is stored in the the R “ddump” format, which is an ASCII representation of an R object.</p>
 <p>Data in this format can be read into R using a single “dget” command. In R, you would type something like:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">dget</span>(<span class="st">&#39;myfile.rdat&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">dget</span>(<span class="st">'myfile.rdat'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Where <code>myfile.rdat</code> is the name of the file created during the export process.</p>
-<h2 id="specifying-a-specfic-percentile-in-output-report">Specifying a Specfic Percentile in Output Report</h2>
+</section>
+<section id="specifying-a-specfic-percentile-in-output-report" class="level2">
+<h2 class="anchored" data-anchor-id="specifying-a-specfic-percentile-in-output-report">Specifying a Specfic Percentile in Output Report</h2>
 <p>The <a href="#summary-report-of-stock-numbers-of-age">Summary Report</a> provides tables of the distribution of calculated results at standard distribution intervals including the median. However, a summary report with a specfic percentile that is not equal to the standard distribution internal can be requested.</p>
 <p>To create the Percentile Report in the Output File, check the <strong>Reqest Percentile Report</strong> checkbox option in <em>Output Options</em> Section in the <strong>Misc. Options</strong> panel. Then, enter a percentile value between <code>0.0</code> and <code>100.0</code> in the <strong>Report Percentile</strong> spinbox.</p>
 <p>The <a href="#scaling-option-in-output-report">summary report scaling units</a> are the same as were are used in the output report with a standard distribution.</p>
-<h3 id="example-4">Example</h3>
+<section id="example-4" class="level3">
+<h3 class="anchored" data-anchor-id="example-4">Example</h3>
 <p>The Output Report will supply values for each year in the time horizon for the calculated results:</p>
 <pre><code>Requested Percentile Report
-Percentile =    60.00 %</code></pre>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">2005</th>
-<th style="text-align: right;">2006</th>
-<th style="text-align: right;">2007</th>
-<th style="text-align: right;">2008</th>
-<th style="text-align: right;">2009</th>
-<th style="text-align: right;">2010</th>
-<th style="text-align: right;">2011</th>
-<th style="text-align: right;">2012</th>
-<th style="text-align: right;">2013</th>
-<th style="text-align: right;">2014</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Recruits</td>
-<td style="text-align: right;">61.4121</td>
-<td style="text-align: right;">61.5496</td>
-<td style="text-align: right;">61.4263</td>
-<td style="text-align: right;">61.5560</td>
-<td style="text-align: right;">61.7028</td>
-<td style="text-align: right;">61.5476</td>
-<td style="text-align: right;">61.6189</td>
-<td style="text-align: right;">61.5289</td>
-<td style="text-align: right;">61.6729</td>
-<td style="text-align: right;">61.7721</td>
-</tr>
-<tr class="even">
-<td>Spawning Stock Biomass</td>
-<td style="text-align: right;">107.2980</td>
-<td style="text-align: right;">659.3243</td>
-<td style="text-align: right;">683.8850</td>
-<td style="text-align: right;">591.5898</td>
-<td style="text-align: right;">502.6594</td>
-<td style="text-align: right;">444.8396</td>
-<td style="text-align: right;">393.4123</td>
-<td style="text-align: right;">354.1344</td>
-<td style="text-align: right;">314.3024</td>
-<td style="text-align: right;">289.2476</td>
-</tr>
-<tr class="odd">
-<td>Jan-1 Stock Biomass</td>
-<td style="text-align: right;">438.4464</td>
-<td style="text-align: right;">727.1282</td>
-<td style="text-align: right;">790.1585</td>
-<td style="text-align: right;">703.2796</td>
-<td style="text-align: right;">598.7040</td>
-<td style="text-align: right;">535.7083</td>
-<td style="text-align: right;">478.7315</td>
-<td style="text-align: right;">432.9380</td>
-<td style="text-align: right;">387.1672</td>
-<td style="text-align: right;">360.1825</td>
-</tr>
-<tr class="even">
-<td>Mean Biomass</td>
-<td style="text-align: right;">387.3808</td>
-<td style="text-align: right;">634.6203</td>
-<td style="text-align: right;">663.1946</td>
-<td style="text-align: right;">573.3694</td>
-<td style="text-align: right;">493.5514</td>
-<td style="text-align: right;">441.9435</td>
-<td style="text-align: right;">396.9153</td>
-<td style="text-align: right;">359.6175</td>
-<td style="text-align: right;">322.4296</td>
-<td style="text-align: right;">300.5405</td>
-</tr>
-<tr class="odd">
-<td>Combined Catch Biomass</td>
-<td style="text-align: right;">23.0890</td>
-<td style="text-align: right;">54.3665</td>
-<td style="text-align: right;">114.6540</td>
-<td style="text-align: right;">134.2215</td>
-<td style="text-align: right;">101.8851</td>
-<td style="text-align: right;">89.4593</td>
-<td style="text-align: right;">76.8770</td>
-<td style="text-align: right;">67.2651</td>
-<td style="text-align: right;">58.7692</td>
-<td style="text-align: right;">53.3587</td>
-</tr>
-<tr class="even">
-<td>Landings</td>
-<td style="text-align: right;">22.5330</td>
-<td style="text-align: right;">52.7181</td>
-<td style="text-align: right;">113.5268</td>
-<td style="text-align: right;">132.7871</td>
-<td style="text-align: right;">100.7810</td>
-<td style="text-align: right;">88.4612</td>
-<td style="text-align: right;">75.9868</td>
-<td style="text-align: right;">66.4783</td>
-<td style="text-align: right;">58.0849</td>
-<td style="text-align: right;">52.7141</td>
-</tr>
-<tr class="odd">
-<td>Discards</td>
-<td style="text-align: right;">0.5560</td>
-<td style="text-align: right;">1.6155</td>
-<td style="text-align: right;">1.1014</td>
-<td style="text-align: right;">1.3975</td>
-<td style="text-align: right;">1.0788</td>
-<td style="text-align: right;">0.9637</td>
-<td style="text-align: right;">0.8638</td>
-<td style="text-align: right;">0.7737</td>
-<td style="text-align: right;">0.6854</td>
-<td style="text-align: right;">0.6333</td>
-</tr>
-<tr class="even">
-<td>FMort</td>
-<td style="text-align: right;">0.1869</td>
-<td style="text-align: right;">0.2600</td>
-<td style="text-align: right;">0.2600</td>
-<td style="text-align: right;">0.2600</td>
-<td style="text-align: right;">0.2400</td>
-<td style="text-align: right;">0.2400</td>
-<td style="text-align: right;">0.2400</td>
-<td style="text-align: right;">0.2400</td>
-<td style="text-align: right;">0.2400</td>
-<td style="text-align: right;">0.2400</td>
-</tr>
-<tr class="odd">
-<td>Stock Numbers at Age</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr class="even">
-<td>Age 1</td>
-<td style="text-align: right;">12.3924</td>
-<td style="text-align: right;">61.4121</td>
-<td style="text-align: right;">61.5496</td>
-<td style="text-align: right;">61.4263</td>
-<td style="text-align: right;">61.5560</td>
-<td style="text-align: right;">61.7028</td>
-<td style="text-align: right;">61.5476</td>
-<td style="text-align: right;">61.6189</td>
-<td style="text-align: right;">61.5289</td>
-<td style="text-align: right;">61.6729</td>
-</tr>
-<tr class="odd">
-<td>Age 2</td>
-<td style="text-align: right;">723.4452</td>
-<td style="text-align: right;">10.1231</td>
-<td style="text-align: right;">50.1152</td>
-<td style="text-align: right;">50.2031</td>
-<td style="text-align: right;">50.1283</td>
-<td style="text-align: right;">50.2243</td>
-<td style="text-align: right;">50.3180</td>
-<td style="text-align: right;">50.1996</td>
-<td style="text-align: right;">50.2535</td>
-<td style="text-align: right;">50.2007</td>
-</tr>
-<tr class="even">
-<td>Age 3</td>
-<td style="text-align: right;">0.9338</td>
-<td style="text-align: right;">582.7218</td>
-<td style="text-align: right;">8.1089</td>
-<td style="text-align: right;">40.1317</td>
-<td style="text-align: right;">40.2213</td>
-<td style="text-align: right;">40.2209</td>
-<td style="text-align: right;">40.2942</td>
-<td style="text-align: right;">40.3655</td>
-<td style="text-align: right;">40.2727</td>
-<td style="text-align: right;">40.3275</td>
-</tr>
-<tr class="odd">
-<td>Age 4</td>
-<td style="text-align: right;">3.0425</td>
-<td style="text-align: right;">0.7365</td>
-<td style="text-align: right;">451.5521</td>
-<td style="text-align: right;">6.2816</td>
-<td style="text-align: right;">31.1053</td>
-<td style="text-align: right;">31.3186</td>
-<td style="text-align: right;">31.3142</td>
-<td style="text-align: right;">31.3677</td>
-<td style="text-align: right;">31.4161</td>
-<td style="text-align: right;">31.3529</td>
-</tr>
-<tr class="even">
-<td>Age 5</td>
-<td style="text-align: right;">37.3769</td>
-<td style="text-align: right;">2.2338</td>
-<td style="text-align: right;">0.5131</td>
-<td style="text-align: right;">314.5587</td>
-<td style="text-align: right;">4.3710</td>
-<td style="text-align: right;">21.9489</td>
-<td style="text-align: right;">22.0933</td>
-<td style="text-align: right;">22.0963</td>
-<td style="text-align: right;">22.1299</td>
-<td style="text-align: right;">22.1605</td>
-</tr>
-<tr class="odd">
-<td>Age 6</td>
-<td style="text-align: right;">6.0544</td>
-<td style="text-align: right;">25.7380</td>
-<td style="text-align: right;">1.4098</td>
-<td style="text-align: right;">0.3240</td>
-<td style="text-align: right;">198.6922</td>
-<td style="text-align: right;">2.8168</td>
-<td style="text-align: right;">14.1379</td>
-<td style="text-align: right;">14.2306</td>
-<td style="text-align: right;">14.2335</td>
-<td style="text-align: right;">14.2576</td>
-</tr>
-<tr class="even">
-<td>Age 7</td>
-<td style="text-align: right;">7.7116</td>
-<td style="text-align: right;">4.1326</td>
-<td style="text-align: right;">16.2468</td>
-<td style="text-align: right;">0.8896</td>
-<td style="text-align: right;">0.2044</td>
-<td style="text-align: right;">127.9874</td>
-<td style="text-align: right;">1.8151</td>
-<td style="text-align: right;">9.1085</td>
-<td style="text-align: right;">9.1620</td>
-<td style="text-align: right;">9.1677</td>
-</tr>
-<tr class="odd">
-<td>Age 8</td>
-<td style="text-align: right;">1.2546</td>
-<td style="text-align: right;">5.2943</td>
-<td style="text-align: right;">2.6091</td>
-<td style="text-align: right;">10.2540</td>
-<td style="text-align: right;">0.5615</td>
-<td style="text-align: right;">0.1316</td>
-<td style="text-align: right;">82.4348</td>
-<td style="text-align: right;">1.1680</td>
-<td style="text-align: right;">5.8667</td>
-<td style="text-align: right;">5.9029</td>
-</tr>
-<tr class="even">
-<td>Age 9</td>
-<td style="text-align: right;">4.4207</td>
-<td style="text-align: right;">3.8955</td>
-<td style="text-align: right;">5.7163</td>
-<td style="text-align: right;">5.2276</td>
-<td style="text-align: right;">9.6713</td>
-<td style="text-align: right;">6.5808</td>
-<td style="text-align: right;">4.3209</td>
-<td style="text-align: right;">55.6507</td>
-<td style="text-align: right;">36.6454</td>
-<td style="text-align: right;">28.0549</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference-point-threshold-report">Reference Point Threshold Report</h2>
+Percentile =    60.00 %
+
+                                   2005        2006        2007        2008        2009        2010        2011        2012        2013        2014 
+ Recruits                       61.4121     61.5496     61.4263     61.5560     61.7028     61.5476     61.6189     61.5289     61.6729     61.7721 
+ Spawning Stock Biomass        107.2980    659.3243    683.8850    591.5898    502.6594    444.8396    393.4123    354.1344    314.3024    289.2476 
+ Jan-1 Stock Biomass           438.4464    727.1282    790.1585    703.2796    598.7040    535.7083    478.7315    432.9380    387.1672    360.1825 
+ Mean Biomass                  387.3808    634.6203    663.1946    573.3694    493.5514    441.9435    396.9153    359.6175    322.4296    300.5405 
+ Combined Catch Biomass         23.0890     54.3665    114.6540    134.2215    101.8851     89.4593     76.8770     67.2651     58.7692     53.3587 
+ Landings                       22.5330     52.7181    113.5268    132.7871    100.7810     88.4612     75.9868     66.4783     58.0849     52.7141 
+ Discards                        0.5560      1.6155      1.1014      1.3975      1.0788      0.9637      0.8638      0.7737      0.6854      0.6333 
+ FMort                           0.1869      0.2600      0.2600      0.2600      0.2400      0.2400      0.2400      0.2400      0.2400      0.2400 
+ Stock Numbers at Age 
+ Age 1                          12.3924     61.4121     61.5496     61.4263     61.5560     61.7028     61.5476     61.6189     61.5289     61.6729 
+ Age 2                         723.4452     10.1231     50.1152     50.2031     50.1283     50.2243     50.3180     50.1996     50.2535     50.2007 
+ Age 3                           0.9338    582.7218      8.1089     40.1317     40.2213     40.2209     40.2942     40.3655     40.2727     40.3275 
+ Age 4                           3.0425      0.7365    451.5521      6.2816     31.1053     31.3186     31.3142     31.3677     31.4161     31.3529 
+ Age 5                          37.3769      2.2338      0.5131    314.5587      4.3710     21.9489     22.0933     22.0963     22.1299     22.1605 
+ Age 6                           6.0544     25.7380      1.4098      0.3240    198.6922      2.8168     14.1379     14.2306     14.2335     14.2576 
+ Age 7                           7.7116      4.1326     16.2468      0.8896      0.2044    127.9874      1.8151      9.1085      9.1620      9.1677 
+ Age 8                           1.2546      5.2943      2.6091     10.2540      0.5615      0.1316     82.4348      1.1680      5.8667      5.9029 
+ Age 9                           4.4207      3.8955      5.7163      5.2276      9.6713      6.5808      4.3209     55.6507     36.6454     28.0549 </code></pre>
+</section>
+</section>
+<section id="reference-point-threshold-report" class="level2">
+<h2 class="anchored" data-anchor-id="reference-point-threshold-report">Reference Point Threshold Report</h2>
 <p>To request a Reference Point Threshold Report, check the <strong>Enable Reference Point Theshold Report</strong> check box. Then, input the Threshold values desired.</p>
 <p>Biomass threshold values are in Metric Tons (MT). If a reference point has a value of zero (<code>0</code>), then that portion of the report will be skipped.</p>
 <p>The Program will Output a table by year of the probability that the requested threshold will be exceeded.</p>
-<h3 id="example-5">Example</h3>
+<section id="example-5" class="level3">
+<h3 class="anchored" data-anchor-id="example-5">Example</h3>
 <p>In this example, the user entered the values for <em>Spawning Stock Biomass</em> as <code>250300</code> and for <em>Fishing Mortality</em> as <code>0.26</code>.</p>
 <p><em>JAN-1 Stock Biomass</em> and <em>Mean Biomass</em> has value <code>0</code>, therefore skipped in the threshold report.</p>
 <pre><code>Probability Spawning Stock Biomass Exceeds Threshold    250.300 (1000 MT)
@@ -1262,9 +1324,12 @@ Year    Probability
 2013    0.000000
 2014    0.000000
 Probability Threshold Exceeded at Least Once =     0.0065</code></pre>
-<h2 id="scaling-option-in-output-report">Scaling Option in Output Report</h2>
+</section>
+</section>
+<section id="scaling-option-in-output-report" class="level2">
+<h2 class="anchored" data-anchor-id="scaling-option-in-output-report">Scaling Option in Output Report</h2>
 <p>AGEPRO by default will scale the calculated results for the Summary Report as follows:</p>
-<table>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Data Type</th>
@@ -1288,24 +1353,468 @@ Probability Threshold Exceeded at Least Once =     0.0065</code></pre>
 </table>
 <p>However, the user may find that these defaults make the data hard to read in the report file. The user may override these defaults by checking the <strong>Specify Scale Factors for Output Report</strong> check box.</p>
 <p><strong>Please Note:</strong> This scaling is only used in the Report File and in Plots within the graphical interface, and does not affect the internal calculations or the auxiliary files.</p>
-<h2 id="specifying-bounds">Specifying Bounds</h2>
+</section>
+<section id="specifying-bounds" class="level2">
+<h2 class="anchored" data-anchor-id="specifying-bounds">Specifying Bounds</h2>
 <p>The user has an option to override the default maximum bounds values for <em>Weights of Age</em> (default: <code>10.0</code>) and <em>Natural Mortality</em> (default: <code>1.0</code>). This is be enabled by checking the <strong>Specify Bounds</strong> check box.</p>
-<h2 id="retrospective-adjustment-factors">Retrospective Adjustment Factors</h2>
+</section>
+<section id="retrospective-adjustment-factors" class="level2">
+<h2 class="anchored" data-anchor-id="retrospective-adjustment-factors">Retrospective Adjustment Factors</h2>
 <p><strong>Retrospective Adjustment Factors</strong> are applied to the initial population numbers to correct for retrospective bias. This is an optional parameter, and the user can enable or disable it by checking/unchecking the <strong>Specify Retrospective Adjustment Factors</strong> check box.</p>
 <p>The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be <strong>multiplied by</strong> the retrospective adjustment factors.</p>
-<h2 id="view-agepro-output-files">View AGEPRO Output files</h2>
+</section>
+<section id="view-agepro-output-files" class="level2">
+<h2 class="anchored" data-anchor-id="view-agepro-output-files">View AGEPRO Output files</h2>
 <p>Choose which program to view AGEPRO Output Data (<code>*.out</code>) files. This program will open once the AGEPRO calculation engine is finished.</p>
 <p>If <strong>System Default</strong> is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn’t been estabished, then a dialog window will pop up similar to the following.</p>
-<p><img src="img/outFile_association_01.png" title="File association" /></p>
+<p><img src="img/outFile_association_01.png" title="File association" class="img-fluid"></p>
 <p>To bypass viewing AGEPRO Output data files after a model run, select <strong>None</strong>.</p>
-<hr />
-<h1 id="agepro-projection-samples">AGEPRO Projection Samples</h1>
-<p>The following descriptions for the first three examples are excerpt from the <em>AGEPRO Reference Manual</em> (Brodziak 2018). Example 4 references <em>Stock Assessment of Uku (Aprion virescens) in Hawaii, 2020</em> (Nadon et al. 2020). These examples are provided to illustrate projection options and features of AGEPRO. These projections use actual fishery data but are for the purposes for demostration only.</p>
-<h2 id="example-1-1">Example 1</h2>
+<hr>
+</section>
+</section>
+<section id="agepro-projection-samples" class="level1">
+<h1>AGEPRO Projection Samples</h1>
+<p>The following descriptions for the first three examples are excerpt from the <em>AGEPRO Reference Manual</em> (Brodziak 2018). Example 4 references <em>Stock Assessment of Uku (Aprion virescens) in Hawaii, 2020</em> (Nadon et al.&nbsp;2020). These examples are provided to illustrate projection options and features of AGEPRO. These projections use actual fishery data but are for the purposes for demostration only.</p>
+<section id="example-1-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-1">Example 1</h2>
 <p>The first example is a fishing mortality and landings quota projection for Acadian redfish. The time horizon is 2004-2009. The fishery is comprised of two fleets that have identical fishing mortality rates in 2004, identical quotas in 2005, and fishing mortality rates that differ by 2-fold during 2006-2009. This is standard projection analysis with 1000 bootstraps and 100 simulations per bootstrap based on an ADAPT/VPA stock assessment analysis. The model also outputs an R dataframe.</p>
-<h2 id="example-2-1">Example 2</h2>
+</section>
+<section id="example-2-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-1">Example 2</h2>
 <p>The second example is a fishing mortality and landings quota projection for Gulf of Maine haddock with a PStar analysis in 2018. The time horizon is 2014-2020. The fishery is comprised of one fleet. This is PStar projection analysis with 1000 bootstraps and 10 simulations per bootstrap based on an ASAP stock assessment analysis.The model output shows that total allowable catch amounts in 2018 to produce probabilities of overfishing of 10%, 20%, 30%, 40% and 50% at the overfishing level of <code>F=0.35</code>. The total allowable catches to produce overfishing probabilities of 10%, 20%, 30%, 40% and 50% are calculated to be 1780, 1998, 2176, 2332, and 2497 mt, respectively. The model output includes a stock summary of numbers at age and also outputs a percentile analysis for key outputs at the 90th percentile.</p>
-<h2 id="example-3-1">Example 3</h2>
+</section>
+<section id="example-3-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-3-1">Example 3</h2>
 <p>The third example is a fishing mortality and landings quota projection for Gulf of Maine haddock with a rebuilding analysis for 2014-2020. The fishery is comprised of one fleet with process error in fishery selectivity. This is rebuilding projection with 1000 bootstraps and 10 simulations per bootstrap based on an ASAP stock assessment analysis. The model output shows the constant fishing mortality to rebuild the stock is <code>F(REBUILD)=0.045</code>. The model output includes a stock summary of numbers at age and also outputs a percentile analysis for key outputs at the 90th percentile.</p>
-<h2 id="example-4-1">Example 4</h2>
+</section>
+<section id="example-4-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-4-1">Example 4</h2>
 <p>The fourth example is a fishing mortality and stock biomass projection for the uku snapper in Hawaii. The projection was conducted using results from the base-case Stock Synthesis model to evaluate the probable impacts of constant catch quotas on future spawning stock biomass and yield with a time horizon of 2019-2026. This projection includes four fishing fleets with distinct landings quotas, mean weights at age, and fishery selectivities at age as well as using three recruitment models with different probabilities of being the future state of nature. The initial condition for the stochastic projection was based on the distribution of estimated initial population size-at-age in the year 2018. A total of 1000 simulations were run for each of 100 bootstrap replicates to characterize the effects of uncertainty in initial stock size as well as process errors on the distribution of future recruitment, life history, and fishery parameters.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
