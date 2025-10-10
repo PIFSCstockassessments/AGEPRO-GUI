@@ -829,6 +829,8 @@ Combined Catch Distribution
 
 # Misc options
 
+![Misc Options Panel](img/15_miscOptions.png "Misc Options Panel on the AGEPRO-GUI")
+
 ## Auxiliary Output Files
 AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted **AGEPRO Model Output Run directory**.
 
