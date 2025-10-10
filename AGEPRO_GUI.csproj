@@ -360,9 +360,9 @@
     <None Include="CHANGELOG.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="doc\agepro_manual.md" />
+    <None Include="doc\agepro_manual.qmd" />
     <Content Include="doc\agepro_manual.html">
-      <DependentUpon>agepro_manual.md</DependentUpon>
+      <DependentUpon>agepro_manual.qmd</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="examples\example1\Example1.BSN">
