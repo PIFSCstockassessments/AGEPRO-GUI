@@ -2,6 +2,7 @@
 title: AGEPRO-GUI for the Age Structured Projection Model (AGEPRO)
 format: 
   html:
+    self-contained: true
     page-layout: full
     toc: false
     sidebar: false
