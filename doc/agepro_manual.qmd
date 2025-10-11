@@ -833,9 +833,9 @@ Combined Catch Distribution
 
 ![Misc Options Panel](img/15_miscOptions.png "Misc Options Panel on the AGEPRO-GUI")
 
-## Output Options
+# Output Options
 
-### Generating Auxiliary Stochastic Data Files  
+## Generating Auxiliary Stochastic Data Files  
 The user may request that stochastic data at age be saved to auxiliary files on the Options tab.
 
 These stochasitic data files may be read in to subsequent model runs
@@ -852,7 +852,7 @@ XXX7           | Maturity
 XXX8           | Fishery Selectivity
 XXX9           | Discard Fraction
 
-### Export to R
+## Export to R
 If **Export Results to R** is enabled, a file will be created in the same directory as the input file, with a name based on the name of the input file except with an `.RDAT` extension. The data in the file is stored in the the R "ddump" format, which is an ASCII representation of an R object.
 
 Data in this format can be read into R using a single "dget" command. In R, you would type something like:
@@ -861,14 +861,14 @@ x = dget('myfile.rdat')
 ```
 Where `myfile.rdat` is the name of the file created during the export process.
 
-### Specifying a Specfic Percentile in Output Report
+## Specifying a Specfic Percentile in Output Report
 The [Summary Report](#summary-report-of-stock-numbers-of-age) provides tables of the distribution of calculated results at standard distribution intervals including the median. However, a summary report with a specfic percentile that is not equal to the standard distribution internal can be requested.
 
 To create the Percentile Report in the Output File, check the  **Reqest Percentile Report** checkbox option in *Output Options* Section in the **Misc. Options** panel. Then, enter a percentile value between `0.0` and `100.0` in the **Report Percentile** spinbox.
 
 The [summary report scaling units](#scaling-option-in-output-report) are the same as were are used in the output report with a standard distribution.
 
-#### Example
+### Example
 The Output Report will supply values for each year in the time horizon for the calculated results:
 
 ```{}
@@ -897,7 +897,7 @@ Percentile =    60.00 %
 ```
 
 
-## Stock of Age Distribution and Auxiliary Files Output
+# Stock of Age Distribution and Auxiliary Files Output
 AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted **AGEPRO Model Output Run directory**.
 
 The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.
@@ -926,14 +926,14 @@ If the option **Output Summary Report for Stock Numbers at Age** is enabled, aux
 
 **Please Note**:  The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.
 
-### Summary Report of Stock Numbers of Age
+## Summary Report of Stock Numbers of Age
 To request an summry report, check the option **Ouput Summary Report for Stock Numbers at Age**. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.
 
 :::{.callout-warning}
 Generating a summary report with a large time horizon and/or large number of age classes is not recommended, since it can affect completeion of the AGEPRO model run.
 :::
 
-###  Multi-Fleet Auxiliary Data File (`*.XX10`)
+##  Multi-Fleet Auxiliary Data File (`*.XX10`)
 
 If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created.  The number of columns will be equal to the number of years in the time horizon.
 
@@ -945,13 +945,13 @@ There are four rows in each section by fleet:
 * Landings
 * Discards
 
-## Retrospective Adjustment Factors
+# Retrospective Adjustment Factors
 **Retrospective Adjustment Factors** are applied to the initial population numbers to correct for retrospective bias.
 This is an optional parameter, and the user can enable or disable it by checking/unchecking the **Specify Retrospective Adjustment Factors** check box.
 
 The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be **multiplied by** the retrospective adjustment factors.
 
-## View AGEPRO Output files
+# View AGEPRO Output files
 Choose which program to view AGEPRO Output Data (`*.out`) files. This program will open once the AGEPRO calculation engine is finished.
 
 If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
@@ -961,19 +961,19 @@ If **System Default** is selected, it will launch a program that AGEPRO Output d
 To bypass viewing AGEPRO Output data files after a model run, select **None**.
 
 
-## Specifying Bounds
+# Specifying Bounds
 The user has an option to override the default maximum bounds values for *Weights of Age* (default: `10.0`) and *Natural Mortality* (default: `1.0`).
 This is be enabled by checking the **Specify Bounds** check box.
 
 
-## Reference Point Threshold Report
+# Reference Point Threshold Report
 To request a Reference Point Threshold Report, check the **Enable Reference Point Theshold Report** check box. Then, input the Threshold values desired.
 
 Biomass threshold values are in Metric Tons (MT). If a reference point has a value of zero (`0`), then that portion of the report will be skipped.
 
 The Program will Output a table by year of the probability that the requested threshold will be exceeded.
 
-### Example
+## Example
 In this example, the user entered the values for *Spawning Stock Biomass* as `250300` and for *Fishing Mortality* as `0.26`.
 
 *JAN-1 Stock Biomass* and *Mean Biomass* has value `0`, therefore skipped in the threshold report.
@@ -1008,7 +1008,7 @@ Year    Probability
 Probability Threshold Exceeded at Least Once =     0.0065
 ```
 
-## Scaling Option in Output Report
+# Scaling Option in Output Report
 AGEPRO by default will scale the calculated results for the Summary Report as follows:
 
  Data Type     | Default Report Units
