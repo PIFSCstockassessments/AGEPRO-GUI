@@ -900,6 +900,26 @@ Percentile =    60.00 %
 # Stock of Age Distribution and Auxiliary Files Output
 AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted **AGEPRO Model Output Run directory**.
 
+
+* No Stock of Age, but Output Auxilary Files EXCEPT Stock Numbers Of Age 
+  * Auxiliary files created, excuding the Stock Numbers of Age summary report. This is the behavior that `AGEPRO VERSION 4.0` and 
+    `AGEPRO VERSION 4.25` input files will have by default.  
+* Output Stock of Age and ALL Auxilary Files                             
+  * This Will Output Stock Numbers at Age and Auxiliary files. This is compatible with
+    `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` input files that have the option.  
+* NO Stock of Age and Auxilary Files
+  * No Stock Numbers at Age summary report or Auxiliary files will be created. This is only compatible with `AGEPRO VERSION 4.25` Input File format.
+* Output Stock of Age, but NO Auxilary Files
+  * This option produces a population size at age summary in the output file, but does not generate the auxiliary files. 
+    This is only compatible with `AGEPRO VERSION 4.25` Input File format. 
+* Output Stock of Age and Auxilary Files, EXCEPT Stock Numbers Of Age 
+  * This option produces a population size at age summary in the output file, generates the auxiliary files, 
+    but does not produce a population size at age file summary. This is only compatible with `AGEPRO VERSION 4.25` Input File format.
+
+
+
+## Auxiliary File Names
+
 The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.
 
 All auxiliary file data items are space delimited double precision real numbers in scientific notation.

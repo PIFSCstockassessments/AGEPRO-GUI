@@ -4247,6 +4247,32 @@ Percentile =    60.00 %
 <section id="stock-of-age-distribution-and-auxiliary-files-output" class="level1">
 <h1>Stock of Age Distribution and Auxiliary Files Output</h1>
 <p>AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted <strong>AGEPRO Model Output Run directory</strong>.</p>
+<ul>
+<li>No Stock of Age, but Output Auxilary Files EXCEPT Stock Numbers Of Age
+<ul>
+<li>Auxiliary files created, excuding the Stock Numbers of Age summary report. This is the behavior that <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input files will have by default.<br>
+</li>
+</ul></li>
+<li>Output Stock of Age and ALL Auxilary Files
+<ul>
+<li>This Will Output Stock Numbers at Age and Auxiliary files. This is compatible with <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input files that have the option.<br>
+</li>
+</ul></li>
+<li>NO Stock of Age and Auxilary Files
+<ul>
+<li>No Stock Numbers at Age summary report or Auxiliary files will be created. This is only compatible with <code>AGEPRO VERSION 4.25</code> Input File format.</li>
+</ul></li>
+<li>Output Stock of Age, but NO Auxilary Files
+<ul>
+<li>This option produces a population size at age summary in the output file, but does not generate the auxiliary files. This is only compatible with <code>AGEPRO VERSION 4.25</code> Input File format.</li>
+</ul></li>
+<li>Output Stock of Age and Auxilary Files, EXCEPT Stock Numbers Of Age
+<ul>
+<li>This option produces a population size at age summary in the output file, generates the auxiliary files, but does not produce a population size at age file summary. This is only compatible with <code>AGEPRO VERSION 4.25</code> Input File format.</li>
+</ul></li>
+</ul>
+<section id="auxiliary-file-names" class="level2">
+<h2 class="anchored" data-anchor-id="auxiliary-file-names">Auxiliary File Names</h2>
 <p>The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.</p>
 <p>All auxiliary file data items are space delimited double precision real numbers in scientific notation.</p>
 <p>In the following auxiliary files the number of columns is equal to the number of years in the time horizon and the number of rows is equal to the number of observed values. These files are created in all cases.</p>
@@ -4300,6 +4326,7 @@ Percentile =    60.00 %
 </table>
 <p>If the option <strong>Output Summary Report for Stock Numbers at Age</strong> is enabled, auxiliary file XX1 will be created. This file has stock numbers at age. The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.</p>
 <p><strong>Please Note</strong>: The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.</p>
+</section>
 <section id="summary-report-of-stock-numbers-of-age" class="level2">
 <h2 class="anchored" data-anchor-id="summary-report-of-stock-numbers-of-age">Summary Report of Stock Numbers of Age</h2>
 <p>To request an summry report, check the option <strong>Ouput Summary Report for Stock Numbers at Age</strong>. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.</p>
