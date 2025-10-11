@@ -48,17 +48,19 @@ please refer to the [AGEPRO Reference Manual](./AGEPRO_V42_Reference_Manual.pdf)
     * [Rebuider Target](#rebuilder-target-option)
     * [P-Star Analysis](#p-star-analysis)
 * [Misc Options](#misc-options)
-    * [Auxiliary Output Files](#auxiliary-output-files)
-    * [Multi-Fleet Auxiliary Data File](#multi-fleet-auxiliary-data-file-\.xx10)   
-    * [Generating Auxiliary Stochastic Data Files](#generating-auxiliary-stochastic-data-files)
+* [Output Options](#output-options)
+   * [Generating Auxiliary Stochastic Data Files](#generating-auxiliary-stochastic-data-files)
+   * [Export to R](#export-to-r)
+   * [Specifying a Specfic Percentile in Output Report](#specifying-a-specfic-percentile-in-output-report)
+* [Stock of Age Distribution and Auxiliary Files Output](#stock-of-age-distribution-and-auxiliary-files-output)
     * [Summary Report of Stock Numbers of Age](#summary-report-of-stock-numbers-of-age)
-    * [Export to R](#export-to-r)
-    * [Specifying a Specfic Percentile in Output Report](#specifying-a-specfic-percentile-in-output-report)
-    * [Referece Point Threshold Report](#reference-point-threshold-report)
-    * [Scaling Options in Output Report](#scaling-option-in-output-report)
-    * [Specifying Bounds](#specifying-bounds)
-    * [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
-    * [Program to view AGEPRO Output files](#view-agepro-output-files)
+    * [Multi-Fleet Auxiliary Data File](#multi-fleet-auxiliary-data-file-\.xx10)    
+    * Enable AGEPRO Version 4.0 Input File Format
+* [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
+* [Program to view AGEPRO Output files](#view-agepro-output-files)
+* [Specifying Bounds](#specifying-bounds)
+* [Referece Point Threshold Report](#reference-point-threshold-report)
+* [Scaling Options in Output Report](#scaling-option-in-output-report)    
 * **[AGEPRO Projection Samples](#agepro-projection-samples)**
 
 ---
@@ -831,46 +833,7 @@ Combined Catch Distribution
 
 ![Misc Options Panel](img/15_miscOptions.png "Misc Options Panel on the AGEPRO-GUI")
 
-## Auxiliary Output Files
-AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted **AGEPRO Model Output Run directory**.
-
-The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.
-
-All auxiliary file data items are space delimited double precision real numbers in scientific notation.
-
-In the following auxiliary files the number of columns is equal to the number of years in the time horizon and the number of rows is equal to the number of observed values. These files are created in all cases.
-
-The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.  
-
-The **units used in the auxiliary files are not affected by the [summary report scaling factors](#scaling-option-in-output-report)** optionally applied to the report file.
-
-File Extension | Model Items
-:--------------| :-----------------------------------------------------
-XX1            | [Stock Numbers of Age](#summary-report-of-stock-numbers-of-age) (If **Output Summary Report for Stock Numbers at Age** is enabled)
-XX2            | Recruits (Fish)
-XX3            | Spawning Stock Biomass (MT)
-XX4            | Jan-1 Biomass (MT)
-XX5            | Mean Biomass (MT)
-XX6            | Catch Biomass (Landings + Discards) (MT)
-XX7            | Landings (MT)
-XX8            | Discards (MT)
-XX9            | F-Mult
-
-If the option **Output Summary Report for Stock Numbers at Age** is enabled, auxiliary file XX1 will be created. This file has stock numbers at age.  The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.
-
-**Please Note**:  The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.
-
-###  Multi-Fleet Auxiliary Data File (`*.XX10`)
-
-If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created.  The number of columns will be equal to the number of years in the time horizon.
-
-The number of data sections will be equal to the number of observed values multiplied by the number of fleets.  
-
-There are four rows in each section by fleet:
-* Fishing Mortality
-* Combined Catch Biomass
-* Landings
-* Discards
+## Output Options
 
 ### Generating Auxiliary Stochastic Data Files  
 The user may request that stochastic data at age be saved to auxiliary files on the Options tab.
@@ -889,14 +852,7 @@ XXX7           | Maturity
 XXX8           | Fishery Selectivity
 XXX9           | Discard Fraction
 
-
-
-## Summary Report of Stock Numbers of Age
-To request an summry report, check the option **Ouput Summary Report for Stock Numbers at Age**. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.
-
-Generating a summary report with a large time horizon and/or large number of age classes is not recommended, since it can affect completeion of the AGEPRO model run.
-
-## Export to R
+### Export to R
 If **Export Results to R** is enabled, a file will be created in the same directory as the input file, with a name based on the name of the input file except with an `.RDAT` extension. The data in the file is stored in the the R "ddump" format, which is an ASCII representation of an R object.
 
 Data in this format can be read into R using a single "dget" command. In R, you would type something like:
@@ -905,14 +861,14 @@ x = dget('myfile.rdat')
 ```
 Where `myfile.rdat` is the name of the file created during the export process.
 
-## Specifying a Specfic Percentile in Output Report
+### Specifying a Specfic Percentile in Output Report
 The [Summary Report](#summary-report-of-stock-numbers-of-age) provides tables of the distribution of calculated results at standard distribution intervals including the median. However, a summary report with a specfic percentile that is not equal to the standard distribution internal can be requested.
 
 To create the Percentile Report in the Output File, check the  **Reqest Percentile Report** checkbox option in *Output Options* Section in the **Misc. Options** panel. Then, enter a percentile value between `0.0` and `100.0` in the **Report Percentile** spinbox.
 
 The [summary report scaling units](#scaling-option-in-output-report) are the same as were are used in the output report with a standard distribution.
 
-### Example
+#### Example
 The Output Report will supply values for each year in the time horizon for the calculated results:
 
 ```{}
@@ -941,7 +897,73 @@ Percentile =    60.00 %
 ```
 
 
+## Stock of Age Distribution and Auxiliary Files Output
+AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted **AGEPRO Model Output Run directory**.
 
+The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.
+
+All auxiliary file data items are space delimited double precision real numbers in scientific notation.
+
+In the following auxiliary files the number of columns is equal to the number of years in the time horizon and the number of rows is equal to the number of observed values. These files are created in all cases.
+
+The number of observed values is equal to the number of bootstrap iterations multiplied by the number of simulations.  
+
+The **units used in the auxiliary files are not affected by the [summary report scaling factors](#scaling-option-in-output-report)** optionally applied to the report file.
+
+File Extension | Model Items
+:--------------| :-----------------------------------------------------
+XX1            | [Stock Numbers of Age](#summary-report-of-stock-numbers-of-age) (If **Output Summary Report for Stock Numbers at Age** is enabled)
+XX2            | Recruits (Fish)
+XX3            | Spawning Stock Biomass (MT)
+XX4            | Jan-1 Biomass (MT)
+XX5            | Mean Biomass (MT)
+XX6            | Catch Biomass (Landings + Discards) (MT)
+XX7            | Landings (MT)
+XX8            | Discards (MT)
+XX9            | F-Mult
+
+If the option **Output Summary Report for Stock Numbers at Age** is enabled, auxiliary file XX1 will be created. This file has stock numbers at age.  The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.
+
+**Please Note**:  The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.
+
+### Summary Report of Stock Numbers of Age
+To request an summry report, check the option **Ouput Summary Report for Stock Numbers at Age**. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.
+
+:::{.callout-warning}
+Generating a summary report with a large time horizon and/or large number of age classes is not recommended, since it can affect completeion of the AGEPRO model run.
+:::
+
+###  Multi-Fleet Auxiliary Data File (`*.XX10`)
+
+If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created.  The number of columns will be equal to the number of years in the time horizon.
+
+The number of data sections will be equal to the number of observed values multiplied by the number of fleets.  
+
+There are four rows in each section by fleet:
+* Fishing Mortality
+* Combined Catch Biomass
+* Landings
+* Discards
+
+## Retrospective Adjustment Factors
+**Retrospective Adjustment Factors** are applied to the initial population numbers to correct for retrospective bias.
+This is an optional parameter, and the user can enable or disable it by checking/unchecking the **Specify Retrospective Adjustment Factors** check box.
+
+The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be **multiplied by** the retrospective adjustment factors.
+
+## View AGEPRO Output files
+Choose which program to view AGEPRO Output Data (`*.out`) files. This program will open once the AGEPRO calculation engine is finished.
+
+If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
+
+![](img/outFile_association_01.png "File association")
+
+To bypass viewing AGEPRO Output data files after a model run, select **None**.
+
+
+## Specifying Bounds
+The user has an option to override the default maximum bounds values for *Weights of Age* (default: `10.0`) and *Natural Mortality* (default: `1.0`).
+This is be enabled by checking the **Specify Bounds** check box.
 
 
 ## Reference Point Threshold Report
@@ -999,24 +1021,8 @@ However, the user may find that these defaults make the data hard to read in the
 
 **Please Note:** This scaling is only used in the Report File and in Plots within the graphical interface, and does not affect the internal calculations or the auxiliary files.
 
-## Specifying Bounds
-The user has an option to override the default maximum bounds values for *Weights of Age* (default: `10.0`) and *Natural Mortality* (default: `1.0`).
-This is be enabled by checking the **Specify Bounds** check box.
 
-## Retrospective Adjustment Factors
-**Retrospective Adjustment Factors** are applied to the initial population numbers to correct for retrospective bias.
-This is an optional parameter, and the user can enable or disable it by checking/unchecking the **Specify Retrospective Adjustment Factors** check box.
 
-The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be **multiplied by** the retrospective adjustment factors.
-
-## View AGEPRO Output files
-Choose which program to view AGEPRO Output Data (`*.out`) files. This program will open once the AGEPRO calculation engine is finished.
-
-If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
-
-![](img/outFile_association_01.png "File association")
-
-To bypass viewing AGEPRO Output data files after a model run, select **None**.
 
 ---
 
