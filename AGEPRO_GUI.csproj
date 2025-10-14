@@ -167,7 +167,6 @@
     </Compile>
     <Compile Include="src\ui\formAgepro\harvestScenario\HarvestSpecification.cs" />
     <Compile Include="src\ui\formAgepro\harvestScenario\RebuilderTargetType.cs" />
-    <Compile Include="src\ui\formAgepro\options\StockSummaryFlag.cs" />
     <Compile Include="src\ui\formAgepro\options\ControlMiscOptions.cs">
       <SubType>UserControl</SubType>
     </Compile>

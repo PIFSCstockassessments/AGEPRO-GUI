@@ -3167,12 +3167,12 @@ Note
 <li><a href="#export-to-r">Export to R</a></li>
 <li><a href="#specifying-a-specfic-percentile-in-output-report">Specifying a Specfic Percentile in Output Report</a></li>
 </ul></li>
-<li><a href="#stock-of-age-distribution-and-auxiliary-files-output">Stock of Age Distribution and Auxiliary Files Output</a>
+<li><a href="#stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag">Stock of Age Distribution and Auxiliary Files Output</a>
 <ul>
 <li><a href="#summary-report-of-stock-numbers-of-age">Summary Report of Stock Numbers of Age</a></li>
 <li><a href="#multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File</a><br>
 </li>
-<li>Enable AGEPRO Version 4.0 Input File Format</li>
+<li><a href="#switching-between-agepro-version-4.0-and-agepro-version-4.25-input-file-formats">Switching between <code>AGEPRO VERSION 4.0</code> and `<code>AGEPRO VERSION 4.25</code> Input File Formats</a></li>
 </ul></li>
 <li><a href="#retrospective-adjustment-factors">Retrospective Adjustment Factors</a></li>
 <li><a href="#view-agepro-output-files">Program to view AGEPRO Output files</a></li>
@@ -4150,6 +4150,10 @@ Year       Average        StdDev
 <figcaption>Misc Options Panel</figcaption>
 </figure>
 </div>
+<ul>
+<li>General Ouptuput optons</li>
+<li></li>
+</ul>
 </section>
 <section id="output-options" class="level1">
 <h1>Output Options</h1>
@@ -4244,33 +4248,30 @@ Percentile =    60.00 %
 </section>
 </section>
 </section>
-<section id="stock-of-age-distribution-and-auxiliary-files-output" class="level1">
-<h1>Stock of Age Distribution and Auxiliary Files Output</h1>
+<section id="stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag" class="level1">
+<h1>Stock of Age Distribution and Auxiliary Files Output (SummaryAuxOutputFlag)</h1>
 <p>AGEPRO includes a set of enhanced auxiliary output files. These files will be saved in their desginagted <strong>AGEPRO Model Output Run directory</strong>.</p>
-<ul>
-<li>No Stock of Age, but Output Auxilary Files EXCEPT Stock Numbers Of Age
-<ul>
-<li>Auxiliary files created, excuding the Stock Numbers of Age summary report. This is the behavior that <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input files will have by default.<br>
-</li>
-</ul></li>
-<li>Output Stock of Age and ALL Auxilary Files
-<ul>
-<li>This Will Output Stock Numbers at Age and Auxiliary files. This is compatible with <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input files that have the option.<br>
-</li>
-</ul></li>
-<li>NO Stock of Age and Auxilary Files
-<ul>
-<li>No Stock Numbers at Age summary report or Auxiliary files will be created. This is only compatible with <code>AGEPRO VERSION 4.25</code> Input File format.</li>
-</ul></li>
-<li>Output Stock of Age, but NO Auxilary Files
-<ul>
-<li>This option produces a population size at age summary in the output file, but does not generate the auxiliary files. This is only compatible with <code>AGEPRO VERSION 4.25</code> Input File format.</li>
-</ul></li>
-<li>Output Stock of Age and Auxilary Files, EXCEPT Stock Numbers Of Age
-<ul>
-<li>This option produces a population size at age summary in the output file, generates the auxiliary files, but does not produce a population size at age file summary. This is only compatible with <code>AGEPRO VERSION 4.25</code> Input File format.</li>
-</ul></li>
-</ul>
+<p>There are five options for generating Stock Numbers at Age summary report and auxiliary files. The first two options are compatible with <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input file formats. The last three options are only compatible with <code>AGEPRO VERSION 4.25</code> input file format.</p>
+<section id="no-stock-of-age-but-output-auxilary-files-except-stock-numbers-of-age" class="level3">
+<h3 class="anchored" data-anchor-id="no-stock-of-age-but-output-auxilary-files-except-stock-numbers-of-age">0. No Stock of Age, but Output Auxilary Files EXCEPT Stock Numbers Of Age</h3>
+<p>Auxiliary files created, excuding the Stock Numbers of Age summary report. This is the behavior that <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input files will have by default.</p>
+</section>
+<section id="output-stock-of-age-and-all-auxilary-files" class="level3">
+<h3 class="anchored" data-anchor-id="output-stock-of-age-and-all-auxilary-files">1. Output Stock of Age and ALL Auxilary Files</h3>
+<p>This Will Output Stock Numbers at Age and Auxiliary files. This is compatible with <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input files that have the option.</p>
+</section>
+<section id="no-stock-of-age-and-auxilary-files" class="level3">
+<h3 class="anchored" data-anchor-id="no-stock-of-age-and-auxilary-files">2. NO Stock of Age and Auxilary Files</h3>
+<p>No Stock Numbers at Age summary report or Auxiliary files will be created. This is only compatible with <code>AGEPRO VERSION 4.25</code>.</p>
+</section>
+<section id="output-stock-of-age-but-no-auxilary-files" class="level3">
+<h3 class="anchored" data-anchor-id="output-stock-of-age-but-no-auxilary-files">3. Output Stock of Age, but NO Auxilary Files</h3>
+<p>This option produces a population size at age summary in the output file, but does not generate the auxiliary files. This is only compatible with <code>AGEPRO VERSION 4.25</code>.</p>
+</section>
+<section id="output-stock-of-age-and-auxilary-files-except-stock-numbers-of-age" class="level3">
+<h3 class="anchored" data-anchor-id="output-stock-of-age-and-auxilary-files-except-stock-numbers-of-age">4. Output Stock of Age and Auxilary Files, EXCEPT Stock Numbers Of Age</h3>
+<p>This option produces a population size at age summary in the output file, generates the auxiliary files, but does not produce a population size at age file summary. This is only compatible with <code>AGEPRO VERSION 4.25</code>.</p>
+</section>
 <section id="auxiliary-file-names" class="level2">
 <h2 class="anchored" data-anchor-id="auxiliary-file-names">Auxiliary File Names</h2>
 <p>The Auxiliary files follow the naming conventions that are used to make the AGEPRO Model Output Run directory, but have different file extensions.</p>
@@ -4288,7 +4289,7 @@ Percentile =    60.00 %
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">XX1</td>
-<td style="text-align: left;"><a href="#summary-report-of-stock-numbers-of-age">Stock Numbers of Age</a> (If <strong>Output Summary Report for Stock Numbers at Age</strong> is enabled)</td>
+<td style="text-align: left;"><a href="#summary-report-of-stock-numbers-of-age">Stock Numbers of Age</a>. If <strong>ALL Auxiliary Files</strong> (StockSummaryAuxFlag=1) is enabled</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">XX2</td>
@@ -4322,6 +4323,10 @@ Percentile =    60.00 %
 <td style="text-align: left;">XX9</td>
 <td style="text-align: left;">F-Mult</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">XX10</td>
+<td style="text-align: left;"><a href="#multi-fleet-auxiliary-data-file-.xx10">Catch by Fleet</a>. <code>AGEPRO VERSION 4.0</code>: Additional auxilary file if model is multi-fleet. <code>AGEPRO VERSION 4.25</code> and later: Included with an enabled auxilary file option.</td>
+</tr>
 </tbody>
 </table>
 <p>If the option <strong>Output Summary Report for Stock Numbers at Age</strong> is enabled, auxiliary file XX1 will be created. This file has stock numbers at age. The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.</p>
@@ -4348,7 +4353,19 @@ Warning
 <h2 class="anchored" data-anchor-id="multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File (<code>*.XX10</code>)</h2>
 <p>If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created. The number of columns will be equal to the number of years in the time horizon.</p>
 <p>The number of data sections will be equal to the number of observed values multiplied by the number of fleets.</p>
-<p>There are four rows in each section by fleet: * Fishing Mortality * Combined Catch Biomass * Landings * Discards</p>
+<p>There are four rows in each section by fleet:</p>
+<ul>
+<li>Fishing Mortality</li>
+<li>Combined Catch Biomass</li>
+<li>Landings</li>
+<li>Discards</li>
+</ul>
+</section>
+<section id="switching-between-agepro-version-4.0-and-agepro-version-4.25-input-file-formats" class="level2">
+<h2 class="anchored" data-anchor-id="switching-between-agepro-version-4.0-and-agepro-version-4.25-input-file-formats">Switching Between <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> Input File Formats</h2>
+<p>The <strong>Enable AGEPRO VERSION 4.0 Input File Format</strong> check box allows the user to switch loaded model between the <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> input file format. The text next to the check box indicates which format the model is currently using. This will also reflect the value of <strong>Input Version File Format</strong> shown in <a href="#creating-a-new-case">General</a>.</p>
+<p>When the <strong>Enable AGEPRO VERSION 4.0 Input File format</strong> is checked, AGEPRO input files will be written in the <code>AGEPRO VERSION 4.0</code> format. In addition to this, options in <a href="#stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag"><strong>Stock of Age Distribution and Auxiliary Files Output</strong></a> will be limited to the first two options. The program will check the model if the Auilary Flag is set to other three options exists (“2. No Stock of Age and Auxilliary Files”, “3. Output Stock of Age, but NO Auxilary Files”, “4. Output Stock of Age and Auxilary Files, EXCEPT Stock Numbers Of Age”) before saving to <code>AGEPRO VERSION 4.0</code> format.</p>
+<p>Unchecking <strong>Enable AGEPRO VERSION 4.0 Input File Format</strong> allows the program to write AGEPRO input files in the <code>AGEPRO VERSION 4.25</code> format. In addition to this, all five options in <a href="#stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag"><strong>Stock of Age Distribution and Auxiliary Files Output</strong></a> are available and vaild.</p>
 </section>
 </section>
 <section id="retrospective-adjustment-factors" class="level1">
