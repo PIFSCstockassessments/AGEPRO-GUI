@@ -1000,7 +1000,7 @@ Choose which program to view AGEPRO Output Data (`*.out`) files. This program wi
 
 If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
 
-![](img/outFile_association_01.png "File association")
+![Windows system Dialog for selecting appilcation for \*.out fiie](img/13_outFile_default.png "File association"){fig-align="left"}
 
 To bypass viewing AGEPRO Output data files after a model run, select **None**.
 
