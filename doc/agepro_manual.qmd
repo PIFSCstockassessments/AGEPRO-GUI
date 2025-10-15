@@ -833,11 +833,16 @@ Combined Catch Distribution
 
 # Misc options
 
+The **Misc. Options** panel includes options users can use to set AGEPRO calcuation engine output. 
+
 ![Misc Options Panel](img/15_miscOptions.png "Misc Options Panel on the AGEPRO-GUI")
 
-* General Ouptuput optons
-* 
-
+* [General Ouptut optons](#output-options)
+* [Stock of Age Distribution and Auxiliary Files Output](#stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag)
+* [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
+* [Program to View AGEPRO Output (\*.out) file](#view-agepro-output-files)
+* [Specifying Bounds](#specifying-bounds)
+* [Reference Point Threshold Report](#reference-point-threshold-report)
 
 # Output Options
 
@@ -998,6 +1003,11 @@ This is an optional parameter, and the user can enable or disable it by checking
 The stock numbers in the first year of the projection is read from the Bootstrap File on each bootstrap iteration will be **multiplied by** the retrospective adjustment factors.
 
 # View AGEPRO Output files
+
+:::{.callout-note}
+The program to view AGEPRO Output files and **File Explorer** with the AGEPRO output directory may launch behind the AGEPRO-GUI window. 
+:::
+
 Choose which program to view AGEPRO Output Data (`*.out`) files. This program will open once the AGEPRO calculation engine is finished.
 
 If **System Default** is selected, it will launch a program that AGEPRO Output data files was assoicated to on that system. If that hasn't been estabished, then a dialog window will pop up similar to the following.
