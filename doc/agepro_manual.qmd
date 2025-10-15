@@ -53,9 +53,9 @@ please refer to the [AGEPRO Reference Manual](./AGEPRO_V42_Reference_Manual.pdf)
    * [Export to R](#export-to-r)
    * [Specifying a Specfic Percentile in Output Report](#specifying-a-specfic-percentile-in-output-report)
 * [Stock of Age Distribution and Auxiliary Files Output](#stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag)
-    * [Summary Report of Stock Numbers of Age](#summary-report-of-stock-numbers-of-age)
+    * [Summary Report of Stock Numbers of Age](#summary-report-of-stock-numbers-of-age-\.xx1)
     * [Multi-Fleet Auxiliary Data File](#multi-fleet-auxiliary-data-file-\.xx10)    
-    * [Switching between `AGEPRO VERSION 4.0` and ``AGEPRO VERSION 4.25` Input File Formats](#switching-between-agepro-version-4\.0-and-agepro-version-4\.25-input-file-formats)
+    * [Switching between `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` Input File Formats](#switching-between-agepro-version-4\.0-and-agepro-version-4\.25-input-file-formats)
 * [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
 * [Program to view AGEPRO Output files](#view-agepro-output-files)
 * [Specifying Bounds](#specifying-bounds)
@@ -949,7 +949,7 @@ The **units used in the auxiliary files are not affected by the [summary report 
 
 File Extension | Model Items
 :--------------| :-----------------------------------------------------
-XX1            | [Stock Numbers of Age](#summary-report-of-stock-numbers-of-age). If **ALL Auxiliary Files** (StockSummaryAuxFlag=1) is enabled
+XX1            | [Stock Numbers of Age](#summary-report-of-stock-numbers-of-age-\.xx1). If **ALL Auxiliary Files** (StockSummaryAuxFlag=1) is enabled
 XX2            | Recruits (Fish)
 XX3            | Spawning Stock Biomass (MT)
 XX4            | Jan-1 Biomass (MT)
@@ -960,20 +960,22 @@ XX8            | Discards (MT)
 XX9            | F-Mult
 XX10           | [Catch by Fleet](#multi-fleet-auxiliary-data-file-\.xx10). `AGEPRO VERSION 4.0`: Additional auxilary file if model is multi-fleet. `AGEPRO VERSION 4.25` and later: Included with an enabled auxilary file option.
 
-If the option **Output Summary Report for Stock Numbers at Age** is enabled, auxiliary file XX1 will be created. This file has stock numbers at age.  The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.
 
-**Please Note**:  The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.
+## Summary Report of Stock Numbers of Age (`*.XX1`)
 
-## Summary Report of Stock Numbers of Age
-To request an summry report, check the option **Ouput Summary Report for Stock Numbers at Age**. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.
+Selecting **Output Stock of Age and ALL Auxilary Files** generates auxiliary file XX1, stock numbers at age, in addition to the other files mentioned in the previous section [*Auxilliary File Names*](#auxiliary-file-names).
+
+When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon. The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.
 
 :::{.callout-warning}
-Generating a summary report with a large time horizon and/or large number of age classes is not recommended, since it can affect completeion of the AGEPRO model run.
+**Please Note**:  Generating a summary report with a large time horizon and/or large number of age classes/observed values is not recommended, since it can affect completeion of the AGEPRO model run.
 :::
 
 ##  Multi-Fleet Auxiliary Data File (`*.XX10`)
 
-If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created.  The number of columns will be equal to the number of years in the time horizon.
+For `AGEPRO VERSION 4.0`, If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created. In `AGEPRO VERSION 4.25` and later, this file is created when any of the auxilary file options are enabled.`
+
+The number of columns will be equal to the number of years in the time horizon.
 
 The number of data sections will be equal to the number of observed values multiplied by the number of fleets.  
 

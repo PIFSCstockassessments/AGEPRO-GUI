@@ -3169,10 +3169,10 @@ Note
 </ul></li>
 <li><a href="#stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag">Stock of Age Distribution and Auxiliary Files Output</a>
 <ul>
-<li><a href="#summary-report-of-stock-numbers-of-age">Summary Report of Stock Numbers of Age</a></li>
+<li><a href="#summary-report-of-stock-numbers-of-age-.xx1">Summary Report of Stock Numbers of Age</a></li>
 <li><a href="#multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File</a><br>
 </li>
-<li><a href="#switching-between-agepro-version-4.0-and-agepro-version-4.25-input-file-formats">Switching between <code>AGEPRO VERSION 4.0</code> and `<code>AGEPRO VERSION 4.25</code> Input File Formats</a></li>
+<li><a href="#switching-between-agepro-version-4.0-and-agepro-version-4.25-input-file-formats">Switching between <code>AGEPRO VERSION 4.0</code> and <code>AGEPRO VERSION 4.25</code> Input File Formats</a></li>
 </ul></li>
 <li><a href="#retrospective-adjustment-factors">Retrospective Adjustment Factors</a></li>
 <li><a href="#view-agepro-output-files">Program to view AGEPRO Output files</a></li>
@@ -4063,7 +4063,7 @@ Year       1 %        5 %        10 %       25 %       50 %       75 %       90 
 <h2 class="anchored" data-anchor-id="export-to-r">Export to R</h2>
 <p>If <strong>Export Results to R</strong> is enabled, a file will be created in the same directory as the input file, with a name based on the name of the input file except with an <code>.RDAT</code> extension. The data in the file is stored in the the R “ddump” format, which is an ASCII representation of an R object.</p>
 <p>Data in this format can be read into R using a single “dget” command. In R, you would type something like:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">dget</span>(<span class="st">&#39;myfile.rdat&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">dget</span>(<span class="st">&#39;myfile.rdat&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Where <code>myfile.rdat</code> is the name of the file created during the export process.</p>
 </section>
 <section id="specifying-a-specfic-percentile-in-output-report" class="level2">
@@ -4140,7 +4140,7 @@ Percentile =    60.00 %
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">XX1</td>
-<td style="text-align: left;"><a href="#summary-report-of-stock-numbers-of-age">Stock Numbers of Age</a>. If <strong>ALL Auxiliary Files</strong> (StockSummaryAuxFlag=1) is enabled</td>
+<td style="text-align: left;"><a href="#summary-report-of-stock-numbers-of-age-.xx1">Stock Numbers of Age</a>. If <strong>ALL Auxiliary Files</strong> (StockSummaryAuxFlag=1) is enabled</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">XX2</td>
@@ -4180,12 +4180,11 @@ Percentile =    60.00 %
 </tr>
 </tbody>
 </table>
-<p>If the option <strong>Output Summary Report for Stock Numbers at Age</strong> is enabled, auxiliary file XX1 will be created. This file has stock numbers at age. The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.</p>
-<p><strong>Please Note</strong>: The size of the Stock Numbers at Age auxiliary file may be quite large if the numbers at age, number of years in the time horizon, or the number of observed values is large.</p>
 </section>
-<section id="summary-report-of-stock-numbers-of-age" class="level2">
-<h2 class="anchored" data-anchor-id="summary-report-of-stock-numbers-of-age">Summary Report of Stock Numbers of Age</h2>
-<p>To request an summry report, check the option <strong>Ouput Summary Report for Stock Numbers at Age</strong>. When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon.</p>
+<section id="summary-report-of-stock-numbers-of-age-.xx1" class="level2">
+<h2 class="anchored" data-anchor-id="summary-report-of-stock-numbers-of-age-.xx1">Summary Report of Stock Numbers of Age (<code>*.XX1</code>)</h2>
+<p>Selecting <strong>Output Stock of Age and ALL Auxilary Files</strong> generates auxiliary file XX1, stock numbers at age, in addition to the other files mentioned in the previous section <a href="#auxiliary-file-names"><em>Auxilliary File Names</em></a>.</p>
+<p>When enabled, the program will generate a table of stock number distribution at age for each year in the time horizon. The file has a number of columns equal to the number of age classes and a number of rows equal to the number of years in the time horizon multiplied by the number of observed values.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4196,13 +4195,14 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Generating a summary report with a large time horizon and/or large number of age classes is not recommended, since it can affect completeion of the AGEPRO model run.</p>
+<p><strong>Please Note</strong>: Generating a summary report with a large time horizon and/or large number of age classes/observed values is not recommended, since it can affect completeion of the AGEPRO model run.</p>
 </div>
 </div>
 </section>
 <section id="multi-fleet-auxiliary-data-file-.xx10" class="level2">
 <h2 class="anchored" data-anchor-id="multi-fleet-auxiliary-data-file-.xx10">Multi-Fleet Auxiliary Data File (<code>*.XX10</code>)</h2>
-<p>If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created. The number of columns will be equal to the number of years in the time horizon.</p>
+<p>For <code>AGEPRO VERSION 4.0</code>, If there is more than one Fleet then an additional auxiliary file with file extension XX10 will be created. In <code>AGEPRO VERSION 4.25</code> and later, this file is created when any of the auxilary file options are enabled.`</p>
+<p>The number of columns will be equal to the number of years in the time horizon.</p>
 <p>The number of data sections will be equal to the number of observed values multiplied by the number of fleets.</p>
 <p>There are four rows in each section by fleet:</p>
 <ul>
