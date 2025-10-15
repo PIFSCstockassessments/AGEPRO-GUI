@@ -87,20 +87,20 @@
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.buttonSetGeneral, 6, 4);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.spinBoxFirstAge, 3, 2);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.checkBoxDiscards, 2, 4);
-      this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumRecruitModels, 6, 1);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxRandomSeed, 6, 3);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxFirstYearProjection, 3, 0);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelRandomSeed, 5, 3);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxLastAge, 3, 3);
-      this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumFleets, 5, 0);
-      this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumFleets, 6, 0);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelLastAge, 2, 3);
-      this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumPopSim, 5, 2);
-      this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumRecruitModels, 5, 1);
-      this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumPopSim, 6, 2);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxLastYearProjection, 3, 1);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelFirstAge, 2, 2);
       this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelLastYearProjection, 2, 1);
+      this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumPopSim, 5, 0);
+      this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumPopSim, 6, 0);
+      this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumRecruitModels, 5, 2);
+      this.tableLayoutPanelGeneralOptions.Controls.Add(this.labelNumFleets, 5, 1);
+      this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumRecruitModels, 6, 2);
+      this.tableLayoutPanelGeneralOptions.Controls.Add(this.textBoxNumFleets, 6, 1);
       this.tableLayoutPanelGeneralOptions.Location = new System.Drawing.Point(6, 34);
       this.tableLayoutPanelGeneralOptions.Name = "tableLayoutPanelGeneralOptions";
       this.tableLayoutPanelGeneralOptions.RowCount = 5;
@@ -110,7 +110,7 @@
       this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.79481F));
       this.tableLayoutPanelGeneralOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.83268F));
       this.tableLayoutPanelGeneralOptions.Size = new System.Drawing.Size(774, 157);
-      this.tableLayoutPanelGeneralOptions.TabIndex = 18;
+      this.tableLayoutPanelGeneralOptions.TabIndex = 0;
       // 
       // labelFirstYearProjection
       // 
@@ -162,18 +162,18 @@
       this.checkBoxDiscards.MinimumSize = new System.Drawing.Size(127, 17);
       this.checkBoxDiscards.Name = "checkBoxDiscards";
       this.checkBoxDiscards.Size = new System.Drawing.Size(127, 17);
-      this.checkBoxDiscards.TabIndex = 8;
+      this.checkBoxDiscards.TabIndex = 16;
       this.checkBoxDiscards.Text = "Discards are Present";
       this.checkBoxDiscards.UseVisualStyleBackColor = true;
       // 
       // textBoxNumRecruitModels
       // 
       this.textBoxNumRecruitModels.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.textBoxNumRecruitModels.Location = new System.Drawing.Point(584, 36);
+      this.textBoxNumRecruitModels.Location = new System.Drawing.Point(584, 67);
       this.textBoxNumRecruitModels.MinimumSize = new System.Drawing.Size(120, 20);
       this.textBoxNumRecruitModels.Name = "textBoxNumRecruitModels";
       this.textBoxNumRecruitModels.Size = new System.Drawing.Size(120, 20);
-      this.textBoxNumRecruitModels.TabIndex = 12;
+      this.textBoxNumRecruitModels.TabIndex = 13;
       this.textBoxNumRecruitModels.Text = "1";
       // 
       // textBoxRandomSeed
@@ -183,7 +183,7 @@
       this.textBoxRandomSeed.MinimumSize = new System.Drawing.Size(120, 20);
       this.textBoxRandomSeed.Name = "textBoxRandomSeed";
       this.textBoxRandomSeed.Size = new System.Drawing.Size(120, 20);
-      this.textBoxRandomSeed.TabIndex = 16;
+      this.textBoxRandomSeed.TabIndex = 15;
       this.textBoxRandomSeed.Text = "0";
       // 
       // textBoxFirstYearProjection
@@ -202,7 +202,7 @@
       this.labelRandomSeed.Location = new System.Drawing.Point(418, 102);
       this.labelRandomSeed.Name = "labelRandomSeed";
       this.labelRandomSeed.Size = new System.Drawing.Size(115, 13);
-      this.labelRandomSeed.TabIndex = 15;
+      this.labelRandomSeed.TabIndex = 14;
       this.labelRandomSeed.Text = "Random Number Seed";
       // 
       // textBoxLastAge
@@ -218,20 +218,20 @@
       // 
       this.labelNumFleets.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.labelNumFleets.AutoSize = true;
-      this.labelNumFleets.Location = new System.Drawing.Point(418, 9);
+      this.labelNumFleets.Location = new System.Drawing.Point(418, 40);
       this.labelNumFleets.Name = "labelNumFleets";
       this.labelNumFleets.Size = new System.Drawing.Size(89, 13);
-      this.labelNumFleets.TabIndex = 9;
+      this.labelNumFleets.TabIndex = 10;
       this.labelNumFleets.Text = "Number Of Fleets";
       // 
       // textBoxNumFleets
       // 
       this.textBoxNumFleets.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.textBoxNumFleets.Location = new System.Drawing.Point(584, 5);
+      this.textBoxNumFleets.Location = new System.Drawing.Point(584, 36);
       this.textBoxNumFleets.MinimumSize = new System.Drawing.Size(120, 20);
       this.textBoxNumFleets.Name = "textBoxNumFleets";
       this.textBoxNumFleets.Size = new System.Drawing.Size(120, 20);
-      this.textBoxNumFleets.TabIndex = 10;
+      this.textBoxNumFleets.TabIndex = 11;
       this.textBoxNumFleets.Text = "1";
       // 
       // labelLastAge
@@ -248,30 +248,31 @@
       // 
       this.labelNumPopSim.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.labelNumPopSim.AutoSize = true;
-      this.labelNumPopSim.Location = new System.Drawing.Point(418, 64);
+      this.labelNumPopSim.Location = new System.Drawing.Point(418, 2);
       this.labelNumPopSim.Name = "labelNumPopSim";
       this.labelNumPopSim.Size = new System.Drawing.Size(112, 26);
-      this.labelNumPopSim.TabIndex = 13;
+      this.labelNumPopSim.TabIndex = 8;
       this.labelNumPopSim.Text = "Number of Population Simulations";
       // 
       // labelNumRecruitModels
       // 
       this.labelNumRecruitModels.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.labelNumRecruitModels.AutoSize = true;
-      this.labelNumRecruitModels.Location = new System.Drawing.Point(418, 40);
+      this.labelNumRecruitModels.Location = new System.Drawing.Point(418, 71);
       this.labelNumRecruitModels.Name = "labelNumRecruitModels";
       this.labelNumRecruitModels.Size = new System.Drawing.Size(155, 13);
-      this.labelNumRecruitModels.TabIndex = 11;
+      this.labelNumRecruitModels.TabIndex = 12;
       this.labelNumRecruitModels.Text = "Number Of Recruitment Models";
       // 
       // textBoxNumPopSim
       // 
       this.textBoxNumPopSim.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.textBoxNumPopSim.Location = new System.Drawing.Point(584, 67);
+      this.textBoxNumPopSim.Location = new System.Drawing.Point(584, 5);
       this.textBoxNumPopSim.MinimumSize = new System.Drawing.Size(120, 20);
       this.textBoxNumPopSim.Name = "textBoxNumPopSim";
       this.textBoxNumPopSim.Size = new System.Drawing.Size(120, 20);
-      this.textBoxNumPopSim.TabIndex = 14;
+      this.textBoxNumPopSim.TabIndex = 9;
+      this.textBoxNumPopSim.Text = "1000";
       // 
       // textBoxLastYearProjection
       // 
