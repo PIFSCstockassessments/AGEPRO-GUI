@@ -339,7 +339,7 @@ Weights at Age Options        | Description
 :-----------------------------| :----------------------------------------------
 User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
-Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
+Use JAN-1 Weights At Age      | [Uses **Jan-1 Stock Weights at Age** data and CV](#jan-1-stock-weights-at-age)
 
 See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**. 
 
@@ -350,8 +350,8 @@ Weights at Age Option         | Description
 :-----------------------------| :----------------------------------------------
 User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age and apply Log-Normal error to the data either time varying or not
 Read Weights from File        | Read the Weights at age with Stochastic error from an external file
-Use JAN-1 Weights At Age      | Use the Jan-1 Stock Weights at Age
-Use SSB Weights At Age        | Use the Spawning Stock Weights at Age
+Use JAN-1 Weights At Age      | [Uses **Jan-1 Stock Weights at Age** data and CV](#jan-1-stock-weights-at-age)
+Use SSB Weights At Age        | [Uses **Spawning Stock Weights at Age** data and CV](#spawning-stock-weights-at-age)
 
 See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
@@ -362,9 +362,9 @@ Weights at Age Option        | Description
 :----------------------------|:----------------------------------------------
 User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
-Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
-Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
-Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
+Use JAN-1 Weights At Age     | [Uses **Jan-1 Stock Weights at Age** data and CV](#jan-1-stock-weights-at-age) and apply to all fleets
+Use SSB Weights At Age       | [Uses **Spawning Stock Weights if Age** data and CV](#spawning-stock-weights-at-age) and apply to all fleets
+Use Mid-Year Weights At Age  | [Uses **Mid-Year Stock Weights at Age** data and CV](#mid-year-stock-weights-at-age) and apply to all fleets
 
 See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
@@ -377,10 +377,10 @@ Weights at Age Option        | Description
 :----------------------------| :----------------------------------------------
 User Specfied Weights of Age &nbsp;&nbsp;&nbsp;&nbsp; | Input Mean Weights at Age for **each fleet** and apply Log-Normal error for **each fleet** to the data either time varying or not
 Read Weights from File       | Read the Weights at age with Stochastic error from an external file
-Use JAN-1 Weights At Age     | Use the Jan-1 Stock Weights at Age and apply to all fleets
-Use SSB Weights At Age       | Use the Spawning Stock Weights at Age and apply to all fleets
-Use Mid-Year Weights At Age  | Use the Mid-Year Stock Weights at age and apply to all fleets
-Use Catch Weights At Age     | Use the Catch Weights at Age for each fleet
+Use JAN-1 Weights At Age     | [Uses **Jan-1 Stock Weights at Age** data and CV](#jan-1-stock-weights-at-age) and apply to all fleets
+Use SSB Weights At Age       | [Uses **Spawning Stock Weights if Age** data and CV](#spawning-stock-weights-at-age) and apply to all fleets
+Use Mid-Year Weights At Age  | [Uses **Mid-Year Stock Weights at Age** data and CV](#mid-year-stock-weights-at-age) and apply to all fleets
+Use Catch Weights At Age     | [Uses **Catch Weights at Age** data and CV](#catch-weights-at-age) and apply to all fleets
 
 See [*JAN-1 Stock Weights at Age*](#jan-1-stock-weights-at-age) for more information about **User Specfied Weights of Age** and **Read Weights from File**.
 
