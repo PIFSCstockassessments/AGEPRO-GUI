@@ -74,23 +74,24 @@ To begin, either [open an existing AGEPRO Input Data file](#opening-an-existing-
 # Creating a new Case
 An new input data set can be set from scratch. Click on **Create New Case** in the File menu. A dialog window will pop up to confirm. If so, all existing input and output data will be discarded.
 
-![](img/generalOptions_02.png)
+![](img/01_general_newCase.png){fig-align="left"}
 
 For new cases, the user must supply the following input:
 
-- First year in Projection
-- Last year in Projection
-- First Age Class (Age 1 by default)
-- Last Age Class
-- Number Of Fleets (1 by Default)
-- Number Of Recruitment Models (1 by Default)
-- Number Of Population Simulations
-- Random Number Seed
-- Discards are Present (optional)
-
-![](img/generalOptions_01.png "General Options")
+- **First year in Projection**
+- **Last year in Projection**
+- **First Age Class** (Age 1 [default] or Age 0)
+- **Last Age Class**
+- **Number Of Population Simulations** (1000 by Default)  
+- **Number Of Fleets** (1 by Default)
+- **Number Of Recruitment Models** (1 by Default)
+- **Random Number Seed**
+- (Optional) Enabling **_Discards are Present_** will include [Discard Fraction](#discard-fraction) and [Discard Weights at Age](#discard-weights-at-age) when the new case model is set.
 
 Click **SET** button to proceed.
+
+![](img/01_general_modelOptions.png "General Options"){fig-align="left"}
+
 
 ---
 
@@ -116,13 +117,13 @@ To save your inputs, click on the **Save AGEPRO Input Data As..** option in the 
 
 The program performs a series of data validation steps before it saves to file. If validated, the following dialog will confrim the location the AGEPRO input data file was saved:
 
-![](img/saveINP_vaildated_02.png)
+![](img/03_saveINPvalidation_saved.png)
 
 If the validator cathches an error or finds invalid input, it will stop, prevent the input data to be saved, and present the validation error in a dialog box, for example:  
 
-![](img/saveINP_invalid_01.png)
+![](img/03_saveINPvalidation_errorBio.png)
 
-![](img/saveINP_invalid_02.png)
+![](img/03_saveINPvalidation_interruptSave.png)
 
 **All invalid input has be resolved before the data may be saved.**
 
