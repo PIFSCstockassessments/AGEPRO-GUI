@@ -103,7 +103,7 @@ In the File menu, click on the **Open Existing AGERPO Input Data File** option.
 
 Use the Windows Open File Dialog to locate the desired input file to the interface.
 
-![](img/openExisting_01.png)
+![](img/02_loadINP_dialog.png)
 
 ---
 
@@ -111,21 +111,19 @@ Use the Windows Open File Dialog to locate the desired input file to the interfa
 
 To save your inputs, click on the **Save AGEPRO Input Data As..** option in the File menu. Save the file as a __`*.INP`__ file to your desired path as shown below:
 
-![](img/saveINP_01.png)
+![](img/03_saveINP_dialog.png)
 
-## Validation
+### Validation
 
 The program performs a series of data validation steps before it saves to file. If validated, the following dialog will confrim the location the AGEPRO input data file was saved:
 
 ![](img/03_saveINPvalidation_saved.png)
 
-If the validator cathches an error or finds invalid input, it will stop, prevent the input data to be saved, and present the validation error in a dialog box, for example:  
+If the validator catches an error or finds invalid input, it will interrput the input file save process, and a dialog window will print out that validation error found. **All invalid input has be resolved before the data may be saved.** 
 
 ![](img/03_saveINPvalidation_errorBio.png)
 
 ![](img/03_saveINPvalidation_interruptSave.png)
-
-**All invalid input has be resolved before the data may be saved.**
 
 ---
 
