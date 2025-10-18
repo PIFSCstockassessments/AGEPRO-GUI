@@ -3129,7 +3129,12 @@ Note
 <li><a href="#agepro-model-output-run-directory">AGEPRO Model Output Run Directory</a></li>
 </ul></li>
 <li><a href="#using-data-grids">Using Data Grids</a></li>
-<li><a href="#stochastic-data-files">Stochastic Data Files</a></li>
+<li><a href="#stochastic-data-files">Stochastic Data Files</a>
+<ul>
+<li><a href="#stochastic-data-file-format-layout">Stochastic data file format layout</a></li>
+<li><a href="#time-variance">Time variance</a></li>
+<li><a href="#stochastic-data-file-format-layout-with-multi-fleets">Stochastic data file format layout with multi-fleets</a></li>
+</ul></li>
 <li><a href="#specifying-weights-at-age">Specifying Weights at Age</a>
 <ul>
 <li><a href="#jan-1-stock-weights-at-age">JAN-1 Stock Weights at Age</a></li>
@@ -3262,10 +3267,10 @@ Warning
 <section id="agepro-model-output-run-directory" class="level2">
 <h2 class="anchored" data-anchor-id="agepro-model-output-run-directory">AGEPRO Model Output Run Directory</h2>
 <p>Activating the <strong>Launch AGEPRO Model</strong> menu option creates a new <strong>AGEPRO Model Output Run directory</strong>. This directory is written into the <code>AGEPRO</code> directory, located under the user’s <code>HOME</code> or documents directory (<code>documents</code> or <code>My Documents</code>). If the <code>AGEPRO</code> directory doesn’t exist, one will be created.</p>
-<p>The <strong>AGEPRO Model Output Run directory</strong> is entitled two ways:</p>
+<p>The <strong>AGEPRO Model Output Run directory</strong> is titled two ways:</p>
 <ul>
-<li>The base path name in <strong>input file</strong> from <strong>general options</strong> (without file extensions) appended with a date-time stamp when the model was launched.</li>
-<li>If <strong>input file</strong> in <strong>general options</strong> is blank, then it will have <code>untitled</code> and the date-time stamp this model launched.</li>
+<li>The base path name in <em><strong>input file</strong></em> from <strong>general options</strong> (without file extensions) appended with a date-time stamp when the model was launched.</li>
+<li>If <em><strong>input file</strong></em> in <strong>general options</strong> is blank, then it will have <code>untitled</code> and the date-time stamp this model launched.</li>
 </ul>
 <hr>
 </section>
@@ -3338,9 +3343,8 @@ Warning
 <h1>Stochastic Data Files</h1>
 <p>AGEPRO allows the user to supply stochastic data at age. In addition, the data at age may also vary through the projection time horizon and vary by fleet where applicable.</p>
 <p>The user may create a file with stochastic data at age using R or any statistical tool of choice.</p>
-</section>
-<section id="stochastic-data-file-format-layout" class="level1">
-<h1>Stochastic data file format layout</h1>
+<section id="stochastic-data-file-format-layout" class="level2">
+<h2 class="anchored" data-anchor-id="stochastic-data-file-format-layout">Stochastic data file format layout</h2>
 <p>In order to create a succesful Stochastic Data File, please follow the following data file layout.</p>
 <p>The data categories for which this option applies are:</p>
 <ul>
@@ -3354,12 +3358,20 @@ Warning
 <li>Discard Fraction</li>
 </ul>
 <p>The Stochastic data files are ASCII data files with <strong>space delimited double precision real data</strong>.</p>
+<p>A stochastic data file represents data for a single stochastic parameter (example: JAN-1 Stock Weights at Age).</p>
 <p>For each stochastic observed value, the data consists of a number of <strong>space delimited data items</strong> on each line of the file. Each line is terminated by newline character (a carriage return or carriage return-line feed combination).</p>
-<p>In AGEPRO, the user specifies the number of bootstrap iterations on the <strong>Bootstrap</strong> panel. The user also specifies the number of simulations on the <strong>General Options</strong> panel.</p>
-<p>The Number of Observed Values is equal to: &gt; Number of Bootstraps x Number of Simulations</p>
+<p>In AGEPRO, the user specifies the <strong>Number of Bootstrap Iterations</strong> on the <a href="#bootstrap">Bootstrap</a> panel, and the <strong>number of (population) simulations</strong> on the <a href="#creating-a-new-case">General Options</a> panel.</p>
+<p>The Number of Observed Values is equal to:</p>
+<blockquote class="blockquote">
+<p>Number of Bootstraps x Number of Simulations</p>
+</blockquote>
+</section>
 <section id="time-variance" class="level2">
 <h2 class="anchored" data-anchor-id="time-variance">Time variance</h2>
-<p>If the user has specified that the data is <em><strong>not time varying</strong></em>: &gt; Number of Data Lines = Number of Observed Values</p>
+<p>If the user has specified that the data is <em><strong>not time varying</strong></em>:</p>
+<blockquote class="blockquote">
+<p>Number of Data Lines = Number of Observed Values</p>
+</blockquote>
 <blockquote class="blockquote">
 <p>Number of Data Columns = Number of Age Classes</p>
 </blockquote>

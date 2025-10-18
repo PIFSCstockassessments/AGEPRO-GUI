@@ -25,6 +25,9 @@ please refer to the [AGEPRO Reference Manual](./AGEPRO_V42_Reference_Manual.pdf)
 	* [AGEPRO Model Output Run Directory](#agepro-model-output-run-directory)
 * [Using Data Grids](#using-data-grids)
 * [Stochastic Data Files](#stochastic-data-files)
+    * [Stochastic data file format layout](#stochastic-data-file-format-layout)
+    * [Time variance](#time-variance)
+    * [Stochastic data file format layout with multi-fleets](#stochastic-data-file-format-layout-with-multi-fleets)
 * [Specifying Weights at Age](#specifying-weights-at-age)
     * [JAN-1 Stock Weights at Age](#jan-1-stock-weights-at-age)
     * [Spawning Stock Weights at Age](#spawning-stock-weights-at-age)
@@ -147,10 +150,10 @@ There are three methods AGEPRO collects the bootstrap filepath: The filepath str
 
 Activating the **Launch AGEPRO Model** menu option creates a new **AGEPRO Model Output Run directory**. This directory is written into the `AGEPRO` directory, located under the user's `HOME` or documents directory (`documents` or `My Documents`). If the `AGEPRO` directory doesn't exist, one will be created. 
 
-The **AGEPRO Model Output Run directory** is entitled two ways:
+The **AGEPRO Model Output Run directory** is titled two ways:
 
-- The base path name in **input file** from **general options** (without file extensions) appended with a date-time stamp when the model was launched. 
-- If **input file** in **general options** is blank, then it will have `untitled` and the date-time stamp this model launched.
+- The base path name in _**input file**_ from **general options** (without file extensions) appended with a date-time stamp when the model was launched. 
+- If _**input file**_ in **general options** is blank, then it will have `untitled` and the date-time stamp this model launched.
 
 ---
 
@@ -223,7 +226,7 @@ AGEPRO allows the user to supply stochastic data at age. In addition, the data a
 
 The user may create a file with stochastic data at age using R or any statistical tool of choice.
 
-# Stochastic data file format layout
+## Stochastic data file format layout
 In order to create a succesful Stochastic Data File, please follow the following data file layout.
 
 The data categories for which this option applies are:
@@ -239,24 +242,28 @@ The data categories for which this option applies are:
 
 The Stochastic data files are ASCII data files with **space delimited double precision real data**.
 
+A stochastic data file represents data for a single stochastic parameter (example: JAN-1 Stock Weights at Age).
+
 For each stochastic observed value, the data consists of a number of **space delimited data items** on each line of the file.  Each line is terminated by newline character (a carriage return or carriage return-line feed combination).
 
-In AGEPRO, the user specifies the number of bootstrap iterations on the **Bootstrap** panel.  The user also specifies the number of simulations on the **General Options** panel.  
+In AGEPRO, the user specifies the **Number of Bootstrap Iterations** on the [Bootstrap](#bootstrap) panel, and the **number of (population) simulations** on the [General Options](#creating-a-new-case) panel.  
 
 The Number of Observed Values is equal to:
+
 > Number of Bootstraps x Number of Simulations
 
 ## Time variance
 If the user has specified that the data is _**not time varying**_:
+
 > Number of Data Lines = Number of Observed Values
 
 > Number of Data Columns = Number of Age Classes
 
 However, if the user has specified that the data is _**time varying**_, then the data layout is:
 
->Number of Data Lines = Number of Observed Values x Number of Years
+> Number of Data Lines = Number of Observed Values x Number of Years
 
->Number of Data Columns = Number of Age Classes
+> Number of Data Columns = Number of Age Classes
 
 ### Example 1:
 ```
@@ -278,6 +285,7 @@ Time Variant
 The data file for the above input would consist of 1,000,000 lines of data each with **9** space delimited data values. For each of 100,000 observed values the data is read in for all 10 years.
 
 ## Stochastic data file format layout with multi-fleets
+
 The following considerations apply to:
 
 * Catch Weights
