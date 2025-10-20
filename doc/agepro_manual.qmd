@@ -531,6 +531,8 @@ In this example, the user specified that [stochastic data for discard fraction w
 # Bootstrap
 Bootstrapping input and options is located on the **Bootstrapping** panel.
 
+![](img/10_bootstrap.png){width=95%}
+
 The user must input the **Number of Bootstrap iterations**. Each line in the Bootstrap file represents a bootstrap iteration, consisting of space delimited stock values at age as double precision numeric values. The number of data values on each row line must be equal to the number of age classes.
 
 The number of rows in the bootstrap file must be at least equal to the **number of bootstrap iterations**. Since it contains the population of the first year in the projection.
