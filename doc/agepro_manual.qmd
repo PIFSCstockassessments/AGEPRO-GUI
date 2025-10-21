@@ -690,22 +690,28 @@ Use the SET button to change the number of levels.
 # Harvest Scenario
 The **Harvest Scenario** panel includes a data grid used to determine the level of population harvest for each year in the projection horizon.
 
-In addition, the user may use this data grid for additional harvest calculations such as the **P-Star Analysis**, or Stock **Rebuilder Target**. By default, **None (only Harvest Scenario)** is selected.
+![Harvest Scenario from Acadian Redfish Example Model, 2004-2009 (Brodziak, 2018)](img/13_harvest.png)
+
+In addition, the user may use this data grid for additional harvest calculations such as the **P-Star Analysis**, or to **Apply Rebuilder Target**. By default, **None (only Harvest Scenario)** is selected.
 
 ## Harvest Scenario Table
+
 In the Harvest Scenario data grid table, the user must specify the *Harvest Specfication* for each year in the projection time horizon. The choices are:
-* Landings (MT)
-* Removals (Landings and Discards) (MT)
-* Total Fishing Mortality or "F-MULT"
+
+* **Landings** (MT)
+* **Removals** (Landings and Discards) (MT)
+* **F-MULT**: Total Fishing Mortality
 
 For single fleet models, apply the *Harvrest Specfication* values under the *HARVEST VALUE* column. For multiple fleet models, input the values for the intended fleet (e.g. *F-MULT* specfic values for *FLEET-2*). In either case, harvest specification values must be *numeric*.
 
 ## Rebuilder Target Option
-AGEPRO allows an option for the user to specify a Rebuilder target and calculate the Fishing Mortality level required to meet this target to a specified confidence level.  
+AGEPRO-GUI allows an option for the user to specify a **Rebuilder Target Year** and calculate the Fishing Mortality level required to meet this **Rebulider Target** to a specified **Rebuilder Percent Confidence**.  
 
 Select the **Apply Rebuilder Target** option for *Additional calculations* box in the **Harvest Scenario** panel. **Rebuilder Specification** will appear directly below.
-
-> For the Harvest Scenario Table, the *Harvest Specification* from the second year (row 2) in the time horizon to the **Rebuild Target Year** must be set to **F-MULT**
+                  
+:::{.callout-note appearance="minimal"}
+For the Harvest Scenario Table, the *Harvest Specification* from the second year (row 2) in the time horizon to the **Rebuild Target Year** must be set to **F-MULT**
+:::
 
 For **Rebuilder Target Type**, the user may set the rebuilder target as:
 
@@ -716,13 +722,13 @@ For **Rebuilder Target Type**, the user may set the rebuilder target as:
 If there is more than one fleet then the input estimates will be used to set the proportion of Fishing Mortality in each fleet. This proportion will be held constant as the F-Mult level changes to meet the target.
 
 ### Example
-![Single Fleet Harvest Scenario Table with a rebuild target](img/harvest_rebuilder_01.png "Harvest Scenario Table")
+![Single Fleet Harvest Scenario Table with a rebuild target](img/11_rebuilder.png "Harvest Scenario Table w/ Rebuilder Target Options")
 
 In the example shown above the user has set a Landings Harvest Quota in the first year of **2,100 MT**.
 
 The Rebuilder range begins with the second year in the time horizon and ends at the target year **2019**.
 
-The user has also set the Harvest F-Mult in the Rebuilder Range at an initial guess.
+The user has also set the Harvest F-MULT in the Rebuilder Range at an initial guess.
 
 The program will vary the F-MULT level in the Rebuilder range until the Rebuilder Specification in the Target Year is met to the confidence level requested.  In this case the user has specified that the Spawning Stock Biomass in 2019 will be at least 43,200 MT with a probability of 75%.
 
@@ -742,7 +748,7 @@ Year       Average        StdDev
 2019        0.1656        0.0000
 2020        0.1670        0.0000
 ```
-The program has set the F-Mult in all years of the rebuilder range to 0.1656
+The program has set the F-MULT in all years of the rebuilder range to 0.1656
 
 By using a Reference Point Threshold, the user may validate that the target was met (**year 2019**) to the confidence level requested:
 ```
@@ -766,14 +772,17 @@ Probability Threshold Exceeded at Least Once =     0.9063
 ## P-Star Analysis
 **P-Star Analysis** determines *P-Star* (risk of overfishing) at multiple levels.
 
-Select the **Peform P-Star Analysis** option for *Additional calculations* box in the **Harvest Scenario** panel. This will show the **P-Star Specfication** directly below. The **P-Star Specification** allows the user to specify the number and values of P-Star levels, Overfishing F criteria, and P-Star Target Year. P-Star levels in should be entered in ascending order.
+Select the **Peform P-Star Analysis** option for *Additional calculations* box in the **Harvest Scenario** panel. This will show the _P-Star Specfication_ directly below. 
+The _P-Star Specification_ allows the user to specify the **Number of P-Star levels**, **Overfishing F** criteria, **P-Star Target Year**, and **P-Star Levels**. For **P-Star levels**, values should be entered in ascending order from 1 to the max level.
 
-> For the Harvest Scenario Table, the user must set the column *Harvest Specification* to **REMOVALS** (landings and discards) *on the year (row) that* **P-Star Target Year** is set to.
+:::{.callout-note appearance="minimal"}
+For the Harvest Scenario Table, the user must set the column *Harvest Specification* to **REMOVALS** (landings and discards) *on the year (row) that* **P-Star Target Year** is set to.
+:::
 
 For the multiple fleets scenario, the proportion of removals per fleet will be set by the initial guess and this proportion will be held constant as total removal values are varied to meet the P-Star criteria.
 
 ### Example
-![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/harvest_pstar_01.png "Harvest Scenario Table")
+![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/12_pstar.png "Harvest Scenario Table w/ P-Star Analysis Attributes")
 
 In the above example, the user has provided an initial guess of total removals of 20,000 MT (`15000` for Fleet-1  + `7500` for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.
 
