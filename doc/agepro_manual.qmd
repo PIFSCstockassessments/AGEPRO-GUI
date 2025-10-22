@@ -541,7 +541,7 @@ AGEPRO, will ignore additional iterations or bootstrap data intended for addtion
 
 For each bootstrap iteration the stock values at age in the file will be multiplied by the **Population Scaling Factor**. For example, a population scale factor of `1000` means that a bootstrap file contains stock values at age equal to thousands of fish.
 
-The AGEPRO Calculation Engine does not support recruitment ages beyond age 1. If you are using earlier versions of AGEPRO Calcuation Engine prior to Version 3.4, use a second bootstrap file with Bootstrap F's.  
+The AGEPRO Calculation Engine does not support recruitment ages beyond **age 1**. 
 
 <!-- AGEPRO versions 3.4 and later do not support recruitment ages beyond age 1, therefore the second bootstrap file with Bootstrap F's in earlier versions is no longer used.  -->
 
