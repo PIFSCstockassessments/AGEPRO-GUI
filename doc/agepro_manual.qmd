@@ -856,7 +856,9 @@ The **Misc. Options** panel includes options users can use to set AGEPRO calcuat
 
 ![Misc Options Panel](img/15_miscOptions.png "Misc Options Panel on the AGEPRO-GUI")
 
-* [General Ouptut optons](#output-options)
+For **Misc Options** panel, the user can adjust these options:
+
+* [General Ouptut options](#output-options)
 * [Stock of Age Distribution and Auxiliary Files Output](#stock-of-age-distribution-and-auxiliary-files-output-summaryauxoutputflag)
 * [Retrospective Adjustment Factors](#retrospective-adjustment-factors)
 * [Program to View AGEPRO Output (\*.out) file](#view-agepro-output-files)
