@@ -404,19 +404,19 @@ On the **Natural Mortality** panel, the user selects from:
 * Read Natural Mortality from File
 
 ### Example: Time Varying
-![](img/05_natmort_usr-timeVarying.png)
+![User Specified Natural Mortaility, Time Varying](img/05_natmort_usr-timeVarying.png)
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for natural mortality at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
 ### Example: Non Time Varying
-![](img/05_natmort_usr-nonTimeVarying.png)
+![User Specfied Natural Mortality without Time Varying](img/05_natmort_usr-nonTimeVarying.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of natural mortality at age. The program will apply bias corrected log-normal error to natural mortality at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
 ### Example: From File Option
-![](img/05_natmort_file.png)
+![Natural Mortality From File](img/05_natmort_file.png)
 
 In this example, the user has specified that [natural mortality at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -436,7 +436,7 @@ On the **Maturity** tab on the **Biological** panel, the user selects from:
 * Read Maturity from File
 
 ### Example: Time Varying
-![](img/06_maturity_usr-timeVarying.png)
+![User Specfied Maturity, With Time Varying](img/06_maturity_usr-timeVarying.png)
 
 
 In the above example, *Time Varying* is enabled. The user has selected to input mean values for maturity at age for each year in the time horizon. In addition, the user also supplied the coefficients of variation at each age.
@@ -444,23 +444,23 @@ In the above example, *Time Varying* is enabled. The user has selected to input 
 On each observed value the program will apply bias corrected log-normal error to natural mortality at age for each year in the time horizon.
 
 ### Example: Non Time Varying
-![](img/06_maturity_usr-nonTimeVarying.png)
+![User Specified Matruity, without Time Varying](img/06_maturity_usr-nonTimeVarying.png)
 
 In the above example, *Time Varying* is not enabled. The user has selected to input a single vector of maturity at age. The program will apply bias corrected log-normal error to maturity at age but the same values will be constant through the time horizon. In addition, the user has specified a coefficient of variation for each age.
 
 ### Example: From File Option
-![](img/06_maturity_file.png)
+![Maturity from File](img/06_maturity_file.png)
 
 In this example, the user has specified that [maturity at age with error data will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
 ## Fraction Mortality Prior to Spawning
 On the **Fraction Mortality** tab in the **Biological** panel, the user will input the fraction of mortality prior to spawning to be applied independently to Natural and Fishing Mortality.
 
-![](img/07_zfrac_nonTimeVarying.png)
+![Fraction Mortality without Time Varying](img/07_zfrac_nonTimeVarying.png)
 
 In the above example, the user applies the same constant value to all years in the projection horizon.
 
-![](img/07_zfrac_timeVarying.png)
+![Fraction Mortality Prior to Spawn, Time Varying](img/07_zfrac_timeVarying.png)
 
 In the above example, *time varying* is enabled, and the user has selected to input different values through the time horizon.
 
@@ -475,21 +475,21 @@ On the **Fishery Selectivity** panel, the user may select:
 * Read Fishery Selectivity from File
 
 ### Example: Time Varying
-![](img/08_fishery_usr-timeVarying.png)
+![User Specfied Fishery Selectivity for each fleet at age, time varying](img/08_fishery_usr-timeVarying.png)
 
 In the above example, *time varying* is eanbled, and the user has selected to input the mean fishery selectivity for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will apply bias corrected log-normal error to the mean fishery selectivity values at age for all fleets.
 
 ### Example: Non Time Varying
-![](img/08_fishery_usr-nonTimeVarying.png)
+![User Specfied Fishery Selectivity for each fleet at age, without time varying](img/08_fishery_usr-nonTimeVarying.png)
 
 In the above case, the user has selected to input a vector of mean fishery selectivity values at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will generate stochastic fishery selectivity values for each fleet.  The same values will be applied in all years of the time horizon.
 
 ### Example: From File Option
-![](img/08_fishery_file.png)
+![Fishery Selectivity from file](img/08_fishery_file.png)
 
 In this example, the user specified that [stochastic data for fishery selectivity will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -500,7 +500,7 @@ AGEPRO allows users to input stochastic Discard Fraction
 
 If a model case didn't include a discard option (*Discards are present* in **General Options**), controls from this stochastic parameter will be disabled.
 
-![](img/09_discard_disable.png)
+![Disabled Discards Fraction parameter](img/09_discard_disable.png)
 
 On the **Discard Fraction** panel the user can select:
 
@@ -508,21 +508,21 @@ On the **Discard Fraction** panel the user can select:
 * Read Discard Fraction from File
 
 ### Example: Time Varying
-![](img/09_discard_usr-TimeVarying.png)
+![User Specfied Discard Fractions per fleet at Age, Time Varying](img/09_discard_usr-TimeVarying.png)
 
 In the above example, *time varying* is eanbled, and the user has selected to input the mean discard fraction for each fleet at age over the entire time horizon. Additionally the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will apply bias corrected log-normal error to the mean discard fraction values at age for all fleets.
 
 ### Example: Non Time Varying
-![](img/09_discard_usr-nonTimeVarying.png)
+![User Specfied Discard Fractions per fleet at Age, non Time Varying](img/09_discard_usr-nonTimeVarying.png)
 
 In the above case, the user has selected to input a vector of mean discard fraction at age for each fleet. Additionally, the user must supply a coefficient of variation for each age and fleet.
 
 On each observed value, the program will generate stochastic discard fraction values for each fleet.  The same values will be applied in all years of the time horizon.
 
 ### Example: From File Option
-![](img/09_discard_file.png)
+![Discard Fraction from File](img/09_discard_file.png)
 
 In this example, the user specified that [stochastic data for discard fraction will be read from an external file](#stochastic-data-files). Use the **Browse** button to bring up a Windows File Dialog to select the external data file.
 
@@ -531,7 +531,7 @@ In this example, the user specified that [stochastic data for discard fraction w
 # Bootstrap
 Bootstrapping input and options is located on the **Bootstrapping** panel.
 
-![](img/10_bootstrap.png){width=95%}
+![Bootstrap Panel](img/10_bootstrap.png){width=95%}
 
 The user must input the **Number of Bootstrap iterations**. Each line in the Bootstrap file represents a bootstrap iteration, consisting of space delimited stock values at age as double precision numeric values. The number of data values on each row line must be equal to the number of age classes.
 
