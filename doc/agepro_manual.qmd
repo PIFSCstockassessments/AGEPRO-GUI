@@ -136,11 +136,11 @@ If the validator catches an error or finds invalid input, it will interrput the 
 To run an AGEPRO model in the calcuation engine, a bootstrap population data file is required. Supply the file with Bootstrap population data on the **Bootstrap** panel. See the [Bootstrap](#bootstrap) section for more information.
 :::
 
-In the **Run** menu, clicking **Launch AGEPRO Model** gathers and verifies GUI input and **Bootstrap** data to pass to the calculation engine to execute. 
+Clicking **Launch AGEPRO Model** under the run menu, will allow AGEPRO GUI input and **Bootstrap** data to be passed to the AGEPRO calculation engine. 
  
-AGEPRO will check if the GUI inputs are valid. If they are, it will create a new **AGEPRO Model Output Run directory**. GUI input gets written to file in the **AGEPRO Model Output Run directory** before the AGEPRO calcuation engine launches.
+Before the Calcualtion Engine is execuited, AGEPRO-GUI will check if the GUI inputs are valid. If they are, it will create a new **AGEPRO Model Output Run directory**. GUI input and bootstrap data gets written to file in the **AGEPRO Model Output Run directory** before the AGEPRO calcuation engine launches.
 
-There are three methods AGEPRO collects the bootstrap filepath: The filepath string from the bootstrap parameter. If that is invalid, then it will assume that the bootsrap file (`*.BSN`) is in the same directory as the AGEPRO Input File. It that is also invalid, then the program allow the user to explictly locate the bootstrap file via the Open File Dialog. If the user cancels from the open file dialog, this will terminate the launch to the calcuation engine and GUI input will be *not* be written to the **AGEPRO Model Output Run directory**.
+There are three methods AGEPRO-GUI collects the bootstrap filepath: The filepath string from the bootstrap parameter. If that is invalid, then it will assume that the bootsrap file (`*.BSN`) is in the same directory as the AGEPRO Input File. It that is also invalid, then the program allow the user to explictly locate the bootstrap file via the Open File Dialog. If the user cancels from the open file dialog, this will terminate the launch to the calcuation engine and GUI input will be *not* be written to the **AGEPRO Model Output Run directory**.
 
 ![](img/20_launch_model.png){width=70%}
 
