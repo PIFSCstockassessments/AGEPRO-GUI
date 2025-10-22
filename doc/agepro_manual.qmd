@@ -690,7 +690,7 @@ Use the SET button to change the number of levels.
 # Harvest Scenario
 The **Harvest Scenario** panel includes a data grid used to determine the level of population harvest for each year in the projection horizon.
 
-![Harvest Scenario from Acadian Redfish Example Model, 2004-2009 (Brodziak, 2018)](img/13_harvest.png)
+![Harvest Scenario from Acadian Redfish Example 1 Model, 2004-2009](img/13_harvest.png)
 
 In addition, the user may use this data grid for additional harvest calculations such as the **P-Star Analysis**, or to **Apply Rebuilder Target**. By default, **None (only Harvest Scenario)** is selected.
 
@@ -722,7 +722,7 @@ For **Rebuilder Target Type**, the user may set the rebuilder target as:
 If there is more than one fleet then the input estimates will be used to set the proportion of Fishing Mortality in each fleet. This proportion will be held constant as the F-Mult level changes to meet the target.
 
 ### Example
-![Single Fleet Harvest Scenario Table with a rebuild target](img/11_rebuilder.png "Harvest Scenario Table w/ Rebuilder Target Options")
+![Single Fleet Harvest Scenario Table with a Rebuild Target Example](img/11_rebuilder.png "Harvest Scenario Table w/ Rebuilder Target Options")
 
 In the example shown above the user has set a Landings Harvest Quota in the first year of **2,100 MT**.
 
@@ -782,7 +782,7 @@ For the Harvest Scenario Table, the user must set the column *Harvest Specificat
 For the multiple fleets scenario, the proportion of removals per fleet will be set by the initial guess and this proportion will be held constant as total removal values are varied to meet the P-Star criteria.
 
 ### Example
-![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario](img/12_pstar.png "Harvest Scenario Table w/ P-Star Analysis Attributes")
+![Multi-Fleet Harvest Scenario Table in a P-Star Analysis Scenario Example](img/12_pstar.png "Harvest Scenario Table w/ P-Star Analysis Attributes")
 
 In the above example, the user has provided an initial guess of total removals of 20,000 MT (`15000` for Fleet-1  + `7500` for Fleet-2). The user has also specified that 70% of the removals are in Fleet-1 and 30 % in Fleet-2.
 
