@@ -28,7 +28,7 @@ namespace Nmfs.Agepro.Gui
       ProcessStartInfo ageproEngine = new ProcessStartInfo
       {
         WorkingDirectory = Application.StartupPath,
-        FileName = "AGEPRO40.exe",
+        FileName = "AGEPRO.exe",  // "AGEPRO40.exe",
         Arguments = "\"\"" + inpFile + "\"\"",
         WindowStyle = ProcessWindowStyle.Normal
       };
@@ -155,7 +155,7 @@ namespace Nmfs.Agepro.Gui
         //Write Interface Inputs to file
         ageproData.WriteInputFile(inpFile);
 
-        //use command line to open AGEPRO40.exe
+        //use command line to open AGEPRO.exe //AGEPRO40.exe
         LaunchAgeproCalcEngineProgram(inpFile);
 
         //crude method to create AGEPRO Calcuation Engine output file
