@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AGEPRO")]
+[assembly: AssemblyTitle("AGEPRO-GUI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NOAA-NMFS")]
-[assembly: AssemblyProduct("AGEPRO (Age Structured Projection Model)")]
+[assembly: AssemblyProduct("AGEPRO (Age Structured Projection Model) GUI")]
 [assembly: AssemblyCopyright("Copyright © NOAA Fisheries")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

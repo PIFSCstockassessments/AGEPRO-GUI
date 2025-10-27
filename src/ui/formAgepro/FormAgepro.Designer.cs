@@ -104,33 +104,33 @@
       // createNewCaseToolStripMenuItem
       // 
       this.createNewCaseToolStripMenuItem.Name = "createNewCaseToolStripMenuItem";
-      this.createNewCaseToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+      this.createNewCaseToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
       this.createNewCaseToolStripMenuItem.Text = "Create New Case";
       this.createNewCaseToolStripMenuItem.Click += new System.EventHandler(this.CreateNewCaseToolStripMenuItem_Click);
       // 
       // openExistingAGEPROInputDataFileToolStripMenuItem
       // 
       this.openExistingAGEPROInputDataFileToolStripMenuItem.Name = "openExistingAGEPROInputDataFileToolStripMenuItem";
-      this.openExistingAGEPROInputDataFileToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+      this.openExistingAGEPROInputDataFileToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
       this.openExistingAGEPROInputDataFileToolStripMenuItem.Text = "Open Existing AGEPRO Input Data File";
       this.openExistingAGEPROInputDataFileToolStripMenuItem.Click += new System.EventHandler(this.OpenExistingAGEPROInputDataFileToolStripMenuItem_Click);
       // 
       // saveAGEPROInputDataAsToolStripMenuItem
       // 
       this.saveAGEPROInputDataAsToolStripMenuItem.Name = "saveAGEPROInputDataAsToolStripMenuItem";
-      this.saveAGEPROInputDataAsToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+      this.saveAGEPROInputDataAsToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
       this.saveAGEPROInputDataAsToolStripMenuItem.Text = "Save AGEPRO Input Data As ...";
       this.saveAGEPROInputDataAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAGEPROInputDataAsToolStripMenuItem_Click);
       // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(271, 6);
+      this.toolStripSeparator1.Size = new System.Drawing.Size(270, 6);
       // 
       // exitToolStripMenuItem
       // 
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-      this.exitToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
       this.exitToolStripMenuItem.Text = "Exit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
       // 
@@ -322,7 +322,7 @@
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MainMenuStrip = this.menuStripAgeproForm;
       this.Name = "FormAgepro";
-      this.Text = "AGEPRO";
+      this.Text = "AGEPRO-GUI";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAgepro_FormClosing);
       this.menuStripAgeproForm.ResumeLayout(false);
       this.menuStripAgeproForm.PerformLayout();
