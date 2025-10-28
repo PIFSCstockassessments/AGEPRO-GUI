@@ -61,6 +61,7 @@
       this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
       this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+      this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel.Size = new System.Drawing.Size(417, 265);
       this.tableLayoutPanel.TabIndex = 0;
       // 
@@ -79,14 +80,15 @@
       // 
       // labelProductName
       // 
+      this.labelProductName.AutoSize = true;
       this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
       this.labelProductName.Location = new System.Drawing.Point(143, 0);
       this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-      this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
+      this.labelProductName.MaximumSize = new System.Drawing.Size(271, 17);
       this.labelProductName.Name = "labelProductName";
       this.labelProductName.Size = new System.Drawing.Size(271, 17);
       this.labelProductName.TabIndex = 19;
-      this.labelProductName.Text = "AGEPRO (Age Structured Projection Model)";
+      this.labelProductName.Text = "AGEPRO-GUI";
       this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // labelVersion
@@ -164,7 +166,7 @@
       this.ShowIcon = false;
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-      this.Text = "About AGEPRO";
+      this.Text = "About AGEPRO-GUI";
       this.Load += new System.EventHandler(this.AboutAgepro_Load);
       this.tableLayoutPanel.ResumeLayout(false);
       this.tableLayoutPanel.PerformLayout();

@@ -136,9 +136,7 @@ namespace Nmfs.Agepro.Gui
     {
       //textBoxDescription: Override AssemblyDescription with this text.
       textBoxDescription.Text = $"GUI Version {AssemblyVersion}{Environment.NewLine}" +
-        $"AGEPRO Calcuation Engine Version {CoreLib.Resources.Version.AGEPRO_Version}{Environment.NewLine}" +
-        $"{Environment.NewLine}" +
-        $"AGEPRO Calculation Engine is built by Jon Brodziak.{Environment.NewLine}" +
+        $"AGEPRO Calcuation Engine Version {CoreLib.Resources.Version.AGEPRO_CalcEngine}{Environment.NewLine}" +
         $"{Environment.NewLine}" +
         $"{NmfsLicense}";
     }
