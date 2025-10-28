@@ -138,8 +138,6 @@ namespace Nmfs.Agepro.Gui
       textBoxDescription.Text = $"GUI Version {AssemblyVersion}{Environment.NewLine}" +
         $"AGEPRO Calcuation Engine Version {CoreLib.Resources.Version.AGEPRO_CalcEngine}{Environment.NewLine}" +
         $"{Environment.NewLine}" +
-        $"Refer to the AGEPRO Reference Manual for technical details of the AGEPRO Calculation Engine. {Environment.NewLine}" +
-        $"{Environment.NewLine}" +
         $"{NmfsLicense}";
     }
   }
