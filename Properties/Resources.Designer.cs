@@ -71,6 +71,16 @@ namespace Nmfs.Agepro.Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon AgeproIcon_altWhite {
+            get {
+                object obj = ResourceManager.GetObject("AgeproIcon_altWhite", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap logoPictureBox {
