@@ -1,6 +1,71 @@
 
 # AGEPRO Changelog
 
+## 4.3.6 (2025-11-00)
+
+> [!NOTE]
+> AGEPRO-GUI is compatible with  `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` formatted input files. `AGEPRO VERSION 4.0` Input files must be saved as current version input file format (`AGEPRO VERSION 4.25`) to run with the changes to the included AGEPRO calculation engine
+
+AGEPRPO-GUI Version 4.3.6 is a major update that includes the updated version of the AGEPRO Calculation Engine version 4.25, allowing the user to control which of the three following filesets should be outputted: Stock of Age Distributions, Stock Numbers of Age Auxiliary File, and rest of the Auxiliary Files. 
+
+- Replaced AGEPRO Calculation Engine Executable with updated version based on development snapshot commit [945c7b2](https://github.com/PIFSCstockassessments/agepro-dev/commit/945c7b218f0efe8c902525150a32a5d8b4f3c08e)
+- Support for Current Version Input File Format (`AGEPRO VERSION 4.25`) and `AGEPRO VERSION 4.0` 
+    - Added Version String Resources: GUI Version variable, input file string, and numeric style versioning format identifier for the AGEPRO calculation engine.
+    - **General Model Options** : Added text box in general options to show the current format of the AGEPRO input file.
+    - Handling current version input file format (`AGEPRO VERSION 4.25`) and `AGEPRO VERSION 4.0` 
+      - By default, new AGEPRO models will be saved as `AGEPRO VERSION 4.25` format.
+      - Loading a (valid version format) Input File to AGEPRO-GUI will retain its format. For `AGEPRO VERSION 4.0` Input files, these files must be saved as the input file current version format (`AGEPRO VERSION 4.25`) to run the model with the included AGEPRO calculation engine
+      - To toggle between the input file current version format (`AGEPRO VERSION 4.25`) and `AGEPRO VERSION 4.0`, goto **Misc Options** and toggle the check box saying **Enable AGEPRO VERSION 4.0 Input File Format** 
+- AGEPRO-GUI Support for changes to the output option OutputSummaryFlag/AuxiliayOutputFlag introduced in the updated AGEPRO Calculation Engine.
+  - **Misc Options** checkbox option *Output Summary Report at Stock Numbers at Age* is replaced by *Stock Of Age   Distribution and Auxiliary Files Output* group box allows users to fine tune Auxiliary Outputs after completing projections through the AGEPRO calcuation engine. The Options are:
+    -  No Stock Of Age, but Output Auxilary Files EXCEPT Stock Numbers Of Age Auxiliary File
+    -  Output Stock Of Age AND ALL Auxiliary Files
+    -  No Stock Of Age AND Auxiliary File
+    -  Output Stock Of Age, but NO Auxiliary Files
+    -  Output Stock OF Age and Auxiliary Files EXCEPT Stock Numbers Of Age Auxiliary File.
+  - If `AGEPRO VERSION 4.0` Input File format is loaded, only the first two radio buttons are enabled 
+- Rearranged the order where **Number of Population Simulations** is shown within the general "options" group to reflect the GENERAL parameter order documented in the _AGEPRO reference manual_.
+  - Fixed Tab Order to represent the rearrangement
+  - Initial default value for Number of Population Simulations is 1000 
+- Updated AGEPRO-GUI Help manual
+  - Quarto backend to develop AGEPRO-GUI HTML file
+    - Replaced Screenshots with the Windows 11 Workspace
+  - Updated "Stock of Age Distribution and Auxiliary Files Output" Documentation
+  - Added documentation for (`AGEPRO VERSION 4.25`) Auxiliary Files Flags
+  - Added Screenshots for AGEPRO Calculation Engine, Bootstrap panel, and Misc. Options Panel
+  - Readably Tweaks to "New Case" Section, and Validation section of Saving AGEPRO Input Data to File
+  - Clarify and make distinct references to "AGEPRO-GUI", "AGEPRO Input File" format, and the "AGEPRO Calculation Engine" when "AGEPRO" was mentioned in the HTML manual previously. Make it distinct that "AGEPRO Calculation Engine" is the primary "AGEPRO" program. GUI references point to "AGEPRO-GUI".
+- Bugfixes
+  - Store path of Loaded AGEPRO Input File (https://github.com/PIFSCstockassessments/AGEPRO-GUI/issues/22)
+  - Add blank string delimiters to fix an issue AGEPRO GUI/CoreLib was writing invalid Parameter Curve data into input files.(https://github.com/PIFSCstockassessments/AGEPRO-GUI/issues/18)
+  - Fixup ObsYears( validation causing an false "Invalid Rebuild and P-Star Year Specification" validation (https://github.com/PIFSCstockassessments/AGEPRO-GUI/issues/27)
+Improve handling BootstrapFile prior to AGEPRO model launch to calcuation engine:
+  - Fixed method to check if bootstrap file is in the same path as the input file.
+    - Clarified dialog text for this validation check.
+    - Added Conformation Dialog prior to validation
+  - Rebuilder and PStar Values can now be saved to Input Files
+  - GitHub Bug Report Templates (https://github.com/PIFSCstockassessments/AGEPRO-GUI/pull/23)
+  - Clarify an ambiguous and unreadable error prompt that an Agepro Output file doesn't exist on the target calculation run path. 
+- README updates
+- Code Documentation and Refactoring
+  - Clarified References to AGEPRO-GUI and AGEPRO Calculation Engine 
+    - Renamed menu item: "About AGEPRO" -> "About AGEPRO-GUI" -   
+  - Refactor for `RetroAdjustment` Consistency
+  - NftTextBox Code Documentation
+  - Removed enum class `StockSummaryFlag`
+  - Rename:
+    - Rename Strings.resx -> AgeproStrings.resx 
+    - Rename SummaryAuxFileOutput -> SummaryAuxFileOutputFlag
+    - rename miscOptionsNAges -> miscOptionsNumAges
+    - Rename SetupRetroAdjustmentFactorsControlFromUserInput -> SetupRetroAdjustmentsFactorControl
+    - Rename SetRetroAdjustmentFactorRowHeaders -> SetupRetroAdjustmentsFactorRowHeaders
+    - Rename BindMiscOptionsControlValuesToCoreLib -> ControlMiscOptionsDataBindings
+    - Rename SetMiscOptionsFromInputFile -> SetupControlFromFile
+    - Rename SetControlDataBindings -> SetupTextBoxDataBindings
+    - Rename SetupSummaryStockSummaryStockFlagRadioButtons -> SetupGroupSummaryStockFlag
+    - Rename StockSummaryFlag -> AuxiliaryOutputFlag
+  - Update to Target .NET Framework 4.8
+
 ## 4.3.5 (2022-09-15)
 
 ## Changes
