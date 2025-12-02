@@ -26,7 +26,8 @@ AGEPRPO-GUI Version 4.3.6 is a major update that includes the updated version of
   - If `AGEPRO VERSION 4.0` Input File format is loaded, only the first two radio buttons are enabled 
 - Rearranged the order where **Number of Population Simulations** is shown within the general "options" group to reflect the GENERAL parameter order documented in the _AGEPRO reference manual_.
   - Fixed Tab Order to represent the rearrangement
-  - Initial default value for Number of Population Simulations is 1000 
+  - Initial default value for Number of Population Simulations is 1000
+- Updated December 2025 Revsion of AGEPRO Reference Manual for AGEPRO VERSION 4.25 
 - Updated AGEPRO-GUI Help manual
   - Quarto backend to develop AGEPRO-GUI HTML file
     - Replaced Screenshots with the Windows 11 Workspace
