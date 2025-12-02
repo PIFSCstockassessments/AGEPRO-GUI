@@ -14,7 +14,7 @@ Compatible with `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` Input Files
 
 :::{.callout-note}
 For techinical details about the AGEPRO calculation engine or the AGEPRO Input File Format itself, 
-please refer to the [AGEPRO Reference Manual](./AGEPRO_V42_Reference_Manual.pdf).
+please refer to the [AGEPRO Reference Manual](./AGEPRO_Reference_Manual_v4-25.pdf).
 :::
 
 * [Getting Started](#getting-started)
