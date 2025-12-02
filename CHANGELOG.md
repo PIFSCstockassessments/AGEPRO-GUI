@@ -8,7 +8,7 @@
 
 AGEPRPO-GUI Version 4.3.6 is a major update that includes the updated version of the AGEPRO Calculation Engine version 4.25, allowing the user to control which of the three following filesets should be outputted: Stock of Age Distributions, Stock Numbers of Age Auxiliary File, and rest of the Auxiliary Files. 
 
-- Replaced AGEPRO Calculation Engine Executable with updated version based on development snapshot commit [945c7b2](https://github.com/PIFSCstockassessments/agepro-dev/commit/945c7b218f0efe8c902525150a32a5d8b4f3c08e)
+- Updated AGEPRO Calculation Engine Binary version based on development snapshot on commit [945c7b2](https://github.com/PIFSCstockassessments/agepro-dev/commit/945c7b218f0efe8c902525150a32a5d8b4f3c08e), which includes new changes to the output option OutputSummaryFlag/AuxiliayOutputFlag.
 - Support for Current Version Input File Format (`AGEPRO VERSION 4.25`) and `AGEPRO VERSION 4.0` 
     - Added Version String Resources: GUI Version variable, input file string, and numeric style versioning format identifier for the AGEPRO calculation engine.
     - **General Model Options** : Added text box in general options to show the current format of the AGEPRO input file.
@@ -17,7 +17,7 @@ AGEPRPO-GUI Version 4.3.6 is a major update that includes the updated version of
       - Loading a (valid version format) Input File to AGEPRO-GUI will retain its format. For `AGEPRO VERSION 4.0` Input files, these files must be saved as the input file current version format (`AGEPRO VERSION 4.25`) to run the model with the included AGEPRO calculation engine
       - To toggle between the input file current version format (`AGEPRO VERSION 4.25`) and `AGEPRO VERSION 4.0`, goto **Misc Options** and toggle the check box saying **Enable AGEPRO VERSION 4.0 Input File Format** 
 - AGEPRO-GUI Support for changes to the output option OutputSummaryFlag/AuxiliayOutputFlag introduced in the updated AGEPRO Calculation Engine.
-  - **Misc Options** checkbox option *Output Summary Report at Stock Numbers at Age* is replaced by *Stock Of Age   Distribution and Auxiliary Files Output* group box allows users to fine tune Auxiliary Outputs after completing projections through the AGEPRO calcuation engine. The Options are:
+  - **Misc Options** checkbox option *Output Summary Report at Stock Numbers at Age* is replaced by *Stock Of Age Distribution and Auxiliary Files Output* group box allows users to fine tune Auxiliary Outputs after completing projections through the AGEPRO calcuation engine. The Options are:
     -  No Stock Of Age, but Output Auxilary Files EXCEPT Stock Numbers Of Age Auxiliary File
     -  Output Stock Of Age AND ALL Auxiliary Files
     -  No Stock Of Age AND Auxiliary File
