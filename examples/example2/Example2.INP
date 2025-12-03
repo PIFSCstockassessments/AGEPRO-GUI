@@ -1,11 +1,11 @@
-AGEPRO VERSION 4.0
+AGEPRO VERSION 4.25
 [CASEID]
 GoM haddock ASAP_final (1977-2011 recruitment)
 [GENERAL]
 2014  2020  1  9  10  1  1  0  854236
 [BOOTSTRAP]
 1000  1000
-C:\Users\Jon.Brodziak\Documents\AGEPRO\Example2_2017-12-29_14-19-44\Example2.BSN
+Example2.BSN
 [STOCK_WEIGHT]
 0  0
 0.15  0.4  0.71  1  1.24  1.43  1.59  1.82  2.04
@@ -57,7 +57,7 @@ C:\Users\Jon.Brodziak\Documents\AGEPRO\Example2_2017-12-29_14-19-44\Example2.BSN
 [BOUNDS]
 10  0.6
 [OPTIONS]
-1  0  0
+2  0  0
 [SCALE]
 1000  1000  1000  
 [PERC]
