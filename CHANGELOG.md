@@ -27,7 +27,14 @@ AGEPRPO-GUI Version 4.3.6 is a major update that includes the updated version of
 - Rearranged the order where **Number of Population Simulations** is shown within the general "options" group to reflect the GENERAL parameter order documented in the _AGEPRO reference manual_.
   - Fixed Tab Order to represent the rearrangement
   - Initial default value for Number of Population Simulations is 1000
-- Updated December 2025 Revsion of AGEPRO Reference Manual for AGEPRO VERSION 4.25 
+- AGEPRO Example Input Files
+  - Updated Example 1-3 AGEPRO Input Files to `AGEPRO VERSION 4.25` format. 
+  - Added `Example1.rdat` to Example 1 to demonstrate export AGEPRO Output to R Data format. 
+  - `exampleDocs.md` -> `exampleDocs.qmd`: Reformatted with Quarto.
+     - Updated Example 1 description to include `Example1.rdat`.
+     - Note: Example 4 is still under the `AGEPRO VERSION 4.0` AGEPRO Input file format.  
+- Updated December 2025 Revision of AGEPRO Reference Manual for AGEPRO VERSION 4.25 
+  - Updated "Reference Manual (pdf)" menu option to Dec 2025 revsion of AGEPRO Reference Manual
 - Updated AGEPRO-GUI Help manual
   - Quarto backend to develop AGEPRO-GUI HTML file
     - Replaced Screenshots with the Windows 11 Workspace
@@ -36,10 +43,11 @@ AGEPRPO-GUI Version 4.3.6 is a major update that includes the updated version of
   - Added Screenshots for AGEPRO Calculation Engine, Bootstrap panel, and Misc. Options Panel
   - Readably Tweaks to "New Case" Section, and Validation section of Saving AGEPRO Input Data to File
   - Clarify and make distinct references to "AGEPRO-GUI", "AGEPRO Input File" format, and the "AGEPRO Calculation Engine" when "AGEPRO" was mentioned in the HTML manual previously. Make it distinct that "AGEPRO Calculation Engine" is the primary "AGEPRO" program. GUI references point to "AGEPRO-GUI".
+  - Replaced redundant "AGEPRO Projection Samples" Section to "include" `exampleDocs.qmd`
 - Bugfixes
   - Store path of Loaded AGEPRO Input File (https://github.com/PIFSCstockassessments/AGEPRO-GUI/issues/22)
   - Add blank string delimiters to fix an issue AGEPRO GUI/CoreLib was writing invalid Parameter Curve data into input files.(https://github.com/PIFSCstockassessments/AGEPRO-GUI/issues/18)
-  - Fixup ObsYears( validation causing an false "Invalid Rebuild and P-Star Year Specification" validation (https://github.com/PIFSCstockassessments/AGEPRO-GUI/issues/27)
+  - Fixup `ObsYears`( validation causing an false "Invalid Rebuild and P-Star Year Specification" validation (https://github.com/PIFSCstockassessments/AGEPRO-GUI/issues/27)
 Improve handling BootstrapFile prior to AGEPRO model launch to calcuation engine:
   - Fixed method to check if bootstrap file is in the same path as the input file.
     - Clarified dialog text for this validation check.
@@ -50,7 +58,7 @@ Improve handling BootstrapFile prior to AGEPRO model launch to calcuation engine
 - README updates
 - Code Documentation and Refactoring
   - Clarified References to AGEPRO-GUI and AGEPRO Calculation Engine 
-    - Renamed menu item: "About AGEPRO" -> "About AGEPRO-GUI" -   
+    - Renamed menu item: "About AGEPRO" -> "About AGEPRO-GUI"    
   - Refactor for `RetroAdjustment` Consistency
   - NftTextBox Code Documentation
   - Removed enum class `StockSummaryFlag`
