@@ -37,9 +37,11 @@ numbers at age and also outputs a percentile analysis for key outputs at the 90t
 
 ## Example 4
 
-::: {.callout-warning}
+::: {.callout-note}
 
-This example input file must be saved (or configured as) `AGEPRO VERSION 4.25` format before launching the model to the AGEPRO Calcualtion Engine.
+This example input file is saved under the `AGEPRO VERSION 4.0` AGEPRO Input file format. Launching this example in the AGEPRO calcualion engine as-is will keep the input file in this format. 
+
+To convert this input file to `AGEPRO VERSION 4.25`, open the input file in the AGEPRO GUI, and uncheck the [**Enable AGEPRO VERSION 4.0 Input File format**](../doc/agepro_manual.html#switching-between-agepro-version-4.0-and-agepro-version-4.25-input-file-formats) in **Misc. Options**, and save it as a new file.
 
 :::
 
