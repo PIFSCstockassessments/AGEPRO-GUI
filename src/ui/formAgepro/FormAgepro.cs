@@ -595,7 +595,7 @@ namespace Nmfs.Agepro.Gui
     }
 
     /// <summary>
-    /// Launches Brodizak's "AGEPRO Reference Manual" when the user clicks on
+    /// Launches Jon Brodizak's "AGEPRO Reference Manual" when the user clicks on
     /// the "Reference Manual (Pdf)" menu item under Help.
     /// </summary>
     /// <param name="sender"></param>
@@ -606,7 +606,7 @@ namespace Nmfs.Agepro.Gui
       var loc = Path.GetDirectoryName(Application.ExecutablePath);
 
       //Load Reference Manual from there
-      string refManualPath = Path.Combine(loc, "doc", "AGEPRO_v42_Reference_Manual.pdf");
+      string refManualPath = Path.Combine(loc + @"/doc/AGEPRO_Reference_Manual_v4-25.pdf");
       if (!File.Exists(refManualPath))
       {
         throw new InvalidAgeproGuiParameterException("Reference Manual not found.");
