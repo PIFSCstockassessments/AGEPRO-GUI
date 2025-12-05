@@ -4,7 +4,7 @@
 ## 4.3.6 (2025-11-00)
 
 > [!NOTE]
-> AGEPRO-GUI is compatible with  `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` formatted input files. `AGEPRO VERSION 4.0` Input files must be saved as current version input file format (`AGEPRO VERSION 4.25`) to run with the changes to the included AGEPRO calculation engine
+> AGEPRO-GUI is compatible with  `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` formatted input files. To use the new AuxiliaryOutputFlag Options (2,3,4), Input files must be saved as current version input file format (`AGEPRO VERSION 4.25`) to run with the changes to the included AGEPRO calculation engine
 
 AGEPRPO-GUI Version 4.3.6 is a major update that includes the updated version of the AGEPRO Calculation Engine version 4.25, allowing the user to control which of the three following filesets should be outputted: Stock of Age Distributions, Stock Numbers of Age Auxiliary File, and rest of the Auxiliary Files. 
 
