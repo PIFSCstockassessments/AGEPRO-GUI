@@ -1,7 +1,7 @@
 
 # AGEPRO Changelog
 
-## 4.3.6 (2025-11-00)
+## 4.3.6 (2025-12-05)
 
 > [!NOTE]
 > AGEPRO-GUI is compatible with  `AGEPRO VERSION 4.0` and `AGEPRO VERSION 4.25` formatted input files. To use the new AuxiliaryOutputFlag Options (2,3,4), Input files must be saved as current version input file format (`AGEPRO VERSION 4.25`) to run with the changes to the included AGEPRO calculation engine
