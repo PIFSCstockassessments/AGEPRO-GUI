@@ -259,6 +259,7 @@
     <None Include="doc\AGEPRO_Reference_Manual_v4-25.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="examples\example1\Example1.rdat" />
     <None Include="examples\example4\Example4_UKU.BSN">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
