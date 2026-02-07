@@ -16,7 +16,9 @@ The AGEPRO Calculation Engine source code repository can be found here: [AGEPRO 
 Please cite this AGEPRO project as: 
 
 ```
-Brodziak, Jon and Rago, Paul J. and Conser, Ramon. (1998). A General Approach for Making Short-Term Stochastic Projections from an Age-Structured Fisheries Assessment Model. Fishery Stock Assessment Models, 933–954. https://doi.org/10.4027/fsam.1998.52
+Brodziak, Jon and Rago, Paul J. and Conser, Ramon. (1998). A General Approach for Making Short-Term 
+Stochastic Projections from an Age-Structured Fisheries Assessment Model. Fishery Stock Assessment 
+Models, 933–954. https://doi.org/10.4027/fsam.1998.52
 
 ```
 The following [BibTeX](http://www.bibtex.org/) entry can be copied and used in a .bib file:
