@@ -185,6 +185,18 @@ namespace Nmfs.Agepro.Gui
     /// <param name="e"></param>
     private void ButtonSetGeneral_Click(object sender, EventArgs e)
     {
+      //Clear any existing error messages on the form
+      errorProvider1.SetError(textBoxRandomSeed, "");
+
+      //Validate general options parameters; if invalid, catch exception and display error message to user.
+      if (!int.TryParse(textBoxRandomSeed.Text, out int result) || result == 0) 
+      {
+        // This puts the red icon next to textBoxRandomSeed and shows the error message when the user hovers over the icon.
+        errorProvider1.SetError(textBoxRandomSeed, $"Random Seed value must be a non-zero whole number between {(-1 * MaxRandomSeed)} and {MaxRandomSeed}.");
+        // Prevent the event from being invoked if the random seed value is invalid. User will need to correct the value and click "Set" again to invoke the event.
+        return;
+      }     
+
       //Transfer general option values to input file class
       //Null check to make sure main page attached to event; if not null, invoke.
       SetGeneral?.Invoke(sender, e);
