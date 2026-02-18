@@ -1,6 +1,12 @@
 
 # AGEPRO Changelog
 
+## 4.3.7 (2026-03-00)
+
+- Updated AGEPRO Calucation Engine binary version based on [AGEPRO commit a525a7b](noaa-pifsc/AGEPRO@a525a7b). This binary is inteded to be the Release version of AGEPRO VERSION 4.25, which includes bug fixes to the AuxiliaryOutputFlag/OutputSummaryFlag output options. 
+- Added validation for non-zero Random number seed values for user-created agepro models.
+- Added CITATION to README. 
+
 ## 4.3.6 (2025-12-05)
 
 > [!NOTE]
