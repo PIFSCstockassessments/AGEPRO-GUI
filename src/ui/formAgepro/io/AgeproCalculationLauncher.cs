@@ -55,6 +55,12 @@ namespace Nmfs.Agepro.Gui
     /// <param name="outputOptions"></param>
     static void LaunchOutputViewerProgram(string outfile, ControlMiscOptions outputOptions)
     {
+
+      if (!File.Exists(outfile)) 
+      { 
+        throw new FileNotFoundException($"The AGEPRO output file was not found at: {outfile}");
+      }
+
       if (string.IsNullOrEmpty(outfile))
       {
         throw new ArgumentException($"'{nameof(outfile)}' cannot be null or empty.", nameof(outfile));
